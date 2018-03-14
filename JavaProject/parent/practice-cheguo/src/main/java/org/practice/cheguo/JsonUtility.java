@@ -2,11 +2,13 @@ package org.practice.cheguo;
 
 import java.util.Map;
 
+import org.practice.cheguo.model.QueryResponse;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
 /**
- * https://www.cnblogs.com/cdf-opensource-007/p/7106018.html
+ * https://www.cnblogs.com/cdf-opensource-007/p/7106018.html Json工具类
  * 
  * @author 20180112002
  *
@@ -55,8 +57,14 @@ public class JsonUtility {
 		String jsonStr = isRegisteredObj.toJSONString();
 		System.out.println(jsonStr);
 
-		Map maps = (Map) JSON.parse(jsonStr);
-		System.out.println(maps.get("data"));
+		QueryResponse response = JSON.parseObject(jsonStr, QueryResponse.class);
+		System.out.println(response.getCode());
+
+		// Map maps = (Map) JSON.parse(jsonStr);
+		// Map data = (Map) maps.get("data");
+		// String status = (String) data.get("status");
+		// System.out.println(data);
+		// System.out.println(status);
 	}
 
 }
