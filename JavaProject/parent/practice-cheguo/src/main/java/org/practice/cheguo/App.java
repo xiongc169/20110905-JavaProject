@@ -7,6 +7,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import com.alibaba.fastjson.JSONObject;
+
 /**
  * Hello world!
  *
@@ -15,6 +17,11 @@ public class App {
 	public static void main(String[] args) {
 
 		try {
+			
+			Date now = new Date();
+			System.out.println(now);
+			
+			getYearMonthDay();
 			List<String> payDate = getMonthBetween("2017-01", "2018-02");
 			List<String> payDate2 = getMonthList("2017-01", "2018-02");
 			int a = 100 * 100;
@@ -77,5 +84,16 @@ public class App {
 
 		return result;
 	}
-}
 
+	/**
+	 * 2018年3月15日14:43:03
+	 */
+	private static String getYearMonthDay() {
+		JSONObject contractObj = new JSONObject();
+		contractObj.put("7", Calendar.getInstance().get(Calendar.YEAR));
+		contractObj.put("8", Calendar.getInstance().get(Calendar.MONTH) + 1);
+		contractObj.put("9", Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+		System.out.println(contractObj.toJSONString());
+		return contractObj.toJSONString();
+	}
+}
