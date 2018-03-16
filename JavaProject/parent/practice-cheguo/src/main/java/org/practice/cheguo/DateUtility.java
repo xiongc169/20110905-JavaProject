@@ -3,6 +3,7 @@ package org.practice.cheguo;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
 /**
  * https://www.cnblogs.com/endtel/p/6018429.html
  * 
@@ -15,5 +16,8 @@ public class DateUtility {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 		String now = sdf.format(new Date());
 		System.out.println(now);
+		
+		String serial = org.apache.commons.lang.StringUtils.leftPad(String.valueOf(1), 4, '0');
+		System.out.println(serial);
 	}
 }
