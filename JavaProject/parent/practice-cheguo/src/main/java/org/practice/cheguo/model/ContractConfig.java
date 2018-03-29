@@ -1,14 +1,35 @@
 package org.practice.cheguo.model;
 
 import java.util.List;
+import java.util.Map;
 
+/**
+ * 合同的配置类
+ * 
+ * @author yoong
+ *
+ */
 public class ContractConfig {
-	
+
+	/**
+	 * 合同模板名称
+	 */
 	private String templateName;
-	
+
+	/**
+	 * 合同模板编号
+	 */
 	private String templateNo;
-	
-	List<ContractSignParty> contarctSignPartys;
+
+	/**
+	 * 合同签署方列表
+	 */
+	private List<ContractSignParty> contarctSignPartys;
+
+	/**
+	 * 参数配置
+	 */
+	private Map<String, String> data;
 
 	public String getTemplateName() {
 		return templateName;
@@ -32,5 +53,13 @@ public class ContractConfig {
 
 	public void setContarctSignPartys(List<ContractSignParty> contarctSignPartys) {
 		this.contarctSignPartys = contarctSignPartys;
-	}	
+	}
+
+	public Map<String, String> getData() {
+		return data;
+	}
+
+	public void setData(Map<String, String> data) {
+		this.data = data;
+	}
 }

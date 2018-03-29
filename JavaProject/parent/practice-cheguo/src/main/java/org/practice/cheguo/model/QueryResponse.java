@@ -1,11 +1,11 @@
 package org.practice.cheguo.model;
 
 public class QueryResponse {
-	
+
 	private String code;
-	
+
 	private String msg;
-	
+
 	private QueryData data;
 
 	public String getCode() {
@@ -30,5 +30,5 @@ public class QueryResponse {
 
 	public void setData(QueryData data) {
 		this.data = data;
-	}	
+	}
 }
