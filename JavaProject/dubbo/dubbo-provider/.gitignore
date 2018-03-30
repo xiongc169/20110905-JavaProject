@@ -1,1 +1,9 @@
-/target/
+.class
+.classpath
+.project
+.log
+.metadata/
+.settings/
+bin/
+target/
+RemoteSystemsTempFiles

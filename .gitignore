@@ -1,7 +1,10 @@
+.class
 .classpath
 .project
 .log
-.settings/
-target/
 .metadata/
+.recommenders/
+.settings/
+bin/
+target/
 RemoteSystemsTempFiles
