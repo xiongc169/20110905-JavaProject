@@ -1,4 +1,4 @@
-package org.practice.cheguo;
+package org.practice.cheguo.utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;

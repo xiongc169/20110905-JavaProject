@@ -1,4 +1,4 @@
-package org.practice.cheguo;
+package org.practice.cheguo.utils;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

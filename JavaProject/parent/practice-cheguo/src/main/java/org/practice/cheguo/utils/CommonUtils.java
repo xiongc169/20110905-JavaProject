@@ -1,4 +1,4 @@
-package org.practice.cheguo;
+package org.practice.cheguo.utils;
 
 import org.apache.commons.lang.StringUtils;
 
