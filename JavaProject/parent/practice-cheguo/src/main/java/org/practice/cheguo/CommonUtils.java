@@ -10,7 +10,8 @@ import org.apache.commons.lang.StringUtils;
 public class CommonUtils {
 
 	/**
-	 * 个人信息加密(脱敏) https://blog.csdn.net/hekewangzi/article/details/50905098
+	 * https://blog.csdn.net/hekewangzi/article/details/50905098 <br>
+	 * PS：个人信息加密(脱敏)
 	 * 
 	 * @param clearText 明文
 	 * @param encodeType 明文类型，1 手机号、2 身份证号码、3 银行卡号

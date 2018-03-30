@@ -7,6 +7,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import com.alibaba.fastjson.JSONObject;
+
 /**
  * 
  * @author yoong
@@ -14,16 +16,40 @@ import java.util.List;
  */
 public class DateUtils {
 
+	public static void main(String[] args) {
+
+		// Date now = new Date();
+		// System.out.println(now);
+		// format();
+		getYearMonthDay();
+		// List<String> payDate = getMonthBetween("2017-01", "2018-02");
+		// List<String> payDate2 = getMonthList("2017-01", "2018-02");
+	}
+
 	/**
 	 * https://www.cnblogs.com/endtel/p/6018429.html
 	 */
 	public static void format() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-		String now = sdf.format(new Date());
+		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date now = new Date();
+		String nowStr = sdf.format(now);
+		String nowStr2 = sdf2.format(now);
 		System.out.println(now);
+		System.out.println(nowStr);
+		System.out.println(nowStr2);
 
 		String serial = org.apache.commons.lang.StringUtils.leftPad(String.valueOf(1), 4, '0');
 		System.out.println(serial);
+	}
+
+	public static String getYearMonthDay() {
+		JSONObject contractParam = new JSONObject();
+		contractParam.put("7", Calendar.getInstance().get(Calendar.YEAR));
+		contractParam.put("8", Calendar.getInstance().get(Calendar.MONTH) + 1);
+		contractParam.put("9", Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+		System.out.println(contractParam.toJSONString());
+		return contractParam.toJSONString();
 	}
 
 	public static List<String> getMonthList(String monthBegin, String monthEnd) throws ParseException {

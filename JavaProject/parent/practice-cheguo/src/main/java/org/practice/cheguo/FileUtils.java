@@ -9,24 +9,38 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * https://www.cnblogs.com/pcheng/p/6913535.html
- * https://www.cnblogs.com/cnblogszs/p/6405403.html
+ * https://www.cnblogs.com/DylanZ/p/6269042.html<br>
+ * java 中 byte[]、File、InputStream 互相转换
  * 
  * @author yoong
  *
  */
 public class FileUtils {
 
-	// 将文件转换成Byte数组
-	public static byte[] getBytesByFile(String pathStr) {
-		File file = new File(pathStr);
+	public static void main(String[] args) {
+
+		byte[] bytes = fileToBytes("E:\\test2.zip");
+		System.out.println(bytes.length);
+
+		bytesToFile(bytes, "E:\\", "test3.zip");
+	}
+
+	/**
+	 * https://www.cnblogs.com/pcheng/p/6913535.html <br>
+	 * 文件、字节数组转换
+	 * 
+	 * @param fileName
+	 * @return
+	 */
+	public static byte[] fileToBytes(String fileName) {
+		File file = new File(fileName);
 		try {
 			FileInputStream fis = new FileInputStream(file);
-			ByteArrayOutputStream bos = new ByteArrayOutputStream(100000);
-			byte[] b = new byte[100000];
+			ByteArrayOutputStream bos = new ByteArrayOutputStream(fis.available());
+			byte[] buffer = new byte[100000];
 			int n;
-			while ((n = fis.read(b)) != -1) {
-				bos.write(b, 0, n);
+			while ((n = fis.read(buffer)) != -1) {
+				bos.write(buffer, 0, n);
 			}
 			fis.close();
 			byte[] data = bos.toByteArray();
@@ -38,8 +52,7 @@ public class FileUtils {
 		return null;
 	}
 
-	// 将Byte数组转换成文件
-	public static void getFileByBytes(byte[] bytes, String filePath, String fileName) {
+	public static void bytesToFile(byte[] bytes, String filePath, String fileName) {
 		BufferedOutputStream bos = null;
 		FileOutputStream fos = null;
 		File file = null;
@@ -72,6 +85,13 @@ public class FileUtils {
 		}
 	}
 
+	/**
+	 * https://www.cnblogs.com/cnblogszs/p/6405403.html 文件转换为数组
+	 * 
+	 * @param filePath
+	 * @return
+	 * @throws IOException
+	 */
 	public static byte[] InputStream2ByteArray(String filePath) throws IOException {
 
 		InputStream in = new FileInputStream(filePath);

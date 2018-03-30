@@ -17,9 +17,9 @@ public class ZipUtils2 {
 	public static void main(String[] args) {
 
 		byte[] zipByte;
-		zipByte = FileUtils.getBytesByFile("E:\\test2.zip");
+		zipByte = FileUtils.fileToBytes("E:\\test2.zip");
 		byte[] pdfByte = uncompress(zipByte);
-		FileUtils.getFileByBytes(pdfByte, "E:\\", "1234.pdf");
+		FileUtils.bytesToFile(pdfByte, "E:\\", "1234.pdf");
 	}
 
 	/**

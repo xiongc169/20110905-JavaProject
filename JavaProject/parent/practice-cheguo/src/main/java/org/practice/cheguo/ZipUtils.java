@@ -17,9 +17,6 @@ import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 /**
- * https://www.cnblogs.com/java-class/p/5662934.html
- * https://www.cnblogs.com/DylanZ/p/6269042.html 
- * PS:OK~
  * 
  * @author yoong
  *
@@ -49,8 +46,9 @@ public class ZipUtils {
 	}
 
 	/**
-	 * 压缩文件
-	 *
+	 * https://www.cnblogs.com/java-class/p/5662934.html <br>
+	 * 压缩、解压文件 PS：OK~
+	 * 
 	 * @param filePath 待压缩的文件路径
 	 * @return 压缩后的文件
 	 */
@@ -152,8 +150,22 @@ public class ZipUtils {
 		}
 	}
 
+	private void close(Closeable... closeableList) {
+		if (closeableList != null) {
+			for (Closeable closeable : closeableList) {
+				if (closeable != null) {
+					try {
+						closeable.close();
+					} catch (IOException e) {
+					}
+				}
+			}
+		}
+	}
+
 	/**
-	 * 解压文件
+	 * 解压字节数组 <br>
+	 * PS：No~
 	 *
 	 * @param filePath 压缩文件路径
 	 */
@@ -197,24 +209,6 @@ public class ZipUtils {
 					outputStream.close();
 				} catch (IOException e) {
 					e.printStackTrace();
-				}
-			}
-		}
-	}
-
-	/**
-	 * 关闭流
-	 * 
-	 * @param closeableList
-	 */
-	private void close(Closeable... closeableList) {
-		if (closeableList != null) {
-			for (Closeable closeable : closeableList) {
-				if (closeable != null) {
-					try {
-						closeable.close();
-					} catch (IOException e) {
-					}
 				}
 			}
 		}

@@ -12,13 +12,16 @@ import org.practice.cheguo.model.QueryResponse;
 import org.practice.cheguo.model.RegisterData;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 /**
- * https://www.cnblogs.com/cdf-opensource-007/p/7106018.html Json工具类
- * http://blog.csdn.net/moshenglv/article/details/52021263
+ * https://www.cnblogs.com/cdf-opensource-007/p/7106018.html <br>
+ * PS：FastJSON简介 <br>
+ * http://blog.csdn.net/moshenglv/article/details/52021263 <br>
+ * PS：四款处理json的java类库：Json-lib、Gson、Jackson、Fastjson <br>
  * 
- * @author 20180112002
+ * @author yoong
  *
  */
 public class JsonUtils {
@@ -36,6 +39,10 @@ public class JsonUtils {
 
 	public static <T> T json2Bean(String jsonStr, Class<T> objClass) {
 		return JSON.parseObject(jsonStr, objClass);
+	}
+
+	public static JSONArray json2List(String jsonStr) {
+		return JSON.parseArray(jsonStr);
 	}
 
 	public static void serializeObject() {
@@ -63,22 +70,22 @@ public class JsonUtils {
 		dataObj.put("name", "name 44");
 		dataObj.put("reservedMobile", "reservedMobile 55");
 
-		JSONObject isRegisteredObj = new JSONObject();
-		isRegisteredObj.put("code", "code code");
-		isRegisteredObj.put("msg", "msg msg");
-		isRegisteredObj.put("data", dataObj);
+		JSONObject responseObj = new JSONObject();
+		responseObj.put("code", "code code");
+		responseObj.put("msg", "msg msg");
+		responseObj.put("data", dataObj);
 
-		String jsonStr = isRegisteredObj.toJSONString();
-		System.out.println(jsonStr);
+		String responseStr = responseObj.toJSONString();
+		System.out.println(responseStr);
 
-		QueryResponse response = JSON.parseObject(jsonStr, QueryResponse.class);
-		System.out.println(response.getCode());
+		QueryResponse queryResponse = JSON.parseObject(responseStr, QueryResponse.class);
+		System.out.println(queryResponse.getCode());
 
-		QueryData data = response.getData();
+		QueryData data = queryResponse.getData();
 		String dataJson = JSON.toJSONString(data);
 		System.out.println(dataJson);
 
-		Map maps = (Map) JSON.parse(jsonStr);
+		Map maps = (Map) JSON.parse(responseStr);
 		Map data2 = (Map) maps.get("data");
 		String status = (String) data2.get("status");
 		System.out.println(data2);
