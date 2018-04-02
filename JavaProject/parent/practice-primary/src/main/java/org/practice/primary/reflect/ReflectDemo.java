@@ -1,17 +1,23 @@
 package org.practice.primary.reflect;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 
 import org.practice.primary.domain.User;
-
+import org.practice.primary.utility.CollectionUtility;
 
 /**
  * 
- * @author Administrator <br/>
- *         http://www.cnblogs.com/lzq198754/p/5780331.html
+ * @author yoong
+ *
+ * @description ReflectDemo.java <br>
+ *              http://www.cnblogs.com/lzq198754/p/5780331.html
+ *
+ * @date 2014年4月2日
+ *
+ * @version 1.0
  *
  */
 public class ReflectDemo {
@@ -40,7 +46,8 @@ public class ReflectDemo {
 		// System.out.println(msg);
 		// }
 
-		reflectDemo();
+		// reflectDemo();
+		annationTest();
 	}
 
 	public static void reflectDemo() {
@@ -82,4 +89,28 @@ public class ReflectDemo {
 		}
 	}
 
+	/**
+	 * 反射获取注解信息
+	 */
+	public static void annationTest() {
+		Class utilClz = CollectionUtility.class;
+		ClassLoader loader = utilClz.getClassLoader();
+		Method[] methods = utilClz.getMethods();
+		for (Method m : methods) {
+			// 判断方法是否包含MethodInfo注解
+			if (m.isAnnotationPresent(MethodInfo.class)) {
+				MethodInfo method2 = m.getAnnotation(MethodInfo.class);
+				if (method2 != null) {
+					System.out.println(method2.author());
+				}
+			}
+			Annotation[] annations = m.getAnnotations();
+			for (Annotation ann : annations) {
+				if (ann.annotationType().isInstance(MethodInfo.class)) {
+					MethodInfo method = (MethodInfo) ann;
+					System.out.println(method.comments());
+				}
+			}
+		}
+	}
 }

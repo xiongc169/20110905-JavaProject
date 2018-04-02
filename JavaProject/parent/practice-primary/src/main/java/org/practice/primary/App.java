@@ -3,10 +3,22 @@ package org.practice.primary;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.practice.primary.domain.Dictionary;
-import org.practice.primary.encrypt.DesUtil;
+import org.practice.primary.domain.Student;
 
+/**
+ * @author yoong
+ *
+ * @description App.java
+ *
+ * @date 2012年4月2日
+ *
+ * @version 1.0
+ *
+ */
 public class App {
 
 	public static void main(String[] args) {
@@ -54,4 +66,31 @@ public class App {
 
 	}
 
+	/**
+	 * 
+	 * @description https://blog.csdn.net/miqi770/article/details/8998517 <br>
+	 *              利用Java Set 去除重复object，重写equals\hashcode方法
+	 * @date 2014年4月2日
+	 *
+	 * @version 1.0
+	 *
+	 */
+	public static void setTest() {
+		Set<Student> stuSet = new HashSet<Student>();
+		Student stu = new Student("id1", "name1", "sex1", 1);
+		Student stu2 = new Student("id2", "name1", "sex2", 2);
+		Student stu3 = new Student("id3", "name1", "sex3", 3);
+		Student stu4 = new Student("id4", "name1", "sex4", 4);
+
+		System.out.printf("%d ; %d ; %d ; %d \n", stu.hashCode(), stu2.hashCode(), stu3.hashCode(), stu4.hashCode());
+
+		stuSet.add(stu);
+		stuSet.add(stu2);
+		stuSet.add(stu3);
+		stuSet.add(stu4);
+
+		for (Student item : stuSet) {
+			System.out.printf("%s - %s - %s - %d\n", item.getId(), item.getName(), item.getSex(), item.getAge());
+		}
+	}
 }

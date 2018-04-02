@@ -8,14 +8,19 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
- * @ClassName: DesUtil <br/>
- *             HexUtil工具类
- *             http://blog.csdn.net/lisheng19870305/article/details/68944485
- *             .NET版本
- *             http://www.cnblogs.com/wangbogo/archive/2012/07/10/2584506.html
- *             http://www.cnblogs.com/supperwu/archive/2012/05/22/2512877.html
- * @Description: 使用DES算法实现加密和解密
- * 
+ * @author yoong
+ *
+ * @description 使用DES算法实现加密和解密
+ *              http://blog.csdn.net/lisheng19870305/article/details/68944485
+ *              HexUtil工具类
+ *              http://www.cnblogs.com/wangbogo/archive/2012/07/10/2584506.html
+ *              http://www.cnblogs.com/supperwu/archive/2012/05/22/2512877.html
+ *              .NET版本
+ *
+ * @date 2012年4月2日
+ *
+ * @version 1.0
+ *
  */
 public class DesUtil {
 

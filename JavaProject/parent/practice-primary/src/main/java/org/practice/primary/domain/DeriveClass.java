@@ -1,11 +1,15 @@
 package org.practice.primary.domain;
 
 /**
- * 测试static方法、static块、构造函数的执行顺序
- * 
- * @author Administrator <br/>
- *         http://blog.csdn.net/tt_zhang/article/details/7614180
- *         http://blog.sina.com.cn/s/blog_4f925fc30102dtgc.html
+ * @author yoong
+ *
+ * @description http://blog.csdn.net/tt_zhang/article/details/7614180
+ *              http://blog.sina.com.cn/s/blog_4f925fc30102dtgc.html
+ *              测试static方法、static块、构造函数的执行顺序
+ *
+ * @date 2012年4月2日
+ *
+ * @version 1.0
  *
  */
 public class DeriveClass extends BaseClass {
