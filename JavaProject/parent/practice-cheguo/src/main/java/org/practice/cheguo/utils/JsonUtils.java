@@ -30,7 +30,8 @@ public class JsonUtils {
 		// json();
 		// jsonToMap();
 		// toTemplateJson();
-		mapToJson();
+		// mapToJson();
+		string2JonArray();
 	}
 
 	public static String bean2Json(Object obj) {
@@ -152,5 +153,11 @@ public class JsonUtils {
 		}
 		String jsonStr = JSON.toJSONString(bankList);
 		System.out.println(jsonStr);
+	}
+
+	private static void string2JonArray() {
+		String jsArr = "[1288,1289]";
+		JSONArray jsonArr = JSONArray.parseArray(jsArr);
+		jsonArr.forEach(item -> System.out.println(item));
 	}
 }

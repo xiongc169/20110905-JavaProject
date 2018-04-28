@@ -46,7 +46,7 @@ public class ReflectDemo {
 		// System.out.println(msg);
 		// }
 
-		// reflectDemo();
+		reflectDemo();
 		annationTest();
 	}
 
@@ -55,19 +55,22 @@ public class ReflectDemo {
 			// 1、获取Class实例
 			Class<?> usrClass = User.class;
 			Class<?> usrClass2 = new User().getClass();
-			Class<?> usrClass3 = Class.forName("com.yoong.domain.User");
+			Class<?> usrClass3 = Class.forName("org.practice.primary.domain.User");
+			String className = usrClass.getName();
+			System.out.println(className);
+
 			// 2、获取类的父类、接口
 			Class<?> superClass = usrClass.getSuperclass();
 			Class<?>[] interfaces = usrClass.getInterfaces();
 
-			String className = usrClass.getName();
-			System.out.println(className);
 			// 3、获取本类的全部属性、构造函数、方法
 			Field[] fields = usrClass.getDeclaredFields();
 			Constructor[] cons = usrClass.getConstructors();
 			Method[] methods = usrClass.getMethods();
+
 			// 4、获取父类、接口的全部属性
 			Field[] superFields = usrClass.getFields();
+
 			// 5、创建类实例（setter方法赋值、构造函数赋值）
 			User user = (User) usrClass.newInstance();
 			user.setIid("myIId");
@@ -75,11 +78,13 @@ public class ReflectDemo {
 			String str = user.toString();
 			System.out.println(str);
 			// User user2 = (User) cons[0].newInstance("iid", "userNo");
+
 			// 6、调用类的方法
 			Method method = usrClass.getMethod("toString");
 			method.invoke(user);
 			Method method2 = usrClass.getMethod("sayHello", int.class, String.class);
 			method2.invoke(user, 123, "Dog");
+
 			// 7、操作类的属性
 			Field field = usrClass.getDeclaredField("iid");
 			field.setAccessible(true);
