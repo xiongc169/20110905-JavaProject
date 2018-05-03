@@ -19,7 +19,7 @@ public class App {
 	public static void main(String[] args) {
 
 		try {
-			test();
+			streamSort();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -59,18 +59,26 @@ public class App {
 	 * https://blog.csdn.net/gao1440156051/article/details/71126194
 	 */
 	public static void streamSort(){
+		Date now = new Date();
 		List<Human> humans = new ArrayList<>();
 		humans.add(new Human("Sarah", 10, new Date()));
 		humans.add(new Human("Jack", 12, new Date()));
 		humans.add(new Human("Tomy", 11, new Date()));
-		humans.add(new Human("Jerry", 11, new Date()));
+		humans.add(new Human("Tomy", 11, new Date()));
 
-		Collections.sort(humans, Comparator.comparing(Human::getCreateDate));
+//		Collections.sort(humans, Comparator.comparing(Human::getCreateDate));
 //		humans = humans.stream().sorted(Comparator.comparing(Human::getCreateDate)).collect(Collectors.toList());
 //		humans = humans.stream().sorted(Comparator.comparing(Human::getCreateDate).reversed()).collect(Collectors.toList());
-		Human theOne = humans.stream().sorted(Comparator.comparing(Human::getCreateDate).reversed()).findFirst().get();
-		Human theOne2 = humans.stream().sorted(Comparator.comparing(Human::getCreateDate).reversed()).findFirst().orElse(null);
+//		Human theOne = humans.stream().sorted(Comparator.comparing(Human::getCreateDate).reversed()).findFirst().get();
+//		Human theOne2 = humans.stream().sorted(Comparator.comparing(Human::getCreateDate).reversed()).findFirst().orElse(null);
 		int size = humans.size();
+		
+		List<Human> distinctHumans = humans.stream().distinct().collect(Collectors.toList());
+		int size2 = distinctHumans.size();
+		distinctHumans.forEach(item -> {
+			System.out.println(item.getName() + " - " + item.getAge() + " - " + item.getCreateDate());
+		});
+		System.out.println(size2);
 	}
 
 }
