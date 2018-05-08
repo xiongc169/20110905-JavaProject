@@ -2,7 +2,6 @@
 .classpath
 .project
 .log
-.iml
 .idea/
 .metadata/
 .recommenders/
@@ -10,3 +9,4 @@
 bin/
 target/
 RemoteSystemsTempFiles
+*.iml
