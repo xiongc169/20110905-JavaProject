@@ -18,7 +18,10 @@ public class Consumer {
 			double result2 = calculator.mul(100, 200);
 			double result3 = calculator.div(100, 200);
 			double result4 = calculator.add(100, 200);
-			System.out.println(result + result2 + result3 + result4);
+			System.out.println(result);
+			System.out.println(result2);
+			System.out.println(result3);
+			System.out.println(result4);
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -12,6 +12,7 @@ public class Provider {
 			FileSystemXmlApplicationContext fsContext = new FileSystemXmlApplicationContext(
 					new String[] { "classpath:provider.xml" });
 			fsContext.start();
+			System.out.println("启动成功！");
 
 			Scanner scanner = new Scanner(System.in);
 			int input = scanner.nextInt();
