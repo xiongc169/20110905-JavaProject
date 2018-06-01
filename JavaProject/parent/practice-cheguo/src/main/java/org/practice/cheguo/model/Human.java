@@ -1,5 +1,6 @@
 package org.practice.cheguo.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
@@ -15,7 +16,9 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
  * @version 1.0
  *
  */
-public class Human {
+public class Human implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private String name;
 

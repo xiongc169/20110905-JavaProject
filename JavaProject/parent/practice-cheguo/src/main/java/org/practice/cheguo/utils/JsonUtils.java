@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.practice.cheguo.model.ContractConfig;
 import org.practice.cheguo.model.ContractSignParty;
+import org.practice.cheguo.model.Human;
 import org.practice.cheguo.model.QueryData;
 import org.practice.cheguo.model.QueryResponse;
 import org.practice.cheguo.model.RegisterData;
@@ -31,7 +32,8 @@ public class JsonUtils {
 		// jsonToMap();
 		// toTemplateJson();
 		// mapToJson();
-		string2JonArray();
+		// string2JonArray();
+		human2Json();
 	}
 
 	public static String bean2Json(Object obj) {
@@ -159,5 +161,15 @@ public class JsonUtils {
 		String jsArr = "[1288,1289]";
 		JSONArray jsonArr = JSONArray.parseArray(jsArr);
 		jsonArr.forEach(item -> System.out.println(item));
+	}
+
+	private static void human2Json() {
+		Human human = new Human();
+		human.setName("name 1");
+		human.setAge(100);
+		String json = JSON.toJSONString(human);
+		System.out.println(json);
+		Human man = (Human) JSON.parse(json);
+		System.out.println(man.getAge());
 	}
 }
