@@ -1,5 +1,7 @@
 package org.practice.mybatis.chap;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.Reader;
 import java.util.List;
 
@@ -8,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.practice.mybatis.chap.dao.NoticeMapper;
+import org.practice.mybatis.chap.domain.Accounts;
 import org.practice.mybatis.chap.domain.Notice;
 import org.practice.mybatis.chap.domain.NoticeExample;
 
@@ -29,7 +32,7 @@ public class MyBatisTest {
 	public static void mybatisTest() {
 		SqlSession session = null;
 		try {
-			Reader reader = Resources.getResourceAsReader("mybatis-config.xml");
+			Reader reader = Resources.getResourceAsReader("mybatis-mysql.xml");
 
 			SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
 			SqlSessionFactory factory = builder.build(reader);
@@ -57,6 +60,25 @@ public class MyBatisTest {
 			if (session != null) {
 				session.close();
 			}
+		}
+	}
+
+	// 2018-6-1
+	private static void mybatisTest2() {
+		ClassLoader loader = Resources.getDefaultClassLoader();
+
+		try {
+			String resource = "mybatis-mysql.xml";
+			InputStream iStream = Resources.getResourceAsStream(resource);
+			SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(iStream);
+			SqlSession session = factory.openSession();
+			Object result = session.selectOne("mybatis.demo.mapper.UserMapper.countUser");
+			System.out.println(result);
+
+			List<Accounts> result2 = session.selectList("mybatis.demo.mapper.UserMapper.selectUserByHost", "%");
+			System.out.println(result2.size());
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 }
