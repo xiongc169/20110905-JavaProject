@@ -53,8 +53,8 @@ public class HibernateTest {
 	public static void hbm2ddl() {
 		try {
 			Configuration cfg = new Configuration().configure();
-			SchemaExport export = new SchemaExport(cfg);
-			export.create(true, true);
+//			SchemaExport export = new SchemaExport(cfg);
+//			export.create(true, true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
