@@ -62,23 +62,4 @@ public class MyBatisTest {
 			}
 		}
 	}
-
-	// 2018-6-1
-	private static void mybatisTest2() {
-		ClassLoader loader = Resources.getDefaultClassLoader();
-
-		try {
-			String resource = "mybatis-mysql.xml";
-			InputStream iStream = Resources.getResourceAsStream(resource);
-			SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(iStream);
-			SqlSession session = factory.openSession();
-			Object result = session.selectOne("mybatis.demo.mapper.UserMapper.countUser");
-			System.out.println(result);
-
-			List<Accounts> result2 = session.selectList("mybatis.demo.mapper.UserMapper.selectUserByHost", "%");
-			System.out.println(result2.size());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 }
