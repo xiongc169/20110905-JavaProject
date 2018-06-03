@@ -14,18 +14,18 @@
 		</javaTypeResolver>
 
 		<javaModelGenerator targetPackage="org.practice.mybatis.northwind.domain"
-			targetProject="practice-mybatis\src\main\java">
+			targetProject="../../practice-mybatis\src\main\java">
 			<property name="enableSubPackages" value="true" />
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
 
 		<sqlMapGenerator targetPackage="\"
-			targetProject="practice-mybatis\src\main\resources\mapper-northwind">
+			targetProject="../../practice-mybatis\src\main\resources\mapper-northwind">
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
 
 		<javaClientGenerator targetPackage="org.practice.mybatis.northwind.dao"
-			targetProject="practice-mybatis\src\main\java" type="XMLMAPPER">
+			targetProject="../../practice-mybatis\src\main\java" type="XMLMAPPER">
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 
