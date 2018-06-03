@@ -34,7 +34,6 @@
 
 	<modules>
 		<module>practice-activemq</module>
-		<module>practice-advancedFeature</module>
 		<module>practice-cheguo</module>
 		<module>practice-dataStructure</module>
 		<module>practice-designPattern</module>

@@ -37,6 +37,9 @@ public class DBManager {
 	public static void main(String[] args) {
 		Connection dbConn = null;
 		try {
+			// Sql Server
+			String northwindSql = "select * from Categories";
+			String northwindInsert = "INSERT INTO Categories(CategoryName,Description,Picture) VALUES('CategoryName', 'Description', 'Picture')";
 			// MySQL
 			String sql = "select * from `user`";
 			String mycatSql = "select * from travelrecord";
@@ -49,9 +52,9 @@ public class DBManager {
 			String insertCustomerSql = "INSERT INTO `customer` (`id`, `customername`, `createtime`) VALUES ('4', 'customerName4', '2017-11-2');";
 			String insertCustomerAddrSql = "INSERT INTO `customer_addr` (`id`, `addressname`, `customer_id`, `createtime`) VALUES ('3', 'anhui2', '3', '2017-11-2');";
 
-			dbConn = getConnection(mySQLDriver, mycatURL);
-			// exeCmd(dbConn, mycatSql);
-			exeInsert(dbConn, insertSql);
+			dbConn = getConnection(sqlServerDriver, sqlServerURL);
+			executeQuery(dbConn, northwindSql);
+			exeInsert(dbConn, northwindInsert);
 
 			// SQL Server
 			// String sql = "select * from [Employees]";
@@ -67,7 +70,7 @@ public class DBManager {
 		Connection dbConn = null;
 		try {
 			Class.forName(driver);
-			dbConn = DriverManager.getConnection(url, "root", "123456");
+			dbConn = DriverManager.getConnection(url);
 			return dbConn;
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -76,7 +79,7 @@ public class DBManager {
 		return dbConn;
 	}
 
-	public static void exeCmd(Connection conn, String sql) throws Exception {
+	public static void executeQuery(Connection conn, String sql) throws Exception {
 		try {
 			// 1、执行静态SQL语句。通常通过Statement实例实现。
 			// 2、执行动态SQL语句。通常通过PreparedStatement实例实现。
@@ -94,8 +97,7 @@ public class DBManager {
 					// 列是从左到右编号的，并且从列1开始
 					String host = rs.getString(1);
 					String user = rs.getString(2);
-					String select_pri = rs.getString(3);
-					System.out.println(host + "  " + user + "  " + select_pri);
+					System.out.println(host + "  " + user);
 				}
 				if (rs != null) { // 关闭记录集
 					try {
