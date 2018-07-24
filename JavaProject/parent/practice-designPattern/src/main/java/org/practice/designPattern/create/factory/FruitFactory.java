@@ -4,6 +4,11 @@ import org.practice.designPattern.create.abstractFactory.AbstractFactory;
 
 public class FruitFactory implements AbstractFactory {
 
+	/**
+	 * 
+	 * @description 普通工厂模式
+	 *
+	 */
 	public Fruit produceFruit(String fruitName) {
 		Fruit fruit = null;
 		switch (fruitName.toLowerCase()) {
@@ -20,6 +25,11 @@ public class FruitFactory implements AbstractFactory {
 		return fruit;
 	}
 
+	/**
+	 * 
+	 * @description 多个工厂方法的工厂模式
+	 *
+	 */
 	public Fruit produceOrange() {
 		Fruit fruit = new Orange();
 		return fruit;
