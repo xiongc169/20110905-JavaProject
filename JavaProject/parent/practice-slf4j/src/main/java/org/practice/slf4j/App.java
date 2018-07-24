@@ -9,14 +9,12 @@ import org.slf4j.LoggerFactory;
  */
 public class App {
 
-	public static void main(String[] args) {
-		// Logger log = LoggerFactory.getLogger(App.class);
-		// log.debug("debug");
-		// log.info("info");
-		// log.error("error");
+	private static Logger log = LoggerFactory.getLogger(App.class);
 
-		Logger logger = LoggerFactory.getLogger(App.class);
-		logger.info("Hello World");
-		System.out.println("Hello World!");
+	public static void main(String[] args) {
+
+		log.debug("This is debug 2018年7月24日18:05:56");
+		log.info("This is info 2018年7月24日18:06:15");
+		log.error("This is error 2018年7月24日18:06:19");
 	}
 }
