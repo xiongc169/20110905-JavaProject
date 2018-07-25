@@ -16,5 +16,6 @@ public class App {
 		log.debug("This is debug 2018年7月24日18:05:56");
 		log.info("This is info 2018年7月24日18:06:15");
 		log.error("This is error 2018年7月24日18:06:19");
+		System.out.println("Ending");
 	}
 }
