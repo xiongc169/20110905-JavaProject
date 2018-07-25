@@ -1,6 +1,7 @@
 package org.practice.activemq;
 
 import org.practice.activemq.JMS.MessageReceiver;
+import org.practice.activemq.JMS.MessageSender;
 
 /**
  * ActimeMQ API 深入浅出 消息队列 ActiveMQ
@@ -14,7 +15,7 @@ import org.practice.activemq.JMS.MessageReceiver;
 public class App {
 	public static void main(String[] args) {
 		try {
-			// MessageSender.run();
+			MessageSender.run();
 			MessageReceiver.run();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
