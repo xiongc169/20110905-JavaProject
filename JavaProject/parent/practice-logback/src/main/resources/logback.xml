@@ -2,7 +2,9 @@
 <configuration xmlns="http://ch.qos.logback/xml/ns/logback"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://ch.qos.logback/xml/ns/logback https://raw.githubusercontent.com/enricopulatzo/logback-XSD/master/src/main/xsd/logback.xsd">
+
 	<property name="LOG_HOME" value="D:/log" />
+
 	<!-- 输出到控制台 -->
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<!-- 输出的格式 -->
@@ -25,15 +27,14 @@
 		</encoder>
 	</appender>
 
-	<!-- 注意： level属性也可以直接写在logger上，如： <logger name="ws.log.logback.LogbackTest" 
-		additivity="false" level="INFO"> <appender-ref ref="STDOUT" /> </logger> -->
-	<logger name="ws.log.logback.LogbackTest" additivity="false">
-		<level value="INFO" />
-		<appender-ref ref="STDOUT" />
+	<!-- 注意： level属性也可以直接写在logger上， level="INFO" -->
+	<logger name="org.practice.logback" additivity="false">
+		<level value="DEBUG" />
+		<appender-ref ref="FILE" />
 	</logger>
 
 	<!-- 相当于logger元素，只是name值已经确定为root了 -->
-	<root level="warn">
+	<root level="debug">
 		<appender-ref ref="STDOUT" />
 	</root>
 </configuration>
