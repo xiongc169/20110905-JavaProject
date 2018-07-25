@@ -1,4 +1,4 @@
-package org.practice.activemq.Topic;
+package org.practice.activemq2.Topic;
 
 import javax.jms.DeliveryMode;
 import javax.jms.MapMessage;
@@ -28,8 +28,14 @@ public class TopicSender {
 	// 目标，在ActiveMQ管理员控制台创建 http://localhost:8161/admin/queues.jsp
 	public static final String DESTINATION = "hoo.mq.topic";
 
-	public static void run() throws Exception {
+	/**
+	 * 入口函数
+	 */
+	public static void main(String[] args) throws Exception {
+		TopicSender.run();
+	}
 
+	public static void run() throws Exception {
 		TopicConnection connection = null;
 		TopicSession session = null;
 		try {
@@ -50,9 +56,8 @@ public class TopicSender {
 			sendMessage(session, publisher);
 			// 提交会话
 			session.commit();
-
 		} catch (Exception e) {
-			throw e;
+			e.printStackTrace();
 		} finally {
 			// 关闭释放资源
 			if (session != null) {

@@ -1,4 +1,4 @@
-package org.practice.activemq.JMS;
+package org.practice.activemq2.JMS;
 
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
@@ -21,16 +21,21 @@ import org.apache.activemq.ActiveMQConnectionFactory;
  */
 public class MessageReceiver {
 	public static final String BROKER_URL = "tcp://localhost:61616";
-
 	public static final String DESTINATION = "com.chaoxiong.activemq";
+
+	/**
+	 * 入口函数
+	 */
+	public static void main(String[] args) throws Exception {
+		MessageReceiver.run();
+	}
 
 	public static void run() throws Exception {
 		Connection connection = null;
 		Session session = null;
 		try {
 			// 创建链接工厂
-			ConnectionFactory factory = new ActiveMQConnectionFactory(ActiveMQConnection.DEFAULT_USER,
-					ActiveMQConnection.DEFAULT_PASSWORD, BROKER_URL);
+			ConnectionFactory factory = new ActiveMQConnectionFactory(ActiveMQConnection.DEFAULT_USER, ActiveMQConnection.DEFAULT_PASSWORD, BROKER_URL);
 			// 通过工厂创建一个连接
 			connection = factory.createConnection();
 			// 启动连接
@@ -55,7 +60,6 @@ public class MessageReceiver {
 			}
 			// 提交会话
 			session.commit();
-
 		} catch (Exception e) {
 			throw e;
 		} finally {
@@ -67,9 +71,5 @@ public class MessageReceiver {
 				connection.close();
 			}
 		}
-	}
-
-	public static void main(String[] args) throws Exception {
-		MessageReceiver.run();
 	}
 }

@@ -1,4 +1,4 @@
-package org.practice.activemq3;
+package org.practice.activemq1;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -21,13 +21,11 @@ import org.apache.activemq.ActiveMQConnectionFactory;
  *
  * @date 2018年7月25日
  *
- * @version 1.0
- *
  */
 public class P2PProducer {
 
 	public static void main(String[] args) {
-		// producer4P2P(false);
+		producer4P2P(false);
 		System.out.println("producer4P2P ending");
 		consumer4P2P(false);
 		System.out.println("consumer4P2P ending");

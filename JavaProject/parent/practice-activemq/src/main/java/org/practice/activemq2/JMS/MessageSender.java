@@ -1,4 +1,4 @@
-package org.practice.activemq.JMS;
+package org.practice.activemq2.JMS;
 
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
@@ -27,13 +27,19 @@ public class MessageSender {
 	// 目标，在ActiveMQ管理员控制台创建 http://localhost:8161/admin/queues.jsp
 	public static final String DESTINATION = "com.chaoxiong.activemq";
 
+	/**
+	 * 入口函数
+	 */
+	public static void main(String[] args) throws Exception {
+		MessageSender.run();
+	}
+
 	public static void run() throws Exception {
 		Connection conn = null;
 		Session session = null;
 		try {
 			// 创建链接工厂
-			ConnectionFactory connFactory = new ActiveMQConnectionFactory(ActiveMQConnection.DEFAULT_USER,
-					ActiveMQConnection.DEFAULT_PASSWORD, BROKER_URL);
+			ConnectionFactory connFactory = new ActiveMQConnectionFactory(ActiveMQConnection.DEFAULT_USER, ActiveMQConnection.DEFAULT_PASSWORD, BROKER_URL);
 			// 通过工厂创建一个连接
 			conn = connFactory.createConnection();
 			// 启动连接
