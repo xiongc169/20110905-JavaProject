@@ -33,7 +33,7 @@ public class JMS4Spring {
 	 */
 	public static void main(String[] args) {
 		try {
-			ApplicationContext appContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+			ApplicationContext appContext = new ClassPathXmlApplicationContext("jms4spring3.xml");
 
 			// ConnectionFactory ：连接工厂，JMS 用它创建连接
 			ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory(userName, password, brokerURL);
