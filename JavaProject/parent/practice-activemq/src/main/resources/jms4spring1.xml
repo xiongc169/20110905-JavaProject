@@ -8,5 +8,45 @@
 	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
+	<bean id="jmsFactory" destroy-method="stop"
+		class="org.apache.activemq.pool.PooledConnectionFactory">
+		<property name="connectionFactory">
+			<bean class="org.apache.activemq.ActiveMQConnectionFactory">
+				<property name="brokerURL" value="tcp://localhost:61616" />
+				<property name="userName" value="${activemq.username}" />
+				<property name="password" value="${activemq.password}" />
+			</bean>
+		</property>
+	</bean>
 
+	<bean id="myJmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="jmsFactory" />
+		<property name="defaultDestinationName" value="MySubject" />
+	</bean>
+
+	<bean id="destinationTopic" class="org.apache.activemq.command.ActiveMQTopic">
+		<constructor-arg index="0" value="HelloWorldTopic" />
+	</bean>
+
+	<!-- 读取信息 -->
+	<bean id="consumer" class="com.d1xn.jms.demo.Consumer">
+		<property name="jmsTemplate" ref="myJmsTemplate" />
+	</bean>
+
+	<!-- 发送信息 -->
+	<bean id="producerTopic" class="com.d1xn.jms.demo.ProducerTopic">
+		<property name="jmsTemplet" ref="myJmsTemplate" />
+		<property name="destination" ref="destinationTopic" />
+	</bean>
+	<!-- 消息监听 -->
+
+	<bean id="listenerContainerTopic"
+		class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="jmsFactory" />
+		<property name="destination" ref="destinationTopic" />
+		<property name="messageListener" ref="consumer" />
+		<property name="clientId" value="clientId_001" />
+		<property name="subscriptionDurable" value="true" />
+		<property name="durableSubscriptionName" value="My_001" />
+	</bean>
 </beans>

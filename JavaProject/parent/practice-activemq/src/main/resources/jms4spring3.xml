@@ -10,8 +10,7 @@
 
 	<bean id="activemqConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
 		<property name="userName" value="admin"></property>
-		<property name="password" value="123456"></property>
-		<property name="brokerURL" value="tcp://localhost:61616"></property>
+		<property name="password" value="admin"></property>
+		<property name="brokerURL" value="tcp://192.168.119.131:61616"></property>
 	</bean>
-	<context:component-scan base-package=""></context:component-scan>
 </beans>

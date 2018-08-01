@@ -10,4 +10,8 @@ package org.practice.activemq1;
  */
 public class JMS4Spring {
 
+	public static void main(String[] args) {
+
+	}
+
 }

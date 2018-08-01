@@ -8,10 +8,34 @@
 	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-	<bean id="activemqConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
-		<property name="userName" value="admin"></property>
-		<property name="password" value="123456"></property>
-		<property name="brokerURL" value="tcp://localhost:61616"></property>
+	<!-- 连接池 -->
+	<bean id="pooledConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory"
+		destroy-method="stop">
+		<property name="connectionFactory">
+			<bean class="org.apache.activemq.ActiveMQConnectionFactory">
+				<property name="brokerURL" value="tcp://192.168.119.131:61616" />
+			</bean>
+		</property>
 	</bean>
-	<context:component-scan base-package=""></context:component-scan>
+
+	<!-- 连接工厂 -->
+	<bean id="activeMQConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="tcp://192.168.119.131:61616" />
+	</bean>
+
+	<!-- 配置消息目标 -->
+	<bean id="destination" class="org.apache.activemq.command.ActiveMQQueue">
+		<!-- 目标，在ActiveMQ管理员控制台创建 http://localhost:8161/admin/queues.jsp -->
+		<constructor-arg index="0" value="hoo.mq.queue" />
+	</bean>
+
+	<!-- 消息模板 -->
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="activeMQConnectionFactory" />
+		<property name="defaultDestination" ref="destination" />
+		<property name="messageConverter">
+			<bean
+				class="org.springframework.jms.support.converter.SimpleMessageConverter" />
+		</property>
+	</bean>
 </beans>
