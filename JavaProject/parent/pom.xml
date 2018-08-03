@@ -53,6 +53,7 @@
 		<module>practice-thread</module>
 		<module>practice-utility</module>
 		<module>practice-zookeeper</module>
+		<module>practice-fastDFS</module>
 	</modules>
 
 	<build>
