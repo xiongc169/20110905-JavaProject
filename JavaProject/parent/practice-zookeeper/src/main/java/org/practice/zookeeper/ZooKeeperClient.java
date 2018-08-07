@@ -40,7 +40,7 @@ public class ZooKeeperClient {
 			}
 		});
 
-		// 创建一个目录节点
+		// 创建一个目录节点path、data、acl、createMode
 		zk.create("/testRootPath", "testRootData".getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
 		// 创建一个子目录节点
 		zk.create("/testRootPath/testChildPathOne", "testChildDataOne".getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);

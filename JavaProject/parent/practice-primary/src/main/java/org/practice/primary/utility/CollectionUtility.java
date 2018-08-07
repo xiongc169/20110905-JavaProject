@@ -19,8 +19,6 @@ import java.util.TreeSet;
 import java.util.Vector;
 import java.util.WeakHashMap;
 
-import org.practice.primary.reflect.MethodInfo;
-
 /**
  * 集合操作类 集合的类型，各个类型的特点，遍历的几种方式；
  * 
@@ -40,7 +38,8 @@ public class CollectionUtility {
 	/**
 	 * list继承collection接口
 	 */
-	@MethodInfo(author = "tony", comments = "this hide the privacy", date = "20180328", version = "1.0.0")
+	// @MethodInfo(author = "tony", comments = "this hide the privacy", date =
+	// "20180328", version = "1.0.0")
 	public static void listDemo() {
 		// Array arr=new Array();
 		List<String> arrays = new ArrayList<String>();

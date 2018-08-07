@@ -17,8 +17,9 @@ import com.github.tobato.fastdfs.service.FastFileStorageClient;
  * @author 20180112002
  *
  * @description FastDFSClient.java <br>
- * 				Spring集成FastDFS
+ *              Spring集成FastDFS
  *              https://www.cnblogs.com/zixiaoguan/p/7456116.html
+ *              http://www.cnblogs.com/jiafuwei/p/5777622.html
  *
  * @date 2018年8月3日
  *

@@ -54,6 +54,8 @@
 		<module>practice-utility</module>
 		<module>practice-zookeeper</module>
 		<module>practice-fastDFS</module>
+		<module>practice-hundsun</module>
+		<module>practice-spring</module>
 	</modules>
 
 	<build>
