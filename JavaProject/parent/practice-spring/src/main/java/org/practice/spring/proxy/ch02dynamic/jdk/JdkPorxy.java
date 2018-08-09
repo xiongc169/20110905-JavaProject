@@ -5,19 +5,16 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 /**
- * @desc java的动态代理机制详解 <br>
- *       http://www.cnblogs.com/xiaoluo501395377/p/3383130.html
- *       java动态代理（JDK和cglib）
- *       http://www.cnblogs.com/jqyp/archive/2010/08/20/1805041.html
+ * @desc JdkPorxy
  * 
- * @author Administrator
+ * @author yoong
  *
  */
-public class JDKDynamicPorxy implements InvocationHandler {
+public class JdkPorxy implements InvocationHandler {
 
 	private Object object = null;
 
-	public JDKDynamicPorxy(Object target) {
+	public JdkPorxy(Object target) {
 		this.object = target;
 	}
 
@@ -34,15 +31,16 @@ public class JDKDynamicPorxy implements InvocationHandler {
 	}
 
 	/**
-	 * 调用方法
+	 * 调用方法 proxy: 指代我们所代理的那个真实对象 method: 指代的是我们所要调用真实对象的某个方法的Method对象 args:
+	 * 指代的是调用真实对象某个方法时接受的参数
 	 */
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 
-		System.out.println("Before Invoke...");
+		System.out.println("JdkPorxy.invoke start");
 		Object result = method.invoke(object, args);
 		// System.out.println("Proxy:" + proxy);
 		System.out.println("Method:" + method);
-		System.out.println("After Invoke...");
+		System.out.println("JdkPorxy.invoke end");
 		return result;
 	}
 

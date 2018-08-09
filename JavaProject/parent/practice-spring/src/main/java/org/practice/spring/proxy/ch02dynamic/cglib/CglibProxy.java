@@ -14,11 +14,11 @@ import org.springframework.cglib.proxy.MethodProxy;
  * @author yoong
  *
  */
-public class CGlibDynamicProxy implements MethodInterceptor {
+public class CglibProxy implements MethodInterceptor {
 
 	private Enhancer enhancer = new Enhancer();
 
-	public CGlibDynamicProxy() {
+	public CglibProxy() {
 	}
 
 	/**
@@ -45,12 +45,12 @@ public class CGlibDynamicProxy implements MethodInterceptor {
 	 */
 	public Object intercept(Object obj, Method arg1, Object[] arg2, MethodProxy methodProxy) throws Throwable {
 
-		System.out.println("This is before CGlibProxy.intercept()");
+		System.out.println("CglibProxy.intercept start");
 
 		// 通过代理类调用父类中的方法
 		Object result = methodProxy.invokeSuper(obj, arg2);
 
-		System.out.println("This is after CGlibProxy.intercept()");
+		System.out.println("CglibProxy.intercept end");
 		return result;
 	}
 

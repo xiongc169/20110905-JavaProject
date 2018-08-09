@@ -6,7 +6,7 @@ public class SubjectImpl implements ISubject {
 
 	public String say(String name, int age) {
 		String msg = name + "  " + age;
-		System.out.println(msg);
+		System.out.println("SubjectImpl.say " + msg);
 		return msg;
 	}
 

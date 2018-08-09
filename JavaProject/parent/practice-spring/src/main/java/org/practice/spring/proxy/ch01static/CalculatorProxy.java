@@ -9,6 +9,9 @@ import org.practice.spring.proxy.api.ICalculator;
  */
 public class CalculatorProxy implements ICalculator {
 
+	/**
+	 * 被代理的对象
+	 */
 	ICalculator calculator = new CalculatorImpl();
 
 	public int add(int i, int j) {

@@ -7,8 +7,8 @@ import org.springframework.cglib.proxy.InvocationHandler;
 import org.springframework.cglib.proxy.Proxy;
 
 /**
- * @description CalculatorProxy.java
- * @author chaoxiong
+ * @description CalculatorProxy
+ * @author yoong
  * @date 2016年8月13日 下午2:27:22
  */
 public class CalculatorJdkProxy {

@@ -4,8 +4,8 @@ import java.lang.reflect.Proxy;
 
 import org.practice.spring.proxy.api.ISubject;
 import org.practice.spring.proxy.ch01static.SubjectImpl;
-import org.practice.spring.proxy.ch02dynamic.cglib.CGlibDynamicProxy;
-import org.practice.spring.proxy.ch02dynamic.jdk.JDKDynamicPorxy;
+import org.practice.spring.proxy.ch02dynamic.cglib.CglibProxy;
+import org.practice.spring.proxy.ch02dynamic.jdk.JdkPorxy;
 
 /**
  * @author yoong
@@ -28,28 +28,21 @@ import org.practice.spring.proxy.ch02dynamic.jdk.JDKDynamicPorxy;
 public class App {
 
 	public static void main(String[] args) {
-
-		jdkDynamicProxy();
-		// cglibDynamicProxy();
+		jdkProxyTest();
+		cglibProxyTest();
 	}
 
 	/**
-	 * JDK动态代理
+	 * jdk动态代理
 	 */
-	public static void jdkDynamicProxy() {
-
+	public static void jdkProxyTest() {
 		try {
 			ISubject subject = new SubjectImpl();
-			JDKDynamicPorxy handler = new JDKDynamicPorxy(subject);
-			ISubject proxySub = (ISubject) Proxy.newProxyInstance(handler.getClass().getClassLoader(), subject.getClass().getInterfaces(), handler);
-			proxySub.say("chaochao", 28);
+			JdkPorxy handler = new JdkPorxy(subject);
+			ISubject subjectProxy = (ISubject) Proxy.newProxyInstance(handler.getClass().getClassLoader(), subject.getClass().getInterfaces(), handler);
+			subjectProxy.say("yoong JDK", 28);
 
-			// Subject subject = new RealSubject();
-			// JDKDynamicPorxy handler = new JDKDynamicPorxy(subject);
-			// Subject subjectProxy = (Subject) handler.bind(subject);
-			// subjectProxy.say("chaochao", 28);
-
-			String name = proxySub.getClass().getName();
+			String name = subjectProxy.getClass().getName();
 			System.out.println(name);
 
 		} catch (Exception ex) {
@@ -59,13 +52,13 @@ public class App {
 	}
 
 	/**
-	 * CGlib动态代理
+	 * cglib动态代理
 	 */
-	public static void cglibDynamicProxy() {
+	public static void cglibProxyTest() {
 		try {
-			CGlibDynamicProxy cglibProxy = new CGlibDynamicProxy();
+			CglibProxy cglibProxy = new CglibProxy();
 			SubjectImpl subject = (SubjectImpl) cglibProxy.getProxy(SubjectImpl.class);
-			subject.say("chaoxiong", 288);
+			subject.say("yong Cglib", 288);
 		} catch (Exception ex) {
 			String msg = ex.getMessage();
 			System.out.println(msg);

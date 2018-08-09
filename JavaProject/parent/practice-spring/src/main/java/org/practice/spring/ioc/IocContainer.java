@@ -11,6 +11,15 @@ import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 
+/**
+ * @author yoong
+ *
+ * @desc Spring学习总结（一）——Spring实现IoC的多种方式
+ *       http://www.cnblogs.com/best/p/5727935.html
+ *
+ * @date 2017年8月9日
+ *
+ */
 public class IocContainer {
 
 	/**
