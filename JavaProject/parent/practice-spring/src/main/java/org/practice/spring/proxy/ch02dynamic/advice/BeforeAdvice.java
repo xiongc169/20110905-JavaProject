@@ -1,11 +1,10 @@
-package org.practice.spring.proxy.dynamic.advice;
+package org.practice.spring.proxy.ch02dynamic.advice;
 
 import java.lang.reflect.Method;
 
 import org.springframework.aop.MethodBeforeAdvice;
 
 /**
- * 使用Spring实现AOP http://www.cnblogs.com/best/p/5679656.html
  * 
  * @author Administrator
  *

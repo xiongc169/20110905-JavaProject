@@ -1,9 +1,11 @@
 package org.practice.spring.domain;
 
+import org.practice.spring.reflect.MethodInfo;
+
 /**
  * 序列化
  * 
- * @author Administrator
+ * @author yoong
  *
  */
 public class User {
@@ -120,6 +122,7 @@ public class User {
 	// return "my iid:" + iid + ", my userNo:" + userNo;
 	// }
 
+	@MethodInfo(comments = "sayHello Method", date = "2018年8月9日10:56:05", version = "V 1.0")
 	public void sayHello(int age, String name) {
 		System.out.println("This is User.sayHello() Method: age is " + age + "; name is " + name);
 	}

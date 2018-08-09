@@ -1,13 +1,14 @@
-package org.practice.spring.proxy.dynamic.jdk;
+package org.practice.spring.proxy.ch02dynamic.jdk;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 /**
- * 20170523-动态代理类 <br>
- * http://www.cnblogs.com/xiaoluo501395377/p/3383130.html
- * http://www.cnblogs.com/jqyp/archive/2010/08/20/1805041.html
+ * @desc java的动态代理机制详解 <br>
+ *       http://www.cnblogs.com/xiaoluo501395377/p/3383130.html
+ *       java动态代理（JDK和cglib）
+ *       http://www.cnblogs.com/jqyp/archive/2010/08/20/1805041.html
  * 
  * @author Administrator
  *

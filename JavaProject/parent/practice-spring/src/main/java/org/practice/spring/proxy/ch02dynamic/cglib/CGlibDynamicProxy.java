@@ -1,4 +1,4 @@
-package org.practice.spring.proxy.dynamic.cglib;
+package org.practice.spring.proxy.ch02dynamic.cglib;
 
 import java.lang.reflect.Method;
 
@@ -7,11 +7,11 @@ import org.springframework.cglib.proxy.MethodInterceptor;
 import org.springframework.cglib.proxy.MethodProxy;
 
 /**
- * CGlib动态代理<br>
- * 采用字节码技术，通过字节码技术为一个类创建一个子类，在子类中采用方法拦截技术拦截父类方法的调用，同时织入横切逻辑；<br>
- * http://blog.csdn.net/yakoo5/article/details/9099133/
+ * @desc CGlib动态代理<br>
+ *       采用字节码技术，通过字节码技术为一个类创建一个子类，在子类中采用方法拦截技术拦截父类方法的调用，同时织入横切逻辑；<br>
+ *       http://blog.csdn.net/yakoo5/article/details/9099133/
  * 
- * @author Administrator
+ * @author yoong
  *
  */
 public class CGlibDynamicProxy implements MethodInterceptor {

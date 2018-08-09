@@ -11,7 +11,7 @@ import org.practice.spring.domain.User;
  * 
  * @author yoong
  *
- * @description ReflectDemo.java <br>
+ * @description Java反射机制详解 <br>
  *              http://www.cnblogs.com/lzq198754/p/5780331.html
  *
  * @date 2014年4月2日
@@ -22,28 +22,6 @@ import org.practice.spring.domain.User;
 public class ReflectDemo {
 
 	public static void main(String[] args) {
-
-		// try {
-		// Class usrClass = User.class;
-		// Class usrClass2 = Class.forName("com.yoong.domain.User");
-		// Class usrClass3 = new User().getClass();
-		//
-		// String className = usrClass.getName();
-		// System.out.println(className);
-		//
-		// Constructor[] cons = usrClass.getConstructors();
-		// Field[] fields = usrClass.getDeclaredFields();
-		// Method[] methods = usrClass.getMethods();
-		//
-		// User user = (User) usrClass.newInstance();
-		// Method sayHello = usrClass.getMethod("sayHello", int.class,
-		// String.class);
-		// sayHello.invoke(user, 100, "Yoong");
-		//
-		// } catch (Exception ex) {
-		// String msg = ex.getMessage();
-		// System.out.println(msg);
-		// }
 
 		reflectDemo();
 		annationTest();
@@ -97,7 +75,7 @@ public class ReflectDemo {
 	 * 反射获取注解信息
 	 */
 	public static void annationTest() {
-		Class utilClz = null; // CollectionUtility.class;
+		Class utilClz = User.class;
 		ClassLoader loader = utilClz.getClassLoader();
 		Method[] methods = utilClz.getMethods();
 		for (Method m : methods) {

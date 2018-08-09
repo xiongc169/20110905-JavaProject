@@ -1,7 +1,8 @@
-package org.practice.spring.proxy;
+package org.practice.spring.proxy.ch02dynamic.jdk;
 
 import java.lang.reflect.Method;
 
+import org.practice.spring.proxy.ch01static.CalculatorImpl;
 import org.springframework.cglib.proxy.InvocationHandler;
 import org.springframework.cglib.proxy.Proxy;
 
@@ -10,19 +11,19 @@ import org.springframework.cglib.proxy.Proxy;
  * @author chaoxiong
  * @date 2016年8月13日 下午2:27:22
  */
-public class CalculatorProxy {
+public class CalculatorJdkProxy {
 
-	private Calculator target = null;
+	private CalculatorImpl target = null;
 
-	public CalculatorProxy(Calculator cal) {
+	public CalculatorJdkProxy(CalculatorImpl cal) {
 		target = cal;
 	}
 
-	public Calculator getCalculatorProxy() {
-		Calculator proxy = null;
+	public CalculatorImpl getCalculatorProxy() {
+		CalculatorImpl proxy = null;
 
 		ClassLoader loader = target.getClass().getClassLoader();
-		Class[] interfaces = new Class[] { Calculator.class };
+		Class[] interfaces = new Class[] { CalculatorImpl.class };
 
 		InvocationHandler h = new InvocationHandler() {
 			public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
@@ -43,7 +44,7 @@ public class CalculatorProxy {
 			}
 		};
 
-		proxy = (Calculator) Proxy.newProxyInstance(loader, interfaces, h);
+		proxy = (CalculatorImpl) Proxy.newProxyInstance(loader, interfaces, h);
 		return proxy;
 	}
 }
