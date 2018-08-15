@@ -32,6 +32,7 @@ import cn.jpush.api.push.model.audience.AudienceTarget;
 
 /**
  * @author https://github.com/jpush/jpush-api-java-client/blob/master/example/main/java/cn/jpush/api/examples/PushExample.java#L391
+ *         https://github.com/jpush/jpush-api-java-client/blob/master/src/main/java/cn/jpush/api/JPushClient.java
  *
  * @date 2018年8月15日
  *
