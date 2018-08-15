@@ -23,7 +23,8 @@ import cn.jpush.api.push.model.notification.Notification;
 /**
  * @author yoong
  *
- * @desc https://docs.jiguang.cn/jpush/server/sdk/java_sdk/
+ * @desc 极光推送官方文档 <br>
+ *       https://docs.jiguang.cn/jpush/server/sdk/java_sdk/
  *
  * @date 2018年8月15日
  *
@@ -31,13 +32,18 @@ import cn.jpush.api.push.model.notification.Notification;
 public class JPushAPI {
 
 	private static Log LOG = LogFactory.getLog(App.class);
+
 	// chedai APP
 	private static String MASTER_SECRET = "74711a56d3fec33a3b0fac38";
 	private static String APP_KEY = "2de8b027cf38fca0af08e70c";
+
 	// 极光Demo APP
 	// private static String MASTER_SECRET = "9ee7247b000f33ba1aa75c08";
 	// private static String APP_KEY = "0f3b7426368fe5e945eefefb";
 
+	// 推送对象别名 dev_15706258110 dev_15158107051
+	private static String alias = "dev_15706258110";
+	private static String tag = "tag";
 	// 消息常量
 	private static String ALERT = "ALERT - 2018年8月15日15:39:35";
 	private static String TITLE = "TITLE - 2018年8月15日15:39:42";
@@ -52,8 +58,7 @@ public class JPushAPI {
 	}
 
 	/**
-	 * 推送样例 <br>
-	 * https://docs.jiguang.cn/jpush/server/sdk/java_sdk/
+	 * 推送样例
 	 */
 	public static void push() {
 		JPushClient jpushClient = new JPushClient(MASTER_SECRET, APP_KEY, null, ClientConfig.getInstance());
@@ -90,8 +95,8 @@ public class JPushAPI {
 	public static void getDevice() {
 		try {
 			JPushClient jpushClient = new JPushClient(MASTER_SECRET, APP_KEY, null, ClientConfig.getInstance());
-			AliasDeviceListResult androidDevice = jpushClient.getAliasDeviceList("dev_15706258110", "android");
-			AliasDeviceListResult iosDevice = jpushClient.getAliasDeviceList("dev_15706258110", "ios");
+			AliasDeviceListResult androidDevice = jpushClient.getAliasDeviceList(alias, "android");
+			AliasDeviceListResult iosDevice = jpushClient.getAliasDeviceList(alias, "ios");
 			System.out.println(androidDevice);
 			System.out.println(iosDevice);
 
@@ -120,7 +125,7 @@ public class JPushAPI {
 	 *
 	 */
 	public static PushPayload buildPushObject_all_alias_alert() {
-		return PushPayload.newBuilder().setPlatform(Platform.all()).setAudience(Audience.alias("dev_15706258110")).setNotification(Notification.alert(ALERT)).build();
+		return PushPayload.newBuilder().setPlatform(Platform.all()).setAudience(Audience.alias(alias)).setNotification(Notification.alert(ALERT)).build();
 	}
 
 	/**
@@ -130,7 +135,7 @@ public class JPushAPI {
 	 *
 	 */
 	public static PushPayload buildPushObject_android_tag_alertWithTitle() {
-		return PushPayload.newBuilder().setPlatform(Platform.android()).setAudience(Audience.tag("tag1")).setNotification(Notification.android(ALERT, TITLE, null)).build();
+		return PushPayload.newBuilder().setPlatform(Platform.android()).setAudience(Audience.tag(tag)).setNotification(Notification.android(ALERT, TITLE, null)).build();
 	}
 
 	/**
@@ -141,7 +146,7 @@ public class JPushAPI {
 	 *
 	 */
 	public static PushPayload buildPushObject_ios_tagAnd_alertWithExtrasAndMessage() {
-		return PushPayload.newBuilder().setPlatform(Platform.ios()).setAudience(Audience.alias("dev_15706258110"))
+		return PushPayload.newBuilder().setPlatform(Platform.ios()).setAudience(Audience.alias(alias))
 				.setNotification(
 						Notification.newBuilder().addPlatformNotification(IosNotification.newBuilder().setAlert(ALERT).setBadge(5).setSound("happy").addExtra("from", "JPush").build()).build())
 				.setMessage(Message.content(MSG_CONTENT)).setOptions(Options.newBuilder().setApnsProduction(true).build()).build();

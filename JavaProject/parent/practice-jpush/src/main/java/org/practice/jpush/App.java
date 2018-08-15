@@ -11,6 +11,7 @@ import cn.jpush.api.push.PushResult;
 import cn.jpush.api.push.model.Platform;
 import cn.jpush.api.push.model.PushPayload;
 import cn.jpush.api.push.model.audience.Audience;
+import cn.jpush.api.push.model.notification.AndroidNotification;
 import cn.jpush.api.push.model.notification.IosAlert;
 import cn.jpush.api.push.model.notification.IosNotification;
 import cn.jpush.api.push.model.notification.Notification;
@@ -27,13 +28,18 @@ import cn.jpush.api.push.model.notification.Notification;
 public class App {
 
 	private static Log LOG = LogFactory.getLog(App.class);
+
 	// chedai APP
 	private static String MASTER_SECRET = "74711a56d3fec33a3b0fac38";
 	private static String APP_KEY = "2de8b027cf38fca0af08e70c";
+
 	// 极光Demo APP
 	// private static String MASTER_SECRET = "9ee7247b000f33ba1aa75c08";
 	// private static String APP_KEY = "0f3b7426368fe5e945eefefb";
 
+	// 推送对象别名 dev_15706258110 dev_15158107051
+	private static String alias = "dev_15706258110";
+	private static String tag = "tag";
 	// 消息常量
 	private static String ALERT = "ALERT - 2018年8月15日15:39:35";
 	private static String TITLE = "TITLE - 2018年8月15日15:39:42";
@@ -46,7 +52,7 @@ public class App {
 		if (args.length > 2) {
 			pushMessage(args[0], args[1], args[2]);
 		} else {
-			pushMessage("dev_15706258110", "征信信息", "客户【钟梦菲】杭州建行征信结果已反馈，请查收-2018年8月15日17:10:12");
+			pushMessage("dev_15158107051", "征信信息", "客户【钟梦菲】杭州建行征信结果已反馈，请查收-2018年8月15日17:55:09");
 		}
 
 		// testSendIosAlert("dev_15706258110", "征信信息", "testSendIosAlert -
@@ -100,11 +106,13 @@ public class App {
 	public static PushPayload buildAndroidAndIOSByAliasWithMsgExtras(String alias, String msgTitle, String msgContent, Map<String, String> extras) {
 		IosAlert iosAlert = IosAlert.newBuilder().setTitleAndBody(msgTitle, "", msgContent).build();
 		return PushPayload.newBuilder().setPlatform(Platform.all()).setAudience(Audience.alias(alias))
-				.setNotification(Notification.newBuilder().addPlatformNotification(IosNotification.newBuilder().setAlert("2018年8月15日17:15:20").addExtras(extras).build()).build()).build();
+				.setNotification(Notification.newBuilder().addPlatformNotification(IosNotification.newBuilder().setAlert(iosAlert).addExtras(extras).build())
+						.addPlatformNotification(AndroidNotification.newBuilder().setTitle(msgTitle).setAlert(msgContent).addExtras(extras).build()).build())
+				.build();
 	}
 
 	/**
-	 * IOS推送测试<br>
+	 * iOS推送测试<br>
 	 * https://community.jiguang.cn/t/ios-title-subtitle/10505/4
 	 *
 	 */

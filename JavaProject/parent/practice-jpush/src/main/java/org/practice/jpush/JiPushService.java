@@ -21,6 +21,7 @@ import java.util.List;
  * 极光推送
  * 
  * @author https://blog.csdn.net/u014174854/article/details/78664589
+ * 
  * @since 2017-11-03
  */
 public class JiPushService {
