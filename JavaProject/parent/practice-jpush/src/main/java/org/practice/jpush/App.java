@@ -52,7 +52,7 @@ public class App {
 		if (args.length > 2) {
 			pushMessage(args[0], args[1], args[2]);
 		} else {
-			pushMessage("dev_15158107051", "征信信息", "客户【钟梦菲】杭州建行征信结果已反馈，请查收-2018年8月15日17:55:09");
+			pushMessage("dev_15706258110", "征信信息", "客户【王建菲】杭州建行征信结果已反馈，请查收-2018年8月17日11:52:10");
 		}
 
 		// testSendIosAlert("dev_15706258110", "征信信息", "testSendIosAlert -

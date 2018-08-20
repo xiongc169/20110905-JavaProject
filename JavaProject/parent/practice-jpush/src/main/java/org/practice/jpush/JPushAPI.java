@@ -41,8 +41,8 @@ public class JPushAPI {
 	// private static String MASTER_SECRET = "9ee7247b000f33ba1aa75c08";
 	// private static String APP_KEY = "0f3b7426368fe5e945eefefb";
 
-	// 推送对象别名 dev_15706258110 dev_15158107051
-	private static String alias = "dev_15706258110";
+	// 推送对象别名 dev_15706258110 dev_15158107051 dev_15729355611
+	private static String alias = "dev_15729355611";
 	private static String tag = "tag";
 	// 消息常量
 	private static String ALERT = "ALERT - 2018年8月15日15:39:35";
@@ -100,9 +100,9 @@ public class JPushAPI {
 			System.out.println(androidDevice);
 			System.out.println(iosDevice);
 
-			String REGISTRATION_ID1 = "1104a89792fe4490e68";
-			TagAliasResult result = jpushClient.getDeviceTagAlias(REGISTRATION_ID1);
-			System.out.println(result);
+//			String REGISTRATION_ID1 = "1104a89792fe4490e68";
+//			TagAliasResult result = jpushClient.getDeviceTagAlias(REGISTRATION_ID1);
+//			System.out.println(result);
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}

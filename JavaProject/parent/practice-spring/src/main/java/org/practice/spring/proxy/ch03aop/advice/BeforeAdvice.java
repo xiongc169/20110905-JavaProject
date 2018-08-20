@@ -1,12 +1,15 @@
-package org.practice.spring.proxy.ch02dynamic.advice;
+package org.practice.spring.proxy.ch03aop.advice;
 
 import java.lang.reflect.Method;
 
 import org.springframework.aop.MethodBeforeAdvice;
 
 /**
+ * @author yoong
  * 
- * @author Administrator
+ * @desc 前置通知
+ *
+ * @date 2018年8月20日
  *
  */
 public class BeforeAdvice implements MethodBeforeAdvice {
