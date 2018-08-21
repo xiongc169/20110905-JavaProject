@@ -37,6 +37,19 @@
 			<version>5.0.8.RELEASE</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.9.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjrt -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.9.1</version>
+		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
@@ -44,11 +57,15 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>com.yoong.prarent</groupId>
 			<artifactId>practice-jpush</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+
+
+
 	</dependencies>
 	<build>
 		<finalName>practice-web</finalName>

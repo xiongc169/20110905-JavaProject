@@ -7,6 +7,7 @@
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd  
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
-	<context:component-scan base-package="org.web.controller"></context:component-scan>
+	<context:component-scan base-package="org.web.controller,org.web.aspect"></context:component-scan>
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 
 </beans> 

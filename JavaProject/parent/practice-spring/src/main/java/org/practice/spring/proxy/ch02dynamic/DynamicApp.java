@@ -4,7 +4,6 @@ import org.practice.spring.proxy.api.ICalculator;
 import org.practice.spring.proxy.ch01static.CalculatorImpl;
 import org.practice.spring.proxy.ch01static.SubjectImpl;
 import org.practice.spring.proxy.ch02dynamic.cglib01.CglibProxy;
-import org.practice.spring.proxy.ch02dynamic.cglib02.DynamicProxy;
 import org.practice.spring.proxy.ch02dynamic.jdk02.JdkPorxy;
 
 /**
@@ -75,7 +74,7 @@ public class DynamicApp {
 	public static void cglibProxyTest2() {
 		try {
 			ICalculator calcImpl = new CalculatorImpl();
-			DynamicProxy dynamicProxy = new DynamicProxy();
+			org.practice.spring.proxy.ch02dynamic.cglib02.CglibProxy dynamicProxy = new org.practice.spring.proxy.ch02dynamic.cglib02.CglibProxy();
 			ICalculator calcProxy = (ICalculator) dynamicProxy.getProxy(calcImpl);
 			Object result = calcProxy.div(200, 10);
 			System.out.println(result);

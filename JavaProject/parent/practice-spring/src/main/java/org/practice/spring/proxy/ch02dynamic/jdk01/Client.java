@@ -1,10 +1,10 @@
 package org.practice.spring.proxy.ch02dynamic.jdk01;
 
+import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
 
 import org.practice.spring.proxy.api.ISubject;
 import org.practice.spring.proxy.ch01static.SubjectImpl;
-import org.practice.spring.proxy.ch02dynamic.jdk02.JdkPorxy;
 
 /**
  * @author yoong
@@ -32,9 +32,10 @@ public class Client {
 	public static void jdkProxyTest() {
 		try {
 			ISubject subject = new SubjectImpl();
-			JdkPorxy handler = new JdkPorxy(subject);
+			InvocationHandler handler = new JdkProxy(subject);
 			ISubject subjectProxy = (ISubject) Proxy.newProxyInstance(handler.getClass().getClassLoader(), subject.getClass().getInterfaces(), handler);
 			subjectProxy.say("yoong JDK", 28);
+
 			String name = subjectProxy.getClass().getName();
 			System.out.println(name);
 		} catch (Exception ex) {
@@ -42,5 +43,4 @@ public class Client {
 			System.out.println(msg);
 		}
 	}
-
 }

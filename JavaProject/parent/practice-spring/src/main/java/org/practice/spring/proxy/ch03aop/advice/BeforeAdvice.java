@@ -15,8 +15,6 @@ import org.springframework.aop.MethodBeforeAdvice;
 public class BeforeAdvice implements MethodBeforeAdvice {
 
 	public void before(Method method, Object[] args, Object target) throws Throwable {
-		// TODO Auto-generated method stub
-
+		System.out.println("BeforeAdvice.before");
 	}
-
 }

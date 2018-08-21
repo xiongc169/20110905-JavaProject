@@ -15,7 +15,7 @@ import org.springframework.cglib.proxy.MethodProxy;
  * @date 2016年8月20日
  *
  */
-public class DynamicProxy implements MethodInterceptor {
+public class CglibProxy implements MethodInterceptor {
 
 	private Object target = null;
 

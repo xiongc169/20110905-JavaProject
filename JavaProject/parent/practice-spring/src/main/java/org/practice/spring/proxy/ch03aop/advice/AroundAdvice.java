@@ -15,17 +15,9 @@ import org.springframework.cglib.proxy.MethodProxy;
  */
 public class AroundAdvice implements MethodInterceptor {
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.springframework.cglib.proxy.MethodInterceptor#intercept(java.lang.
-	 * Object, java.lang.reflect.Method, java.lang.Object[],
-	 * org.springframework.cglib.proxy.MethodProxy)
-	 */
 	@Override
 	public Object intercept(Object arg0, Method arg1, Object[] arg2, MethodProxy arg3) throws Throwable {
-		// TODO Auto-generated method stub
+		System.out.println("AroundAdvice.intercept");
 		return null;
 	}
 
