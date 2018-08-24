@@ -34,22 +34,22 @@ public class LogAspect {
 		System.out.println("LogAspect.beforeAdvice");
 	}
 
-	@After(value = "")
+	@After(value = "method()")
 	public void afterAdvice() {
 		System.out.println("LogAspect.afterAdvice");
 	}
 
-	@AfterReturning(value = "")
+	@AfterReturning(value = "method()")
 	public void afterReturningAdvice() {
 		System.out.println("LogAspect.afterReturningAdvice");
 	}
 
-	@AfterThrowing(value = "")
+	@AfterThrowing(value = "method()")
 	public void afterThrowingAdvice() {
 		System.out.println("LogAspect.afterThrowingAdvice");
 	}
 
-	@Around(value = "")
+	@Around(value = "method()")
 	public void aroundAdvice() {
 		System.out.println("LogAspect.aroundAdvice");
 	}

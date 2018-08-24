@@ -19,7 +19,7 @@
 		all application requests -->
 	<servlet>
 		<servlet-name>springDispatcherServlet</servlet-name>
-		<servle t-class>
+		<servlet-class>
 			org.springframework.web.servlet.DispatcherServlet
 		</servlet-class>
 			<init-param>
