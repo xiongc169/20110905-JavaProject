@@ -41,8 +41,8 @@ public class JPushAPI {
 	// private static String MASTER_SECRET = "9ee7247b000f33ba1aa75c08";
 	// private static String APP_KEY = "0f3b7426368fe5e945eefefb";
 
-	// 推送对象别名 dev_15706258110 dev_15158107051 dev_15729355611
-	private static String alias = "dev_15729355611";
+	// 推送对象别名 dev_15706258110 dev_15158107051 dev_15729355611 product_15215740001
+	private static String alias = "product_15215740001";
 	private static String tag = "tag";
 	// 消息常量
 	private static String ALERT = "ALERT - 2018年8月15日15:39:35";

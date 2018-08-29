@@ -3,8 +3,11 @@ package org.practice.thread2.chap0102;
 public class MyThread extends Thread {
 
 	public void run() {
-		String name = Thread.currentThread().getName();
-		System.out.println("Current ThreadName :" + name);
+		System.out.println("Thread.currentThread().getId :" + Thread.currentThread().getId());
+		System.out.println("Thread.currentThread().getName :" + Thread.currentThread().getName());
+		System.out.println("Thread.currentThread().getPriority :" + Thread.currentThread().getPriority());
+		System.out.println("Thread.currentThread().getState :" + Thread.currentThread().getState());
+		System.out.println("Thread.currentThread().getThreadGroup :" + Thread.currentThread().getThreadGroup());
 	}
 
 }

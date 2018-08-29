@@ -10,11 +10,10 @@ public class Calculator implements Runnable {
 
 	public void run() {
 		for (int i = 0; i < 10; i++) {
-			System.out.printf("name: %s - number: %d - index: %d\n", Thread.currentThread().getName(), number, i);
-			if (number == 5 && i == 9) {
-				System.exit(0);
-			}
+			System.out.printf("%s: %d * %d = %d\n", Thread.currentThread().getName(), number, i, number * i);
+			// if (number == 5 && i == 9) {
+			// System.exit(0);
+			// }
 		}
 	}
-
 }

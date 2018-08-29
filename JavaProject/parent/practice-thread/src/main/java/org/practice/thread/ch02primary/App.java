@@ -60,7 +60,9 @@ public class App {
 	}
 
 	/**
-	 * 线程安全测试 http://www.cnblogs.com/lwbqqyumidi/p/3821389.html
+	 * Java总结篇系列：Java多线程（三） <br>
+	 * PS：线程安全测试 <br>
+	 * http://www.cnblogs.com/lwbqqyumidi/p/3821389.html
 	 */
 	public static void accountTest() {
 		Account account = new Account("123456", 1000);

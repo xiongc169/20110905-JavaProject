@@ -10,6 +10,7 @@ import org.practice.jpush.domain.JPushParam;
 import cn.jiguang.common.ClientConfig;
 import cn.jpush.api.JPushClient;
 import cn.jpush.api.push.PushResult;
+import cn.jpush.api.push.model.Options;
 import cn.jpush.api.push.model.Platform;
 import cn.jpush.api.push.model.PushPayload;
 import cn.jpush.api.push.model.audience.Audience;
@@ -40,7 +41,8 @@ public class App {
 	// private static String APP_KEY = "0f3b7426368fe5e945eefefb";
 
 	// 推送对象别名 dev_15706258110 dev_15158107051 dev_15068129031 test_18700000002
-	private static String alias = "dev_15706258110";
+	// product_15158107054 product_13588756278 product_15215740001
+	private static String alias = "product_15215740001";
 	private static String tag = "tag";
 	// 消息常量
 	private static String title = "征信信息";
@@ -125,13 +127,15 @@ public class App {
 	 */
 	public static PushPayload buildAndroidAndIOSByAliasWithMsgExtras(JPushParam jpushParam) {
 		IosAlert iosAlert = IosAlert.newBuilder().setTitleAndBody(jpushParam.getTitle(), "", jpushParam.getContent()).build();
-		return PushPayload.newBuilder().setPlatform(Platform.all()).setAudience(Audience.alias(jpushParam.getAlias()))
+		return PushPayload.newBuilder().setPlatform(Platform.all())
+				.setAudience(
+						Audience.alias(jpushParam.getAlias()))
 				.setNotification(
 						Notification.newBuilder().addPlatformNotification(IosNotification.newBuilder().setAlert(iosAlert).setBadge(jpushParam.getBadge()).addExtras(jpushParam.getExtras()).build())
 								.addPlatformNotification(AndroidNotification.newBuilder().setTitle(jpushParam.getTitle()).setAlert(jpushParam.getContent()).setUriActivity(jpushParam.getUriActivity())
 										.addExtras(jpushParam.getExtras()).build())
 								.build())
-				.build();
+				.setOptions(Options.newBuilder().setApnsProduction(true).build()).build();
 	}
 
 	/**

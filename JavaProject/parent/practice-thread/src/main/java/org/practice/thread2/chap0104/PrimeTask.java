@@ -12,13 +12,17 @@ public class PrimeTask implements Runnable {
 
 		while (true) {
 			if (isPrime(number)) {
-				System.out.printf("Prime: %d \n", number);
+				System.out.printf("Number %d is prime \n", number);
+			}
 
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+			// Thread.interrupted()
+			// Thread.currentThread().isInterrupted()
+			if (Thread.currentThread().isInterrupted()) {
+				System.out.printf("PrimeTask has been interrupted \n");
+//				System.out.printf("Thread.interrupted() " + Thread.interrupted());
+				System.out.printf("Thread.currentThread().isInterrupted()" + Thread.currentThread().isInterrupted());
+				System.exit(0);
+				// return;
 			}
 			number++;
 		}
@@ -26,7 +30,6 @@ public class PrimeTask implements Runnable {
 
 	private boolean isPrime(long number) {
 
-//		System.out.printf("Prime: %d ;", number);
 		if (number >= 1 && number <= 2)
 			return true;
 

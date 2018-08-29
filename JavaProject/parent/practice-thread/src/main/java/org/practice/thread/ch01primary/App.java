@@ -6,7 +6,8 @@ import org.practice.thread.ch02primary.MyThread;
 import org.practice.thread.model.Person;
 
 /**
- * Java总结篇系列：Java多线程（一）：http://www.cnblogs.com/lwbqqyumidi/p/3804883.html
+ * Java总结篇系列：Java多线程（一）<br>
+ * http://www.cnblogs.com/lwbqqyumidi/p/3804883.html
  * 
  * @author Administrator
  *
@@ -46,7 +47,7 @@ public class App {
 		MyThread myThread = new MyThread();
 		myThread.start();
 
-		ThreadLocal local=new ThreadLocal();
+		ThreadLocal local = new ThreadLocal();
 		// 2.Runnable 测试
 		MyRunnable myRunnable = new MyRunnable();
 		Thread runnableThread = new Thread(myRunnable);
@@ -71,7 +72,7 @@ public class App {
 			System.out.println(msg);
 		}
 	}
-	
+
 	public static void threadTest() throws InterruptedException {
 		System.out.println("threadTest Begin");
 

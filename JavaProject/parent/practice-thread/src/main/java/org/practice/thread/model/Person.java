@@ -8,9 +8,23 @@ public class Person {
 
 	private int salary;
 
+	static {
+		System.out.println("");
+	}
+
+	/**
+	 * 无参构造函数
+	 */
 	public Person() {
 	}
 
+	/**
+	 * 构造函数
+	 * 
+	 * @param name
+	 * @param age
+	 * @param salary
+	 */
 	public Person(String name, int age, int salary) {
 		this.name = name;
 		this.age = age;
@@ -25,8 +39,7 @@ public class Person {
 	}
 
 	/**
-	 * @param name
-	 *            the name to set
+	 * @param name the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -40,8 +53,7 @@ public class Person {
 	}
 
 	/**
-	 * @param age
-	 *            the age to set
+	 * @param age the age to set
 	 */
 	public void setAge(int age) {
 		this.age = age;
@@ -55,8 +67,7 @@ public class Person {
 	}
 
 	/**
-	 * @param salary
-	 *            the salary to set
+	 * @param salary the salary to set
 	 */
 	public void setSalary(int salary) {
 		this.salary = salary;
