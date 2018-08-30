@@ -2,8 +2,8 @@ package org.practice.thread.ch01primary;
 
 import java.util.concurrent.FutureTask;
 
+import org.practice.model.Person;
 import org.practice.thread.ch02primary.MyThread;
-import org.practice.thread.model.Person;
 
 /**
  * Java总结篇系列：Java多线程（一）<br>
@@ -16,6 +16,7 @@ public class App {
 
 	public static void main(String[] args) {
 
+		Thread thread = Thread.currentThread();
 		long threadId = Thread.currentThread().getId();
 		String threadName = Thread.currentThread().getName();
 

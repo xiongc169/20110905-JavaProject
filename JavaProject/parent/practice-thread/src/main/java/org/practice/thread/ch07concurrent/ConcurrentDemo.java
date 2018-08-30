@@ -5,8 +5,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.*;
 
 /**
- * @author Administrator
- *         Java并发包：http://blog.csdn.net/heyutao007/article/details/5672804
+ * @author Java并发包<br>
+ *         http://blog.csdn.net/heyutao007/article/details/5672804
  *
  */
 public class ConcurrentDemo {
@@ -43,7 +43,8 @@ public class ConcurrentDemo {
 	}
 
 	/**
-	 * 并发集合类：http://www.cnblogs.com/huangfox/archive/2012/08/16/2642666.html
+	 * 并发集合类<br>
+	 * http://www.cnblogs.com/huangfox/archive/2012/08/16/2642666.html
 	 */
 	public static void collectionsMethod() {
 		ConcurrentHashMap<String, String> hashMap = new ConcurrentHashMap<String, String>();

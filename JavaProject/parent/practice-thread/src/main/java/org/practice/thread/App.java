@@ -33,7 +33,7 @@ public class App {
 		System.out.println("begin :" + begin);
 
 		for (int i = 0; i < 20; i++) {
-			SendEmailThread sendEmail = new SendEmailThread(destMailList);
+			SendEmailTask sendEmail = new SendEmailTask(destMailList);
 
 			sendEmail.run(); // 1、调用run方法
 

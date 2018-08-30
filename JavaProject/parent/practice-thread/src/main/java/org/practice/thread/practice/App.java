@@ -5,7 +5,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-import org.practice.thread.model.Person;
+import org.practice.model.Person;
 
 public class App {
 
@@ -14,7 +14,8 @@ public class App {
 	}
 
 	/**
-	 * Callable,Runnable比较及用法：http://blog.csdn.net/heyutao007/article/details/19072675
+	 * Callable,Runnable比较及用法 <br>
+	 * http://blog.csdn.net/heyutao007/article/details/19072675
 	 *
 	 */
 	public static void concurrentTest() {

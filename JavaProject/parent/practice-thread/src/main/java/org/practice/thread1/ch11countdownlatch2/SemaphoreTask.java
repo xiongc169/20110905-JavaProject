@@ -1,0 +1,27 @@
+package org.practice.thread1.ch11countdownlatch2;
+
+import java.util.concurrent.Semaphore;
+
+public class SemaphoreTask implements Runnable {
+
+	private Semaphore semaphore;
+
+	public SemaphoreTask(Semaphore semaphore) {
+		this.semaphore = semaphore;
+	}
+
+	public void run() {
+
+		try {
+			semaphore.acquire();
+
+			System.out.printf("%s Start \n", Thread.currentThread().getName());
+			Thread.sleep(30000);
+			System.out.printf("%s End \n", Thread.currentThread().getName());
+
+			semaphore.release();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+}

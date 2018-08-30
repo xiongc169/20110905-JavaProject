@@ -1,6 +1,6 @@
 package org.practice.thread.ch02primary;
 
-import org.practice.thread.model.Account;
+import org.practice.model.Account;
 
 public class AccountRunnable implements Runnable {
 

@@ -3,7 +3,7 @@ package org.practice.thread.ch02primary;
 import java.util.Scanner;
 import java.util.concurrent.Callable;
 
-import org.practice.thread.model.Person;
+import org.practice.model.Person;
 
 
 public class MyCallable implements Callable<Object>{

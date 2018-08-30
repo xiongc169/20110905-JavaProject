@@ -2,7 +2,7 @@ package org.practice.thread.ch02primary;
 
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.practice.thread.model.Person;
+import org.practice.model.Person;
 
 /**
  * 

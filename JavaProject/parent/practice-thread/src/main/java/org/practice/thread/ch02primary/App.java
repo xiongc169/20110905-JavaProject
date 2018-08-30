@@ -3,8 +3,8 @@ package org.practice.thread.ch02primary;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
-import org.practice.thread.model.Account;
-import org.practice.thread.model.Person;
+import org.practice.model.Account;
+import org.practice.model.Person;
 import org.practice.thread.practice.InputCallable;
 
 /**
