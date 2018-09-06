@@ -15,7 +15,6 @@ import org.practice.thread.practice.InputCallable;
 public class App {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		accountTest();
 	}
 
@@ -72,5 +71,27 @@ public class App {
 		myThread1.start();
 		myThread2.start();
 		// System.out.printf("Balance: %f \n", account.getBalance());
+	}
+
+	public static void threadTest() throws InterruptedException {
+		System.out.println("threadTest Begin");
+
+		Person person = new Person("chaoxiong", 25, 25);
+		for (int i = 0; i < 10; i++) {
+			MyThread thread = new MyThread(person);
+			thread.start();
+			thread.join();
+			Thread.interrupted();
+			thread.isInterrupted();
+			thread.interrupt();
+			Thread.currentThread().isInterrupted();
+		}
+
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("threadTest End");
 	}
 }

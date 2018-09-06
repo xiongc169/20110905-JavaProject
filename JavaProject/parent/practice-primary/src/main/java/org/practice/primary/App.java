@@ -23,7 +23,7 @@ public class App {
 
 	public static void main(String[] args) {
 
-		test();
+		// test();
 	}
 
 	public static void test() {
@@ -64,6 +64,9 @@ public class App {
 		String dateStr = simpleDateFormat.format(date);
 		System.out.println(dateStr);
 
+		SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
+		String dateStr2 = format.format(new Date());
+		System.out.println(dateStr2);
 	}
 
 	/**

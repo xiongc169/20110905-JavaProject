@@ -2,6 +2,8 @@ package org.practice.primary.domain;
 
 import java.util.List;
 
+import org.practice.primary.enmu.DictionaryType;
+
 public class Dictionary implements Cloneable {
 	/**
 	 * Id
@@ -82,9 +84,9 @@ public class Dictionary implements Cloneable {
 		return false;
 	}
 
-//	public int hashCode() {
-//		return dictionaryNo.hashCode() * name.hashCode();
-//	}
+	// public int hashCode() {
+	// return dictionaryNo.hashCode() * name.hashCode();
+	// }
 
 	public String getId() {
 		return id;

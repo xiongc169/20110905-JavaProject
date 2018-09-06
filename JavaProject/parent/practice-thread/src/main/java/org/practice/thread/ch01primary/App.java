@@ -2,9 +2,6 @@ package org.practice.thread.ch01primary;
 
 import java.util.concurrent.FutureTask;
 
-import org.practice.model.Person;
-import org.practice.thread.ch02primary.MyThread;
-
 /**
  * Java总结篇系列：Java多线程（一）<br>
  * http://www.cnblogs.com/lwbqqyumidi/p/3804883.html
@@ -19,6 +16,7 @@ public class App {
 		Thread thread = Thread.currentThread();
 		long threadId = Thread.currentThread().getId();
 		String threadName = Thread.currentThread().getName();
+		System.out.println("Current ThreadId: " + threadId + "; Current ThreadName: " + threadName);
 
 		MyThread myThread1 = new MyThread();
 		Thread myThread2 = new Thread(myThread1);
@@ -38,9 +36,6 @@ public class App {
 		myThread7.start();
 		myThread8.start();
 		myThread9.start();
-
-		System.out.println("Current ThreadId: " + threadId + "; Current ThreadName: " + threadName);
-
 	}
 
 	public static void test() {
@@ -48,7 +43,6 @@ public class App {
 		MyThread myThread = new MyThread();
 		myThread.start();
 
-		ThreadLocal local = new ThreadLocal();
 		// 2.Runnable 测试
 		MyRunnable myRunnable = new MyRunnable();
 		Thread runnableThread = new Thread(myRunnable);
@@ -73,27 +67,4 @@ public class App {
 			System.out.println(msg);
 		}
 	}
-
-	public static void threadTest() throws InterruptedException {
-		System.out.println("threadTest Begin");
-
-		Person person = new Person("chaoxiong", 25, 25);
-		for (int i = 0; i < 10; i++) {
-			MyThread thread = new MyThread(person);
-			thread.start();
-			thread.join();
-			Thread.interrupted();
-			thread.isInterrupted();
-			thread.interrupt();
-			Thread.currentThread().isInterrupted();
-		}
-
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		System.out.println("threadTest End");
-	}
-
 }

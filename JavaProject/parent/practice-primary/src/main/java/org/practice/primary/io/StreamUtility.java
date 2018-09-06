@@ -12,7 +12,7 @@ import java.io.PrintWriter;
 /**
  * 
  * @author Administrator
- * http://www.cnblogs.com/shitouer/archive/2012/12/19/2823641.html
+ *         http://www.cnblogs.com/shitouer/archive/2012/12/19/2823641.html
  *
  */
 public class StreamUtility {

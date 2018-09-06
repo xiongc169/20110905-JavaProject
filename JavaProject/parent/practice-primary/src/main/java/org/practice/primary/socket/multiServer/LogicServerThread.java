@@ -36,7 +36,7 @@ public class LogicServerThread extends Thread {
 			int len = is.read(msg);
 			String inStr = new String(msg);
 			System.out.println("【服务端】服务端接收到信息：" + inStr);
-			
+
 			String outStr = "feedback for " + inStr;
 			os.write(outStr.getBytes());
 		} catch (Exception ex) {
