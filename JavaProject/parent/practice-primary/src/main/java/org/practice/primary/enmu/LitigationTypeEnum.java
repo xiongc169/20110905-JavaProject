@@ -50,7 +50,9 @@ public enum LitigationTypeEnum {
 	public static void main(String[] args) {
 		LitigationTypeEnum companyLitigation = LitigationTypeEnum.valueOf("COMPANY_LITIGATION");
 		List<LitigationTypeEnum> litigationTypes = Arrays.asList(LitigationTypeEnum.values());
-		String name = litigationTypes.get(0).toString();
+		int code = litigationTypes.get(0).getCode();
+		String name = litigationTypes.get(0).getName();
+		String enumName = litigationTypes.get(0).toString();
 
 		System.out.println(companyLitigation);
 		System.out.println(litigationTypes);
