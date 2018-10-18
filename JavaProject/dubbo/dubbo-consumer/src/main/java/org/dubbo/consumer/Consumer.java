@@ -1,6 +1,7 @@
 package org.dubbo.consumer;
 
 import org.dubbo.common.service.CalculatorService;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 /**
@@ -11,8 +12,7 @@ public class Consumer {
 	public static void main(String[] args) {
 		try {
 
-			FileSystemXmlApplicationContext fsContext = new FileSystemXmlApplicationContext(
-					new String[] { "classpath:consumer.xml" });
+			FileSystemXmlApplicationContext fsContext = new FileSystemXmlApplicationContext(new String[] { "classpath:consumer.xml" });
 			CalculatorService calculator = (CalculatorService) fsContext.getBean("calculatorService");
 			double result = calculator.sub(100, 200);
 			double result2 = calculator.mul(100, 200);
@@ -23,6 +23,7 @@ public class Consumer {
 			System.out.println(result3);
 			System.out.println(result4);
 
+			ClassPathXmlApplicationContext cpContext = new ClassPathXmlApplicationContext("classpath:consumer.xml");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

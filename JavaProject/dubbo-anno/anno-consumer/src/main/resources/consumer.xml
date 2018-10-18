@@ -11,7 +11,7 @@
 
 	<dubbo:application name="calculatorConsumer" />
 
-	<dubbo:registry address="zookeeper://192.168.75.162:2181" />
+	<dubbo:registry address="zookeeper://127.0.0.1:2181" />
 
 	<dubbo:annotation package="org.anno.consumer.controller" />
 

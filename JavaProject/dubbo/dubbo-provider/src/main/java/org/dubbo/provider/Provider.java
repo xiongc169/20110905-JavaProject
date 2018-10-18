@@ -8,9 +8,7 @@ public class Provider {
 	public static void main(String[] args) {
 
 		try {
-
-			FileSystemXmlApplicationContext fsContext = new FileSystemXmlApplicationContext(
-					new String[] { "classpath:provider.xml" });
+			FileSystemXmlApplicationContext fsContext = new FileSystemXmlApplicationContext(new String[] { "classpath:provider.xml" });
 			fsContext.start();
 			System.out.println("启动成功！");
 

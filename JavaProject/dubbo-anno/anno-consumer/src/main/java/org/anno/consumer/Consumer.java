@@ -10,8 +10,7 @@ public class Consumer {
 	public static void main(String[] args) {
 		try {
 
-			FileSystemXmlApplicationContext fs = new FileSystemXmlApplicationContext(
-					new String[] { "classpath:consumer.xml" });
+			FileSystemXmlApplicationContext fs = new FileSystemXmlApplicationContext(new String[] { "classpath:consumer.xml" });
 			fs.start();
 
 			UserController userCtr = (UserController) fs.getBean("userCtr");

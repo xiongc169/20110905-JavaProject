@@ -13,8 +13,7 @@ public class Provider {
 
 		try {
 
-			FileSystemXmlApplicationContext fs = new FileSystemXmlApplicationContext(
-					new String[] { "classpath:provider.xml" });
+			FileSystemXmlApplicationContext fs = new FileSystemXmlApplicationContext(new String[] { "classpath:provider.xml" });
 			fs.start();
 			int input = System.in.read();
 			System.out.println(input);
