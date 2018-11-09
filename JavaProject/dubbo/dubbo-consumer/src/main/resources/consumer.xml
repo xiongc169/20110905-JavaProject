@@ -22,8 +22,11 @@
     <dubbo:protocol id="dubbo1" name="dubbo" port="20880"/>
     <dubbo:protocol id="rmi1" name="rmi" port="1099"/>
 
-    <!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
+    <!-- 生成远程服务代理，可以和本地bean一样使用demoService，直连配置：url="dubbo://127.0.0.1:20880" -->
     <dubbo:reference id="calculatorService" interface="org.dubbo.common.service.CalculatorService"
-                     registry="remoteRegistry" protocol="dubbo"/>
+                     registry="localRegistry" protocol="dubbo" url="dubbo://127.0.0.1:20880"/>
+
+    <dubbo:reference id="advancedCalculatorService" interface="org.dubbo.common.service.CalculatorService"
+                     registry="localRegistry" protocol="dubbo" group="advance" version="1.0.0" check="false" url="dubbo://127.0.0.1:20880"/>
 
 </beans> 

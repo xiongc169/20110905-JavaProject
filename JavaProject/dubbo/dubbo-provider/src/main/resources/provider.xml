@@ -19,14 +19,18 @@
     <dubbo:registry id="remoteRegistry" address="zookeeper://192.168.119.128:2181"/>
 
     <!-- 用dubbo协议在20880端口暴露服务 -->
-    <dubbo:protocol id="dubbo1" name="dubbo" port="20880"/>
+    <dubbo:protocol id="dubbo" name="dubbo" port="20880"/>
     <dubbo:protocol id="rmi1" name="rmi" port="1099"/>
 
     <!-- 声明需要暴露的服务接口 -->
     <bean id="calculator" class="org.dubbo.provider.serviceImpl.CalculatorServiceImpl"></bean>
+    <bean id="advancedCalculator" class="org.dubbo.provider.serviceImpl.AdvancedCalculatorServiceImpl"></bean>
 
     <!-- 声明需要暴露的服务接口 -->
-    <dubbo:service interface="org.dubbo.common.service.CalculatorService" ref="calculator" registry="remoteRegistry"
+    <dubbo:service interface="org.dubbo.common.service.CalculatorService" ref="calculator" registry="localRegistry"
                    protocol="dubbo"></dubbo:service>
+
+    <dubbo:service interface="org.dubbo.common.service.CalculatorService" ref="advancedCalculator"
+                   registry="localRegistry" protocol="dubbo" group="advance" version="1.0.0"></dubbo:service>
 
 </beans>

@@ -15,6 +15,7 @@ public class Provider {
 
 			FileSystemXmlApplicationContext fs = new FileSystemXmlApplicationContext(new String[] { "classpath:provider.xml" });
 			fs.start();
+			System.out.println("启动成功");
 			int input = System.in.read();
 			System.out.println(input);
 
