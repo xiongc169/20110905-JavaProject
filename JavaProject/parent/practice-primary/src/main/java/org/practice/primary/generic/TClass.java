@@ -1,4 +1,4 @@
-package org.practice.primary.utility;
+package org.practice.primary.generic;
 
 import org.practice.primary.domain.Dictionary;
 
