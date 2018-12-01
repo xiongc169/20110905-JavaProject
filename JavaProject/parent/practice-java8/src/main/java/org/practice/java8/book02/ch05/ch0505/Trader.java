@@ -1,4 +1,4 @@
-package org.practice.java8.book02.ch0505;
+package org.practice.java8.book02.ch05.ch0505;
 
 public class Trader {
     private String name;

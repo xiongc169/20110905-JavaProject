@@ -1,8 +1,6 @@
 package org.practice.java8.book02.ch02;
 
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import org.practice.java8.book02.ch02.domain.Apple;
@@ -11,42 +9,72 @@ import org.practice.java8.book02.ch02.predicate.IApplePredicate;
 
 public class App {
 
+    /**
+     * 入口函数
+     *
+     * @param args
+     */
     public static void main(String[] args) {
 
+        ch01();
+        ch0202();
+        ch0203();
+    }
+
+    /**
+     * 排序
+     */
+    public static void ch01() {
         List<Apple> appleList = new LinkedList<Apple>();
         Apple apple01 = new Apple("001", "red", 120);
         Apple apple02 = new Apple("002", "red", 130);
-        Apple apple03 = new Apple("003", "red", 110);
-        Apple apple04 = new Apple("004", "red", 150);
-        Apple apple05 = new Apple("005", "red", 100);
         appleList.add(apple01);
         appleList.add(apple02);
-        appleList.add(apple03);
-        appleList.add(apple04);
-        appleList.add(apple05);
 
-        // 行为参数化
-        IApplePredicate predicate = new AppleGreenColorPredicate();
-        behaviorParameter(appleList, predicate);
-        behaviorParameter(appleList, (Apple item) -> item.getColor().equalsIgnoreCase("green"));
-
-        appleList.forEach(item -> System.out.printf("%s - ", item.getId()));
-        // 2.4.1、用Comparator排序
+        //ch0101：排序1
+        Collections.sort(appleList, new Comparator<Apple>() {
+            @Override
+            public int compare(Apple o1, Apple o2) {
+                return o1.getWeight().compareTo(o2.getWeight());
+            }
+        });
+        //ch0204、用Comparator排序
         appleList.sort(new Comparator<Apple>() {
             @Override
             public int compare(Apple a1, Apple a2) {
                 return a1.getWeight().compareTo(a2.getWeight());
             }
         });
-        appleList.forEach(item -> System.out.printf("%s - ", item.getId()));
-
+        //ch0101：排序2
+        appleList.sort(Comparator.comparing(Apple::getWeight));
+        //排序
         appleList = appleList.stream().sorted(new Comparator<Apple>() {
             @Override
             public int compare(Apple o1, Apple o2) {
                 return o1.getWeight().compareTo(o2.getWeight());
             }
         }).collect(Collectors.toList());
+        //ch0101：排序3
+        List<Apple> sorted2 = appleList.stream().sorted(Comparator.comparing(Apple::getWeight)).collect(Collectors.toList());
+        System.out.println(sorted2.size());
+    }
 
+    /**
+     * 行为参数化
+     */
+    public static void ch0202() {
+        List<Apple> appleList = new LinkedList<Apple>();
+        Apple apple01 = new Apple("001", "red", 120);
+        Apple apple02 = new Apple("002", "red", 130);
+        Apple apple03 = new Apple("003", "red", 110);
+        appleList.add(apple01);
+        appleList.add(apple02);
+        appleList.add(apple03);
+
+        // 行为参数化
+        IApplePredicate predicate = new AppleGreenColorPredicate();
+        List<Apple> appleList2 = behaviorParameter(appleList, predicate);
+        System.out.println(appleList2.size());
     }
 
     /**
@@ -55,15 +83,38 @@ public class App {
      * @param appleList
      * @param predicate
      */
-    public static void behaviorParameter(List<Apple> appleList, IApplePredicate predicate) {
+    public static List<Apple> behaviorParameter(List<Apple> appleList, IApplePredicate predicate) {
+        List<Apple> result = new ArrayList<>();
         for (Apple item : appleList) {
             if (predicate.test(item)) {
-                System.out.println(item.getId());
+                result.add(item);
             }
         }
+        return result;
     }
 
-    public static void compare() {
-    }
+    /**
+     * 行为参数化
+     */
+    public static void ch0203() {
+        List<Apple> appleList = new LinkedList<Apple>();
+        Apple apple01 = new Apple("001", "red", 120);
+        Apple apple02 = new Apple("002", "red", 130);
+        Apple apple03 = new Apple("003", "red", 110);
+        appleList.add(apple01);
+        appleList.add(apple02);
+        appleList.add(apple03);
 
+        // 行为参数化：匿名类
+        List<Apple> appleList2 = behaviorParameter(appleList, new IApplePredicate() {
+            @Override
+            public boolean test(Apple apple) {
+                return apple.getWeight() > 150;
+            }
+        });
+        // 行为参数化：Lambda表达式
+        List<Apple> appleList3 = behaviorParameter(appleList, (Apple item) -> item.getColor().equalsIgnoreCase("green"));
+        System.out.println(appleList2.size());
+        System.out.println(appleList3.size());
+    }
 }

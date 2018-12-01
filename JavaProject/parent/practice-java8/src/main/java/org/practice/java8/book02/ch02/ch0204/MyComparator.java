@@ -1,4 +1,4 @@
-package org.practice.java8.book02.ch0204;
+package org.practice.java8.book02.ch02.ch0204;
 
 import java.util.Comparator;
 

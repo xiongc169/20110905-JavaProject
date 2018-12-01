@@ -1,4 +1,4 @@
-package org.practice.java8.book02.ch0304;
+package org.practice.java8.book02.ch03;
 
 import java.util.function.Predicate;
 

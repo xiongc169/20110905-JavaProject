@@ -18,12 +18,12 @@ public class App {
     public static void main(String[] args) {
 
         //测试函数
+        sum(100);
         ch0701();
     }
 
-
     /**
-     * 判断数字是质数 or 非质数
+     * 顺序流、并行流输出
      *
      * @return
      */
@@ -40,7 +40,29 @@ public class App {
                 new Dish("prawns", false, 300, DishType.FISH),
                 new Dish("salmon", false, 450, DishType.FISH));
 
-        menus.parallelStream().forEach(item -> System.out.println(item.getName()));
+        menus.stream().forEach(item -> System.out.print(item.getName() + "  "));
+        System.out.println();
+        menus.parallelStream().forEach(item -> System.out.print(item.getName() + "  "));
+        System.out.println();
+    }
 
+    /**
+     * 求和
+     *
+     * @param n
+     */
+    private static void sum(Integer n) {
+        int sum = 0;
+        for (int i = 0; i <= n; i++) {
+            sum += i;
+        }
+        System.out.println(sum);
+
+        int sum2 = IntStream.iterate(1, i -> i + 1).limit(n).parallel().reduce(0, (a, b) -> a + b);
+        System.out.println(sum2);
+
+        Integer processor = Runtime.getRuntime().availableProcessors();
+        System.out.println(processor);
+        System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelism", "6");
     }
 }
