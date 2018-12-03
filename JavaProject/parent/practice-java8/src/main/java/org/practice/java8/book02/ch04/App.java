@@ -26,5 +26,9 @@ public class App {
 
         menu.stream().forEach(item -> System.out.println(item.getName()));
         List<String> names = menu.stream().map(Dish::getName).collect(Collectors.toList());
+        System.out.println(names.size());
+
+        DishType type = DishType.getType(1);
+        System.out.println(type.getName());
     }
 }
