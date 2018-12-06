@@ -113,10 +113,19 @@ public class App {
 
     /**
      * 选择排序-堆排序
+     * 大顶堆：arr[i] >= arr[2i+1] && arr[i] >= arr[2i+2]
+     * 小顶堆：arr[i] <= arr[2i+1] && arr[i] <= arr[2i+2]
      *
      * @param source
      */
     public static void heapSort(Integer[] source) {
+
+
+
+    }
+
+    public static void adjustHeap(Integer[] source){
+
 
     }
 
