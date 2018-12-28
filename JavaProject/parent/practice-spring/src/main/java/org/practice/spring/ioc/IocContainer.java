@@ -1,17 +1,23 @@
 package org.practice.spring.ioc;
 
 import org.practice.spring.domain.User;
+import org.practice.spring.domain2.Student;
 import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
+
+import java.util.Iterator;
+import java.util.Set;
 
 /**
  * @author yoong
@@ -55,6 +61,32 @@ public class IocContainer {
         xmlReader.loadBeanDefinitions(resource);
         User user3 = (User) dlBeanFactory.getBean("user");
         System.out.println(user3.getIid());
+
+        /**
+         * 获取BeanDefinition，并注册到BeanDefinitionRegistry
+         * BeanDefinition及其实现类
+         * https://www.cnblogs.com/lupeng2010/p/7028742.html
+         */
+        ClassPathScanningCandidateComponentProvider provider = new ClassPathScanningCandidateComponentProvider(true);
+        Set<BeanDefinition> definitionSet = provider.findCandidateComponents("org.practice.spring.domain2");
+        System.out.println(definitionSet.size());
+        Iterator iterator = definitionSet.iterator();
+        while (iterator.hasNext()) {
+            BeanDefinition beanDefinition = (BeanDefinition) iterator.next();
+            ((XmlBeanFactory) xmlfactory).registerBeanDefinition("student", beanDefinition);
+        }
+        if (((XmlBeanFactory) xmlfactory).containsBeanDefinition("student")) {
+            Student student = (Student) xmlfactory.getBean("student");
+            System.out.println(student.getStudentId());
+        }
+
+        /**
+         * 查看BeanDefinitionRegistry中注册的BeanDefinition
+         * Spring BeanDefinitionRegistry
+         * https://blog.csdn.net/chs007chs/article/details/78614332
+         */
+        String[] beanDefinitionNames = ((XmlBeanFactory) xmlfactory).getBeanDefinitionNames();
+        System.out.println(beanDefinitionNames.length);
     }
 
     /**
@@ -86,6 +118,7 @@ public class IocContainer {
         try {
             ApplicationContext fileSystemXmlPre = new FileSystemXmlApplicationContext();
             Resource resource = fileSystemXmlPre.getResource("");
+            System.out.println(resource.exists());
 
             ApplicationContext fileSystemXml = new FileSystemXmlApplicationContext("JavaProject\\parent\\practice-spring\\src\\main\\resources\\spring-context.xml");
             User user = (User) fileSystemXml.getBean("user");
