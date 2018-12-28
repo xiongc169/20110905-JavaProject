@@ -10,14 +10,13 @@ import java.lang.annotation.Target;
 /**
  * @author yoong
  *
- * @description 自定义注解 <br>
- *              http://www.importnew.com/17413.html
- *              https://blog.csdn.net/bao19901210/article/details/17201173/
- *
- * @date 2014年3月30日
- *
  * @version 1.0
  *
+ * @desc 自定义注解
+ *      http://www.importnew.com/17413.html
+ *      https://blog.csdn.net/bao19901210/article/details/17201173/
+ *
+ * @date 2014年3月30日
  */
 @Documented
 @Target(ElementType.METHOD)
@@ -25,12 +24,12 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface MethodInfo {
 
-	String author() default "yoong";
+    String author() default "yoong";
 
-	String date();
+    String date();
 
-	String version();
+    String version();
 
-	String comments();
+    String comments();
 
 }

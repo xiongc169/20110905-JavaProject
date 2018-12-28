@@ -2,6 +2,11 @@ package org.practice.spring.domain;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * Car
+ *
+ * @author yoong
+ */
 @Component
 public class Car {
 

@@ -4,10 +4,10 @@ import org.practice.spring.proxy.api.ISubject;
 
 public class SubjectImpl implements ISubject {
 
-	public String say(String name, int age) {
-		String msg = name + "  " + age;
-		System.out.println("SubjectImpl.say " + msg);
-		return msg;
-	}
+    public String say(String name, int age) {
+        String msg = name + "  " + age;
+        System.out.println("SubjectImpl.say " + msg);
+        return msg;
+    }
 
 }
