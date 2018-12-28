@@ -14,6 +14,7 @@ import java.lang.reflect.Method;
  *
  */
 public class JdkProxy implements InvocationHandler {
+
 	// 代理的真实对象
 	private Object subject;
 

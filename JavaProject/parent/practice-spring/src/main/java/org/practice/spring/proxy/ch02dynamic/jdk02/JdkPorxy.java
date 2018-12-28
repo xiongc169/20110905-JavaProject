@@ -25,7 +25,7 @@ public class JdkPorxy implements InvocationHandler {
 	/**
 	 * 获取代理对象
 	 * 
-	 * @param 被代理的对象
+	 * @param target 被代理的对象
 	 * @return 代理对象
 	 *
 	 */
@@ -42,9 +42,9 @@ public class JdkPorxy implements InvocationHandler {
 	 * 调用方法 proxy: 指代我们所代理的那个真实对象 method: 指代的是我们所要调用真实对象的某个方法的Method对象 args:
 	 * 指代的是调用真实对象某个方法时接受的参数
 	 * 
-	 * @param 代理对象
-	 * @param 将要被执行的方法信息（反射）
-	 * @param 执行方法时需要的参数
+	 * @param proxy 代理对象
+	 * @param method 将要被执行的方法信息（反射）
+	 * @param args 执行方法时需要的参数
 	 */
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 
