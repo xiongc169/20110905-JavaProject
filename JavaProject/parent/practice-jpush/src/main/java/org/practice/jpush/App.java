@@ -40,8 +40,7 @@ public class App {
 	// private static String MASTER_SECRET = "9ee7247b000f33ba1aa75c08";
 	// private static String APP_KEY = "0f3b7426368fe5e945eefefb";
 
-	// 推送对象别名 dev_15706258110 dev_15158107051 dev_15068129031 test_18700000002
-	// product_15158107054 product_13588756278 product_15215740001
+	// 推送对象别名 dev_15706258110 dev_15158107051 dev_15068129031 test_18700000002 product_15158107054 product_13588756278 product_15215740001
 	private static String alias = "product_15215740001";
 	private static String tag = "tag";
 	// 消息常量
