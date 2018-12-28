@@ -1,130 +1,106 @@
 package org.practice.spring.domain;
 
 import org.practice.spring.reflect.MethodInfo;
+import org.springframework.stereotype.Component;
 
 /**
- * 序列化
- * 
- * @author yoong
+ * User
  *
+ * @author yoong
  */
+@Component
 public class User {
 
-	/**
-	 * Id，非空，长度应为36
-	 */
-	protected String iid;
+    private String iid;
 
-	/**
-	 * 编号，非空，最大长度为36
-	 */
-	protected String userNo;
+    private String userNo;
 
-	/**
-	 * 姓名，非空，最大长度为30
-	 */
-	protected String name;
+    private String name;
 
-	/**
-	 * 所属单位编号，非空，最大长度为36
-	 */
-	protected String orgNo;
+    private String orgNo;
 
-	/**
-	 * 所属单位名称，非空，最大长度为80
-	 */
-	protected String orgName;
+    private String orgName;
 
-	public User() {
-	}
+    /**
+     * BeanFactory\ApplicationContext容器中，执行顺序：静态代码块->构造函数->init方法
+     */
+    static {
+        System.out.println("User.static()");
+    }
 
-	public User(String iid) {
-		this.iid = iid;
-	}
+    static void staticMethod() {
+        System.out.println("User.staticMethod()");
+    }
 
-	public User(String iid, String userNo) {
-		this.iid = iid;
-		this.userNo = userNo;
-	}
+    public User() {
+        System.out.println("User.User()");
+    }
 
-	/**
-	 * @return the iid
-	 */
-	public String getIid() {
-		return iid;
-	}
+    public User(String iid) {
+        this.iid = iid;
+    }
 
-	/**
-	 * @param iid the iid to set
-	 */
-	public void setIid(String iid) {
-		this.iid = iid;
-	}
+    public User(String iid, String userNo) {
+        this.iid = iid;
+        this.userNo = userNo;
+    }
 
-	/**
-	 * @return the userNo
-	 */
-	public String getUserNo() {
-		return userNo;
-	}
+    public void init() {
+        System.out.println("User.init()");
+    }
 
-	/**
-	 * @param userNo the userNo to set
-	 */
-	public void setUserNo(String userNo) {
-		this.userNo = userNo;
-	}
+    public void destroy() {
+        System.out.println("User.destroy()");
+    }
 
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
+    public String getIid() {
+        return iid;
+    }
 
-	/**
-	 * @param name the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setIid(String iid) {
+        this.iid = iid;
+    }
 
-	/**
-	 * @return the orgNo
-	 */
-	public String getOrgNo() {
-		return orgNo;
-	}
+    public String getUserNo() {
+        return userNo;
+    }
 
-	/**
-	 * @param orgNo the orgNo to set
-	 */
-	public void setOrgNo(String orgNo) {
-		this.orgNo = orgNo;
-	}
+    public void setUserNo(String userNo) {
+        this.userNo = userNo;
+    }
 
-	/**
-	 * @return the orgName
-	 */
-	public String getOrgName() {
-		return orgName;
-	}
+    public String getName() {
+        return name;
+    }
 
-	/**
-	 * @param orgName the orgName to set
-	 */
-	public void setOrgName(String orgName) {
-		this.orgName = orgName;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	// public String toString() {
-	// System.out.println("This is User.toString() Method");
-	// return "my iid:" + iid + ", my userNo:" + userNo;
-	// }
+    public String getOrgNo() {
+        return orgNo;
+    }
 
-	@MethodInfo(comments = "sayHello Method", date = "2018年8月9日10:56:05", version = "V 1.0")
-	public void sayHello(int age, String name) {
-		System.out.println("This is User.sayHello() Method: age is " + age + "; name is " + name);
-	}
+    public void setOrgNo(String orgNo) {
+        this.orgNo = orgNo;
+    }
+
+    public String getOrgName() {
+        return orgName;
+    }
+
+    public void setOrgName(String orgName) {
+        this.orgName = orgName;
+    }
+
+    // public String toString() {
+    // System.out.println("This is User.toString() Method");
+    // return "my iid:" + iid + ", my userNo:" + userNo;
+    // }
+
+    @MethodInfo(comments = "sayHello Method", date = "2018年8月9日10:56:05", version = "V 1.0")
+    public void sayHello(int age, String name) {
+        System.out.println("This is User.sayHello() Method: age is " + age + "; name is " + name);
+    }
 
 }

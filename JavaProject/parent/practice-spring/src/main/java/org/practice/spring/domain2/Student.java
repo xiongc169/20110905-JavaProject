@@ -3,27 +3,22 @@ package org.practice.spring.domain2;
 import org.springframework.stereotype.Component;
 
 /**
- * 序列化
+ * Student
  *
  * @author yoong
  */
 @Component
 public class Student {
 
-    /**
-     * Id，非空，长度应为36
-     */
-    protected String studentId;
+    private String studentId;
 
-    /**
-     * 姓名，非空，最大长度为30
-     */
-    protected String studentName;
+    private String studentName;
 
-    /**
-     * 所属单位编号，非空，最大长度为36
-     */
-    protected String sex;
+    private String sex;
+
+    public Student() {
+        System.out.println("Student.Student()");
+    }
 
     public String getStudentId() {
         return studentId;

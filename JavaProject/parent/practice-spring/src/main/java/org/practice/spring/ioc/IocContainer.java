@@ -1,5 +1,6 @@
 package org.practice.spring.ioc;
 
+import org.practice.spring.domain.Customer;
 import org.practice.spring.domain.User;
 import org.practice.spring.domain2.Student;
 import org.springframework.beans.factory.BeanFactory;
@@ -28,14 +29,15 @@ import java.util.Set;
 public class IocContainer {
 
     /**
-     * 入口函数
+     * TODO: 入口函数
      */
     public static void main(String[] args) {
         //测试
         try {
             beanFactoryDemo();
+            injectDemo();
             resourceDemo();
-            applicatioinDemo();
+            applicationDemo();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -54,7 +56,9 @@ public class IocContainer {
         User user2 = xmlfactory.getBean("user", User.class);
         System.out.println(user.getIid());
         System.out.println(user2.getIid());
-
+        //若bean的scope=singleton，则相等，若scope=prototype，则不等
+        String compareResult = user == user2 ? "Equals" : "Not Equals";
+        System.out.println(compareResult);
 
         DefaultListableBeanFactory dlBeanFactory = new DefaultListableBeanFactory();
         XmlBeanDefinitionReader xmlReader = new XmlBeanDefinitionReader(dlBeanFactory);
@@ -90,6 +94,19 @@ public class IocContainer {
     }
 
     /**
+     * TODO: 三种依赖注入方式
+     */
+    public static void injectDemo() {
+        Resource resource = new ClassPathResource("spring-context.xml");
+        BeanFactory xmlfactory = new XmlBeanFactory(resource);
+        Customer customer = (Customer) xmlfactory.getBean("customer");
+        Customer customer2 = xmlfactory.getBean("customer", Customer.class);
+        System.out.println(customer.getCustomerId());
+        System.out.println(customer2.getCustomerId());
+        System.out.println(customer2.getCar());
+    }
+
+    /**
      * TODO: Resource\ResourceLoader
      */
     public static void resourceDemo() {
@@ -114,12 +131,13 @@ public class IocContainer {
      * ClassPathXmlApplicationContext和FileSystemXmlApplicationContext路径问题
      * https://www.cnblogs.com/alisonGavin/p/6870056.html
      */
-    public static void applicatioinDemo() {
+    public static void applicationDemo() {
         try {
             ApplicationContext fileSystemXmlPre = new FileSystemXmlApplicationContext();
             Resource resource = fileSystemXmlPre.getResource("");
             System.out.println(resource.exists());
 
+            //lazy-init，ApplicationContext实现的默认行为就是再启动时将所有 singleton bean提前进行实例化。
             ApplicationContext fileSystemXml = new FileSystemXmlApplicationContext("JavaProject\\parent\\practice-spring\\src\\main\\resources\\spring-context.xml");
             User user = (User) fileSystemXml.getBean("user");
             System.out.println(user.getIid());
