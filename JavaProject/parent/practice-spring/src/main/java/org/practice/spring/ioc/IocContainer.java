@@ -5,6 +5,8 @@ import org.practice.spring.domain.User;
 import org.practice.spring.domain2.Student;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
+import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
@@ -34,76 +36,15 @@ public class IocContainer {
     public static void main(String[] args) {
         //测试
         try {
-            beanFactoryDemo();
-            injectDemo();
             resourceDemo();
+            injectDemo();
+            beanFactoryDemo();
+            getBeanDefinitionAndRegister();
+            beanFactoryPostProcessor();
             applicationDemo();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-    }
-
-    /**
-     * TODO: BeanFactory
-     * <p>
-     * 通过DefaultListableBeanFactory加载xml配置文件
-     * https://www.aliyun.com/jiaocheng/809547.html
-     */
-    public static void beanFactoryDemo() {
-        Resource resource = new ClassPathResource("spring-context.xml");
-        BeanFactory xmlfactory = new XmlBeanFactory(resource);
-        User user = (User) xmlfactory.getBean("user");
-        User user2 = xmlfactory.getBean("user", User.class);
-        System.out.println(user.getIid());
-        System.out.println(user2.getIid());
-        //若bean的scope=singleton，则相等，若scope=prototype，则不等
-        String compareResult = user == user2 ? "Equals" : "Not Equals";
-        System.out.println(compareResult);
-
-        DefaultListableBeanFactory dlBeanFactory = new DefaultListableBeanFactory();
-        XmlBeanDefinitionReader xmlReader = new XmlBeanDefinitionReader(dlBeanFactory);
-        xmlReader.loadBeanDefinitions(resource);
-        User user3 = (User) dlBeanFactory.getBean("user");
-        System.out.println(user3.getIid());
-
-        /**
-         * 获取BeanDefinition，并注册到BeanDefinitionRegistry
-         * BeanDefinition及其实现类
-         * https://www.cnblogs.com/lupeng2010/p/7028742.html
-         */
-        ClassPathScanningCandidateComponentProvider provider = new ClassPathScanningCandidateComponentProvider(true);
-        Set<BeanDefinition> definitionSet = provider.findCandidateComponents("org.practice.spring.domain2");
-        System.out.println(definitionSet.size());
-        Iterator iterator = definitionSet.iterator();
-        while (iterator.hasNext()) {
-            BeanDefinition beanDefinition = (BeanDefinition) iterator.next();
-            ((XmlBeanFactory) xmlfactory).registerBeanDefinition("student", beanDefinition);
-        }
-        if (((XmlBeanFactory) xmlfactory).containsBeanDefinition("student")) {
-            Student student = (Student) xmlfactory.getBean("student");
-            System.out.println(student.getStudentId());
-        }
-
-        /**
-         * 查看BeanDefinitionRegistry中注册的BeanDefinition
-         * Spring BeanDefinitionRegistry
-         * https://blog.csdn.net/chs007chs/article/details/78614332
-         */
-        String[] beanDefinitionNames = ((XmlBeanFactory) xmlfactory).getBeanDefinitionNames();
-        System.out.println(beanDefinitionNames.length);
-    }
-
-    /**
-     * TODO: 三种依赖注入方式
-     */
-    public static void injectDemo() {
-        Resource resource = new ClassPathResource("spring-context.xml");
-        BeanFactory xmlfactory = new XmlBeanFactory(resource);
-        Customer customer = (Customer) xmlfactory.getBean("customer");
-        Customer customer2 = xmlfactory.getBean("customer", Customer.class);
-        System.out.println(customer.getCustomerId());
-        System.out.println(customer2.getCustomerId());
-        System.out.println(customer2.getCar());
     }
 
     /**
@@ -119,6 +60,105 @@ public class IocContainer {
 
         Resource res2 = resLoader.getResource("classpath:spring-context.xml");
         System.out.println(res2.exists());
+    }
+
+    /**
+     * TODO: 三种依赖注入方式（修改XML配置文件以验证）
+     */
+    public static void injectDemo() {
+        Resource resource = new ClassPathResource("spring-context.xml");
+        BeanFactory xmlFactory = new XmlBeanFactory(resource);
+        Customer customer = (Customer) xmlFactory.getBean("customer");
+        Customer customer2 = xmlFactory.getBean("customer", Customer.class);
+        System.out.println(customer.getCustomerId());
+        System.out.println(customer2.getCustomerId());
+        System.out.println(customer2.getCar());
+    }
+
+    /**
+     * TODO: BeanFactory (XmlBeanFactory、DefaultListableBeanFactory)
+     * <p>
+     * 通过DefaultListableBeanFactory加载xml配置文件
+     * https://www.aliyun.com/jiaocheng/809547.html
+     */
+    public static void beanFactoryDemo() {
+        //XmlBeanFactory
+        Resource resource = new ClassPathResource("spring-context.xml");
+        BeanFactory xmlFactory = new XmlBeanFactory(resource);
+        User user = (User) xmlFactory.getBean("user");
+        User user2 = xmlFactory.getBean("user", User.class);
+        System.out.println(user.getIid());
+        System.out.println(user2.getIid());
+        //若bean的scope=singleton，则相等，若scope=prototype，则不等
+        String compareResult = user == user2 ? "Equals" : "Not Equals";
+        System.out.println(compareResult);
+
+        //DefaultListableBeanFactory
+        DefaultListableBeanFactory dlBeanFactory = new DefaultListableBeanFactory();
+        XmlBeanDefinitionReader xmlReader = new XmlBeanDefinitionReader(dlBeanFactory);
+        xmlReader.loadBeanDefinitions(resource);
+        User user3 = (User) dlBeanFactory.getBean("user");
+        System.out.println(user3.getIid());
+    }
+
+    /**
+     * TODO: 读取配置文件、获取BeanDefinition并注册、实例化
+     */
+    public static void getBeanDefinitionAndRegister() {
+        Resource resource = new ClassPathResource("spring-context.xml");
+        BeanFactory xmlFactory = new XmlBeanFactory(resource);
+        /**
+         * 获取BeanDefinition，并注册到BeanDefinitionRegistry
+         * BeanDefinition及其实现类
+         * https://www.cnblogs.com/lupeng2010/p/7028742.html
+         */
+        ClassPathScanningCandidateComponentProvider provider = new ClassPathScanningCandidateComponentProvider(true);
+        Set<BeanDefinition> definitionSet = provider.findCandidateComponents("org.practice.spring.domain2");
+        System.out.println(definitionSet.size());
+        Iterator iterator = definitionSet.iterator();
+        while (iterator.hasNext()) {
+            BeanDefinition beanDefinition = (BeanDefinition) iterator.next();
+            ((XmlBeanFactory) xmlFactory).registerBeanDefinition("student", beanDefinition);
+        }
+        if (((XmlBeanFactory) xmlFactory).containsBeanDefinition("student")) {
+            Student student = (Student) xmlFactory.getBean("student");
+            System.out.println(student.getStudentId());
+        }
+
+        /**
+         * 查看BeanDefinitionRegistry中注册的BeanDefinition
+         * Spring BeanDefinitionRegistry
+         * https://blog.csdn.net/chs007chs/article/details/78614332
+         */
+        String[] beanDefinitionNames = ((XmlBeanFactory) xmlFactory).getBeanDefinitionNames();
+        System.out.println(beanDefinitionNames.length);
+    }
+
+    /**
+     * TODO: PropertyPlaceholderConfigurer
+     */
+    public static void beanFactoryPostProcessor() {
+        //初始化BeanFactory
+        Resource resource = new ClassPathResource("spring-context.xml");
+        Resource properties = new ClassPathResource("config.properties");
+        ConfigurableListableBeanFactory clBeanFactory = new XmlBeanFactory(resource);
+        //
+        //User user1 = (User) clBeanFactory.getBean("user_config");
+        //System.out.println(user1.getIid());
+
+        //初始化BeanFactory+BeanFactoryPostProcessor
+        PropertyPlaceholderConfigurer ppConfigurer = new PropertyPlaceholderConfigurer();
+        ppConfigurer.setLocation(properties);
+        ppConfigurer.postProcessBeanFactory(clBeanFactory);
+        User user2 = (User) clBeanFactory.getBean("user_config");
+        System.out.println(user2.getIid());
+
+        //ApplicationContext
+        ApplicationContext classpathXml = new ClassPathXmlApplicationContext("spring-context.xml");
+        User user3 = (User) classpathXml.getBean("user_config");
+        User user4 = classpathXml.getBean("user_config", User.class);
+        System.out.println(user3.getIid());
+        System.out.println(user4.getIid());
     }
 
     /**
@@ -146,6 +186,12 @@ public class IocContainer {
             ApplicationContext classpathXml = new ClassPathXmlApplicationContext("spring-context.xml");
             User user2 = (User) classpathXml.getBean("user");
             System.out.println(user2.getIid());
+
+            //查看容器中注册的BeanDefinition
+            //https://blog.csdn.net/chengjunhua19890809/article/details/77981839
+            String[] beanDefinitionNames = classpathXml.getBeanDefinitionNames();
+            System.out.println(beanDefinitionNames.length);
+
             ((ClassPathXmlApplicationContext) classpathXml).close();
         } catch (Exception e) {
             e.printStackTrace();

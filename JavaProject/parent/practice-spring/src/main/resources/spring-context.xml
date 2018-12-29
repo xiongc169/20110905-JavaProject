@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
 
-    <bean id="user" class="org.practice.spring.domain.User" lazy-init="false" init-method="init" destroy-method="destroy">
-        <property name="iid" value="20180807180230"></property>
+    <bean id="user" class="org.practice.spring.domain.User" lazy-init="false" init-method="init"
+          destroy-method="destroy">
+        <property name="iid" value="20180807180230_iid"></property>
+        <property name="userNo" value="20180807180230_userNo"></property>
+        <property name="name" value="20180807180230_name"></property>
+        <property name="orgNo" value="20180807180230_orgNo"></property>
+        <property name="orgName" value="20180807180230_orgName"></property>
+    </bean>
+
+    <bean id="user_config" class="org.practice.spring.domain.User" lazy-init="false" init-method="init"
+          destroy-method="destroy">
+        <property name="iid" value="${iid}"></property>
+        <property name="userNo" value="${userNo}"></property>
+        <property name="name" value="${name}"></property>
+        <property name="orgNo" value="${orgNo}"></property>
+        <property name="orgName" value="${orgName}"></property>
     </bean>
 
     <bean id="customer" class="org.practice.spring.domain.Customer" autowire="byName">
@@ -23,13 +36,24 @@
         <property name="carModelName" value="carModelName01"></property>
     </bean>
 
-    <!--注解启动组件-->
-    <!--<context:annotation-config>不但把 AutowiredAnnotationBeanPostProcessor、CommonAnnotationBeanPostProcessor 注册到容器，
-    同时还把 PersistenceAnnotationBeanPostProcessor、RequiredAnnotationBeanPostProcessor 一并进行注册-->
+    <!--ApplicationContext容器中会自动替换，BeanFactory容器中需手动配置-->
+    <!--BeanFactoryPostProcessor，注意与下面的BeanPostProcessor区别-->
+    <bean id="propertyPlaceholderConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location">
+            <value>classpath:config.properties</value>
+        </property>
+    </bean>
+
+    <!--启动注解，@Autowired、@Qualifier | @Resource、@PostConstruct、@PreDestroy等注解变为可用-->
+    <!--<context:annotation-config> 不但把 AutowiredAnnotationBeanPostProcessor、CommonAnnotationBeanPostProcessor 注册到容器，同时还把 PersistenceAnnotationBeanPostProcessor、RequiredAnnotationBeanPostProcessor 一并注册-->
+    <!--优化了Bean之间依赖关系的配置：从XML配置改进为注解配置-->
     <context:annotation-config></context:annotation-config>
 
-    <!--扫描组件-->
+    <!--启动注解，@Component、@Repository、@Service、@Controller等注解变为可用-->
     <!--<context:component-scan>将 AutowiredAnnotationBeanPostProcessor、CommonAnnotationBeanPostProcessor 一并注册到了容器中-->
+    <!--优化了Bean的定义：从XML中定义改进为注解定义-->
     <!--<context:component-scan base-package="org.practice.spring.domain"></context:component-scan>-->
     <context:component-scan base-package="org.practice.spring.domain2"></context:component-scan>
+
 </beans>

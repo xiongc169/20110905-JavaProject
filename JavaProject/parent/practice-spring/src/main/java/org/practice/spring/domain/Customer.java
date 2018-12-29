@@ -1,6 +1,7 @@
 package org.practice.spring.domain;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
@@ -17,7 +18,8 @@ public class Customer {
 
     private String sex;
 
-    @Autowired
+    @Autowired(required = false)
+    @Qualifier("car")
     private Car car;
 
     public Customer() {

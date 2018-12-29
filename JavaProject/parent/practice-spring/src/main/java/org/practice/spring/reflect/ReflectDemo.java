@@ -27,9 +27,12 @@ public class ReflectDemo {
     public static void main(String[] args) {
 
         reflectDemo();
-        annationTest();
+        annotationTest();
     }
 
+    /**
+     * 反射
+     */
     public static void reflectDemo() {
         try {
             // 1、获取Class实例
@@ -77,7 +80,7 @@ public class ReflectDemo {
     /**
      * 反射获取注解信息
      */
-    public static void annationTest() {
+    public static void annotationTest() {
         Class utilClz = User.class;
         ClassLoader loader = utilClz.getClassLoader();
         Method[] methods = utilClz.getMethods();
