@@ -1,31 +1,40 @@
 package org.practice.spring.proxy.ch03aop;
 
-import java.lang.reflect.Method;
-
 import org.practice.spring.proxy.api.ICalculator;
 import org.practice.spring.proxy.ch01static.CalculatorImpl;
-import org.practice.spring.proxy.ch03aop.advice.AfterReturnAdvice;
+import org.practice.spring.proxy.ch03aop.p01advice.AfterAdvice;
 import org.springframework.aop.MethodBeforeAdvice;
 import org.springframework.aop.framework.ProxyFactory;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.lang.reflect.Method;
 
 /**
  * @author yoong
  *
- * @desc Spring学习总结（二）——静态代理、JDK与CGLIB动态代理、AOP+IoC
- *      PS：各种通知：前置通知、后置通知(3类)、环绕通知 <br>
- *      http://www.cnblogs.com/best/p/5679656.html
+ * @desc Spring AOP详解
+ *      PS：Spring中AOP代理由Spring的IOC容器负责生成、管理，其依赖关系也由IOC容器负责管理。
+ *      http://www.cnblogs.com/hongwz/p/5764917.html
+ *      http://www.cnblogs.com/xrq730/p/4919025.html
  *
  * @date 2018年8月20日
  */
-public class App {
+public class AOPContainer {
 
     /**
+     * 入口函数
+     *
      * @param args
      */
     public static void main(String[] args) {
-        weaverTest();
-
+        //测试
+        try {
+            weaverTest();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
+
 
     /**
      * SpringAPI手动创建代理对象——ProxyFactory <br>
@@ -47,7 +56,7 @@ public class App {
                 }
             });
             // 织入通知，后置通知
-            weaver.addAdvice(new AfterReturnAdvice());
+            weaver.addAdvice(new AfterAdvice());
             // 代理对象
             ICalculator calcProxy = (ICalculator) weaver.getProxy();
             int result = calcProxy.add(12, 23);
@@ -56,4 +65,5 @@ public class App {
             ex.printStackTrace();
         }
     }
+
 }

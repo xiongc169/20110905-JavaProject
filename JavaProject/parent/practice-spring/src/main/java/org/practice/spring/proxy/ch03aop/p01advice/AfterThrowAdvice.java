@@ -1,4 +1,4 @@
-package org.practice.spring.proxy.ch03aop.advice;
+package org.practice.spring.proxy.ch03aop.p01advice;
 
 import org.springframework.aop.ThrowsAdvice;
 
