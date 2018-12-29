@@ -21,9 +21,6 @@ public class CglibProxy implements MethodInterceptor {
 
     private Enhancer enhancer = new Enhancer();
 
-    public CglibProxy() {
-    }
-
     /**
      * 通过字节码技术，动态创建子类实例
      *

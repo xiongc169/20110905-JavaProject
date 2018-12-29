@@ -1,8 +1,11 @@
 package org.practice.spring.proxy.ch02dynamic;
 
 import org.practice.spring.proxy.api.ICalculator;
+import org.practice.spring.proxy.api.ISubject;
 import org.practice.spring.proxy.ch01static.CalculatorImpl;
 import org.practice.spring.proxy.ch01static.SubjectImpl;
+import org.practice.spring.proxy.ch02dynamic.accidence.MyCglibProxy;
+import org.practice.spring.proxy.ch02dynamic.accidence.MyJdkProxy;
 import org.practice.spring.proxy.ch02dynamic.cglib01.CglibProxy;
 import org.practice.spring.proxy.ch02dynamic.summary.JdkProxy;
 
@@ -22,6 +25,8 @@ import org.practice.spring.proxy.ch02dynamic.summary.JdkProxy;
  *      http://www.cnblogs.com/jqyp/archive/2010/08/20/1805041.html
  * <p>
  *      两个InvocationHandler接口：java.lang.reflect.InvocationHandler、org.springframework.cglib.proxy.InvocationHandler
+ *      JDK动态代理：InvocationHandler + Proxy
+ *      CGLIB动态代理：MethodInterceptor + Enhancer
  *
  * @date 2016年8月9日
  */
@@ -33,9 +38,14 @@ public class DynamicApp {
      * @param args
      */
     public static void main(String[] args) {
-        cglibProxyTest();
-        jdkProxyTest2();
-        cglibProxyTest2();
+        try {
+            cglibProxyTest();
+            jdkProxyTest2();
+            cglibProxyTest2();
+            accidenceTest();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
@@ -82,5 +92,21 @@ public class DynamicApp {
             String msg = ex.getMessage();
             System.out.println(msg);
         }
+    }
+
+    /**
+     * by myself - 2018年12月29日14:08:11
+     */
+    public static void accidenceTest() {
+        ISubject subject = new SubjectImpl();
+
+        MyJdkProxy myJdkProxy = new MyJdkProxy();
+        MyCglibProxy myCglibProxy = new MyCglibProxy();
+
+        ISubject subjectJdkProxy = (ISubject) myJdkProxy.getJdkProxy(subject);
+        ISubject subjectCglibProxy = (ISubject) myCglibProxy.getCglibProxy(subject);
+
+        subjectJdkProxy.say("myJdkProxy", 123);
+        subjectCglibProxy.say("myCglibProxy", 321);
     }
 }

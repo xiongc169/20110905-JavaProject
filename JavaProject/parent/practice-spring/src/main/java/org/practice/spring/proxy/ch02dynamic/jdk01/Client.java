@@ -39,6 +39,7 @@ public class Client {
             ISubject subject = new SubjectImpl();
             InvocationHandler handler = new JdkProxy(subject);
             ISubject subjectProxy = (ISubject) Proxy.newProxyInstance(handler.getClass().getClassLoader(), subject.getClass().getInterfaces(), handler);
+            //ISubject subjectProxy = (ISubject) Proxy.newProxyInstance(subject.getClass().getClassLoader(), subject.getClass().getInterfaces(), handler);//效果同上
             subjectProxy.say("JDK Proxy", 28);
 
             String name = subjectProxy.getClass().getName();
