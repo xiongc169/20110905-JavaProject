@@ -34,7 +34,7 @@ public class SendEmailTask implements Runnable {
 
 			String hostName = "smtp.sina.com";
 			final String mailUsername = "beartony1991";// 用户名
-			final String mailPassword = "tony&&3045184";// 密码 需要向信息中心申请
+			final String mailPassword = "tony*********";// 密码 需要向信息中心申请
 			// MailSend mail = new MailSend();
 			Properties props = System.getProperties();
 			props.put("mail.smtp.host", hostName);

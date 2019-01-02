@@ -2,32 +2,32 @@ package org.practice.model;
 
 public class Account {
 
-	private String accountNo;
+    private String accountNo;
 
-	private double balance;
+    private double balance;
 
-	public Account() {
+    public Account() {
 
-	}
+    }
 
-	public Account(String accountNo, double balance) {
-		this.accountNo = accountNo;
-		this.balance = balance;
-	}
+    public Account(String accountNo, double balance) {
+        this.accountNo = accountNo;
+        this.balance = balance;
+    }
 
-	public String getAccountNo() {
-		return accountNo;
-	}
+    public String getAccountNo() {
+        return accountNo;
+    }
 
-	public void setAccountNo(String accountNo) {
-		this.accountNo = accountNo;
-	}
+    public void setAccountNo(String accountNo) {
+        this.accountNo = accountNo;
+    }
 
-	public double getBalance() {
-		return balance;
-	}
+    public double getBalance() {
+        return balance;
+    }
 
-	public void setBalance(double balance) {
-		this.balance = balance;
-	}
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
 }

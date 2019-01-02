@@ -10,11 +10,13 @@ package org.practice;
 public class ThreadApp {
 
 	/**
-	 * @param args
+	 * 入口函数
 	 *
+	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+
+		System.out.println(args.length);
 
 	}
 
