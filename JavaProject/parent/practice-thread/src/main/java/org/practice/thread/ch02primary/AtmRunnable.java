@@ -6,9 +6,9 @@ public class AtmRunnable implements Runnable {
 
     private Account account;
 
-    private double drawAmount;
+    private Integer drawAmount;
 
-    public AtmRunnable(Account account, double drawAmount) {
+    public AtmRunnable(Account account, Integer drawAmount) {
         super();
         this.account = account;
         this.drawAmount = drawAmount;
@@ -19,7 +19,7 @@ public class AtmRunnable implements Runnable {
             System.out.println("开始取钱...");
             synchronized (account) {
                 if (account.getBalance() >= drawAmount) { // 1
-                    double balance = account.getBalance() - drawAmount;
+                    Integer balance = account.getBalance() - drawAmount;
                     account.setBalance(balance);
                     System.out.println("取钱成功， 取钱为：" + drawAmount + "余额为：" + balance);
                 } else {

@@ -1,7 +1,8 @@
 package org.practice.thread2;
 
 /**
- * 《Java并发编程实战手册》
+ * 《Java 7并发编程实战手册》
+ * https://www.jb51.net/books/404868.html
  *
  * @author Administrator
  */
