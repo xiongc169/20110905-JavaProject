@@ -29,6 +29,7 @@ public class App {
 
         try {
             Person p = (Person) ft.get();
+            System.out.println("inputCallableTest: " + p.getName());
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -59,10 +60,8 @@ public class App {
                 System.out.println("返回值不为空");
             }
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (ExecutionException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         pool.shutdown();
