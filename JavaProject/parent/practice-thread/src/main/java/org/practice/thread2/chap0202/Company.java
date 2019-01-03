@@ -1,4 +1,4 @@
-package org.practice.thread2.chap0201;
+package org.practice.thread2.chap0202;
 
 public class Company implements Runnable {
 

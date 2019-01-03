@@ -2,8 +2,16 @@ package org.practice.thread2.chap0104;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ *
+ */
 public class App {
 
+	/**
+	 * 入口函数
+	 *
+	 * @param args
+	 */
 	public static void main(String[] args) {
 
 		PrimeTask primeTask = new PrimeTask(1);

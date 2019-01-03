@@ -19,7 +19,6 @@ public class MyThreadFactory implements ThreadFactory {
 	}
 
 	public Thread newThread(Runnable r) {
-
 		Thread thread = new Thread(r);
 		count++;
 		states.add(String.format("%d \n", thread.getId()));
