@@ -23,8 +23,8 @@ public class App {
      */
     public static void main(String[] args) {
         try {
-            //processBuilder();
-            //runtime();
+            processBuilder();
+            runtime();
             callableTest();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -75,11 +75,15 @@ public class App {
         //第一种方式：Callable+Executor
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Future<Object> future = executor.submit(callableTask);
+        boolean isDone = future.isDone();
+        System.out.println("callableTest isDone: " + isDone);
         Object result = future.get();
         System.out.println("callableTest result: " + result);
 
         //第二种方式：Callable+Thread
         FutureTask futureTask = new FutureTask(callableTask);
+        boolean isDone2 = futureTask.isDone();
+        System.out.println("callableTest isDone2: " + isDone2);
         Thread thread = new Thread(futureTask);
         thread.start();
         Object result2 = futureTask.get();

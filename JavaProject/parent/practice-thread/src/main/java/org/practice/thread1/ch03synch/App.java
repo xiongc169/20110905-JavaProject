@@ -1,5 +1,9 @@
 package org.practice.thread1.ch03synch;
 
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  * @author yoong
  *
@@ -13,33 +17,135 @@ package org.practice.thread1.ch03synch;
  */
 public class App {
 
-	/**
-	 * @param args
-	 *
-	 */
-	public static void main(String[] args) {
-		outputTest();
-	}
+    /**
+     * 入口函数
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        //测试代码
+        try {
+            //insertTest();
+            //synchronizedInsert();
+            //lockInsert();
 
-	public static void outputTest() {
-		InsertData output = new InsertData();
+            //volatile测试
+            App app = new App();
+            volatileTest(app);
+            while (Thread.activeCount() > 1) {
+                //保证前面的线程都执行完
+                System.out.println("Thread.activeCount(): " + Thread.activeCount());
+                Thread.yield();
+            }
+            System.out.println(app.count);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
-		Thread a = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				output.insert4Lock(Thread.currentThread());
-			}
-		});
+    /**
+     * 普通插入
+     */
+    public static void insertTest() {
+        InsertData output = new InsertData();
+        Thread threadA = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                output.insert(Thread.currentThread());
+            }
+        });
+        Thread threadB = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                output.insert(Thread.currentThread());
+            }
+        });
 
-		Thread b = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				output.insert4Lock(Thread.currentThread());
-			}
-		});
+        threadA.start();
+        threadB.start();
+    }
 
-		a.start();
-		b.start();
+    /**
+     * 同步插入(synchronized方法、代码块)
+     */
+    public static void synchronizedInsert() {
+        InsertData output = new InsertData();
+        Thread threadA = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                output.insert4Synchronized(Thread.currentThread());
+            }
+        });
+        Thread threadB = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                output.insert4Synchronized(Thread.currentThread());
+            }
+        });
 
-	}
+        threadA.start();
+        threadB.start();
+    }
+
+    /**
+     * 同步插入(lock)
+     */
+    public static void lockInsert() {
+        InsertData output = new InsertData();
+        Thread threadA = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                output.insert4Lock(Thread.currentThread());
+            }
+        });
+        Thread threadB = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                output.insert4Lock(Thread.currentThread());
+            }
+        });
+
+        threadA.start();
+        threadB.start();
+    }
+
+    /**
+     * Java并发编程：volatile关键字解析
+     * https://www.cnblogs.com/dolphin0520/p/3920373.html
+     */
+    private volatile int count = 0;
+
+    private Lock lock = new ReentrantLock();
+
+//    private AtomicInteger count = new AtomicInteger();
+
+    /**
+     * synchronized、Lock、AtomicInteger
+     */
+    private void increase() {
+        count++;
+//        try {
+//            lock.lock();
+//            count++;
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        } finally {
+//            lock.unlock();
+//        }
+//        count.getAndIncrement();
+    }
+
+    public static void volatileTest(App app) {
+        for (int i = 0; i < 10; i++) {
+            Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    for (int j = 0; j < 100; j++) {
+                        app.increase();
+                    }
+                }
+            });
+            thread.start();
+        }
+    }
 }
