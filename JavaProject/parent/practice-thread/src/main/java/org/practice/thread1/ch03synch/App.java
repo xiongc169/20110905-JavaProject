@@ -11,6 +11,8 @@ import java.util.concurrent.locks.ReentrantLock;
  *       http://www.cnblogs.com/dolphin0520/p/3923737.html <br>
  *       Java并发编程：Lock <br>
  *       http://www.cnblogs.com/dolphin0520/p/3923167.html
+ *       Java并发编程：volatile关键字解析
+ *       https://www.cnblogs.com/dolphin0520/p/3920373.html
  *
  * @date 2018年8月29日
  *
@@ -115,7 +117,7 @@ public class App {
      */
     private volatile int count = 0;
 
-    private Lock lock = new ReentrantLock();
+//    private Lock lock = new ReentrantLock();
 
 //    private AtomicInteger count = new AtomicInteger();
 
@@ -123,7 +125,9 @@ public class App {
      * synchronized、Lock、AtomicInteger
      */
     private void increase() {
+        //情形一：未同步、synchronized同步
         count++;
+        //情形二：lock同步
 //        try {
 //            lock.lock();
 //            count++;
@@ -132,6 +136,7 @@ public class App {
 //        } finally {
 //            lock.unlock();
 //        }
+        //情形三：AtomicInteger同步
 //        count.getAndIncrement();
     }
 

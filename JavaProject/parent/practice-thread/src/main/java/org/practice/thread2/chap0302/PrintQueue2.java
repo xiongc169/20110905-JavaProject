@@ -1,13 +1,24 @@
 package org.practice.thread2.chap0302;
 
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
-public class PrintQueue {
+public class PrintQueue2 {
+
+    private boolean[] freePrinters;
 
     private final Semaphore semaphore;
 
-    public PrintQueue() {
-        semaphore = new Semaphore(1);
+    private Lock lockPrinters;
+
+    public PrintQueue2() {
+        semaphore = new Semaphore(3);
+        freePrinters = new boolean[3];
+        for (int i = 0; i < 3; i++) {
+            freePrinters[i] = true;
+        }
+        lockPrinters = new ReentrantLock();
     }
 
     public void printJob(Thread currentThread) {
