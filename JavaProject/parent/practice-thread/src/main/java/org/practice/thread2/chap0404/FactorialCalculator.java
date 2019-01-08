@@ -5,28 +5,27 @@ import java.util.concurrent.TimeUnit;
 
 public class FactorialCalculator implements Callable<Integer> {
 
-	private Integer num;
+    private Integer num;
 
-	public FactorialCalculator(Integer number) {
-		this.num = number;
-	}
+    public FactorialCalculator(Integer number) {
+        this.num = number;
+    }
 
-	public Integer call() throws Exception {
+    public Integer call() throws Exception {
 
-		int result = 1;
+        int result = 1;
 
-		if (num == 0 || num == 1)
-			return result;
+        if (num == 0 || num == 1)
+            return 1;
 
-		for (int i = 1; i <= num; i++) {
-			result = result * i;
-		}
+        for (int i = 1; i <= num; i++) {
+            result = result * i;
+        }
 
-		TimeUnit.SECONDS.sleep(3);
-		// System.out.printf("Thread: %s, Result: %d \n",
-		// Thread.currentThread().getName(), result);
+        TimeUnit.SECONDS.sleep(3);
+        System.out.printf("Thread: %s, Result: %d \n", Thread.currentThread().getName(), result);
 
-		return result;
-	}
+        return result;
+    }
 
 }

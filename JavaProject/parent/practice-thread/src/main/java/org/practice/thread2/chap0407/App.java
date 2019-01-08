@@ -1,0 +1,64 @@
+package org.practice.thread2.chap0407;
+
+import java.util.concurrent.*;
+
+public class App {
+
+    /**
+     * 入口函数
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        try {
+            //delayExecutor();
+            //regularExecutor();
+            cancelExecutor();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * 4.7、在执行器中延时执行任务
+     */
+    private static void delayExecutor() throws Exception {
+
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(4);
+        for (int i = 0; i < 5; i++) {
+            Task task = new Task("Task-" + i);
+            executor.schedule(task, i + 1, TimeUnit.SECONDS);
+        }
+        executor.shutdown();
+        //调用执行器的awaitTermination()方法，等待所有任务结束
+        executor.awaitTermination(1, TimeUnit.HOURS);
+        System.out.println("Task Finished!");
+    }
+
+    /**
+     * 4.8、在执行器中周期性执行任务
+     */
+    private static void regularExecutor() throws Exception {
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(4);
+        RunnableTask task = new RunnableTask("Task-" + 1);
+        executor.scheduleAtFixedRate(task, 1, 2, TimeUnit.SECONDS);
+
+        TimeUnit.SECONDS.sleep(10);
+        executor.shutdown();
+        System.out.println("Task Finished!");
+    }
+
+    /**
+     * 4.9、在执行器中取消任务
+     */
+    private static void cancelExecutor() throws Exception {
+        ExecutorService executor = Executors.newFixedThreadPool(4);
+        Task task = new Task("Task-" + 1);
+        Future<String> future = executor.submit(task);
+        TimeUnit.SECONDS.sleep(3);
+        boolean isCanceled = future.cancel(true);
+        System.out.println("isCanceled: " + isCanceled);
+        executor.shutdown();
+        System.out.println("Task Finished!");
+    }
+}
