@@ -14,9 +14,10 @@ public class App {
      * @param args
      */
     public static void main(String[] args) {
-
-        System.out.println(args.length);
-
+        try {
+            System.out.println(args.length);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
-
 }
