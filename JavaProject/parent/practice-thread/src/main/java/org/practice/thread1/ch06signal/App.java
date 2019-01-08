@@ -16,6 +16,11 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class App {
 
+	/**
+	 * 入口函数
+	 *
+	 * @param args
+	 */
 	public static void main(String[] args) {
 
 		Lock lock = new ReentrantLock();
