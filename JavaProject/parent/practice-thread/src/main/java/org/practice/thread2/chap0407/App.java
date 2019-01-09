@@ -41,7 +41,8 @@ public class App {
     private static void regularExecutor() throws Exception {
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(4);
         RunnableTask task = new RunnableTask("Task-" + 1);
-        executor.scheduleAtFixedRate(task, 1, 2, TimeUnit.SECONDS);
+        ScheduledFuture future = executor.scheduleAtFixedRate(task, 1, 2, TimeUnit.SECONDS);
+        System.out.println("future.isDone(): " + future.isDone());
 
         TimeUnit.SECONDS.sleep(10);
         executor.shutdown();
@@ -59,6 +60,26 @@ public class App {
         boolean isCanceled = future.cancel(true);
         System.out.println("isCanceled: " + isCanceled);
         executor.shutdown();
+        System.out.println("Task Finished!");
+    }
+
+    /**
+     * 4.10、在执行器中控制任务的完成
+     */
+    private static void done() throws Exception {
+        ExecutorService executor = Executors.newFixedThreadPool(4);
+        ResultTask[] resultTasks = new ResultTask[5];
+        for (int i = 0; i < 5; i++) {
+            Task task = new Task("Task-" + i);
+            resultTasks[i] = new ResultTask(task);
+            executor.submit(resultTasks[i]);
+        }
+
+        TimeUnit.SECONDS.sleep(3);
+
+        for (int i = 0; i < 5; i++) {
+            resultTasks[i].cancel(true);
+        }
         System.out.println("Task Finished!");
     }
 }

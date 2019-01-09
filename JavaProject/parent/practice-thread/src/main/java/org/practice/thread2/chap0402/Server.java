@@ -12,7 +12,7 @@ public class Server {
     public Server() {
         //创建ThreadPoolExecutor方法一：构造函数
         //threadPool = new ThreadPoolExecutor(1, 1, 1000l, TimeUnit.MILLISECONDS, null);
-        //创建ThreadPoolExecutor方法二：Executors静态方法
+        //创建ThreadPoolExecutor方法二：Executors工厂类的静态方法
         threadPool = (ThreadPoolExecutor) Executors.newCachedThreadPool();
         //4.3、创建固定大小的线程执行器
         //threadPool = (ThreadPoolExecutor) Executors.newFixedThreadPool(5);
