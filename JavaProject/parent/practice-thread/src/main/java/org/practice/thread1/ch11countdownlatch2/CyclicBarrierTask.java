@@ -20,7 +20,6 @@ public class CyclicBarrierTask implements Runnable {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} catch (BrokenBarrierException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

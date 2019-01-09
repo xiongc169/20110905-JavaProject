@@ -18,7 +18,7 @@ public class Participant implements Runnable {
         this.latch = latch;
     }
 
-    public void arrived(){
+    public synchronized void arrived() {
         System.out.println(Thread.currentThread().getName() + " Arrived");
         latch.countDown();
     }
@@ -26,8 +26,8 @@ public class Participant implements Runnable {
     @Override
     public void run() {
         try {
-            Thread.sleep(2000);
-            this.arrived();
+            Thread.sleep(4000);
+            arrived();
         } catch (Exception ex) {
             ex.printStackTrace();
         }

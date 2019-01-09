@@ -1,6 +1,7 @@
 package org.practice.thread2.chap0304;
 
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author yoong
@@ -24,13 +25,14 @@ public class App {
     }
 
     public static void startMeeting() throws Exception {
-        CountDownLatch latch = new CountDownLatch(9);
+        System.out.println(Thread.currentThread().getName() + " Start Waiting...");
+        CountDownLatch latch = new CountDownLatch(10);
         for (int i = 0; i < 10; i++) {
             Participant participant = new Participant(latch);
-            Thread thread = new Thread(participant);
+            Thread thread = new Thread(participant, "Thread-" + i);
             thread.start();
         }
-        System.out.println(Thread.currentThread().getName() + " Start Waiting...");
+        System.out.println(Thread.currentThread().getName() + " await...");
         latch.await();
         System.out.println(Thread.currentThread().getName() + " End Waiting!");
     }
