@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @author yoong
+ *
  * @desc PushController.java
+ *
  * @date 2018年8月16日
  */
 @Controller
@@ -69,6 +71,4 @@ public class PushController {
             return "Push Failure  " + now;
         }
     }
-
-
 }

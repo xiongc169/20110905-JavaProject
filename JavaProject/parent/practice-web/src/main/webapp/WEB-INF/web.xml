@@ -15,7 +15,7 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
-	<!-- The front c ller of this Spring Web application, responsible for handling 
+	<!-- The front controller of this Spring Web application, responsible for handling
 		all application requests -->
 	<servlet>
 		<servlet-name>springDispatcherServlet</servlet-name>

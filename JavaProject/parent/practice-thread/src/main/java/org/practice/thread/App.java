@@ -1,5 +1,6 @@
 package org.practice.thread;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -9,41 +10,47 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
- * 
  * @author chaoxiong
  * @since 2015-10-19 15:45:45
- * 
- *        线程如何返回值； 线程结束如何回调； 线程间如何通信； 线程间共享变量； 线程安全；
+ * <p>
  */
 public class App {
 
-	public static void main(String[] args) {
+    //HH表示24小时制 如果换成hh表示12小时制
+    private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-		// 最后的aa表示“上午”或“下午” HH表示24小时制 如果换成hh表示12小时制
-		// SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		// String now = sdf.format(new Date());
-		// System.out.println(now);
+    /**
+     * 入口函数
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        try {
+            sendEmail();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
-		List<String> destMailList = new ArrayList<String>();
-		destMailList.add("gcxrnf81923@chacuo.net");
+    /**
+     * 发邮件
+     */
+    private static void sendEmail() {
+        List<String> receivers = new ArrayList<String>();
+        receivers.add("xiong****@163.com");
+        ExecutorService pool = Executors.newFixedThreadPool(10);
 
-		ExecutorService pool = Executors.newFixedThreadPool(10);
-
-		long begin = System.currentTimeMillis();
-		System.out.println("begin :" + begin);
-
-		for (int i = 0; i < 20; i++) {
-			SendEmailTask sendEmail = new SendEmailTask(destMailList);
-
-			sendEmail.run(); // 1、调用run方法
-
-			Thread thread = new Thread(sendEmail); // 2、启动线程
-			thread.start();
-
-			pool.execute(sendEmail); // 3、线程池启动线程
-		}
-
-		long end = System.currentTimeMillis();
-		System.out.println("end :" + end);
-	}
+        System.out.println(format.format(new Date()) + " Begin...");
+        for (int i = 0; i < 10; i++) {
+            SendEmailTask sendEmail = new SendEmailTask(receivers);
+            // 1、调用run方法
+            //sendEmail.run();
+            // 2、启动线程
+            //Thread thread = new Thread(sendEmail);
+            //thread.start();
+            // 3、线程池启动线程
+            pool.execute(sendEmail);
+        }
+        System.out.println(format.format(new Date()) + " End!");
+    }
 }

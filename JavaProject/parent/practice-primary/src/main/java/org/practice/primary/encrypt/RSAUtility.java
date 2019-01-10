@@ -34,12 +34,10 @@ public class RSAUtility {
 	 * @date 2016年5月27日 下午4:42:51
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		try {
 			String result = encryptPublic("!25sAqe849qwezd", key);
 			System.out.println(result);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -130,7 +128,6 @@ public class RSAUtility {
 		try {
 			bytes = decoder.decodeBuffer(str);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return bytes;

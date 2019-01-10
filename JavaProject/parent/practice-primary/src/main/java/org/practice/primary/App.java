@@ -6,8 +6,10 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.practice.primary.init_order.DeriveClass;
 import org.practice.primary.domain.Dictionary;
 import org.practice.primary.domain.Student;
+import org.practice.primary.utility.CollectionUtility;
 
 /**
  * @author yoong
@@ -21,14 +23,37 @@ import org.practice.primary.domain.Student;
  */
 public class App {
 
+	/**
+	 * 入口函数
+	 *
+	 * @param args
+	 */
 	public static void main(String[] args) {
-
-		// test();
+		try {
+			initOrderTest();
+			hashCodeTest();
+			setDistinctTest();
+			getTimestamp();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
 	}
 
-	public static void test() {
-		int a = 0;
+	/**
+	 * 静态变量、静态代码块、变量、代码块、构造函数的执行顺序
+	 */
+	private static void initOrderTest() {
+		DeriveClass deriveClass = new DeriveClass();
+		DeriveClass.staticSay();
+		deriveClass.say();
+	}
 
+	/**
+	 * hashCode测试
+	 * java对象克隆以及深拷贝和浅拷贝
+	 * http://www.cnblogs.com/xuanxufeng/p/6558330.html
+	 */
+	public static void hashCodeTest() {
 		Dictionary dict = new Dictionary();
 		int hashCode = dict.hashCode();
 		System.out.println("hashCode " + hashCode);
@@ -37,8 +62,39 @@ public class App {
 		int hashCode2 = dict2.hashCode();
 		System.out.println("hashCode2 " + hashCode2);
 
-		// CollectionUtility.setDistinct();
-		System.out.println(a);
+		Dictionary dict3 = new Dictionary("12", "12");
+		int hashCode3 = dict3.hashCode();
+		System.out.println("hashCode3 " + hashCode3);
+
+		//Dictionary dict4 = dict3;
+		Dictionary dict4 = (Dictionary) dict3.clone();
+		int hashCode4 = dict4.hashCode();
+		System.out.println("hashCode4 " + hashCode4);
+	}
+
+	/**
+	 * @desc https://blog.csdn.net/miqi770/article/details/8998517 <br>
+	 * 		 利用Java Set 去除重复object，重写equals\hashcode方法
+	 * @date 2014年4月2日
+	 * @version 1.0
+	 */
+	public static void setDistinctTest() {
+		Set<Student> stuSet = new HashSet<Student>();
+		Student stu = new Student("id1", "name1", "sex1", 1);
+		Student stu2 = new Student("id1", "name1", "sex2", 2);
+		Student stu3 = new Student("id3", "name1", "sex3", 3);
+		Student stu4 = new Student("id4", "name1", "sex4", 4);
+
+		System.out.printf("%d ; %d ; %d ; %d \n", stu.hashCode(), stu2.hashCode(), stu3.hashCode(), stu4.hashCode());
+
+		stuSet.add(stu);
+		stuSet.add(stu2);
+		stuSet.add(stu3);
+		stuSet.add(stu4);
+
+		for (Student item : stuSet) {
+			System.out.printf("%s - %s - %s - %d\n", item.getId(), item.getName(), item.getSex(), item.getAge());
+		}
 	}
 
 	/**
@@ -69,31 +125,4 @@ public class App {
 		System.out.println(dateStr2);
 	}
 
-	/**
-	 * 
-	 * @description https://blog.csdn.net/miqi770/article/details/8998517 <br>
-	 *              利用Java Set 去除重复object，重写equals\hashcode方法
-	 * @date 2014年4月2日
-	 *
-	 * @version 1.0
-	 *
-	 */
-	public static void setTest() {
-		Set<Student> stuSet = new HashSet<Student>();
-		Student stu = new Student("id1", "name1", "sex1", 1);
-		Student stu2 = new Student("id2", "name1", "sex2", 2);
-		Student stu3 = new Student("id3", "name1", "sex3", 3);
-		Student stu4 = new Student("id4", "name1", "sex4", 4);
-
-		System.out.printf("%d ; %d ; %d ; %d \n", stu.hashCode(), stu2.hashCode(), stu3.hashCode(), stu4.hashCode());
-
-		stuSet.add(stu);
-		stuSet.add(stu2);
-		stuSet.add(stu3);
-		stuSet.add(stu4);
-
-		for (Student item : stuSet) {
-			System.out.printf("%s - %s - %s - %d\n", item.getId(), item.getName(), item.getSex(), item.getAge());
-		}
-	}
 }

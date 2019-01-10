@@ -10,7 +10,7 @@ import org.apache.zookeeper.ZooKeeper;
  * 
  * @author yoong
  *
- * @description ZooKeeperClient
+ * @desc ZooKeeperClient
  *              https://www.ibm.com/developerworks/cn/opensource/os-cn-zookeeper/
  *
  * @date 2017年8月2日
@@ -20,6 +20,11 @@ import org.apache.zookeeper.ZooKeeper;
  */
 public class ZooKeeperClient {
 
+	/**
+	 * 入口函数
+	 *
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		try {
 			operateZooKeeper();

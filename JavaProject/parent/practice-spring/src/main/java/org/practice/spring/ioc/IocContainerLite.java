@@ -1,10 +1,10 @@
-package org.practice.utility;
+package org.practice.spring.ioc;
 
-import org.practice.model.User;
+import org.practice.spring.domain.User;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
-public class IOCContainer {
+public class IocContainerLite {
 
 	/**
 	 * IOC容器测试类
@@ -19,11 +19,11 @@ public class IOCContainer {
 		try {
 			cpXmlContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 			User user = (User) cpXmlContext.getBean("user");
-			System.out.println(user.getName() + user.getAge());
+			System.out.println(user.getName() + user.getUserNo());
 
 			fsXmlContext = new FileSystemXmlApplicationContext("classpath:applicationContext.xml");
 			User user2 = (User) fsXmlContext.getBean("user");
-			System.out.println(user2.getName() + user2.getAge());
+			System.out.println(user2.getName() + user2.getUserNo());
 
 		} catch (Exception ex) {
 			String msg = ex.getMessage();
