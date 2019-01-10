@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Java并发编程：CountDownLatch、CyclicBarrier和Semaphore
@@ -20,14 +21,15 @@ public class MyCyclicBarrier {
      */
     public static void main(String[] args) {
         try {
-            Date dt = new Date();
-            final DateFormat df = new SimpleDateFormat("yyyyMMddhhmmss");
-            // String now = df.format(dt);
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            // String now = df.format(new Date());
             // System.out.println(now);
 
-            final CyclicBarrier barrier = new CyclicBarrier(3, new Runnable() {
+            //参数parties指让多少个线程或者任务等待至barrier状态；参数barrierAction为当这些线程都达到barrier状态时会执行的内容
+            //当四个线程都到达barrier状态后，会从四个线程中选择一个线程去执行barrierAction
+            CyclicBarrier barrier = new CyclicBarrier(3, new Runnable() {
                 public void run() {
-                    System.out.println(df.format(new Date()) + " This is Runnable Begin " + Thread.currentThread().getId() + " " + Thread.currentThread().getName());
+                    System.out.println(df.format(new Date()) + " CyclicBarrier run() " + Thread.currentThread().getId() + " " + Thread.currentThread().getName());
 
                 }
             });
@@ -35,12 +37,12 @@ public class MyCyclicBarrier {
             new Thread() {
                 public void run() {
                     try {
-                        System.out.println(df.format(new Date()) + " This is First Thread Begin " + Thread.currentThread().getId() + " " + Thread.currentThread().getName());
-                        Thread.sleep(4000);
+                        System.out.println(df.format(new Date()) + " First Thread Begin " + Thread.currentThread().getId() + " " + Thread.currentThread().getName());
+                        Thread.sleep(6000);
                         barrier.await();
-                        System.out.println(df.format(new Date()) + " This is First Thread End");
+                        System.out.println(df.format(new Date()) + " First Thread End");
                     } catch (Exception ex) {
-                        System.out.println(df.format(new Date()) + " This is First Thread Exception");
+                        System.out.println(df.format(new Date()) + " First Thread Exception");
                     }
                 }
             }.start();
@@ -48,21 +50,21 @@ public class MyCyclicBarrier {
             new Thread() {
                 public void run() {
                     try {
-                        System.out.println(df.format(new Date()) + " This is Second Thread Begin " + Thread.currentThread().getId() + " " + Thread.currentThread().getName());
+                        System.out.println(df.format(new Date()) + " Second Thread Begin " + Thread.currentThread().getId() + " " + Thread.currentThread().getName());
                         Thread.sleep(1000);
-                        System.out.println(df.format(new Date()) + " This is Second Thread End1");
+                        System.out.println(df.format(new Date()) + " Second Thread End1");
                         barrier.await();
-                        System.out.println(df.format(new Date()) + " This is Second Thread End2");
+                        System.out.println(df.format(new Date()) + " Second Thread End2");
                     } catch (Exception ex) {
-                        System.out.println(df.format(new Date()) + " This is Second Thread Exception");
+                        System.out.println(df.format(new Date()) + " Second Thread Exception");
                     }
                 }
             }.start();
 
-            System.out.println(df.format(new Date()) + " This is main Thread Begin " + Thread.currentThread().getId() + " " + Thread.currentThread().getName());
-            // latch.await();
+            System.out.println(df.format(new Date()) + " Main Thread Begin " + Thread.currentThread().getId() + " " + Thread.currentThread().getName());
             barrier.await();
-            System.out.println(df.format(new Date()) + " This is main Thread End " + Thread.currentThread().getId() + " " + Thread.currentThread().getName());
+            //barrier.await(10, TimeUnit.SECONDS);
+            System.out.println(df.format(new Date()) + " Main Thread End " + Thread.currentThread().getId() + " " + Thread.currentThread().getName());
         } catch (Exception ex) {
             ex.printStackTrace();
         }

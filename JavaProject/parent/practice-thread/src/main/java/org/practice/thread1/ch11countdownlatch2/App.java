@@ -27,6 +27,9 @@ public class App {
         }
     }
 
+    /**
+     * CountDownLatch 测试
+     */
     public static void countDown() {
         CountDownLatch latch = new CountDownLatch(3);
 
@@ -43,16 +46,19 @@ public class App {
         thread3.start();
 
         try {
-            System.out.printf("Main: %s Start \n", Thread.currentThread().getName());
+            System.out.printf("Main: %s Start... \n", Thread.currentThread().getName());
             latch.await();
-            System.out.printf("Main: %s End \n", Thread.currentThread().getName());
-        } catch (InterruptedException e) {
+            System.out.printf("Main: %s End! \n", Thread.currentThread().getName());
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * CyclicBarrier 测试
+     */
     public static void barrier() {
-        CyclicBarrier barrier = new CyclicBarrier(2);
+        CyclicBarrier barrier = new CyclicBarrier(3);
 
         CyclicBarrierTask task = new CyclicBarrierTask(barrier);
         CyclicBarrierTask task2 = new CyclicBarrierTask(barrier);
@@ -65,9 +71,11 @@ public class App {
         thread.start();
         thread2.start();
         thread3.start();
-
     }
 
+    /**
+     * Semaphore 测试
+     */
     public static void semaphore() {
         Semaphore semaphore = new Semaphore(2);
 
@@ -81,11 +89,12 @@ public class App {
 
         thread.start();
         try {
-            Thread.sleep(1000);
+            Thread.sleep(100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         int permits = semaphore.availablePermits();
+        System.out.printf("semaphore.availablePermits(): %d \n", permits);
 
         thread2.start();
         thread3.start();

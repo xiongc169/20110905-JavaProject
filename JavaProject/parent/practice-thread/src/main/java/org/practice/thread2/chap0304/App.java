@@ -25,7 +25,7 @@ public class App {
     }
 
     public static void startMeeting() throws Exception {
-        System.out.println(Thread.currentThread().getName() + " Start Waiting...");
+        System.out.println(Thread.currentThread().getName() + " Start Meeting...");
         CountDownLatch latch = new CountDownLatch(10);
         for (int i = 0; i < 10; i++) {
             Participant participant = new Participant(latch);
@@ -34,6 +34,6 @@ public class App {
         }
         System.out.println(Thread.currentThread().getName() + " await...");
         latch.await();
-        System.out.println(Thread.currentThread().getName() + " End Waiting!");
+        System.out.println(Thread.currentThread().getName() + " End Meeting!");
     }
 }

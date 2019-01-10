@@ -4,24 +4,24 @@ import java.util.concurrent.CountDownLatch;
 
 public class CountDownTask implements Runnable {
 
-	private CountDownLatch latch;
+    private CountDownLatch latch;
 
-	public CountDownTask(CountDownLatch latch) {
-		this.latch = latch;
-	}
+    public CountDownTask(CountDownLatch latch) {
+        this.latch = latch;
+    }
 
-	public void run() {
-		System.out.printf("%s Start \n", Thread.currentThread().getName());
+    public void run() {
+        System.out.printf("%s Start... \n", Thread.currentThread().getName());
 
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-		latch.countDown();
-		System.out.printf("%s End \n", Thread.currentThread().getName());
+        latch.countDown();
+        System.out.printf("%s End! \n", Thread.currentThread().getName());
 
-	}
+    }
 
 }

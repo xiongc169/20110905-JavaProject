@@ -40,7 +40,7 @@ class MyThread extends Thread {
 
     private Semaphore semaphore;
 
-    private DateFormat dt = new SimpleDateFormat("yyyyMMddHHmmss");
+    private DateFormat dt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public MyThread() {
     }
@@ -53,9 +53,9 @@ class MyThread extends Thread {
     public void run() {
         try {
             semaphore.acquire();
-            System.out.println(dt.format(new Date()) + " " + num + " Begin, " + Thread.currentThread().getId());
+            System.out.println(dt.format(new Date()) + " " + num + " Begin... " + Thread.currentThread().getId());
             Thread.sleep(4000);
-            System.out.println(dt.format(new Date()) + " " + num + " End, " + Thread.currentThread().getId());
+            System.out.println(dt.format(new Date()) + " " + num + " End! " + Thread.currentThread().getId());
             semaphore.release();
         } catch (InterruptedException e) {
             String msg = e.getMessage();

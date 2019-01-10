@@ -18,17 +18,17 @@ public class MyCountDownLatch {
      */
     public static void main(String[] args) {
         try {
-            final CountDownLatch latch = new CountDownLatch(2);
+            CountDownLatch latch = new CountDownLatch(2);
 
             new Thread() {
                 public void run() {
                     try {
-                        System.out.println("This is First Thread Begin " + Thread.currentThread().getId() + " " + Thread.currentThread().getName());
+                        System.out.println("First Thread Begin " + Thread.currentThread().getId() + " " + Thread.currentThread().getName());
                         Thread.sleep(4000);
-                        System.out.println("This is First Thread End");
+                        System.out.println("First Thread End");
                         latch.countDown();
                     } catch (Exception ex) {
-                        System.out.println("This is First Thread Exception");
+                        System.out.println("First Thread Exception");
                     }
                 }
             }.start();
@@ -36,20 +36,20 @@ public class MyCountDownLatch {
             new Thread() {
                 public void run() {
                     try {
-                        System.out.println("This is Second Thread Begin " + Thread.currentThread().getId() + " " + Thread.currentThread().getName());
+                        System.out.println("Second Thread Begin " + Thread.currentThread().getId() + " " + Thread.currentThread().getName());
                         Thread.sleep(6000);
-                        System.out.println("This is Second Thread End");
+                        System.out.println("Second Thread End");
                         latch.countDown();
                     } catch (Exception ex) {
-                        System.out.println("This is Second Thread Exception");
+                        System.out.println("Second Thread Exception");
                     }
                 }
             }.start();
 
-            System.out.println("This is main Thread Begin " + Thread.currentThread().getId() + " " + Thread.currentThread().getName());
+            System.out.println("Main Thread Begin " + Thread.currentThread().getId() + " " + Thread.currentThread().getName());
             latch.await();
             //latch.await(3, TimeUnit.MILLISECONDS);
-            System.out.println("This is main Thread End " + Thread.currentThread().getId() + " " + Thread.currentThread().getName());
+            System.out.println("Main Thread End " + Thread.currentThread().getId() + " " + Thread.currentThread().getName());
         } catch (Exception ex) {
             ex.printStackTrace();
         }

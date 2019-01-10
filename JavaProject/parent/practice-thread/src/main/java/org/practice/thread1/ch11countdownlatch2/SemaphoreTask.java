@@ -4,24 +4,24 @@ import java.util.concurrent.Semaphore;
 
 public class SemaphoreTask implements Runnable {
 
-	private Semaphore semaphore;
+    private Semaphore semaphore;
 
-	public SemaphoreTask(Semaphore semaphore) {
-		this.semaphore = semaphore;
-	}
+    public SemaphoreTask(Semaphore semaphore) {
+        this.semaphore = semaphore;
+    }
 
-	public void run() {
+    public void run() {
 
-		try {
-			semaphore.acquire();
+        try {
+            semaphore.acquire();
 
-			System.out.printf("%s Start \n", Thread.currentThread().getName());
-			Thread.sleep(30000);
-			System.out.printf("%s End \n", Thread.currentThread().getName());
+            System.out.printf("%s Start... \n", Thread.currentThread().getName());
+            Thread.sleep(10000);
+            System.out.printf("%s End! \n", Thread.currentThread().getName());
 
-			semaphore.release();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
+            semaphore.release();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }
