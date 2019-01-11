@@ -9,8 +9,17 @@ public class MyThread extends Thread {
     public MyThread() {
     }
 
+
+    public MyThread(String name) {
+        super(name);
+    }
+
     public MyThread(Runnable runnable) {
         super(runnable);
+    }
+
+    public MyThread(Runnable runnable, String name) {
+        super(runnable, name);
     }
 
     public synchronized void run() {

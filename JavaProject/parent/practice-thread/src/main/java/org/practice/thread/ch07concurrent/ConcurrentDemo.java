@@ -5,7 +5,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.*;
 
 /**
- * @author Java并发包<br>
+ * @desc Java并发包
  * http://blog.csdn.net/heyutao007/article/details/5672804
  */
 public class ConcurrentDemo {
@@ -25,7 +25,6 @@ public class ConcurrentDemo {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
     }
 
     /**

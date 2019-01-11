@@ -6,7 +6,7 @@ import org.practice.model.Person;
 
 /**
  * @author Administrator
- * @description InputThread.java
+ * @desc InputThread.java
  * @date 2016年4月17日 下午8:34:11
  */
 public class InputThread extends Thread {

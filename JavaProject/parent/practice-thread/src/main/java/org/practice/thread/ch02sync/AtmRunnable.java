@@ -1,4 +1,4 @@
-package org.practice.thread.ch02primary;
+package org.practice.thread.ch02sync;
 
 import org.practice.model.Account;
 
@@ -6,16 +6,16 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * 线程同步
- * 参考：http://www.cnblogs.com/XHJT/p/3897440.html
+ * java笔记--关于线程同步(7种同步方式)
+ * http://www.cnblogs.com/XHJT/p/3897440.html
  */
-public class Atm2Runnable implements Runnable {
+public class AtmRunnable implements Runnable {
 
     private Lock lock = new ReentrantLock();
 
     private Account account;
 
-    public Atm2Runnable(Account account) {
+    public AtmRunnable(Account account) {
         this.account = account;
     }
 
@@ -25,14 +25,14 @@ public class Atm2Runnable implements Runnable {
     @Override
     public void run() {
         try {
-            //synchronized (account) {
+//            synchronized (account) {
             //lock.lock();
             for (int i = 0; i < 10; i++) {
                 Integer balance = account.getBalance();
                 account.setBalance(balance + 10);
             }
-            System.out.println("Atm2Runnable threadName: " + Thread.currentThread().getName() + "; Balance: " + account.getBalance());
-            //}
+            //System.out.println("AtmRunnable threadName: " + Thread.currentThread().getName() + "; Balance: " + account.getBalance());
+//            }
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {

@@ -9,7 +9,7 @@ public class Account {
     /**
      * 1、非线程同步
      */
-//    private Integer balance;
+    private Integer balance;
 
     /**
      * 2、volatile
@@ -29,19 +29,18 @@ public class Account {
     /**
      * 4、AtomicInteger
      */
-    private AtomicInteger balance = new AtomicInteger();
-
+//    private AtomicInteger balance = new AtomicInteger();
     public Account() {
     }
 
     public Account(String accountNo, Integer balances) {
         this.accountNo = accountNo;
-        //1、非线程同步的getter、setter方法
-//        this.balance = balances;
+        //1|2、非线程同步的getter、setter方法
+        this.balance = balances;
         //3、ThreadLocal的getter、setter方法
 //        balance.set(balance.get() + balances);
         //4、AtomicInteger的getter、setter方法
-        this.balance.addAndGet(balances);
+//        this.balance.addAndGet(balances);
     }
 
     public String getAccountNo() {
@@ -53,15 +52,17 @@ public class Account {
     }
 
     /**
-     * 1、非线程同步的getter、setter方法
+     * 1|2、非线程同步的getter、setter方法
+     *
      * @return
      */
-//    public Integer getBalance() {
-//        return balance;
-//    }
-//    public void setBalance(Integer balance) {
-//        this.balance = balance;
-//    }
+    public Integer getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Integer balance) {
+        this.balance = balance;
+    }
 
     /**
      * 3、ThreadLocal的getter、setter方法
@@ -79,11 +80,11 @@ public class Account {
      *
      * @return
      */
-    public Integer getBalance() {
-        return balance.get();
-    }
-
-    public void setBalance(Integer balances) {
-        this.balance.addAndGet(balances);
-    }
+//    public Integer getBalance() {
+//        return balance.get();
+//    }
+//
+//    public void setBalance(Integer balances) {
+//        this.balance.addAndGet(balances);
+//    }
 }

@@ -12,9 +12,14 @@ public class App {
      * @param args
      */
     public static void main(String[] args) {
-        //测试
-        inputCallableTest();
-        concurrentTest();
+        try {
+            //测试
+            //inputCallableTest();
+            //inputThreadTest();
+            concurrentTest();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
@@ -30,10 +35,23 @@ public class App {
         try {
             Person p = (Person) ft.get();
             System.out.println("inputCallableTest: " + p.getName());
-        } catch (InterruptedException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Thread测试
+     */
+    public static void inputThreadTest() throws Exception {
+        InputThread input = new InputThread();
+        input.start();
+        input.join();
+        Person person = input.person;
+        if (person == null) {
+            System.out.println("inputThreadTest: " + person.getName());
+        } else {
+            System.out.println("inputThreadTest is null! ");
         }
     }
 
@@ -42,26 +60,19 @@ public class App {
      * http://blog.csdn.net/heyutao007/article/details/19072675
      */
     public static void concurrentTest() {
-        // InputThread input=new InputThread();
-        // input.start();
-        // Person person = input.person;
-        // if(person==null){}
-
         ExecutorService pool = Executors.newFixedThreadPool(2);
         InputCallable task = new InputCallable();
         Future f1 = pool.submit(task);
         Person person;
         try {
             person = (Person) f1.get();// 会阻塞当前线程
-            f1.cancel(false);
+            boolean isCancel = f1.cancel(false);
             if (person == null) {
                 System.out.println("返回值为空");
             } else {
                 System.out.println("返回值不为空");
             }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         pool.shutdown();

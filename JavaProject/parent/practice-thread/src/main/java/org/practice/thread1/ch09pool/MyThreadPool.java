@@ -2,10 +2,8 @@ package org.practice.thread1.ch09pool;
 
 import java.util.concurrent.*;
 
-import org.practice.model.Person;
-import org.practice.thread.ch02primary.MyRunnable;
-import org.practice.thread.ch02primary.MyThreadFactory;
-import org.practice.thread.practice.InputCallable;
+import org.practice.thread.ch02sync.MyRunnable;
+import org.practice.thread.ch02sync.MyThreadFactory;
 
 import java.util.concurrent.ThreadPoolExecutor.AbortPolicy;
 

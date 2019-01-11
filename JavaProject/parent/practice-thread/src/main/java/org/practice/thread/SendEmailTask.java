@@ -28,7 +28,7 @@ public class SendEmailTask implements Runnable {
         try {
             // String hostName = "mail.hundsun.com";
             // final String mailUsername = "xiongchao17860";// 用户名
-            // final String mailPassword = "qaz$*****";// 密码 需要向信息中心申请
+            // final String mailPassword = "qa*******";// 密码 需要向信息中心申请
             // // MailSend mail = new MailSend();
             // Properties props = System.getProperties();
             // props.put("mail.smtp.host", hostName);

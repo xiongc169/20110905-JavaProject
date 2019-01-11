@@ -16,35 +16,38 @@ public class App {
      * @param args
      */
     public static void main(String[] args) {
+        try {
+            Thread thread = Thread.currentThread();
+            long threadId = Thread.currentThread().getId();
+            String threadName = Thread.currentThread().getName();
+            System.out.println("Main Thread: " + thread + "; ThreadId: " + threadId + "; ThreadName: " + threadName);
 
-        Thread thread = Thread.currentThread();
-        long threadId = Thread.currentThread().getId();
-        String threadName = Thread.currentThread().getName();
-        System.out.println("Main Thread: " + thread + "; ThreadId: " + threadId + "; ThreadName: " + threadName);
-
-        myThreadTest();
-        summaryTest();
+            myThreadTest();
+            summaryTest();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
      * MyThread测试
      */
     public static void myThreadTest() {
-        MyThread myThread1 = new MyThread();
-        MyThread myThread2 = new MyThread();
+        MyThread myThread1 = new MyThread("myThread-1");
+        MyThread myThread2 = new MyThread("myThread-2");
         myThread1.start();
         myThread2.start();
 
-        MyThread myThread3 = new MyThread();
-        MyThread myThread4 = new MyThread();
-        Thread thread3 = new Thread(myThread3);
-        Thread thread4 = new Thread(myThread4);
+        MyThread myThread3 = new MyThread("myThread-3");
+        MyThread myThread4 = new MyThread("myThread-4");
+        Thread thread3 = new Thread(myThread3, "thread-3");
+        Thread thread4 = new Thread(myThread4, "thread-4");
         thread3.start();
         thread4.start();
 
-        MyThread myThread5 = new MyThread();
-        Thread thread5 = new Thread(myThread5);
-        Thread thread6 = new Thread(myThread5);
+        MyThread myThread5 = new MyThread("myThread-5");
+        Thread thread5 = new Thread(myThread5, "thread-5");
+        Thread thread6 = new Thread(myThread5, "thread-6");
         thread5.start();
         thread6.start();
     }
@@ -54,31 +57,31 @@ public class App {
      */
     public static void summaryTest() {
         // 1.Thread 测试
-        MyThread myThread = new MyThread();
+        MyThread myThread = new MyThread("myThread-1");
         myThread.start();
 
         // 2.Runnable 测试
         MyRunnable myRunnable = new MyRunnable();
-        Thread runnableThread = new Thread(myRunnable);
+        Thread runnableThread = new Thread(myRunnable, "myRunnable-1");
         runnableThread.start();
 
         // 3.Thread + Runnable 测试
         MyRunnable myRunnable2 = new MyRunnable();
-        MyThread myThread2 = new MyThread(myRunnable2);
+        MyThread myThread2 = new MyThread(myRunnable2, "myThread-2");
         myThread2.start();
 
         // 4.Callable + FutureTask 测试
         try {
             MyCallable myCallable = new MyCallable();
-            FutureTask ftask = new FutureTask(myCallable);
-            Thread taskThread = new Thread(ftask);
+            FutureTask fTask = new FutureTask(myCallable);
+            Thread taskThread = new Thread(fTask, "myCallable-1");
             taskThread.start();
 
-            Object result = ftask.get();
+            Object result = fTask.get();//fTask.get()方法会阻塞，直到结果返回
             System.out.println(result);
         } catch (Exception ex) {
-            String msg = ex.getMessage();
-            System.out.println(msg);
+            ex.printStackTrace();
         }
+        System.out.println("summaryTest End!");
     }
 }
