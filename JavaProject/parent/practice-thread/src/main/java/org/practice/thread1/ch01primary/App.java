@@ -8,9 +8,9 @@ import java.util.concurrent.FutureTask;
 
 /**
  * Java并发编程：如何创建线程？
+ * PS：创建线程：Thread\Runnable
+ * 创建进程：Runtime.exec()、ProcessBuilder.start()
  * https://www.cnblogs.com/dolphin0520/p/3913517.html
- * PS：创建进程：Runtime.exec()、ProcessBuilder.start()
- * <p>
  * Java并发编程——系列教程
  * https://www.cnblogs.com/dolphin0520/category/602384.html
  */
@@ -77,7 +77,7 @@ public class App {
         Future<Object> future = executor.submit(callableTask);
         boolean isDone = future.isDone();
         System.out.println("callableTest isDone: " + isDone);
-        Object result = future.get();
+        Object result = future.get();//get()方法会阻塞直到任务返回结果
         System.out.println("callableTest result: " + result);
 
         //第二种方式：Callable+Thread
@@ -86,7 +86,7 @@ public class App {
         System.out.println("callableTest isDone2: " + isDone2);
         Thread thread = new Thread(futureTask);
         thread.start();
-        Object result2 = futureTask.get();
+        Object result2 = futureTask.get();//get()方法会阻塞直到任务返回结果
         System.out.println("callableTest result2: " + result2);
     }
 }

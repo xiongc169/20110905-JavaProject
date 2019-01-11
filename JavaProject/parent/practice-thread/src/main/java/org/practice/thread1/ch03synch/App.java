@@ -49,17 +49,17 @@ public class App {
      * 普通插入
      */
     public static void insertTest() {
-        InsertData output = new InsertData();
+        InsertData insertUtility = new InsertData();
         Thread threadA = new Thread(new Runnable() {
             @Override
             public void run() {
-                output.insert(Thread.currentThread());
+                insertUtility.insert(Thread.currentThread());
             }
         });
         Thread threadB = new Thread(new Runnable() {
             @Override
             public void run() {
-                output.insert(Thread.currentThread());
+                insertUtility.insert(Thread.currentThread());
             }
         });
 
@@ -71,17 +71,17 @@ public class App {
      * 同步插入(synchronized方法、代码块)
      */
     public static void synchronizedInsert() {
-        InsertData output = new InsertData();
+        InsertData insertUtility = new InsertData();
         Thread threadA = new Thread(new Runnable() {
             @Override
             public void run() {
-                output.insert4Synchronized(Thread.currentThread());
+                insertUtility.insert4Synchronized(Thread.currentThread());
             }
         });
         Thread threadB = new Thread(new Runnable() {
             @Override
             public void run() {
-                output.insert4Synchronized(Thread.currentThread());
+                insertUtility.insert4Synchronized(Thread.currentThread());
             }
         });
 
@@ -93,17 +93,17 @@ public class App {
      * 同步插入(lock)
      */
     public static void lockInsert() {
-        InsertData output = new InsertData();
+        InsertData insertUtility = new InsertData();
         Thread threadA = new Thread(new Runnable() {
             @Override
             public void run() {
-                output.insert4Lock(Thread.currentThread());
+                insertUtility.insert4Lock(Thread.currentThread());
             }
         });
         Thread threadB = new Thread(new Runnable() {
             @Override
             public void run() {
-                output.insert4Lock(Thread.currentThread());
+                insertUtility.insert4Lock(Thread.currentThread());
             }
         });
 
@@ -141,11 +141,11 @@ public class App {
     }
 
     public static void volatileTest(App app) {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 100; i++) {
             Thread thread = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    for (int j = 0; j < 100; j++) {
+                    for (int j = 0; j < 1000; j++) {
                         app.increase();
                     }
                 }
