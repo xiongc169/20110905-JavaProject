@@ -1,4 +1,4 @@
-package org.practice.designPattern.create.singleton;
+package org.practice.designPattern.create.singleton.runoob;
 
 public enum SingletonEnum {
 

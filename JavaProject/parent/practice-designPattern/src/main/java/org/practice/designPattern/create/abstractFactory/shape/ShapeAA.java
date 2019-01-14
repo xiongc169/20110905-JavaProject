@@ -1,4 +1,4 @@
-package org.practice.designPattern.create.abstractFactory;
+package org.practice.designPattern.create.abstractFactory.shape;
 
 public class ShapeAA implements Shape {
 

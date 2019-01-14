@@ -1,60 +1,59 @@
 package org.practice.designPattern.create.factory;
 
-import org.practice.designPattern.create.abstractFactory.AbstractFactory;
+import org.practice.designPattern.create.factory.fruit.Fruit;
+import org.practice.designPattern.create.factory.fruit.Orange;
+import org.practice.designPattern.create.factory.fruit.Pear;
+import org.practice.designPattern.create.factory.fruit.Strawberry;
 
-public class FruitFactory implements AbstractFactory {
+public class FruitFactory {
 
-	/**
-	 * 
-	 * @description 普通工厂模式
-	 *
-	 */
-	public Fruit produceFruit(String fruitName) {
-		Fruit fruit = null;
-		switch (fruitName.toLowerCase()) {
-		case "orange":
-			fruit = new Orange();
-			break;
-		case "pear":
-			fruit = new Pear();
-			break;
-		case "strawberry":
-			fruit = new Strawberry();
-			break;
-		}
-		return fruit;
-	}
+    /**
+     * @desc 普通工厂模式
+     */
+    public Fruit produceFruit(String fruitName) {
+        Fruit fruit = null;
+        switch (fruitName.toLowerCase()) {
+            case "orange":
+                fruit = new Orange();
+                break;
+            case "pear":
+                fruit = new Pear();
+                break;
+            case "strawberry":
+                fruit = new Strawberry();
+                break;
+        }
+        return fruit;
+    }
 
-	/**
-	 * 
-	 * @description 多个工厂方法的工厂模式
-	 *
-	 */
-	public Fruit produceOrange() {
-		Fruit fruit = new Orange();
-		return fruit;
-	}
+    /**
+     * @desc 多个工厂方法的工厂模式
+     */
+    public Fruit produceOrange() {
+        Fruit fruit = new Orange();
+        return fruit;
+    }
 
-	public Fruit producePear() {
-		Fruit fruit = new Pear();
-		return fruit;
-	}
+    public Fruit producePear() {
+        Fruit fruit = new Pear();
+        return fruit;
+    }
 
-	public Fruit produceStrawberry() {
-		Fruit fruit = new Strawberry();
-		return fruit;
-	}
+    public Fruit produceStrawberry() {
+        Fruit fruit = new Strawberry();
+        return fruit;
+    }
 
-	public Object produceFruitByClass(Class<? extends Fruit> clazz) {
-		Object obj = null;
+    public Object produceFruitByClass(Class<? extends Fruit> clazz) {
+        Object obj = null;
 
-		try {
-			obj = Class.forName(clazz.getName()).newInstance();
-		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-			e.printStackTrace();
-		}
+        try {
+            obj = Class.forName(clazz.getName()).newInstance();
+        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
-		return obj;
+        return obj;
 
-	}
+    }
 }

@@ -1,4 +1,4 @@
-package org.practice.designPattern.create.factory;
+package org.practice.designPattern.create.factory.fruit;
 
 public class Pear implements Fruit {
 
