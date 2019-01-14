@@ -1,5 +1,7 @@
 package org.practice.thread1.ch03synch;
 
+import org.practice.model.ThreadLocalModel;
+
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -32,14 +34,17 @@ public class App {
             //lockInsert();
 
             //volatile测试
-            App app = new App();
-            volatileTest(app);
-            while (Thread.activeCount() > 1) {
-                //保证前面的线程都执行完
-                System.out.println("Thread.activeCount(): " + Thread.activeCount());
-                Thread.yield();
-            }
-            System.out.println(app.count);
+//            App app = new App();
+//            volatileTest(app);
+//            while (Thread.activeCount() > 1) {
+//                //保证前面的线程都执行完
+//                System.out.println("Thread.activeCount(): " + Thread.activeCount());
+//                Thread.yield();
+//            }
+//            System.out.println(app.count);
+
+            //threadLocal测试
+            threadLocalTest();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -152,5 +157,24 @@ public class App {
             });
             thread.start();
         }
+    }
+
+    /**
+     * ThreadLocal测试
+     *
+     * @throws Exception
+     */
+    public static void threadLocalTest() throws Exception {
+        ThreadLocalModel model = new ThreadLocalModel();
+
+        MyThreadLocal thread = new MyThreadLocal(model);
+        MyThreadLocal thread2 = new MyThreadLocal(model);
+        thread.start();
+        thread2.start();
+
+        thread.join();
+        thread2.join();
+        System.out.println(Thread.currentThread().getId() + " " + Thread.currentThread().getName());
+
     }
 }

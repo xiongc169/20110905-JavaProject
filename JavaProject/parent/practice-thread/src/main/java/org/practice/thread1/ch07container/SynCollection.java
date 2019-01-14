@@ -27,6 +27,12 @@ public class SynCollection {
      */
     public static void main(String[] args) {
         try {
+            for (int i = 0; i < 5; i++) {
+                int size = 1;
+                size <<= i;//二进制左移1位
+                System.out.println(size);
+            }
+
             container();
             syncContainer();
             parallelContainer();
