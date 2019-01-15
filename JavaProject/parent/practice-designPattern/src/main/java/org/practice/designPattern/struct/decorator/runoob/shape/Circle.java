@@ -1,4 +1,4 @@
-package org.practice.designPattern.struct.decorator;
+package org.practice.designPattern.struct.decorator.runoob.shape;
 
 public class Circle implements Shape {
 

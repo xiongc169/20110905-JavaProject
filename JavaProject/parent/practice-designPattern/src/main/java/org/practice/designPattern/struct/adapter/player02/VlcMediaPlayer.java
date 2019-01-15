@@ -4,7 +4,7 @@ public class VlcMediaPlayer implements AdvancedMediaPlayer {
 
 	@Override
 	public void playVlc(String fileName) {
-		System.out.println("Playing vlc file. Name: " + fileName);
+		System.out.println("VlcMediaPlayer.Playing vlc file. Name: " + fileName);
 	}
 
 	@Override

@@ -1,4 +1,4 @@
-package org.practice.designPattern.struct.decorator;
+package org.practice.designPattern.struct.facade.runoob;
 
 public class Rectangle implements Shape {
 

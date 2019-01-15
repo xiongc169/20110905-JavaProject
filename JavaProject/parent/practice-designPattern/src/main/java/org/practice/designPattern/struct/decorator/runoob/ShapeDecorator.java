@@ -1,4 +1,6 @@
-package org.practice.designPattern.struct.decorator;
+package org.practice.designPattern.struct.decorator.runoob;
+
+import org.practice.designPattern.struct.decorator.runoob.shape.Shape;
 
 public abstract class ShapeDecorator implements Shape {
 

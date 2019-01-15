@@ -1,4 +1,4 @@
-package org.practice.designPattern.struct.facade;
+package org.practice.designPattern.struct.facade.runoob;
 
 public class Circle implements Shape {
 

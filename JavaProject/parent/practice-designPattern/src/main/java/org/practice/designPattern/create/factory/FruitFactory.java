@@ -44,6 +44,14 @@ public class FruitFactory {
         return fruit;
     }
 
+    /**
+     * Class.forName()、Class.forName().newInstance()、New 三者区别
+     * https://www.cnblogs.com/shosky/archive/2011/07/22/2114290.html
+     *
+     * @param clazz
+     *
+     * @return
+     */
     public Object produceFruitByClass(Class<? extends Fruit> clazz) {
         Object obj = null;
 

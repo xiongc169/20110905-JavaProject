@@ -1,5 +1,10 @@
 package org.practice.designPattern.struct.facade;
 
+import org.practice.designPattern.struct.facade.runoob.Circle;
+import org.practice.designPattern.struct.facade.runoob.Rectangle;
+import org.practice.designPattern.struct.facade.runoob.Shape;
+import org.practice.designPattern.struct.facade.runoob.Square;
+
 public class ShapeMaker {
 
 	private Shape circle;
