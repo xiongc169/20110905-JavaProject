@@ -1,7 +1,8 @@
-package org.practice.designPattern.create.ch02abstractFactory;
+package org.practice.designPattern.create.ch02abstractFactory.runoob;
 
-import org.practice.designPattern.create.ch02abstractFactory.color.ColorFactory;
-import org.practice.designPattern.create.ch02abstractFactory.shape.ShapeFactory;
+import org.practice.designPattern.create.ch02abstractFactory.runoob.AbstractFactory;
+import org.practice.designPattern.create.ch02abstractFactory.runoob.ColorFactory;
+import org.practice.designPattern.create.ch02abstractFactory.runoob.ShapeFactory;
 
 /**
  * @author Administrator

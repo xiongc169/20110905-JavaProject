@@ -16,13 +16,13 @@ public class App {
      */
     public static void main(String[] args) {
         try {
-            runoob_memento();
+            memento_runoob();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    private static void runoob_memento() {
+    private static void memento_runoob() {
         CareTaker careTaker = new CareTaker();
         Originator originator = new Originator();
 

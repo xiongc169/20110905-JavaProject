@@ -20,13 +20,13 @@ public class App {
      */
     public static void main(String[] args) {
         try {
-            runoobTest();
+            builder_runoob();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    private static void runoobTest() {
+    private static void builder_runoob() {
         MealBuilder mealBuilder = new MealBuilder();
 
         Meal vegMeal = mealBuilder.prepareVegMeal();

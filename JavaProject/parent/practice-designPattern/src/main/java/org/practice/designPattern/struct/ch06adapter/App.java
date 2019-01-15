@@ -28,14 +28,14 @@ public class App {
      */
     public static void main(String[] args) {
         try {
-            runoobTest();
-            adapterTest();
+            adapter_runoob();
+            adapter_accidence();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    private static void runoobTest() {
+    private static void adapter_runoob() {
         AudioPlayer audioPlayer = new AudioPlayer();
         audioPlayer.play("mp3", "beyond the horizon.mp3");
         audioPlayer.play("mp4", "alone.mp4");
@@ -43,7 +43,7 @@ public class App {
         audioPlayer.play("avi", "mind me.avi");
     }
 
-    private static void adapterTest() {
+    private static void adapter_accidence() {
         //类的适配器模式
         Target target = new Adapter();
         ((Adapter) target).methodA();

@@ -20,13 +20,13 @@ public class App {
      */
     public static void main(String[] args) {
         try {
-            runoob_template();
+            template_runoob();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    public static void runoob_template() {
+    public static void template_runoob() {
         Game cricket = new Cricket();
         cricket.play();
 

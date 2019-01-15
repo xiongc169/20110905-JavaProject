@@ -1,4 +1,4 @@
-package org.practice.designPattern.create.ch02abstractFactory.color;
+package org.practice.designPattern.api.color;
 
 /**
  * @author yoong
@@ -11,6 +11,6 @@ public class Green implements Color {
 
     @Override
     public void fill() {
-        System.out.println("this is Color-Green");
+        System.out.println("this is Color-Green.fill() ");
     }
 }

@@ -20,13 +20,13 @@ public class App {
      */
     public static void main(String[] args) {
         try {
-            runoob_iterator();
+            iterator_runoob();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    public static void runoob_iterator() {
+    public static void iterator_runoob() {
         NameRepository nameRepository = new NameRepository();
         Iterator iterator = nameRepository.getIterator();
         while (iterator.hasNext()) {

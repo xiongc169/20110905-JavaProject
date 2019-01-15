@@ -1,7 +1,10 @@
-package org.practice.designPattern.create.ch02abstractFactory.color;
+package org.practice.designPattern.create.ch02abstractFactory.runoob;
 
-import org.practice.designPattern.create.ch02abstractFactory.AbstractFactory;
-import org.practice.designPattern.create.ch02abstractFactory.shape.Shape;
+import org.practice.designPattern.api.color.Blue;
+import org.practice.designPattern.api.color.Color;
+import org.practice.designPattern.api.color.Green;
+import org.practice.designPattern.api.color.Red;
+import org.practice.designPattern.api.shape.Shape;
 
 /**
  * @author yoong
@@ -26,6 +29,8 @@ public class ColorFactory implements AbstractFactory {
             return new Red();
         } else if (color.equalsIgnoreCase("GREEN")) {
             return new Green();
+        } else if (color.equalsIgnoreCase("BLUE")) {
+            return new Blue();
         }
         return null;
     }

@@ -1,4 +1,4 @@
-package org.practice.designPattern.create.ch01factory.fruit;
+package org.practice.designPattern.api.fruit;
 
 public class Orange implements Fruit {
 

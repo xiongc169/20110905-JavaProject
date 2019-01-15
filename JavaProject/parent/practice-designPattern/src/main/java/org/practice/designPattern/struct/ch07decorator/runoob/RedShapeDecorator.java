@@ -1,6 +1,6 @@
 package org.practice.designPattern.struct.ch07decorator.runoob;
 
-import org.practice.designPattern.struct.ch07decorator.runoob.shape.Shape;
+import org.practice.designPattern.api.shape.Shape;
 
 public class RedShapeDecorator extends ShapeDecorator {
 

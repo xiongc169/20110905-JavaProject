@@ -15,13 +15,13 @@ public class App {
      */
     public static void main(String[] args) {
         try {
-            runoob_command();
+            command_runoob();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    public static void runoob_command() {
+    public static void command_runoob() {
         Stock abcStock = new Stock("002230");
 
         Order buyStockOrder = new BuyStock(abcStock);

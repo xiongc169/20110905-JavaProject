@@ -15,13 +15,13 @@ public class App {
      */
     public static void main(String[] args) {
         try {
-            runoobTest();
+            strategy_runoob();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    public static void runoobTest() {
+    public static void strategy_runoob() {
         Integer num1 = 100;
         Integer num2 = 200;
 

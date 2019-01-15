@@ -1,9 +1,9 @@
 package org.practice.designPattern.struct.ch07decorator;
 
+import org.practice.designPattern.api.shape.Circle;
+import org.practice.designPattern.api.shape.Rectangle;
+import org.practice.designPattern.api.shape.Shape;
 import org.practice.designPattern.struct.ch07decorator.runoob.RedShapeDecorator;
-import org.practice.designPattern.struct.ch07decorator.runoob.shape.Circle;
-import org.practice.designPattern.struct.ch07decorator.runoob.shape.Rectangle;
-import org.practice.designPattern.struct.ch07decorator.runoob.shape.Shape;
 
 /**
  * 装饰者模式<br>
@@ -21,13 +21,13 @@ public class App {
     public static void main(String[] args) {
 
         try {
-            runoobTest();
+            decorator_runoob();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    private static void runoobTest() {
+    private static void decorator_runoob() {
         Shape circle = new Circle();
         Shape redCircle = new RedShapeDecorator(new Circle());
         Shape redRectangle = new RedShapeDecorator(new Rectangle());

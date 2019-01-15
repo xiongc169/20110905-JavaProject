@@ -27,20 +27,20 @@ public class App {
      */
     public static void main(String[] args) {
         try {
-            accidenceTest();
-            runoobTest();
+            single_accidence();
+            singleton_runoob();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    public static void accidenceTest() {
+    public static void single_accidence() {
         Single single = Single.getInstance();
         Single single2 = Single.getInstance();
         System.out.println("single==single2：" + (single == single2));
     }
 
-    public static void runoobTest() {
+    public static void singleton_runoob() {
         SingletonInner singleton = SingletonInner.getInstance();
         SingletonInner singleton2 = SingletonInner.getInstance();
         System.out.println("ch03singleton==singleton2：" + (singleton == singleton2));

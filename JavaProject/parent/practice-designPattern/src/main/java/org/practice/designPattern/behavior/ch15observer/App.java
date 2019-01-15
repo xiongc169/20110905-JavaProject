@@ -18,14 +18,13 @@ public class App {
      */
     public static void main(String[] args) {
         try {
-            runoob_observer();
+            observer_runoob();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
     }
 
-    public static void runoob_observer() {
+    public static void observer_runoob() {
         Subject sub = new Subject();
 
         Observer aa = new ObserverAA(sub);

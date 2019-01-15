@@ -1,4 +1,4 @@
-package org.practice.designPattern.create.ch02abstractFactory.color;
+package org.practice.designPattern.api.color;
 
 /**
  * @author yoong

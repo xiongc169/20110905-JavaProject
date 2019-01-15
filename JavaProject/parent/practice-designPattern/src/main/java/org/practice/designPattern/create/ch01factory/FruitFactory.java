@@ -1,9 +1,9 @@
 package org.practice.designPattern.create.ch01factory;
 
-import org.practice.designPattern.create.ch01factory.fruit.Fruit;
-import org.practice.designPattern.create.ch01factory.fruit.Orange;
-import org.practice.designPattern.create.ch01factory.fruit.Pear;
-import org.practice.designPattern.create.ch01factory.fruit.Strawberry;
+import org.practice.designPattern.api.fruit.Fruit;
+import org.practice.designPattern.api.fruit.Orange;
+import org.practice.designPattern.api.fruit.Pear;
+import org.practice.designPattern.api.fruit.Strawberry;
 
 public class FruitFactory {
 

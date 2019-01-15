@@ -1,9 +1,9 @@
 package org.practice.designPattern.struct.ch09facade;
 
-import org.practice.designPattern.struct.ch09facade.runoob.Circle;
-import org.practice.designPattern.struct.ch09facade.runoob.Rectangle;
-import org.practice.designPattern.struct.ch09facade.runoob.Shape;
-import org.practice.designPattern.struct.ch09facade.runoob.Square;
+import org.practice.designPattern.api.shape.Circle;
+import org.practice.designPattern.api.shape.Rectangle;
+import org.practice.designPattern.api.shape.Shape;
+import org.practice.designPattern.api.shape.Square;
 
 public class ShapeMaker {
 

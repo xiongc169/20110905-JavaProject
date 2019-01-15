@@ -22,13 +22,13 @@ public class App {
      */
     public static void main(String[] args) {
         try {
-            runoob_state();
+            state_runoob();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    private static void runoob_state() {
+    private static void state_runoob() {
         Context context = new Context();
         State start = new StartState();
         State stop = new StopState();

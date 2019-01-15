@@ -16,12 +16,12 @@ public class App {
      */
     public static void main(String[] args) {
         try {
-            runoob_visitor();
+            visitor_runoob();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    private static void runoob_visitor() {
+    private static void visitor_runoob() {
     }
 }
