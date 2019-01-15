@@ -91,7 +91,7 @@ public class AOPClient {
     public static void aop_ioc() {
         //XML配置方式实现AOP
         ApplicationContext cpxAppContext = new ClassPathXmlApplicationContext("classpath:spring-aop.xml");
-        ICalculator math = (ICalculator) cpxAppContext.getBean("proxy");
+        ICalculator math = (ICalculator) cpxAppContext.getBean("ch08proxy");
         int addResult = math.add(100, 5);
         int subResult = math.sub(100, 5);
         int mulResult = math.mul(100, 5);

@@ -40,7 +40,7 @@ public class JdkProxy implements InvocationHandler {
     }
 
     /**
-     * 调用方法 proxy: 指代我们所代理的那个真实对象 method: 指代的是我们所要调用真实对象的某个方法的Method对象 args:
+     * 调用方法 ch08proxy: 指代我们所代理的那个真实对象 method: 指代的是我们所要调用真实对象的某个方法的Method对象 args:
      * 指代的是调用真实对象某个方法时接受的参数
      *
      * @param proxy  代理对象
@@ -51,7 +51,7 @@ public class JdkProxy implements InvocationHandler {
 
         System.out.println("JdkProxy.invoke Start...");
         Object result = method.invoke(object, args);
-        // System.out.println("Proxy:" + proxy);
+        // System.out.println("Proxy:" + ch08proxy);
         System.out.println("Method:" + method);
         System.out.println("JdkProxy.invoke End");
         return result;

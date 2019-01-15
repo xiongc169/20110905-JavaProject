@@ -13,7 +13,7 @@
     <bean id="advice" class="org.practice.spring.proxy.ch03aop.p02aspect.MyAdvice"></bean>
 
     <!-- AOP配置 -->
-    <!-- proxy-target-class属性表示被代理的类是否为一个没有实现接口的类，Spring会依据实现了接口则使用JDK内置的动态代理，如果未实现接口则使用cblib -->
+    <!-- ch08proxy-target-class属性表示被代理的类是否为一个没有实现接口的类，Spring会依据实现了接口则使用JDK内置的动态代理，如果未实现接口则使用cblib -->
     <aop:config proxy-target-class="true">
         <!-- 切面配置 -->
         <!--ref表示通知对象的引用 -->

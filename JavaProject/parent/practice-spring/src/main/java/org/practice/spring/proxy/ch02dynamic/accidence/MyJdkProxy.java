@@ -21,7 +21,7 @@ public class MyJdkProxy implements InvocationHandler {
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         System.out.println("MyJdkProxy Start...");
         Object result = method.invoke(targetObject, args);//正常
-        //Object result = method.invoke(proxy, args);//异常
+        //Object result = method.invoke(ch08proxy, args);//异常
         System.out.println("MyJdkProxy End");
         return result;
     }

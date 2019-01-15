@@ -2,7 +2,7 @@ package org.practice.spring.proxy.ch03aop.p01advice;
 
 import java.lang.reflect.Method;
 
-//import org.springframework.cglib.proxy.MethodInterceptor;
+//import org.springframework.cglib.ch08proxy.MethodInterceptor;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 

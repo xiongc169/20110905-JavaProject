@@ -89,7 +89,7 @@ public class IocContainer {
         User user2 = xmlFactory.getBean("user", User.class);
         System.out.println(user.getIid());
         System.out.println(user2.getIid());
-        //若bean的scope=singleton，则相等，若scope=prototype，则不等
+        //若bean的scope=ch03singleton，则相等，若scope=prototype，则不等
         String compareResult = user == user2 ? "Equals" : "Not Equals";
         System.out.println(compareResult);
 
@@ -177,7 +177,7 @@ public class IocContainer {
             Resource resource = fileSystemXmlPre.getResource("");
             System.out.println(resource.exists());
 
-            //lazy-init，ApplicationContext实现的默认行为就是再启动时将所有 singleton bean提前进行实例化。
+            //lazy-init，ApplicationContext实现的默认行为就是再启动时将所有 ch03singleton bean提前进行实例化。
             ApplicationContext fileSystemXml = new FileSystemXmlApplicationContext("JavaProject\\parent\\practice-spring\\src\\main\\resources\\spring-context.xml");
             User user = (User) fileSystemXml.getBean("user");
             System.out.println(user.getIid());
