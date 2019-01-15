@@ -1,4 +1,4 @@
-package org.practice.designPattern.behavior.observer;
+package org.practice.designPattern.behavior.observer.runoob;
 
 public class ObserverAA extends Observer {
 

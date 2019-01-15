@@ -1,22 +1,38 @@
 package org.practice.designPattern.behavior.strategy;
 
+import org.practice.designPattern.behavior.strategy.runoob.*;
+
+/**
+ * 策略模式
+ * http://www.runoob.com/design-pattern/strategy-pattern.html
+ */
 public class App {
 
-	public static void main(String[] args) {
+    /**
+     * 入口函数
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        try {
+            runoobTest();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
-		double num1 = 100;
-		double num2 = 200;
+    public static void runoobTest() {
+        Integer num1 = 100;
+        Integer num2 = 200;
 
-		context(new StrategyAdd(), num1, num2);
-		context(new StrategySub(), num1, num2);
-		context(new StrategyMul(), num1, num2);
-		context(new StrategyDiv(), num1, num2);
-	}
+        Context add = new Context(new StrategyAdd());
+        Context sub = new Context(new StrategySub());
+        Context mul = new Context(new StrategyMul());
+        Context div = new Context(new StrategyDiv());
 
-	public static void context(Strategy strategy, double num1, double num2) {
-
-		strategy.doOperation(num1, num2);
-
-	}
-
+        add.executeStrategy(num1, num2);
+        sub.executeStrategy(num1, num2);
+        mul.executeStrategy(num1, num2);
+        div.executeStrategy(num1, num2);
+    }
 }

@@ -1,4 +1,4 @@
-package org.practice.designPattern.behavior.observer;
+package org.practice.designPattern.behavior.observer.runoob;
 
 import java.util.ArrayList;
 import java.util.List;
