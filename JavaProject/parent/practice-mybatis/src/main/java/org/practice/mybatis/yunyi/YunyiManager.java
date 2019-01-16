@@ -35,15 +35,14 @@ public class YunyiManager {
     public static void yunyiTest() {
         SqlSession session = null;
         try {
-            Reader reader = Resources.getResourceAsReader("mybatis-mysql.xml");
+            Reader reader = Resources.getResourceAsReader("mybatis-yunyi.xml");
 
             SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
             SqlSessionFactory factory = builder.build(reader);
 
             session = factory.openSession();
             // 1、iBatis用法：命名空间+SQL Id
-            // session.select("org.practice.mybatis.chap.dao.AccountsMapper.selectByPrimaryKey",
-            // "201609191454299903499203", null);
+            // session.select("org.practice.mybatis.chap.dao.AccountsMapper.selectByPrimaryKey", "201609191454299903499203", null);
             // session.commit();
 
             // 2、MyBatis用法：获取映射器
