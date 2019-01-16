@@ -1,79 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<settings>
-		<setting name="cacheEnabled" value="true" />
-		<setting name="lazyLoadingEnabled" value="true" />
-		<setting name="multipleResultSetsEnabled" value="true" />
-		<setting name="useColumnLabel" value="true" />
-		<setting name="useGeneratedKeys" value="false" />
-		<setting name="autoMappingBehavior" value="PARTIAL" />
-		<setting name="autoMappingUnknownColumnBehavior" value="WARNING" />
-		<setting name="defaultExecutorType" value="SIMPLE" />
-		<setting name="defaultStatementTimeout" value="25" />
-		<!-- <setting name="defaultFetchSize" value="100" /> -->
-		<setting name="safeRowBoundsEnabled" value="false" />
-		<setting name="mapUnderscoreToCamelCase" value="false" />
-		<setting name="localCacheScope" value="SESSION" />
-		<setting name="jdbcTypeForNull" value="OTHER" />
-		<setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString" />
-	</settings>
-	
-	<typeHandlers>
-	</typeHandlers>
+    <settings>
+        <setting name="cacheEnabled" value="true"/>
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="multipleResultSetsEnabled" value="true"/>
+        <setting name="useColumnLabel" value="true"/>
+        <setting name="useGeneratedKeys" value="false"/>
+        <setting name="autoMappingBehavior" value="PARTIAL"/>
+        <setting name="autoMappingUnknownColumnBehavior" value="WARNING"/>
+        <setting name="defaultExecutorType" value="SIMPLE"/>
+        <setting name="defaultStatementTimeout" value="25"/>
+        <!-- <setting name="defaultFetchSize" value="100" /> -->
+        <setting name="safeRowBoundsEnabled" value="false"/>
+        <setting name="mapUnderscoreToCamelCase" value="false"/>
+        <setting name="localCacheScope" value="SESSION"/>
+        <setting name="jdbcTypeForNull" value="OTHER"/>
+        <setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>
+    </settings>
 
-	<environments default="development">
-		<environment id="development">
-			<transactionManager type="JDBC"></transactionManager>
-			<dataSource type="POOLED">
-				<property name="driver"
-					value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
-				<!-- ?useUnicode=true&amp;characterEncoding=utf8为了支持中文数据的写入 -->
-				<property name="url"
-					value="jdbc:sqlserver://localhost:1433;DatabaseName=YunYiSite;" />
-				<property name="username" value="sa" />
-				<property name="password" value="111111" />
-			</dataSource>
-		</environment>
-	</environments>
+    <typeHandlers>
+    </typeHandlers>
 
-	<mappers>
-		<mapper resource="mapper\AccountsMapper.xml" />
-		<mapper resource="mapper\ActiontopagesMapper.xml" />
-		<mapper resource="mapper\AdminloginlogsMapper.xml" />
-		<mapper resource="mapper\AdminoperationsMapper.xml" />
-		<mapper resource="mapper\AdminsMapper.xml" />
-		<mapper resource="mapper\AdmintopagesMapper.xml" />
-		<mapper resource="mapper\AnswersMapper.xml" />
-		<mapper resource="mapper\AttachfileMapper.xml" />
-		<mapper resource="mapper\AuthoriesMapper.xml" />
-		<mapper resource="mapper\AuthorytopagesMapper.xml" />
-		<mapper resource="mapper\BusinesssystemMapper.xml" />
-		<mapper resource="mapper\ContactorsMapper.xml" />
-		<mapper resource="mapper\CustomereventinsertparamsMapper.xml" />
-		<mapper resource="mapper\CustomereventMapper.xml" />
-		<mapper resource="mapper\CustomerloginlogsMapper.xml" />
-		<mapper resource="mapper\CustomerMapper.xml" />
-		<mapper resource="mapper\FeedbackMapper.xml" />
-		<mapper resource="mapper\LogResourcedownloadMapper.xml" />
-		<mapper resource="mapper\NewsMapper.xml" />
-		<mapper resource="mapper\NoticelogsMapper.xml" />
-		<mapper resource="mapper\NoticeMapper.xml" />
-		<mapper resource="mapper\OnlineresourceMapper.xml" />
-		<mapper resource="mapper\PageactionsMapper.xml" />
-		<mapper resource="mapper\PagemenusMapper.xml" />
-		<mapper resource="mapper\QuestionairesMapper.xml" />
-		<mapper resource="mapper\ReCustomerBusinesssystemMapper.xml" />
-		<mapper resource="mapper\ReCustomerContactorBusinesssystemMapper.xml" />
-		<mapper resource="mapper\ReNoticeBusinesssystemMapper.xml" />
-		<mapper resource="mapper\ReNoticeContactorMapper.xml" />
-		<mapper resource="mapper\ReNoticeCustomerMapper.xml" />
-		<mapper resource="mapper\RequirementinsertparamsMapper.xml" />
-		<mapper resource="mapper\RequirementMapper.xml" />
-		<mapper resource="mapper\ReResourceBusinesssystemMapper.xml" />
-		<mapper resource="mapper\ResaletechproductsMapper.xml" />
-		<mapper resource="mapper\ResourceMapper.xml" />
-		<mapper resource="mapper\SortMapper.xml" />
-	</mappers>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver"
+                          value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+                <!-- ?useUnicode=true&amp;characterEncoding=utf8为了支持中文数据的写入 -->
+                <property name="url"
+                          value="jdbc:sqlserver://localhost:1433;DatabaseName=YunYiSite;"/>
+                <property name="username" value="sa"/>
+                <property name="password" value="111111"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="mapper-yunyi\AccountsMapper.xml"/>
+        <mapper resource="mapper-yunyi\ActiontopagesMapper.xml"/>
+        <mapper resource="mapper-yunyi\AdminloginlogsMapper.xml"/>
+        <mapper resource="mapper-yunyi\AdminoperationsMapper.xml"/>
+        <mapper resource="mapper-yunyi\AdminsMapper.xml"/>
+        <mapper resource="mapper-yunyi\AdmintopagesMapper.xml"/>
+        <mapper resource="mapper-yunyi\AnswersMapper.xml"/>
+        <mapper resource="mapper-yunyi\AttachfileMapper.xml"/>
+        <mapper resource="mapper-yunyi\AuthoriesMapper.xml"/>
+        <mapper resource="mapper-yunyi\AuthorytopagesMapper.xml"/>
+        <mapper resource="mapper-yunyi\BusinesssystemMapper.xml"/>
+        <mapper resource="mapper-yunyi\ContactorsMapper.xml"/>
+        <mapper resource="mapper-yunyi\CustomereventinsertparamsMapper.xml"/>
+        <mapper resource="mapper-yunyi\CustomereventMapper.xml"/>
+        <mapper resource="mapper-yunyi\CustomerloginlogsMapper.xml"/>
+        <mapper resource="mapper-yunyi\CustomerMapper.xml"/>
+        <mapper resource="mapper-yunyi\FeedbackMapper.xml"/>
+        <mapper resource="mapper-yunyi\LogResourcedownloadMapper.xml"/>
+        <mapper resource="mapper-yunyi\NewsMapper.xml"/>
+        <mapper resource="mapper-yunyi\NoticelogsMapper.xml"/>
+        <mapper resource="mapper-yunyi\NoticeMapper.xml"/>
+        <mapper resource="mapper-yunyi\OnlineresourceMapper.xml"/>
+        <mapper resource="mapper-yunyi\PageactionsMapper.xml"/>
+        <mapper resource="mapper-yunyi\PagemenusMapper.xml"/>
+        <mapper resource="mapper-yunyi\QuestionairesMapper.xml"/>
+        <mapper resource="mapper-yunyi\ReCustomerBusinesssystemMapper.xml"/>
+        <mapper resource="mapper-yunyi\ReCustomerContactorBusinesssystemMapper.xml"/>
+        <mapper resource="mapper-yunyi\ReNoticeBusinesssystemMapper.xml"/>
+        <mapper resource="mapper-yunyi\ReNoticeContactorMapper.xml"/>
+        <mapper resource="mapper-yunyi\ReNoticeCustomerMapper.xml"/>
+        <mapper resource="mapper-yunyi\RequirementinsertparamsMapper.xml"/>
+        <mapper resource="mapper-yunyi\RequirementMapper.xml"/>
+        <mapper resource="mapper-yunyi\ReResourceBusinesssystemMapper.xml"/>
+        <mapper resource="mapper-yunyi\ResaletechproductsMapper.xml"/>
+        <mapper resource="mapper-yunyi\ResourceMapper.xml"/>
+        <mapper resource="mapper-yunyi\SortMapper.xml"/>
+    </mappers>
 
 </configuration>
