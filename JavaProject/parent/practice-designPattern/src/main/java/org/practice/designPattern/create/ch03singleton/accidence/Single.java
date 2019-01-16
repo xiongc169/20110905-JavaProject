@@ -27,9 +27,11 @@ public class Single {
     public static Single getInstance() {
         if (instance == null) {
 //            synchronized (Single.class) {
-            instance = new Single();
+//                if (instance == null) {
+                    instance = new Single();
+//                }
+//            }
         }
-//        }
         return instance;
     }
 }
