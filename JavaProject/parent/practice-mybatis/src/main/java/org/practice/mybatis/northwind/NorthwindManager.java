@@ -11,27 +11,34 @@ import org.practice.mybatis.northwind.domain.Categories;
 
 public class NorthwindManager {
 
-	public static void main(String[] args) {
+    /**
+     * 入口函数
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        try {
+            northwindTest();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
-		northwindTest();
-	}
+    /**
+     * 2018-6-1
+     */
+    private static void northwindTest() {
+        try {
+            String resource = "mybatis-northwind.xml";
+            InputStream iStream = Resources.getResourceAsStream(resource);
+            SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(iStream);
+            SqlSession session = factory.openSession();
+            Categories result = session.selectOne("org.practice.mybatis.northwind.dao.CategoriesMapper.selectByPrimaryKey", 28);
+            System.out.println(result);
 
-	/**
-	 * 2018-6-1
-	 */
-	private static void northwindTest() {
-		try {
-			String resource = "mybatis-northwind.xml";
-			InputStream iStream = Resources.getResourceAsStream(resource);
-			SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(iStream);
-			SqlSession session = factory.openSession();
-			Categories result = session
-					.selectOne("org.practice.mybatis.northwind.dao.CategoriesMapper.selectByPrimaryKey", 28);
-			System.out.println(result);
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

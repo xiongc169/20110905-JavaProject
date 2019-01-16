@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <!-- 数据库驱动包位置 -->
+    <classPathEntry location="E:\GitHub\mysql-connector-java-8.0.12.jar"/>
+
+    <context id="wong_user">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/wong_user?serverTimezone=UTC" userId="root"
+                        password="123456"/>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="org.practice.mybatis.wong_user.domain"
+                            targetProject="src\main\java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mapper-wong_user"
+                         targetProject="src\main\resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- 生成Mapper接口 -->
+        <javaClientGenerator targetPackage="org.practice.mybatis.wong_user.dao"
+                             targetProject="src\main\java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="account"></table>
+        <table tableName="admin"></table>
+        <table tableName="customer"></table>
+        <table tableName="menu"></table>
+        <table tableName="resource"></table>
+        <table tableName="role"></table>
+        <table tableName="role_menu"></table>
+        <table tableName="role_resource"></table>
+        <table tableName="user_role"></table>
+    </context>
+</generatorConfiguration>
