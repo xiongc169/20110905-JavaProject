@@ -25,9 +25,16 @@ public class ReflectDemo {
      * @param args
      */
     public static void main(String[] args) {
+        try {
+            reflectDemo();
+            annotationTest();
 
-        reflectDemo();
-        annotationTest();
+            Object demo = Class.forName(ReflectDemo.class.getName()).newInstance();
+            Method sayHello = demo.getClass().getMethod("sayHello", String.class);
+            sayHello.invoke(demo,"2019年1月27日15:28:38");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
@@ -100,5 +107,14 @@ public class ReflectDemo {
                 }
             }
         }
+    }
+
+    /**
+     * 反射调用的方法
+     * PS：《深入浅出Mybatis技术原理与实战》第六章 (P130)
+     * @param msg
+     */
+    public void sayHello(String msg) {
+        System.out.println("ReflectDemo.sayHello: " + msg);
     }
 }
