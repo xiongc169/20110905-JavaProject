@@ -15,7 +15,11 @@ public class DateUtility {
      * @param args
      */
     public static void main(String[] args) {
-        ch12Demo();
+        try {
+            ch12Demo();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     public static void ch12Demo() {
