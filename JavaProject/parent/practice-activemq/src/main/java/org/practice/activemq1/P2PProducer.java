@@ -28,14 +28,15 @@ public class P2PProducer {
      */
     public static void main(String[] args) {
         try {
+            boolean isTopic = false;
             //生产者
-            producer4P2P(false, false);
+            producer4P2P(isTopic, false);
             System.out.println("producer4P2P ending");
             //消费者
-            consumer4P2P();
+            consumer4P2P(isTopic);
             System.out.println("consumer4P2P ending");
             //消费者2
-            consumerPlus4P2P();
+            consumerPlus4P2P(isTopic);
             System.out.println("consumerPlus4P2P ending");
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -50,15 +51,17 @@ public class P2PProducer {
      */
     public static void producer4P2P(boolean topic, boolean persistent) throws Exception {
         String timeString = "20180725164311"; // format.format(new Date());
+        ActiveMQConnectionFactory connFactory = null;
         Connection conn = null;
         Session session = null;
         Destination dest = null;
         MessageProducer producer = null;
         TextMessage message = null;
         try {
-            conn = new ActiveMQConnectionFactory(userName, password, brokerUrl).createConnection();
+            connFactory = new ActiveMQConnectionFactory(userName, password, brokerUrl);
+            conn = connFactory.createConnection();
             conn.start();// ！！！！！
-            /**在connection的基础上创建一个session，同时设置是否支持事务ACKNOWLEDGE标识。
+            /**在connection的基础上创建一个session，同时设置是否支持事务、ACKNOWLEDGE标识。
              • AUTO_ACKNOWLEDGE：自动确认模式。一旦接收方应用程序的方法调用从处理消息处返回，会话对象就会确认消息的接收。
              • CLIENT_ACKNOWLEDGE：客户端确认模式。会话对象依赖于应用程序对被接收的消息调用一个acknowledge()方法。一旦这个方法被调用，会话会确认最后一次确认之后所有接收到的消息。这种模式允许应用程序以一个调用来接收，处理并确认一批消息。注意：在管理控制台中，如果连接工厂的Acknowledge Policy（确认方针）属性被设置为"Previous"（提前），但是你希望为一个给定的会话确认所有接收到的消息，那么就用最后一条消息来调用acknowledge()方法。
              • DUPS_OK_ACKNOWLEDGE：允许副本的确认模式。一旦接收方应用程序的方法调用从处理消息处返回，会话对象就会确认消息的接收；而且允许重复确认。在需要考虑资源使用时，这种模式非常有效。注意：如果你的应用程序无法处理重复的消息的话，你应该避免使用这种模式。如果发送消息的初始化尝试失败，那么重复的消息可以被重新发送。
@@ -85,15 +88,16 @@ public class P2PProducer {
     /**
      * 消费者
      */
-    public static void consumer4P2P() {
-        boolean topic = false;
+    public static void consumer4P2P(boolean topic) {
         String timeString = "20180725164311"; // format.format(new Date());
+        ActiveMQConnectionFactory connFactory = null;
         Connection conn = null;
         Session session = null;
         Destination dest = null;
         MessageConsumer consumer = null;
         try {
-            conn = new ActiveMQConnectionFactory(userName, password, brokerUrl).createConnection();
+            connFactory = new ActiveMQConnectionFactory(userName, password, brokerUrl);
+            conn = connFactory.createConnection();
             conn.start();// ！！！！！
             session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
             if (topic) {
@@ -110,21 +114,21 @@ public class P2PProducer {
         } catch (JMSException e) {
             e.printStackTrace();
         }
-
     }
 
     /**
      * 消费者Plus
      */
-    public static void consumerPlus4P2P() {
-        boolean topic = false;
+    public static void consumerPlus4P2P(boolean topic) {
         String timeString = "20180725164311"; // format.format(new Date());
+        ActiveMQConnectionFactory connFactory = null;
         Connection conn = null;
         Session session = null;
         Destination dest = null;
         MessageConsumer consumer = null;
         try {
-            conn = new ActiveMQConnectionFactory(userName, password, brokerUrl).createConnection();
+            connFactory = new ActiveMQConnectionFactory(userName, password, brokerUrl);
+            conn = connFactory.createConnection();
             conn.start();// ！！！！！
             session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
             if (topic) {
@@ -137,6 +141,5 @@ public class P2PProducer {
         } catch (JMSException e) {
             e.printStackTrace();
         }
-
     }
 }
