@@ -82,13 +82,21 @@ public class P2PProducer {
             producer.send(message);
         } catch (JMSException e) {
             e.printStackTrace();
+        } finally {
+            //不释放资源，应用程序不会停止
+            if (session != null) {
+                session.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
         }
     }
 
     /**
      * 消费者
      */
-    public static void consumer4P2P(boolean topic) {
+    public static void consumer4P2P(boolean topic) throws Exception {
         String timeString = "20180725164311"; // format.format(new Date());
         ActiveMQConnectionFactory connFactory = null;
         Connection conn = null;
@@ -113,13 +121,21 @@ public class P2PProducer {
             }
         } catch (JMSException e) {
             e.printStackTrace();
+        } finally {
+            //不释放资源，应用程序不会停止
+            if (session != null) {
+                session.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
         }
     }
 
     /**
      * 消费者Plus
      */
-    public static void consumerPlus4P2P(boolean topic) {
+    public static void consumerPlus4P2P(boolean topic) throws Exception {
         String timeString = "20180725164311"; // format.format(new Date());
         ActiveMQConnectionFactory connFactory = null;
         Connection conn = null;
@@ -140,6 +156,14 @@ public class P2PProducer {
             consumer.setMessageListener(new P2PMessageListener());
         } catch (JMSException e) {
             e.printStackTrace();
+        } finally {
+            //不释放资源，应用程序不会停止
+            if (session != null) {
+                session.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
         }
     }
 }
