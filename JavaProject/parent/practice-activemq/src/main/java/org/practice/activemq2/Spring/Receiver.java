@@ -7,28 +7,30 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.jms.core.JmsTemplate;
 
 /**
- * @author 20180112002
- *
- * @description Receiver.java
- * 
- *              http://blog.csdn.net/jwdstef/article/details/17380471 <br>
- *              JMS Provider\JMS for Spring
- *
- * @date 2018年7月25日
- *
+ * @author yoong
+ * <br/>
+ * @desc 深入浅出消息队列 ActiveMQ
+ *       PS：整合Spring实现消息发送和接收
+ *       http://blog.csdn.net/jwdstef/article/details/17380471
+ * <br/>
+ * @date 2015-08-28 09:55:26
  */
 public class Receiver {
 
-	@SuppressWarnings("unchecked")
-	public static void main(String[] args) {
-		ApplicationContext ctx = new FileSystemXmlApplicationContext("classpath:jms4spring2.xml");
+    /**
+     * 入口函数
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        ApplicationContext ctx = new FileSystemXmlApplicationContext("classpath:jms4spring2.xml");
 
-		JmsTemplate jmsTemplate = (JmsTemplate) ctx.getBean("jmsTemplate");
-		while (true) {
-			Map<String, Object> map = (Map<String, Object>) jmsTemplate.receiveAndConvert();
+        JmsTemplate jmsTemplate = (JmsTemplate) ctx.getBean("jmsTemplate");
+        while (true) {
+            Map<String, Object> map = (Map<String, Object>) jmsTemplate.receiveAndConvert();
 
-			System.out.println("收到消息：" + map.get("message"));
-		}
-	}
+            System.out.println("收到消息：" + map.get("message"));
+        }
+    }
 
 }
