@@ -1,13 +1,11 @@
-package org.practice.primary.socket.multiServer;
+package org.practice.primary.network.socket.multiServer;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- * @description MultiServerPoint.java
+ * @desc MultiServerPoint.java
  * @author chaoxiong
  * @date 2016年4月4日 下午3:20:53
  */
