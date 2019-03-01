@@ -1,0 +1,9 @@
+<beans xmlns="http://xfire.codehaus.org/config/1.0">
+
+    <service>
+        <name>CityService</name>
+        <serviceClass>com.practice.xfire.api.ICityHelper</serviceClass>
+        <implementationClass>com.practice.xfire.impl.CityHelperImpl</implementationClass>
+    </service>
+
+</beans>
