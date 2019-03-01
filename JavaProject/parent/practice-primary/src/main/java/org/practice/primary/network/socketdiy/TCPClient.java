@@ -10,7 +10,7 @@ import java.net.Socket;
  * @Date 2019年2月28日16:54:21
  * @Version 1.0
  */
-public class Client {
+public class TCPClient {
 
     public static void main(String[] args) {
         try {
@@ -27,8 +27,11 @@ public class Client {
         try {
             for (int i = 0; i < 5; i++) {
                 String msg = "Message " + i;
-                System.out.println("Client: " + msg);
+                System.out.println("Client Request: " + msg);
                 os.write(msg.getBytes());
+                byte[] resposne = new byte[1024];
+                is.read(resposne);
+                System.out.println("Client Response: " + new String(resposne));
                 Thread.sleep(2000);
             }
         } catch (Exception ex) {

@@ -11,7 +11,7 @@ import java.net.Socket;
  * @Date
  * @Version 1.0
  */
-public class Server {
+public class TCPServer {
 
     public static void main(String[] args) {
         try {
@@ -33,7 +33,10 @@ public class Server {
             do {
                 byte[] data = new byte[1000];
                 is.read(data);
-                System.out.println("Server: " + new String(data));
+                System.out.println("Server Receive: " + new String(data));
+                String response = "Response for " + new String(data);
+                System.out.println("Server Return: " + response);
+                os.write(response.getBytes());
             } while (true);
         } catch (Exception ex) {
             ex.printStackTrace();
