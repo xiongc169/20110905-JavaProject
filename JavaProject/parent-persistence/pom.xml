@@ -13,6 +13,8 @@
     <modules>
         <module>hibernate-accidence</module>
         <module>hibernate-spring</module>
+        <module>practice-jdbc</module>
+        <module>practice-mybatis</module>
     </modules>
 
     <properties>
