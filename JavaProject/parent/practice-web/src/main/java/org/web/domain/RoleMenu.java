@@ -1,4 +1,4 @@
-package org.practice.hibernate.domain;
+package org.web.domain;
 
 import javax.persistence.*;
 import java.util.Date;

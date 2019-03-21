@@ -1,11 +1,11 @@
 package org.practice.hibernate.domain;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Objects;
 
 /**
- * @Desc TODO
+ * @Desc UserRole
  * @Author
  * @Date
  * @Version 1.0
@@ -16,8 +16,8 @@ public class UserRole {
     private long id;
     private String userId;
     private long roleId;
-    private Timestamp createTime;
-    private Timestamp modifyTime;
+    private Date createTime;
+    private Date modifyTime;
     private String note1;
     private String note2;
     private int isDelete;
@@ -54,21 +54,21 @@ public class UserRole {
 
     @Basic
     @Column(name = "create_time", nullable = false)
-    public Timestamp getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Timestamp createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
     @Basic
     @Column(name = "modify_time", nullable = false)
-    public Timestamp getModifyTime() {
+    public Date getModifyTime() {
         return modifyTime;
     }
 
-    public void setModifyTime(Timestamp modifyTime) {
+    public void setModifyTime(Date modifyTime) {
         this.modifyTime = modifyTime;
     }
 

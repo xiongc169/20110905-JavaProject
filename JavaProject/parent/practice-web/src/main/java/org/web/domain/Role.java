@@ -1,21 +1,23 @@
-package org.practice.hibernate.domain;
+package org.web.domain;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Date;
 import java.util.Objects;
 
 /**
- * @Desc RoleMenu
+ * @Desc Role
  * @Author
  * @Date
  * @Version 1.0
  */
 @Entity
-@Table(name = "role_menu", schema = "wong_user", catalog = "")
-public class RoleMenu {
+public class Role {
     private long id;
     private long roleId;
-    private Long menuId;
+    private String roleName;
     private Date createTime;
     private Date modifyTime;
     private String note1;
@@ -43,13 +45,13 @@ public class RoleMenu {
     }
 
     @Basic
-    @Column(name = "menu_id", nullable = true)
-    public Long getMenuId() {
-        return menuId;
+    @Column(name = "role_name", nullable = false, length = 50)
+    public String getRoleName() {
+        return roleName;
     }
 
-    public void setMenuId(Long menuId) {
-        this.menuId = menuId;
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 
     @Basic
@@ -106,19 +108,19 @@ public class RoleMenu {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        RoleMenu roleMenu = (RoleMenu) o;
-        return id == roleMenu.id &&
-                roleId == roleMenu.roleId &&
-                isDelete == roleMenu.isDelete &&
-                Objects.equals(menuId, roleMenu.menuId) &&
-                Objects.equals(createTime, roleMenu.createTime) &&
-                Objects.equals(modifyTime, roleMenu.modifyTime) &&
-                Objects.equals(note1, roleMenu.note1) &&
-                Objects.equals(note2, roleMenu.note2);
+        Role role = (Role) o;
+        return id == role.id &&
+                roleId == role.roleId &&
+                isDelete == role.isDelete &&
+                Objects.equals(roleName, role.roleName) &&
+                Objects.equals(createTime, role.createTime) &&
+                Objects.equals(modifyTime, role.modifyTime) &&
+                Objects.equals(note1, role.note1) &&
+                Objects.equals(note2, role.note2);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, roleId, menuId, createTime, modifyTime, note1, note2, isDelete);
+        return Objects.hash(id, roleId, roleName, createTime, modifyTime, note1, note2, isDelete);
     }
 }

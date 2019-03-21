@@ -1,5 +1,6 @@
 package org.practice.hibernate;
 
+import com.fasterxml.classmate.AnnotationConfiguration;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -27,6 +28,7 @@ public class App {
         try {
             hibernateTest();
             hbm2ddl();
+            hbm2ddlByAnnotation();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -63,6 +65,22 @@ public class App {
     public static void hbm2ddl() {
         try {
             Configuration cfg = new Configuration().configure();
+//            SchemaExport export = new SchemaExport(cfg);
+//            export.create(true, true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 【SSH进阶之路】Hibernate搭建开发环境+简单实例（三）
+     * PS：将hbm生成ddl，即hbm2ddl
+     * https://blog.csdn.net/jiuqiyuliang/article/details/40153905
+     */
+    public static void hbm2ddlByAnnotation() {
+        try {
+            //默认读取hibernate.cfg.xml文件
+//            Configuration cfg = new AnnotationConfiguration().configure();
 //            SchemaExport export = new SchemaExport(cfg);
 //            export.create(true, true);
         } catch (Exception e) {
