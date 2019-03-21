@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.yoong.practice.hibernate.accidence.domain.Account" table="account" schema="wong_user">
+        <id name="id">
+            <column name="id" sql-type="bigint(20)"/>
+        </id>
+        <property name="accountId">
+            <column name="account_id" sql-type="varchar(50)" length="50"/>
+        </property>
+        <property name="password">
+            <column name="password" sql-type="varchar(100)" length="100" not-null="false"/>
+        </property>
+        <property name="contactName">
+            <column name="contact_name" sql-type="varchar(40)" length="40" not-null="false"/>
+        </property>
+        <property name="mobile">
+            <column name="mobile" sql-type="varchar(20)" length="20" not-null="false"/>
+        </property>
+        <property name="phone">
+            <column name="phone" sql-type="varchar(20)" length="20" not-null="false"/>
+        </property>
+        <property name="email">
+            <column name="email" sql-type="varchar(40)" length="40" not-null="false"/>
+        </property>
+        <property name="customerId">
+            <column name="customer_id" sql-type="varchar(50)" length="50" not-null="false"/>
+        </property>
+        <property name="customerNo">
+            <column name="customer_no" sql-type="varchar(50)" length="50" not-null="false"/>
+        </property>
+        <property name="customerName">
+            <column name="customer_name" sql-type="varchar(100)" length="100" not-null="false"/>
+        </property>
+        <property name="createTime">
+            <column name="create_time" sql-type="timestamp"/>
+        </property>
+        <property name="modifyTime">
+            <column name="modify_time" sql-type="timestamp"/>
+        </property>
+        <property name="note1">
+            <column name="note1" sql-type="varchar(200)" length="200" not-null="false"/>
+        </property>
+        <property name="note2">
+            <column name="note2" sql-type="varchar(200)" length="200" not-null="false"/>
+        </property>
+        <property name="isDelete">
+            <column name="is_delete" sql-type="int(2)"/>
+        </property>
+    </class>
+</hibernate-mapping>
