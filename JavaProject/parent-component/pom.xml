@@ -5,6 +5,7 @@
     <groupId>com.yoong.practice</groupId>
     <artifactId>parent-component</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
     <name>parent-component</name>
     <url>http://www.example.com</url>
 

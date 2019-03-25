@@ -10,7 +10,7 @@
     <artifactId>xfire-server</artifactId>
     <packaging>war</packaging>
 
-    <name>xfire-server Maven Webapp</name>
+    <name>xfire-server</name>
     <url>http://www.example.com</url>
 
     <properties>
