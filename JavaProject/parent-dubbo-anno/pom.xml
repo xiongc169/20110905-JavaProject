@@ -6,7 +6,7 @@
     <artifactId>parent-dubbo-anno</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>dubbo-anno</name>
+    <name>parent-dubbo-anno</name>
     <url>http://maven.apache.org</url>
 
     <modules>

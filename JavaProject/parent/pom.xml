@@ -41,23 +41,8 @@
     </repositories>
 
     <modules>
-        <module>practice-cheguo</module>
-        <module>practice-hundsun</module>
-        <module>practice-java8</module>
         <module>practice-jpush</module>
-        <module>practice-jvm</module>
-        <module>practice-log4j</module>
-        <module>practice-logback</module>
-        <module>practice-netty</module>
         <module>practice-python</module>
-        <module>practice-quartz</module>
-        <module>practice-servlet</module>
-        <module>practice-slf4j</module>
-        <module>practice-spring</module>
-        <module>practice-structs</module>
-        <module>practice-thread</module>
-        <module>practice-utility</module>
-        <module>practice-web</module>
     </modules>
 
     <build>
