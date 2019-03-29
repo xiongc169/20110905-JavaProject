@@ -1,6 +1,5 @@
 package org.practice.primary.generic;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -21,11 +20,24 @@ public class App {
      */
     public static void main(String[] args) {
         try {
-            List<String> stringList = Arrays.asList("1111", "2222", "3333", "4444");
-            String middle = ArrayUtility.getMiddle(stringList);
-            System.out.println(middle);
+            //arrayUtils();
+            genericMethod();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    public static void arrayUtils() {
+        List<String> stringList = Arrays.asList("1111", "2222", "3333", "4444");
+        String middle = ArrayUtility.getMiddle(stringList);
+        System.out.println(middle);
+    }
+
+    public static void genericMethod() {
+        TMethod gMethod = new TMethod();
+        Date date = gMethod.getGenericResult(Date.class);
+        String hello = gMethod.getGenericResult(String.class);
+        System.out.println(date);
+        System.out.println(hello);
     }
 }

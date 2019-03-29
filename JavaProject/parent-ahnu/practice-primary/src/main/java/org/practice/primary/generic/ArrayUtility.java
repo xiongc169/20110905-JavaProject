@@ -1,5 +1,6 @@
 package org.practice.primary.generic;
 
+import java.util.Date;
 import java.util.List;
 
 public class ArrayUtility {
@@ -9,4 +10,6 @@ public class ArrayUtility {
         T t = list.get(middle);
         return t;
     }
+
+
 }
