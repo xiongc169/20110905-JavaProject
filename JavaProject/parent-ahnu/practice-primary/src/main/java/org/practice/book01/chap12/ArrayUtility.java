@@ -1,6 +1,5 @@
-package org.practice.primary.generic;
+package org.practice.book01.chap12;
 
-import java.util.Date;
 import java.util.List;
 
 public class ArrayUtility {
@@ -10,6 +9,5 @@ public class ArrayUtility {
         T t = list.get(middle);
         return t;
     }
-
 
 }

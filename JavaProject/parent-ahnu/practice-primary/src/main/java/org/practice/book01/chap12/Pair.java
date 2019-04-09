@@ -1,4 +1,4 @@
-package org.practice.primary.generic;
+package org.practice.book01.chap12;
 
 /**
  * @author yoong
@@ -7,5 +7,5 @@ package org.practice.primary.generic;
  * <br>
  * @date 2019/1/31 19:20
  */
-public class Pair<T, U> {
+public class Pair<T, U, S> {
 }
