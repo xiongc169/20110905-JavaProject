@@ -13,9 +13,7 @@ import java.util.Scanner;
  * <br>
  * @date 2019/2/1 11:50
  */
-public class DataType implements Cloneable {
-
-    public String deepClone = "DeepClone";
+public class DataType {
 
     /**
      * 入口函数
@@ -127,13 +125,4 @@ public class DataType implements Cloneable {
         printWriter.write("2019年2月1日15:19:07");
     }
 
-    public DataType clone() {
-        try {
-            Object object = super.clone();
-            return (DataType) object;
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return null;
-        }
-    }
 }

@@ -27,18 +27,22 @@ public class JsonUtility {
      * @param args
      */
     public static void main(String[] args) {
-        //json-lib(net.sf.json)
-        net_sf_json_1();
-        net_sf_json_2();
+        try {
+            //json-lib(net.sf.json)
+            net_sf_json_1();
+            net_sf_json_2();
 
-        //gson
-        gson_1();
+            //gson
+            gson_1();
 
-        //fastjson
-        fast_json();
+            //fastjson
+            fast_json();
 
-        //jackson
-        jackson();
+            //jackson
+            jackson();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**

@@ -4,20 +4,25 @@ import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RegexUtils {
+public class RegexUtility {
 
+    /**
+     * 入口函数
+     *
+     * @param args
+     */
     public static void main(String[] args) {
+        try {
+            String pattern = "^\\d{2}$";
+            boolean match = pattern.matches("123");
+            boolean match2 = pattern.matches("12");
+            System.out.println(match);
+            System.out.println(match2);
 
-        test();
-
-        String pattern = "^\\d{2}$";
-
-        boolean match = pattern.matches("123");
-        boolean match2 = pattern.matches("12");
-
-        System.out.println(match);
-        System.out.println(match2);
-
+            test();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**

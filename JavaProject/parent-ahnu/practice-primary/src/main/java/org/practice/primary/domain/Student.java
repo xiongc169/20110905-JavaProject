@@ -1,11 +1,14 @@
 package org.practice.primary.domain;
 
+import lombok.Data;
+
 /**
  * 利用Java Set 去除重复object
  * http://blog.csdn.net/miqi770/article/details/8998517
  *
  * @author Administrator
  */
+@Data
 public class Student {
 
     private String id;
@@ -23,38 +26,6 @@ public class Student {
         this.id = id;
         this.name = name;
         this.sex = sex;
-        this.age = age;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
         this.age = age;
     }
 

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @Desc TClass
+ * @Desc TMethod
  * @Author
  * @Date
  * @Version 1.0
