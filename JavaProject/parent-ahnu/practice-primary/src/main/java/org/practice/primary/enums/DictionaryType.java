@@ -1,4 +1,4 @@
-package org.practice.primary.enmu;
+package org.practice.primary.enums;
 
 /**
  * 字典类型

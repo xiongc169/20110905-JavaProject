@@ -2,7 +2,7 @@ package org.practice.primary.domain;
 
 import java.util.List;
 
-import org.practice.primary.enmu.DictionaryType;
+import org.practice.primary.enums.DictionaryType;
 
 public class Dictionary implements Cloneable {
 	/**

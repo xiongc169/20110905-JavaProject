@@ -24,11 +24,11 @@ public class DataType implements Cloneable {
      */
     public static void main(String[] args) {
         try {
-//            intType();
-//            floatType();
-//            operator();
+            intType();
+            floatType();
+            operator();
             stringTest();
-//            inputOutput();
+            inputOutput();
         } catch (Exception ex) {
             ex.printStackTrace();
         }

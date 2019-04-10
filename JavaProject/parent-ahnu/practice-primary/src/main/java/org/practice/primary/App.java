@@ -1,15 +1,11 @@
 package org.practice.primary;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 import org.practice.primary.init_order.DeriveClass;
 import org.practice.primary.domain.Dictionary;
 import org.practice.primary.domain.Student;
-import org.practice.primary.utility.CollectionUtility;
 
 /**
  * @author yoong
@@ -29,7 +25,7 @@ public class App {
             initOrderTest();
             hashCodeTest();
             setDistinctTest();
-            getTimestamp();
+            instance();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -94,33 +90,32 @@ public class App {
     }
 
     /**
-     * Java获取时间戳：http://tangmingjie2009.iteye.com/blog/1543166 <br>
-     * Java时间戳、时间转换：http://www.cnblogs.com/mstk/p/5511057.html <br>
-     * java生成时间戳，13位<br>
-     * .net生成时间戳，10位
+     * Java中instanceof和isInstance区别详解
+     * PS：obj instanceof className、class.isInstance(obj)
+     * https://www.cnblogs.com/greatfish/p/6096038.html
+     * instanceof、isInstance、==、equals判断Class是否相等
+     * https://blog.csdn.net/qq_36894974/article/details/79090322
      */
-    public static void getTimestamp() {
-
-        // 获取时间戳
-        long timestamp = System.currentTimeMillis();
-        long timestamp11 = System.currentTimeMillis();
-        long timestamp2 = Calendar.getInstance().getTimeInMillis();
-        long timestamp3 = new Date().getTime();
-        long timestamp33 = new Date().getTime();
-        System.out.println(timestamp);
-        System.out.println(timestamp2);
-        System.out.println(timestamp3);
-
-        // 时间戳转换为时间
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        long timestamp4 = 1509004771699L;
-        Date date = new Date(timestamp4);
-        String dateStr = simpleDateFormat.format(date);
-        System.out.println(dateStr);
-
-        SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
-        String dateStr2 = format.format(new Date());
-        System.out.println(dateStr2);
+    public static void instance() {
+        Student student = new Student();
+        Student student2 = new Student();
+        if (student instanceof Student) {
+            System.out.println("instanceof true");
+        }
+        if (Student.class.isInstance(student2)) {
+            System.out.println("isInstance true");
+        }
     }
 
+    /**
+     * https://blog.csdn.net/sx729034738/article/details/69569055 <br>
+     * PS：java中的运算 ^, << , >>,&
+     */
+    public static void left() {
+        // 左移n位就相当于乘以2的n次方
+        int a = 3 << 10;
+        int b = 48 >> 2;
+        System.out.println(a);
+        System.out.println(b);
+    }
 }
