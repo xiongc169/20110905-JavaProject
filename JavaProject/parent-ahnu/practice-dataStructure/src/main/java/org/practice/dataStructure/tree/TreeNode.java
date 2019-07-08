@@ -8,6 +8,13 @@ public class TreeNode<T> {
 
     private TreeNode<T> right;
 
+    public TreeNode() {
+    }
+
+    public TreeNode(T data) {
+        this.data = data;
+    }
+
     public T getData() {
         return data;
     }
