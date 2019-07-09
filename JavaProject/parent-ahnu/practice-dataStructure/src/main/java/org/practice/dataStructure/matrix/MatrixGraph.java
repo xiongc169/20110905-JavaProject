@@ -9,22 +9,22 @@ package org.practice.dataStructure.matrix;
 public class MatrixGraph {
 
     //顶点信息
-    private String[] vertex;
+    public String[] vertex;
 
-    //边信息
-    private Integer[][] edges;
+    //边信息，值表示边的权值
+    public Integer[][] edges;
 
     //深搜和广搜的遍历标志
-    private boolean[] isTrav;
+    public boolean[] isTraveled;
 
     //顶点数量
-    private Integer vertexNum;
+    public Integer vertexNum;
 
     //边数量
-    private Integer edgeNum;
+    public Integer edgeNum;
 
     //图类型
-    private Integer graphType;
+    public Integer graphType;
 
     public MatrixGraph() {
     }
@@ -36,54 +36,6 @@ public class MatrixGraph {
 
         this.vertex = new String[vertexNum];
         this.edges = new Integer[vertexNum][vertexNum];
-        this.isTrav = new boolean[vertexNum];
-    }
-
-    public String[] getVertex() {
-        return vertex;
-    }
-
-    public void setVertex(String[] vertex) {
-        this.vertex = vertex;
-    }
-
-    public Integer[][] getEdges() {
-        return edges;
-    }
-
-    public void setEdges(Integer[][] edges) {
-        this.edges = edges;
-    }
-
-    public boolean[] getIsTrav() {
-        return isTrav;
-    }
-
-    public void setIsTrav(boolean[] isTrav) {
-        this.isTrav = isTrav;
-    }
-
-    public Integer getVertexNum() {
-        return vertexNum;
-    }
-
-    public void setVertexNum(Integer vertexNum) {
-        this.vertexNum = vertexNum;
-    }
-
-    public Integer getEdgeNum() {
-        return edgeNum;
-    }
-
-    public void setEdgeNum(Integer edgeNum) {
-        this.edgeNum = edgeNum;
-    }
-
-    public Integer getGraphType() {
-        return graphType;
-    }
-
-    public void setGraphType(Integer graphType) {
-        this.graphType = graphType;
+        this.isTraveled = new boolean[vertexNum];
     }
 }

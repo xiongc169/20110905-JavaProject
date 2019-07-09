@@ -1,5 +1,7 @@
 package org.practice.dataStructure.tree;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -65,11 +67,27 @@ public class App2 {
         }
     }
 
+    /**
+     * 中序遍历-递归
+     */
     public static void midOrder(TreeNode root) {
         if (root != null) {
             midOrder(root.getLeft());
             System.out.print(root.getData() + "  ");
             midOrder(root.getRight());
+        }
+    }
+
+    /**
+     * TODO：中序遍历-迭代
+     */
+    public static void midOrderIterator(TreeNode root) {
+        List<TreeNode> nodes = new ArrayList<>();
+        while (root != null) {
+            nodes.add(root);
+            root = root.getLeft();
+            System.out.println(root.getData());
+
         }
     }
 
