@@ -16,7 +16,7 @@ public class LeetCodeApp {
 //            int[] nums = new int[]{2, 7, 11, 15};
 //            int target = 9;
 //            twoSum(nums, target);
-//
+
 //            ListNode a = new ListNode(5);
 //            a.next = new ListNode(4);
 //            a.next.next = new ListNode(3);
@@ -24,16 +24,18 @@ public class LeetCodeApp {
 //            b.next = new ListNode(6);
 //            b.next.next = new ListNode(4);
 //            ListNode c = addTwoNumbers(a, b);
-//
+
 //            lengthOfLongestSubstring("pwwkew");
-//
+
 //            int[] nums1 = new int[]{};
 //            int[] nums2 = new int[]{2, 4};
 //            findMedianSortedArrays(nums1, nums2);
-//
+
 //            longestPalindrome("cbbd");
 
-            convert("LEETCODEISHIRING", 4);
+//            convert("LEETCODEISHIRING", 4);
+
+            reverse(1534236469);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -226,6 +228,68 @@ public class LeetCodeApp {
             sbList.add(sb);
         }
         return result;
+    }
+
+    /**
+     * 整数反转
+     * 132 -120
+     * https://leetcode-cn.com/problems/reverse-integer/
+     */
+    public static int reverse(int x) {
+//        char[] chars = String.valueOf(x).toCharArray();
+//        int result = 0;
+//        for (int i = chars.length - 1; i > 0; i--) {
+//            int tmp = Integer.valueOf(chars[i]);
+//            result = result * 10 + tmp;
+//        }
+//        if (String.valueOf(chars[0]).matches("\\d")) {
+//            result = result * 10 + Integer.valueOf(chars[0]);
+//        } else if (String.valueOf(chars[0]).equals("-")) {
+//            result = -result;
+//        }
+        if (x < -Math.pow(2, 31) || x > Math.pow(2, 31) - 1) {
+            return 0;
+        }
+        String str = String.valueOf(x);
+        long result = 0l;
+        for (int i = str.length() - 1; i > 0; i--) {
+            int tmp = Integer.valueOf(str.substring(i, i + 1));
+            result = result * 10 + tmp;
+        }
+        if (str.substring(0, 1).matches("\\d")) {
+            result = result * 10 + Integer.valueOf(str.substring(0, 1));
+        } else if (str.substring(0, 1).equals("-")) {
+            result = -result;
+        }
+        if (result < -Math.pow(2, 31) || result > Math.pow(2, 31) - 1) {
+            return 0;
+        }
+        return (int) result;
+    }
+
+    /**
+     * 字符串转换整数 (atoi)
+     * https://leetcode-cn.com/problems/string-to-integer-atoi/
+     */
+    public static int myAtoi(String str) {
+
+        return 0;
+    }
+
+    /**
+     * 回文数
+     * https://leetcode-cn.com/problems/palindrome-number/
+     */
+    public boolean isPalindrome(int x) {
+        if (x < 0) {
+            return false;
+        }
+        int mode = 10;
+        while (true) {
+            int tmp = x % mode;
+            mode *= 10;
+        }
+//        return false;
     }
 }
 

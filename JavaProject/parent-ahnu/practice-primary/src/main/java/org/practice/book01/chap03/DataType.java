@@ -2,6 +2,8 @@ package org.practice.book01.chap03;
 
 import java.io.Console;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
@@ -22,11 +24,12 @@ public class DataType {
      */
     public static void main(String[] args) {
         try {
-            intType();
-            floatType();
-            operator();
-            stringTest();
-            inputOutput();
+//            intType();
+//            floatType();
+//            operator();
+//            stringTest();
+//            inputOutput();
+            bigDecimalTest();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -123,6 +126,33 @@ public class DataType {
 
         PrintWriter printWriter = new PrintWriter("c:\\tmp.txt");
         printWriter.write("2019年2月1日15:19:07");
+    }
+
+    /**
+     * 工作日志：chesheng/20190715-E分期1.2
+     * BigDecimal的精度设置、舍入模式
+     */
+    private static void bigDecimalTest() {
+        BigDecimal aa = new BigDecimal(10.99);
+        BigDecimal bb = new BigDecimal(3.99);
+
+        BigDecimal result1 = aa.add(bb).setScale(3, RoundingMode.UP);
+        System.out.println("add : " + result1);
+        BigDecimal result2 = aa.subtract(bb).setScale(3);
+        System.out.println("subtract : " + result2);
+        BigDecimal result3 = aa.multiply(bb).setScale(3, RoundingMode.UP);
+        System.out.println("multiply : " + result3);
+        BigDecimal result4 = aa.divide(bb, 4, RoundingMode.CEILING);
+        System.out.println("divide : " + result4);
+
+
+        BigDecimal cc = new BigDecimal(10.5555);
+        BigDecimal dd = new BigDecimal(-10.5555);
+
+        BigDecimal result5 = cc.setScale(2, RoundingMode.DOWN);
+        System.out.println("UP : " + result5);
+        BigDecimal result6 = dd.setScale(2, RoundingMode.DOWN);
+        System.out.println("DOWN : " + result6);
     }
 
 }

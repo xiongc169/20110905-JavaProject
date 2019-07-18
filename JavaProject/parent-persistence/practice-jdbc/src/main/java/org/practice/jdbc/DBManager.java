@@ -21,10 +21,10 @@ public class DBManager {
     // mysql驱动类
     private static String mySQLDriver = "com.mysql.jdbc.Driver";
 
-    private static String mySQLURL = "jdbc:mysql://192.168.75.162:3306/mysql?user=root&password=123456&serverTimezone=UTC";
+    private static String mySQLURL = "jdbc:mysql://127.0.0.1:3306/mysql?user=root&password=123456&serverTimezone=UTC";
 
     // mycat连接串
-    private static String mycatURL = "jdbc:mysql://192.168.75.162:8066/TESTDB?user=root&password=123456";
+    private static String mycatURL = "jdbc:mysql://127.0.0.1:8066/TESTDB?user=root&password=123456";
 
     /**
      * 入口函数
@@ -38,7 +38,7 @@ public class DBManager {
             String northwindSql = "select * from Categories";
             String northwindInsert = "INSERT INTO Categories(CategoryName,Description,Picture) VALUES('CategoryName', 'Description', 'Picture')";
             // MySQL
-            String sql = "select * from `user`";
+            String mysql = "select * from `user`";
             String mycatSql = "select * from travelrecord";
             // 插入到
             String insertSql = "INSERT INTO `travelrecord` (`id`, `user_id`, `traveldate`, `fee`, `days`) VALUES ('15000002', '2', '2017-10-22', '2', '2')";
@@ -49,9 +49,9 @@ public class DBManager {
             String insertCustomerSql = "INSERT INTO `customer` (`id`, `customername`, `createtime`) VALUES ('4', 'customerName4', '2017-11-2');";
             String insertCustomerAddrSql = "INSERT INTO `customer_addr` (`id`, `addressname`, `customer_id`, `createtime`) VALUES ('3', 'anhui2', '3', '2017-11-2');";
 
-            dbConn = getConnection(sqlServerDriver, sqlServerURL);
-            executeQuery(dbConn, northwindSql);
-            exeInsert(dbConn, northwindInsert);
+            dbConn = getConnection(mySQLDriver, mySQLURL);
+            executeQuery(dbConn, mysql);
+            //exeInsert(dbConn, northwindInsert);
 
             // SQL Server
             // String sql = "select * from [Employees]";

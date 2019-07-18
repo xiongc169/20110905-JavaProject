@@ -30,10 +30,10 @@ public class App {
      */
     private static void JdbcTest() {
         String driverName = "com.mysql.cj.jdbc.Driver";
-        String mysqlUrl = "jdbc:mysql://127.0.0.1:3306/wong_user?serverTimezone=UTC";
+        String mysqlUrl = "jdbc:mysql://127.0.0.1:3306/mysql?serverTimezone=UTC";
         String userName = "root";
         String pwd = "123456";
-        String sql = "select * from `account`";
+        String sql = "select * from `user`";
 
         Connection conn = null;
         Statement stmt = null;

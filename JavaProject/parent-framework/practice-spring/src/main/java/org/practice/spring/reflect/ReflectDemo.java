@@ -5,16 +5,14 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
+import org.practice.spring.domain.Car;
 import org.practice.spring.domain.User;
 
 /**
  * @author yoong
- *
  * @version 1.0
- *
  * @desc Java反射机制详解 <br>
- *      http://www.cnblogs.com/lzq198754/p/5780331.html
- *
+ * http://www.cnblogs.com/lzq198754/p/5780331.html
  * @date 2014年4月2日
  */
 public class ReflectDemo {
@@ -26,12 +24,14 @@ public class ReflectDemo {
      */
     public static void main(String[] args) {
         try {
-            reflectDemo();
-            annotationTest();
+//            reflectDemo();
+//            annotationTest();
+//
+//            Object demo = Class.forName(ReflectDemo.class.getName()).newInstance();
+//            Method sayHello = demo.getClass().getMethod("sayHello", String.class);
+//            sayHello.invoke(demo, "2019年1月27日15:28:38");
 
-            Object demo = Class.forName(ReflectDemo.class.getName()).newInstance();
-            Method sayHello = demo.getClass().getMethod("sayHello", String.class);
-            sayHello.invoke(demo,"2019年1月27日15:28:38");
+            reflectDemo2();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -112,9 +112,28 @@ public class ReflectDemo {
     /**
      * 反射调用的方法
      * PS：《深入浅出Mybatis技术原理与实战》第六章 (P130)
+     *
      * @param msg
      */
     public void sayHello(String msg) {
         System.out.println("ReflectDemo.sayHello: " + msg);
+    }
+
+    /**
+     * 《Spring 3.x企业应用开发实战》-chap04
+     */
+    public static void reflectDemo2() {
+        try {
+            ClassLoader loader = Thread.currentThread().getContextClassLoader();
+            Class clz = loader.loadClass("org.practice.spring.domain.Car");
+            if (clz == Car.class) {
+                Car car = (Car) clz.newInstance();
+                Method setCarId = clz.getMethod("setCarId", String.class);
+                setCarId.invoke(car, "reflect_car_id");
+                System.out.println(car.getCarId());
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }
