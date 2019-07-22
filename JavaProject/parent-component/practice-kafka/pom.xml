@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>parent-component</artifactId>
+        <groupId>com.yoong.practice</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.yoong.practice</groupId>
-    <artifactId>parent-component</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
-    <name>parent-component</name>
-    <url>http://www.example.com</url>
 
-    <modules>
-        <module>practice-activemq</module>
-        <module>practice-activemq-example</module>
-        <module>practice-fastDFS</module>
-        <module>practice-jedis</module>
-        <module>practice-kafka</module>
-        <module>practice-zookeeper</module>
-    </modules>
+    <groupId>com.yoong.practice</groupId>
+    <artifactId>practice-kafka</artifactId>
+
+    <name>practice-kafka</name>
+    <url>http://www.example.com</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -78,12 +74,4 @@
             </plugins>
         </pluginManagement>
     </build>
-
-    <repositories>
-        <repository>
-            <id>nexus-aliyun</id>
-            <name>Nexus aliyun</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
-        </repository>
-    </repositories>
 </project>
