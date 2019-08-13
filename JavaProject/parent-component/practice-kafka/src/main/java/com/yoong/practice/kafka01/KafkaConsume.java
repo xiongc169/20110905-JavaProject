@@ -25,7 +25,7 @@ public class KafkaConsume {
     public static void main(String[] args) {
         try {
             //消费消息
-            KafkaConsume.consume();
+            consume();
             System.out.println("Consume End");
         } catch (Exception ex) {
             ex.printStackTrace();

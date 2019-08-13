@@ -21,7 +21,7 @@ public class KafkaProduce {
     public static void main(String[] args) {
         try {
             //发送消息
-            KafkaProduce.produce();
+            produce();
             System.out.println("Produce End");
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -41,18 +41,20 @@ public class KafkaProduce {
         try {
             KafkaProduceCallback callback = new KafkaProduceCallback();
             for (int i = 0; i < 10; i++) {
-                String msg = "Hello, " + i;
+                String msg = "Hello, Kafka " + i;
                 ProducerRecord<String, String> record = new ProducerRecord<>(topic, msg);
-                kafkaProducer.send(record, callback);
+                //同步发送
+                RecordMetadata data = kafkaProducer.send(record).get();
+                //异步发送
+                //kafkaProducer.send(record, callback);
                 System.out.println("消息发送成功:" + msg);
-//                Thread.sleep(500);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {
             System.out.println("Close Producer");
             kafkaProducer.close();
-            System.out.println("Close Producer Successful");
+            System.out.println("Close Producer Successfully");
         }
     }
 }

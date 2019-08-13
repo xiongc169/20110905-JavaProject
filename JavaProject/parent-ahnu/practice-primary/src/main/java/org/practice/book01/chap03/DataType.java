@@ -24,12 +24,13 @@ public class DataType {
      */
     public static void main(String[] args) {
         try {
-//            intType();
-//            floatType();
-//            operator();
-//            stringTest();
-//            inputOutput();
+            intType();
+            floatType();
+            operator();
+            stringTest();
+            inputOutput();
             bigDecimalTest();
+            stringTest2();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -155,4 +156,22 @@ public class DataType {
         System.out.println("DOWN : " + result6);
     }
 
+    public static void stringTest2() {
+        StringBuffer stringBuffer = new StringBuffer();
+        StringBuilder stringBuilder = new StringBuilder();
+
+        Long timestamp11 = System.currentTimeMillis();
+        for (int i = 0; i < 500000; i++) {
+            stringBuffer.append(String.valueOf(i));
+        }
+        Long timestamp12 = System.currentTimeMillis();
+        System.out.println(timestamp12 - timestamp11);
+
+        Long timestamp21 = System.currentTimeMillis();
+        for (int i = 0; i < 500000; i++) {
+            stringBuilder.append(String.valueOf(i));
+        }
+        Long timestamp22 = System.currentTimeMillis();
+        System.out.println(timestamp22 - timestamp21);
+    }
 }
