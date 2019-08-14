@@ -17,11 +17,6 @@ public class StreamUtils {
      */
     public static void main(String[] args) {
         try {
-            String userDir = System.getProperty("user.dir");
-            Properties properties = System.getProperties();
-            System.out.println(userDir);
-            System.out.println(properties.size());
-
             String file = "D:\\home\\upload\\report.txt";
             String dest = "D:\\home\\upload\\report2.txt";
 
@@ -31,6 +26,16 @@ public class StreamUtils {
             String destPath = "D:\\home\\upload\\5f9d5038-a73f-4e84-8050-3ae187585f02.mp4";
             writeBytes(destPath, bytes);
 
+            //1.1.3、组合流过滤器
+            String userDir = System.getProperty("user.dir");
+            Properties properties = System.getProperties();
+            System.out.println(userDir);
+            System.out.println(properties.size());
+            composedStream(file);
+
+            //1.2.1、文本输出
+            writer(dest, "Java");
+            reader(dest);
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -42,21 +47,28 @@ public class StreamUtils {
      */
     public static byte[] readBytes(String filePath) {
         try {
-            FileInputStream videoStream = new FileInputStream(filePath);
-            FileInputStream reportStream = new FileInputStream("D:\\home\\upload\\report.txt");
             FileInputStream smallStream = new FileInputStream("D:\\home\\upload\\small.txt");
-            int available = videoStream.available();
-            System.out.println(available);
+            //FileInputStream smallStream = new FileInputStream(filePath);
+            int smallAvailable = smallStream.available();
+            System.out.println(smallAvailable);
+            for (int i = 0; i < 10; i++) {
+                System.out.println(smallStream.read());
+                System.out.println(smallStream.available());
+            }
 
             ByteArrayOutputStream byteOutput = new ByteArrayOutputStream();
             byte[] buffer = new byte[4096];
             int n = 0;
-            while ((n = videoStream.read(buffer)) != -1) {
+            while ((n = smallStream.read(buffer)) != -1) {
                 byteOutput.write(buffer, 0, n);
             }
-            byte[] bytes = byteOutput.toByteArray();
-            System.out.println(bytes.length);
-            return bytes;
+            byte[] result = byteOutput.toByteArray();
+            System.out.println(result.length);
+
+            FileInputStream reportStream = new FileInputStream("D:\\home\\upload\\report.txt");
+            FileInputStream videoStream = new FileInputStream(filePath);
+
+            return result;
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -88,10 +100,12 @@ public class StreamUtils {
     public static void composedStream(String filePath) {
         try {
             FileInputStream fileStream = new FileInputStream(filePath);
-            DataInputStream dataStream = new DataInputStream(fileStream);
+            int result = fileStream.read();
+            System.out.println(result);
 
-            InputStreamReader reader = new InputStreamReader(System.in);
-            OutputStreamWriter writer = new OutputStreamWriter(System.out);
+            DataInputStream dataStream = new DataInputStream(fileStream);
+            Integer result1 = dataStream.readInt();
+            System.out.println(result1);
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -106,9 +120,14 @@ public class StreamUtils {
         if (!dest.exists()) {
             dest.createNewFile();
         }
-        Writer writer = new FileWriter(filePath);
-        writer.append(content);
-        writer.flush();
+        Writer fileWriter = new FileWriter(filePath);
+
+        PrintWriter printWriter = new PrintWriter(dest);
+        printWriter.append(content);
+        printWriter.flush();
+
+        InputStreamReader reader = new InputStreamReader(System.in);
+        OutputStreamWriter writer2 = new OutputStreamWriter(System.out);
     }
 
     /**
@@ -120,7 +139,7 @@ public class StreamUtils {
         Reader stringReader = new StringReader(filePath);
         int n = 0;
         while ((n = fileReader.read(buffer)) != -1) {
-            System.out.println(buffer);
+            System.out.println("aa: " + buffer);
         }
     }
 
