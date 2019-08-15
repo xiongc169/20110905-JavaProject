@@ -2,6 +2,7 @@ package org.practice.book02.chap01;
 
 import java.io.*;
 import java.util.Properties;
+import java.util.Scanner;
 
 /**
  * @Desc 《Java核心技术·卷2·高级特性·第9版》
@@ -37,6 +38,10 @@ public class StreamUtils {
             writer(dest, "Java");
             reader(dest);
 
+            systemIn();
+
+            //1.6、文件操作
+            fileTest();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -120,26 +125,67 @@ public class StreamUtils {
         if (!dest.exists()) {
             dest.createNewFile();
         }
-        Writer fileWriter = new FileWriter(filePath);
+        Writer stringWriter = new StringWriter();
+        Writer fileWriter = new FileWriter(filePath, true);
+        Writer streamWriter = new OutputStreamWriter(new FileOutputStream(filePath));
 
-        PrintWriter printWriter = new PrintWriter(dest);
+        char[] charBuffer = new char[4096];
+        stringWriter.write(charBuffer);
+
+        fileWriter.append("2019年8月15日10:25:40");
+        fileWriter.flush();
+
+        Writer printWriter = new PrintWriter(dest);
         printWriter.append(content);
         printWriter.flush();
-
-        InputStreamReader reader = new InputStreamReader(System.in);
-        OutputStreamWriter writer2 = new OutputStreamWriter(System.out);
     }
 
     /**
-     * 1.2.2、文本输入
+     * 1.2.2、文本输入：StringReader\FileReader\InputStreamReader
      */
     public static void reader(String filePath) throws Exception {
-        char[] buffer = new char[4096];
-        Reader fileReader = new FileReader(filePath);
+        byte[] byteBuffer = new byte[4096];
+
         Reader stringReader = new StringReader(filePath);
-        int n = 0;
-        while ((n = fileReader.read(buffer)) != -1) {
-            System.out.println("aa: " + buffer);
+        Reader fileReader = new FileReader(filePath);
+        Reader streamReader = new InputStreamReader(new FileInputStream(filePath));
+
+        //System.out.println(stringReader.read());
+        char[] charBuffer = new char[4096];
+        int length = stringReader.read(charBuffer);
+        String result = new String(charBuffer, 0, length);
+        System.out.println("result1: " + result);
+
+        char[] charBuffer2 = new char[4096];
+        int length2 = fileReader.read(charBuffer2);
+        String result2 = new String(charBuffer2, 0, length2);
+        System.out.println("result2: " + result2);
+
+        char[] charBuffer3 = new char[4096];
+        int length3 = streamReader.read(charBuffer3);
+        String result3 = new String(charBuffer3, 0, length3);
+        System.out.println("result3: " + result3);
+    }
+
+    //java中System.in和System.out快速学会使用：https://blog.csdn.net/qq_34173549/article/details/79671792
+    //java从控制台获得输入：https://blog.csdn.net/joananjin/article/details/79418110
+    public static void systemIn() {
+        try {
+            InputStream systemIn = System.in;
+            OutputStream systemOut = System.out;
+            BufferedReader reader = new BufferedReader(new InputStreamReader(systemIn));
+            String line = reader.readLine();
+
+            ((PrintStream) systemOut).println(line);
+            systemOut.write(line.getBytes());
+
+            Scanner scanner = new Scanner(System.in);
+            String line2 = scanner.nextLine();
+            System.out.println(line2);
+
+            InputStreamReader reader2 = new InputStreamReader(System.in);
+            OutputStreamWriter writer2 = new OutputStreamWriter(System.out);
+        } catch (Exception ex) {
         }
     }
 

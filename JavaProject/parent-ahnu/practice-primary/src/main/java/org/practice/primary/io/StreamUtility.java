@@ -6,14 +6,20 @@ import java.util.zip.ZipInputStream;
 
 /**
  * @author Administrator
- *
  */
 public class StreamUtility {
 
+    /**
+     * 入口函数
+     *
+     * @param args
+     */
     public static void main(String[] args) {
-
-        zipStream();
-
+        try {
+            zipStream();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     public static void inputStream() throws IOException {
@@ -51,13 +57,13 @@ public class StreamUtility {
         printWriter.close();
     }
 
-    public static void zipStream(){
+    public static void zipStream() {
         try {
             InputStream inputStream = new FileInputStream("C:\\test\\test.zip");
             ZipInputStream zipInputStream = new ZipInputStream(inputStream);
             ZipEntry entry = zipInputStream.getNextEntry();
 
-        }catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
