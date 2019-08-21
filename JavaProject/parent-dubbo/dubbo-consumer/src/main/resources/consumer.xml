@@ -27,6 +27,14 @@
                      registry="localRegistry" protocol="dubbo" url="dubbo://127.0.0.1:20880"/>
 
     <dubbo:reference id="advancedCalculatorService" interface="org.dubbo.common.service.CalculatorService"
-                     registry="localRegistry" protocol="dubbo" group="advance" version="1.0.0" check="false" url="dubbo://127.0.0.1:20880"/>
+                     registry="localRegistry" protocol="dubbo" group="advance" version="1.0.0" check="false"
+                     url="dubbo://127.0.0.1:20880"/>
 
+
+    <!--192.168.27.4-->
+    <dubbo:registry id="deipReg" address="zookeeper://192.168.27.4:2181"></dubbo:registry>
+
+    <dubbo:reference id="deipFacade" interface="com.chesheng.decision.api.IDeipPrefixFacade"
+                     registry="deipReg" protocol="dubbo" group="dev" version="1.0.0" check="false"
+                     url="dubbo://192.168.27.4:20887"/>
 </beans> 
