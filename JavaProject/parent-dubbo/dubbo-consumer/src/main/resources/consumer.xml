@@ -1,40 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
-       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd  
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd  
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
         http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-    <!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
+    <!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样。必填，否则启动失败-->
     <dubbo:application name="calculatorConsumer"/>
 
-    <dubbo:consumer id="consumer1"></dubbo:consumer>
+    <!--当dubbo:reference某属性没有配置时，采用此缺失值。非必填-->
+    <dubbo:consumer id="consumer"></dubbo:consumer>
 
+    <!--用于配置连接注册中心的信息-->
     <!-- 使用zookeeper注册中心暴露发现服务地址 -->
     <dubbo:registry id="localRegistry" address="zookeeper://127.0.0.1:2181"/>
-    <dubbo:registry id="remoteRegistry" address="zookeeper://192.168.119.128:2181"/>
+    <dubbo:registry id="remoteRegistry" address="zookeeper://192.168.27.4:2181"/>
 
     <!--用于配置提供服务的协议信息，协议由提供方指定，消费方被动接受-->
-    <dubbo:protocol id="dubbo1" name="dubbo" port="20880"/>
-    <dubbo:protocol id="rmi1" name="rmi" port="1099"/>
+    <dubbo:protocol id="dubbo" name="dubbo" port="20880"/>
+    <dubbo:protocol id="rmi" name="rmi" port="1099"/>
 
+    <!--用于创建一个远程服务代理，一个引用可以指向多个注册中心-->
     <!-- 生成远程服务代理，可以和本地bean一样使用demoService，直连配置：url="dubbo://127.0.0.1:20880" -->
-    <dubbo:reference id="calculatorService" interface="org.dubbo.common.service.CalculatorService"
-                     registry="localRegistry" protocol="dubbo" url="dubbo://127.0.0.1:20880"/>
-
-    <dubbo:reference id="advancedCalculatorService" interface="org.dubbo.common.service.CalculatorService"
-                     registry="localRegistry" protocol="dubbo" group="advance" version="1.0.0" check="false"
-                     url="dubbo://127.0.0.1:20880"/>
+    <!--设置URL，则表示点对点直连，不走注册中心-->
+    <dubbo:reference id="calculatorService" interface="org.dubbo.common.service.CalculatorService" version="0.0.9" group="junior" registry="remoteRegistry" protocol="dubbo"/>
+    <dubbo:reference id="advancedCalculatorService" interface="org.dubbo.common.service.CalculatorService" version="1.0.1" group="senior" registry="localRegistry" protocol="rmi"/>
 
 
     <!--192.168.27.4-->
     <dubbo:registry id="deipReg" address="zookeeper://192.168.27.4:2181"></dubbo:registry>
-
-    <dubbo:reference id="deipFacade" interface="com.chesheng.decision.api.IDeipPrefixFacade"
-                     registry="deipReg" protocol="dubbo" group="dev" version="1.0.0" check="false"
-                     url="dubbo://192.168.27.4:20887"/>
+    <dubbo:reference id="deipFacade" interface="com.chesheng.decision.api.IDeipPrefixFacade" registry="deipReg" protocol="dubbo" group="dev" version="1.0.0" check="false"/>
 </beans> 
