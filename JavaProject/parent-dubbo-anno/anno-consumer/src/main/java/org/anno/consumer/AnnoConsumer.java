@@ -1,5 +1,9 @@
 package org.anno.consumer;
 
+import com.alibaba.dubbo.config.ApplicationConfig;
+import com.alibaba.dubbo.config.ReferenceConfig;
+import com.alibaba.dubbo.config.RegistryConfig;
+import org.anno.common.service.GreetService;
 import org.anno.consumer.config.ConsumerConfig;
 import org.anno.consumer.controller.UserController;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -19,6 +23,7 @@ public class AnnoConsumer {
         try {
             xml();
             annotation();
+            apiConfig();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -50,5 +55,22 @@ public class AnnoConsumer {
 
         String userName = userCtr.userDao.getUserName();
         System.out.println(userName);
+    }
+
+    private static void apiConfig() {
+        ApplicationConfig application = new ApplicationConfig();
+        application.setName("ConsumerY");
+
+        RegistryConfig registry = new RegistryConfig();
+        registry.setAddress("zookeeper://127.0.0.1:2181");
+
+        ReferenceConfig reference = new ReferenceConfig();
+        reference.setInterface(GreetService.class);
+        reference.setApplication(application);
+        reference.setRegistry(registry);
+        reference.setTimeout(100000);
+        GreetService greet = (GreetService) reference.get();
+        String result = greet.greet("ASDFGHJKL");
+        System.out.println(result);
     }
 }
