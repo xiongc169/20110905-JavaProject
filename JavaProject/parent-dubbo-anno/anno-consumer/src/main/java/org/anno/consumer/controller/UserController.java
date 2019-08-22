@@ -6,12 +6,12 @@ import org.springframework.stereotype.Component;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 
-@Component
+@Component("userController")
 public class UserController {
 
-	@Reference
-	public CalculatorService calculator;
+    @Reference
+    public CalculatorService calculator;
 
-	@Reference
-	public UserService userDao;
+    @Reference
+    public UserService userDao;
 }
