@@ -12,7 +12,11 @@ public class App {
      */
     public static void main(String[] args) {
         try {
-
+            RedisClient redisClient = new RedisClient();
+            redisClient.jedisTest();
+            redisClient.jedisPoolTest();
+            redisClient.shardJedisTest();
+            redisClient.shardJedisPoolTest();
         } catch (Exception ex) {
             ex.printStackTrace();
         }

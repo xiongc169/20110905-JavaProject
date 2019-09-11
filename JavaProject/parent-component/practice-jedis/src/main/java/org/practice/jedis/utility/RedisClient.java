@@ -1,10 +1,9 @@
 package org.practice.jedis.utility;
 
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
-import redis.clients.jedis.JedisPoolConfig;
-import redis.clients.jedis.ShardedJedis;
-import redis.clients.jedis.ShardedJedisPool;
+import redis.clients.jedis.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author chaoxiong
@@ -12,47 +11,68 @@ import redis.clients.jedis.ShardedJedisPool;
  * @since 2015-10-29 14:50:41
  */
 public class RedisClient {
-    /**
-     *
-     */
+
+    private String host = "127.0.0.1";
+
+    private Integer port = 6379;
+
+    private String password = "admin";
+
     private Jedis jedis;
-    /**
-     *
-     */
     private JedisPool jedisPool;
-    /**
-     *
-     */
+    private Jedis jedisFromPool;
     private ShardedJedis shardedJedis;
-    /**
-     *
-     */
     private ShardedJedisPool shardedJedisPool;
+    private ShardedJedis shardedJedisFromPool;
 
-    /**
-     *
-     */
-    private void initialPool() {
-        JedisPoolConfig config = new JedisPoolConfig();
-        //config.setMaxActive(20);
-        config.setMaxIdle(5);
-        //config.setMaxWait(1000L);
-        config.setTestOnBorrow(false);
-        jedisPool = new JedisPool(config, "127.0.0.1", 6379);
-    }
-
-    /**
-     *
-     */
     public RedisClient() {
-        initialPool();
-        jedis = jedisPool.getResource();
+        jedis = new Jedis(host, port);
+
+        JedisPoolConfig poolConfig = new JedisPoolConfig();
+        poolConfig.setMaxIdle(10);
+        jedisPool = new JedisPool(poolConfig, host, port);//new JedisPool(poolConfig, host, port, 1000, "admin");
+        jedisFromPool = jedisPool.getResource();
+
+        List<JedisShardInfo> shardInfos = new ArrayList<>();
+        JedisShardInfo shard1 = new JedisShardInfo(host, port);
+        shard1.setPassword(password);
+        JedisShardInfo shard2 = new JedisShardInfo(host);
+        shardInfos.add(shard1);
+        shardInfos.add(shard2);
+        shardedJedis = new ShardedJedis(shardInfos);
+
+        shardedJedisPool = new ShardedJedisPool(poolConfig, shardInfos);
+        shardedJedisFromPool = shardedJedisPool.getResource();
     }
 
-    public void KeyOperate() {
-        System.out.println("----------------------------------------------------");
-        String data = "{\"msgType\":1,\"spyid\":\"500002\",\"srid\":\"200002\",\"platformid\":3,\"recordTime\":\"20150717134523\"}";
-        jedis.rpush("shwltest", data);
-        System.out.println("----------------------------------------------------");
+    public void jedisTest() {
+        String auth = jedis.auth(password);
+        System.out.println(auth);
+
+        String result = jedis.set("str01", "string01");
+        String str01 = jedis.get("str01");
+        System.out.println(result + "  " + str01);
+
+        Long length = jedis.lpush("list01", "item01", "item02", "item03", "item04");
+        String item01 = jedis.lpop("list01");
+        System.out.println(length + "  " + item01);
+    }
+
+    public void jedisPoolTest() {
+        String auth = jedisFromPool.auth(password);
+        System.out.println(auth);
+
+        String str01 = jedisFromPool.get("str01");
+        System.out.println(str01);
+    }
+
+    public void shardJedisTest() {
+        String str01 = shardedJedis.get("str01");
+        System.out.println(str01);
+    }
+
+    public void shardJedisPoolTest() {
+        String str01 = shardedJedisFromPool.get("str01");
+        System.out.println(str01);
     }
 }	
