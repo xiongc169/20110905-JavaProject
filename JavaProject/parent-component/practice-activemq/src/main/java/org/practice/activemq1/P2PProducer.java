@@ -20,6 +20,7 @@ public class P2PProducer {
     private static String password = "admin";
     private static String brokerUrl = "tcp://localhost:61616";
     private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
+    private static String timeString = "20180725164311"; // format.format(new Date());
 
     /**
      * 入口函数
@@ -50,7 +51,7 @@ public class P2PProducer {
      * @param persistent 是否持久化
      */
     public static void producer4P2P(boolean topic, boolean persistent) throws Exception {
-        String timeString = "20180725164311"; // format.format(new Date());
+        //String timeString = format.format(new Date());
         ActiveMQConnectionFactory connFactory = null;
         Connection conn = null;
         Session session = null;
@@ -97,7 +98,7 @@ public class P2PProducer {
      * 消费者
      */
     public static void consumer4P2P(boolean topic) throws Exception {
-        String timeString = "20180725164311"; // format.format(new Date());
+        //String timeString = format.format(new Date());
         ActiveMQConnectionFactory connFactory = null;
         Connection conn = null;
         Session session = null;
@@ -136,7 +137,7 @@ public class P2PProducer {
      * 消费者Plus
      */
     public static void consumerPlus4P2P(boolean topic) throws Exception {
-        String timeString = "20180725164311"; // format.format(new Date());
+        //String timeString = format.format(new Date());
         ActiveMQConnectionFactory connFactory = null;
         Connection conn = null;
         Session session = null;
@@ -154,6 +155,7 @@ public class P2PProducer {
             }
             consumer = session.createConsumer(dest);
             consumer.setMessageListener(new P2PMessageListener());
+            System.in.read();
         } catch (JMSException e) {
             e.printStackTrace();
         } finally {
