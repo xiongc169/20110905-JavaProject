@@ -24,6 +24,8 @@ public class DataType {
      */
     public static void main(String[] args) {
         try {
+            System.out.println("Java\u2122");
+
             intType();
             floatType();
             operator();
@@ -31,6 +33,8 @@ public class DataType {
             inputOutput();
             bigDecimalTest();
             stringTest2();
+
+            integerTest();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -173,5 +177,25 @@ public class DataType {
         }
         Long timestamp22 = System.currentTimeMillis();
         System.out.println(timestamp22 - timestamp21);
+    }
+
+    /**
+     * 比较两个Integer 对象是否相等
+     * https://blog.csdn.net/Peter_S/article/details/85091168
+     */
+    public static void integerTest() {
+        Integer aaa = 100;
+        Integer bbb = 100;
+        Integer ccc = new Integer(100);
+        System.out.println(aaa == bbb);//true
+        System.out.println(aaa.equals(bbb));//true
+
+        System.out.println(aaa == ccc);//false
+        System.out.println(aaa.equals(ccc));//true
+
+        Integer ddd = 200;
+        Integer eee = 200;
+        System.out.println(ddd == eee);//false
+        System.out.println(ddd.equals(eee));//true
     }
 }
