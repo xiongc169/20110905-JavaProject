@@ -17,6 +17,10 @@ public class App {
      */
     public static void main(String[] args) {
         try {
+            ArrayList<String> strings = new ArrayList<>();
+            ArrayList<Integer> integers = new ArrayList<>();
+            System.out.println(strings.getClass() == integers.getClass() ? "Equal Class" : "NonEqual Class");
+
             arrayUtils();
             tClass();
             tMethod();

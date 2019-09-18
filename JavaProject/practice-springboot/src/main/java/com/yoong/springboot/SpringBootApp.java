@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @date 2018年9月20日
  *
  */
-//@SpringBootApplication
+@SpringBootApplication
 //@Configuration
-@EnableAutoConfiguration
+//@EnableAutoConfiguration
 //@ComponentScan(basePackages = "com.yoong.*")
 @Controller
 public class SpringBootApp {

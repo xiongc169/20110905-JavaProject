@@ -39,4 +39,10 @@ public class Car {
     public void setCarModelName(String carModelName) {
         this.carModelName = carModelName;
     }
+
+    public String output() {
+        String msg = String.format("%s %s %s", this.carId, this.carBrandName, this.carModelName);
+        System.out.println("Output: " + msg);
+        return msg;
+    }
 }

@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yoong.springboot.config.AuthConfig;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * @author yoong
- *
  * @desc http://127.0.0.1:8080/user/login
- *
  * @date 2018年9月20日
- *
  */
 @EnableAutoConfiguration
 @Controller
@@ -24,13 +24,15 @@ public class UserController {
     @Autowired
     private AuthConfig config;
 
+    private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
+
     /**
      * http://localhost:8085/user/login
      * 失败：@Controller + @EnableAutoConfiguration
      * 成功：@Controller + @EnableAutoConfiguration + @ComponentScan
      * 成功：@SpringBootApplication
      * 成功：@Controller + @SpringBootApplication
-     *
+     * <p>
      * 失败：@Controller + @EnableAutoConfiguration
      *
      * @param name
@@ -39,7 +41,8 @@ public class UserController {
     @ResponseBody
     @RequestMapping("/login")
     public String login(String name) {
-        return "Hello " + name + config.getUserName();
+        String msg = String.format("%s: Hello %s %s", format.format(new Date()), name, config.getUserName());
+        System.out.println(msg);
+        return msg;
     }
-
 }

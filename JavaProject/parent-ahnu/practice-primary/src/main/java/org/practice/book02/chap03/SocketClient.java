@@ -38,5 +38,4 @@ public class SocketClient {
             System.out.println(scanner.nextLine());
         }
     }
-
 }

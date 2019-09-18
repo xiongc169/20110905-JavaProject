@@ -1,6 +1,7 @@
 package org.anno.source;
 
 import com.alibaba.dubbo.common.extension.ExtensionLoader;
+import com.alibaba.dubbo.common.extension.SPI;
 import org.anno.source.api.Robot;
 
 import java.util.ServiceLoader;
@@ -12,7 +13,6 @@ import java.util.ServiceLoader;
  * @Version 1.0
  */
 public class App {
-
 
     /**
      * 入口函数
@@ -38,8 +38,17 @@ public class App {
         ExtensionLoader<Robot> extensionLoader = ExtensionLoader.getExtensionLoader(Robot.class);
         Robot optimusPrime = extensionLoader.getExtension("optimusPrime");
         optimusPrime.sayHello();
+
+        Robot optimusPrime2 = extensionLoader.getExtension("optimusPrime");
+        optimusPrime2.sayHello();
         Robot bumblebee = extensionLoader.getExtension("bumblebee");
         bumblebee.sayHello();
         System.out.println("dubboSPI End");
+    }
+
+    public static void reflect() {
+        Class robotClz = Robot.class;
+        boolean isPresent = robotClz.isAnnotationPresent(SPI.class);
+        System.out.println(isPresent);
     }
 }

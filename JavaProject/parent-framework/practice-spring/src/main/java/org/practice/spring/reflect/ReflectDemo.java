@@ -24,13 +24,10 @@ public class ReflectDemo {
      */
     public static void main(String[] args) {
         try {
-//            reflectDemo();
-//            annotationTest();
-//
-//            Object demo = Class.forName(ReflectDemo.class.getName()).newInstance();
-//            Method sayHello = demo.getClass().getMethod("sayHello", String.class);
-//            sayHello.invoke(demo, "2019年1月27日15:28:38");
+            reflectDemo();
+            annotationTest();
 
+            genCar();
             reflectDemo2();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -45,7 +42,7 @@ public class ReflectDemo {
             // 1、获取Class实例
             Class<?> usrClass = User.class;
             Class<?> usrClass2 = new User().getClass();
-            Class<?> usrClass3 = Class.forName("org.practice.primary.domain.User");
+            Class<?> usrClass3 = Class.forName("org.practice.spring.domain.User");
             String className = usrClass.getName();
             System.out.println(className);
 
@@ -79,8 +76,9 @@ public class ReflectDemo {
             Field field = usrClass.getDeclaredField("iid");
             field.setAccessible(true);
             field.set(user, "newIId");
+            System.out.println(user.getIid());
         } catch (Exception ex) {
-            String msg = ex.getMessage();
+            ex.printStackTrace();
         }
     }
 
@@ -88,9 +86,9 @@ public class ReflectDemo {
      * 反射获取注解信息
      */
     public static void annotationTest() {
-        Class utilClz = User.class;
-        ClassLoader loader = utilClz.getClassLoader();
-        Method[] methods = utilClz.getMethods();
+        Class usrClz = User.class;
+        ClassLoader loader = usrClz.getClassLoader();
+        Method[] methods = usrClz.getMethods();
         for (Method m : methods) {
             // 判断方法是否包含MethodInfo注解
             if (m.isAnnotationPresent(MethodInfo.class)) {
@@ -112,11 +110,32 @@ public class ReflectDemo {
     /**
      * 反射调用的方法
      * PS：《深入浅出Mybatis技术原理与实战》第六章 (P130)
-     *
-     * @param msg
      */
-    public void sayHello(String msg) {
-        System.out.println("ReflectDemo.sayHello: " + msg);
+    public static void genCar() {
+        try {
+            Class carClz = Car.class;
+            Car car = (Car) carClz.newInstance();
+            Method setCarId = carClz.getMethod("setCarId", String.class);
+            Method setCarBrandName = carClz.getMethod("setCarBrandName", String.class);
+            Method setCarModelName = carClz.getMethod("setCarModelName", String.class);
+            Method output = carClz.getMethod("output", null);
+
+            setCarId.invoke(car, "carId");
+            setCarBrandName.invoke(car, "carBrandName");
+            setCarModelName.invoke(car, "carModelName");
+
+            Object outputResult = output.invoke(car, null);
+            System.out.println(outputResult);
+
+            ClassLoader clzLoader = carClz.getClassLoader();
+            System.out.println("ClzLoader: " + clzLoader);
+            ClassLoader pClzLoader = clzLoader.getParent();
+            System.out.println("pClzLoader: " + pClzLoader);
+            ClassLoader ppClzLoader = pClzLoader.getParent();
+            System.out.println("ppClzLoader: " + ppClzLoader);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
