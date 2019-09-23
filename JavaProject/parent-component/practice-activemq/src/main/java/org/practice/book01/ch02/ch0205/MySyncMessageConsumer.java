@@ -1,4 +1,4 @@
-package org.practice.book01.ch0205;
+package org.practice.book01.ch02.ch0205;
 
 import javax.jms.*;
 import javax.naming.Context;
