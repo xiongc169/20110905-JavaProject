@@ -8,6 +8,7 @@
 	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
+    <!--http://blog.csdn.net/jwdstef/article/details/17380471-->
     <!-- 连接池 -->
     <bean id="pooledConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory"
           destroy-method="stop">

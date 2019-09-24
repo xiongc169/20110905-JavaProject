@@ -17,8 +17,8 @@ import org.springframework.jms.core.MessageCreator;
  * @author yoong
  * <br/>
  * @desc 深入浅出消息队列 ActiveMQ
- *       PS：整合Spring实现消息发送和接收
- *       http://blog.csdn.net/jwdstef/article/details/17380471
+ * PS：整合Spring实现消息发送和接收
+ * http://blog.csdn.net/jwdstef/article/details/17380471
  * <br/>
  * @date 2015-08-28 09:55:26
  */
@@ -32,16 +32,19 @@ public class Sender {
      * @param args
      */
     public static void main(String[] args) {
-        ApplicationContext ctx = new FileSystemXmlApplicationContext("classpath:jms4spring2.xml");
-        JmsTemplate jmsTemplate = (JmsTemplate) ctx.getBean("jmsTemplate");
+        try {
+            ApplicationContext ctx = new FileSystemXmlApplicationContext("classpath:jms4spring2.xml");
+            JmsTemplate jmsTemplate = (JmsTemplate) ctx.getBean("jmsTemplate");
 
-        jmsTemplate.send(new MessageCreator() {
-            public Message createMessage(Session session) throws JMSException {
-                MapMessage message = session.createMapMessage();
-                message.setString("message", "current system time: " + format.format(new Date()));
-                return message;
-            }
-        });
+            jmsTemplate.send(new MessageCreator() {
+                public Message createMessage(Session session) throws JMSException {
+                    MapMessage message = session.createMapMessage();
+                    message.setString("message", "current system time: " + format.format(new Date()));
+                    return message;
+                }
+            });
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
-
 }
