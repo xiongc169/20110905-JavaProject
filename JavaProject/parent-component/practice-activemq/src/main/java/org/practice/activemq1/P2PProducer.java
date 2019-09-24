@@ -2,6 +2,7 @@ package org.practice.activemq1;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 import javax.jms.*;
 
@@ -20,7 +21,7 @@ public class P2PProducer {
     private static String password = "admin";
     private static String brokerUrl = "tcp://localhost:61616";
     private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
-    private static String timeString = "20180725164311"; // format.format(new Date());
+    private static String timeString = "201807250725"; // format.format(new Date());
 
     /**
      * 入口函数
@@ -29,28 +30,24 @@ public class P2PProducer {
      */
     public static void main(String[] args) {
         try {
-            boolean isTopic = false;
-            //生产者
-            producer4P2P(isTopic, false);
+            boolean isTopic = true;
+            boolean isPersistent = false;
+
+            //Queue/Topic 生产者
+            producer4P2P(isTopic, isPersistent);
             System.out.println("producer4P2P ending");
-            //消费者
-            consumer4P2P(isTopic);
-            System.out.println("consumer4P2P ending");
-            //消费者2
-            consumerPlus4P2P(isTopic);
-            System.out.println("consumerPlus4P2P ending");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
     /**
-     * 生产者
+     * Queue/Topic 生产者
      *
-     * @param topic      消息的传输模型：PTP、Pub/Sub
-     * @param persistent 是否持久化
+     * @param isTopic      消息的传输模型：PTP、Pub/Sub
+     * @param isPersistent 是否持久化
      */
-    public static void producer4P2P(boolean topic, boolean persistent) throws Exception {
+    public static void producer4P2P(boolean isTopic, boolean isPersistent) throws Exception {
         //String timeString = format.format(new Date());
         ActiveMQConnectionFactory connFactory = null;
         Connection conn = null;
@@ -59,7 +56,8 @@ public class P2PProducer {
         MessageProducer producer = null;
         TextMessage message = null;
         try {
-            connFactory = new ActiveMQConnectionFactory(userName, password, brokerUrl);
+            //connFactory = new ActiveMQConnectionFactory(userName, password, brokerUrl);//需认证
+            connFactory = new ActiveMQConnectionFactory(brokerUrl);//免认证
             conn = connFactory.createConnection();
             conn.start();// ！！！！！
             /**在connection的基础上创建一个session，同时设置是否支持事务、ACKNOWLEDGE标识。
@@ -68,13 +66,13 @@ public class P2PProducer {
              • DUPS_OK_ACKNOWLEDGE：允许副本的确认模式。一旦接收方应用程序的方法调用从处理消息处返回，会话对象就会确认消息的接收；而且允许重复确认。在需要考虑资源使用时，这种模式非常有效。注意：如果你的应用程序无法处理重复的消息的话，你应该避免使用这种模式。如果发送消息的初始化尝试失败，那么重复的消息可以被重新发送。
              • SESSION_TRANSACTED**/
             session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
-            if (topic) {
+            if (isTopic) {
                 dest = session.createTopic("topic-" + timeString);
             } else {
                 dest = session.createQueue("queue-" + timeString);
             }
-            producer = session.createProducer(dest);
-            if (persistent) {
+            producer = session.createProducer(dest);//TODO: 控制台创建 目标地址(Destination)
+            if (isPersistent) {
                 producer.setDeliveryMode(DeliveryMode.PERSISTENT);
             } else {
                 producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
@@ -94,78 +92,4 @@ public class P2PProducer {
         }
     }
 
-    /**
-     * 消费者
-     */
-    public static void consumer4P2P(boolean topic) throws Exception {
-        //String timeString = format.format(new Date());
-        ActiveMQConnectionFactory connFactory = null;
-        Connection conn = null;
-        Session session = null;
-        Destination dest = null;
-        MessageConsumer consumer = null;
-        try {
-            connFactory = new ActiveMQConnectionFactory(userName, password, brokerUrl);
-            conn = connFactory.createConnection();
-            conn.start();// ！！！！！
-            session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
-            if (topic) {
-                dest = session.createTopic("topic-" + timeString);
-            } else {
-                dest = session.createQueue("queue-" + timeString);
-            }
-            consumer = session.createConsumer(dest);
-            Message message = consumer.receive(1000);
-            TextMessage text = (TextMessage) message;
-            if (text != null) {
-                System.out.println("接收：" + text.getText());
-            }
-        } catch (JMSException e) {
-            e.printStackTrace();
-        } finally {
-            //不释放资源，应用程序不会停止
-            if (session != null) {
-                session.close();
-            }
-            if (conn != null) {
-                conn.close();
-            }
-        }
-    }
-
-    /**
-     * 消费者Plus
-     */
-    public static void consumerPlus4P2P(boolean topic) throws Exception {
-        //String timeString = format.format(new Date());
-        ActiveMQConnectionFactory connFactory = null;
-        Connection conn = null;
-        Session session = null;
-        Destination dest = null;
-        MessageConsumer consumer = null;
-        try {
-            connFactory = new ActiveMQConnectionFactory(userName, password, brokerUrl);
-            conn = connFactory.createConnection();
-            conn.start();// ！！！！！
-            session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
-            if (topic) {
-                dest = session.createTopic("topic-" + timeString);
-            } else {
-                dest = session.createQueue("queue-" + timeString);
-            }
-            consumer = session.createConsumer(dest);
-            consumer.setMessageListener(new P2PMessageListener());
-            System.in.read();
-        } catch (JMSException e) {
-            e.printStackTrace();
-        } finally {
-            //不释放资源，应用程序不会停止
-            if (session != null) {
-                session.close();
-            }
-            if (conn != null) {
-                conn.close();
-            }
-        }
-    }
 }

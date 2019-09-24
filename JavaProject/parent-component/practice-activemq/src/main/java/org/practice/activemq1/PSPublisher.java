@@ -1,9 +1,11 @@
 package org.practice.activemq1;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.activemq.command.ActiveMQTextMessage;
 
 import javax.jms.*;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -17,28 +19,28 @@ public class PSPublisher {
     private static String password = "admin";
     private static String brokerUrl = "tcp://localhost:61616";
     private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
-    private static String timeString = "20180725164311"; // format.format(new Date());
+    private static String timeString = "201808250825"; // format.format(new Date());
 
     /**
      * 入口函数
      */
     public static void main(String[] args) {
         try {
-            producer4P2P(true);
+            producer4PubSub(true);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
     /**
-     * 消费者
+     * 发布者
      */
-    public static void producer4P2P(boolean topic) throws Exception {
+    public static void producer4PubSub(boolean isTopic) throws Exception {
         //String timeString = format.format(new Date());
         ActiveMQConnectionFactory connFactory = null;
         Connection conn = null;
         Session session = null;
-        Topic dest = null;
+        Topic topic = null;
         TopicSubscriber consumer = null;
         try {
             connFactory = new ActiveMQConnectionFactory(userName, password, brokerUrl);
@@ -46,13 +48,11 @@ public class PSPublisher {
             conn.setClientID(UUID.randomUUID().toString());
             conn.start();// ！！！！！
             session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
-            dest = session.createTopic("topic-" + timeString);
-            consumer = session.createDurableSubscriber(dest, "topicConsumer1");
-            Message message = consumer.receive(1000);
-            TextMessage text = (TextMessage) message;
-            if (text != null) {
-                System.out.println("接收：" + text.getText());
-            }
+            topic = session.createTopic("topic-" + timeString);
+            MessageProducer producer = session.createProducer(topic);//TODO: 控制台创建 目标地址(Destination)
+            ActiveMQTextMessage message = new ActiveMQTextMessage();
+            message.setText(format.format(new Date()));
+            producer.send(message);
         } catch (JMSException e) {
             e.printStackTrace();
         } finally {
