@@ -1,28 +1,14 @@
 package org.practice.activemq3;
 
-import javax.jms.Connection;
-import javax.jms.ConnectionFactory;
-import javax.jms.DeliveryMode;
-import javax.jms.Destination;
-import javax.jms.MessageProducer;
-import javax.jms.Session;
-import javax.jms.TextMessage;
-
 import org.apache.activemq.ActiveMQConnectionFactory;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
+
+import javax.jms.*;
 
 /**
  * @author chaoxiong
  * <br/>
- * @desc ActiveMQ入门实例
- * http://www.cnblogs.com/xwdreamer/archive/2012/02/21/2360818.html
- * activeMQ连接池的配置
- * https://blog.csdn.net/zhang89xiao/article/details/50947268
  * ActiveMQ的简单使用
  * https://blog.csdn.net/s296850101/article/details/52401405
  * <br/>

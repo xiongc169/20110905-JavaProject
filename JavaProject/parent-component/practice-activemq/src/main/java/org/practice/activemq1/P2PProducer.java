@@ -1,12 +1,9 @@
 package org.practice.activemq1;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.UUID;
+import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
-
-import org.apache.activemq.ActiveMQConnectionFactory;
+import java.text.SimpleDateFormat;
 
 /**
  * @author yoong
@@ -30,7 +27,7 @@ public class P2PProducer {
      */
     public static void main(String[] args) {
         try {
-            boolean isTopic = true;
+            boolean isTopic = false;
             boolean isPersistent = false;
 
             //Queue/Topic 生产者

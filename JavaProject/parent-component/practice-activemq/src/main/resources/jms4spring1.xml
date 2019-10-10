@@ -35,14 +35,14 @@
 
     <!-- 发送信息 -->
     <bean id="producerTopic" class="org.practice.activemq1.P2PProducer"></bean>
-    <!-- 消息监听 -->
 
-    <bean id="listenerContainerTopic" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
-        <property name="connectionFactory" ref="jmsFactory"/>
-        <property name="destination" ref="destinationTopic"/>
-        <property name="messageListener" ref="consumer"/>
-        <property name="clientId" value="clientId_001"/>
-        <property name="subscriptionDurable" value="true"/>
-        <property name="durableSubscriptionName" value="My_001"/>
-    </bean>
+    <!-- 消息监听 -->
+    <!--    <bean id="listenerContainerTopic" class="org.springframework.jms.listener.DefaultMessageListenerContainer">-->
+    <!--        <property name="connectionFactory" ref="jmsFactory"/>-->
+    <!--        <property name="destination" ref="destinationTopic"/>-->
+    <!--        <property name="messageListener" ref="consumer"/>-->
+    <!--        <property name="clientId" value="clientId_001"/>-->
+    <!--        <property name="subscriptionDurable" value="true"/>-->
+    <!--        <property name="durableSubscriptionName" value="My_001"/>-->
+    <!--    </bean>-->
 </beans>

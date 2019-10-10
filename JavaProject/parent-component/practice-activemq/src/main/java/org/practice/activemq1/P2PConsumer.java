@@ -28,7 +28,7 @@ public class P2PConsumer {
      */
     public static void main(String[] args) {
         try {
-            boolean isTopic = true;
+            boolean isTopic = false;
             boolean isPersistent = false;
 
             //Queue 消费者

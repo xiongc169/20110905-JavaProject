@@ -13,6 +13,10 @@ import javax.jms.*;
  */
 public class App01 {
 
+    private static String userName = "admin";
+    private static String password = "admin";
+    private static String brokerURL = "tcp://127.0.0.1:61616";
+
     /**
      * 入口函数
      */
@@ -27,13 +31,13 @@ public class App01 {
 
     public static void producer() {
         try {
-            ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory("admin", "admin", "tcp://127.0.0.1:61616");
+            ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory(userName, password, brokerURL);
             Connection conn = factory.createConnection();
             conn.start();
 
             Session session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
             Destination destination = session.createQueue("yoong");
-            MessageProducer producer = session.createProducer(destination);
+            MessageProducer producer = session.createProducer(destination);//TODO: 控制台创建 目标地址(Destination)
             ActiveMQTextMessage msg = new ActiveMQTextMessage();
             msg.setText("2019年9月12日14:58:43");
             producer.send(msg);
@@ -47,13 +51,13 @@ public class App01 {
 
     public static void consumer() {
         try {
-            ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory("admin", "admin", "tcp://127.0.0.1:61616");
+            ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory(userName, password, brokerURL);
             Connection conn = factory.createConnection();
             conn.start();
 
             Session session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
             Destination destination = session.createQueue("yoong");
-            MessageConsumer consumer = session.createConsumer(destination);
+            MessageConsumer consumer = session.createConsumer(destination);//TODO: 控制台 消费者数量+1
             Message msg = consumer.receive(1000);
             if (msg instanceof ActiveMQTextMessage) {
                 String text = ((ActiveMQTextMessage) msg).getText();
