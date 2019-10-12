@@ -33,7 +33,6 @@ public class DataType {
             inputOutput();
             bigDecimalTest();
             stringTest2();
-
             integerTest();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -135,29 +134,71 @@ public class DataType {
 
     /**
      * 工作日志：chesheng/20190715-E分期1.2
-     * BigDecimal的精度设置、舍入模式
+     * BigDecimal的精度设置、舍入模式(RoundingMode)
+     * PS：RoundingMode.UP、RoundingMode.DOWN、RoundingMode.CEILING、RoundingMode.FLOOR、RoundingMode.HALF_UP、RoundingMode.HALF_DOWN
+     * RoundingMode.HALF_EVEN、RoundingMode.UNNECESSARY
+     * https://blog.csdn.net/yeu12331/article/details/81986053
+     * <p>
+     * Non-terminating decimal expansion; no exact representable decimal result
+     * https://blog.csdn.net/lopper/article/details/5314686
      */
     private static void bigDecimalTest() {
+        //解释BigDecimal精度的坑
+        //PS：如果需要精确的答案，请避免使用float和double；
+        //https://blog.csdn.net/gege87417376/article/details/79550749
+        System.out.println(new BigDecimal(0.1));//输出 0.1000000000000000055511151231257827021181583404541015625
+        System.out.println(new BigDecimal(0.5));//输出 0.5
+        System.out.println(new BigDecimal("0.1"));//输出 0.1
+        System.out.println(new BigDecimal("0.5"));//输出 0.5
+        System.out.println();
+
         BigDecimal aa = new BigDecimal(10.99);
         BigDecimal bb = new BigDecimal(3.99);
+        System.out.println("aa: " + aa);//输出 10.9900000000000002131628207280300557613372802734375
+        System.out.println("bb: " + bb);//输出 3.9900000000000002131628207280300557613372802734375
+        System.out.println();
 
-        BigDecimal result1 = aa.add(bb).setScale(3, RoundingMode.UP);
-        System.out.println("add : " + result1);
-        BigDecimal result2 = aa.subtract(bb).setScale(3);
-        System.out.println("subtract : " + result2);
-        BigDecimal result3 = aa.multiply(bb).setScale(3, RoundingMode.UP);
-        System.out.println("multiply : " + result3);
-        BigDecimal result4 = aa.divide(bb, 4, RoundingMode.CEILING);
-        System.out.println("divide : " + result4);
+        System.out.println("add: " + aa.add(bb));//输出 14.9800000000000004263256414560601115226745605468750
+        System.out.println("sub: " + aa.subtract(bb));//输出 7.0000000000000000000000000000000000000000000000000
+        System.out.println("mul: " + aa.multiply(bb));//输出 43.85010000000000319317905450589028074322059922637374171556536028848682917669066227972507476806640625
+        System.out.println("div: " + aa.divide(bb, 5));//不设置进度会抛异常。输出 2.7543859649122806080276037778525065412346317183785
+        System.out.println();
 
+        System.out.println("add: " + aa.add(bb).setScale(5, RoundingMode.UP));//14.98001
+        System.out.println("sub: " + aa.subtract(bb).setScale(5));//7.00000
+        System.out.println("mul: " + aa.multiply(bb).setScale(5, RoundingMode.UP));//43.85011
+        System.out.println("div: " + aa.divide(bb, 5, RoundingMode.CEILING));//2.75439
+        System.out.println();
 
-        BigDecimal cc = new BigDecimal(10.5555);
-        BigDecimal dd = new BigDecimal(-10.5555);
+        BigDecimal cc = new BigDecimal("10.505054");
+        BigDecimal dd = new BigDecimal("10.505055");
+        BigDecimal ee = new BigDecimal("10.505050");
+        System.out.println(cc.setScale(5, RoundingMode.UP));//10.50506
+        System.out.println(dd.setScale(5, RoundingMode.UP));//10.50506
+        System.out.println(ee.setScale(5, RoundingMode.UP));//10.50505
+        System.out.println(cc.setScale(5, RoundingMode.DOWN));//10.50505
+        System.out.println(dd.setScale(5, RoundingMode.DOWN));//10.50505
+        System.out.println(ee.setScale(5, RoundingMode.DOWN));//10.50505
+        System.out.println();
 
-        BigDecimal result5 = cc.setScale(2, RoundingMode.DOWN);
-        System.out.println("UP : " + result5);
-        BigDecimal result6 = dd.setScale(2, RoundingMode.DOWN);
-        System.out.println("DOWN : " + result6);
+        BigDecimal ff = new BigDecimal("10.555555");
+        BigDecimal gg = new BigDecimal("-10.555555");
+        System.out.println(ff.setScale(5, RoundingMode.CEILING));//10.55556
+        System.out.println(gg.setScale(5, RoundingMode.CEILING));//-10.55555
+        System.out.println(ff.setScale(5, RoundingMode.FLOOR));//10.55555
+        System.out.println(gg.setScale(5, RoundingMode.FLOOR));//-10.55556
+        System.out.println();
+
+        BigDecimal hh = new BigDecimal("10.555554");
+        BigDecimal ii = new BigDecimal("10.555555");
+        BigDecimal jj = new BigDecimal("10.555556");
+        System.out.println(hh.setScale(5, RoundingMode.HALF_UP));//10.55555
+        System.out.println(ii.setScale(5, RoundingMode.HALF_UP));//10.55556
+        System.out.println(jj.setScale(5, RoundingMode.HALF_UP));//10.55556
+        System.out.println(hh.setScale(5, RoundingMode.HALF_DOWN));//10.55555
+        System.out.println(ii.setScale(5, RoundingMode.HALF_DOWN));//10.55555
+        System.out.println(jj.setScale(5, RoundingMode.HALF_DOWN));//10.55556
+        System.out.println();
     }
 
     public static void stringTest2() {

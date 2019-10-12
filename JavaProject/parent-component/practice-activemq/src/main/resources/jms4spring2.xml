@@ -10,8 +10,7 @@
 
     <!--http://blog.csdn.net/jwdstef/article/details/17380471-->
     <!-- 连接池 -->
-    <bean id="pooledConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory"
-          destroy-method="stop">
+    <bean id="pooledConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory" destroy-method="stop">
         <property name="connectionFactory">
             <bean class="org.apache.activemq.ActiveMQConnectionFactory">
                 <property name="brokerURL" value="tcp://127.0.0.1:61616"/>
