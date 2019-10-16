@@ -30,8 +30,6 @@ public class HibernateController {
 
     /**
      * http://localhost:8095/hibernate/save
-     *
-     * @return
      */
     @ResponseBody
     @RequestMapping("/save")

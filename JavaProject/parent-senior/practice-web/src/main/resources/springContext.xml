@@ -8,7 +8,10 @@
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
     <context:component-scan base-package="org.web.*"></context:component-scan>
+
     <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+
+    <tx:annotation-driven></tx:annotation-driven>
 
     <context:property-placeholder location="classpath:hibernate.properties"></context:property-placeholder>
 
@@ -41,9 +44,8 @@
     </bean>
 
     <!-- 配置Hibernate事务管理器 -->
-    <!--<bean id="transactionManager"-->
-          <!--class="org.springframework.orm.hibernate4.HibernateTransactionManager">-->
-        <!--<property name="sessionFactory" ref="sessionFactory"/>-->
-    <!--</bean>-->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
 
 </beans> 

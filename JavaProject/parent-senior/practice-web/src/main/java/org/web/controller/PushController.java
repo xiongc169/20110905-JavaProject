@@ -1,25 +1,21 @@
 package org.web.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.practice.jpush.App;
 import org.practice.jpush.domain.JPushParam;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author yoong
- *
  * @desc PushController.java
- *
  * @date 2018年8月16日
  */
 @Controller
@@ -33,9 +29,7 @@ public class PushController {
     }
 
     /**
-     * http://10.10.16.133:8080/push/login
-     *
-     * @return
+     * http://127.0.0.1:8095/push/login
      */
     @ResponseBody
     @RequestMapping("/login")
@@ -46,7 +40,7 @@ public class PushController {
     }
 
     /**
-     * http://10.10.16.133:8080/push/pushMessage?alias=dev_15706258110&msgId=18&creditId=20287159
+     * http://127.0.0.1:8095/push/pushMessage?alias=dev_15706258110&msgId=18&creditId=20287159
      */
     @ResponseBody
     @RequestMapping("/pushMessage")
