@@ -6,17 +6,15 @@
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
 
-    <bean id="user" class="org.practice.spring.domain.User" lazy-init="false" init-method="init"
-          destroy-method="destroy">
-        <property name="iid" value="20180807180230_iid"></property>
-        <property name="userNo" value="20180807180230_userNo"></property>
-        <property name="name" value="20180807180230_name"></property>
-        <property name="orgNo" value="20180807180230_orgNo"></property>
-        <property name="orgName" value="20180807180230_orgName"></property>
+    <bean id="user_01" class="org.practice.spring.domain.User" lazy-init="false" init-method="init" destroy-method="destroy">
+        <property name="iid" value="iid_001"></property>
+        <property name="userNo" value="userNo_001"></property>
+        <property name="name" value="name_001"></property>
+        <property name="orgNo" value="orgNo_001"></property>
+        <property name="orgName" value="orgName_001"></property>
     </bean>
 
-    <bean id="user_config" class="org.practice.spring.domain.User" lazy-init="false" init-method="init"
-          destroy-method="destroy">
+    <bean id="user_02" class="org.practice.spring.domain.User" lazy-init="false" init-method="init" destroy-method="destroy">
         <property name="iid" value="${iid}"></property>
         <property name="userNo" value="${userNo}"></property>
         <property name="name" value="${name}"></property>
@@ -24,22 +22,32 @@
         <property name="orgName" value="${orgName}"></property>
     </bean>
 
-    <bean id="customer" class="org.practice.spring.domain.Customer" autowire="byName">
-        <constructor-arg index="0" value="customerId01"></constructor-arg>
-        <constructor-arg index="1" value="customerName01"></constructor-arg>
-        <!--<property name="car" ref="car"></property>-->
+    <bean id="customer_01" class="org.practice.spring.domain.Customer" autowire="byName">
+        <constructor-arg index="0" value="customerId_001"></constructor-arg>
+        <constructor-arg index="1" value="customerName_001"></constructor-arg>
     </bean>
 
-    <bean id="car1" class="org.practice.spring.domain.Car">
-        <property name="carId" value="carId01"></property>
-        <property name="carBrandName" value="carBrandName01"></property>
-        <property name="carModelName" value="carModelName01"></property>
+    <bean id="customer_02" class="org.practice.spring.domain.Customer" autowire="byName">
+        <constructor-arg index="0" value="customerId_002"></constructor-arg>
+        <constructor-arg index="1" value="customerName_002"></constructor-arg>
+        <property name="car" ref="car_02"></property>
+    </bean>
+
+    <bean id="car_01" class="org.practice.spring.domain.Car">
+        <property name="carId" value="carId_001"></property>
+        <property name="carBrandName" value="carBrandName_001"></property>
+        <property name="carModelName" value="carModelName_001"></property>
+    </bean>
+
+    <bean id="car_02" class="org.practice.spring.domain.Car">
+        <property name="carId" value="carId_002"></property>
+        <property name="carBrandName" value="carBrandName_002"></property>
+        <property name="carModelName" value="carModelName_002"></property>
     </bean>
 
     <!--ApplicationContext容器中会自动替换，BeanFactory容器中需手动配置-->
     <!--BeanFactoryPostProcessor，注意与下面的BeanPostProcessor区别-->
-    <bean id="propertyPlaceholderConfigurer"
-          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="location">
             <value>classpath:config.properties</value>
         </property>

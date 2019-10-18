@@ -1,5 +1,6 @@
 package org.practice.spring.ioc;
 
+import com.alibaba.fastjson.JSON;
 import org.practice.spring.domain.Customer;
 import org.practice.spring.domain.User;
 import org.practice.spring.domain2.Student;
@@ -57,7 +58,6 @@ public class IocContainer {
         //XML文件不存在时，不会抛异常
         Resource res = resLoader.getResource("F:\\usr\\local\\yoong\\global.xml");
         System.out.println(res.exists());
-
         Resource res2 = resLoader.getResource("classpath:spring-context.xml");
         System.out.println(res2.exists());
     }
@@ -68,11 +68,16 @@ public class IocContainer {
     public static void injectDemo() {
         Resource resource = new ClassPathResource("spring-context.xml");
         BeanFactory xmlFactory = new XmlBeanFactory(resource);
-        Customer customer = (Customer) xmlFactory.getBean("customer");
-        Customer customer2 = xmlFactory.getBean("customer", Customer.class);
+        Customer customer = (Customer) xmlFactory.getBean("customer_01");
+        Customer customer2 = xmlFactory.getBean("customer_02", Customer.class);
         System.out.println(customer.getCustomerId());
+        if (customer.getCar() != null) {
+            System.out.println("customer.car = " + JSON.toJSONString(customer.getCar()));
+        }
         System.out.println(customer2.getCustomerId());
-        System.out.println(customer2.getCar());
+        if (customer2.getCar() != null) {
+            System.out.println("customer2.car = " + JSON.toJSONString(customer2.getCar()));
+        }
     }
 
     /**
@@ -85,8 +90,8 @@ public class IocContainer {
         //XmlBeanFactory
         Resource resource = new ClassPathResource("spring-context.xml");
         BeanFactory xmlFactory = new XmlBeanFactory(resource);
-        User user = (User) xmlFactory.getBean("user");
-        User user2 = xmlFactory.getBean("user", User.class);
+        User user = (User) xmlFactory.getBean("user_01");
+        User user2 = xmlFactory.getBean("user_02", User.class);
         System.out.println(user.getIid());
         System.out.println(user2.getIid());
         //若bean的scope=ch03singleton，则相等，若scope=prototype，则不等
@@ -97,7 +102,7 @@ public class IocContainer {
         DefaultListableBeanFactory dlBeanFactory = new DefaultListableBeanFactory();
         XmlBeanDefinitionReader xmlReader = new XmlBeanDefinitionReader(dlBeanFactory);
         xmlReader.loadBeanDefinitions(resource);
-        User user3 = (User) dlBeanFactory.getBean("user");
+        User user3 = (User) dlBeanFactory.getBean("user_01");
         System.out.println(user3.getIid());
     }
 
@@ -142,21 +147,21 @@ public class IocContainer {
         Resource resource = new ClassPathResource("spring-context.xml");
         Resource properties = new ClassPathResource("config.properties");
         ConfigurableListableBeanFactory clBeanFactory = new XmlBeanFactory(resource);
-        //
-        //User user1 = (User) clBeanFactory.getBean("user_config");
-        //System.out.println(user1.getIid());
+
+        User user = (User) clBeanFactory.getBean("user_02");
+        System.out.println(user.getIid());
 
         //初始化BeanFactory+BeanFactoryPostProcessor
         PropertyPlaceholderConfigurer ppConfigurer = new PropertyPlaceholderConfigurer();
         ppConfigurer.setLocation(properties);
         ppConfigurer.postProcessBeanFactory(clBeanFactory);
-        User user2 = (User) clBeanFactory.getBean("user_config");
+        User user2 = (User) clBeanFactory.getBean("user_02");
         System.out.println(user2.getIid());
 
         //ApplicationContext
         ApplicationContext classpathXml = new ClassPathXmlApplicationContext("spring-context.xml");
-        User user3 = (User) classpathXml.getBean("user_config");
-        User user4 = classpathXml.getBean("user_config", User.class);
+        User user3 = (User) classpathXml.getBean("user_02");
+        User user4 = classpathXml.getBean("user_02", User.class);
         System.out.println(user3.getIid());
         System.out.println(user4.getIid());
     }
@@ -178,13 +183,15 @@ public class IocContainer {
             System.out.println(resource.exists());
 
             //lazy-init，ApplicationContext实现的默认行为就是再启动时将所有 ch03singleton bean提前进行实例化。
-            ApplicationContext fileSystemXml = new FileSystemXmlApplicationContext("JavaProject\\parent\\practice-spring\\src\\main\\resources\\spring-context.xml");
-            User user = (User) fileSystemXml.getBean("user");
+            String directory = System.getProperty("user.dir");
+            System.out.println(directory);
+            ApplicationContext fileSystemXml = new FileSystemXmlApplicationContext("JavaProject\\parent-framework\\practice-spring\\src\\main\\resources\\spring-context.xml");
+            User user = (User) fileSystemXml.getBean("user_01");
             System.out.println(user.getIid());
             ((FileSystemXmlApplicationContext) fileSystemXml).close();
 
             ApplicationContext classpathXml = new ClassPathXmlApplicationContext("spring-context.xml");
-            User user2 = (User) classpathXml.getBean("user");
+            User user2 = (User) classpathXml.getBean("user_02");
             System.out.println(user2.getIid());
 
             //查看容器中注册的BeanDefinition

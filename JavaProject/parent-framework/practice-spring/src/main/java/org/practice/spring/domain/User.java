@@ -1,5 +1,6 @@
 package org.practice.spring.domain;
 
+import lombok.Data;
 import org.practice.spring.reflect.MethodInfo;
 import org.springframework.stereotype.Component;
 
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Component;
  *
  * @author yoong
  */
+@Data
 @Component
 public class User {
 
@@ -51,46 +53,6 @@ public class User {
 
     public void destroy() {
         System.out.println("User.destroy()");
-    }
-
-    public String getIid() {
-        return iid;
-    }
-
-    public void setIid(String iid) {
-        this.iid = iid;
-    }
-
-    public String getUserNo() {
-        return userNo;
-    }
-
-    public void setUserNo(String userNo) {
-        this.userNo = userNo;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getOrgNo() {
-        return orgNo;
-    }
-
-    public void setOrgNo(String orgNo) {
-        this.orgNo = orgNo;
-    }
-
-    public String getOrgName() {
-        return orgName;
-    }
-
-    public void setOrgName(String orgName) {
-        this.orgName = orgName;
     }
 
     // public String toString() {

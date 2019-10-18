@@ -1,5 +1,6 @@
 package org.practice.spring.domain;
 
+import lombok.Data;
 import org.springframework.stereotype.Component;
 
 /**
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Component;
  *
  * @author yoong
  */
+@Data
 @Component
 public class Car {
 
@@ -15,30 +17,6 @@ public class Car {
     private String carBrandName;
 
     private String carModelName;
-
-    public String getCarId() {
-        return carId;
-    }
-
-    public void setCarId(String carId) {
-        this.carId = carId;
-    }
-
-    public String getCarBrandName() {
-        return carBrandName;
-    }
-
-    public void setCarBrandName(String carBrandName) {
-        this.carBrandName = carBrandName;
-    }
-
-    public String getCarModelName() {
-        return carModelName;
-    }
-
-    public void setCarModelName(String carModelName) {
-        this.carModelName = carModelName;
-    }
 
     public String output() {
         String msg = String.format("%s %s %s", this.carId, this.carBrandName, this.carModelName);

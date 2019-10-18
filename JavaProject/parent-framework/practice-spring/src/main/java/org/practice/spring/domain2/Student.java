@@ -1,5 +1,6 @@
 package org.practice.spring.domain2;
 
+import lombok.Data;
 import org.springframework.stereotype.Component;
 
 /**
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Component;
  *
  * @author yoong
  */
+@Data
 @Component
 public class Student {
 
@@ -18,29 +20,5 @@ public class Student {
 
     public Student() {
         System.out.println("Student.Student()");
-    }
-
-    public String getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(String studentId) {
-        this.studentId = studentId;
-    }
-
-    public String getStudentName() {
-        return studentName;
-    }
-
-    public void setStudentName(String studentName) {
-        this.studentName = studentName;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
     }
 }
