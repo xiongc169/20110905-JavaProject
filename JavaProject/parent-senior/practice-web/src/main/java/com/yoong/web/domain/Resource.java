@@ -1,21 +1,23 @@
-package org.web.domain;
+package com.yoong.web.domain;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Date;
 import java.util.Objects;
 
 /**
- * @Desc RoleMenu
+ * @Desc Resource
  * @Author
  * @Date
  * @Version 1.0
  */
 @Entity
-@Table(name = "role_menu", schema = "wong_user", catalog = "")
-public class RoleMenu {
+public class Resource {
     private long id;
-    private long roleId;
-    private Long menuId;
+    private long resourceId;
+    private long resourceName;
     private Date createTime;
     private Date modifyTime;
     private String note1;
@@ -33,23 +35,23 @@ public class RoleMenu {
     }
 
     @Basic
-    @Column(name = "role_id", nullable = false)
-    public long getRoleId() {
-        return roleId;
+    @Column(name = "resource_id", nullable = false)
+    public long getResourceId() {
+        return resourceId;
     }
 
-    public void setRoleId(long roleId) {
-        this.roleId = roleId;
+    public void setResourceId(long resourceId) {
+        this.resourceId = resourceId;
     }
 
     @Basic
-    @Column(name = "menu_id", nullable = true)
-    public Long getMenuId() {
-        return menuId;
+    @Column(name = "resource_name", nullable = false)
+    public long getResourceName() {
+        return resourceName;
     }
 
-    public void setMenuId(Long menuId) {
-        this.menuId = menuId;
+    public void setResourceName(long resourceName) {
+        this.resourceName = resourceName;
     }
 
     @Basic
@@ -106,19 +108,19 @@ public class RoleMenu {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        RoleMenu roleMenu = (RoleMenu) o;
-        return id == roleMenu.id &&
-                roleId == roleMenu.roleId &&
-                isDelete == roleMenu.isDelete &&
-                Objects.equals(menuId, roleMenu.menuId) &&
-                Objects.equals(createTime, roleMenu.createTime) &&
-                Objects.equals(modifyTime, roleMenu.modifyTime) &&
-                Objects.equals(note1, roleMenu.note1) &&
-                Objects.equals(note2, roleMenu.note2);
+        Resource resource = (Resource) o;
+        return id == resource.id &&
+                resourceId == resource.resourceId &&
+                resourceName == resource.resourceName &&
+                isDelete == resource.isDelete &&
+                Objects.equals(createTime, resource.createTime) &&
+                Objects.equals(modifyTime, resource.modifyTime) &&
+                Objects.equals(note1, resource.note1) &&
+                Objects.equals(note2, resource.note2);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, roleId, menuId, createTime, modifyTime, note1, note2, isDelete);
+        return Objects.hash(id, resourceId, resourceName, createTime, modifyTime, note1, note2, isDelete);
     }
 }

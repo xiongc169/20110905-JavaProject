@@ -1,21 +1,21 @@
-package org.web.domain;
+package com.yoong.web.domain;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
 
 /**
- * @Desc UserRole
+ * @Desc RoleResource
  * @Author
  * @Date
  * @Version 1.0
  */
 @Entity
-@Table(name = "user_role", schema = "wong_user", catalog = "")
-public class UserRole {
+@Table(name = "role_resource", schema = "wong_user", catalog = "")
+public class RoleResource {
     private long id;
-    private String userId;
     private long roleId;
+    private Long resourceId;
     private Date createTime;
     private Date modifyTime;
     private String note1;
@@ -33,16 +33,6 @@ public class UserRole {
     }
 
     @Basic
-    @Column(name = "user_id", nullable = false, length = 50)
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    @Basic
     @Column(name = "role_id", nullable = false)
     public long getRoleId() {
         return roleId;
@@ -50,6 +40,16 @@ public class UserRole {
 
     public void setRoleId(long roleId) {
         this.roleId = roleId;
+    }
+
+    @Basic
+    @Column(name = "resource_id", nullable = true)
+    public Long getResourceId() {
+        return resourceId;
+    }
+
+    public void setResourceId(Long resourceId) {
+        this.resourceId = resourceId;
     }
 
     @Basic
@@ -106,19 +106,19 @@ public class UserRole {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UserRole userRole = (UserRole) o;
-        return id == userRole.id &&
-                roleId == userRole.roleId &&
-                isDelete == userRole.isDelete &&
-                Objects.equals(userId, userRole.userId) &&
-                Objects.equals(createTime, userRole.createTime) &&
-                Objects.equals(modifyTime, userRole.modifyTime) &&
-                Objects.equals(note1, userRole.note1) &&
-                Objects.equals(note2, userRole.note2);
+        RoleResource that = (RoleResource) o;
+        return id == that.id &&
+                roleId == that.roleId &&
+                isDelete == that.isDelete &&
+                Objects.equals(resourceId, that.resourceId) &&
+                Objects.equals(createTime, that.createTime) &&
+                Objects.equals(modifyTime, that.modifyTime) &&
+                Objects.equals(note1, that.note1) &&
+                Objects.equals(note2, that.note2);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, userId, roleId, createTime, modifyTime, note1, note2, isDelete);
+        return Objects.hash(id, roleId, resourceId, createTime, modifyTime, note1, note2, isDelete);
     }
 }

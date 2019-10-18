@@ -1,12 +1,12 @@
-package org.web.service.impl;
+package com.yoong.web.service.impl;
 
+import com.yoong.web.dao.AccountDao;
+import com.yoong.web.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.web.dao.AccountDao;
-import org.web.domain.Account;
-import org.web.service.AccountService;
+import com.yoong.web.domain.Account;
 
 /**
  * @Desc AccountServiceImpl
@@ -14,7 +14,7 @@ import org.web.service.AccountService;
  * @Date
  * @Version 1.0
  */
-@Component("accountService")
+@Service
 public class AccountServiceImpl implements AccountService {
 
     @Autowired

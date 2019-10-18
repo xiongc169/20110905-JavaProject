@@ -1,6 +1,6 @@
-package org.web.service;
+package com.yoong.web.service;
 
-import org.web.domain.Account;
+import com.yoong.web.domain.Account;
 
 public interface AccountService {
 

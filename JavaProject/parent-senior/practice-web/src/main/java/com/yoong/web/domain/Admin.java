@@ -1,4 +1,4 @@
-package org.web.domain;
+package com.yoong.web.domain;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -8,19 +8,19 @@ import java.util.Date;
 import java.util.Objects;
 
 /**
- * @Desc Customer
+ * @Desc Admin
  * @Author
  * @Date
  * @Version 1.0
  */
 @Entity
-public class Customer {
+public class Admin {
     private long id;
-    private String customerId;
-    private String customerName;
-    private String password;
+    private String adminName;
     private String mobile;
     private String email;
+    private String password;
+    private String salt;
     private Date createTime;
     private Date modifyTime;
     private String note1;
@@ -38,37 +38,17 @@ public class Customer {
     }
 
     @Basic
-    @Column(name = "customer_id", nullable = false, length = 50)
-    public String getCustomerId() {
-        return customerId;
+    @Column(name = "admin_name", nullable = false, length = 50)
+    public String getAdminName() {
+        return adminName;
     }
 
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
-    }
-
-    @Basic
-    @Column(name = "customer_name", nullable = false, length = 50)
-    public String getCustomerName() {
-        return customerName;
-    }
-
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public void setAdminName(String adminName) {
+        this.adminName = adminName;
     }
 
     @Basic
-    @Column(name = "password", nullable = true, length = 100)
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Basic
-    @Column(name = "mobile", nullable = true, length = 20)
+    @Column(name = "mobile", nullable = false, length = 20)
     public String getMobile() {
         return mobile;
     }
@@ -78,13 +58,33 @@ public class Customer {
     }
 
     @Basic
-    @Column(name = "email", nullable = true, length = 50)
+    @Column(name = "email", nullable = false, length = 50)
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Basic
+    @Column(name = "password", nullable = false, length = 50)
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Basic
+    @Column(name = "salt", nullable = false, length = 50)
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 
     @Basic
@@ -141,22 +141,22 @@ public class Customer {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Customer customer = (Customer) o;
-        return id == customer.id &&
-                isDelete == customer.isDelete &&
-                Objects.equals(customerId, customer.customerId) &&
-                Objects.equals(customerName, customer.customerName) &&
-                Objects.equals(password, customer.password) &&
-                Objects.equals(mobile, customer.mobile) &&
-                Objects.equals(email, customer.email) &&
-                Objects.equals(createTime, customer.createTime) &&
-                Objects.equals(modifyTime, customer.modifyTime) &&
-                Objects.equals(note1, customer.note1) &&
-                Objects.equals(note2, customer.note2);
+        Admin admin = (Admin) o;
+        return id == admin.id &&
+                isDelete == admin.isDelete &&
+                Objects.equals(adminName, admin.adminName) &&
+                Objects.equals(mobile, admin.mobile) &&
+                Objects.equals(email, admin.email) &&
+                Objects.equals(password, admin.password) &&
+                Objects.equals(salt, admin.salt) &&
+                Objects.equals(createTime, admin.createTime) &&
+                Objects.equals(modifyTime, admin.modifyTime) &&
+                Objects.equals(note1, admin.note1) &&
+                Objects.equals(note2, admin.note2);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, customerId, customerName, password, mobile, email, createTime, modifyTime, note1, note2, isDelete);
+        return Objects.hash(id, adminName, mobile, email, password, salt, createTime, modifyTime, note1, note2, isDelete);
     }
 }

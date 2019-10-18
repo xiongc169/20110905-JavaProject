@@ -23,6 +23,7 @@ public class CollectionUtility {
             collection();
             blockingCollection();
             concurrentCollection();
+            removeTest();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -94,5 +95,15 @@ public class CollectionUtility {
         // 14.7.3、较早的线程安全集合
         List<Integer> syncArrayList = Collections.synchronizedList(new ArrayList<>());
         Map<Integer, String> syncHashMap = Collections.synchronizedMap(new HashMap<>());
+    }
+
+    public static void removeTest() {
+        List<String> list = new ArrayList<>();
+        list.add("Bob");
+        list.add("Amy");
+        list.add("David");
+        list.add("Cinema");
+        String result = list.remove(0);
+        System.out.println(result);
     }
 }

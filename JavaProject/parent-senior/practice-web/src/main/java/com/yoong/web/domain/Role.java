@@ -1,4 +1,4 @@
-package org.web.domain;
+package com.yoong.web.domain;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;

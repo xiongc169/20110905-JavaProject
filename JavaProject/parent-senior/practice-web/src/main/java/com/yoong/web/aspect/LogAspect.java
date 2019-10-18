@@ -1,4 +1,4 @@
-package org.web.aspect;
+package com.yoong.web.aspect;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -24,7 +24,11 @@ public class LogAspect {
         System.out.println("LogAspect.LogAspect");
     }
 
-    @Pointcut("execution(* *.login())")
+    /**
+     * Spring Aop中execution的语法
+     * https://blog.csdn.net/mianyao1004/article/details/93656829
+     */
+    @Pointcut("execution(* *.login(..))")
     public void method() {
     }
 

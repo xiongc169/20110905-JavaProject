@@ -24,8 +24,6 @@ public class DataType {
      */
     public static void main(String[] args) {
         try {
-            System.out.println("Java\u2122");
-
             intType();
             floatType();
             operator();
@@ -34,6 +32,7 @@ public class DataType {
             bigDecimalTest();
             stringTest2();
             integerTest();
+            unicode();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -138,11 +137,13 @@ public class DataType {
      * PS：RoundingMode.UP、RoundingMode.DOWN、RoundingMode.CEILING、RoundingMode.FLOOR、RoundingMode.HALF_UP、RoundingMode.HALF_DOWN
      * RoundingMode.HALF_EVEN、RoundingMode.UNNECESSARY
      * https://blog.csdn.net/yeu12331/article/details/81986053
+     * ROUND_UP() 绝对值向上进位、ROUND_DOWN 绝对值向下舍位；ROUND_CEILING() 向上进位、ROUND_FLOOR() 向下舍位；ROUND_HALF_UP() 四舍五入、ROUND_HALF_DOWN() 五舍六入；
+     * https://blog.csdn.net/xingbaozhen1210/article/details/80777644
      * <p>
      * Non-terminating decimal expansion; no exact representable decimal result
      * https://blog.csdn.net/lopper/article/details/5314686
      */
-    private static void bigDecimalTest() {
+    public static void bigDecimalTest() {
         //解释BigDecimal精度的坑
         //PS：如果需要精确的答案，请避免使用float和double；
         //https://blog.csdn.net/gege87417376/article/details/79550749
@@ -238,5 +239,14 @@ public class DataType {
         Integer eee = 200;
         System.out.println(ddd == eee);//false
         System.out.println(ddd.equals(eee));//true
+    }
+
+    /**
+     * Unicode码
+     * https://unicode-table.com/cn
+     */
+    public static void unicode() {
+        System.out.println("\u2122");//™
+        System.out.println("\u2FD0");//⿐
     }
 }

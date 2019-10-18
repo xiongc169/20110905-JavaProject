@@ -1,8 +1,8 @@
-package org.web.config;
+package com.yoong.web.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.web.domain.Account;
+import com.yoong.web.domain.Account;
 
 /**
  * @Desc PreConfig
@@ -14,7 +14,7 @@ import org.web.domain.Account;
 public class PreConfig {
 
     @Bean
-    public Account getAccount() {
+    public Account accountBean() {
         System.out.println("PreConfig.getAccount Start");
         Account account = new Account();
         System.out.println("PreConfig.getAccount End");

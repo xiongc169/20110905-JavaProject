@@ -7,7 +7,7 @@
     <!-- needed for ContextLoaderListener -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:applicationContext.xml</param-value>
+        <param-value>classpath:spring.xml</param-value>
     </context-param>
 
     <!-- Bootstraps the root web application context before servlet initialization -->
@@ -17,18 +17,18 @@
 
     <!-- The front controller of this Spring Web application, responsible for handling all application requests -->
     <servlet>
-        <servlet-name>springDispatcherServlet</servlet-name>
+        <servlet-name>dispatcherServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:springContext.xml</param-value>
+            <param-value>classpath:spring-mvc.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
     <!-- Map all requests to the DispatcherServlet for handling -->
     <servlet-mapping>
-        <servlet-name>springDispatcherServlet</servlet-name>
+        <servlet-name>dispatcherServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 

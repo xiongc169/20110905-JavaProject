@@ -1,4 +1,4 @@
-package org.web.controller;
+package com.yoong.web.controller;
 
 import org.practice.jpush.domain.JPushParam;
 import org.springframework.stereotype.Controller;

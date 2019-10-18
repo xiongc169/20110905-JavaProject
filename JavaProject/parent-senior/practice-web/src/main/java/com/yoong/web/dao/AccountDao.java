@@ -1,6 +1,6 @@
-package org.web.dao;
+package com.yoong.web.dao;
 
-import org.web.domain.Account;
+import com.yoong.web.domain.Account;
 
 public interface AccountDao {
 
