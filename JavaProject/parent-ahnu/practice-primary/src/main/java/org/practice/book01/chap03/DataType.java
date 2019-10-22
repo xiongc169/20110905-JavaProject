@@ -33,6 +33,7 @@ public class DataType {
             stringTest2();
             integerTest();
             unicode();
+            stringFormat();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -248,5 +249,18 @@ public class DataType {
     public static void unicode() {
         System.out.println("\u2122");//™
         System.out.println("\u2FD0");//⿐
+    }
+
+    /**
+     * String.format()的详细用法
+     * https://blog.csdn.net/anita9999/article/details/82346552
+     */
+    public static void stringFormat() {
+        String msg = String.format("boolean类型 %b %b", true, false);
+        System.out.println(msg);
+        String msg2 = String.format("boolean类型 %s %s", true, false);
+        System.out.println(msg2);
+        String msg3 = String.format("boolean类型 %s %s", 11, 22);
+        System.out.println(msg3);
     }
 }
