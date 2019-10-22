@@ -1,4 +1,4 @@
-package org.practice.spring.aware;
+package org.practice.spring.ioc.aware;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

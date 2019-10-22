@@ -1,4 +1,4 @@
-package org.practice.spring.aware;
+package org.practice.spring.ioc.aware;
 
 import lombok.Data;
 import org.springframework.beans.factory.BeanNameAware;

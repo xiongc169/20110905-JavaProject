@@ -3,13 +3,13 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="xBeanName" class="org.practice.spring.aware.XBeanName">
+    <bean id="xBeanName" class="org.practice.spring.ioc.aware.XBeanName">
         <property name="id" value="id-01"></property>
     </bean>
 
-    <bean id="xBeanNameAware" class="org.practice.spring.aware.XBeanNameAware">
+    <bean id="xBeanNameAware" class="org.practice.spring.ioc.aware.XBeanNameAware">
         <property name="id" value="id-02"></property>
     </bean>
 
-    <bean id="xApplicationContextAware" class="org.practice.spring.aware.XApplicationContextAware"></bean>
+    <bean id="xApplicationContextAware" class="org.practice.spring.ioc.aware.XApplicationContextAware"></bean>
 </beans>
