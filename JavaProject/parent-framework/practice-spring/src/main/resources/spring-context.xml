@@ -53,6 +53,12 @@
         </property>
     </bean>
 
+    <bean id="propertyOverrideConfigurer" class="org.springframework.beans.factory.config.PropertyOverrideConfigurer">
+        <property name="location">
+            <value>classpath:config-override.properties</value>
+        </property>
+    </bean>
+
     <!--启动注解，@Autowired、@Qualifier | @Resource、@PostConstruct、@PreDestroy等注解变为可用-->
     <!--<context:annotation-config> 不但把 AutowiredAnnotationBeanPostProcessor、CommonAnnotationBeanPostProcessor 注册到容器，同时还把 PersistenceAnnotationBeanPostProcessor、RequiredAnnotationBeanPostProcessor 一并注册-->
     <!--优化了Bean之间依赖关系的配置：从XML配置改进为注解配置-->
