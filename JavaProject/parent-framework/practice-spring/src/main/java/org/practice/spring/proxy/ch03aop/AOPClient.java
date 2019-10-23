@@ -1,13 +1,10 @@
 package org.practice.spring.proxy.ch03aop;
 
-import java.lang.reflect.Method;
-
 import org.practice.spring.proxy.api.ICalculator;
 import org.practice.spring.proxy.ch01static.CalculatorImpl;
 import org.practice.spring.proxy.ch03aop.p01advice.AfterAdvice;
 import org.practice.spring.proxy.ch03aop.p01advice.BeforeAdvice;
 import org.practice.spring.proxy.ch03aop.p01advice.SurroundAdvice;
-import org.springframework.aop.MethodBeforeAdvice;
 import org.springframework.aop.framework.ProxyFactory;
 import org.springframework.aop.framework.ProxyFactoryBean;
 import org.springframework.context.ApplicationContext;
@@ -90,7 +87,7 @@ public class AOPClient {
      */
     public static void aop_ioc() {
         //XML配置方式实现AOP
-        ApplicationContext cpxAppContext = new ClassPathXmlApplicationContext("classpath:spring-aop.xml");
+        ApplicationContext cpxAppContext = new ClassPathXmlApplicationContext("classpath:aop/spring-aop.xml");
         ICalculator math = (ICalculator) cpxAppContext.getBean("ch08proxy");
         int addResult = math.add(100, 5);
         int subResult = math.sub(100, 5);
@@ -115,7 +112,7 @@ public class AOPClient {
      */
     public static void aop_aspect() {
         //XML配置方式实现AOP
-        ApplicationContext cpxAppContext = new ClassPathXmlApplicationContext("classpath:spring-aspect.xml");
+        ApplicationContext cpxAppContext = new ClassPathXmlApplicationContext("classpath:aop/spring-aspect.xml");
         ICalculator math = (ICalculator) cpxAppContext.getBean("target");
         int addResult = math.add(100, 5);
         int subResult = math.sub(100, 5);
@@ -132,7 +129,7 @@ public class AOPClient {
      */
     public static void aop_annotation() {
         //注解方式实现AOP
-        ApplicationContext cpxAppContext = new ClassPathXmlApplicationContext("classpath:spring-annotation.xml");
+        ApplicationContext cpxAppContext = new ClassPathXmlApplicationContext("classpath:aop/spring-annotation.xml");
         ICalculator math = (ICalculator) cpxAppContext.getBean("target");
         int addResult = math.add(100, 5);
         int subResult = math.sub(100, 5);

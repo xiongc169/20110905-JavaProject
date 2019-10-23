@@ -21,11 +21,11 @@ public class IocContainerLite {
         FileSystemXmlApplicationContext fsXmlContext = null;
 
         try {
-            cpXmlContext = new ClassPathXmlApplicationContext("spring-context.xml");
+            cpXmlContext = new ClassPathXmlApplicationContext("ioc/spring-context.xml");
             User user = (User) cpXmlContext.getBean("user_01");
             System.out.println(user.getName() + user.getUserNo());
 
-            fsXmlContext = new FileSystemXmlApplicationContext("classpath:spring-context.xml");
+            fsXmlContext = new FileSystemXmlApplicationContext("classpath:ioc/spring-context.xml");
             User user2 = (User) fsXmlContext.getBean("user_02");
             System.out.println(user2.getName() + user2.getUserNo());
 

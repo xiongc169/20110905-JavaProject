@@ -1,6 +1,7 @@
 package org.practice.spring.ioc;
 
 import com.alibaba.fastjson.JSON;
+import com.sun.xml.internal.fastinfoset.CommonResourceBundle;
 import org.practice.spring.domain.Car;
 import org.practice.spring.domain.Customer;
 import org.practice.spring.domain.User;
@@ -8,6 +9,7 @@ import org.practice.spring.domain2.Student;
 import org.practice.spring.ioc.aware.XApplicationContextAware;
 import org.practice.spring.ioc.aware.XBeanName;
 import org.practice.spring.ioc.aware.XBeanNameAware;
+import org.practice.spring.service.UserServiceImpl;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.PropertyAccessorFactory;
 import org.springframework.beans.PropertyValue;
@@ -23,16 +25,14 @@ import org.springframework.context.annotation.ClassPathScanningCandidateComponen
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.core.io.*;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.core.io.support.ResourcePatternResolver;
 
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author yoong
  * @desc 《Spring揭秘》——王福强
- * <p>
- * Spring学习总结（一）——Spring实现IoC的多种方式
- * http://www.cnblogs.com/best/p/5727935.html
  * @date 2017年8月9日
  */
 public class IocContainer {
@@ -51,6 +51,7 @@ public class IocContainer {
             wrapperDemo();
             awareDemo();
             resourceDemo();
+            annotationDemo();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -58,10 +59,17 @@ public class IocContainer {
 
     /**
      * TODO: 2.2、三种依赖注入方式 (P11)
-     * PS: 构造方法注入、setter方法注入、接口注入，修改XML配置文件以验证
+     * PS: 三种依赖注入方式：构造方法注入、setter方法注入、接口注入；
+     * 3.2、IoC Service Provider如何管理对象间的依赖关系：直接编码方式、配置文件方式(*.properties|*.xml)、元数据方式；(P17)
+     * 4.2、BeanFactory的对象注册、依赖绑定的方式：直接编码方式、外部配置文件方式(*.properties|*.xml)、注解方式；(P24)
+     * <p>
+     * Spring学习总结（一）——Spring实现IoC的多种方式
+     * PS：注入方式：构造方法注入、setter方法注入；
+     * IoC的配置方式：XML配置、注解配置；
+     * http://www.cnblogs.com/best/p/5727935.html
      */
     public static void injectDemo() {
-        Resource resource = new ClassPathResource("spring-context.xml");
+        Resource resource = new ClassPathResource("ioc/spring-context.xml");
         BeanFactory xmlFactory = new XmlBeanFactory(resource);
         //2.2.1、构造方法注入
         Customer customer = (Customer) xmlFactory.getBean("customer_01");
@@ -83,14 +91,15 @@ public class IocContainer {
 
     /**
      * TODO: 4.1、BeanFactory (P22)
-     * PS: XmlBeanFactory、DefaultListableBeanFactory
+     * PS: BeanFactory实现类：XmlBeanFactory、DefaultListableBeanFactory；
+     * ApplicationContext实现类：ClassPathXmlApplicationContext、FileSystemXmlApplicationContext；
      * <p>
      * 通过DefaultListableBeanFactory加载xml配置文件
-     * https://www.aliyun.com/jiaocheng/809547.html
+     * https://blog.csdn.net/weixin_33721344/article/details/91652199
      */
     public static void beanFactoryDemo() {
         //XmlBeanFactory
-        Resource resource = new ClassPathResource("spring-context.xml");
+        Resource resource = new ClassPathResource("ioc/spring-context.xml");
         BeanFactory xmlFactory = new XmlBeanFactory(resource);
         User user = (User) xmlFactory.getBean("user_01");
         User user2 = xmlFactory.getBean("user_02", User.class);
@@ -110,31 +119,35 @@ public class IocContainer {
 
     /**
      * TODO: 4.1、ApplicationContext (P22)
-     * PS: ClassPathXmlApplicationContext、FileSystemXmlApplicationContext
+     * PS: BeanFactory实现类：XmlBeanFactory、DefaultListableBeanFactory；
+     * ApplicationContext实现类：ClassPathXmlApplicationContext、FileSystemXmlApplicationContext；
+     * <p>
+     * ClassPathXmlApplicationContext和FileSystemXmlApplicationContext路径问题
+     * https://www.cnblogs.com/alisonGavin/p/6870056.html
      * <p>
      * FileSystemXmlApplicationContext 路径
      * PS：静态方法中不可用
      * https://blog.csdn.net/judyfun/article/details/52210148
      * https://blog.csdn.net/qq_36951116/article/details/79133662
-     * <p>
-     * ClassPathXmlApplicationContext和FileSystemXmlApplicationContext路径问题
-     * https://www.cnblogs.com/alisonGavin/p/6870056.html
      */
     public static void applicationDemo() {
         try {
-            ApplicationContext fileSystemXmlPre = new FileSystemXmlApplicationContext();
-            Resource resource = fileSystemXmlPre.getResource("");
-            System.out.println(resource.exists());
+            ApplicationContext fileSystemXmlPre = new FileSystemXmlApplicationContext(new String[]{"", ""});
+            Resource resource = fileSystemXmlPre.getResource("http://www.baidu.com");
+            System.out.println(String.format("%s  %s", resource.exists(), resource.getClass()));
 
-            //lazy-init，ApplicationContext实现的默认行为就是再启动时将所有 ch03singleton bean提前进行实例化。
+            //系统属性
             String directory = System.getProperty("user.dir");
             System.out.println(directory);
-            ApplicationContext fileSystemXml = new FileSystemXmlApplicationContext("JavaProject\\parent-framework\\practice-spring\\src\\main\\resources\\spring-context.xml");
+
+            //FileSystemXmlApplicationContext
+            ApplicationContext fileSystemXml = new FileSystemXmlApplicationContext("JavaProject\\parent-framework\\practice-spring\\src\\main\\resources\\ioc\\spring-context.xml");
             User user = (User) fileSystemXml.getBean("user_01");
             System.out.println(user.getIid());
             ((FileSystemXmlApplicationContext) fileSystemXml).close();
 
-            ApplicationContext classpathXml = new ClassPathXmlApplicationContext("spring-context.xml");
+            //ClassPathXmlApplicationContext
+            ApplicationContext classpathXml = new ClassPathXmlApplicationContext("ioc/spring-context.xml");
             User user2 = (User) classpathXml.getBean("user_02");
             System.out.println(user2.getIid());
 
@@ -153,8 +166,9 @@ public class IocContainer {
 
     /**
      * TODO: 4.2、BeanFactory的对象注册与依赖绑定 (P24)
-     * TODO: 4.2.1、直接编码方式 (P24)
-     * PS: 读取配置文件、获取BeanDefinition并注册、实例化
+     * PS: BeanFactory的对象注册、依赖绑定的方式：直接编码方式、外部配置文件方式(*.properties|*.xml)、注解方式；(P24)
+     * 读取配置文件BeanDefinitionReader、获取BeanDefinition、注册到BeanDefinitionRegistry、实例化；
+     * BeanDefinitionReader：PropertiesBeanDefinitionReader、XmlBeanDefinitionReader；
      * <p>
      * 获取BeanDefinition，并注册到BeanDefinitionRegistry
      * PS：BeanDefinition及其实现类
@@ -165,7 +179,7 @@ public class IocContainer {
      * https://blog.csdn.net/chs007chs/article/details/78614332
      */
     public static void getBeanDefinitionAndRegister() {
-        Resource resource = new ClassPathResource("spring-context.xml");
+        Resource resource = new ClassPathResource("ioc/spring-context.xml");
         BeanFactory xmlFactory = new XmlBeanFactory(resource);
         //获取BeanDefinition，并注册
         ClassPathScanningCandidateComponentProvider provider = new ClassPathScanningCandidateComponentProvider(true);
@@ -191,13 +205,13 @@ public class IocContainer {
      */
     public static void beanFactoryPostProcessor() {
         //初始化BeanFactory
-        Resource resource = new ClassPathResource("spring-context.xml");
+        Resource resource = new ClassPathResource("ioc/spring-context.xml");
         ConfigurableListableBeanFactory clBeanFactory = new XmlBeanFactory(resource);
         User user = (User) clBeanFactory.getBean("user_02");
         System.out.println(user.getIid());
 
         //初始化BeanFactory + BeanFactoryPostProcessor
-        Resource properties = new ClassPathResource("config.properties");
+        Resource properties = new ClassPathResource("ioc/config.properties");
         PropertyPlaceholderConfigurer ppConfigurer = new PropertyPlaceholderConfigurer();
         ppConfigurer.setLocation(properties);
         ppConfigurer.postProcessBeanFactory(clBeanFactory);//装配无效
@@ -205,7 +219,7 @@ public class IocContainer {
         System.out.println(user2.getIid());
 
         //ApplicationContext
-        ApplicationContext classpathXml = new ClassPathXmlApplicationContext("spring-context.xml");
+        ApplicationContext classpathXml = new ClassPathXmlApplicationContext("ioc/spring-context.xml");
         User user3 = (User) classpathXml.getBean("user_02");
         User user4 = classpathXml.getBean("user_02", User.class);
         System.out.println(user3.getIid());
@@ -249,7 +263,7 @@ public class IocContainer {
      * https://www.cnblogs.com/FraserYu/p/11211235.html
      */
     public static void awareDemo() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring-aware.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:ioc/spring-aware.xml");
         XBeanName xBeanName = (XBeanName) context.getBean("xBeanName");
         XBeanNameAware xBeanNameAware = (XBeanNameAware) context.getBean("xBeanNameAware");
         XApplicationContextAware xApplicationContextAware = (XApplicationContextAware) context.getBean("xApplicationContextAware");
@@ -263,17 +277,69 @@ public class IocContainer {
 
     /**
      * TODO: 5.1、统一资源加载策略 (P84)
-     * Resource\ResourceLoader
+     * Resource: ByteArrayResource、ClassPathResource、FileSystemResource、UrlResource、InputStreamResource;
+     * ResourceLoader: DefaultResourceLoader、FileSystemResourceLoader;
+     * ResourcePatternResolver:
+     * ApplicationContext:
      */
-    public static void resourceDemo() {
+    public static void resourceDemo() throws Exception {
+        //Resource
         byte[] bytes = new byte[1024];
         Resource byteArrayResource = new ByteArrayResource(bytes);
+        Resource classPathResource = new ClassPathResource("");
+        Resource fileSystemResource = new FileSystemResource("");
+        Resource urlResource = new UrlResource("http://www.baidu.com");
+        //Resource inputStreamResource = new InputStreamResource();
+        System.out.println(String.format("%s  %s", byteArrayResource.exists(), byteArrayResource.getClass()));
+        System.out.println(String.format("%s  %s", classPathResource.exists(), classPathResource.getClass()));
+        System.out.println(String.format("%s  %s", fileSystemResource.exists(), fileSystemResource.getClass()));
+        System.out.println(String.format("%s  %s", urlResource.exists(), urlResource.getClass()));
+        System.out.println();
 
-        ResourceLoader resLoader = new DefaultResourceLoader();
+        //ResourceLoader
+        ResourceLoader defaultLoader = new DefaultResourceLoader();
+        ResourceLoader fileLoader = new FileSystemResourceLoader();
         //XML文件不存在时，不会抛异常
-        Resource res = resLoader.getResource("F:\\usr\\local\\yoong\\global.xml");
-        System.out.println(res.exists());
-        Resource res2 = resLoader.getResource("classpath:spring-context.xml");
-        System.out.println(res2.exists());
+        Resource res = defaultLoader.getResource("file:D:\\Apache\\zkui\\config.cfg");
+        Resource res2 = defaultLoader.getResource("classpath:ioc/spring-context.xml");
+        Resource res3 = defaultLoader.getResource("http://www.baidu.com");
+        System.out.println(String.format("%s  %s", res.exists(), res.getClass()));
+        System.out.println(String.format("%s  %s", res2.exists(), res2.getClass()));
+        System.out.println(String.format("%s  %s", res3.exists(), res3.getClass()));
+        System.out.println();
+
+        //ResourcePatternResolver
+        ResourcePatternResolver defaultResolver = new PathMatchingResourcePatternResolver();
+        ResourcePatternResolver fileResolver = new PathMatchingResourcePatternResolver(new FileSystemResourceLoader());
+        Resource res4 = defaultResolver.getResource("http://www.baidu.com");
+        Resource[] res5 = defaultResolver.getResources("http://www.baidu.com");
+        System.out.println(String.format("%s  %s", res4.exists(), res4.getClass()));
+        System.out.println(String.format("%s  %s", res5.length, res5.getClass()));
+        System.out.println();
+    }
+
+    /**
+     * TODO: 5.2、国际化信息支持 (P95)
+     */
+    public static void i18nDemo() {
+        Locale locale = Locale.CHINA;
+        Locale locale2 = new Locale("zh");
+        Locale locale3 = new Locale("zh", "CN");
+        System.out.println();
+
+        ResourceBundle bundle = CommonResourceBundle.getBundle("");
+    }
+
+    /**
+     * TODO: 6.1、基于注解的依赖注入 (P110)
+     */
+    public static void annotationDemo() {
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:ioc/spring-anno.xml");
+        List<String> names = Arrays.asList(context.getBeanDefinitionNames());
+        System.out.println(names.size());
+
+        UserServiceImpl service = (UserServiceImpl) context.getBean("userServiceImpl");
+        String userInfo = service.getUserInfo();
+        System.out.println(userInfo);
     }
 }

@@ -57,8 +57,23 @@ public class DataType {
     public static void floatType() {
         float a = 10f;
         double b = 10d;
+        Double bb = 10d;
         System.out.println("a: " + a);
         System.out.println("b: " + b);
+
+        //double、Double的大小比较
+        if (b == 10) {//true
+            System.out.println("b==10");
+        }
+        if (bb.equals(10)) {//false
+            System.out.println("bb.equals(10)");
+        }
+        if (bb.equals(10d)) {//true
+            System.out.println("bb.equals(10d)");
+        }
+        if (bb.doubleValue() == 10) {//true
+            System.out.println("bb.doubleValue() == 10");
+        }
 
         char c = 65;//A
         char d = '\u2122';
