@@ -9,25 +9,27 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.practice.mybatis.northwind.domain.Categories;
 
-public class NorthwindManager {
+/**
+ * @author Administrator
+ * <br>
+ * @version 2016-6-1 09:55:00
+ * <br>
+ * @Desc
+ */
+public class NorthWindManager {
 
     /**
      * 入口函数
-     *
-     * @param args
      */
     public static void main(String[] args) {
         try {
-            northwindTest();
+            northWindTest();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    /**
-     * 2018-6-1
-     */
-    private static void northwindTest() {
+    private static void northWindTest() {
         try {
             String resource = "mybatis-northwind.xml";
             InputStream iStream = Resources.getResourceAsStream(resource);
@@ -35,10 +37,8 @@ public class NorthwindManager {
             SqlSession session = factory.openSession();
             Categories result = session.selectOne("org.practice.mybatis.northwind.dao.CategoriesMapper.selectByPrimaryKey", 28);
             System.out.println(result);
-
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 }

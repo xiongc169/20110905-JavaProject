@@ -7,17 +7,19 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * Hello world!
+ * @author chaoxiong
+ * <br>
+ * @version 2012-08-28 09:55:26
+ * <br>
+ * @Desc zhiTongChe
  */
 public class App {
     /**
      * 入口函数
-     *
-     * @param args
      */
     public static void main(String[] args) {
         try {
-            JdbcTest();
+            jdbcTest();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -28,7 +30,7 @@ public class App {
      * @date 2018年6月1日
      * @version 1.0
      */
-    private static void JdbcTest() {
+    private static void jdbcTest() {
         String driverName = "com.mysql.cj.jdbc.Driver";
         String mysqlUrl = "jdbc:mysql://127.0.0.1:3306/mysql?serverTimezone=UTC";
         String userName = "root";

@@ -4,42 +4,38 @@ import java.sql.*;
 import java.sql.DriverManager;
 
 /**
- * 数据库管理
- * <p>
- * http://www.cnblogs.com/yokoboy/archive/2013/03/01/2939315.html
- *
  * @author chaoxiong
+ * <br>
  * @version 2015-08-28 09:55:26
+ * <br>
+ * @Desc MySQL JDBC URL中几个重要参数说明
+ * http://www.cnblogs.com/yokoboy/archive/2013/03/01/2939315.html
  */
 public class DBManager {
 
     // sql server驱动类
     private static String sqlServerDriver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-
     private static String sqlServerURL = "jdbc:sqlserver://localhost:1433;DatabaseName=Northwind;user=sa;password=111111";
 
     // mysql驱动类
-    private static String mySQLDriver = "com.mysql.jdbc.Driver";
-
-    private static String mySQLURL = "jdbc:mysql://127.0.0.1:3306/mysql?user=root&password=123456&serverTimezone=UTC";
+    private static String mySqlDriver = "com.mysql.jdbc.Driver";
+    private static String mySqlURL = "jdbc:mysql://127.0.0.1:3306/mysql?user=root&password=123456&serverTimezone=UTC";
 
     // mycat连接串
-    private static String mycatURL = "jdbc:mysql://127.0.0.1:8066/TESTDB?user=root&password=123456";
+    private static String myCatURL = "jdbc:mysql://127.0.0.1:8066/TESTDB?user=root&password=123456";
 
     /**
      * 入口函数
-     *
-     * @param args
      */
     public static void main(String[] args) {
         Connection dbConn = null;
         try {
             // Sql Server
-            String northwindSql = "select * from Categories";
-            String northwindInsert = "INSERT INTO Categories(CategoryName,Description,Picture) VALUES('CategoryName', 'Description', 'Picture')";
+            String northWindSql = "select * from Categories";
+            String northWindInsert = "INSERT INTO Categories(CategoryName,Description,Picture) VALUES('CategoryName', 'Description', 'Picture')";
             // MySQL
-            String mysql = "select * from `user`";
-            String mycatSql = "select * from travelrecord";
+            String mySql = "select * from `user`";
+            String myCatSql = "select * from travelrecord";
             // 插入到
             String insertSql = "INSERT INTO `travelrecord` (`id`, `user_id`, `traveldate`, `fee`, `days`) VALUES ('15000002', '2', '2017-10-22', '2', '2')";
             String insertNewSql = "INSERT INTO `hotnews` (`id`, `news_title`, `content`, `producer`, `createdate`) VALUES ('1', 'NewTitle', 'NewContent', 'Producer', '2017-11-2');";
@@ -49,8 +45,8 @@ public class DBManager {
             String insertCustomerSql = "INSERT INTO `customer` (`id`, `customername`, `createtime`) VALUES ('4', 'customerName4', '2017-11-2');";
             String insertCustomerAddrSql = "INSERT INTO `customer_addr` (`id`, `addressname`, `customer_id`, `createtime`) VALUES ('3', 'anhui2', '3', '2017-11-2');";
 
-            dbConn = getConnection(mySQLDriver, mySQLURL);
-            executeQuery(dbConn, mysql);
+            dbConn = getConnection(mySqlDriver, mySqlURL);
+            executeQuery(dbConn, mySql);
             //exeInsert(dbConn, northwindInsert);
 
             // SQL Server
@@ -63,7 +59,6 @@ public class DBManager {
     }
 
     public static Connection getConnection(String driver, String url) {
-
         Connection dbConn = null;
         try {
             Class.forName(driver);

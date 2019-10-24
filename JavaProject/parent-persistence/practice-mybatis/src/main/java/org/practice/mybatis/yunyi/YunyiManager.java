@@ -13,13 +13,15 @@ import org.practice.mybatis.yunyi.domain.NoticeExample;
 
 /**
  * @author Administrator
+ * <br>
+ * @desc desc
+ * <br>
+ * @date 2016/5/1 16:00:00
  */
 public class YunyiManager {
 
     /**
      * 入口函数
-     *
-     * @param args
      */
     public static void main(String[] args) {
         // 1 构建SqlSessionFactory（从xml配置文件、Configuration类构建）
@@ -54,7 +56,6 @@ public class YunyiManager {
 
             Notice notice = noticeDao.selectByPrimaryKey("DC198D89-4A54-423C-8B05-00029D493D61");
             System.out.println(notice.getTitle());
-
         } catch (Exception e) {
             e.printStackTrace();
             // session.rollback();

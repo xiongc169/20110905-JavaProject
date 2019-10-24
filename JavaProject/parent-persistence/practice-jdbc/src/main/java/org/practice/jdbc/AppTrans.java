@@ -3,13 +3,15 @@ package org.practice.jdbc;
 import java.sql.*;
 
 /**
- * Hello world!
+ * @author chaoxiong
+ * <br>
+ * @version 2012-08-28 09:55:26
+ * <br>
+ * @Desc zhiTongChe
  */
 public class AppTrans {
     /**
      * 入口函数
-     *
-     * @param args
      */
     public static void main(String[] args) {
         try {
@@ -33,7 +35,7 @@ public class AppTrans {
             Statement stmt = conn.createStatement();
             boolean result = stmt.execute(mysqlInsert);
             System.out.println(result);
-//            System.out.println(10 / 0);
+            //System.out.println(10 / 0);
             boolean result2 = stmt.execute(mysqlUpdate);
             System.out.println(result2);
             conn.commit();

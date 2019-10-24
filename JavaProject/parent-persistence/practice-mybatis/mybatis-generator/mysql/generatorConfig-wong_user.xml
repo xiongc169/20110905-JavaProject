@@ -6,28 +6,23 @@
     <classPathEntry location="E:\GitHub\mysql-connector-java-8.0.12.jar"/>
 
     <context id="wong_user">
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/wong_user?serverTimezone=UTC" userId="root"
-                        password="123456"/>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/wong_user?serverTimezone=UTC" userId="root" password="123456"/>
 
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="org.practice.mybatis.wong_user.domain"
-                            targetProject="src\main\java">
+        <javaModelGenerator targetPackage="org.practice.mybatis.wong_user.domain" targetProject="src\main\java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="mapper-wong_user"
-                         targetProject="src\main\resources">
+        <sqlMapGenerator targetPackage="mapper-wong_user" targetProject="src\main\resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <!-- 生成Mapper接口 -->
-        <javaClientGenerator targetPackage="org.practice.mybatis.wong_user.dao"
-                             targetProject="src\main\java" type="XMLMAPPER">
+        <javaClientGenerator targetPackage="org.practice.mybatis.wong_user.dao" targetProject="src\main\java" type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
