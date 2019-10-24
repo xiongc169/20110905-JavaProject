@@ -6,6 +6,7 @@ import com.yoong.practice.mybatis.springx.wong_user.domain.Account;
 import com.yoong.practice.mybatis.springx.wong_user.domain.AccountExample;
 import com.yoong.practice.mybatis.springx.wong_user.domain.Admin;
 import com.yoong.practice.mybatis.springx.wong_user.domain.AdminExample;
+import com.yoong.practice.mybatis.springx.wong_user.service.AccountService;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -21,15 +22,19 @@ public class App {
      */
     public static void main(String[] args) {
         try {
-            mybatisDemo();
+            sqlSessionTemplateDemo();
+            mapperFactoryDemo();
+            mapperScannerDemo();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    public static void mybatisDemo() {
+    /**
+     * 由sqlSessionTemplate构建Mapper接口
+     */
+    public static void sqlSessionTemplateDemo() {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath*:mybatis-spring.xml");
-        //1、根据 sqlSessionTemplate 构建Mapper接口
         SqlSessionTemplate sqlSessionTemplate = (SqlSessionTemplate) context.getBean("sqlSessionTemplate");
         AccountMapper accountMapper = sqlSessionTemplate.getMapper(AccountMapper.class);
         AccountExample example = new AccountExample();
@@ -42,10 +47,28 @@ public class App {
         example2.createCriteria().andAdminNameEqualTo("123456789");
         List<Admin> admins = adminMapper.selectByExample(example2);
         System.out.println(admins.size());
+    }
 
-        //2、容器中配置Mapper接口
-        AccountMapper accountMapper2 = (AccountMapper) context.getBean("accountDao");
-        List<Account> accounts2 = accountMapper2.selectByExample(example);
-        System.out.println(accounts2.size());
+    /**
+     * 容器中配置单个Mapper接口
+     */
+    public static void mapperFactoryDemo() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath*:mybatis-spring.xml");
+        AccountExample example = new AccountExample();
+        example.createCriteria().andAccountIdEqualTo("ac-123456789");
+        AccountMapper accountMapper = (AccountMapper) context.getBean("accountDao");
+        List<Account> accounts = accountMapper.selectByExample(example);
+        System.out.println(accounts.size());
+        System.out.println("Finished");
+    }
+
+    /**
+     * 容器中配置多个Mapper接口
+     */
+    public static void mapperScannerDemo() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath*:mybatis-spring.xml");
+        AccountService accountService = (AccountService) context.getBean("accountService");
+        accountService.getAccounts();
+        System.out.println("Finished");
     }
 }
