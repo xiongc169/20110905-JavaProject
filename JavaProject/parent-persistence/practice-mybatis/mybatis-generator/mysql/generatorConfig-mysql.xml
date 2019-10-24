@@ -1,28 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
-        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+
+<!--TODO: 执行方式一：命令执行，java -jar mybatis-generator-core-1.3.7.jar -configfile ./mysql/generatorConfig-mysql.xml -overwrite-->
+<!--TODO: 执行方式一：命令执行，java -jar mybatis-generator-core-1.3.7.jar -configfile mysql/generatorConfig-mysql.xml -overwrite-->
 <generatorConfiguration>
     <!-- 数据库驱动包位置 -->
     <classPathEntry location="mysql-connector-java-8.0.12.jar"/>
 
-    <context id="db2Tables" defaultModelType="flat">
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/mysql?serverTimezone=UTC" userId="root" password="123456"/>
+    <context id="mysql" defaultModelType="flat">
+        <!--com.mysql.cj.jdbc.Driver-->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/mysql?serverTimezone=UTC&amp;useSSL=false" userId="root" password="123456"/>
 
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="org.practice.mybatis.mysql.domain" targetProject="JavaProject\parent-persistence\practice-mybatis\src\main\java">
+        <!-- 生成Model类 -->
+        <javaModelGenerator targetPackage="org.practice.mybatis.mysql.domain" targetProject="..\src\main\java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="mapper-mysql" targetProject="JavaProject\parent-persistence\practice-mybatis\src\main\resources">
+        <!-- 生成XML映射文件 -->
+        <sqlMapGenerator targetPackage="mapper-mysql" targetProject="..\src\main\resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <!-- 生成Mapper接口 -->
-        <javaClientGenerator targetPackage="org.practice.mybatis.mysql.dao" targetProject="JavaProject\parent-persistence\practice-mybatis\src\main\java" type="XMLMAPPER">
+        <javaClientGenerator targetPackage="org.practice.mybatis.mysql.dao" targetProject="..\src\main\java" type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
-        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+
+<!--TODO: 执行方式二：插件执行，pom.xml中添加插件依赖-->
 <generatorConfiguration>
     <!-- 数据库驱动包位置 -->
-    <classPathEntry location="E:\GitHub\mysql-connector-java-8.0.12.jar"/>
+    <classPathEntry location=".\mybatis-generator\mysql-connector-java-8.0.12.jar"/>
 
     <context id="wong_user">
         <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/wong_user?serverTimezone=UTC" userId="root" password="123456"/>
@@ -12,11 +13,13 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
+        <!-- 生成Model类 -->
         <javaModelGenerator targetPackage="org.practice.mybatis.wong_user.domain" targetProject="src\main\java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
+        <!-- 生成XML映射文件 -->
         <sqlMapGenerator targetPackage="mapper-wong_user" targetProject="src\main\resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
