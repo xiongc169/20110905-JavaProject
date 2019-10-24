@@ -14,6 +14,7 @@
     <!--配置sqlSessionFactory-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"></property>
+        <!--<property name="configLocation" value="classpath:sqlMapConfig.xml"/>-->
         <property name="mapperLocations" value="classpath:wong_user/*.xml"/>
     </bean>
 
@@ -24,7 +25,7 @@
 
     <!--单个配置Mapper接口-->
     <bean id="accountDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+        <!--<property name="sqlSessionFactory" ref="sqlSessionFactory"/>-->
         <property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
         <property name="mapperInterface" value="com.yoong.practice.mybatis.springx.wong_user.dao.AccountMapper"/>
     </bean>
