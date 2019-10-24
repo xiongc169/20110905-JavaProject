@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.practice.mybatis.yunyi.dao.NoticeMapper;
+import org.practice.mybatis.yunyi.domain.Accounts;
 import org.practice.mybatis.yunyi.domain.Notice;
 import org.practice.mybatis.yunyi.domain.NoticeExample;
 
@@ -24,9 +25,6 @@ public class YunyiManager {
      * 入口函数
      */
     public static void main(String[] args) {
-        // 1 构建SqlSessionFactory（从xml配置文件、Configuration类构建）
-        // 2 构建SqlSession（从SqlSessionFactory构建）
-        // 3 探究已映射的SQL语句
         try {
             yunyiTest();
         } catch (Exception ex) {
@@ -38,19 +36,18 @@ public class YunyiManager {
         SqlSession session = null;
         try {
             Reader reader = Resources.getResourceAsReader("mybatis-yunyi.xml");
-
             SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
             SqlSessionFactory factory = builder.build(reader);
-
             session = factory.openSession();
             // 1、iBatis用法：命名空间+SQL Id
-            // session.select("org.practice.mybatis.chap.dao.AccountsMapper.selectByPrimaryKey", "201609191454299903499203", null);
-            // session.commit();
+            Accounts accounts = session.selectOne("org.practice.mybatis.yunyi.dao.AccountsMapper.selectByPrimaryKey", "201609191454299903499203");
+            System.out.println(accounts.getAccountid());
+            //session.commit();
 
             // 2、MyBatis用法：获取映射器
-            NoticeExample noticeDot = new NoticeExample();
+            NoticeExample noticeExample = new NoticeExample();
             NoticeMapper noticeDao = session.getMapper(NoticeMapper.class);
-            List<Notice> noticeList = noticeDao.selectByExample(noticeDot);
+            List<Notice> noticeList = noticeDao.selectByExample(noticeExample);
             int count = noticeList.size();
             System.out.println("Notice Length:" + count);
 
@@ -58,7 +55,7 @@ public class YunyiManager {
             System.out.println(notice.getTitle());
         } catch (Exception e) {
             e.printStackTrace();
-            // session.rollback();
+            //session.rollback();
         } finally {
             if (session != null) {
                 session.close();
