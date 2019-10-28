@@ -1,10 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
-    <!--配置数据源-->
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <!--配置数据源一 《深入浅出MyBatis技术原理与实战》-->
+    <!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+    <!--    <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>-->
+    <!--    <property name="url" value="jdbc:mysql://127.0.0.1:3306/wong_user?serverTimezone=UTC&amp;useSSL=false"/>-->
+    <!--    <property name="username" value="root"/>-->
+    <!--    <property name="password" value="123456"/>-->
+    <!--</bean>-->
+
+    <!--配置数据源二 DBCP-->
+    <!--<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">-->
+    <!--    <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>-->
+    <!--    <property name="url" value="jdbc:mysql://127.0.0.1:3306/wong_user?serverTimezone=UTC&amp;useSSL=false"/>-->
+    <!--    <property name="username" value="root"/>-->
+    <!--    <property name="password" value="123456"/>-->
+    <!--</bean>-->
+
+    <!--配置数据源三 C3P0-->
+    <!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">-->
+    <!--    <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>-->
+    <!--    <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/wong_user?serverTimezone=UTC&amp;useSSL=false"/>-->
+    <!--    <property name="user" value="root"/>-->
+    <!--    <property name="password" value="123456"/>-->
+    <!--</bean>-->
+
+    <!--配置数据源四 Druid-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://127.0.0.1:3306/wong_user?serverTimezone=UTC&amp;useSSL=false"/>
         <property name="username" value="root"/>
@@ -40,4 +66,9 @@
 
     <bean id="accountService" class="com.yoong.practice.mybatis.springx.wong_user.service.AccountService"/>
 
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
 </beans>

@@ -25,6 +25,7 @@ public class App {
             sqlSessionTemplateDemo();
             mapperFactoryDemo();
             mapperScannerDemo();
+            transactionDemo();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -69,6 +70,16 @@ public class App {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath*:mybatis-spring.xml");
         AccountService accountService = (AccountService) context.getBean("accountService");
         accountService.getAccounts();
+        System.out.println("Finished");
+    }
+
+    /**
+     * 容器中配置多个Mapper接口
+     */
+    public static void transactionDemo() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath*:mybatis-spring.xml");
+        AccountService accountService = (AccountService) context.getBean("accountService");
+        accountService.insertAccounts();
         System.out.println("Finished");
     }
 }
