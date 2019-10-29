@@ -13,6 +13,7 @@
         <module>hibernate-accidence</module>
         <module>hibernate-spring</module>
         <module>jdbc-accidence</module>
+        <module>jpa-accidence</module>
         <module>mybatis-accidence</module>
         <module>mybatis-springx</module>
     </modules>

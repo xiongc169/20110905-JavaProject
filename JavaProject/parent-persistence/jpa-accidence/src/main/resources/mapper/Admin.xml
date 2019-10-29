@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        version="2.0">
+
+    <entity class="com.yoong.practice.jpa.accidence.domain.Admin">
+        <table name="admin" schema="wong_user" catalog=""/>
+        <attributes>
+            <id name="id">
+                <column name="id" precision="20"/>
+            </id>
+            <basic name="adminName">
+                <column name="admin_name" length="50"/>
+            </basic>
+            <basic name="mobile">
+                <column name="mobile" length="20"/>
+            </basic>
+            <basic name="email">
+                <column name="email" length="50"/>
+            </basic>
+            <basic name="password">
+                <column name="password" length="50"/>
+            </basic>
+            <basic name="salt">
+                <column name="salt" length="50"/>
+            </basic>
+            <basic name="createTime">
+                <column name="create_time" precision="-1"/>
+            </basic>
+            <basic name="modifyTime">
+                <column name="modify_time" precision="-1"/>
+            </basic>
+            <basic name="note1">
+                <column name="note1" nullable="false" length="200"/>
+            </basic>
+            <basic name="note2">
+                <column name="note2" nullable="false" length="200"/>
+            </basic>
+            <basic name="isDelete">
+                <column name="is_delete" precision="2"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>

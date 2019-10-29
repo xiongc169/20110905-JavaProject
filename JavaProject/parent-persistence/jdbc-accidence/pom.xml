@@ -3,13 +3,14 @@
          xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>parent-persistence</artifactId>
         <groupId>com.yoong.practice</groupId>
+        <artifactId>parent-persistence</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+    <groupId>com.yoong.practice</groupId>
     <artifactId>jdbc-accidence</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>practice-jdbc</name>
+    <name>jdbc-accidence</name>
     <url>http://maven.apache.org</url>
 
     <properties>

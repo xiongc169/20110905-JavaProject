@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        version="2.0">
+
+    <entity class="com.yoong.practice.jpa.accidence.domain.Account">
+        <table name="account" schema="wong_user" catalog=""/>
+        <attributes>
+            <id name="id">
+                <column name="id" precision="20"/>
+            </id>
+            <basic name="accountId">
+                <column name="account_id" length="50"/>
+            </basic>
+            <basic name="password">
+                <column name="password" nullable="false" length="100"/>
+            </basic>
+            <basic name="contactName">
+                <column name="contact_name" nullable="false" length="40"/>
+            </basic>
+            <basic name="mobile">
+                <column name="mobile" nullable="false" length="20"/>
+            </basic>
+            <basic name="phone">
+                <column name="phone" nullable="false" length="20"/>
+            </basic>
+            <basic name="email">
+                <column name="email" nullable="false" length="40"/>
+            </basic>
+            <basic name="customerId">
+                <column name="customer_id" nullable="false" length="50"/>
+            </basic>
+            <basic name="customerNo">
+                <column name="customer_no" nullable="false" length="50"/>
+            </basic>
+            <basic name="customerName">
+                <column name="customer_name" nullable="false" length="100"/>
+            </basic>
+            <basic name="createTime">
+                <column name="create_time" precision="-1"/>
+            </basic>
+            <basic name="modifyTime">
+                <column name="modify_time" precision="-1"/>
+            </basic>
+            <basic name="note1">
+                <column name="note1" nullable="false" length="200"/>
+            </basic>
+            <basic name="note2">
+                <column name="note2" nullable="false" length="200"/>
+            </basic>
+            <basic name="isDelete">
+                <column name="is_delete" nullable="false" precision="2"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>
