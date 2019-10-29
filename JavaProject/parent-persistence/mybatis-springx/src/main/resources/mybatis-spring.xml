@@ -66,6 +66,7 @@
 
     <bean id="accountService" class="com.yoong.practice.mybatis.springx.wong_user.service.AccountService"/>
 
+    <!--配置事务-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"></property>
     </bean>

@@ -22,11 +22,4 @@ public class App {
             ex.printStackTrace();
         }
     }
-
-    public static void mybatisSpring() {
-
-
-    }
-
-
 }

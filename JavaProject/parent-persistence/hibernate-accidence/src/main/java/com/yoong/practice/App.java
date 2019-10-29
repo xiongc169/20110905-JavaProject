@@ -1,11 +1,13 @@
 package com.yoong.practice;
 
+import com.fasterxml.classmate.AnnotationConfiguration;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import com.yoong.practice.hibernate.accidence.domain.Account;
+import org.hibernate.tool.hbm2ddl.SchemaExport;
 
 import java.util.Date;
 
@@ -18,14 +20,13 @@ import java.util.Date;
  * http://www.cnblogs.com/eflylab/archive/2007/01/09/615338.html
  */
 public class App {
+
     /**
      * 入口函数
-     *
-     * @param args
      */
     public static void main(String[] args) {
         try {
-            hibernateTest();
+            hibernateDemo();
             hbm2ddl();
             hbm2ddlByAnnotation();
         } catch (Exception ex) {
@@ -33,8 +34,8 @@ public class App {
         }
     }
 
-    public static void hibernateTest() {
-        //hibernate.cfg.xml
+    public static void hibernateDemo() {
+        //hibernate.cfg.xml，不给参数就默认加载hibernate.cfg.xml文件
         Configuration cfg = new Configuration().configure();
         //SessionFactory
         SessionFactory sf = cfg.buildSessionFactory();
@@ -64,8 +65,8 @@ public class App {
     public static void hbm2ddl() {
         try {
             Configuration cfg = new Configuration().configure();
-//            SchemaExport export = new SchemaExport(cfg);
-//            export.create(true, true);
+            //SchemaExport export = new SchemaExport(cfg);
+            //export.create(true, true);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -79,9 +80,9 @@ public class App {
     public static void hbm2ddlByAnnotation() {
         try {
             //默认读取hibernate.cfg.xml文件
-//            Configuration cfg = new AnnotationConfiguration().configure();
-//            SchemaExport export = new SchemaExport(cfg);
-//            export.create(true, true);
+            //Configuration cfg = new AnnotationConfiguration().configure();
+            //SchemaExport export = new SchemaExport(cfg);
+            //export.create(true, true);
         } catch (Exception e) {
             e.printStackTrace();
         }
