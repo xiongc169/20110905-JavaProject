@@ -26,12 +26,19 @@ import com.alibaba.fastjson.JSONObject;
  */
 public class JsonUtils {
 
+    /**
+     * 入口函数
+     */
     public static void main(String[] args) {
-        jsonToMap();
-        toTemplateJson();
-        mapToJson();
-        string2JonArray();
-        human2Json();
+        try {
+            jsonToMap();
+            toTemplateJson();
+            mapToJson();
+            string2JonArray();
+            human2Json();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     public static String bean2Json(Object obj) {

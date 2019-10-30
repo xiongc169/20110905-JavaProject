@@ -23,6 +23,9 @@ import java.util.zip.ZipOutputStream;
  */
 public class ZipUtils {
 
+	/**
+	 * 入口函数
+	 */
 	public static void main(String[] args) {
 
 		File file = new File("E:\\test1.zip");
@@ -35,10 +38,8 @@ public class ZipUtils {
 			unzipBytes(byt);
 
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

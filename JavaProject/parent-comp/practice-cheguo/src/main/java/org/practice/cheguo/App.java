@@ -14,8 +14,11 @@ import org.practice.cheguo.utils.CommonUtils;
  * @author yoong
  */
 public class App {
-    public static void main(String[] args) {
 
+    /**
+     * 入口函数
+     */
+    public static void main(String[] args) {
         try {
             streamSort();
         } catch (Exception e) {

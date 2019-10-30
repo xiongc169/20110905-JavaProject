@@ -49,14 +49,20 @@ public class ReflectDemo {
             // 2、获取类的父类、接口
             Class<?> superClass = usrClass.getSuperclass();
             Class<?>[] interfaces = usrClass.getInterfaces();
+            System.out.println(superClass.getName());
+            System.out.println(interfaces.length);
 
             // 3、获取本类的全部属性、构造函数、方法
             Field[] fields = usrClass.getDeclaredFields();
             Constructor[] cons = usrClass.getConstructors();
             Method[] methods = usrClass.getMethods();
+            System.out.println(fields.length);
+            System.out.println(cons.length);
+            System.out.println(methods.length);
 
             // 4、获取父类、接口的全部属性
             Field[] superFields = usrClass.getFields();
+            System.out.println(superFields.length);
 
             // 5、创建类实例（setter方法赋值、构造函数赋值）
             User user = (User) usrClass.newInstance();

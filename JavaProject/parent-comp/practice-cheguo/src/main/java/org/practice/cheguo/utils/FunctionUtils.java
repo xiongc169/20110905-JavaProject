@@ -24,6 +24,9 @@ import org.practice.cheguo.model.QueryData;
  */
 public class FunctionUtils {
 
+	/**
+	 * 入口函数
+	 */
 	public static void main(String[] args) {
 		// Function.apply()
 		List<Human> humans = new ArrayList<Human>();
