@@ -1,4 +1,4 @@
-package com.yoong.practice.api;
+package com.yoong.xclient.api;
 
 /**
  * @Desc ICityHelper

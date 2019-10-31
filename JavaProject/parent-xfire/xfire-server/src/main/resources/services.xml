@@ -2,8 +2,8 @@
 
     <service>
         <name>CityService</name>
-        <serviceClass>com.practice.xfire.api.ICityHelper</serviceClass>
-        <implementationClass>com.practice.xfire.impl.CityHelperImpl</implementationClass>
+        <serviceClass>com.yoong.xserver.apiyHelper</serviceClass>
+        <implementationClass>com.yoong.xserver.implelperImpl</implementationClass>
     </service>
 
 </beans>

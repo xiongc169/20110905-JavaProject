@@ -1,6 +1,6 @@
-package com.yoong.practice;
+package com.yoong.xclient;
 
-import com.yoong.practice.api.ICityHelper;
+import com.yoong.xclient.api.ICityHelper;
 import org.codehaus.xfire.XFireFactory;
 import org.codehaus.xfire.client.XFireProxyFactory;
 import org.codehaus.xfire.service.Service;

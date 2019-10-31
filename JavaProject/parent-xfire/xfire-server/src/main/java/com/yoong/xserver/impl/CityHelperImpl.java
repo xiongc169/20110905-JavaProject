@@ -1,6 +1,6 @@
-package com.practice.xfire.impl;
+package com.yoong.xserver.impl;
 
-import com.practice.xfire.api.ICityHelper;
+import com.yoong.xserver.api.ICityHelper;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

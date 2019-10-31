@@ -1,4 +1,4 @@
-package com.practice.xfire.api;
+package com.yoong.xserver.api;
 
 /**
  * @Desc ICityHelper

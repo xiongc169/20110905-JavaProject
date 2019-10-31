@@ -1,4 +1,4 @@
-package com.yoong.practice;
+package com.yoong.xclient;
 
 import static org.junit.Assert.assertTrue;
 
