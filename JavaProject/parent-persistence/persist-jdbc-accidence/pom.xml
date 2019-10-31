@@ -8,9 +8,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>com.yoong.practice</groupId>
-    <artifactId>jdbc-accidence</artifactId>
+    <artifactId>persist-jdbc-accidence</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>jdbc-accidence</name>
+    <name>persist-jdbc-accidence</name>
     <url>http://maven.apache.org</url>
 
     <properties>

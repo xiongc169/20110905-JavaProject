@@ -10,12 +10,12 @@
     <url>http://www.example.com</url>
 
     <modules>
-        <module>hibernate-accidence</module>
-        <module>hibernate-spring</module>
-        <module>jdbc-accidence</module>
-        <module>jpa-accidence</module>
-        <module>mybatis-accidence</module>
-        <module>mybatis-springx</module>
+        <module>persist-hibernate-accidence</module>
+        <module>persist-hibernate-spring</module>
+        <module>persist-jdbc-accidence</module>
+        <module>persist-jpa-accidence</module>
+        <module>persist-mybatis-accidence</module>
+        <module>persist-mybatis-springx</module>
     </modules>
 
     <properties>
