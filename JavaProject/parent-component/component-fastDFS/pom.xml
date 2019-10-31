@@ -8,9 +8,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>com.yoong.practice</groupId>
-    <artifactId>practice-fastDFS</artifactId>
+    <artifactId>component-fastDFS</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>practice-fastDFS</name>
+    <name>component-fastDFS</name>
     <url>http://maven.apache.org</url>
 
     <properties>

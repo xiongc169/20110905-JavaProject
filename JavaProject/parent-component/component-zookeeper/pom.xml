@@ -8,9 +8,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>com.yoong.practice</groupId>
-    <artifactId>practice-zookeeper</artifactId>
+    <artifactId>component-zookeeper</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>practice-zookeeper</name>
+    <name>component-zookeeper</name>
     <url>http://maven.apache.org</url>
 
     <properties>

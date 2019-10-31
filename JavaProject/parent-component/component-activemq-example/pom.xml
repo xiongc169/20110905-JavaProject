@@ -8,9 +8,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>com.yoong.practice</groupId>
-    <artifactId>practice-activemq-example</artifactId>
+    <artifactId>component-activemq-example</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>practice-activemq-example</name>
+    <name>component-activemq-example</name>
     <url>http://www.example.com</url>
 
     <properties>

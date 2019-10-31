@@ -10,12 +10,12 @@
     <url>http://www.example.com</url>
 
     <modules>
-        <module>practice-activemq</module>
-        <module>practice-activemq-example</module>
-        <module>practice-fastDFS</module>
-        <module>practice-jedis</module>
-        <module>practice-kafka</module>
-        <module>practice-zookeeper</module>
+        <module>component-activemq</module>
+        <module>component-activemq-example</module>
+        <module>component-fastDFS</module>
+        <module>component-jedis</module>
+        <module>component-kafka</module>
+        <module>component-zookeeper</module>
     </modules>
 
     <properties>
