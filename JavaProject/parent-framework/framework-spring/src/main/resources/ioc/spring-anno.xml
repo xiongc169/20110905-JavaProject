@@ -9,20 +9,6 @@
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
-    <!--context:component-scan 会将如下类注入到容器：-->
-    <!--<bean id="autowiredAnnotationBeanPostProcessor" class="org.springframework.context.annotation.internalConfigurationAnnotationProcessor"/>-->
-    <!--<bean id="autowiredAnnotationBeanPostProcessor" class="org.springframework.context.annotation.internalAutowiredAnnotationProcessor"/>-->
-    <!--<bean id="autowiredAnnotationBeanPostProcessor" class="org.springframework.context.annotation.internalRequiredAnnotationProcessor"/>-->
-    <!--<bean id="autowiredAnnotationBeanPostProcessor" class="org.springframework.context.annotation.internalCommonAnnotationProcessor"/>-->
-    <!--<bean id="autowiredAnnotationBeanPostProcessor" class="org.springframework.context.event.internalEventListenerProcessor"/>-->
-    <!--<bean id="autowiredAnnotationBeanPostProcessor" class="org.springframework.context.event.internalEventListenerFactory"/>-->
-    <!--<context:component-scan base-package="org.practice.spring.service"></context:component-scan>-->
-
-    <!--会自动遍历容器中的bean，检索@Autowired注解，若某属性上有该注解，则将检索容器中有无该属性实例，有则将实例注入到该属性-->
-    <bean id="qualifierAnnotationAutowireCandidateResolver" class="org.springframework.beans.factory.annotation.QualifierAnnotationAutowireCandidateResolver "/>
-    <bean id="autowiredAnnotationBeanPostProcessor" class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
-    <!--<bean id="commonAnnotationBeanPostProcessor" class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>-->
-
     <bean id="customer_01" name="customer_01_name" class="org.practice.spring.domain.Customer">
         <constructor-arg index="0" value="customerId_001"></constructor-arg>
         <constructor-arg index="1" value="customerName_001"></constructor-arg>
@@ -40,21 +26,39 @@
         <property name="carModelName" value="carModelName_002"></property>
     </bean>
 
+    <bean id="qualifierAnnotationAutowireCandidateResolver" class="org.springframework.beans.factory.annotation.QualifierAnnotationAutowireCandidateResolver"/>
+    <!--会自动遍历容器中的bean，检索@Autowired注解，若某属性上有该注解，则将检索容器中有无该属性实例，有则将实例注入到该属性-->
+    <bean id="autowiredAnnotationBeanPostProcessor" class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+    <!--会自动遍历容器中的bean，检索@Resource注解，若某属性上有该注解，则将检索容器中有无该属性实例，有则将实例注入到该属性-->
+    <!--<bean id="commonAnnotationBeanPostProcessor" class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>-->
+    <!--<context:annotation-config></context:annotation-config>-->
 
-    <bean id="user_01" class="org.practice.spring.domain.User" lazy-init="false" init-method="init" destroy-method="destroy">
-        <property name="iid" value="iid_001"></property>
-        <property name="userNo" value="userNo_001"></property>
-        <property name="name" value="name_001"></property>
-        <property name="orgNo" value="orgNo_001"></property>
-        <property name="orgName" value="orgName_001"></property>
-    </bean>
+    <!--context:annotation-config | context:component-scan，【实际上】会将如下类注入到容器：-->
+    <!--<bean id="autowiredAnnotationBeanPostProcessor" class="org.springframework.context.annotation.internalConfigurationAnnotationProcessor"/>-->
+    <!--<bean id="autowiredAnnotationBeanPostProcessor" class="org.springframework.context.annotation.internalAutowiredAnnotationProcessor"/>-->
+    <!--<bean id="autowiredAnnotationBeanPostProcessor" class="org.springframework.context.annotation.internalRequiredAnnotationProcessor"/>-->
+    <!--<bean id="autowiredAnnotationBeanPostProcessor" class="org.springframework.context.annotation.internalCommonAnnotationProcessor"/>-->
+    <!--<bean id="autowiredAnnotationBeanPostProcessor" class="org.springframework.context.event.internalEventListenerProcessor"/>-->
+    <!--<bean id="autowiredAnnotationBeanPostProcessor" class="org.springframework.context.event.internalEventListenerFactory"/>-->
+    <!--<context:component-scan base-package="org.practice.spring.service"></context:component-scan>-->
 
-    <bean id="user_02" class="org.practice.spring.domain.User" lazy-init="false" init-method="init" destroy-method="destroy">
-        <property name="iid" value="${iid}"></property>
-        <property name="userNo" value="${userNo}"></property>
-        <property name="name" value="${name}"></property>
-        <property name="orgNo" value="${orgNo}"></property>
-        <property name="orgName" value="${orgName}"></property>
-    </bean>
+    <!--context:annotation-config，【理论上】会将如下类注入到容器：AutowiredAnnotationBeanPostProcessor、CommonAnnotationBeanPostProcessor、PersistenceAnnotationBeanPostProcessor、RequiredAnnotationBeanPostProcessor-->
+    <!--context:component-scan，【理论上】会将如下类注入到容器：AutowiredAnnotationBeanPostProcessor、CommonAnnotationBeanPostProcessor-->
+
+
+    <!--<bean id="user_01" class="org.practice.spring.domain.User" lazy-init="false" init-method="init" destroy-method="destroy">-->
+    <!--    <property name="iid" value="iid_001"></property>-->
+    <!--    <property name="userNo" value="userNo_001"></property>-->
+    <!--    <property name="name" value="name_001"></property>-->
+    <!--    <property name="orgNo" value="orgNo_001"></property>-->
+    <!--    <property name="orgName" value="orgName_001"></property>-->
+    <!--</bean>-->
+    <!--<bean id="user_02" class="org.practice.spring.domain.User" lazy-init="false" init-method="init" destroy-method="destroy">-->
+    <!--    <property name="iid" value="${iid}"></property>-->
+    <!--    <property name="userNo" value="${userNo}"></property>-->
+    <!--    <property name="name" value="${name}"></property>-->
+    <!--    <property name="orgNo" value="${orgNo}"></property>-->
+    <!--    <property name="orgName" value="${orgName}"></property>-->
+    <!--</bean>-->
 
 </beans>

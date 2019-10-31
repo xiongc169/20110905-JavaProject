@@ -22,10 +22,10 @@ public class Customer {
 
     private String sex;
 
-    // @Autowired
-    // @Autowired(required = false)
-    // @Qualifier("car_02")
-    // @Resource(name = "car_01")
+//    @Autowired
+//    @Autowired(required = false)
+//    @Qualifier("car_02")
+//    @Resource(name = "car_01")
     private Car car;
 
     public Customer() {
