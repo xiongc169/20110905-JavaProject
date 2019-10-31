@@ -16,7 +16,7 @@
         </javaTypeResolver>
 
         <!-- 生成Model类 -->
-        <javaModelGenerator targetPackage="com.yoong.practice.mybatis.accidence.mysql.domain" targetProject="..\src\main\java">
+        <javaModelGenerator targetPackage="com.yoong.mybatis.accidence.mysql.domain" targetProject="..\src\main\java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
@@ -27,7 +27,7 @@
         </sqlMapGenerator>
 
         <!-- 生成Mapper接口 -->
-        <javaClientGenerator targetPackage="com.yoong.practice.mybatis.accidence.mysql.dao" targetProject="..\src\main\java" type="XMLMAPPER">
+        <javaClientGenerator targetPackage="com.yoong.mybatis.accidence.mysql.dao" targetProject="..\src\main\java" type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 

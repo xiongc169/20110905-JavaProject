@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yoong.practice.mybatis.accidence.yunyi.dao.AccountsMapper">
+<mapper namespace="com.yoong.mybatis.accidence.yunyi.dao.AccountsMapper">
 
-	<resultMap id="BaseResultMap" type="com.yoong.practice.mybatis.accidence.yunyi.domain.Accounts">
+	<resultMap id="BaseResultMap" type="com.yoong.mybatis.accidence.yunyi.domain.Accounts">
 		<id column="Id" jdbcType="CHAR" property="id" />
 		<result column="AccountId" jdbcType="NVARCHAR" property="accountid" />
 		<result column="Password" jdbcType="NVARCHAR" property="password" />
@@ -90,7 +90,7 @@
 		CustomerName, CreateTime, Definition1, Definition2, IsDelete
 	</sql>
 
-	<select id="selectByExample" parameterType="com.yoong.practice.mybatis.accidence.yunyi.domain.AccountsExample"
+	<select id="selectByExample" parameterType="com.yoong.mybatis.accidence.yunyi.domain.AccountsExample"
 		resultMap="BaseResultMap">
 		select
 		<if test="distinct">
@@ -119,14 +119,14 @@
 		where Id = #{id,jdbcType=CHAR}
 	</delete>
 
-	<delete id="deleteByExample" parameterType="com.yoong.practice.mybatis.accidence.yunyi.domain.AccountsExample">
+	<delete id="deleteByExample" parameterType="com.yoong.mybatis.accidence.yunyi.domain.AccountsExample">
 		delete from Accounts
 		<if test="_parameter != null">
 			<include refid="Example_Where_Clause" />
 		</if>
 	</delete>
 
-	<insert id="insert" parameterType="com.yoong.practice.mybatis.accidence.yunyi.domain.Accounts">
+	<insert id="insert" parameterType="com.yoong.mybatis.accidence.yunyi.domain.Accounts">
 		insert into Accounts (Id, AccountId, Password,
 		ContactName, Mobile, Phone,
 		Email, CustomerId, CustomerNo,
@@ -141,7 +141,7 @@
 		#{definition2,jdbcType=NVARCHAR}, #{isdelete,jdbcType=BIT})
 	</insert>
 
-	<insert id="insertSelective" parameterType="com.yoong.practice.mybatis.accidence.yunyi.domain.Accounts">
+	<insert id="insertSelective" parameterType="com.yoong.mybatis.accidence.yunyi.domain.Accounts">
 		insert into Accounts
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="id != null">
@@ -233,7 +233,7 @@
 		</trim>
 	</insert>
 
-	<select id="countByExample" parameterType="com.yoong.practice.mybatis.accidence.yunyi.domain.AccountsExample"
+	<select id="countByExample" parameterType="com.yoong.mybatis.accidence.yunyi.domain.AccountsExample"
 		resultType="java.lang.Integer">
 		select count(*) from Accounts
 		<if test="_parameter != null">
@@ -313,7 +313,7 @@
 		</if>
 	</update>
 
-	<update id="updateByPrimaryKeySelective" parameterType="com.yoong.practice.mybatis.accidence.yunyi.domain.Accounts">
+	<update id="updateByPrimaryKeySelective" parameterType="com.yoong.mybatis.accidence.yunyi.domain.Accounts">
 		update Accounts
 		<set>
 			<if test="accountid != null">
@@ -359,7 +359,7 @@
 		where Id = #{id,jdbcType=CHAR}
 	</update>
 
-	<update id="updateByPrimaryKey" parameterType="com.yoong.practice.mybatis.accidence.yunyi.domain.Accounts">
+	<update id="updateByPrimaryKey" parameterType="com.yoong.mybatis.accidence.yunyi.domain.Accounts">
 		update Accounts
 		set AccountId = #{accountid,jdbcType=NVARCHAR},
 		Password = #{password,jdbcType=NVARCHAR},

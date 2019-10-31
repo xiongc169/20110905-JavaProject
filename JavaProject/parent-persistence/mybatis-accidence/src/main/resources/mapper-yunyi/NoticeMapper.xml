@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yoong.practice.mybatis.accidence.yunyi.dao.NoticeMapper">
-	<resultMap id="BaseResultMap" type="com.yoong.practice.mybatis.accidence.yunyi.domain.Notice">
+<mapper namespace="com.yoong.mybatis.accidence.yunyi.dao.NoticeMapper">
+	<resultMap id="BaseResultMap" type="com.yoong.mybatis.accidence.yunyi.domain.Notice">
 		<id column="Id" jdbcType="CHAR" property="id" />
 		<result column="Title" jdbcType="NVARCHAR" property="title" />
 		<result column="Type" jdbcType="NVARCHAR" property="type" />
@@ -21,7 +21,7 @@
 	</resultMap>
 
 	<resultMap extends="BaseResultMap" id="ResultMapWithBLOBs"
-		type="com.yoong.practice.mybatis.accidence.yunyi.domain.NoticeWithBLOBs">
+		type="com.yoong.mybatis.accidence.yunyi.domain.NoticeWithBLOBs">
 		<result column="Content" jdbcType="LONGVARCHAR" property="content" />
 		<result column="Receiver" jdbcType="LONGVARCHAR" property="receiver" />
 		<result column="CopyTo" jdbcType="LONGVARCHAR" property="copyto" />
@@ -108,7 +108,7 @@
 		Content, Receiver, CopyTo, SecretTo, NotifyMessage
 	</sql>
 
-	<select id="selectByExampleWithBLOBs" parameterType="com.yoong.practice.mybatis.accidence.yunyi.domain.NoticeExample"
+	<select id="selectByExampleWithBLOBs" parameterType="com.yoong.mybatis.accidence.yunyi.domain.NoticeExample"
 		resultMap="ResultMapWithBLOBs">
 		select
 		<if test="distinct">
@@ -126,7 +126,7 @@
 		</if>
 	</select>
 
-	<select id="selectByExample" parameterType="com.yoong.practice.mybatis.accidence.yunyi.domain.NoticeExample"
+	<select id="selectByExample" parameterType="com.yoong.mybatis.accidence.yunyi.domain.NoticeExample"
 		resultMap="BaseResultMap">
 		select
 		<if test="distinct">
@@ -157,14 +157,14 @@
 		where Id = #{id,jdbcType=CHAR}
 	</delete>
 
-	<delete id="deleteByExample" parameterType="com.yoong.practice.mybatis.accidence.yunyi.domain.NoticeExample">
+	<delete id="deleteByExample" parameterType="com.yoong.mybatis.accidence.yunyi.domain.NoticeExample">
 		delete from Notice
 		<if test="_parameter != null">
 			<include refid="Example_Where_Clause" />
 		</if>
 	</delete>
 
-	<insert id="insert" parameterType="com.yoong.practice.mybatis.accidence.yunyi.domain.NoticeWithBLOBs">
+	<insert id="insert" parameterType="com.yoong.mybatis.accidence.yunyi.domain.NoticeWithBLOBs">
 		insert into Notice (Id, Title,
 		Type,
 		IsPublic, AttachId, Creator,
@@ -191,7 +191,7 @@
 		)
 	</insert>
 
-	<insert id="insertSelective" parameterType="com.yoong.practice.mybatis.accidence.yunyi.domain.NoticeWithBLOBs">
+	<insert id="insertSelective" parameterType="com.yoong.mybatis.accidence.yunyi.domain.NoticeWithBLOBs">
 		insert into Notice
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="id != null">
@@ -325,7 +325,7 @@
 		</trim>
 	</insert>
 
-	<select id="countByExample" parameterType="com.yoong.practice.mybatis.accidence.yunyi.domain.NoticeExample"
+	<select id="countByExample" parameterType="com.yoong.mybatis.accidence.yunyi.domain.NoticeExample"
 		resultType="java.lang.Integer">
 		select count(*) from Notice
 		<if test="_parameter != null">
@@ -493,7 +493,7 @@
 		</if>
 	</update>
 
-	<update id="updateByPrimaryKeySelective" parameterType="com.yoong.practice.mybatis.accidence.yunyi.domain.NoticeWithBLOBs">
+	<update id="updateByPrimaryKeySelective" parameterType="com.yoong.mybatis.accidence.yunyi.domain.NoticeWithBLOBs">
 		update Notice
 		<set>
 			<if test="title != null">
@@ -560,7 +560,7 @@
 		where Id = #{id,jdbcType=CHAR}
 	</update>
 
-	<update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yoong.practice.mybatis.accidence.yunyi.domain.NoticeWithBLOBs">
+	<update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yoong.mybatis.accidence.yunyi.domain.NoticeWithBLOBs">
 		update
 		Notice
 		set Title = #{title,jdbcType=NVARCHAR},
@@ -597,7 +597,7 @@
 		where Id = #{id,jdbcType=CHAR}
 	</update>
 
-	<update id="updateByPrimaryKey" parameterType="com.yoong.practice.mybatis.accidence.yunyi.domain.Notice">
+	<update id="updateByPrimaryKey" parameterType="com.yoong.mybatis.accidence.yunyi.domain.Notice">
 		update Notice
 		set
 		Title = #{title,jdbcType=NVARCHAR},

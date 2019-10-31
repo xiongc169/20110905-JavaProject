@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.yoong.practice.hibernate.accidence.domain.Resource" table="resource" schema="wong_user">
+    <class name="com.yoong.hibernate.accidence.domain.Resource" table="resource" schema="wong_user">
         <id name="id">
             <column name="id" sql-type="bigint(20)"/>
         </id>

@@ -51,20 +51,20 @@
 
     <!--单个配置Mapper接口-->
     <bean id="accountDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="com.yoong.practice.mybatis.springx.wong_user.dao.AccountMapper"/>
+        <property name="mapperInterface" value="com.yoong.mybatis.springx.wong_user.dao.AccountMapper"/>
         <!--<property name="sqlSessionFactory" ref="sqlSessionFactory"/>-->
         <property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
     </bean>
 
     <!--批量配置Mapper接口-->
     <bean id="scannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.yoong.practice.mybatis.springx.wong_user.dao"/>
+        <property name="basePackage" value="com.yoong.mybatis.springx.wong_user.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
         <property name="sqlSessionTemplateBeanName" value="sqlSessionTemplate"/>
         <property name="annotationClass" value="org.springframework.stereotype.Repository"/>
     </bean>
 
-    <bean id="accountService" class="com.yoong.practice.mybatis.springx.wong_user.service.AccountService"/>
+    <bean id="accountService" class="com.yoong.mybatis.springx.wong_user.service.AccountService"/>
 
     <!--配置事务-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

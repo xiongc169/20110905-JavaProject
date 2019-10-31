@@ -2,7 +2,7 @@
 <entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
         version="2.0">
 
-    <entity class="com.yoong.practice.jpa.accidence.domain.Admin">
+    <entity class="com.yoong.jpa.accidence.domain.Admin">
         <table name="admin" schema="wong_user" catalog=""/>
         <attributes>
             <id name="id">

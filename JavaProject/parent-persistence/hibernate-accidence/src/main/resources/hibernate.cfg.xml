@@ -10,23 +10,23 @@
         <property name="connection.password">123456</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 
-        <mapping class="com.yoong.practice.hibernate.accidence.domain.Account"/>
+        <mapping class="com.yoong.hibernate.accidence.domain.Account"/>
         <mapping resource="mapper/Account.hbm.xml"/>
-        <mapping class="com.yoong.practice.hibernate.accidence.domain.Admin"/>
+        <mapping class="com.yoong.hibernate.accidence.domain.Admin"/>
         <mapping resource="mapper/Admin.hbm.xml"/>
-        <mapping class="com.yoong.practice.hibernate.accidence.domain.Customer"/>
+        <mapping class="com.yoong.hibernate.accidence.domain.Customer"/>
         <mapping resource="mapper/Customer.hbm.xml"/>
-        <mapping class="com.yoong.practice.hibernate.accidence.domain.Menu"/>
+        <mapping class="com.yoong.hibernate.accidence.domain.Menu"/>
         <mapping resource="mapper/Menu.hbm.xml"/>
-        <mapping class="com.yoong.practice.hibernate.accidence.domain.Resource"/>
+        <mapping class="com.yoong.hibernate.accidence.domain.Resource"/>
         <mapping resource="mapper/Resource.hbm.xml"/>
-        <mapping class="com.yoong.practice.hibernate.accidence.domain.Role"/>
+        <mapping class="com.yoong.hibernate.accidence.domain.Role"/>
         <mapping resource="mapper/Role.hbm.xml"/>
-        <mapping class="com.yoong.practice.hibernate.accidence.domain.RoleMenu"/>
+        <mapping class="com.yoong.hibernate.accidence.domain.RoleMenu"/>
         <mapping resource="mapper/RoleMenu.hbm.xml"/>
-        <mapping class="com.yoong.practice.hibernate.accidence.domain.RoleResource"/>
+        <mapping class="com.yoong.hibernate.accidence.domain.RoleResource"/>
         <mapping resource="mapper/RoleResource.hbm.xml"/>
-        <mapping class="com.yoong.practice.hibernate.accidence.domain.UserRole"/>
+        <mapping class="com.yoong.hibernate.accidence.domain.UserRole"/>
         <mapping resource="mapper/UserRole.hbm.xml"/>
 
         <!-- DB schema will be updated if needed -->

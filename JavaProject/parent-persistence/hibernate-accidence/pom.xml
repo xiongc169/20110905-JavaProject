@@ -9,6 +9,7 @@
     </parent>
     <groupId>com.yoong.practice</groupId>
     <artifactId>hibernate-accidence</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <name>hibernate-accidence</name>
     <url>http://www.example.com</url>
 
