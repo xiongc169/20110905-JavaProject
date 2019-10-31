@@ -1,4 +1,4 @@
-package org.practice.launcher;
+package org.practice.cheguo.launcher;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
