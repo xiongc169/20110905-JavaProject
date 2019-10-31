@@ -31,8 +31,8 @@ public class FileUtils {
     }
 
     /**
-     * https://www.cnblogs.com/pcheng/p/6913535.html <br>
      * 文件、字节数组转换
+     * https://www.cnblogs.com/pcheng/p/6913535.html
      *
      * @param fileName
      * @return
@@ -91,7 +91,8 @@ public class FileUtils {
     }
 
     /**
-     * https://www.cnblogs.com/cnblogszs/p/6405403.html 文件转换为数组
+     * 文件转换为数组
+     * https://www.cnblogs.com/cnblogszs/p/6405403.html
      *
      * @param filePath
      * @return
@@ -107,7 +108,6 @@ public class FileUtils {
     }
 
     public static byte[] toByteArray(InputStream in) throws IOException {
-
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         byte[] buffer = new byte[1024 * 4];
         int n = 0;

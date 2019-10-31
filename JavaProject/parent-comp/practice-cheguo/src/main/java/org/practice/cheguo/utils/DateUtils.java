@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.alibaba.fastjson.JSONObject;
+import org.apache.commons.lang.StringUtils;
 
 /**
  * @author yoong
@@ -42,7 +43,7 @@ public class DateUtils {
         System.out.println(nowStr);
         System.out.println(nowStr2);
 
-        String serial = org.apache.commons.lang.StringUtils.leftPad(String.valueOf(1), 4, '0');
+        String serial = StringUtils.leftPad(String.valueOf(1), 4, '0');
         System.out.println(serial);
     }
 
@@ -72,6 +73,7 @@ public class DateUtils {
     }
 
     /**
+     * java获得两个日期之间的所有月份
      * https://www.cnblogs.com/zq-boke/p/5868254.html
      *
      * @param minDate
