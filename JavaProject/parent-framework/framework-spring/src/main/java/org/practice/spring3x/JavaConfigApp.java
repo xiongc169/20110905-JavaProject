@@ -1,6 +1,6 @@
-package org.practice.spring3;
+package org.practice.spring3x;
 
-import org.practice.spring3.config.JmsConfig;
+import org.practice.spring3x.config.JmsConfig;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

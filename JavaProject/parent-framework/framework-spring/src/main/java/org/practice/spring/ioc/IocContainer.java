@@ -41,7 +41,6 @@ public class IocContainer {
      * TODO: 入口函数
      */
     public static void main(String[] args) {
-        //测试
         try {
             injectDemo();
             beanFactoryDemo();
@@ -337,9 +336,13 @@ public class IocContainer {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:ioc/spring-anno.xml");
         List<String> names = Arrays.asList(context.getBeanDefinitionNames());
         System.out.println(names.size());
+        System.out.println(JSON.toJSONString(names));
 
-        UserServiceImpl service = (UserServiceImpl) context.getBean("userServiceImpl");
-        String userInfo = service.getUserInfo();
-        System.out.println(userInfo);
+        Customer customer = (Customer) context.getBean("customer_01");
+        System.out.println(customer.getCustomerId());
+
+        //UserServiceImpl service = (UserServiceImpl) context.getBean("userServiceImpl");
+        //String userInfo = service.getUserInfo();
+        //System.out.println(userInfo);
     }
 }

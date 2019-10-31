@@ -1,8 +1,7 @@
-package org.practice.spring3.config;
+package org.practice.spring3x.config;
 
 import org.practice.spring.domain.Car;
 import org.practice.spring.domain.Customer;
-import org.practice.spring.domain.User;
 import org.practice.spring.domain2.Student;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

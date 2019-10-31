@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
+
 /**
  * Customer
  *
@@ -20,8 +22,10 @@ public class Customer {
 
     private String sex;
 
-    @Autowired(required = false)
-    @Qualifier("car")
+    // @Autowired
+    // @Autowired(required = false)
+    // @Qualifier("car_02")
+    // @Resource(name = "car_01")
     private Car car;
 
     public Customer() {

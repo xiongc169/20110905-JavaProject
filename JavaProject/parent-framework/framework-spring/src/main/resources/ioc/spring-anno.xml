@@ -1,19 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
-       xmlns:aop="http://www.springframework.org/schema/aop"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
-    <!--会将如下类注入到容器：-->
-    <!--org.springframework.context.annotation.internalConfigurationAnnotationProcessor-->
-    <!--org.springframework.context.annotation.internalAutowiredAnnotationProcessor-->
-    <!--org.springframework.context.annotation.internalRequiredAnnotationProcessor-->
-    <!--org.springframework.context.annotation.internalCommonAnnotationProcessor-->
-    <!--org.springframework.context.event.internalEventListenerProcessor-->
-    <!--org.springframework.context.event.internalEventListenerFactory-->
-    <context:component-scan base-package="org.practice.spring.service"></context:component-scan>
+    <!--context:component-scan 会将如下类注入到容器：-->
+    <!--<bean id="autowiredAnnotationBeanPostProcessor" class="org.springframework.context.annotation.internalConfigurationAnnotationProcessor"/>-->
+    <!--<bean id="autowiredAnnotationBeanPostProcessor" class="org.springframework.context.annotation.internalAutowiredAnnotationProcessor"/>-->
+    <!--<bean id="autowiredAnnotationBeanPostProcessor" class="org.springframework.context.annotation.internalRequiredAnnotationProcessor"/>-->
+    <!--<bean id="autowiredAnnotationBeanPostProcessor" class="org.springframework.context.annotation.internalCommonAnnotationProcessor"/>-->
+    <!--<bean id="autowiredAnnotationBeanPostProcessor" class="org.springframework.context.event.internalEventListenerProcessor"/>-->
+    <!--<bean id="autowiredAnnotationBeanPostProcessor" class="org.springframework.context.event.internalEventListenerFactory"/>-->
+    <!--<context:component-scan base-package="org.practice.spring.service"></context:component-scan>-->
+
+    <!--会自动遍历容器中的bean，检索@Autowired注解，若某属性上有该注解，则将检索容器中有无该属性实例，有则将实例注入到该属性-->
+    <bean id="qualifierAnnotationAutowireCandidateResolver" class="org.springframework.beans.factory.annotation.QualifierAnnotationAutowireCandidateResolver "/>
+    <bean id="autowiredAnnotationBeanPostProcessor" class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+    <!--<bean id="commonAnnotationBeanPostProcessor" class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>-->
+
+    <bean id="customer_01" name="customer_01_name" class="org.practice.spring.domain.Customer">
+        <constructor-arg index="0" value="customerId_001"></constructor-arg>
+        <constructor-arg index="1" value="customerName_001"></constructor-arg>
+    </bean>
+
+    <bean id="car_01" class="org.practice.spring.domain.Car">
+        <property name="carId" value="carId_001"></property>
+        <property name="carBrandName" value="carBrandName_001"></property>
+        <property name="carModelName" value="carModelName_001"></property>
+    </bean>
+
+    <bean id="car_02" class="org.practice.spring.domain.Car">
+        <property name="carId" value="carId_002"></property>
+        <property name="carBrandName" value="carBrandName_002"></property>
+        <property name="carModelName" value="carModelName_002"></property>
+    </bean>
+
 
     <bean id="user_01" class="org.practice.spring.domain.User" lazy-init="false" init-method="init" destroy-method="destroy">
         <property name="iid" value="iid_001"></property>

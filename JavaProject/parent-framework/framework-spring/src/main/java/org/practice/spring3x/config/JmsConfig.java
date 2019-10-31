@@ -1,4 +1,4 @@
-package org.practice.spring3.config;
+package org.practice.spring3x.config;
 
 import org.springframework.context.annotation.Configuration;
 

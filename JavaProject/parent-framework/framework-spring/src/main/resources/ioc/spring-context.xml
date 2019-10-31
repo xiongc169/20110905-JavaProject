@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
        default-lazy-init="false" default-autowire="byType" default-init-method="" default-destroy-method="">
 
     <description>spring-context</description>
@@ -14,10 +18,10 @@
         <constructor-arg index="1" value="customerName_001"></constructor-arg>
     </bean>
 
-    <bean id="customer_02" class="org.practice.spring.domain.Customer" autowire="byName">
+    <bean id="customer_02" class="org.practice.spring.domain.Customer" autowire="byType">
         <property name="customerId" value="customerId_002"></property>
         <property name="customerName" value="customerName_002"></property>
-        <property name="car" ref="car_02"></property>
+        <!--<property name="car" ref="car_02"></property>-->
     </bean>
 
     <alias name="customer_01" alias="cst_01"/>
@@ -28,11 +32,11 @@
         <property name="carModelName" value="carModelName_001"></property>
     </bean>
 
-    <bean id="car_02" class="org.practice.spring.domain.Car">
-        <property name="carId" value="carId_002"></property>
-        <property name="carBrandName" value="carBrandName_002"></property>
-        <property name="carModelName" value="carModelName_002"></property>
-    </bean>
+    <!--    <bean id="car_02" class="org.practice.spring.domain.Car">-->
+    <!--        <property name="carId" value="carId_002"></property>-->
+    <!--        <property name="carBrandName" value="carBrandName_002"></property>-->
+    <!--        <property name="carModelName" value="carModelName_002"></property>-->
+    <!--    </bean>-->
 
     <bean id="user_01" class="org.practice.spring.domain.User" lazy-init="false" init-method="init" destroy-method="destroy">
         <property name="iid" value="iid_001"></property>
@@ -67,12 +71,12 @@
     <!--启动注解，@Autowired、@Qualifier | @Resource、@PostConstruct、@PreDestroy等注解变为可用-->
     <!--<context:annotation-config> 不但把 AutowiredAnnotationBeanPostProcessor、CommonAnnotationBeanPostProcessor 注册到容器，同时还把 PersistenceAnnotationBeanPostProcessor、RequiredAnnotationBeanPostProcessor 一并注册-->
     <!--优化了Bean之间依赖关系的配置：从XML配置改进为注解配置-->
-    <context:annotation-config></context:annotation-config>
+    <!--<context:annotation-config></context:annotation-config>-->
 
     <!--启动注解，@Component、@Repository、@Service、@Controller等注解变为可用-->
     <!--<context:component-scan>将 AutowiredAnnotationBeanPostProcessor、CommonAnnotationBeanPostProcessor 一并注册到了容器中-->
     <!--优化了Bean的定义：从XML中定义改进为注解定义-->
     <!--<context:component-scan base-package="org.practice.spring.domain"></context:component-scan>-->
-    <context:component-scan base-package="org.practice.spring.domain2"></context:component-scan>
+    <!--<context:component-scan base-package="org.practice.spring.domain2"></context:component-scan>-->
 
 </beans>
