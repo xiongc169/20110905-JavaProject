@@ -8,9 +8,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>com.yoong.practice</groupId>
-    <artifactId>practice-log4j</artifactId>
+    <artifactId>log-logback</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>practice-log4j</name>
+    <name>log-logback</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -27,11 +27,24 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/log4j/log4j -->
+        <!--<dependency>-->
+        <!--<groupId>org.slf4j</groupId>-->
+        <!--<artifactId>slf4j-api</artifactId>-->
+        <!--<version>1.2.3</version>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+        <!--<groupId>ch.qos.logback</groupId>-->
+        <!--<artifactId>logback-core</artifactId>-->
+        <!--<version>1.2.3</version>-->
+        <!--</dependency>-->
+
+        <!-- 该依赖包括了上面两个依赖，所以只要引入该依赖即可 -->
+        <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
         <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
         </dependency>
     </dependencies>
 

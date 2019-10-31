@@ -10,9 +10,9 @@
     <url>http://www.example.com</url>
 
     <modules>
-        <module>practice-log4j</module>
-        <module>practice-logback</module>
-        <module>practice-slf4j</module>
+        <module>log-log4j</module>
+        <module>log-logback</module>
+        <module>log-slf4j</module>
     </modules>
 
     <properties>
