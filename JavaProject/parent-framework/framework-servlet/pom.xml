@@ -8,9 +8,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>com.yoong.practice</groupId>
-    <artifactId>practice-servlet</artifactId>
+    <artifactId>framework-servlet</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>practice-servlet</name>
+    <name>framework-servlet</name>
     <url>http://maven.apache.org</url>
 
     <properties>

@@ -8,9 +8,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>com.yoong.practice</groupId>
-    <artifactId>practice-quartz</artifactId>
+    <artifactId>framework-structs</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>practice-quartz</name>
+    <name>framework-structs</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -25,13 +25,6 @@
             <artifactId>junit</artifactId>
             <version>3.8.1</version>
             <scope>test</scope>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz -->
-        <dependency>
-            <groupId>org.quartz-scheduler</groupId>
-            <artifactId>quartz</artifactId>
-            <version>2.2.1</version>
         </dependency>
     </dependencies>
 
