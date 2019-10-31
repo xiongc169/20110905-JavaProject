@@ -10,11 +10,11 @@
     <url>http://www.example.com</url>
 
     <modules>
-        <module>practice-afacade</module>
-        <module>practice-dataStructure</module>
-        <module>practice-designPattern</module>
-        <module>practice-primary</module>
-        <module>practice-utility</module>
+        <module>ahnu-afacade</module>
+        <module>ahnu-dataStructure</module>
+        <module>ahnu-designPattern</module>
+        <module>ahnu-primary</module>
+        <module>ahnu-utility</module>
     </modules>
 
     <properties>

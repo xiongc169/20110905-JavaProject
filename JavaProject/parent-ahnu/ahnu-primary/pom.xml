@@ -8,9 +8,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>com.yoong.practice</groupId>
-    <artifactId>practice-primary</artifactId>
+    <artifactId>ahnu-primary</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>practice-primary</name>
+    <name>ahnu-primary</name>
     <url>http://maven.apache.org</url>
 
     <properties>
