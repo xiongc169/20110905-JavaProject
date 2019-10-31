@@ -8,10 +8,10 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>com.yoong.practice</groupId>
-    <artifactId>practice-web</artifactId>
+    <artifactId>senior-web</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>practice-web</name>
+    <name>senior-web</name>
     <url>http://maven.apache.org</url>
 
     <properties>

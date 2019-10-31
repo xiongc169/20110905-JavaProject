@@ -10,10 +10,10 @@
     <url>http://www.example.com</url>
 
     <modules>
-        <module>practice-java8</module>
-        <module>practice-jvm</module>
-        <module>practice-thread</module>
-        <module>practice-web</module>
+        <module>senior-java8</module>
+        <module>senior-jvm</module>
+        <module>senior-thread</module>
+        <module>senior-web</module>
     </modules>
 
     <properties>
