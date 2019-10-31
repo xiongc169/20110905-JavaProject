@@ -10,10 +10,10 @@
     <url>http://www.example.com</url>
 
     <modules>
-        <module>practice-hundsun</module>
-        <module>practice-python</module>
-        <module>practice-cheguo</module>
-        <module>practice-jpush</module>
+        <module>comp-hundsun</module>
+        <module>comp-python</module>
+        <module>comp-cheguo</module>
+        <module>comp-jpush</module>
     </modules>
 
     <properties>
