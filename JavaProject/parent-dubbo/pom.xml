@@ -10,9 +10,10 @@
     <url>http://maven.apache.org</url>
 
     <modules>
-        <module>dubbo-provider</module>
-        <module>dubbo-consumer</module>
         <module>dubbo-common</module>
+        <module>dubbo-consumer</module>
+        <module>dubbo-provider</module>
+        <module>dubbo-source</module>
     </modules>
 
     <properties>

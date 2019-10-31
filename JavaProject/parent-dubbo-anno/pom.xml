@@ -13,7 +13,6 @@
         <module>anno-common</module>
         <module>anno-consumer</module>
         <module>anno-provider</module>
-        <module>dubbo-source</module>
     </modules>
 
     <properties>
