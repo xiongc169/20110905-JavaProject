@@ -3,13 +3,11 @@ package org.anno.consumer;
 import com.alibaba.dubbo.config.ApplicationConfig;
 import com.alibaba.dubbo.config.ReferenceConfig;
 import com.alibaba.dubbo.config.RegistryConfig;
-import org.anno.common.service.GreetService;
+import org.anno.service.GreetService;
 import org.anno.consumer.config.ConsumerConfig;
 import org.anno.consumer.controller.UserController;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
-
-import java.util.Scanner;
 
 /**
  * AnnoConsumer

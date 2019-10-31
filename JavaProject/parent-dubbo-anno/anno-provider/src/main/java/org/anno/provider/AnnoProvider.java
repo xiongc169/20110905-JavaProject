@@ -4,7 +4,7 @@ import com.alibaba.dubbo.config.ApplicationConfig;
 import com.alibaba.dubbo.config.ProtocolConfig;
 import com.alibaba.dubbo.config.RegistryConfig;
 import com.alibaba.dubbo.config.ServiceConfig;
-import org.anno.common.service.GreetService;
+import org.anno.service.GreetService;
 import org.anno.provider.config.ProviderConfig;
 import org.anno.provider.serviceImpl.GreetServiceImpl;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

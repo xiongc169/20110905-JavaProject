@@ -1,6 +1,6 @@
 package org.anno.provider.serviceImpl;
 
-import org.anno.common.service.TimeService;
+import org.anno.service.TimeService;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

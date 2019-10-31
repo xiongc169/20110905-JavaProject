@@ -1,4 +1,4 @@
-package org.anno.common.service;
+package org.anno.service;
 
 public interface GreetService {
 

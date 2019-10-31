@@ -1,4 +1,4 @@
-package org.dubbo.common.service;
+package org.anno.service;
 
 public interface CalculatorService {
 
