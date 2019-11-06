@@ -1,12 +1,12 @@
-package org.practice.jvm;
+package org.practice.jvm.community;
 
 /**
- * @Desc JvmApp
+ * @Desc CommunityApp
  * @Author
  * @Date
  * @Version 1.0
  */
-public class JvmApp {
+public class CommunityApp {
 
     /**
      * 入口函数
