@@ -10,10 +10,9 @@ package org.practice.thread.thread01.ch02callback;
  * @date 2019/1/11 10:19
  */
 public class App {
+
     /**
      * 入口函数
-     *
-     * @param args
      */
     public static void main(String[] args) {
         try {

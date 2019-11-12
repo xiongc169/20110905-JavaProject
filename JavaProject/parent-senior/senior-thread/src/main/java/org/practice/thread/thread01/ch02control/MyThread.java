@@ -1,4 +1,4 @@
-package org.practice.thread.thread01.ch02sync;
+package org.practice.thread.thread01.ch02control;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -39,13 +39,11 @@ public class MyThread extends Thread {
         boolean isInterrupted = Thread.currentThread().isInterrupted();
         try {
             while (!isInterrupted) {
-                System.out.println("MyThread.isInterrupted: " + isInterrupted);
-                String output = String.format("%s MyThread %s %s", format.format(new Date()), Thread.currentThread().getName(), Thread.currentThread().getState());
-                System.out.println(output);
+                System.out.println(String.format("MyThread: %s %s %s %s %s", format.format(new Date()), Thread.currentThread().getId(), Thread.currentThread().getName(), Thread.currentThread().getState(), isInterrupted));
                 //Thread.sleep(500);
                 isInterrupted = Thread.currentThread().isInterrupted();
             }
-            System.out.println("MyThread.isInterrupted outer: " + isInterrupted);
+            System.out.println(String.format("MyThread: %s %s %s %s %s", format.format(new Date()), Thread.currentThread().getId(), Thread.currentThread().getName(), Thread.currentThread().getState(), isInterrupted));
         } catch (Exception e) {
             e.printStackTrace();
         }

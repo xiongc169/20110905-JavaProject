@@ -17,6 +17,8 @@ public class MyRunnable implements Runnable {
 
     private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
 
+    public volatile boolean exit = false;
+
     private Boss boss;
 
     public MyRunnable() {
@@ -30,11 +32,12 @@ public class MyRunnable implements Runnable {
     public void run() {
         try {
             //循环条件：true\Thread.currentThread().isInterrupted()
-            while (!Thread.currentThread().isInterrupted()) {
-                TimeUnit.SECONDS.sleep(1);//处于sleep状态时被中断，会抛异常：sleep interrupted，此时线程状态为RUNNABLE
-                System.out.printf("%s MyRunnable.run By %s %s \n", format.format(new Date()), Thread.currentThread().getName(), Thread.currentThread().isInterrupted());
+            //while (!Thread.currentThread().isInterrupted()) {
+            while (!exit) {
+                //TimeUnit.SECONDS.sleep(1);//处于sleep状态时被中断，会抛异常：sleep interrupted，此时线程状态为RUNNABLE
+                System.out.printf("MyRunnable: %s %s %s %s %s\n", format.format(new Date()), Thread.currentThread().getId(), Thread.currentThread().getName(), Thread.currentThread().getState(), Thread.currentThread().isInterrupted());
             }
-            System.out.printf("%s MyRunnable.run By %s %s \n", format.format(new Date()), Thread.currentThread().getName(), Thread.currentThread().isInterrupted());
+            System.out.printf("MyRunnable: %s %s %s %s %s\n", format.format(new Date()), Thread.currentThread().getId(), Thread.currentThread().getName(), Thread.currentThread().getState(), Thread.currentThread().isInterrupted());
         } catch (Exception ex) {
             ex.printStackTrace();
         }

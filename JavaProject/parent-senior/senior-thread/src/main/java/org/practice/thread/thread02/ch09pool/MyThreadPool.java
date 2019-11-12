@@ -2,8 +2,7 @@ package org.practice.thread.thread02.ch09pool;
 
 import java.util.concurrent.*;
 
-import org.practice.thread.thread01.ch02sync.MyRunnable;
-import org.practice.thread.thread01.ch02sync.MyThreadFactory;
+import org.practice.thread.thread01.ch01primary.MyThreadFactory;
 
 import java.util.concurrent.ThreadPoolExecutor.AbortPolicy;
 

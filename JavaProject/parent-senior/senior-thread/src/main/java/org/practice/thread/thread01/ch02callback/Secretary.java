@@ -1,5 +1,7 @@
 package org.practice.thread.thread01.ch02callback;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -10,6 +12,8 @@ import java.util.concurrent.TimeUnit;
  * @date 2019/1/11 10:20
  */
 public class Secretary implements Runnable {
+
+    private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
 
     private Boss boss;
 
@@ -25,10 +29,11 @@ public class Secretary implements Runnable {
         try {
             long threadId = Thread.currentThread().getId();
             String threadName = Thread.currentThread().getName();
-            String output = "Secretary threadId: " + threadId + "; Secretary threadName: " + threadName;
+            Thread.State state = Thread.currentThread().getState();
+            boolean isInterrupted = Thread.currentThread().isInterrupted();
+            String output = String.format("Secretary: %s %s %s %s %s", format.format(new Date()), threadId, threadName, state, isInterrupted);
             System.out.println(output);
             TimeUnit.SECONDS.sleep(10);
-
             boss.receiveResult(output);
         } catch (Exception ex) {
             ex.printStackTrace();

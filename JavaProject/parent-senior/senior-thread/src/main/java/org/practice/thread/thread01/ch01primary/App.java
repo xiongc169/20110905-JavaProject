@@ -1,5 +1,7 @@
 package org.practice.thread.thread01.ch01primary;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.FutureTask;
 
 /**
@@ -10,20 +12,24 @@ import java.util.concurrent.FutureTask;
  */
 public class App {
 
+    private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
+
     /**
      * 入口函数
-     *
-     * @param args
      */
     public static void main(String[] args) {
         try {
             Thread thread = Thread.currentThread();
             long threadId = Thread.currentThread().getId();
             String threadName = Thread.currentThread().getName();
-            System.out.println("Main Thread: " + thread + "; ThreadId: " + threadId + "; ThreadName: " + threadName);
+            Thread.State state = Thread.currentThread().getState();
+            boolean interrupted = Thread.currentThread().isInterrupted();
+            String output = String.format("MainThread: %s %s %s %s %s", format.format(new Date()), threadId, threadName, state, interrupted);
+            System.out.println(output);
 
             myThreadTest();
             summaryTest();
+            threadFactoryTest();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -53,7 +59,7 @@ public class App {
     }
 
     /**
-     * 测试代码
+     * 测试
      */
     public static void summaryTest() {
         // 1.Thread 测试
@@ -83,5 +89,18 @@ public class App {
             ex.printStackTrace();
         }
         System.out.println("summaryTest End!");
+    }
+
+    /**
+     * threadFactory测试
+     */
+    public static void threadFactoryTest() {
+        MyRunnable runnable = new MyRunnable();
+        MyThreadFactory threadFactory = new MyThreadFactory("Yoong");
+        for (int i = 0; i < 10; i++) {
+            Thread thread = threadFactory.newThread(runnable);
+            thread.start();
+        }
+        System.out.println("threadFactory.counter: " + threadFactory.counter);
     }
 }
