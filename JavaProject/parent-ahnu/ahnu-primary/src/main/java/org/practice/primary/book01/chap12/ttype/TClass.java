@@ -1,4 +1,4 @@
-package org.practice.primary.book01.chap12;
+package org.practice.primary.book01.chap12.ttype;
 
 import java.util.HashMap;
 import java.util.Map;

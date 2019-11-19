@@ -1,5 +1,9 @@
 package org.practice.primary.book01.chap12;
 
+import org.practice.primary.book01.chap12.impl.ArrayUtility;
+import org.practice.primary.book01.chap12.ttype.TClass;
+import org.practice.primary.book01.chap12.ttype.TMethod;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;

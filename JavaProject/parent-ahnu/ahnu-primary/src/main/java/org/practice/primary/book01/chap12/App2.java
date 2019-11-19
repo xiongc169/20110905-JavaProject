@@ -1,5 +1,7 @@
 package org.practice.primary.book01.chap12;
 
+import org.practice.primary.book01.chap12.ttype.TMethod;
+
 import java.io.Serializable;
 import java.util.List;
 

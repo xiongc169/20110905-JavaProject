@@ -48,7 +48,7 @@ public class App {
         MyRunnable myRunnable = new MyRunnable();
         Thread thread = new Thread(myRunnable, "Thread-1");
         thread.start();
-        System.out.println(format.format(new Date()) + " controlTest End!!!");
+        System.out.println(format.format(new Date()) + "  thread.start...");
         TimeUnit.MILLISECONDS.sleep(sleepTime);
 
         //暂停线程

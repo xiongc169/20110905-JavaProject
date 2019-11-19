@@ -20,6 +20,7 @@ public class DrawMoneyRunnable implements Runnable {
         this.drawAmount = drawAmount;
     }
 
+    //synchronized
     public void run() {
         try {
             System.out.println("开始取钱...");

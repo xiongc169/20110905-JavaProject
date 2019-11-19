@@ -28,6 +28,7 @@ public class Account {
      * 4、AtomicInteger
      */
 //    private AtomicInteger balance = new AtomicInteger();
+
     public Account() {
     }
 
