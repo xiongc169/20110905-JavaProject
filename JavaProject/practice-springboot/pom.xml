@@ -54,6 +54,8 @@
     </dependencyManagement>
 
     <build>
+        <finalName>practice-springboot</finalName>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -64,6 +66,9 @@
                 </configuration>
             </plugin>
 
+            <!--打包：Maven打包插件，打包SpringBoot项目 -->
+            <!--启动：java -jar practice-springboot.jar -->
+            <!--https://my.oschina.net/watsonos/blog/1634510-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
