@@ -131,7 +131,7 @@ public class IocContainer {
      */
     public static void applicationDemo() {
         try {
-            ApplicationContext fileSystemXmlPre = new FileSystemXmlApplicationContext(new String[]{"", ""});
+            ApplicationContext fileSystemXmlPre = new FileSystemXmlApplicationContext();//new String[]{"", ""}
             Resource resource = fileSystemXmlPre.getResource("http://www.baidu.com");
             System.out.println(String.format("%s  %s", resource.exists(), resource.getClass()));
 
@@ -140,7 +140,7 @@ public class IocContainer {
             System.out.println(directory);
 
             //FileSystemXmlApplicationContext
-            ApplicationContext fileSystemXml = new FileSystemXmlApplicationContext("JavaProject\\parent-framework\\practice-spring\\src\\main\\resources\\ioc\\spring-context.xml");
+            ApplicationContext fileSystemXml = new FileSystemXmlApplicationContext("JavaProject\\parent-framework\\framework-spring\\src\\main\\resources\\ioc\\spring-context.xml");
             User user = (User) fileSystemXml.getBean("user_01");
             System.out.println(user.getIid());
             ((FileSystemXmlApplicationContext) fileSystemXml).close();
@@ -154,6 +154,13 @@ public class IocContainer {
             //https://blog.csdn.net/chengjunhua19890809/article/details/77981839
             String[] beanDefinitionNames = classpathXml.getBeanDefinitionNames();
             System.out.println(beanDefinitionNames.length);
+
+            Customer customer11 = (Customer) classpathXml.getBean("customer_01");
+            Customer customer12 = (Customer) classpathXml.getBean("customer_01");
+            System.out.println(customer11 == customer12);
+            Customer customer21 = (Customer) classpathXml.getBean("customer_02");
+            Customer customer22 = (Customer) classpathXml.getBean("customer_02");
+            System.out.println(customer21 == customer22);
 
             ((ClassPathXmlApplicationContext) classpathXml).close();
         } catch (Exception e) {

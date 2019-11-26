@@ -18,7 +18,7 @@
         <constructor-arg index="1" value="customerName_001"></constructor-arg>
     </bean>
 
-    <bean id="customer_02" class="org.practice.spring.domain.Customer" autowire="byType">
+    <bean id="customer_02" class="org.practice.spring.domain.Customer" autowire="byType" scope="prototype">
         <property name="customerId" value="customerId_002"></property>
         <property name="customerName" value="customerName_002"></property>
         <!--<property name="car" ref="car_02"></property>-->
