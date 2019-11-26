@@ -12,8 +12,7 @@
         </encoder>
     </appender>
 
-    <appender name="FILE"
-              class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!-- 配置滚动的策略 -->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- 日志名称的格式 -->
