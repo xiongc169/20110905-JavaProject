@@ -6,8 +6,11 @@ package org.practice.dataStructure.search;
  * @Date 2019年7月8日09:36:20
  * @Version 1.0
  */
-public class App {
+public class App4Search {
 
+    /**
+     * 入口函数
+     */
     public static void main(String[] args) {
 
         Integer[] source = new Integer[]{7, 30, 50, 21, 12, 14, 19};

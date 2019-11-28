@@ -1,53 +1,50 @@
 package org.practice.dataStructure.sort;
 
+import javafx.scene.paint.Stop;
+
 import java.util.Arrays;
 
 /**
- * Hello world!
+ * App4Sort
  */
-public class App {
+public class App4Sort {
 
     /**
      * 入口函数(排序算法)
-     *
-     * @param args
      */
     public static void main(String[] args) {
-        //交换排序-冒泡排序
         Integer[] source = {11, 33, 44, 5, 6, 2, 99, 13, 35, 21, 87};
+        Integer[] source2 = {11, 33, 44, 5, 6, 2, 99, 13, 35, 21, 87};
+        Integer[] source3 = {11, 33, 44, 5, 6, 2, 99, 13, 35, 21, 87};
+        Integer[] source4 = {11, 33, 44, 5, 6, 2, 99, 13, 35, 21, 87};
+
+        //交换排序-冒泡排序
+        System.out.println("冒泡排序前：" + Arrays.toString(source));
         bubbleSort(source);
+        System.out.println("冒泡排序后：" + Arrays.toString(source));
 
         //交换排序-快速排序
-        Integer[] source2 = {11, 33, 44, 5, 6, 2, 99, 13, 35, 21, 87};
+        System.out.println("快速排序前：" + Arrays.toString(source2));
         quickSort(0, source2.length - 1, source2);
-        for (int i = 0; i < source2.length; i++) {
-            System.out.print(source2[i] + "  ");
-        }
-        System.out.println();
+        System.out.println("快速排序后：" + Arrays.toString(source2));
 
         //选择排序-直接选择排序
-        Integer[] source3 = {11, 33, 44, 5, 6, 2, 99, 13, 35, 21, 87};
+        System.out.println("选择排序前：" + Arrays.toString(source3));
         straightSelectSort(source3);
-        System.out.println(source3.length);
+        System.out.println("选择排序后：" + Arrays.toString(source3));
 
-        //选择排序-堆排序
-        Integer[] source4 = {11, 33, 44, 5, 6, 2, 99, 13, 35, 21, 87};
-        heapSort(source4);
+        //TODO：选择排序-堆排序、插入排序-直接插入排序、插入排序-希尔排序、合并排序
+        //heapSort(source4);
+        //straightInsertSort(source4);
+        //shellSort(source4);
+        //mergeSort(source4);
     }
 
     /**
      * 交换排序-冒泡排序
-     *
-     * @param source
      */
     public static void bubbleSort(Integer[] source) {
-        //排序前
-        for (int i = 0; i < source.length; i++) {
-            System.out.print(source[i] + "  ");
-        }
-        System.out.println();
-
-        //排序后
+        Long start = System.currentTimeMillis();
         for (int i = 0; i < source.length - 1; i++) {
             for (int j = 0; j < source.length - i - 1; j++) {
                 if (source[j] > source[j + 1]) {
@@ -57,10 +54,8 @@ public class App {
                 }
             }
         }
-        for (int i = 0; i < source.length; i++) {
-            System.out.print(source[i] + "  ");
-        }
-        System.out.println();
+        Long span = System.currentTimeMillis() - start;
+        //System.out.println("冒泡耗时：" + span);
     }
 
     /**
@@ -78,7 +73,6 @@ public class App {
                 j--;
             }
             source[i] = source[j];
-
             while (source[i] < base && i < j) {
                 i++;
             }
@@ -86,16 +80,17 @@ public class App {
         }
         int middle = (i + j) / 2;
         source[middle] = base;
-        Arrays.stream(source).forEach(item -> System.out.print(item + "  "));
-        System.out.println();
+        //输出一行
+        //Arrays.stream(source).forEach(item -> System.out.print(item + "  "));
+        //System.out.println();
+        //输出一行
+        // System.out.println(Arrays.toString(source));
         quickSort(start, middle - 1, source);
         quickSort(middle + 1, end, source);
     }
 
     /**
      * 选择排序-直接选择排序
-     *
-     * @param source
      */
     public static void straightSelectSort(Integer[] source) {
         for (int i = 0; i < source.length - 1; i++) {
@@ -115,41 +110,33 @@ public class App {
      * 选择排序-堆排序
      * 大顶堆：arr[i] >= arr[2i+1] && arr[i] >= arr[2i+2]
      * 小顶堆：arr[i] <= arr[2i+1] && arr[i] <= arr[2i+2]
-     *
-     * @param source
      */
+    @Deprecated
     public static void heapSort(Integer[] source) {
-
-
-
     }
 
-    public static void adjustHeap(Integer[] source){
-
-
+    @Deprecated
+    private static void adjustHeap(Integer[] source) {
     }
 
     /**
      * 插入排序-直接插入排序
-     *
-     * @param source
      */
+    @Deprecated
     public static void straightInsertSort(Integer[] source) {
     }
 
     /**
      * 插入排序-希尔序
-     *
-     * @param source
      */
+    @Deprecated
     public static void shellSort(Integer[] source) {
     }
 
     /**
      * 归并排序
-     *
-     * @param source
      */
+    @Deprecated
     public static void mergeSort(Integer[] source) {
     }
 }

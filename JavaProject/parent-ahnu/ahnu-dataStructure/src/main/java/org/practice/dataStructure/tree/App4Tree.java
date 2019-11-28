@@ -11,7 +11,7 @@ PS：假如 index=1，a=index++；那么 a=1，index=2；index++是先赋值给a
 	假如index=1，a=++index；那么 a=2，index=2；++index是index先加1变为2再赋值给a；
 https://zhidao.baidu.com/question/139393793.html
 */
-public class App {
+public class App4Tree {
 
     private static Scanner scanner = new Scanner(System.in);
     private static Integer index = 0;

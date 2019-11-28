@@ -10,7 +10,7 @@ import java.util.Scanner;
  * @Date 2019年7月8日11:27:33
  * @Version 1.0
  */
-public class App2 {
+public class App4Tree2 {
 
     public static void main(String[] args) {
         TreeNode<String> root = new TreeNode();

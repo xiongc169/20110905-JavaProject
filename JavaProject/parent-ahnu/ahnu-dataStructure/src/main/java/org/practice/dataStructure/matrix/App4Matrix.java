@@ -8,7 +8,7 @@ import java.util.PriorityQueue;
  * @Date
  * @Version 1.0
  */
-public class App {
+public class App4Matrix {
 
     public static void main(String[] args) {
         try {
