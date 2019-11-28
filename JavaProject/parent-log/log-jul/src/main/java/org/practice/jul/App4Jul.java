@@ -1,4 +1,4 @@
-package org.practice.jdklog;
+package org.practice.jul;
 
 import java.util.logging.*;
 
