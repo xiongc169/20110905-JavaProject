@@ -1,4 +1,4 @@
-package org.practice.dataStructure.sort;
+package org.practice.dataStructure.ch01.sort;
 
 import java.util.Arrays;
 
@@ -14,29 +14,35 @@ public class App4Sort2 {
      * 入口函数(排序算法)
      */
     public static void main(String[] args) {
-        Integer[] source = new Integer[]{7, 30, 50, 21, 12, 14, 19};
-        Integer[] source2 = {11, 33, 44, 5, 6, 2, 99, 13, 35, 21, 87};
+        Integer[] source = {11, 33, 44, 5, 6, 2, 99, 13, 35, 21, 87};
+        Integer[] source2 = Arrays.copyOf(source, source.length);
+        Integer[] source3 = Arrays.copyOf(source, source.length);
+        Integer[] source4 = Arrays.copyOf(source, source.length);
 
         //交换排序-冒泡排序
+        System.out.println("冒泡排序前：" + Arrays.toString(source));
         bubbleSort(source);
         System.out.println("冒泡排序后：" + Arrays.toString(source));
 
         //交换排序-快速排序
+        System.out.println("快速排序前：" + Arrays.toString(source2));
         //quickSort(source2, 0, source2.length - 1);
         quickSort2(source2, 0, source2.length - 1);
         System.out.println("快速排序后：" + Arrays.toString(source2));
 
         //选择排序-直接选择排序
-        straightSelectSort(source2);
-        System.out.println("选择排序后：" + Arrays.toString(source2));
+        System.out.println("选择排序前：" + Arrays.toString(source3));
+        straightSelectSort(source3);
+        System.out.println("选择排序后：" + Arrays.toString(source3));
 
         //TODO：选择排序-堆排序
         //heapSort(source2);
         //System.out.println("选择排序后：" + Arrays.toString(source2));
 
         //插入排序-直接插入排序
-        straightInsertSort(source2);
-        System.out.println("插入排序后：" + Arrays.toString(source2));
+        System.out.println("插入排序前：" + Arrays.toString(source4));
+        straightInsertSort(source4);
+        System.out.println("插入排序后：" + Arrays.toString(source4));
 
         //TODO：插入排序-希尔排序
         //shellSort(source2);
@@ -44,12 +50,10 @@ public class App4Sort2 {
 
         //TODO：合并排序
         //mergeSort(source2);
-        System.out.println("合并排序后：" + Arrays.toString(source2));
+        //System.out.println("合并排序后：" + Arrays.toString(source2));
 
         move(source2);
         System.out.println("移动集合后：" + Arrays.toString(source2));
-
-        System.out.println("Ending");
     }
 
     /**

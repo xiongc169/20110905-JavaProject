@@ -1,4 +1,4 @@
-package org.practice.dataStructure.matrix;
+package org.practice.dataStructure.ch05.matrix;
 
 /**
  * @Desc MatrixGraph

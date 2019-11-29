@@ -1,7 +1,7 @@
-package org.practice.dataStructure.search;
+package org.practice.dataStructure.ch02.search;
 
 /**
- * @Desc App
+ * @Desc App4Search
  * @Author
  * @Date 2019年7月8日09:36:20
  * @Version 1.0
@@ -21,11 +21,12 @@ public class App4Search {
             //顺序查找
             int index = sequenceSearch(source, 50);
             System.out.println("sequenceSearch index: " + index);
-            //顺序查找
-            int index2 = binarySearch(source3, 0, source3.length - 1, 60);
-            int index3 = binarySearchWhile(source3, 60);
-            System.out.println("binarySearch index: " + index2);
-            System.out.println("binarySearchWhile index: " + index3);
+            //折半查找(递归)
+            int index2 = binarySearchRecursion(source3, 0, source3.length - 1, 60);
+            System.out.println("binarySearchRecursion index: " + index2);
+            //折半查找(非递归)
+            int index3 = binarySearchNonRecursion(source3, 60);
+            System.out.println("binarySearchNonRecursion index: " + index3);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -44,9 +45,9 @@ public class App4Search {
     }
 
     /**
-     * 折半查找
+     * 折半查找(递归)
      */
-    public static int binarySearch(Integer[] source, int left, int right, Integer aim) {
+    public static int binarySearchRecursion(Integer[] source, int left, int right, Integer aim) {
         if (left < right) {
             if (source[left] > aim || source[right] < aim) {
                 return -1;
@@ -62,16 +63,19 @@ public class App4Search {
                 return mid;
             } else if (source[mid] < aim) {
                 //检索右侧
-                return binarySearch(source, mid + 1, right, aim);
+                return binarySearchRecursion(source, mid + 1, right, aim);
             } else if (source[mid] > aim) {
                 //检索左侧
-                return binarySearch(source, left, mid - 1, aim);
+                return binarySearchRecursion(source, left, mid - 1, aim);
             }
         }
         return -1;
     }
 
-    public static int binarySearchWhile(Integer[] source, int aim) {
+    /**
+     * 折半查找(非递归)
+     */
+    public static int binarySearchNonRecursion(Integer[] source, int aim) {
         int left = 0;
         int right = source.length - 1;
         while (left <= right) {

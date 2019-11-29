@@ -1,8 +1,9 @@
-package org.practice.dataStructure.sort;
-
-import javafx.scene.paint.Stop;
+package org.practice.dataStructure.ch01.sort;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * App4Sort
@@ -14,9 +15,11 @@ public class App4Sort {
      */
     public static void main(String[] args) {
         Integer[] source = {11, 33, 44, 5, 6, 2, 99, 13, 35, 21, 87};
-        Integer[] source2 = {11, 33, 44, 5, 6, 2, 99, 13, 35, 21, 87};
-        Integer[] source3 = {11, 33, 44, 5, 6, 2, 99, 13, 35, 21, 87};
-        Integer[] source4 = {11, 33, 44, 5, 6, 2, 99, 13, 35, 21, 87};
+        Integer[] source2 = Arrays.copyOf(source, source.length);
+        Integer[] source3 = Arrays.copyOf(source, source.length);
+
+        //Java原生排序
+        nativeSort();
 
         //交换排序-冒泡排序
         System.out.println("冒泡排序前：" + Arrays.toString(source));
@@ -38,6 +41,23 @@ public class App4Sort {
         //straightInsertSort(source4);
         //shellSort(source4);
         //mergeSort(source4);
+    }
+
+    /**
+     * Java原生排序
+     */
+    public static void nativeSort() {
+        Integer[] source = {11, 33, 44, 5, 6, 2, 99, 13, 35, 21, 87};
+        Integer[] source2 = Arrays.copyOf(source, source.length);
+        Integer[] source3 = Arrays.copyOf(source, source.length);
+
+        Arrays.sort(source);
+        Collections.sort(Arrays.asList(source2));
+        Arrays.asList(source).sort(null);
+
+        //默认升序，Comparator.reverseOrder()则降序
+        List source33 = Arrays.asList(source3).stream().sorted().collect(Collectors.toList());
+        System.out.println(source33.size());
     }
 
     /**

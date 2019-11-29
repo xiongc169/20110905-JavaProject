@@ -1,4 +1,4 @@
-package org.practice.dataStructure.tree;
+package org.practice.dataStructure.ch04.tree;
 
 import java.util.ArrayList;
 import java.util.List;
