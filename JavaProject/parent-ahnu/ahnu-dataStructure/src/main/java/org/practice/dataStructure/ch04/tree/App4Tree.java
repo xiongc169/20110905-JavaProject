@@ -6,57 +6,60 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
-java程序中index++和++index的区别
-PS：假如 index=1，a=index++；那么 a=1，index=2；index++是先赋值给a，然后再加1；
-	假如index=1，a=++index；那么 a=2，index=2；++index是index先加1变为2再赋值给a；
-https://zhidao.baidu.com/question/139393793.html
-*/
+ * App4Tree
+ */
 public class App4Tree {
 
     private static Scanner scanner = new Scanner(System.in);
+
     private static Integer index = 0;
 
     /**
      * 入口函数
-     *
-     * @param args
      */
     public static void main(String[] args) {
         try {
-            //构建二叉树
-            TreeNode<String> root = new TreeNode();
-            root.setData("1");
-            //root = generateTree(root);
-            //2345####67####
-            //234567########
-            List<String> data = Arrays.asList("234567########".split(""));
-            root = generateTree(root, data);
-            System.out.println(root.getData());
+            //构建二叉树，输入：2345####67####
+            //TreeNode<String> root = new TreeNode();
+            //root.setData("1");
+            //root = genTreeByInput(root);
+            //System.out.println("root.Data: " + root.getData());
 
-            //先、中、后序遍历二叉树
-            preOrderTraversal(root);
-            inOrderTraversal(root);
-            postOrderTraversal(root);
+            //构建二叉树，入参：2345####67####，234567########，1234589######6##7##
+            TreeNode<String> root2 = new TreeNode();
+            root2.setData("1");
+            List<String> data = Arrays.asList("234589######67####".split(""));
+            root2 = genTreeByData(root2, data);
+            System.out.println("root2.Data: " + root2.getData());
 
-            List<TreeNode> list = levelTraversal(root);
-            System.out.println(list.size());
+            //先序遍历
+            preOrderTraversal(root2);
+            System.out.println("Finished PreOrder");
+            //中序遍历
+            inOrderTraversal(root2);
+            System.out.println("Finished InOrder");
+            //后序遍历
+            postOrderTraversal(root2);
+            System.out.println("Finished PostOrder");
+            //按层遍历
+            List<TreeNode> list = levelTraversal(root2);
+            System.out.println("root.Level: " + list.size());
 
-            //计算二叉树的深度
+            //计算深度
             int depth = 0;
-            depth = getDepth(root, depth);
-            System.out.println(depth);
+            depth = getDepth(root2, depth);
+            System.out.println("root.Depth: " + depth);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        System.out.println("Ending App4Tree");
     }
 
     /**
-     * 构建二叉树(2345####67####)
-     *
-     * @param root
-     * @return
+     * 构建二叉树(按左子树优先构建)
+     * 输入：2345####67####
      */
-    private static TreeNode<String> generateTree(TreeNode root) {
+    private static TreeNode<String> genTreeByInput(TreeNode root) {
         try {
             String input = scanner.nextLine();
             if (!input.equals("#")) {
@@ -64,7 +67,6 @@ public class App4Tree {
                 left.setData(input);
                 root.setLeft(left);
             }
-
             input = scanner.nextLine();
             if (!input.equals("#")) {
                 TreeNode<String> right = new TreeNode();
@@ -73,10 +75,10 @@ public class App4Tree {
             }
 
             if (root.getLeft() != null) {
-                generateTree(root.getLeft());
+                genTreeByInput(root.getLeft());
             }
             if (root.getRight() != null) {
-                generateTree(root.getRight());
+                genTreeByInput(root.getRight());
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -85,23 +87,18 @@ public class App4Tree {
     }
 
     /**
-     * 构建二叉树(2345####67####)
-     *
-     * @param root
-     * @return
+     * 构建二叉树(按左子树优先构建)
+     * 入参：2345####67####、234567########
      */
-    private static TreeNode<String> generateTree(TreeNode root, List<String> data) {
+    private static TreeNode<String> genTreeByData(TreeNode root, List<String> data) {
         try {
             String input = data.get(index++);
-            System.out.println(index);
             if (!input.equals("#")) {
                 TreeNode<String> left = new TreeNode();
                 left.setData(input);
                 root.setLeft(left);
             }
-
             input = data.get(index++);
-            System.out.println(index);
             if (!input.equals("#")) {
                 TreeNode<String> right = new TreeNode();
                 right.setData(input);
@@ -109,10 +106,10 @@ public class App4Tree {
             }
 
             if (root.getLeft() != null) {
-                generateTree(root.getLeft(), data);
+                genTreeByData(root.getLeft(), data);
             }
             if (root.getRight() != null) {
-                generateTree(root.getRight(), data);
+                genTreeByData(root.getRight(), data);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -121,15 +118,13 @@ public class App4Tree {
     }
 
     /**
-     * 先序遍历-递归
-     *
-     * @param root
+     * 先序遍历(递归)
      */
     private static void preOrderTraversal(TreeNode root) {
         if (root == null) {
             return;
         }
-        System.out.println(root.getData());
+        System.out.print(root.getData() + "-");
         if (root.getLeft() != null) {
             preOrderTraversal(root.getLeft());
         }
@@ -139,9 +134,7 @@ public class App4Tree {
     }
 
     /**
-     * 中序遍历-递归
-     *
-     * @param root
+     * 中序遍历(递归)
      */
     private static void inOrderTraversal(TreeNode root) {
         if (root == null) {
@@ -150,16 +143,14 @@ public class App4Tree {
         if (root.getLeft() != null) {
             inOrderTraversal(root.getLeft());
         }
-        System.out.println(root.getData());
+        System.out.print(root.getData() + "-");
         if (root.getRight() != null) {
             inOrderTraversal(root.getRight());
         }
     }
 
     /**
-     * 后序遍历-递归
-     *
-     * @param root
+     * 后序遍历(递归)
      */
     private static void postOrderTraversal(TreeNode root) {
         if (root == null) {
@@ -171,13 +162,11 @@ public class App4Tree {
         if (root.getRight() != null) {
             postOrderTraversal(root.getRight());
         }
-        System.out.println(root.getData());
+        System.out.print(root.getData() + "-");
     }
 
     /**
-     * 后序遍历-递归
-     *
-     * @param root
+     * 按层遍历
      */
     private static List<TreeNode> levelTraversal(TreeNode root) {
         List<TreeNode> queue = new ArrayList<>();
@@ -194,9 +183,7 @@ public class App4Tree {
     }
 
     /**
-     * 二叉树深度
-     *
-     * @param root
+     * 计算深度(递归)
      */
     private static int getDepth(TreeNode root, int depth) {
         if (root == null) {

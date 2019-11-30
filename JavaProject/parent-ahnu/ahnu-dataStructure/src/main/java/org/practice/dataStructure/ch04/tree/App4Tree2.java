@@ -5,38 +5,50 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * @Desc App2
+ * @Desc App4Tree2
  * @Author
  * @Date 2019年7月8日11:27:33
  * @Version 1.0
  */
 public class App4Tree2 {
 
+    private static Scanner scanner = new Scanner(System.in);
+
+    /**
+     * 入口函数
+     */
     public static void main(String[] args) {
-        TreeNode<String> root = new TreeNode();
         try {
+            //构建二叉树
+            TreeNode<String> root = new TreeNode();
             buildTree(root);
+
+            //先序遍历
             preOrder(root);
             System.out.println("Finished PreOrder");
-            midOrder(root);
-            System.out.println("Finished MidOrder");
+            //中序遍历
+            inOrder(root);
+            System.out.println("Finished InOrder");
+            //后序遍历
             postOrder(root);
             System.out.println("Finished PostOrder");
+
             int depth = 1;
+            //计算深度
             depth = getDepth(root, depth);
-            System.out.println("Finished getDepth:" + depth);
+            System.out.println("root.Depth: " + depth);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        System.out.println("Ending Tree");
+        System.out.println("Ending App4Tree2");
     }
 
     /**
+     * 构建二叉树(按左子树优先构建)
      * 1 2 3 4 5 # # # # 6 7 # # # #
      * 1 2 3 4 5 8 9 # # # # 10 11 # # # # 6 7 12 13 # # # # 14 15 # # # #
      */
     public static void buildTree(TreeNode root) {
-        Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
         if (root.getData() == null) {
             root.setData(input);
@@ -59,6 +71,9 @@ public class App4Tree2 {
         }
     }
 
+    /**
+     * 先序遍历(递归)
+     */
     public static void preOrder(TreeNode root) {
         if (root != null) {
             System.out.print(root.getData() + "  ");
@@ -68,20 +83,20 @@ public class App4Tree2 {
     }
 
     /**
-     * 中序遍历-递归
+     * 中序遍历(递归)
      */
-    public static void midOrder(TreeNode root) {
+    public static void inOrder(TreeNode root) {
         if (root != null) {
-            midOrder(root.getLeft());
+            inOrder(root.getLeft());
             System.out.print(root.getData() + "  ");
-            midOrder(root.getRight());
+            inOrder(root.getRight());
         }
     }
 
     /**
-     * TODO：中序遍历-迭代
+     * TODO：中序遍历(非递归，循环)
      */
-    public static void midOrderIterator(TreeNode root) {
+    public static void inOrderIterator(TreeNode root) {
         List<TreeNode> nodes = new ArrayList<>();
         while (root != null) {
             nodes.add(root);
@@ -91,6 +106,9 @@ public class App4Tree2 {
         }
     }
 
+    /**
+     * 后序遍历(递归)
+     */
     public static void postOrder(TreeNode root) {
         if (root != null) {
             postOrder(root.getLeft());
@@ -99,6 +117,9 @@ public class App4Tree2 {
         }
     }
 
+    /**
+     * 计算深度(递归)
+     */
     public static int getDepth(TreeNode root, int depth) {
         if (root.getLeft() == null && root.getRight() == null) {
             return depth;

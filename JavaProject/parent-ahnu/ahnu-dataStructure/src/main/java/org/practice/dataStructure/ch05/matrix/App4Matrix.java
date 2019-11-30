@@ -3,13 +3,16 @@ package org.practice.dataStructure.ch05.matrix;
 import java.util.PriorityQueue;
 
 /**
- * @Desc App
+ * @Desc App4Matrix
  * @Author
  * @Date
  * @Version 1.0
  */
 public class App4Matrix {
 
+    /**
+     * 入口函数
+     */
     public static void main(String[] args) {
         try {
             MatrixGraph graph = buildMatrix();
