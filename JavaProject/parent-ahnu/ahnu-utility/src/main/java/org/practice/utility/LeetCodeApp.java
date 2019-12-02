@@ -1,7 +1,8 @@
 package org.practice.utility;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.practice.utility.model.ListNode;
+
+import java.util.*;
 
 /**
  * @Desc https://leetcode-cn.com/
@@ -11,6 +12,9 @@ import java.util.List;
  */
 public class LeetCodeApp {
 
+    /**
+     * 入口函数
+     */
     public static void main(String[] args) {
         try {
 //            int[] nums = new int[]{2, 7, 11, 15};
@@ -35,7 +39,15 @@ public class LeetCodeApp {
 
 //            convert("LEETCODEISHIRING", 4);
 
-            reverse(1534236469);
+//            reverse(1534236469);
+
+//            String input = "2147483649";
+//            Integer result = myAtoi(input);
+//            System.out.println(result);
+
+//            isPalindrome(101);
+
+            isMatch("aab", "c*a*b");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -269,42 +281,95 @@ public class LeetCodeApp {
 
     /**
      * 字符串转换整数 (atoi)
+     * PS：2019年12月2日12:00:59
      * https://leetcode-cn.com/problems/string-to-integer-atoi/
      */
     public static int myAtoi(String str) {
-
-        return 0;
+        str = str.trim();
+        if (str == null || str.length() <= 0) {
+            return 0;
+        }
+        String positive = "+";
+        String negative = "-";
+        String digitRegex = "[0-9]";
+        String first = str.substring(0, 1);
+        if (!first.matches(digitRegex) && !first.equals(positive) && !first.equals(negative)) {
+            return 0;
+        }
+        boolean isNegative = false;
+        if (first.equals(positive) || first.equals(negative)) {
+            isNegative = first.equals(negative) ? true : false;
+            str = str.substring(1);
+        }
+        Integer num = 0;
+        Integer index = 0;
+        while (index < str.length()) {
+            String element = str.substring(index, index + 1);
+            if (!element.matches(digitRegex)) {
+                break;
+            }
+            Integer append = Integer.valueOf(element);
+            //Integer.MAX_VALUE = 2147483647
+            if (!isNegative && (num > Integer.MAX_VALUE / 10 || (num == Integer.MAX_VALUE / 10 && append > 7))) {
+                return Integer.MAX_VALUE;
+            }
+            //Integer.MIN_VALUE = -2147483648
+            if (isNegative && (-num < Integer.MIN_VALUE / 10 || (-num == Integer.MIN_VALUE / 10 && append > 8))) {
+                return Integer.MIN_VALUE;
+            }
+            num = num * 10 + append;
+            index++;
+        }
+        num = isNegative ? -num : num;
+        return num;
     }
 
     /**
      * 回文数
+     * PS：2019年12月2日14:19:48
      * https://leetcode-cn.com/problems/palindrome-number/
      */
-    public boolean isPalindrome(int x) {
+    public static boolean isPalindrome(Integer x) {
         if (x < 0) {
             return false;
         }
-        int mode = 10;
-        while (true) {
-            int tmp = x % mode;
-            mode *= 10;
+        if (x < 10) {
+            return true;
         }
-//        return false;
+        List<Integer> parts = new ArrayList<>();
+        Integer mode = 10;
+        while (true) {
+            if (x <= 0) {
+                break;
+            }
+            Integer tmp = x % mode;
+            parts.add(tmp);
+            x = x / 10;
+        }
+        for (int i = 0; i < parts.size() / 2; i++) {
+            if (!parts.get(i).equals(parts.get(parts.size() - 1 - i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 正则表达式匹配
+     * PS:
+     * https://leetcode-cn.com/problems/regular-expression-matching/
+     */
+    public static boolean isMatch(String s, String p) {
+        String[] input = s.split("");
+        String[] regex = p.split("");
+        Queue headIndex = new ArrayDeque();
+
+        for (int i = 0; i < regex.length; i++) {
+            
+        }
+
+        return false;
     }
 }
 
-/**
- * Definition for singly-linked list.
- * 输入：(2 -> 4 -> 3) + (5 -> 6 -> 4)
- * 输出：7 -> 0 -> 8
- * 原因：342 + 465 = 807
- */
-class ListNode {
-    int val;
 
-    ListNode next;
-
-    ListNode(int x) {
-        val = x;
-    }
-}
