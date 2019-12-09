@@ -24,10 +24,12 @@ public class App4Matrix {
     }
 
     /**
-     * 构建图
+     * 构建图(邻接矩阵存储)
      */
     public static MatrixGraph buildMatrix() {
+        //顶点数
         Integer vertexNum = 8;
+        //边数
         Integer edgeNum = 7;
         Integer graphType = 0;
         MatrixGraph graph = new MatrixGraph(vertexNum, edgeNum, graphType);

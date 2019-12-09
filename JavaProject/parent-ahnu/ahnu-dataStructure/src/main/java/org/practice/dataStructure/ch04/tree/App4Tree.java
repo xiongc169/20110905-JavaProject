@@ -12,6 +12,9 @@ public class App4Tree {
 
     private static Scanner scanner = new Scanner(System.in);
 
+    /**
+     * 递归的全局变量
+     */
     private static Integer index = 0;
 
     /**
@@ -19,13 +22,13 @@ public class App4Tree {
      */
     public static void main(String[] args) {
         try {
-            //构建二叉树，输入：2345####67####
+            //构建二叉树，手动输入：2345####67####
             //TreeNode<String> root = new TreeNode();
             //root.setData("1");
             //root = genTreeByInput(root);
             //System.out.println("root.Data: " + root.getData());
 
-            //构建二叉树，入参：2345####67####，234567########，1234589######6##7##
+            //构建二叉树，免输入，入参：2345####67####，234567########，1234589######6##7##
             TreeNode<String> root2 = new TreeNode();
             root2.setData("1");
             List<String> data = Arrays.asList("234589######67####".split(""));
@@ -56,7 +59,7 @@ public class App4Tree {
     }
 
     /**
-     * 构建二叉树(按左子树优先构建)
+     * 构建二叉树(按左子树优先构建，手动输入)
      * 输入：2345####67####
      */
     private static TreeNode<String> genTreeByInput(TreeNode root) {
@@ -87,7 +90,7 @@ public class App4Tree {
     }
 
     /**
-     * 构建二叉树(按左子树优先构建)
+     * 构建二叉树(按左子树优先构建，免输入)
      * 入参：2345####67####、234567########
      */
     private static TreeNode<String> genTreeByData(TreeNode root, List<String> data) {

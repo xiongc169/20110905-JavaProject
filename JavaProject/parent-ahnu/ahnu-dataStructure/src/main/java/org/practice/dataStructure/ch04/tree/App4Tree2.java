@@ -33,8 +33,8 @@ public class App4Tree2 {
             postOrder(root);
             System.out.println("Finished PostOrder");
 
-            int depth = 1;
             //计算深度
+            int depth = 1;
             depth = getDepth(root, depth);
             System.out.println("root.Depth: " + depth);
         } catch (Exception ex) {
@@ -44,7 +44,7 @@ public class App4Tree2 {
     }
 
     /**
-     * 构建二叉树(按左子树优先构建)
+     * 构建二叉树(按左子树优先构建，手动输入)
      * 1 2 3 4 5 # # # # 6 7 # # # #
      * 1 2 3 4 5 8 9 # # # # 10 11 # # # # 6 7 12 13 # # # # 14 15 # # # #
      */
