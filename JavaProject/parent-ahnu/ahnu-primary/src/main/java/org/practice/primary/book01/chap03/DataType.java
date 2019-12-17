@@ -80,6 +80,36 @@ public class DataType {
     }
 
     /**
+     * 基本数据类型
+     */
+    public static void primaryDataType() {
+        byte b = 0;
+        short s = 1;
+        int i = 2;
+        long l = 3;
+        float f = 4;
+        double d = 5;
+        boolean boolean1 = true;
+        char c = 'a';
+        System.out.println(b);
+    }
+
+    /**
+     * 包装类
+     */
+    public static void wrapperClass() {
+        Byte b = 0;//new Byte("0");
+        Short s = 1;
+        Integer i = 2;
+        Long l = 3l;
+        Float f = 4f;
+        Double d = 5d;
+        Boolean boolean1 = true;
+        Character c = 'a';
+        System.out.println(b);
+    }
+
+    /**
      * 3.5、运算符
      */
     public static void operator() {

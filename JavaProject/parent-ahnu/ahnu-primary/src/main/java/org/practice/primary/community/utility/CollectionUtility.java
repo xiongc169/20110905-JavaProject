@@ -5,6 +5,15 @@ import java.util.concurrent.*;
 
 /**
  * 集合操作类 集合的类型，各个类型的特点，遍历的几种方式；
+ * Java中集合包简要分析
+ * PS：集合包主要有 Collection、Map 两种接口：
+ * Collection 存储单对象，分为两种接口：List、Set，
+ * List 支持放入重复对象，实现类主要包括：ArrayList、LinkedList、Vector、Stack。
+ * Vector 是基于synchronized实现的线程安全的ArrayList；
+ * Stack 继承了Vector，实现了LIFO操作；
+ * Set 不支持放入重复对象，实现类主要包括：HashSet、TreeSet。
+ * Map 存储Key-Value形式的键值对，实现类主要包括：HashMap、TreeMap。
+ * http://www.cnblogs.com/huangfox/archive/2012/08/15/2640106.html
  *
  * @author chaoxiong
  * @since 2015-08-30 09:06:00
@@ -13,8 +22,6 @@ public class CollectionUtility {
 
     /**
      * 入口函数
-     *
-     * @param args
      */
     public static void main(String[] args) {
         try {
@@ -32,21 +39,22 @@ public class CollectionUtility {
     //@MethodInfo(author = "tony", comments = "this hide the privacy", date = "20180328", version = "1.0.0")
     public static void listDemo() {
         // Array array = new SerialArray();
-        List<String> arrayList = new ArrayList<String>();
-        List<String> linkedList = new LinkedList<String>();
-        List<String> vector = new Vector<String>();
-        List<String> stack = new Stack<String>();
+        List<String> arrayList = new ArrayList<>();
+        List<String> linkedList = new LinkedList<>();
+        Queue<String> linkedQueue = new LinkedList<>();
+        Vector<String> vector = new Vector<>();
+        Stack<String> stack = new Stack<>();
 
-        //region TODO：空集合，执行add()会报错
+        // TODO：空集合，执行add()会报错
         try {
             List<String> emptyList = Collections.emptyList();
             emptyList.add("2018年11月9日17:39:38");
         } catch (Exception ex) {
+            //java.lang.UnsupportedOperationException
             ex.printStackTrace();
         }
-        //endregion
 
-        //region TODO：ArrayList集合中添加元素
+        // TODO：ArrayList
         for (int i = 0; i < 5; i++) {
             String item = "arrayList " + i;
             boolean isSuccess = arrayList.add(item);
@@ -61,9 +69,22 @@ public class CollectionUtility {
             String item = (String) arrayIterator.next();
             System.out.println(item);
         }
-        //endregion
 
-        //region TODO：Stack集合中添加元素
+        // TODO：LinkedList
+        linkedList.add("");
+
+        // TODO：Queue
+        PriorityQueue priorityQueue = new PriorityQueue();
+        priorityQueue.add("");
+        Object peek = priorityQueue.peek();
+        System.out.println(priorityQueue.size());
+        linkedQueue.add("123");
+        linkedQueue.peek();
+
+        // TODO：Vector(同步添加，synchronized)
+        vector.add("vector 01");
+
+        // TODO：Stack
         for (int i = 0; i < 5; i++) {
             String item = "Stack add " + i;
             stack.add(item);
@@ -85,38 +106,37 @@ public class CollectionUtility {
             ((Stack<String>) stack1).push("Stack push " + i);
         }
         while (!stack1.empty()) {
-            String peek = ((Stack<String>) stack1).pop();
-            System.out.println(peek);
+            String peek1 = ((Stack<String>) stack1).pop();
+            System.out.println(peek1);
         }
-        //endregion
     }
 
     /**
      * set继承collection接口，是不包含重复元素的集合， 元素插入的顺序与输出的顺序不一致。
      */
     public static void setDemo() {
-        Set hashset = new HashSet();
-        SortedSet treeset = new TreeSet();
-        Set linkedHashset = new LinkedHashSet();
+        Set hashSet = new HashSet();
+        SortedSet treeSet = new TreeSet();
+        Set linkedHashSet = new LinkedHashSet();
         Set copyOnWriteArraySet = new CopyOnWriteArraySet();
 
         //region TODO：HashSet添加元素
         for (int i = 0; i < 10; i++) {
             String item = "HashSet " + i;
-            hashset.add(item);
-            hashset.add(item);
+            hashSet.add(item);
+            hashSet.add(item);
         }
         try {
-            hashset.add("HashSet 8");
+            hashSet.add("HashSet 8");
         } catch (Exception e) {
             e.printStackTrace();
         }
         //遍历HashSet
-        for (Object item : hashset) {
+        for (Object item : hashSet) {
             System.out.println(item);
         }
         //遍历HashSet
-        Iterator hashSetIterator = hashset.iterator();
+        Iterator hashSetIterator = hashSet.iterator();
         while (hashSetIterator.hasNext()) {
             String item = (String) hashSetIterator.next();
             System.out.println(item);
@@ -139,15 +159,15 @@ public class CollectionUtility {
         //endregion
 
         //region TODO：LinkedHashSet添加元素(去重、不排序)
-        linkedHashset.add(1);
-        linkedHashset.add(5);
-        linkedHashset.add(4);
-        linkedHashset.add(1);
-        linkedHashset.add(5);
-        linkedHashset.add(0);
-        linkedHashset.add(1);
-        linkedHashset.add(6);
-        iterator = linkedHashset.iterator();
+        linkedHashSet.add(1);
+        linkedHashSet.add(5);
+        linkedHashSet.add(4);
+        linkedHashSet.add(1);
+        linkedHashSet.add(5);
+        linkedHashSet.add(0);
+        linkedHashSet.add(1);
+        linkedHashSet.add(6);
+        iterator = linkedHashSet.iterator();
         while (iterator.hasNext()) {
             Object value = iterator.next();
             System.out.println(value);

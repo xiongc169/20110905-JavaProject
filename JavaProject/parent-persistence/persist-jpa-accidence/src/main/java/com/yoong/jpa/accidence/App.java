@@ -24,6 +24,7 @@ public class App {
     public static void main(String[] args) {
         try {
             jpaDemo();
+            jpaSpring();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -53,5 +54,10 @@ public class App {
         Account account = new Account();
         account.setAccountId("accountId-001");
         accountDao.add(account);
+
+        Account account1 = accountDao.get(1l);
+        System.out.println(account1.getAccountId());
+        account1 = accountDao.get(1l);
+        System.out.println(account1.getAccountId());
     }
 }

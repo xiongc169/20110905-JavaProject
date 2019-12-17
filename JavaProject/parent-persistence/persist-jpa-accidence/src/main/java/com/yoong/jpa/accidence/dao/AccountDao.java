@@ -22,4 +22,9 @@ public class AccountDao {
     public void add(Account account) {
         entityManager.persist(account);
     }
+
+    public Account get(Long Id) {
+        Account account = entityManager.find(Account.class, Id);
+        return account;
+    }
 }

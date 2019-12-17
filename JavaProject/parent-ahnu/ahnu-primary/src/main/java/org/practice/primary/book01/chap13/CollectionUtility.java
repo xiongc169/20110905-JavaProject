@@ -15,8 +15,6 @@ public class CollectionUtility {
 
     /**
      * 入口函数
-     *
-     * @param args
      */
     public static void main(String[] args) {
         try {
@@ -33,12 +31,14 @@ public class CollectionUtility {
      * 集合——《Java核心技术·卷1》13章
      */
     public static void collection() {
-        ArrayQueue queue = new ArrayQueue(10);
+        List<Integer> arrayList = new ArrayList<>();
         List<String> linkedList = new LinkedList<String>();
         Iterator<String> iterator = linkedList.iterator();
+        boolean hasPrevious = ((ListIterator<String>) iterator).hasPrevious();
         ListIterator<String> listIterator = linkedList.listIterator();
         ((ListIterator<String>) listIterator).add("Head");
-        boolean hasPrevious = ((ListIterator<String>) iterator).hasPrevious();
+
+        ArrayQueue queue = new ArrayQueue(10);
 
         TreeSet<String> treeSet = new TreeSet();
         treeSet.add("Bob");
