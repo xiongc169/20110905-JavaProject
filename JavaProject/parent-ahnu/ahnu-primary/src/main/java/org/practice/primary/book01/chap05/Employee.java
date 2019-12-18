@@ -2,6 +2,8 @@ package org.practice.primary.book01.chap05;
 
 import lombok.Data;
 
+import java.util.Date;
+
 /**
  * @Desc final Employee
  * @Author
@@ -13,6 +15,16 @@ public class Employee {
     private Long Id;
     private String name;
     private Long salary;
+    private Date hireDate;
+
+    public Employee() {
+    }
+
+    public Employee(String name, Long salary, Date hireDate) {
+        this.name = name;
+        this.salary = salary;
+        this.hireDate = hireDate;
+    }
 
     /**
      * final

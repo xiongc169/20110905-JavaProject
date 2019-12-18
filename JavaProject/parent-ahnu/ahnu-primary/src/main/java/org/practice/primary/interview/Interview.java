@@ -1,4 +1,4 @@
-package org.practice.primary.community;
+package org.practice.primary.interview;
 
 import org.practice.primary.community.domain.User;
 

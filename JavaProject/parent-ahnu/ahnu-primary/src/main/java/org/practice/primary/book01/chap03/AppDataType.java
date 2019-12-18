@@ -9,27 +9,29 @@ import java.util.Scanner;
 /**
  * @author yoong
  * <br>
- * @desc DataType
+ * @desc 《Java核心技术·卷1》第三章、Java的基本程序设计结构
  * <br>
  * @date 2019/2/1 11:50
  */
-public class DataType {
+public class AppDataType {
 
     /**
      * 入口函数
-     *
-     * @param args
      */
     public static void main(String[] args) {
         try {
-            intType();
-            floatType();
-            operator();
-            stringTest();
-            inputOutput();
-            bigDecimalTest();
-            stringTest2();
+            //数据类型
+            intType0303();
+            floatType0303();
+            operator0305();
+            stringType0306();
+            inputOutput0307();
+            //练习
+            primaryDataType();
+            wrapperClass();
             integerTest();
+            stringTest();
+            bigDecimalTest();
             unicode();
             stringFormat();
         } catch (Exception ex) {
@@ -38,12 +40,15 @@ public class DataType {
     }
 
     /**
-     * 3.3、数据类型
+     * 3.3、数据类型(整型)
      */
-    public static void intType() {
+    public static void intType0303() {
+        byte bb = 0;
+        short ss = 0;
         int a = 010;
         int b = 0x10;
         int c = 0b10;
+        long ll = 100;
         System.out.println("a: " + a);
         System.out.println("b: " + b);
         System.out.println("c: " + c);
@@ -52,7 +57,10 @@ public class DataType {
         System.out.println("d: " + d);
     }
 
-    public static void floatType() {
+    /**
+     * 3.3、数据类型(浮点型)
+     */
+    public static void floatType0303() {
         float a = 10f;
         double b = 10d;
         Double bb = 10d;
@@ -80,39 +88,9 @@ public class DataType {
     }
 
     /**
-     * 基本数据类型
-     */
-    public static void primaryDataType() {
-        byte b = 0;
-        short s = 1;
-        int i = 2;
-        long l = 3;
-        float f = 4;
-        double d = 5;
-        boolean boolean1 = true;
-        char c = 'a';
-        System.out.println(b);
-    }
-
-    /**
-     * 包装类
-     */
-    public static void wrapperClass() {
-        Byte b = 0;//new Byte("0");
-        Short s = 1;
-        Integer i = 2;
-        Long l = 3l;
-        Float f = 4f;
-        Double d = 5d;
-        Boolean boolean1 = true;
-        Character c = 'a';
-        System.out.println(b);
-    }
-
-    /**
      * 3.5、运算符
      */
-    public static void operator() {
+    public static void operator0305() {
         int a = 6;
         int b = 5;
         int c = 5;
@@ -131,7 +109,7 @@ public class DataType {
     /**
      * 3.6、字符串
      */
-    public static void stringTest() {
+    public static void stringType0306() {
         String aaaa = "aaaa";
         String bbbb = "aaaa";
         String cccc = "aaaabbbb";
@@ -152,10 +130,8 @@ public class DataType {
 
     /**
      * 3.7、输入输出
-     *
-     * @throws Exception
      */
-    public static void inputOutput() throws Exception {
+    public static void inputOutput0307() throws Exception {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
         System.out.println(input);
@@ -173,6 +149,103 @@ public class DataType {
 
         PrintWriter printWriter = new PrintWriter("c:\\tmp.txt");
         printWriter.write("2019年2月1日15:19:07");
+    }
+
+    /**
+     * 八种基本类型与引用类型及它们的内存原理
+     * PS：基本数据类型
+     * https://blog.csdn.net/qq_31071255/article/details/82192075
+     * https://blog.csdn.net/weixin_44509889/article/details/93347191
+     */
+    public static void primaryDataType() {
+        byte b = 0;
+        short s = 1;
+        int i = 2;
+        long l = 3;
+        float f = 4;
+        double d = 5;
+        boolean boolean1 = true;
+        char c = 'a';
+        System.out.println(b);
+    }
+
+    /**
+     * 八种基本类型与引用类型及它们的内存原理
+     * PS：包装类
+     * https://blog.csdn.net/qq_31071255/article/details/82192075
+     * https://blog.csdn.net/weixin_44509889/article/details/93347191
+     */
+    public static void wrapperClass() {
+        Byte b = 0;//new Byte("0");
+        Short s = 1;
+        Integer i = 2;
+        Long l = 3l;
+        Float f = 4f;
+        Double d = 5d;
+        Boolean boolean1 = true;
+        Character c = 'a';
+        System.out.println(b);
+    }
+
+    /**
+     * 比较两个Integer 对象是否相等
+     * https://blog.csdn.net/Peter_S/article/details/85091168
+     * 八种基本类型与引用类型及它们的内存原理
+     * PS：Integer.valueOf(i)函数，当i值在-128~127之间时，不会创建新的对象，但当i值超出这个范围就会新建一个对像，可以用==这个来判断，
+     * https://blog.csdn.net/qq_31071255/article/details/82192075
+     */
+    public static void integerTest() {
+        Integer aaa = 100; //自动装箱，Integer.valueOf(100)
+        Integer bbb = 100; //自动装箱
+        Integer ccc = new Integer(100);
+        System.out.println(aaa == bbb);//true
+        System.out.println(aaa.equals(bbb));//true
+        System.out.println(aaa == ccc);//false
+        System.out.println(aaa.equals(ccc));//true
+
+        Integer ddd = 200;
+        Integer eee = 200;
+        System.out.println(ddd == eee);//false
+        System.out.println(ddd.equals(eee));//true
+
+        Integer fff = 300;
+        int ggg = 300;
+        System.out.println(fff == ggg);//true
+        System.out.println(fff.equals(ggg));//true
+    }
+
+    /**
+     * java中的运算 ^, << , >>,&
+     * https://blog.csdn.net/sx729034738/article/details/69569055 <br>
+     */
+    public static void operatorTest() {
+        // 左移n位就相当于乘以2的n次方
+        int a = 3 << 10;
+        int b = 48 >> 2;
+        System.out.println(a);
+        System.out.println(b);
+    }
+
+    /**
+     * 字符串类型
+     */
+    public static void stringTest() {
+        StringBuffer stringBuffer = new StringBuffer();
+        StringBuilder stringBuilder = new StringBuilder();
+
+        Long timestamp11 = System.currentTimeMillis();
+        for (int i = 0; i < 500000; i++) {
+            stringBuffer.append(String.valueOf(i));
+        }
+        Long timestamp12 = System.currentTimeMillis();
+        System.out.println(timestamp12 - timestamp11);
+
+        Long timestamp21 = System.currentTimeMillis();
+        for (int i = 0; i < 500000; i++) {
+            stringBuilder.append(String.valueOf(i));
+        }
+        Long timestamp22 = System.currentTimeMillis();
+        System.out.println(timestamp22 - timestamp21);
     }
 
     /**
@@ -244,45 +317,6 @@ public class DataType {
         System.out.println(ii.setScale(5, RoundingMode.HALF_DOWN));//10.55555
         System.out.println(jj.setScale(5, RoundingMode.HALF_DOWN));//10.55556
         System.out.println();
-    }
-
-    public static void stringTest2() {
-        StringBuffer stringBuffer = new StringBuffer();
-        StringBuilder stringBuilder = new StringBuilder();
-
-        Long timestamp11 = System.currentTimeMillis();
-        for (int i = 0; i < 500000; i++) {
-            stringBuffer.append(String.valueOf(i));
-        }
-        Long timestamp12 = System.currentTimeMillis();
-        System.out.println(timestamp12 - timestamp11);
-
-        Long timestamp21 = System.currentTimeMillis();
-        for (int i = 0; i < 500000; i++) {
-            stringBuilder.append(String.valueOf(i));
-        }
-        Long timestamp22 = System.currentTimeMillis();
-        System.out.println(timestamp22 - timestamp21);
-    }
-
-    /**
-     * 比较两个Integer 对象是否相等
-     * https://blog.csdn.net/Peter_S/article/details/85091168
-     */
-    public static void integerTest() {
-        Integer aaa = 100;
-        Integer bbb = 100;
-        Integer ccc = new Integer(100);
-        System.out.println(aaa == bbb);//true
-        System.out.println(aaa.equals(bbb));//true
-
-        System.out.println(aaa == ccc);//false
-        System.out.println(aaa.equals(ccc));//true
-
-        Integer ddd = 200;
-        Integer eee = 200;
-        System.out.println(ddd == eee);//false
-        System.out.println(ddd.equals(eee));//true
     }
 
     /**

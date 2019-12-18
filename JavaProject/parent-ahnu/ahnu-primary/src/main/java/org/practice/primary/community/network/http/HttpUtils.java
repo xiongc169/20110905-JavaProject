@@ -32,7 +32,6 @@ public class HttpUtils {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
     }
 
     /**

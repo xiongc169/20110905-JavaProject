@@ -1,4 +1,4 @@
-package org.practice.primary.community.init_order;
+package org.practice.primary.community.inherit01;
 
 /**
  * @author yoong
@@ -11,7 +11,7 @@ package org.practice.primary.community.init_order;
  * <br>
  * @date 2013/1/10 17:02
  */
-public class OrderTest {
+public class AppInitOrder {
 
     /**
      * 入口函数
@@ -35,7 +35,7 @@ public class OrderTest {
     public static void main(String[] args) {
         try {
             System.out.println("main-start");
-            new OrderTest();
+            new AppInitOrder();
             System.out.println("main-end");
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -55,13 +55,13 @@ public class OrderTest {
         System.out.println("==静态块1start==");
     }
 
-    public static OrderTest t1 = new OrderTest();
+    public static AppInitOrder t1 = new AppInitOrder();
 
     static {
         System.out.println("==静态块2start==");
     }
 
-    public static OrderTest t2 = new OrderTest();
+    public static AppInitOrder t2 = new AppInitOrder();
 
     public static int x = method();
 
@@ -69,7 +69,7 @@ public class OrderTest {
         System.out.println("==静态块3start==");
     }
 
-    public OrderTest() {
+    public AppInitOrder() {
         System.out.println("=======构造器-start========");
     }
 

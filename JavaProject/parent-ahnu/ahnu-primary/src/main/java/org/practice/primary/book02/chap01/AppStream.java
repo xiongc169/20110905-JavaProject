@@ -5,13 +5,12 @@ import java.util.Properties;
 import java.util.Scanner;
 
 /**
- * @Desc 《Java核心技术·卷2·高级特性·第9版》
- * 第一章、流与文件
+ * @Desc 《Java核心技术·卷2·高级特性·第9版》第一章、流与文件
  * @Author
  * @Date
  * @Version 1.0
  */
-public class StreamUtils {
+public class AppStream {
 
     /**
      * 入口函数

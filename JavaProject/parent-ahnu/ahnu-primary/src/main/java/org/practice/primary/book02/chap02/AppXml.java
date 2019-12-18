@@ -4,13 +4,12 @@ import java.io.*;
 import java.util.Properties;
 
 /**
- * @Desc 《Java核心技术·卷2·高级特性·第9版》
- * 第二章、XML
+ * @Desc 《Java核心技术·卷2·高级特性·第9版》第二章、XML
  * @Author
  * @Date
  * @Version 1.0
  */
-public class XmlUtils {
+public class AppXml {
 
     /**
      * 入口函数

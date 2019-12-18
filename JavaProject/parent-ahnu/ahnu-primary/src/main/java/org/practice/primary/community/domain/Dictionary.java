@@ -7,54 +7,15 @@ import org.practice.primary.community.enums.DictionaryType;
 
 @Data
 public class Dictionary implements Cloneable {
-    /**
-     * Id
-     */
     protected String id;
-
-    /**
-     * 编号
-     */
     protected String dictionaryNo;
-
-    /**
-     * 名称
-     */
     protected String name;
-
-    /**
-     * 排序号
-     */
     protected Integer dictionaryOrder;
-
-    /**
-     * 拼音简拼
-     */
     protected String pyjp;
-
-    /**
-     * 描述
-     */
     protected String des;
-
-    /**
-     * 值
-     */
     protected String dictionaryValue;
-
-    /**
-     * 类型
-     */
     protected DictionaryType dictionaryType;
-
-    /**
-     * 父亲
-     */
     protected Dictionary parent;
-
-    /**
-     * 孩子
-     */
     protected List<Dictionary> childs;
 
     public Dictionary() {
@@ -86,7 +47,7 @@ public class Dictionary implements Cloneable {
         return false;
     }
 
-    // public int hashCode() {
-    // return dictionaryNo.hashCode() * name.hashCode();
-    // }
+    public int hashCode() {
+        return dictionaryNo.hashCode() * name.hashCode();
+    }
 }

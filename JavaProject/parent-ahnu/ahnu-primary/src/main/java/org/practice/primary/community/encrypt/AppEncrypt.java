@@ -1,21 +1,19 @@
 package org.practice.primary.community.encrypt;
 
-public class App {
+public class AppEncrypt {
 
     /**
      * 入口函数
-     *
-     * @param args
      */
     public static void main(String[] args) {
         try {
-            descTest();
+            desTest();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    public static void descTest() {
+    public static void desTest() {
         try {
             // 20171019：i=事件Id、n=事件编号、c=客户编号、k=加密串、u=时间
             String strKey = "a1508727422299cd";// 长度要求16位

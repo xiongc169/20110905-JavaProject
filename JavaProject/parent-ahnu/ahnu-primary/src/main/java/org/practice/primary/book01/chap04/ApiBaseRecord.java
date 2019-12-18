@@ -10,10 +10,16 @@ import lombok.Data;
  */
 @Data
 public class ApiBaseRecord {
-
     private String Id;
-
     private String requestId;
+
+    static {
+        System.out.println("ApiBaseRecord static code block");
+    }
+
+    {
+        System.out.println("ApiBaseRecord code block");
+    }
 
     public ApiBaseRecord() {
         System.out.println("ApiBaseRecord.ApiBaseRecord()");
@@ -23,12 +29,7 @@ public class ApiBaseRecord {
         this.Id = Id;
     }
 
-    {
-        System.out.println("ApiBaseRecord code block");
+    public static void output() {
+        System.out.println("ApiBaseRecord.output");
     }
-
-    static {
-        System.out.println("ApiBaseRecord static code block");
-    }
-
 }

@@ -1,4 +1,4 @@
-package org.practice.primary.community.init_order;
+package org.practice.primary.community.inherit01;
 
 /**
  * @author yoong

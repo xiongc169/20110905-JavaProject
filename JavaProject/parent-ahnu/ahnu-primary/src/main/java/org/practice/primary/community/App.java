@@ -3,7 +3,7 @@ package org.practice.primary.community;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.practice.primary.community.init_order.DeriveClass;
+import org.practice.primary.community.inherit01.DeriveClass;
 import org.practice.primary.community.domain.Student;
 
 /**
@@ -21,8 +21,6 @@ public class App {
         try {
             initOrderTest();
             setDistinctTest();
-            instance();
-            left();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -38,20 +36,21 @@ public class App {
     }
 
     /**
-     * @desc https://blog.csdn.net/miqi770/article/details/8998517 <br>
-     * 利用Java Set 去除重复object，重写equals\hashcode方法
-     * @date 2014年4月2日
-     * @version 1.0
+     * 利用Java Set 去除重复object
+     * PS：Set集合针对String类型、8大基础数据类型，会过滤掉重复数据；
+     * 如果存放的是其他类型对象，则需要重写hashCode方法、equals方法。
+     * 当equals比较相等时，则会去比较hashCode值，如果一致的话，则不会存进set。
+     * https://blog.csdn.net/miqi770/article/details/8998517
      */
     public static void setDistinctTest() {
-        Set<Student> stuSet = new HashSet<Student>();
+        Set<Student> stuSet = new HashSet<>();
         Student stu = new Student("id1", "name1", "sex1", 1);
         Student stu2 = new Student("id1", "name1", "sex2", 2);
         Student stu3 = new Student("id3", "name1", "sex3", 3);
         Student stu4 = new Student("id4", "name1", "sex4", 4);
 
         System.out.printf("%d ; %d ; %d ; %d \n", stu.hashCode(), stu2.hashCode(), stu3.hashCode(), stu4.hashCode());
-
+        System.out.println("stu.equals(stu2)  " + stu.equals(stu2));
         stuSet.add(stu);
         stuSet.add(stu2);
         stuSet.add(stu3);
@@ -62,33 +61,5 @@ public class App {
         }
     }
 
-    /**
-     * Java中instanceof和isInstance区别详解
-     * PS：obj instanceof className、class.isInstance(obj)
-     * https://www.cnblogs.com/greatfish/p/6096038.html
-     * instanceof、isInstance、==、equals判断Class是否相等
-     * https://blog.csdn.net/qq_36894974/article/details/79090322
-     */
-    public static void instance() {
-        Student student = new Student();
-        Student student2 = new Student();
-        if (student instanceof Student) {
-            System.out.println("instanceof true");
-        }
-        if (Student.class.isInstance(student2)) {
-            System.out.println("isInstance true");
-        }
-    }
 
-    /**
-     * https://blog.csdn.net/sx729034738/article/details/69569055 <br>
-     * PS：java中的运算 ^, << , >>,&
-     */
-    public static void left() {
-        // 左移n位就相当于乘以2的n次方
-        int a = 3 << 10;
-        int b = 48 >> 2;
-        System.out.println(a);
-        System.out.println(b);
-    }
 }

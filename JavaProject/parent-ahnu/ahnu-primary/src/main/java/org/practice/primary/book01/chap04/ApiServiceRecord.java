@@ -12,27 +12,24 @@ import java.util.Date;
  */
 @Data
 public class ApiServiceRecord extends ApiBaseRecord {
-
     private String Id;
-
     private String requestId;
-
     private String objectId;
-
     private String requestParam;
-
     private String thirdPartyId;
-
     private String businessType;
-
     private String responseTxt;
-
     private Date responseTime;
-
     private Date createTime;
-
     private Date modifyTime;
 
+    static {
+        System.out.println("ApiServiceRecord static code block");
+    }
+
+    {
+        System.out.println("ApiServiceRecord code block");
+    }
 
     public ApiServiceRecord() {
         System.out.println("ApiServiceRecord.ApiServiceRecord()");
@@ -42,11 +39,7 @@ public class ApiServiceRecord extends ApiBaseRecord {
         this.Id = Id;
     }
 
-    {
-        System.out.println("ApiServiceRecord code block");
-    }
-
-    static {
-        System.out.println("ApiServiceRecord static code block");
+    public static void output() {
+        System.out.println("ApiServiceRecord.output");
     }
 }

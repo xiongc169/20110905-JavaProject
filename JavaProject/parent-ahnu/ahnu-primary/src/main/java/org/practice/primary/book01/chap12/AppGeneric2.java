@@ -11,7 +11,7 @@ import java.util.List;
  * @Date
  * @Version 1.0
  */
-public class App2 {
+public class AppGeneric2 {
     /**
      * 入口函数
      *

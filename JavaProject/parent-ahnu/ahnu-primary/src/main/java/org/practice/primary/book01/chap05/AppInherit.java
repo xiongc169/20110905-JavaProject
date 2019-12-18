@@ -1,12 +1,12 @@
 package org.practice.primary.book01.chap05;
 
 /**
- * @Desc App4Inherit
+ * @Desc 《Java核心技术·卷1》第五章、继承
  * @Author
  * @Date
  * @Version 1.0
  */
-public class App4Inherit {
+public class AppInherit {
 
     /**
      * 入口函数

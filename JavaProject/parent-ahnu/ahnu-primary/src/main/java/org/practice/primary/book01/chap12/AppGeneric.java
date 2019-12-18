@@ -10,9 +10,9 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 《Java核心技术·卷1》
+ * 《Java核心技术·卷1》第十二章、泛型程序设计
  */
-public class App {
+public class AppGeneric {
 
     /**
      * 入口函数

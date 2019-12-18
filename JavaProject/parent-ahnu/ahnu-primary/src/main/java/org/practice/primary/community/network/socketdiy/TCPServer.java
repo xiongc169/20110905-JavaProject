@@ -13,6 +13,9 @@ import java.net.Socket;
  */
 public class TCPServer {
 
+    /**
+     * 入口函数
+     */
     public static void main(String[] args) {
         try {
             startup();

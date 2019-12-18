@@ -6,12 +6,13 @@ import java.util.*;
 import java.util.concurrent.*;
 
 /**
- * 集合操作类 集合的类型，各个类型的特点，遍历的几种方式；
+ * 《Java核心技术·卷1》第十三章、集合
+ * PS：集合操作类 集合的类型，各个类型的特点，遍历的几种方式；
  *
  * @author chaoxiong
  * @since 2015-08-30 09:06:00
  */
-public class CollectionUtility {
+public class AppCollection {
 
     /**
      * 入口函数

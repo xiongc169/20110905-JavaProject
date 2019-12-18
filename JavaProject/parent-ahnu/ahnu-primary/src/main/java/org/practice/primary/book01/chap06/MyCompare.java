@@ -1,6 +1,6 @@
 package org.practice.primary.book01.chap06;
 
-import org.practice.primary.book01.chap03.DataType;
+import org.practice.primary.book01.chap03.AppDataType;
 
 /**
  * @Desc MyCompare
@@ -12,7 +12,7 @@ public class MyCompare implements Comparable {
 
     private int instance = 10;
 
-    private DataType dataType = new DataType();
+    private AppDataType dataType = new AppDataType();
 
     @Override
     public int compareTo(Object o) {

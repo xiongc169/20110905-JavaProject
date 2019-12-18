@@ -9,7 +9,7 @@ import java.util.Map;
  * @Date
  * @Version 1.0
  */
-public class App3 {
+public class AppGeneric3 {
 
     Map<String, Integer> map1 = new HashMap<>();
 

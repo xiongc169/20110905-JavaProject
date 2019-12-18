@@ -5,13 +5,12 @@ import java.net.Socket;
 import java.util.Scanner;
 
 /**
- * @Desc 《Java核心技术·卷2·高级特性·第9版》
- * 第三章、网络
+ * @Desc 《Java核心技术·卷2·高级特性·第9版》第三章、网络
  * @Author
  * @Date
  * @Version 1.0
  */
-public class NetworkUtils {
+public class AppNetwork {
 
     /**
      * 入口函数

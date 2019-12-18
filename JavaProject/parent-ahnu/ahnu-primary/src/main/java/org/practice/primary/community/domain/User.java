@@ -3,36 +3,14 @@ package org.practice.primary.community.domain;
 import lombok.Data;
 
 /**
- * 序列化
- *
- * @author Administrator
+ * User
  */
 @Data
 public class User {
-
-    /**
-     * Id，非空，长度应为36
-     */
     protected String iid;
-
-    /**
-     * 编号，非空，最大长度为36
-     */
     protected String userNo;
-
-    /**
-     * 姓名，非空，最大长度为30
-     */
     protected String name;
-
-    /**
-     * 所属单位编号，非空，最大长度为36
-     */
     protected String orgNo;
-
-    /**
-     * 所属单位名称，非空，最大长度为80
-     */
     protected String orgName;
 
     public User() {
