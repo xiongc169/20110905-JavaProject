@@ -1,10 +1,6 @@
-package org.practice.netty.community;
+package org.practice.netty.book01;
 
-/**
- * Java NIO框架Netty教程（一） – Hello Netty
- * http://blog.csdn.net/kobejayandy/article/details/11493717
- */
-public class App {
+public class AppNetty {
 
     /**
      * 入口函数
