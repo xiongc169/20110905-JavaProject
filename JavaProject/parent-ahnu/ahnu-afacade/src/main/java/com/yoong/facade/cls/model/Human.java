@@ -1,4 +1,4 @@
-package com.yoong.facade.model.cls;
+package com.yoong.facade.cls.model;
 
 import java.io.Serializable;
 import java.util.Date;

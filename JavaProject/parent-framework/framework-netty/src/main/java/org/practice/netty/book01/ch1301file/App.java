@@ -10,21 +10,20 @@ import java.nio.file.Paths;
 
 public class App {
 
-	public static void main(String[] args) {
+    /**
+     * 入口函数
+     */
+    public static void main(String[] args) {
+        try {
+            RandomAccessFile access = new RandomAccessFile("", "");
+            FileChannel file = access.getChannel();
 
-		try {
-			RandomAccessFile access = new RandomAccessFile("", "");
-			FileChannel file = access.getChannel();
-
-			Path path = Paths.get("");
-			AsynchronousFileChannel asynChannel = AsynchronousFileChannel.open(path);
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-	}
-
+            Path path = Paths.get("");
+            AsynchronousFileChannel asynChannel = AsynchronousFileChannel.open(path);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

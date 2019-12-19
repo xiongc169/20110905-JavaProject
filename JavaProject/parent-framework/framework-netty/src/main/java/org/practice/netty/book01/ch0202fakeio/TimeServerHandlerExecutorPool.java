@@ -7,15 +7,14 @@ import java.util.concurrent.TimeUnit;
 
 public class TimeServerHandlerExecutorPool {
 
-	private ExecutorService executor;
+    private ExecutorService executor;
 
-	public TimeServerHandlerExecutorPool(int maxPoolSize, int queueSize) {
-		executor = new ThreadPoolExecutor(Runtime.getRuntime().availableProcessors(), maxPoolSize, 120,
-				TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(queueSize));
-	}
+    public TimeServerHandlerExecutorPool(int maxPoolSize, int queueSize) {
+        executor = new ThreadPoolExecutor(Runtime.getRuntime().availableProcessors(), maxPoolSize, 120, TimeUnit.SECONDS, new ArrayBlockingQueue<>(queueSize));
+    }
 
-	public void execute(Runnable task) {
-		executor.execute(task);
-	}
+    public void execute(Runnable task) {
+        executor.execute(task);
+    }
 
 }

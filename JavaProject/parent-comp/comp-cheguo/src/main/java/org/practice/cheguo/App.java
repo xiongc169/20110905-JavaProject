@@ -1,6 +1,6 @@
 package org.practice.cheguo;
 
-import com.yoong.facade.model.cls.Human;
+import com.yoong.facade.cls.model.Human;
 import org.practice.cheguo.utils.CommonUtils;
 
 import java.util.ArrayList;

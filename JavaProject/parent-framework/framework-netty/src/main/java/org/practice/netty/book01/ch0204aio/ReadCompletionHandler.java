@@ -6,23 +6,22 @@ import java.nio.channels.CompletionHandler;
 
 public class ReadCompletionHandler implements CompletionHandler<Integer, ByteBuffer> {
 
-	private AsynchronousSocketChannel channel;
+    private AsynchronousSocketChannel channel;
 
-	public ReadCompletionHandler(AsynchronousSocketChannel channel) {
-		if (this.channel == null)
-			this.channel = channel;
-	}
+    public ReadCompletionHandler(AsynchronousSocketChannel channel) {
+        if (this.channel == null)
+            this.channel = channel;
+    }
 
-	public void completed(Integer result, ByteBuffer attachment) {
+    public void completed(Integer result, ByteBuffer attachment) {
 
-		attachment.flip();
-		byte[] body = new byte[attachment.remaining()];
-		attachment.get(body);
-	}
+        attachment.flip();
+        byte[] body = new byte[attachment.remaining()];
+        attachment.get(body);
+    }
 
-	public void failed(Throwable exc, ByteBuffer attachment) {
-		// TODO Auto-generated method stub
+    public void failed(Throwable exc, ByteBuffer attachment) {
 
-	}
+    }
 
 }

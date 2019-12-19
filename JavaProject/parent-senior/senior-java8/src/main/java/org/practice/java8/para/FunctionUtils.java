@@ -1,8 +1,8 @@
 package org.practice.java8.para;
 
 
-import com.yoong.facade.model.cls.Human;
-import com.yoong.facade.model.cls.QueryData;
+import com.yoong.facade.cls.model.Human;
+import com.yoong.facade.cls.model.QueryData;
 
 import java.util.ArrayList;
 import java.util.List;

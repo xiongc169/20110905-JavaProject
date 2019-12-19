@@ -8,38 +8,36 @@ import java.nio.channels.ServerSocketChannel;
 
 public class TimeServer {
 
-	/**
-	 * 入口函数
-	 * 
-	 * @param args
-	 */
-	public static void main(String[] args) {
+    /**
+     * 入口函数
+     */
+    public static void main(String[] args) {
 
-		int port = 8080;
-		MultiplexerTimeServer timeServer = new MultiplexerTimeServer(port);
-		new Thread(timeServer, "NIO-MultiplexerTimeServer-001").start();
+        int port = 8080;
+        MultiplexerTimeServer timeServer = new MultiplexerTimeServer(port);
+        new Thread(timeServer, "NIO-MultiplexerTimeServer-001").start();
 
-	}
+    }
 
-	/**
-	 * 测试代码
-	 */
-	public static void test() {
+    /**
+     * 测试代码
+     */
+    public static void test() {
 
-		int port = 8080;
-		ServerSocketChannel acceptorSvr = null;
-		try {
-			// 1、打开serverChannel
-			acceptorSvr = ServerSocketChannel.open();
-			acceptorSvr.socket().bind(new InetSocketAddress(InetAddress.getByName("IP"), port));
-			acceptorSvr.configureBlocking(false);
-			// 3、创建reactor线程
-			Selector selector = Selector.open();
+        int port = 8080;
+        ServerSocketChannel acceptorSvr = null;
+        try {
+            // 1、打开serverChannel
+            acceptorSvr = ServerSocketChannel.open();
+            acceptorSvr.socket().bind(new InetSocketAddress(InetAddress.getByName("IP"), port));
+            acceptorSvr.configureBlocking(false);
+            // 3、创建reactor线程
+            Selector selector = Selector.open();
 
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
 }
