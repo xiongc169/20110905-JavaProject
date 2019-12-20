@@ -1,6 +1,7 @@
 package org.practice.primary.book02.chap01;
 
 import java.io.*;
+import java.net.URL;
 import java.nio.file.FileSystem;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -23,10 +24,17 @@ public class AppStream {
     private static String txtFileName = "D:\\Temp\\IO\\abc.txt";
     private static String txtFileName01 = "D:\\Temp\\IO\\abc01.txt";
 
-    private static String zipFileName = "D:\\Temp\\IO\\zip.zip";
+    private static String zipFileName = "D:\\Temp\\IO\\xyz.zip";
+    private static String zipFileName01 = "D:\\Temp\\IO\\xyz01.zip";
 
     private static String mp4FileName = "D:\\Temp\\IO\\video.mp4";
     private static String mp4FileName01 = "D:\\Temp\\IO\\video01.mp4";
+    private static String mp4FileName02 = "D:\\Temp\\IO\\video02.mp4";
+
+    private static String videoUrl = "http://img.fincs.net/zahy/cls/loan/2019/12/20/a911bc41-90ca-4d5b-b731-f8f1f49f5d1a.mp4";
+    private static String videoUrl01 = "http://img.fincs.net/zahy/cls/loan/2019/12/20/4a8a3491-26bc-4a0a-bc58-99a49cc95d45.mp4";
+    private static String videoUrl02 = "http://img.fincs.net/zahy/cls/loan/2019/12/6/cca9b111-feba-4129-b4f2-0fcdca8d4635.mp4";
+    private static String videoUrl03 = "http://img.fincs.net/zahy/cls/loan/2019/12/6/5ac5a802-9085-484c-9e53-9f32f1816f31.mp4";
 
     /**
      * 入口函数
@@ -34,8 +42,8 @@ public class AppStream {
     public static void main(String[] args) {
         try {
             //1.1.1、读写字节
-            byte[] bytes = inputStream0101(mp4FileName);
-            outputStream0101(mp4FileName01, bytes);
+            byte[] bytes = inputStream0101(txtFileName);
+            outputStream0101(bytes, mp4FileName01);
 
             //1.1.3、组合流过滤器
             String userDir = System.getProperty("user.dir");
@@ -49,9 +57,11 @@ public class AppStream {
             writer0102(txtFileName01, "Java");
 
             //1.6、文件操作
-            fileTest0106();
+            fileTest0106(txtFileName);
 
             systemIn();
+            download(videoUrl, mp4FileName01, mp4FileName02);
+            download02(videoUrl, mp4FileName01);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -72,18 +82,18 @@ public class AppStream {
             byte[] buf = new byte[4096];
             ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(buf);
 
-            //获取文件大小，单位：字节Byte / 1024 = KB / 1024 = MB
+            //获取文件大小，单位：字节Byte/1024 = KB/1024 = MB
             int available = fileInputStream.available();
             System.out.println("available  " + available);
-            //for (int i = 0; i < 10; i++) {
-            //    System.out.println(fileInputStream.read());
-            //    System.out.println(fileInputStream.available());
-            //}
+            for (int i = 0; i < 10; i++) {
+                System.out.println(fileInputStream.read());
+                System.out.println(fileInputStream.available());
+            }
 
             //文件读取为字节数组
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            //1048576 Byte = 1024 KB = 1MB
-            byte[] buffer = new byte[1048576];
+            //1024 * 1024 Byte = 1024 KB = 1MB
+            byte[] buffer = new byte[1024 * 1024];
             int n = 0;
             while ((n = fileInputStream.read(buffer)) != -1) {
                 byteArrayOutputStream.write(buffer, 0, n);
@@ -105,7 +115,7 @@ public class AppStream {
      * 1.1.1、读写字节(字节流)
      * PS：字节数组输出到文件
      */
-    public static void outputStream0101(String destPath, byte[] bytes) {
+    public static void outputStream0101(byte[] bytes, String destPath) {
         try {
             File destFile = new File(destPath);
             if (!destFile.exists()) {
@@ -214,7 +224,7 @@ public class AppStream {
      * 1.6、操作文件
      * PS：File、Path、Paths、Files
      */
-    public static void fileTest0106() throws Exception {
+    public static void fileTest0106(String txtFileName) throws Exception {
         File file = new File(txtFileName);
         System.out.println("report.isDirectory() " + file.isDirectory());
         System.out.println("report.isFile() " + file.isFile());
@@ -253,5 +263,54 @@ public class AppStream {
         Scanner scanner = new Scanner(System.in);
         String line2 = scanner.nextLine();
         System.out.println(line2);
+    }
+
+    /**
+     * IO流【7】--- 通过IO流实现网络资源下载，通过URL地址下载图片等
+     * https://blog.csdn.net/lexiaowu/article/details/98786701
+     */
+    public static void download(String srcVideo, String videoPath, String videoPath01) throws Exception {
+        int n = 0;
+        byte[] buffer = new byte[1024 * 1024];
+        URL url = new URL(srcVideo);
+        InputStream inputStream = new BufferedInputStream(url.openStream());
+        //下载一
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        while ((n = inputStream.read(buffer)) != -1) {
+            byteArrayOutputStream.write(buffer, 0, n);
+        }
+        byte[] videoBytes = byteArrayOutputStream.toByteArray();
+        byteArrayOutputStream.close();
+
+        FileOutputStream video = new FileOutputStream(videoPath);
+        video.write(videoBytes);
+        video.close();
+
+        //下载二：java.io.IOException: Resetting to invalid mark
+        //inputStream.reset();
+        //FileOutputStream video01 = new FileOutputStream(videoPath01);
+        //while ((n = inputStream.read(buffer)) != -1) {
+        //    video01.write(buffer, 0, n);
+        //}
+        //video01.close();
+        inputStream.close();
+    }
+
+    /**
+     * IO流【2】--- 文件拷贝/复制
+     * https://blog.csdn.net/lexiaowu/article/details/98647923
+     */
+    public static void download02(String srcVideo, String videoPath) throws Exception {
+        URL url = new URL(srcVideo);
+        InputStream inputStream = url.openStream();
+        FileOutputStream localVideo = new FileOutputStream(videoPath);
+        byte[] buffer = new byte[1024 * 1024];
+        int n = 0;
+        while ((n = inputStream.read(buffer)) != -1) {
+            localVideo.write(buffer, 0, n);
+        }
+        inputStream.close();
+        localVideo.flush();
+        localVideo.close();
     }
 }
