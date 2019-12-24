@@ -1,5 +1,9 @@
 package org.practice.netty.book01;
 
+
+/**
+ * 《Netty权威指南》
+ */
 public class AppNetty {
 
     /**

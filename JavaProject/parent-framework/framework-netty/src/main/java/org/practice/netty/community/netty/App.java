@@ -1,4 +1,4 @@
-package org.practice.netty.community;
+package org.practice.netty.community.netty;
 
 /**
  * Java NIO框架Netty教程（一） – Hello Netty

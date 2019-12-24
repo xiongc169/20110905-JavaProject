@@ -1,4 +1,4 @@
-package org.practice.netty.community;
+package org.practice.netty.community.netty;
 
 import java.net.InetSocketAddress;
 import java.util.concurrent.Executors;
