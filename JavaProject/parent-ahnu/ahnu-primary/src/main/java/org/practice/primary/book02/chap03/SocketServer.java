@@ -20,13 +20,16 @@ public class SocketServer {
      */
     public static void main(String[] args) {
         try {
-            serverSocket();
+            serverSocket0302();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    public static void serverSocket() throws Exception {
+    /**
+     * 3.2、实现服务器
+     */
+    public static void serverSocket0302() throws Exception {
         System.out.println("serverSocket start...");
         ServerSocket serverSocket = new ServerSocket(port);
         Socket socket = serverSocket.accept();
