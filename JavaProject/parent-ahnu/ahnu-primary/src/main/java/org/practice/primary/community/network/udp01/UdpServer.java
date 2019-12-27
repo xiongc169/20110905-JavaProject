@@ -1,30 +1,32 @@
-package org.practice.primary.community.network.udp;
+package org.practice.primary.community.network.udp01;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
 /**
- * @Desc Java网络编程
- * http://www.cnblogs.com/springcsc/archive/2009/12/03/1616413.html
- * @Author
+ * @Desc UdpServer
+ * <p>
+ * @Author yoong
+ * <p>
  * @Date 2019年3月1日11:16:18
+ * <p>
  * @Version 1.0
  */
-public class UDPServer {
+public class UdpServer {
 
     /**
      * 入口函数
      */
     public static void main(String[] args) {
         try {
-            starUpUDPServer();
+            starUpUdpServer();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    public static void starUpUDPServer() throws Exception {
+    public static void starUpUdpServer() throws Exception {
         byte[] data = new byte[1024];
         DatagramPacket receivePacket = new DatagramPacket(data, data.length);
         DatagramSocket server = new DatagramSocket(10007);

@@ -1,4 +1,4 @@
-package org.practice.primary.community.network.udp;
+package org.practice.primary.community.network.udp01;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -6,25 +6,31 @@ import java.net.InetAddress;
 
 /**
  * @Desc Java网络编程
+ * PS：13.1.3、网络通讯方式
+ * TCP、UDP，传输控制协议、用户数据报协议；
+ * 13.2.2、Java网络编程技术
  * http://www.cnblogs.com/springcsc/archive/2009/12/03/1616413.html
- * @Author
+ * <p>
+ * @Author yoong
+ * <p>
  * @Date 2019年2月28日18:47:11
+ * <p>
  * @Version 1.0
  */
-public class UDPClient {
+public class UdpClient {
 
     /**
      * 入口函数
      */
     public static void main(String[] args) {
         try {
-            starUpUDPClient();
+            starUpUdpClient();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    public static void starUpUDPClient() throws Exception {
+    public static void starUpUdpClient() throws Exception {
         String ip = "127.0.0.1";
         int port = 10007;
         InetAddress address = InetAddress.getByName(ip);

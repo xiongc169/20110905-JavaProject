@@ -8,39 +8,53 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 
 /**
- * @Desc HttpUtils
- * HttpURLConnection与HttpClient浅析
+ * @Desc HttpURLConnection与HttpClient浅析
+ * PS：GET、POST区别；
+ * JDK的java.net包中提供了HTTP协议的基本功能类：HttpUrlConnection，继承自URLConnection；
+ * Apache提供了HttpClient，更好的处理Web请求，如Session、Cookie等细节；
+ * https://blog.csdn.net/u012838207/article/details/82867701
  * http://www.cnblogs.com/sharpest/p/7831350.html
- * @Author
+ * <p>
+ * @Author yoong
+ * <p>
  * @Date 2019年3月14日19:56:57
+ * <p>
  * @Version 1.0
  */
 public class HttpUtils {
 
+    private static String uri = "http://zacdn-image.cgw360.com/cgw360/cls/credit/603a4e09-77e5-44ad-b096-d02ff2384d2f.jpg";
+    private static String filePath = "D:\\Temp\\IO\\image01.jpg";
+
+    /**
+     * 入口函数
+     */
     public static void main(String[] args) {
         try {
-            //urlConnectionDemo();
+            httpUrlConnectionDemo();
             httpClientDemo();
+            download(uri, filePath);
+            download2(uri, filePath);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
     /**
-     * @throws Exception
+     * HttpURLConnection GET
      */
-    public static void urlConnectionDemo() throws Exception {
+    public static void httpUrlConnectionDemo() throws Exception {
         String local = "http://127.0.0.1:8095/push/login";
+        String baidu = "http://www.baidu.com";
         String imgUrl = "http://zacdn-image.cgw360.com/cgw360/cls/credit/603a4e09-77e5-44ad-b096-d02ff2384d2f.jpg";
-        URL url = new URL(local);
+
+        URL url = new URL(baidu);
         URLConnection conn1 = url.openConnection();
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.connect();
@@ -50,18 +64,18 @@ public class HttpUtils {
             // 从流中读取响应信息
             BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             String line = "";
-            String result = "";
+            StringBuilder result = new StringBuilder();
             while ((line = reader.readLine()) != null) {
-                result += line;
+                result.append(line + "\r\n");
             }
-            System.out.println(result);
+            System.out.println(result.toString());
             reader.close();
             conn.disconnect();
         }
     }
 
     /**
-     * @throws Exception
+     * HttpClient
      */
     public static void httpClientDemo() throws Exception {
         String local = "http://127.0.0.1:8095/push/login";
@@ -79,9 +93,36 @@ public class HttpUtils {
         httpClient.close();
     }
 
-    public static void download() throws Exception {
-        File file = new File("d:\\aa.jpg");
-        URL url = new URL("http://zacdn-image.cgw360.com/cgw360/cls/credit/603a4e09-77e5-44ad-b096-d02ff2384d2f.jpg");
+    /**
+     * download
+     */
+    public static void download(String uri, String destFilePath) throws Exception {
+        URL url = new URL(uri);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        conn.connect();
+
+        ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
+        FileOutputStream fOutStream = new FileOutputStream(destFilePath);
+        if (conn.getResponseCode() == 200) {
+            InputStream ins = conn.getInputStream();
+            byte[] buffer = new byte[4096];
+            int n = 0;
+            while ((n = ins.read(buffer)) != -1) {
+                byteStream.write(buffer, 0, n);
+            }
+            byte[] result = byteStream.toByteArray();
+            fOutStream.write(result);
+            fOutStream.flush();
+        }
+    }
+
+    /**
+     * download2
+     */
+    public static void download2(String uri, String destFilePath) throws Exception {
+        File file = new File(destFilePath);
+        URL url = new URL(uri);
         FileUtils.copyURLToFile(url, file);
     }
 }

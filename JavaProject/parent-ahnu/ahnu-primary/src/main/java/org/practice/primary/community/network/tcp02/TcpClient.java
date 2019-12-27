@@ -1,16 +1,19 @@
-package org.practice.primary.community.network.socketdiy;
+package org.practice.primary.community.network.tcp02;
 
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
 /**
- * @Desc Client
- * @Author
- * @Date 2019年2月28日16:54:21
+ * @Desc TcpClient-DIY
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2016年4月4日 上午9:29:18
+ * <p>
  * @Version 1.0
  */
-public class TCPClient {
+public class TcpClient {
 
     /**
      * 入口函数

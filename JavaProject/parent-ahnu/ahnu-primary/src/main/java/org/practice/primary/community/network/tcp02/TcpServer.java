@@ -1,4 +1,4 @@
-package org.practice.primary.community.network.socketdiy;
+package org.practice.primary.community.network.tcp02;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -6,12 +6,15 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- * @Desc Server
- * @Author
- * @Date
+ * @Desc TcpServer-DIY
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2016年4月4日 上午9:29:18
+ * <p>
  * @Version 1.0
  */
-public class TCPServer {
+public class TcpServer {
 
     /**
      * 入口函数
@@ -54,6 +57,5 @@ public class TCPServer {
                 socket.close();
             }
         }
-
     }
 }

@@ -1,24 +1,22 @@
-package org.practice.primary.community.network.socket;
+package org.practice.primary.community.network.tcp01;
 
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- * @author chaoxiong
- * @desc Java网络编程
- * http://www.cnblogs.com/springcsc/archive/2009/12/03/1616413.html
+ * @Desc ServerPoint
  * <p>
- * @date 2016年4月4日 上午10:33:52
+ * @Author yoong
+ * <p>
+ * @Date 2016年4月4日 上午9:29:18
+ * <p>
+ * @Version 1.0
  */
 public class ServerPoint {
 
     /**
-     * @param args
-     * @return void
      * @desc 入口函数
-     * @author chaoxiong
-     * @date 2016年4月4日 上午10:38:24
      */
     public static void main(String[] args) {
         try {
