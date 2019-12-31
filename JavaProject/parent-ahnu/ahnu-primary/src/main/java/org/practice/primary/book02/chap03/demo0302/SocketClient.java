@@ -1,7 +1,6 @@
 package org.practice.primary.book02.chap03.demo0302;
 
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
 
@@ -12,6 +11,8 @@ import java.util.Scanner;
  * @Version 1.0
  */
 public class SocketClient {
+
+    private static String serverIP = "127.0.0.1";
 
     private static int port = 9999;
 
@@ -28,15 +29,30 @@ public class SocketClient {
 
 
     public static void socket4Local() throws Exception {
-        Socket socket = new Socket("127.0.0.1", port);
+        System.out.println("ClientSocket start...");
+        Socket socket = new Socket(serverIP, port);
+
         OutputStream outputStream = socket.getOutputStream();
-        outputStream.write(100);
+        InputStream inputStream = socket.getInputStream();
+
+        System.out.println("【客户端】请输入(1)：");
+        Scanner scanner = new Scanner(System.in);
+        String line = scanner.nextLine();
+        outputStream.write(line.getBytes());
         outputStream.flush();
 
-        InputStream inputStream = socket.getInputStream();
-        Scanner scanner = new Scanner(inputStream);
-        while (scanner.hasNextLine()) {
-            System.out.println(scanner.nextLine());
-        }
+//        System.out.println("【客户端】请输入(2)：");
+//        Scanner scanner2 = new Scanner(System.in);
+//        String line2 = scanner2.nextLine();
+//        PrintWriter writer = new PrintWriter(outputStream);
+//        writer.write(line2);
+//        writer.flush();
+
+        byte[] buffers = new byte[1024 * 1024 * 5];//不能用inputStream.available()，否则不会阻塞一
+        int length = inputStream.read(buffers);//阻塞一，直到服务端 输入
+        System.out.println("【客户端】收到：" + new String(buffers, 0, length));
+
+        System.out.println("ClientSocket end");
+        System.in.read();
     }
 }
