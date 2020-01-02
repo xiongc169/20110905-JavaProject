@@ -16,6 +16,8 @@ import java.net.Socket;
  */
 public class TcpServer {
 
+    private static int serverPort = 9090;
+
     /**
      * 入口函数
      */
@@ -28,7 +30,7 @@ public class TcpServer {
     }
 
     public static void startup() throws Exception {
-        ServerSocket server = new ServerSocket(9090);
+        ServerSocket server = new ServerSocket(serverPort);
         Socket socket = null;
         InputStream is = null;
         OutputStream os = null;

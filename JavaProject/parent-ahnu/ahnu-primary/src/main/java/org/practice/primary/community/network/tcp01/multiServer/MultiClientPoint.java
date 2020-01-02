@@ -1,11 +1,12 @@
-package org.practice.primary.community.network.tcp01;
+package org.practice.primary.community.network.tcp01.multiServer;
 
-import java.io.*;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.Socket;
 import java.util.Scanner;
 
 /**
- * @Desc ClientPoint
+ * @Desc MultiClientPoint
  * <p>
  * @Author yoong
  * <p>
@@ -13,7 +14,7 @@ import java.util.Scanner;
  * <p>
  * @Version 1.0
  */
-public class ClientPoint {
+public class MultiClientPoint {
 
     private static String serverIP = "127.0.0.1";
 
@@ -24,33 +25,31 @@ public class ClientPoint {
      */
     public static void main(String[] args) {
         try {
-            clientTest();
+            for (int i = 0; i < 10; i++) {
+                multiClientTest(i);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static void clientTest() {
+    public static void multiClientTest(Integer index) {
         Socket client = null;
         InputStream is = null;
         OutputStream os = null;
-        String message = "this is lianzhuang Dept";
-        Scanner sc = new Scanner(System.in);
 
         try {
-            System.out.println("【客户端】客户端已启动！");
-
+            System.out.printf("【客户端-%s】已启动！\r\n", index);
             client = new Socket(serverIP, serverPort);
             os = client.getOutputStream();
             is = client.getInputStream();
             byte[] feedback = new byte[1024];
-            for (int i = 0; i < 10; i++) {
-                System.out.println("【客户端】请输入信息内容：");
-                message = sc.nextLine();
-                os.write(message.getBytes());//发送数据
-                int len = is.read(feedback);//接收数据
-                System.out.println("【客户端】服务器的反馈信息" + new String(feedback, 0, len));
-            }
+            String message = "this is lianzhuang Dept " + index;
+            System.out.printf("【客户端-%s】发送：%s\r\n", index, message);
+            os.write(message.getBytes());
+
+            int len = is.read(feedback);
+            System.out.printf("【客户端-%s】接收：%s\r\n", index, new String(feedback, 0, len));
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -58,7 +57,7 @@ public class ClientPoint {
                 is.close();
                 os.close();
                 client.close();
-                System.out.println("客户端已停止！");
+                System.out.printf("【客户端-%s】已停止！\r\n", index);
             } catch (Exception e) {
                 e.printStackTrace();
             }

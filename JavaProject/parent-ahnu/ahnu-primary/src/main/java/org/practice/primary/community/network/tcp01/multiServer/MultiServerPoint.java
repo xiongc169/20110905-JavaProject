@@ -15,6 +15,8 @@ import java.net.Socket;
  */
 public class MultiServerPoint {
 
+    private static int serverPort = 10007;
+
     /**
      * 入口函数
      */
@@ -29,21 +31,20 @@ public class MultiServerPoint {
     public static void multiServerPoint() {
         ServerSocket serverSocket = null;
         Socket socket = null;
-        int port = 10000;
 
         try {
-            System.out.println("【服务端】服务端已启动！");
-            serverSocket = new ServerSocket(port);
-            socket = serverSocket.accept();
+            System.out.println("【服务端】已启动！");
+            serverSocket = new ServerSocket(serverPort);
             while (true) {
-                new LogicServerThread(socket);
+                socket = serverSocket.accept();
+                new ServerThread(socket).start();
             }
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
             try {
                 serverSocket.close();
-                System.out.println("【服务端】服务端已停止！");
+                System.out.println("【服务端】已停止！");
             } catch (IOException e) {
                 e.printStackTrace();
             }

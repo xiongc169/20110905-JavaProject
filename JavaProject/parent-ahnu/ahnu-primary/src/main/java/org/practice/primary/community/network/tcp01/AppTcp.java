@@ -32,12 +32,6 @@ public class AppTcp {
         }
     }
 
-    /**
-     * @return void
-     * @desc 演示InetAddress类的基本使用
-     * @author chaoxiong
-     * @date 2016年4月4日 上午9:38:05
-     */
     public static void inetAddressDemo() {
         try {
             InetAddress inetA = InetAddress.getByName("www.baidu.com");

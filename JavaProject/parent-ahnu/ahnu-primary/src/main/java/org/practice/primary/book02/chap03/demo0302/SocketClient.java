@@ -14,7 +14,7 @@ public class SocketClient {
 
     private static String serverIP = "127.0.0.1";
 
-    private static int port = 9999;
+    private static int serverPort = 9999;
 
     /**
      * 入口函数
@@ -30,7 +30,7 @@ public class SocketClient {
 
     public static void socket4Local() throws Exception {
         System.out.println("ClientSocket start...");
-        Socket socket = new Socket(serverIP, port);
+        Socket socket = new Socket(serverIP, serverPort);
 
         OutputStream outputStream = socket.getOutputStream();
         InputStream inputStream = socket.getInputStream();

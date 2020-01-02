@@ -15,6 +15,8 @@ import java.net.Socket;
  */
 public class ServerPoint {
 
+    private static int serverPort = 10007;
+
     /**
      * @desc 入口函数
      */
@@ -31,7 +33,6 @@ public class ServerPoint {
         Socket socket = null;
         InputStream is = null;
         OutputStream os = null;
-        int serverPort = 10007;
 
         try {
             System.out.println("【服务端】服务端已启动！");

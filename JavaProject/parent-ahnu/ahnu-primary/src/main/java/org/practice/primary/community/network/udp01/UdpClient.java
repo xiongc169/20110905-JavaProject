@@ -19,6 +19,10 @@ import java.net.InetAddress;
  */
 public class UdpClient {
 
+    private static String serverIP = "127.0.0.1";
+
+    private static int serverPort = 10007;
+
     /**
      * 入口函数
      */
@@ -31,14 +35,12 @@ public class UdpClient {
     }
 
     public static void starUpUdpClient() throws Exception {
-        String ip = "127.0.0.1";
-        int port = 10007;
-        InetAddress address = InetAddress.getByName(ip);
+        InetAddress address = InetAddress.getByName(serverIP);
 
         DatagramSocket client = new DatagramSocket();
         byte[] requestData = "Message".getBytes();
         System.out.println("Client Request: " + new String(requestData));
-        DatagramPacket requestPacket = new DatagramPacket(requestData, requestData.length, address, port);
+        DatagramPacket requestPacket = new DatagramPacket(requestData, requestData.length, address, serverPort);
         client.send(requestPacket);
 
         byte[] receiveData = new byte[1024];

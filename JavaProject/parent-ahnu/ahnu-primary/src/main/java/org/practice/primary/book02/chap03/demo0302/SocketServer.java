@@ -15,7 +15,7 @@ import java.util.Scanner;
  */
 public class SocketServer {
 
-    private static int port = 9999;
+    private static int serverPort = 9999;
 
     /**
      * 入口函数
@@ -30,7 +30,7 @@ public class SocketServer {
 
     public static void serverSocket0302() throws Exception {
         System.out.println("ServerSocket start...");
-        ServerSocket serverSocket = new ServerSocket(port);
+        ServerSocket serverSocket = new ServerSocket(serverPort);
         Socket socket = serverSocket.accept();//阻塞一，直到客户端 new Socket(serverIP, port)
 
         InputStream inputStream = socket.getInputStream();

@@ -15,6 +15,10 @@ import java.net.Socket;
  */
 public class TcpClient {
 
+    private static String serverIP = "127.0.0.1";
+
+    private static int serverPort = 9090;
+
     /**
      * 入口函数
      */
@@ -27,7 +31,7 @@ public class TcpClient {
     }
 
     public static void startup() throws Exception {
-        Socket client = new Socket("127.0.0.1", 9090);
+        Socket client = new Socket(serverIP, serverPort);
         InputStream is = client.getInputStream();
         OutputStream os = client.getOutputStream();
         try {

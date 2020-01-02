@@ -15,6 +15,8 @@ import java.net.InetAddress;
  */
 public class UdpServer {
 
+    private static int serverPort = 10007;
+
     /**
      * 入口函数
      */
@@ -29,7 +31,7 @@ public class UdpServer {
     public static void starUpUdpServer() throws Exception {
         byte[] data = new byte[1024];
         DatagramPacket receivePacket = new DatagramPacket(data, data.length);
-        DatagramSocket server = new DatagramSocket(10007);
+        DatagramSocket server = new DatagramSocket(serverPort);
         server.receive(receivePacket);
         InetAddress client = receivePacket.getAddress();
         System.out.println("Server Receive: " + client.getHostAddress() + " " + receivePacket.getPort() + " " + new String(receivePacket.getData()));
