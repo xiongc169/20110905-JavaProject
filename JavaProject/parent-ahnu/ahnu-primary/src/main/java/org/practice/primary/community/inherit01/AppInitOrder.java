@@ -2,13 +2,13 @@ package org.practice.primary.community.inherit01;
 
 /**
  * @author yoong
- * <br>
+ * <p>
  * @desc 关于static语句, 构造代码块, 构造方法的执行顺序
  * PS：执行顺序：类加载之后，按从上到下执行被static修饰的语句(静态代码块)；
  * 如果有语句new了自身的对象，将从上到下执行构造代码块、构造器；
  * 创建完对象后，接着执行下面的static语句，当static语句执行完之后，再执行main方法.
  * https://blog.csdn.net/tt_zhang/article/details/7614180
- * <br>
+ * <p>
  * @date 2013/1/10 17:02
  */
 public class AppInitOrder {

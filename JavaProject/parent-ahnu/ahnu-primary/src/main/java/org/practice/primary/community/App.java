@@ -19,20 +19,10 @@ public class App {
      */
     public static void main(String[] args) {
         try {
-            initOrderTest();
             setDistinctTest();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-    }
-
-    /**
-     * 静态变量、静态代码块、变量、代码块、构造函数的执行顺序
-     */
-    private static void initOrderTest() {
-        DeriveClass deriveClass = new DeriveClass();
-        DeriveClass.staticSay();
-        deriveClass.say();
     }
 
     /**
