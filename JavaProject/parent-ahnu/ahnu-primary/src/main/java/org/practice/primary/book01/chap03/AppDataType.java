@@ -8,9 +8,9 @@ import java.util.Scanner;
 
 /**
  * @author yoong
- * <br>
+ * <p>
  * @desc 《Java核心技术·卷1》第三章、Java的基本程序设计结构
- * <br>
+ * <p>
  * @date 2019/2/1 11:50
  */
 public class AppDataType {
@@ -45,16 +45,18 @@ public class AppDataType {
     public static void intType0303() {
         byte bb = 0;
         short ss = 0;
-        int a = 010;
-        int b = 0x10;
-        int c = 0b10;
+        int a = 0x10;//16进制
+        int b = 010;//8进制
+        int c = 0b10;//2进制
+        int d = 1000_000_000;
         long ll = 100;
         System.out.println("a: " + a);
         System.out.println("b: " + b);
         System.out.println("c: " + c);
-
-        int d = 'A';
         System.out.println("d: " + d);
+
+        int x = 'A';
+        System.out.println("x: " + x);
     }
 
     /**

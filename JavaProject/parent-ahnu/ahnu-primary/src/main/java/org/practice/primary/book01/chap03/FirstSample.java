@@ -1,10 +1,10 @@
-package org.practice.primary.book01.chap02;
+package org.practice.primary.book01.chap03;
 
 /**
  * @author yoong
- * <br>
- * @desc 《Java核心技术·卷1》第二章、Java程序设计环境
- * <br>
+ * <p>
+ * @desc 《Java核心技术·卷1》第三章、Java的基本程序设计结构
+ * <p>
  * @date 2011-9-25~2019-2-1
  */
 public class FirstSample {

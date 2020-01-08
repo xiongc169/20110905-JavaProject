@@ -3,7 +3,6 @@ package org.practice.primary.community;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.practice.primary.community.inherit01.DeriveClass;
 import org.practice.primary.community.domain.Student;
 
 /**
