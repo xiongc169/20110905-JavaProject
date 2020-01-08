@@ -50,6 +50,4 @@ public class App {
             System.out.printf("%s - %s - %s - %d\n", item.getId(), item.getName(), item.getSex(), item.getAge());
         }
     }
-
-
 }

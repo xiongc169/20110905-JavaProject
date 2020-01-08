@@ -9,19 +9,55 @@ import javax.crypto.spec.SecretKeySpec;
 
 /**
  * @author yoong
+ * <p>
  * @version 1.0
+ * <p>
  * @desc 使用DES算法实现加密和解密
  * http://blog.csdn.net/lisheng19870305/article/details/68944485
  * HexUtil工具类
  * http://www.cnblogs.com/wangbogo/archive/2012/07/10/2584506.html
  * http://www.cnblogs.com/supperwu/archive/2012/05/22/2512877.html
  * .NET版本
+ * <p>
  * @date 2012年4月2日
  */
 public class DesUtil {
 
-    private static final String Algorithm = "DES"; // 定义 加密算法,可用
-    // DES,DESede,Blowfish
+    private static final String Algorithm = "DES"; // 定义 加密算法,可用:DES,DESede,Blowfish
+
+    /**
+     * 入口函数
+     */
+    public static void main(String arg[]) {
+        String strKey1 = "a" + String.valueOf((new Date()).getTime()) + "cd";
+        String str = "20091113110733558370857489968539";
+        String s3 = encrypt(str, hex2byte(strKey1));
+        String s4 = decrypt(s3, hex2byte(strKey1));
+        System.out.println(strKey1);
+        System.out.println(s3);
+        System.out.println(s4);
+    }
+
+    // 加密！！！！！！
+    public static String encrypt(String str, byte[] key) {
+        Security.addProvider(new com.sun.crypto.provider.SunJCE());
+        byte[] encrypt = encryptMode(key, str.getBytes());
+        return byte2hex(encrypt);
+    }
+
+    // 加密
+    public static byte[] EncryptRetByte(byte[] src, byte[] key) {
+        Security.addProvider(new com.sun.crypto.provider.SunJCE());
+        byte[] encrypt = encryptMode(key, src);
+        return encrypt;
+    }
+
+    // 解密！！！！！！
+    public static String decrypt(String str, byte[] key) {
+        Security.addProvider(new com.sun.crypto.provider.SunJCE());
+        byte[] decrypt = decryptMode(key, hex2byte(str));
+        return new String(decrypt);
+    }
 
     // src为被加密的数据缓冲区（源）
     public static byte[] encryptMode(byte[] keybyte, byte[] src) {
@@ -102,36 +138,5 @@ public class DesUtil {
             b2[n / 2] = (byte) Integer.parseInt(item, 16);
         }
         return b2;
-    }
-
-    // 加密！！！！！！
-    public static String encrypt(String str, byte[] key) {
-        Security.addProvider(new com.sun.crypto.provider.SunJCE());
-        byte[] encrypt = encryptMode(key, str.getBytes());
-        return byte2hex(encrypt);
-    }
-
-    // 加密
-    public static byte[] EncryptRetByte(byte[] src, byte[] key) {
-        Security.addProvider(new com.sun.crypto.provider.SunJCE());
-        byte[] encrypt = encryptMode(key, src);
-        return encrypt;
-    }
-
-    // 解密！！！！！！
-    public static String decrypt(String str, byte[] key) {
-        Security.addProvider(new com.sun.crypto.provider.SunJCE());
-        byte[] decrypt = decryptMode(key, hex2byte(str));
-        return new String(decrypt);
-    }
-
-    public static void main(String arg[]) {
-        String strKey1 = "a" + String.valueOf((new Date()).getTime()) + "cd";
-        String str = "20091113110733558370857489968539";
-        String s3 = encrypt(str, hex2byte(strKey1));
-        String s4 = decrypt(s3, hex2byte(strKey1));
-        System.out.println(strKey1);
-        System.out.println(s3);
-        System.out.println(s4);
     }
 }

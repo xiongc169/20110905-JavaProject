@@ -1,6 +1,5 @@
 package org.practice.primary.community.inherit02;
 
-
 /**
  * @Desc 聊聊java中的继承
  * https://blog.csdn.net/JavaCoder_juejue/article/details/81112692

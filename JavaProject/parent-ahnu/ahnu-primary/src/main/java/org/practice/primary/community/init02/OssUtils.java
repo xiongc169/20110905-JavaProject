@@ -1,4 +1,4 @@
-package org.practice.primary.community.init;
+package org.practice.primary.community.init02;
 
 /**
  * @Desc OssUtils

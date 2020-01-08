@@ -1,4 +1,4 @@
-package org.practice.primary.community.inherit01;
+package org.practice.primary.community.init;
 
 /**
  * @author yoong

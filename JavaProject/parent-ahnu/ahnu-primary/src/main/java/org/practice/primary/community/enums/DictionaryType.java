@@ -2,8 +2,6 @@ package org.practice.primary.community.enums;
 
 /**
  * 字典类型
- *
- * @author
  */
 public enum DictionaryType {
     /**

@@ -5,8 +5,11 @@ import java.util.Date;
 
 /**
  * @Desc AbstractBaseHandler
- * @Author
+ * <p>
+ * @Author yoong
+ * <p>
  * @Date 2019年3月28日20:32:17
+ * <p>
  * @Version 1.0
  */
 public abstract class AbstractBaseHandler<T, V> {

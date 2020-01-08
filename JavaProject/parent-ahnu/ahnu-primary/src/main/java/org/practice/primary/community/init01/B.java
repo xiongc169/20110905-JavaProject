@@ -1,4 +1,4 @@
-package org.practice.primary.community.inherit03;
+package org.practice.primary.community.init01;
 
 /**
  * @Desc Java中继承的定义与使用

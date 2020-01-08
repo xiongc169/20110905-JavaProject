@@ -1,5 +1,12 @@
 package org.practice.primary.community.encrypt;
 
+/**
+ * @author chaoxiong
+ * <p>
+ * @desc Base64Utility.java
+ * <p>
+ * @date 2016年7月5日 下午3:59:23
+ */
 public class AppEncrypt {
 
     /**
@@ -34,7 +41,6 @@ public class AppEncrypt {
             System.out.println("eventId: " + DesUtil.decrypt(eventIdCipher, strKeyBytes));
             System.out.println("eventNo: " + DesUtil.decrypt(eventNoCipher, strKeyBytes));
             System.out.println("customerId: " + DesUtil.decrypt(customerIdCipher, strKeyBytes));
-
         } catch (Exception e) {
             e.printStackTrace();
         }

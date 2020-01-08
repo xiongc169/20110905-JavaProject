@@ -1,4 +1,4 @@
-package org.practice.primary.community.inherit01;
+package org.practice.primary.community.init;
 
 /**
  * @author yoong
@@ -14,25 +14,31 @@ package org.practice.primary.community.inherit01;
  * <p>
  * @date 2012年4月2日
  */
-public class AppInitOrder2 {
+public class BaseClass {
 
-    /**
-     * 入口函数
-     */
-    public static void main(String[] args) {
-        try {
-            initOrderTest();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+    static Foo FOO = new Foo("BaseClass static FOO");
+
+
+    static {
+        System.out.println("BaseClass Static 块");
     }
 
-    /**
-     * 静态变量、静态代码块、变量、代码块、构造函数的执行顺序
-     */
-    private static void initOrderTest() {
-        DeriveClass deriveClass = new DeriveClass();
-        DeriveClass.staticSay();
-        deriveClass.say();
+    {
+        System.out.println("BaseClass {}");
+    }
+
+    Foo foo = new Foo("BaseClass FOO");
+
+    public BaseClass() {
+        System.out.println("BaseClass Constructor");
+    }
+
+
+    public static void staticSay() {
+        System.out.println("BaseClass staticSay");
+    }
+
+    public void say() {
+        System.out.println("BaseClass say");
     }
 }

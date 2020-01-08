@@ -5,13 +5,16 @@ import sun.misc.BASE64Encoder;
 
 /**
  * @author chaoxiong
- *
+ * <p>
  * @desc Base64Utility.java
- *
+ * <p>
  * @date 2016年7月5日 下午3:59:23
  */
 public class Base64Utility {
 
+    /**
+     * 入口函数
+     */
     public static void main(String[] args) {
         try {
             BASE64Encoder encoder = new BASE64Encoder();

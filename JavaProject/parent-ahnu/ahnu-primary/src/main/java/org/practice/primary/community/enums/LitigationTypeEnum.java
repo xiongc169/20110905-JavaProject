@@ -6,10 +6,9 @@ import java.util.stream.Stream;
 
 /**
  * @author yoong
- *
- * @desc 诉讼类型的枚举类
- * liancheng: 20180830-riskmanagersystem
- *
+ * <p>
+ * @desc 诉讼类型的枚举类 —— liancheng: 20180830-riskmanagersystem
+ * <p>
  * @date 2018年9月6日
  */
 public enum LitigationTypeEnum {

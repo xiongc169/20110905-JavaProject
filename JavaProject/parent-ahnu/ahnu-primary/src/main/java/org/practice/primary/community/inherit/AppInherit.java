@@ -1,12 +1,15 @@
 package org.practice.primary.community.inherit;
 
 /**
- * @Desc App
- * @Author
+ * @Desc AppInherit
+ * <p>
+ * @Author yoong
+ * <p>
  * @Date 2019年3月28日20:37:27
+ * <p>
  * @Version 1.0
  */
-public class App {
+public class AppInherit {
 
     /**
      * 入口函数
