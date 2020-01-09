@@ -1,4 +1,4 @@
-package org.practice.primary.book01.chap04;
+package org.practice.primary.book01.chap04.diy;
 
 import lombok.Data;
 
@@ -24,15 +24,15 @@ public class ApiServiceRecord extends ApiBaseRecord {
     private Date modifyTime;
 
     static {
-        System.out.println("ApiServiceRecord static code block");
+        System.out.println("子静态代码块");
     }
 
     {
-        System.out.println("ApiServiceRecord code block");
+        System.out.println("子代码块");
     }
 
     public ApiServiceRecord() {
-        System.out.println("ApiServiceRecord.ApiServiceRecord()");
+        System.out.println("子构造函数");
     }
 
     public ApiServiceRecord(String Id) {
@@ -40,6 +40,6 @@ public class ApiServiceRecord extends ApiBaseRecord {
     }
 
     public static void output() {
-        System.out.println("ApiServiceRecord.output");
+        System.out.println("子.output");
     }
 }

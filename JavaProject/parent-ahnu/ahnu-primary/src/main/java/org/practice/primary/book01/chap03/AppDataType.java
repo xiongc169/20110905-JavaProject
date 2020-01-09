@@ -30,6 +30,7 @@ public class AppDataType {
             primaryDataType();
             wrapperClass();
             integerTest();
+            operatorTest();
             stringTest();
             bigDecimalTest();
             unicode();
@@ -43,17 +44,31 @@ public class AppDataType {
      * 3.3、数据类型(整型)
      */
     public static void intType0303() {
-        byte bb = 0;
-        short ss = 0;
-        int a = 0x10;//16进制
-        int b = 010;//8进制
-        int c = 0b10;//2进制
-        int d = 1000_000_000;
-        long ll = 100;
-        System.out.println("a: " + a);
-        System.out.println("b: " + b);
-        System.out.println("c: " + c);
-        System.out.println("d: " + d);
+        byte byte01 = 0;
+        byte byte02 = 127;//赋值2^7=128，编译不通过
+        System.out.println("byte01: " + byte01);
+        System.out.println("byte02: " + byte02);
+
+        short short01 = 0;
+        short short02 = 32767;//赋值2^15=32768，编译不通过
+        System.out.println("short01: " + short01);
+        System.out.println("short02: " + short02);
+
+        int int01 = 0x10;//16进制
+        int int02 = 010;//8进制
+        int int03 = 0b10;//2进制
+        int int04 = 1000_000_000;//可以使用下划线
+        int int05 = 2147483647;//赋值2^31=2147483648，编译不通过
+        System.out.println("int01: " + int01);
+        System.out.println("int02: " + int02);
+        System.out.println("int03: " + int03);
+        System.out.println("int04: " + int04);
+        System.out.println("int05: " + int05);
+
+        long long01 = 0;
+        long long02 = 9223372036854775807l;//赋值2^63=9223372036854775808l，编译不通过
+        System.out.println("long01: " + long01);
+        System.out.println("long02: " + long02);
 
         int x = 'A';
         System.out.println("x: " + x);
@@ -63,28 +78,29 @@ public class AppDataType {
      * 3.3、数据类型(浮点型)
      */
     public static void floatType0303() {
-        float a = 10f;
-        double b = 10d;
-        Double bb = 10d;
-        System.out.println("a: " + a);
-        System.out.println("b: " + b);
+        float float01 = 123.111222333444555666777888999f;
+        float float02 = 10.0f;
+        double double01 = 123.111222333444555666777888999d;
+        double double02 = 10.0d;
+        Double Double01 = 123.111222333444555666777888999d;
+        Double Double02 = 10.0d;
+        System.out.println("float01: " + float01);
+        System.out.println("double01: " + double01);
+        System.out.println("Double01: " + Double01);
+
+        System.out.println("Float.NEGATIVE_INFINITY: " + Float.NEGATIVE_INFINITY);
+        System.out.println("Float.POSITIVE_INFINITY: " + Float.POSITIVE_INFINITY);
+        System.out.println("Double.NEGATIVE_INFINITY: " + Double.NEGATIVE_INFINITY);
+        System.out.println("Double.POSITIVE_INFINITY: " + Double.POSITIVE_INFINITY);
 
         //double、Double的大小比较
-        if (b == 10) {//true
-            System.out.println("b==10");
-        }
-        if (bb.equals(10)) {//false
-            System.out.println("bb.equals(10)");
-        }
-        if (bb.equals(10d)) {//true
-            System.out.println("bb.equals(10d)");
-        }
-        if (bb.doubleValue() == 10) {//true
-            System.out.println("bb.doubleValue() == 10");
-        }
+        System.out.println("double02 == 10: " + (double02 == 10));//true
+        System.out.println("Double02.equals(10): " + (Double02.equals(10)));//false
+        System.out.println("Double02.equals(10d): " + (Double02.equals(10d)));//true
+        System.out.println("Double02.doubleValue() == 10: " + (Double02.doubleValue() == 10));//true
 
         char c = 65;//A
-        char d = '\u2122';
+        char d = '\u2122';//™
         System.out.println("c: " + c);
         System.out.println("d: " + d);
     }
@@ -218,7 +234,7 @@ public class AppDataType {
 
     /**
      * java中的运算 ^, << , >>,&
-     * https://blog.csdn.net/sx729034738/article/details/69569055 <br>
+     * https://blog.csdn.net/sx729034738/article/details/69569055
      */
     public static void operatorTest() {
         // 左移n位就相当于乘以2的n次方

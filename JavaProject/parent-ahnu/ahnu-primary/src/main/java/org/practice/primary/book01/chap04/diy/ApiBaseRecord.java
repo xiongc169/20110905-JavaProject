@@ -1,4 +1,4 @@
-package org.practice.primary.book01.chap04;
+package org.practice.primary.book01.chap04.diy;
 
 import lombok.Data;
 
@@ -14,15 +14,15 @@ public class ApiBaseRecord {
     private String requestId;
 
     static {
-        System.out.println("ApiBaseRecord static code block");
+        System.out.println("父静态代码块");
     }
 
     {
-        System.out.println("ApiBaseRecord code block");
+        System.out.println("父代码块");
     }
 
     public ApiBaseRecord() {
-        System.out.println("ApiBaseRecord.ApiBaseRecord()");
+        System.out.println("父构造函数");
     }
 
     public ApiBaseRecord(String Id) {
@@ -30,6 +30,6 @@ public class ApiBaseRecord {
     }
 
     public static void output() {
-        System.out.println("ApiBaseRecord.output");
+        System.out.println("父.output");
     }
 }
