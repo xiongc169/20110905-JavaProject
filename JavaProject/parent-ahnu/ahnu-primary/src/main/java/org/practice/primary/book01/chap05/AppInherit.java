@@ -1,5 +1,7 @@
 package org.practice.primary.book01.chap05;
 
+import org.practice.primary.book01.chap04.bok.Employee;
+
 /**
  * @Desc 《Java核心技术·卷1》第五章、继承
  * @Author
@@ -20,14 +22,21 @@ public class AppInherit {
     }
 
     public static void inherit() {
+        Employee employee = new Employee();
+        System.out.println();
+
         Manager manager = new Manager();
+        System.out.println();
+
         manager.setId(10l);
         manager.setName("001-name");
-        manager.setSalary(100l);
-        manager.setBonus(50l);
+        manager.setSalary(100d);
+        manager.setBonus(50d);
+
         String greet = manager.greet();
-        System.out.println(greet);
-        Long allSalary = manager.getSalary();
-        System.out.println(allSalary);
+        Double allSalary = manager.getSalary();
+
+        Employee manager01 = new Manager();
+        //manager01.setBonus(100d);//编译不通过
     }
 }

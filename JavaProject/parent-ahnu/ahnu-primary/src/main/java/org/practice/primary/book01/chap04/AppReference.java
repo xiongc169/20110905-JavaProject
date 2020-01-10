@@ -1,6 +1,6 @@
-package org.practice.primary.book01.chap03;
+package org.practice.primary.book01.chap04;
 
-import org.practice.primary.book01.chap05.Employee;
+import org.practice.primary.book01.chap04.bok.Employee;
 
 /**
  * 流言终结者：Java是引用传递还是值传递？
