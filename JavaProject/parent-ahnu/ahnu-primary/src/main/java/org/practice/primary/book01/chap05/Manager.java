@@ -15,6 +15,15 @@ import java.util.Date;
 public class Manager extends Employee {
 
     private Double bonus;
+    private String managerTitle = getTitle();
+
+    {
+        System.out.println("Manager 代码块");
+    }
+
+    static {
+        System.out.println("Manager 静态代码块");
+    }
 
     public Manager() {
         System.out.println("Manager.Manager()");
@@ -26,15 +35,22 @@ public class Manager extends Employee {
     }
 
     @Override
-    public Double getSalary() {
+    public double getSalary() {
         System.out.println("Manager.getSalary()");
-        //return getSalary() + bonus;//抛异常：java.lang.StackOverflowError
-        return super.getSalary() + bonus;
+        //return salary + bonus;    //编译不通过，获取不到salary字段；
+        //return getSalary() + bonus;   //执行抛异常：java.lang.StackOverflowError；
+        //return this.getSalary() + bonus;  //执行抛异常：java.lang.StackOverflowError；
+        return super.getSalary() + bonus;   //正解，可以通过super.salary 访问父类非私有域(public|protected)
     }
 
     public String greet() {
         System.out.println("Manager.greet()");
-        String greet = "Manager " + this.getName();
-        return greet;
+        return "Manager.greet()";
     }
+
+    public String getTitle() {
+        System.out.println("Manager.getTitle()");
+        return "Manager.getTitle()";
+    }
+
 }

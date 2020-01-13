@@ -100,7 +100,7 @@ public class AppObject {
         System.out.println(pow01);
     }
 
-    private static void initOrder() {
+    public static void initOrder() {
         //ApiBaseRecord.output();//父静态代码块 - 静态方法 (需单独执行)
         //System.out.println();
 
