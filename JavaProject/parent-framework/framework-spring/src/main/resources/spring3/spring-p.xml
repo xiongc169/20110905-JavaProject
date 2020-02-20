@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
+       default-lazy-init="false" default-autowire="byType" default-init-method="" default-destroy-method="">
+
+    <description>spring-context</description>
+    <!--<import resource="classpath*:ioc/spring-anno.xml"/>-->
+
+    <bean id="customer_01" name="customer_01_name" class="org.practice.spring.domain.Customer" autowire="byName" scope="singleton">
+        <p:customerId>customerId-01</p:customerId>
+    </bean>
+
+    <bean id="customer_02" name="customer_02_name" class="org.practice.spring.domain.Customer" autowire="byName" scope="singleton">
+        <c:id>customerId-01</c:id>
+    </bean>
+
+</beans>
