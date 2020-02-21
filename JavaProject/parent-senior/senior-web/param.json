@@ -1,0 +1,285 @@
+{
+	"info": {
+		"_postman_id": "56578ae3-cc1f-4c39-9193-f746246e5c88",
+		"name": "param",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://127.0.0.1:7095/param/requestName?name=123&qq=111",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:7095/param/requestName?name=123&qq=111",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "7095",
+					"path": [
+						"param",
+						"requestName"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "123"
+						},
+						{
+							"key": "qq",
+							"value": "111"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:7095/param/requestMenu?menu={\"menuId\":\"menuId-01\",\"menuName\":\"menuName-01\",\"menuUrl\":\"menuUrl-01\"}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "menuId",
+							"value": "1111111$guid}}1",
+							"type": "text"
+						},
+						{
+							"key": "menuName",
+							"value": "menuName",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:7095/param/requestMenu?",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "7095",
+					"path": [
+						"param",
+						"requestMenu"
+					],
+					"query": [
+						{
+							"key": "menuId",
+							"value": "1111",
+							"disabled": true
+						},
+						{
+							"key": "menuName",
+							"value": "menuName",
+							"disabled": true
+						},
+						{
+							"key": "menuUrl",
+							"value": "menuUrl",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:7095/param/requestParamName?name=name-01234",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:7095/param/requestParamName?name=name-01234",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "7095",
+					"path": [
+						"param",
+						"requestParamName"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "name-01234"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:7095/param/requestParamMenu",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "menu",
+							"value": "{\"menuId\":\"menuId-01\",\"menuName\":\"menuName-01\",\"menuUrl\":\"menuUrl-01\"}",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:7095/param/requestParamMenu?",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "7095",
+					"path": [
+						"param",
+						"requestParamMenu"
+					],
+					"query": [
+						{
+							"key": "menuId",
+							"value": "menuId",
+							"disabled": true
+						},
+						{
+							"key": "menuName",
+							"value": "menuName",
+							"disabled": true
+						},
+						{
+							"key": "menuUrl",
+							"value": "menuUrl",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:7095/param/requestBodyName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7095/param/requestBodyName",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7095",
+					"path": [
+						"param",
+						"requestBodyName"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:7095/param/requestBodyMenu",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "menuId",
+							"value": "2222",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7095/param/requestBodyMenu?menuId=1111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7095",
+					"path": [
+						"param",
+						"requestBodyMenu"
+					],
+					"query": [
+						{
+							"key": "menuId",
+							"value": "1111"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
