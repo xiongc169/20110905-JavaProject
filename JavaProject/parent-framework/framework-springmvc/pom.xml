@@ -4,14 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.yoong.practice</groupId>
-        <artifactId>parent-senior</artifactId>
+        <artifactId>parent-framework</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>com.yoong.practice</groupId>
-    <artifactId>senior-web</artifactId>
+    <artifactId>framework-springmvc</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>senior-web</name>
+    <name>framework-springmvc</name>
     <url>http://maven.apache.org</url>
 
     <properties>
