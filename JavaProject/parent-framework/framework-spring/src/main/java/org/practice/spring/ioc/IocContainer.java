@@ -9,7 +9,6 @@ import org.practice.spring.domain2.Student;
 import org.practice.spring.ioc.aware.XApplicationContextAware;
 import org.practice.spring.ioc.aware.XBeanName;
 import org.practice.spring.ioc.aware.XBeanNameAware;
-import org.practice.spring.service.UserServiceImpl;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.PropertyAccessorFactory;
 import org.springframework.beans.PropertyValue;
@@ -42,15 +41,17 @@ public class IocContainer {
      */
     public static void main(String[] args) {
         try {
-            injectDemo();
-            beanFactoryDemo();
-            applicationDemo();
-            getBeanDefinitionAndRegister();
-            beanFactoryPostProcessor();
-            wrapperDemo();
-            awareDemo();
-            resourceDemo();
-            annotationDemo();
+            injectDemo0202();
+            beanFactoryDemo0401();
+            applicationDemo0401();
+            getBeanDefinitionAndRegister0402();
+            beanFactoryPostProcessor040402();
+            wrapperDemo040403();
+            awareDemo040403();
+            beanPostProcessor040403();
+            resourceDemo0501();
+            i18nDemo0502();
+            annotationDemo0601();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -67,7 +68,7 @@ public class IocContainer {
      * IoC的配置方式：XML配置、注解配置；
      * http://www.cnblogs.com/best/p/5727935.html
      */
-    public static void injectDemo() {
+    public static void injectDemo0202() {
         Resource resource = new ClassPathResource("ioc/spring-context.xml");
         BeanFactory xmlFactory = new XmlBeanFactory(resource);
         //2.2.1、构造方法注入
@@ -96,7 +97,7 @@ public class IocContainer {
      * 通过DefaultListableBeanFactory加载xml配置文件
      * https://blog.csdn.net/weixin_33721344/article/details/91652199
      */
-    public static void beanFactoryDemo() {
+    public static void beanFactoryDemo0401() {
         //XmlBeanFactory
         Resource resource = new ClassPathResource("ioc/spring-context.xml");
         BeanFactory xmlFactory = new XmlBeanFactory(resource);
@@ -129,7 +130,7 @@ public class IocContainer {
      * https://blog.csdn.net/judyfun/article/details/52210148
      * https://blog.csdn.net/qq_36951116/article/details/79133662
      */
-    public static void applicationDemo() {
+    public static void applicationDemo0401() {
         try {
             ApplicationContext fileSystemXmlPre = new FileSystemXmlApplicationContext();//new String[]{"", ""}
             Resource resource = fileSystemXmlPre.getResource("http://www.baidu.com");
@@ -184,7 +185,7 @@ public class IocContainer {
      * Spring BeanDefinitionRegistry
      * https://blog.csdn.net/chs007chs/article/details/78614332
      */
-    public static void getBeanDefinitionAndRegister() {
+    public static void getBeanDefinitionAndRegister0402() {
         Resource resource = new ClassPathResource("ioc/spring-context.xml");
         BeanFactory xmlFactory = new XmlBeanFactory(resource);
         //获取BeanDefinition，并注册
@@ -209,7 +210,7 @@ public class IocContainer {
      * TODO: 4.4.2、插手容器的启动 (P66)
      * 代码4-41、4-42 BeanFactoryPostProcessor————PropertyPlaceholderConfigurer、PropertyOverrideConfigurer、CustomEditorConfigurer(略)
      */
-    public static void beanFactoryPostProcessor() {
+    public static void beanFactoryPostProcessor040402() {
         //初始化BeanFactory
         Resource resource = new ClassPathResource("ioc/spring-context.xml");
         ConfigurableListableBeanFactory clBeanFactory = new XmlBeanFactory(resource);
@@ -245,7 +246,7 @@ public class IocContainer {
      * Spring容器技术内幕之BeanWrapper类介绍
      * https://www.cnblogs.com/xiao2/p/7711850.html
      */
-    public static void wrapperDemo() {
+    public static void wrapperDemo040403() {
         Car car = new Car();
         //通过PropertyAccessorFactory将user对象封装成BeanWrapper
         BeanWrapper wrapper = PropertyAccessorFactory.forBeanPropertyAccess(car);
@@ -268,7 +269,7 @@ public class IocContainer {
      * https://www.cnblogs.com/drafire/p/9273940.html
      * https://www.cnblogs.com/FraserYu/p/11211235.html
      */
-    public static void awareDemo() {
+    public static void awareDemo040403() {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:ioc/spring-aware.xml");
         XBeanName xBeanName = (XBeanName) context.getBean("xBeanName");
         XBeanNameAware xBeanNameAware = (XBeanNameAware) context.getBean("xBeanNameAware");
@@ -282,13 +283,23 @@ public class IocContainer {
     }
 
     /**
+     * TODO: 4.4.3、了解bean的一生 (P76)
+     * <p>
+     */
+    public static void beanPostProcessor040403() {
+        ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("classpath:ioc/spring-postprocessor.xml");
+        Customer customer = (Customer) classPathXmlApplicationContext.getBean("customer_01");
+        System.out.println(customer);
+    }
+
+    /**
      * TODO: 5.1、统一资源加载策略 (P84)
      * Resource: ByteArrayResource、ClassPathResource、FileSystemResource、UrlResource、InputStreamResource;
      * ResourceLoader: DefaultResourceLoader、FileSystemResourceLoader;
      * ResourcePatternResolver:
      * ApplicationContext:
      */
-    public static void resourceDemo() throws Exception {
+    public static void resourceDemo0501() throws Exception {
         //Resource
         byte[] bytes = new byte[1024];
         Resource byteArrayResource = new ByteArrayResource(bytes);
@@ -327,7 +338,7 @@ public class IocContainer {
     /**
      * TODO: 5.2、国际化信息支持 (P95)
      */
-    public static void i18nDemo() {
+    public static void i18nDemo0502() {
         Locale locale = Locale.CHINA;
         Locale locale2 = new Locale("zh");
         Locale locale3 = new Locale("zh", "CN");
@@ -339,7 +350,7 @@ public class IocContainer {
     /**
      * TODO: 6.1、基于注解的依赖注入 (P110)
      */
-    public static void annotationDemo() {
+    public static void annotationDemo0601() {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:ioc/spring-anno.xml");
         List<String> names = Arrays.asList(context.getBeanDefinitionNames());
         System.out.println(names.size());

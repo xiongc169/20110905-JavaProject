@@ -2,6 +2,8 @@ package org.practice.spring.ioc;
 
 import com.alibaba.fastjson.JSON;
 import org.practice.spring.domain.User;
+import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
@@ -16,7 +18,16 @@ public class IocContainerLite {
      * @param args
      */
     public static void main(String[] args) {
+        try {
+            //BeanFactoryPostProcessor
+            //BeanPostProcessor
+            startContainer();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
+    public static void startContainer() {
         ClassPathXmlApplicationContext cpXmlContext = null;
         FileSystemXmlApplicationContext fsXmlContext = null;
 
@@ -41,6 +52,5 @@ public class IocContainerLite {
                 fsXmlContext.close();
             }
         }
-
     }
 }
