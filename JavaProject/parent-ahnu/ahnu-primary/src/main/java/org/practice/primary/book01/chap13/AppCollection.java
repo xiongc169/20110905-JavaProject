@@ -19,6 +19,40 @@ public class AppCollection {
      */
     public static void main(String[] args) {
         try {
+            Iterable iterable = new ArrayList();
+            Iterator iterator = iterable.iterator();
+            Collection collection = new ArrayList();
+            List<String> list = new ArrayList<>();
+
+            iterable.forEach(item -> System.out.println(item));
+            for (Object item : iterable) {
+                System.out.println(item);
+            }
+
+            Set hashSet = new HashSet();
+            Set treeSet = new TreeSet();
+
+            Queue queue = new LinkedList();
+            Deque deque = new LinkedList();
+            Queue priorityQueue = new PriorityQueue<Integer>();
+
+            Collection vector = new Vector();
+            Collection stack = new Stack();
+
+            Map hashMap = new HashMap();
+            Map hashTable = new Hashtable();
+            Dictionary dictionary = new Hashtable();
+
+
+            AbstractCollection abstractCollection = new ArrayList();
+            AbstractList abstractList = new ArrayList();
+            Map<String, String> map = new HashMap();
+            String value01 = map.put("1", "value-01");
+            String value02 = map.put("1", "value-02");
+            System.out.println(value01);
+            System.out.println(value02);
+            Properties properties = new Properties();
+
             collection();
             blockingCollection();
             concurrentCollection();
@@ -39,9 +73,16 @@ public class AppCollection {
         ListIterator<String> listIterator = linkedList.listIterator();
         ((ListIterator<String>) listIterator).add("Head");
 
+        Comparator comparator = new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                return 0;
+            }
+        };
+
         ArrayQueue queue = new ArrayQueue(10);
 
-        TreeSet<String> treeSet = new TreeSet();
+        TreeSet<String> treeSet = new TreeSet(comparator);
         treeSet.add("Bob");
         treeSet.add("Amy");
         treeSet.add("David");
