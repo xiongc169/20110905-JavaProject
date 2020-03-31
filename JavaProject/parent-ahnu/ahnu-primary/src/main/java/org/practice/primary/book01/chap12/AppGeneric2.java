@@ -7,15 +7,10 @@ import java.util.List;
 
 /**
  * @Desc App2
- * @Author
- * @Date
- * @Version 1.0
  */
 public class AppGeneric2 {
     /**
      * 入口函数
-     *
-     * @param args
      */
     public static void main(String[] args) {
         TMethod tMethod = new TMethod();

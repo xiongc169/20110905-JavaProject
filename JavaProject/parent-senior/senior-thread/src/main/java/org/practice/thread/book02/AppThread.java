@@ -1,7 +1,7 @@
 package org.practice.thread.book02;
 
 /**
- * 《Java核心技术卷1 基础知识》
+ * 《Java核心技术卷1 基础知识》第十四章、多线程
  * https://www.jb51.net/books/227644.html
  *
  * @author Administrator
@@ -51,5 +51,8 @@ public class AppThread {
         });
         //Runnable 可运行
         thread.start();
+    }
+
+    public static void property1404() {
     }
 }
