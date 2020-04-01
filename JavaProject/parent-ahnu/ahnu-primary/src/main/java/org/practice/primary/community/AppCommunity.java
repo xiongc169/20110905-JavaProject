@@ -11,7 +11,7 @@ import org.practice.primary.community.domain.Student;
  * @description App.java
  * @date 2012年4月2日
  */
-public class App {
+public class AppCommunity {
 
     /**
      * 入口函数

@@ -10,15 +10,13 @@ package org.practice.thread;
  */
 public class ThreadApp {
 
-	/**
-	 * 入口函数
-	 *
-	 * @param args
-	 */
-	public static void main(String[] args) {
+    /**
+     * 入口函数
+     */
+    public static void main(String[] args) {
 
-		System.out.println(args.length);
+        System.out.println(args.length);
 
-	}
+    }
 
 }

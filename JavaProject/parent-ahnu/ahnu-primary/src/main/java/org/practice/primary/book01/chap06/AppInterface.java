@@ -22,12 +22,11 @@ public class AppInterface {
      */
     public static void main(String[] args) {
         try {
-//            compare0601();
-//            clone0602();
-//            callback0603();
+            compare0601();
+            clone0602();
+            callback0603();
             innerClass0604();
-
-//            instanceof_isInstance();
+            instanceof_isInstance();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
