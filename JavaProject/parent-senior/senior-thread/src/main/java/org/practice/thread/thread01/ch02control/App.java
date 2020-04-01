@@ -24,11 +24,8 @@ public class App {
      */
     public static void main(String[] args) {
         try {
-            //线程的暂停、恢复、中断
-            controlTest();
-
-            //线程的中断
-            interruptThread();
+            controlTest(); //线程的暂停、恢复、中断
+            interruptThread(); //线程的中断
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -48,7 +45,7 @@ public class App {
         MyRunnable myRunnable = new MyRunnable();
         Thread thread = new Thread(myRunnable, "Thread-1");
         thread.start();
-        System.out.println(format.format(new Date()) + "  thread.start...");
+        System.out.println(format.format(new Date()) + " thread.start...");
         TimeUnit.MILLISECONDS.sleep(sleepTime);
 
         //暂停线程

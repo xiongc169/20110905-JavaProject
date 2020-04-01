@@ -5,7 +5,7 @@ import org.practice.thread.thread01.model.Person;
 
 /**
  * Java总结篇系列：Java多线程（三）
- * PS：线程同步
+ * PS：线程同步：synchronized方法、synchronized代码块、Lock
  * https://www.cnblogs.com/lwbqqyumidi/p/3821389.html
  * Java中的多线程你只要看这一篇就够了
  * http://www.cnblogs.com/wxd0108/p/5479442.html
@@ -19,7 +19,7 @@ public class App {
         try {
             //线程同步
             synchronizedTest();
-            //synchronizedTest2();
+            synchronizedTest2();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -27,7 +27,6 @@ public class App {
 
     /**
      * Java总结篇系列：Java多线程（三） <br>
-     * PS：线程同步：synchronized方法、synchronized代码块、Lock
      * http://www.cnblogs.com/lwbqqyumidi/p/3821389.html
      */
     public static void synchronizedTest() throws Exception {
@@ -56,6 +55,4 @@ public class App {
         Thread.sleep(1000);
         System.out.printf("saveAccount Balance: %d \n", account.getBalance());
     }
-
-
 }
