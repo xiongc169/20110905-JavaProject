@@ -10,11 +10,9 @@ import org.practice.thread.thread01.model.Person;
  * @date 2016年4月17日 下午8:34:11
  */
 public class InputThread extends Thread {
+
     public Person person = null;
 
-    /**
-     *
-     */
     public void run() {
         Scanner scanner = new Scanner(System.in);
 

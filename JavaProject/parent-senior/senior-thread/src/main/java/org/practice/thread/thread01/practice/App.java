@@ -12,8 +12,8 @@ public class App {
     public static void main(String[] args) {
         try {
             //测试
-            //inputCallableTest();
-            //inputThreadTest();
+            inputCallableTest();
+            inputThreadTest();
             concurrentTest();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -24,12 +24,10 @@ public class App {
      * Callable测试
      */
     public static void inputCallableTest() {
-
         InputCallable myCallable = new InputCallable();
         FutureTask ft = new FutureTask(myCallable);
         Thread thread = new Thread(ft);
         thread.start();
-
         try {
             Person p = (Person) ft.get();
             System.out.println("inputCallableTest: " + p.getName());
@@ -46,7 +44,7 @@ public class App {
         input.start();
         input.join();
         Person person = input.person;
-        if (person == null) {
+        if (person != null) {
             System.out.println("inputThreadTest: " + person.getName());
         } else {
             System.out.println("inputThreadTest is null! ");
