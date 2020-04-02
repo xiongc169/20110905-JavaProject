@@ -1,5 +1,7 @@
 package org.practice.thread.thread02.ch11countdownlatch;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.CountDownLatch;
 
 /**
@@ -9,6 +11,8 @@ import java.util.concurrent.CountDownLatch;
  * @author Administrator
  */
 public class MyCountDownLatch {
+
+    private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
 
     /**
      * 入口函数
@@ -20,12 +24,12 @@ public class MyCountDownLatch {
             new Thread() {
                 public void run() {
                     try {
-                        System.out.println("First Thread Begin " + Thread.currentThread().getId() + " " + Thread.currentThread().getName());
+                        System.out.println(format.format(new Date()) + " First Thread Begin " + Thread.currentThread().getId() + " " + Thread.currentThread().getName());
                         Thread.sleep(4000);
-                        System.out.println("First Thread End");
+                        System.out.println(format.format(new Date()) + " First Thread End");
                         latch.countDown();
                     } catch (Exception ex) {
-                        System.out.println("First Thread Exception");
+                        System.out.println(format.format(new Date()) + " First Thread Exception");
                     }
                 }
             }.start();
@@ -33,20 +37,20 @@ public class MyCountDownLatch {
             new Thread() {
                 public void run() {
                     try {
-                        System.out.println("Second Thread Begin " + Thread.currentThread().getId() + " " + Thread.currentThread().getName());
+                        System.out.println(format.format(new Date()) + " Second Thread Begin " + Thread.currentThread().getId() + " " + Thread.currentThread().getName());
                         Thread.sleep(6000);
-                        System.out.println("Second Thread End");
+                        System.out.println(format.format(new Date()) + " Second Thread End");
                         latch.countDown();
                     } catch (Exception ex) {
-                        System.out.println("Second Thread Exception");
+                        System.out.println(format.format(new Date()) + " Second Thread Exception");
                     }
                 }
             }.start();
 
-            System.out.println("Main Thread Begin " + Thread.currentThread().getId() + " " + Thread.currentThread().getName());
+            System.out.println(format.format(new Date()) + " Main Thread Begin " + Thread.currentThread().getId() + " " + Thread.currentThread().getName());
             latch.await();
             //latch.await(3, TimeUnit.MILLISECONDS);
-            System.out.println("Main Thread End " + Thread.currentThread().getId() + " " + Thread.currentThread().getName());
+            System.out.println(format.format(new Date()) + " Main Thread End " + Thread.currentThread().getId() + " " + Thread.currentThread().getName());
         } catch (Exception ex) {
             ex.printStackTrace();
         }

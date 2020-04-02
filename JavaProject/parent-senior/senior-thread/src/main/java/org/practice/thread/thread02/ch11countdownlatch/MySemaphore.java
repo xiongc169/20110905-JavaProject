@@ -1,6 +1,5 @@
 package org.practice.thread.thread02.ch11countdownlatch;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.Semaphore;
@@ -13,19 +12,19 @@ import java.util.concurrent.Semaphore;
  */
 public class MySemaphore {
 
+    private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
+
     /**
      * 入口函数
      */
     public static void main(String[] args) {
         try {
-
             Semaphore semaphore = new Semaphore(3);
             for (int i = 0; i < 9; i++) {
                 MyThread myThread = new MyThread(i, semaphore);
                 myThread.start();
             }
-
-            System.out.println(Thread.currentThread().getId() + " " + Thread.currentThread().getName());
+            //System.out.println(format.format(new Date()) + " " + " " + Thread.currentThread().getName());
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -38,7 +37,7 @@ class MyThread extends Thread {
 
     private Semaphore semaphore;
 
-    private DateFormat dt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
 
     public MyThread() {
     }
@@ -51,14 +50,13 @@ class MyThread extends Thread {
     public void run() {
         try {
             semaphore.acquire();
-            System.out.println(dt.format(new Date()) + " " + num + " Begin... " + Thread.currentThread().getId());
+            System.out.println(format.format(new Date()) + " " + num + " Begin... " + Thread.currentThread().getId());
             Thread.sleep(4000);
-            System.out.println(dt.format(new Date()) + " " + num + " End! " + Thread.currentThread().getId());
+            System.out.println(format.format(new Date()) + " " + num + " End! " + Thread.currentThread().getId());
             semaphore.release();
         } catch (InterruptedException e) {
             String msg = e.getMessage();
             System.out.println(msg);
         }
     }
-
 }
