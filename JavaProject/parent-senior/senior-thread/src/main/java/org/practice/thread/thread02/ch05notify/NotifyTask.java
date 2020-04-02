@@ -1,19 +1,28 @@
 package org.practice.thread.thread02.ch05notify;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class NotifyTask implements Runnable {
 
-	private Object obj;
+    private Object obj;
 
-	public NotifyTask(Object obj) {
-		this.obj = obj;
-	}
+    private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
 
-	public void run() {
-		synchronized (obj) {
-			System.out.println("NotifyTask Before ");
-			obj.notify();
-			System.out.println("NotifyTask End ");
-		}
-	}
+    public NotifyTask(Object obj) {
+        this.obj = obj;
+    }
 
+    public void run() {
+        synchronized (obj) {
+            try {
+                System.out.println(format.format(new Date()) + " NotifyTask Before ");
+                obj.notify();
+                obj.wait();
+                System.out.println(format.format(new Date()) + " NotifyTask End ");
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
 }

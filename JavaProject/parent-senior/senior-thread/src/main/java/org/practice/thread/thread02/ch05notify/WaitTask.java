@@ -1,25 +1,28 @@
 package org.practice.thread.thread02.ch05notify;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class WaitTask implements Runnable {
 
-	private Object obj;
+    private Object obj;
 
-	public WaitTask(Object obj) {
-		this.obj = obj;
-	}
+    private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
 
-	public void run() {
+    public WaitTask(Object obj) {
+        this.obj = obj;
+    }
 
-		synchronized (obj) {
-			System.out.println("WaitTask Before ");
-			try {
-				obj.wait();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			System.out.println("WaitTask End ");
-		}
-
-	}
-
+    public void run() {
+        synchronized (obj) {
+            try {
+                System.out.println(format.format(new Date()) + " WaitTask Before ");
+                obj.wait();
+                System.out.println(format.format(new Date()) + " WaitTask End ");
+                obj.notifyAll();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

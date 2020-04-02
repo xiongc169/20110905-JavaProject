@@ -37,8 +37,4 @@ public class ThreadLocalModel {
         this.threadName = threadName;
     }
 
-    public void set() {
-        threadId.set(Thread.currentThread().getId());
-        threadName.set(Thread.currentThread().getName());
-    }
 }

@@ -22,6 +22,7 @@ public class MyThreadLocal extends Thread {
 
     @Override
     public void run() {
-        System.out.println(model.getThreadId() + " " + model.getThreadName());
+        System.out.println("threadId: " + model.getThreadId().get());
+        System.out.println("threadName: " + model.getThreadName().get());
     }
 }

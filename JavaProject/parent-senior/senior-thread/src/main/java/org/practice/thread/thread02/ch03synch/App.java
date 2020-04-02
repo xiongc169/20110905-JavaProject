@@ -1,9 +1,5 @@
 package org.practice.thread.thread02.ch03synch;
 
-import org.practice.thread.thread01.model.ThreadLocalModel;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -43,16 +39,12 @@ public class App {
             }
             System.out.println("Thread.activeCount(): " + Thread.activeCount());
             System.out.println(app.count);
-
-            //threadLocal测试
-            threadLocalTest();
-            threadLocalTest01();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    public static void insertTest() {
+    private static void insertTest() {
         //调用 普通插入 方法
         InsertData insertUtility = new InsertData();
         Thread threadA = new Thread(new Runnable() {
@@ -72,7 +64,7 @@ public class App {
         threadB.start();
     }
 
-    public static void synchronizedInsert() {
+    private static void synchronizedInsert() {
         //调用 同步插入(synchronized方法、代码块) 方法
         InsertData insertUtility = new InsertData();
         Thread threadA = new Thread(new Runnable() {
@@ -92,7 +84,7 @@ public class App {
         threadB.start();
     }
 
-    public static void lockInsert() {
+    private static void lockInsert() {
         //调用 同步插入(lock) 方法
         InsertData insertUtility = new InsertData();
         Thread threadA = new Thread(new Runnable() {
@@ -122,7 +114,7 @@ public class App {
 
     private AtomicInteger atomicCount = new AtomicInteger();
 
-    public static void volatileTest(App app) {
+    private static void volatileTest(App app) {
         for (int i = 0; i < 100; i++) {
             Thread thread = new Thread(new Runnable() {
                 @Override
@@ -165,76 +157,4 @@ public class App {
         //情形四：AtomicInteger同步
         atomicCount.getAndIncrement();
     }
-
-    /**
-     * Java并发编程：深入剖析ThreadLocal
-     * https://www.cnblogs.com/dolphin0520/p/3920407.html
-     */
-    ThreadLocal<Long> longLocal = new ThreadLocal<Long>();
-    ThreadLocal<String> stringLocal = new ThreadLocal<String>();
-
-    public void set() {
-        longLocal.set(Thread.currentThread().getId());
-        stringLocal.set(Thread.currentThread().getName());
-    }
-
-    public long getLong() {
-        return longLocal.get();
-    }
-
-    public String getString() {
-        return stringLocal.get();
-    }
-
-    public static void threadLocalTest() throws Exception {
-        App app = new App();
-        //报空指针异常
-        System.out.println(app.getLong());
-        System.out.println(app.getString());
-
-        Thread thread1 = new Thread() {
-            public void run() {
-                app.set();
-                System.out.println(app.getLong());
-                System.out.println(app.getString());
-            }
-        };
-        thread1.start();
-        thread1.join();
-
-        System.out.println(app.getLong());
-        System.out.println(app.getString());
-    }
-
-    public static void threadLocalTest01() throws Exception {
-        ThreadLocalModel model = new ThreadLocalModel();
-        model.set();
-        System.out.println("threadId: " + model.getThreadId().get());
-        System.out.println("threadName: " + model.getThreadName().get());
-
-        Thread thread1 = new Thread() {
-            public void run() {
-                model.set();
-                System.out.println("threadId: " + model.getThreadId().get());
-                System.out.println("threadName: " + model.getThreadName().get());
-            }
-        };
-        thread1.start();
-        thread1.join();
-
-        System.out.println("threadId: " + model.getThreadId().get());
-        System.out.println("threadName: " + model.getThreadName().get());
-    }
-
-    private ThreadLocal<Connection> connection = new ThreadLocal<Connection>() {
-        @Override
-        protected Connection initialValue() {
-            try {
-                return DriverManager.getConnection("DB_URL");
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                return null;
-            }
-        }
-    };
 }
