@@ -6,11 +6,10 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @author yoong
- *
+ * <br/>
  * @desc InsertData.java
- *
+ * <br/>
  * @date 2018年8月29日
- *
  */
 public class InsertData {
 
@@ -19,7 +18,7 @@ public class InsertData {
     private Lock lock = new ReentrantLock();
 
     public void insert(Thread thread) {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 100; i++) {
             System.out.println(thread.getName() + " 在插入数据 " + i);
             arrayList.add(i);
         }
@@ -28,7 +27,7 @@ public class InsertData {
 
     public void insert4Synchronized(Thread thread) {
         synchronized (this) {
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 100; i++) {
                 System.out.println(thread.getName() + " 在插入数据 " + i);
                 arrayList.add(i);
             }
@@ -39,7 +38,7 @@ public class InsertData {
     public void insert4Lock(Thread thread) {
         lock.lock();
         try {
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 100; i++) {
                 System.out.println(thread.getName() + " 在插入数据 " + i);
                 arrayList.add(i);
             }
