@@ -1,12 +1,17 @@
-package org.practice.algorithm.ch01.recursion;
+package org.practice.algorithm.ch01.inference;
 
 /**
- * @Desc 递推(顺推 、 逆推)
- * @Author
- * @Date
+ * @Desc 递推思想(顺推 、 逆推)
+ * PS：斐波那契数列、整存零取
+ * https://www.cnblogs.com/huangxincheng/archive/2011/12/29/2305525.html
+ * <p>
+ * @Author yoong
+ * <p/>
+ * @Date 2019年2月14日10:15:00
+ * <p/>
  * @Version 1.0
  */
-public class App4Recursion {
+public class App4Inference {
 
     /**
      * 入口函数
@@ -17,6 +22,7 @@ public class App4Recursion {
             System.out.println(count);
             Integer count2 = fibonacciByRecursion(12);
             System.out.println(count2);
+            getMoney();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -47,4 +53,19 @@ public class App4Recursion {
         }
     }
 
+    /**
+     * 整存零取(递推-逆推)
+     */
+    public static void getMoney() {
+        double balance = 3000;
+        for (int i = 47; i > 0; i--) {
+            balance = 3000 + balance / 1.001425;
+        }
+        System.out.println(balance);//139288.0661922625
+
+        for (int i = 1; i <= 47; i++) {
+            balance = (balance - 3000) * 1.001425;
+        }
+        System.out.println(balance);
+    }
 }

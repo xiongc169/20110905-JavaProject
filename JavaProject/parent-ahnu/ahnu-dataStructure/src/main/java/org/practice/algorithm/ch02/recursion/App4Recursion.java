@@ -1,9 +1,14 @@
 package org.practice.algorithm.ch02.recursion;
 
 /**
- * @Desc 递归
- * @Author
- * @Date
+ * @Desc 递归算法
+ * PS：二叉树先序、中序、后序遍历
+ * https://www.cnblogs.com/huangxincheng/archive/2011/12/30/2306875.html
+ * <p/>
+ * @Author yoong
+ * <p/>
+ * @Date 2019年2月14日10:15:00
+ * <p/>
  * @Version 1.0
  */
 public class App4Recursion {
@@ -19,7 +24,6 @@ public class App4Recursion {
             System.out.println(sum);
             Integer count = stairs(10);
             System.out.println(count);
-
         } catch (Exception ex) {
             ex.printStackTrace();
         }
