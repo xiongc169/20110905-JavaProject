@@ -5,9 +5,12 @@ package org.practice.designPattern.struct.ch08proxy;
  * http://www.runoob.com/design-pattern/proxy-pattern.html
  */
 public class App {
-	public static void main(String[] args) {
 
-		ProxyImage proxy = new ProxyImage("beautiful");
-		proxy.display();
-	}
+    /**
+     * 入口函数
+     */
+    public static void main(String[] args) {
+        ProxyImage proxy = new ProxyImage("beautiful");
+        proxy.display();
+    }
 }

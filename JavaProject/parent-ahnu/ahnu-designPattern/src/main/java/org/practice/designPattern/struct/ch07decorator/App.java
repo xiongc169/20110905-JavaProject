@@ -15,11 +15,8 @@ public class App {
 
     /**
      * 入口函数
-     *
-     * @param args
      */
     public static void main(String[] args) {
-
         try {
             decorator_runoob();
         } catch (Exception ex) {
@@ -36,5 +33,4 @@ public class App {
         redCircle.draw();
         redRectangle.draw();
     }
-
 }

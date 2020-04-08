@@ -15,8 +15,6 @@ import org.practice.designPattern.behavior.ch14template.runoob.Game;
 public class App {
     /**
      * 入口函数
-     *
-     * @param args
      */
     public static void main(String[] args) {
         try {
