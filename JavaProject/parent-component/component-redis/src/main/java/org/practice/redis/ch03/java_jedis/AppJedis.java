@@ -1,4 +1,4 @@
-package org.practice.jedis.utility02;
+package org.practice.redis.ch03.java_jedis;
 
 /**
  * java对redis的基本操作
@@ -7,7 +7,7 @@ package org.practice.jedis.utility02;
  * @author chaoxiong
  * @since 2015-10-29 14:50:41
  */
-public class App02 {
+public class AppJedis {
 
     /**
      * 入口函数

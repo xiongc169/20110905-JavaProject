@@ -1,10 +1,10 @@
-package org.practice.jedis.utility01;
+package org.practice.redis.ch02.java_jedis;
 
 /**
  * Java中使用Jedis操作Redis<br>
  * http://www.cnblogs.com/liuling/p/2014-4-19-04.html
  */
-public class App01 {
+public class AppJedis {
 
     /**
      * 入口函数
@@ -24,7 +24,7 @@ public class App01 {
     }
 
     public static void testRedisPool() {
-        RedisPoolUtil.getJedis().set("newname", "中文测试");
-        System.out.println(RedisPoolUtil.getJedis().get("newname"));
+        RedisPoolClient.getJedis().set("newname", "中文测试");
+        System.out.println(RedisPoolClient.getJedis().get("newname"));
     }
 }

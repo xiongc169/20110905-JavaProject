@@ -1,11 +1,11 @@
-package org.practice.jedis.utility;
+package org.practice.redis.ch01.java_jedis;
 
 /**
  * @author chaoxiong
  * @desc App
  * @since 2015-10-29 14:50:41
  */
-public class App {
+public class AppJedis {
 
     /**
      * 入口函数

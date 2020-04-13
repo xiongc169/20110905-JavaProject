@@ -25,6 +25,6 @@
         <property name="connectionFactory" ref="connection"/>
     </bean>
 
-    <context:component-scan base-package="org.practice.jedis.utility03"></context:component-scan>
+    <context:component-scan base-package="org.practice.redis.utility03"></context:component-scan>
 
 </beans>

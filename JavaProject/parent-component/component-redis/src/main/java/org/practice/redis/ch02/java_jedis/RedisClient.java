@@ -1,4 +1,4 @@
-package org.practice.jedis.utility01;
+package org.practice.redis.ch02.java_jedis;
 
 import java.util.HashMap;
 import java.util.Iterator;

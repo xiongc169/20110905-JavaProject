@@ -8,9 +8,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>com.yoong.practice</groupId>
-    <artifactId>component-jedis</artifactId>
+    <artifactId>component-redis</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>component-jedis</name>
+    <name>component-redis</name>
     <url>http://maven.apache.org</url>
 
     <properties>

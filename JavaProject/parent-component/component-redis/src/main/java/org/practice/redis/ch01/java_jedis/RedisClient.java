@@ -1,4 +1,4 @@
-package org.practice.jedis.utility;
+package org.practice.redis.ch01.java_jedis;
 
 import redis.clients.jedis.*;
 
@@ -56,6 +56,11 @@ public class RedisClient {
         Long length = jedis.lpush("list01", "item01", "item02", "item03", "item04");
         String item01 = jedis.lpop("list01");
         System.out.println(length + "  " + item01);
+
+        Long effectRows = jedis.setnx("str01", "string01");
+        System.out.println(effectRows);
+        Long effectRows2 = jedis.setnx("str02", "string02");
+        System.out.println(effectRows2);
     }
 
     public void jedisPoolTest() {

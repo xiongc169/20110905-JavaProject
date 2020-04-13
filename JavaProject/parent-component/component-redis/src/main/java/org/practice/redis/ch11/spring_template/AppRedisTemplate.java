@@ -1,4 +1,4 @@
-package org.practice.jedis.utility03;
+package org.practice.redis.ch11.spring_template;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -12,7 +12,7 @@ import java.util.Date;
  * @Date
  * @Version 1.0
  */
-public class App03 {
+public class AppRedisTemplate {
 
     private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 

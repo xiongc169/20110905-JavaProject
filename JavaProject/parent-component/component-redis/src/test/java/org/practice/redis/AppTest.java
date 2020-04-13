@@ -1,4 +1,4 @@
-package org.practice.jedis;
+package org.practice.redis;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

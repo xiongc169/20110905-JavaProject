@@ -1,4 +1,4 @@
-package org.practice.jedis.utility02;
+package org.practice.redis.ch03.java_jedis;
 
 import redis.clients.jedis.*;
 

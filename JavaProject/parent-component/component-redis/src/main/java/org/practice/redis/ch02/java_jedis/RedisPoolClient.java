@@ -1,4 +1,4 @@
-package org.practice.jedis.utility01;
+package org.practice.redis.ch02.java_jedis;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -10,7 +10,7 @@ import redis.clients.jedis.JedisPoolConfig;
  *
  * @author Administrator
  */
-public class RedisPoolUtil {
+public class RedisPoolClient {
 
     // Redis服务器IP
     private static String ADDR = "127.0.0.1";

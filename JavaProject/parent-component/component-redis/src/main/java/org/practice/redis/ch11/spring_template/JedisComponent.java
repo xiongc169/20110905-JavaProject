@@ -1,4 +1,4 @@
-package org.practice.jedis.utility03;
+package org.practice.redis.ch11.spring_template;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
