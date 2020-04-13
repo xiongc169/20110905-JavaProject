@@ -1,6 +1,6 @@
 package org.anno.provider.serviceImpl;
 
-import org.anno.service.CalculatorService;
+import org.anno.common.facade.CalculatorService;
 
 import com.alibaba.dubbo.config.annotation.Service;
 

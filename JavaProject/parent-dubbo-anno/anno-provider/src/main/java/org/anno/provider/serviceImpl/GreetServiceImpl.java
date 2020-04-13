@@ -1,6 +1,6 @@
 package org.anno.provider.serviceImpl;
 
-import org.anno.service.GreetService;
+import org.anno.common.facade.GreetService;
 
 /**
  * @Desc GreetImpl

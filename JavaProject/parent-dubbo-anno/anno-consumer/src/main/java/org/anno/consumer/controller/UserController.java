@@ -1,7 +1,7 @@
 package org.anno.consumer.controller;
 
-import org.anno.service.CalculatorService;
-import org.anno.service.UserService;
+import org.anno.common.facade.CalculatorService;
+import org.anno.common.facade.UserService;
 import org.springframework.stereotype.Component;
 
 import com.alibaba.dubbo.config.annotation.Reference;
