@@ -26,9 +26,8 @@
     <!--用于创建一个远程服务代理，一个引用可以指向多个注册中心-->
     <!-- 生成远程服务代理，可以和本地bean一样使用demoService，直连配置：url="dubbo://127.0.0.1:20880" -->
     <!--设置URL，则表示点对点直连，不走注册中心-->
-    <dubbo:reference id="calculatorService" interface="org.dubbo.common.service.CalculatorService" version="0.0.9" group="junior" registry="remoteRegistry" protocol="dubbo"/>
-    <dubbo:reference id="advancedCalculatorService" interface="org.dubbo.common.service.CalculatorService" version="1.0.1" group="senior" registry="localRegistry" protocol="rmi"/>
-
+    <dubbo:reference id="calculatorService" interface="org.dubbo.common.facade.CalculatorService" version="0.0.9" group="junior" registry="localRegistry" protocol="dubbo"/>
+    <dubbo:reference id="advancedCalculatorService" interface="org.dubbo.common.facade.CalculatorService" version="1.0.0" group="senior" registry="localRegistry" protocol="rmi"/>
 
     <!--192.168.27.4-->
     <dubbo:registry id="deipReg" address="zookeeper://192.168.27.4:2181"></dubbo:registry>

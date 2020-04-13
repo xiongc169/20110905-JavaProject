@@ -30,7 +30,7 @@
 
     <!--用于暴露一个服务，定义服务的元信息，一个服务可以用多个协议暴露，一个服务也可以注册到多个注册中心-->
     <!-- 声明需要暴露的服务接口 -->
-    <dubbo:service interface="org.dubbo.common.service.CalculatorService" ref="calculator" version="0.0.9" group="junior" registry="localRegistry"></dubbo:service>
-    <dubbo:service interface="org.dubbo.common.service.CalculatorService" ref="advancedCalculator" version="1.0.0" group="senior" registry="localRegistry"></dubbo:service>
+    <dubbo:service interface="org.dubbo.common.facade.CalculatorService" ref="calculator" version="0.0.9" group="junior" registry="localRegistry"></dubbo:service>
+    <dubbo:service interface="org.dubbo.common.facade.CalculatorService" ref="advancedCalculator" version="1.0.0" group="senior" registry="localRegistry"></dubbo:service>
 
 </beans>

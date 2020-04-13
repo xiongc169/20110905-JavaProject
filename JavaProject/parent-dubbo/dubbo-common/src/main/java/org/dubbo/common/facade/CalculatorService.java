@@ -1,4 +1,4 @@
-package org.dubbo.service;
+package org.dubbo.common.facade;
 
 public interface CalculatorService {
 

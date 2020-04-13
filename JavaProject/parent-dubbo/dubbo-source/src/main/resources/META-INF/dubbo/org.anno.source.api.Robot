@@ -1,2 +1,2 @@
-optimusPrime = org.anno.source.impl.OptimusPrime
-bumblebee = org.anno.source.impl.Bumblebee
+optimusPrime = OptimusPrime
+bumblebee = Bumblebee

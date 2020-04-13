@@ -1,4 +1,4 @@
-package org.anno.source.api;
+package org.dubbo.source.api;
 
 import com.alibaba.dubbo.common.extension.SPI;
 

@@ -1,8 +1,8 @@
-package org.anno.source;
+package org.dubbo.source;
 
 import com.alibaba.dubbo.common.extension.ExtensionLoader;
 import com.alibaba.dubbo.common.extension.SPI;
-import org.anno.source.api.Robot;
+import org.dubbo.source.api.Robot;
 
 import java.util.ServiceLoader;
 

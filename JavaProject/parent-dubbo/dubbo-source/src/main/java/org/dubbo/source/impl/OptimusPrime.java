@@ -1,6 +1,6 @@
-package org.anno.source.impl;
+package org.dubbo.source.impl;
 
-import org.anno.source.api.Robot;
+import org.dubbo.source.api.Robot;
 
 /**
  * @Desc OptimusPrime

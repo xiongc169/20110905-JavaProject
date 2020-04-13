@@ -1,6 +1,6 @@
 package org.dubbo.provider.serviceImpl;
 
-import org.dubbo.service.CalculatorService;
+import org.dubbo.common.facade.CalculatorService;
 
 public class AdvancedCalculatorServiceImpl implements CalculatorService {
 

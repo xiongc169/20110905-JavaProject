@@ -3,8 +3,7 @@ package org.dubbo.consumer;
 import com.chesheng.decision.api.IDeipPrefixFacade;
 import com.fcts.open.api.mq.yuntu.decision.OrderQueryReq;
 import com.fcts.open.api.mq.yuntu.result.OrderBaseResp;
-import org.dubbo.service.CalculatorService;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.dubbo.common.facade.CalculatorService;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 /**

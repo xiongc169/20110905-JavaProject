@@ -1,5 +1,7 @@
+package org.dubbo.source;
+
 import com.alibaba.dubbo.common.extension.ExtensionLoader;
-import org.anno.source.api.Robot;
+import org.dubbo.source.api.Robot;
 import org.junit.Test;
 
 import java.util.ServiceLoader;
