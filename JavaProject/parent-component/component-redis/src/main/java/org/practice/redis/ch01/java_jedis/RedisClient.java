@@ -35,7 +35,7 @@ public class RedisClient {
 
         List<JedisShardInfo> shardInfos = new ArrayList<>();
         JedisShardInfo shard1 = new JedisShardInfo(host, port);
-        shard1.setPassword(password);
+        //shard1.setPassword(password);
         JedisShardInfo shard2 = new JedisShardInfo(host);
         shardInfos.add(shard1);
         shardInfos.add(shard2);
@@ -46,8 +46,8 @@ public class RedisClient {
     }
 
     public void jedisTest() {
-        String auth = jedis.auth(password);
-        System.out.println(auth);
+        //String auth = jedis.auth(password);
+        //System.out.println(auth);
 
         String result = jedis.set("str01", "string01");
         String str01 = jedis.get("str01");
@@ -64,8 +64,8 @@ public class RedisClient {
     }
 
     public void jedisPoolTest() {
-        String auth = jedisFromPool.auth(password);
-        System.out.println(auth);
+        //String auth = jedisFromPool.auth(password);
+        //System.out.println(auth);
 
         String str01 = jedisFromPool.get("str01");
         System.out.println(str01);
