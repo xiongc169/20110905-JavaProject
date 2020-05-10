@@ -16,6 +16,7 @@ public class AppJedis {
             rClient.testList();
             rClient.testSet();
             rClient.testMap();
+            rClient.test();
 
             testRedisPool();
         } catch (Exception ex) {

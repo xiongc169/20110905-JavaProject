@@ -1,4 +1,4 @@
-package org.practice.algorithm.book01;
+package org.practice.algorithm.book01.ch02.divide;
 
 public class DivideConquer {
 

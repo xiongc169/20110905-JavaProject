@@ -3,6 +3,10 @@ package org.practice.springcode;
 import org.practice.spring.domain.Car;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+
+import java.net.URL;
 
 /**
  * @Desc SpringCodeApp
@@ -23,6 +27,9 @@ public class SpringCodeApp {
             ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath*:/springcode/spring-code.xml");
             Car car = (Car) applicationContext.getBean("car_01");
             System.out.println(car.getCarId());
+
+            URL url = new URL("");
+            Resource resource = new ClassPathResource("");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
