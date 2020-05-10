@@ -4,9 +4,13 @@ import lombok.Data;
 import org.springframework.stereotype.Component;
 
 /**
- * Customer
- *
- * @author yoong
+ * @Desc Customer
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2014年3月30日
+ * <p>
+ * @Version 1.0
  */
 @Data
 @Component
@@ -18,7 +22,7 @@ public class Customer {
 
     private String sex;
 
-//    @Autowired
+    //    @Autowired
 //    @Autowired(required = false)
 //    @Qualifier("car_02")
 //    @Resource(name = "car_01")

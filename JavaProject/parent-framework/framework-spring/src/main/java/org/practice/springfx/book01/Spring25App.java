@@ -5,7 +5,7 @@ package org.practice.springfx.book01;
  * PS：基于Spring2.5；
  * <p>
  * @Author yoong
- * <p/>
+ * <p>
  * @Version 1.0
  * <p>
  * @Date 2017年8月9日

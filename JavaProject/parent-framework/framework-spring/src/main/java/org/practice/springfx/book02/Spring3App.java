@@ -1,7 +1,7 @@
 package org.practice.springfx.book02;
 
 import org.practice.springfx.domain.Customer;
-import org.practice.springfx.domain2.Student;
+import org.practice.springfx.domain.Student;
 import org.practice.springfx.book02.config.BeanConfig;
 import org.practice.springfx.book02.config.JmsConfig;
 import org.springframework.context.ApplicationContext;
@@ -10,8 +10,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * @Desc Spring3App
- * @Author
- * @Date
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019年8月20日
+ * <p>
  * @Version 1.0
  */
 public class Spring3App {

@@ -4,9 +4,13 @@ import lombok.Data;
 import org.springframework.stereotype.Component;
 
 /**
- * Car
- *
- * @author yoong
+ * @Desc Car
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2014年3月30日
+ * <p>
+ * @Version 1.0
  */
 @Data
 @Component

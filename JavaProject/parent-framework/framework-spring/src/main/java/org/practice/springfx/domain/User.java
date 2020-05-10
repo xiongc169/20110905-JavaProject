@@ -1,13 +1,17 @@
 package org.practice.springfx.domain;
 
 import lombok.Data;
-import org.practice.springfx.book01.reflect.MethodInfo;
+import org.practice.springfx.community01.reflect.MethodInfo;
 import org.springframework.stereotype.Component;
 
 /**
- * User
- *
- * @author yoong
+ * @Desc User
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2014年3月30日
+ * <p>
+ * @Version 1.0
  */
 @Data
 @Component

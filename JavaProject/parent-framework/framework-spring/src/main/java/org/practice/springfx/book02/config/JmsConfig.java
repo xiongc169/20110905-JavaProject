@@ -3,9 +3,12 @@ package org.practice.springfx.book02.config;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @Desc TODO
- * @Author
- * @Date
+ * @Desc JmsConfig
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019年8月20日
+ * <p>
  * @Version 1.0
  */
 @Configuration

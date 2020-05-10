@@ -2,16 +2,19 @@ package org.practice.springfx.book02.config;
 
 import org.practice.springfx.domain.Car;
 import org.practice.springfx.domain.Customer;
-import org.practice.springfx.domain2.Student;
+import org.practice.springfx.domain.Student;
 import org.practice.springfx.book03.condition.FirstCondition;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @Desc JmsConfig
- * @Author
- * @Date
+ * @Desc BeanConfig
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019年8月20日
+ * <p>
  * @Version 1.0
  */
 @Configuration

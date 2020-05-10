@@ -2,8 +2,11 @@ package org.practice.springfx.book02;
 
 /**
  * @Desc JavaConfigApp
- * @Author
- * @Date
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019年8月20日
+ * <p>
  * @Version 1.0
  */
 public class JavaConfigApp {

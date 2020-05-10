@@ -6,8 +6,11 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
 
 /**
  * @Desc FirstCondition
- * @Author
- * @Date
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019年8月20日
+ * <p>
  * @Version 1.0
  */
 public class FirstCondition implements Condition {

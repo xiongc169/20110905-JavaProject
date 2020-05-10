@@ -8,8 +8,11 @@ import org.springframework.context.support.GenericGroovyApplicationContext;
 
 /**
  * @Desc Spring4App
- * @Author
- * @Date
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019年8月20日
+ * <p>
  * @Version 1.0
  */
 public class Spring4App {
