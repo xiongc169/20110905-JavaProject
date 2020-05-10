@@ -9,13 +9,13 @@
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
-    <bean id="xBeanName" class="org.practice.spring.ioc.aware.XBeanName">
+    <bean id="xBeanName" class="org.practice.springfx.book01.ioc.aware.XBeanName">
         <property name="id" value="id-01"></property>
     </bean>
 
-    <bean id="xBeanNameAware" class="org.practice.spring.ioc.aware.XBeanNameAware">
+    <bean id="xBeanNameAware" class="org.practice.springfx.book01.ioc.aware.XBeanNameAware">
         <property name="id" value="id-02"></property>
     </bean>
 
-    <bean id="xApplicationContextAware" class="org.practice.spring.ioc.aware.XApplicationContextAware"></bean>
+    <bean id="xApplicationContextAware" class="org.practice.springfx.book01.ioc.aware.XApplicationContextAware"></bean>
 </beans>

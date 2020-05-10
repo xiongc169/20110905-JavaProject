@@ -14,6 +14,6 @@
     <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 
     <!-- 被代理的目标对象 -->
-    <bean id="target" class="org.practice.spring.proxy.ch01static.CalculatorImpl"></bean>
+    <bean id="target" class="org.practice.springfx.book01.proxy.ch01static.CalculatorImpl"></bean>
 
 </beans>

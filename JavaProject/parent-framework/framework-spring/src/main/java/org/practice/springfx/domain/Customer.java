@@ -1,0 +1,47 @@
+package org.practice.springfx.domain;
+
+import lombok.Data;
+import org.springframework.stereotype.Component;
+
+/**
+ * Customer
+ *
+ * @author yoong
+ */
+@Data
+@Component
+public class Customer {
+
+    private String customerId;
+
+    private String customerName;
+
+    private String sex;
+
+//    @Autowired
+//    @Autowired(required = false)
+//    @Qualifier("car_02")
+//    @Resource(name = "car_01")
+    private Car car;
+
+    public Customer() {
+        System.out.println("Customer.Customer()");
+    }
+
+    public Customer(String id) {
+        this.customerId = id;
+    }
+
+    public Customer(String id, String customerName) {
+        this.customerId = id;
+        this.customerName = customerName;
+    }
+
+    public void init() {
+        System.out.println("Customer.init()");
+    }
+
+    public void destroy() {
+        System.out.println("Customer.destroy()");
+    }
+}

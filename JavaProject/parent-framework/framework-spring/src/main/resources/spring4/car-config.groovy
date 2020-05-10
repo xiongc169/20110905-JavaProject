@@ -1,5 +1,5 @@
-import org.practice.spring.domain.Car
-import org.practice.spring.domain.Customer
+import org.practice.springfx.domain.Car
+import org.practice.springfx.domain.Customer
 
 beans {
     car(Car) {

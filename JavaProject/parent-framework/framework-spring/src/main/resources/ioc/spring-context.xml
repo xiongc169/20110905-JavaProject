@@ -13,12 +13,12 @@
     <description>spring-context</description>
     <!--<import resource="classpath*:ioc/spring-anno.xml"/>-->
 
-    <bean id="customer_01" name="customer_01_name" class="org.practice.spring.domain.Customer" autowire="byName" scope="singleton">
+    <bean id="customer_01" name="customer_01_name" class="org.practice.springfx.domain.Customer" autowire="byName" scope="singleton">
         <constructor-arg index="0" value="customerId_001"></constructor-arg>
         <constructor-arg index="1" value="customerName_001"></constructor-arg>
     </bean>
 
-    <bean id="customer_02" class="org.practice.spring.domain.Customer" autowire="byType" scope="prototype">
+    <bean id="customer_02" class="org.practice.springfx.domain.Customer" autowire="byType" scope="prototype">
         <property name="customerId" value="customerId_002"></property>
         <property name="customerName" value="customerName_002"></property>
         <!--<property name="car" ref="car_02"></property>-->
@@ -26,7 +26,7 @@
 
     <alias name="customer_01" alias="cst_01"/>
 
-    <bean id="car_01" class="org.practice.spring.domain.Car">
+    <bean id="car_01" class="org.practice.springfx.domain.Car">
         <property name="carId" value="carId_001"></property>
         <property name="carBrandName" value="carBrandName_001"></property>
         <property name="carModelName" value="carModelName_001"></property>
@@ -38,7 +38,7 @@
     <!--        <property name="carModelName" value="carModelName_002"></property>-->
     <!--    </bean>-->
 
-    <bean id="user_01" class="org.practice.spring.domain.User" lazy-init="false" init-method="init" destroy-method="destroy">
+    <bean id="user_01" class="org.practice.springfx.domain.User" lazy-init="false" init-method="init" destroy-method="destroy">
         <property name="iid" value="iid_001"></property>
         <property name="userNo" value="userNo_001"></property>
         <property name="name" value="name_001"></property>
@@ -46,7 +46,7 @@
         <property name="orgName" value="orgName_001"></property>
     </bean>
 
-    <bean id="user_02" class="org.practice.spring.domain.User" lazy-init="false" init-method="init" destroy-method="destroy">
+    <bean id="user_02" class="org.practice.springfx.domain.User" lazy-init="false" init-method="init" destroy-method="destroy">
         <property name="iid" value="${iid}"></property>
         <property name="userNo" value="${userNo}"></property>
         <property name="name" value="${name}"></property>

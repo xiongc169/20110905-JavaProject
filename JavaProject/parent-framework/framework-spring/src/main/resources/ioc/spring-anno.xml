@@ -9,18 +9,18 @@
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
-    <bean id="customer_01" name="customer_01_name" class="org.practice.spring.domain.Customer">
+    <bean id="customer_01" name="customer_01_name" class="org.practice.springfx.domain.Customer">
         <constructor-arg index="0" value="customerId_001"></constructor-arg>
         <constructor-arg index="1" value="customerName_001"></constructor-arg>
     </bean>
 
-    <bean id="car_01" class="org.practice.spring.domain.Car">
+    <bean id="car_01" class="org.practice.springfx.domain.Car">
         <property name="carId" value="carId_001"></property>
         <property name="carBrandName" value="carBrandName_001"></property>
         <property name="carModelName" value="carModelName_001"></property>
     </bean>
 
-    <bean id="car_02" class="org.practice.spring.domain.Car">
+    <bean id="car_02" class="org.practice.springfx.domain.Car">
         <property name="carId" value="carId_002"></property>
         <property name="carBrandName" value="carBrandName_002"></property>
         <property name="carModelName" value="carModelName_002"></property>

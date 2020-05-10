@@ -11,6 +11,6 @@
 
     <description>spring3-context</description>
 
-    <bean class="org.practice.spring3x.config.BeanConfig"></bean>
+    <bean class="org.practice.springfx.book02.config.BeanConfig"></bean>
 
 </beans>

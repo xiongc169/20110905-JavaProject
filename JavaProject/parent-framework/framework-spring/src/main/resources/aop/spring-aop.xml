@@ -10,11 +10,11 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
     <!-- 被代理的目标对象 -->
-    <bean id="target" class="org.practice.spring.proxy.ch01static.CalculatorImpl"></bean>
+    <bean id="target" class="org.practice.springfx.book01.proxy.ch01static.CalculatorImpl"></bean>
 
     <!--通知、横切逻辑-->
-    <bean id="beforeAdvice" class="org.practice.spring.proxy.ch03aop.p01advice.BeforeAdvice"></bean>
-    <bean id="afterAdvice" class="org.practice.spring.proxy.ch03aop.p01advice.AfterAdvice"></bean>
+    <bean id="beforeAdvice" class="org.practice.springfx.book01.proxy.ch03aop.p01advice.BeforeAdvice"></bean>
+    <bean id="afterAdvice" class="org.practice.springfx.book01.proxy.ch03aop.p01advice.AfterAdvice"></bean>
 
     <!--代理对象 -->
     <!--interceptorNames 通知数组 -->

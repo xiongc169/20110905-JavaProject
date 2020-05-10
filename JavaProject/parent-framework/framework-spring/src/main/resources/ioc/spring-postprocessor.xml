@@ -9,16 +9,16 @@
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
-    <bean id="customer_01" name="customer_01_name" class="org.practice.spring.domain.Customer" autowire="byName" scope="singleton">
+    <bean id="customer_01" name="customer_01_name" class="org.practice.springfx.domain.Customer" autowire="byName" scope="singleton">
         <constructor-arg index="0" value="customerId_001"></constructor-arg>
         <constructor-arg index="1" value="customerName_001"></constructor-arg>
     </bean>
 
-    <bean id="company_01" class="org.practice.spring.ioc.initializing.Company" init-method="initMethod" destroy-method="destroyMethod">
+    <bean id="company_01" class="org.practice.springfx.book01.ioc.initializing.Company" init-method="initMethod" destroy-method="destroyMethod">
         <property name="companyId" value="companyId-01"/>
         <property name="companyName" value="companyName-01"/>
         <property name="companyAddress" value="companyAddress-01"/>
     </bean>
 
-    <bean id="firstBeanPostProcessor" class="org.practice.spring.ioc.postprocessor.FirstBeanPostProcessor"></bean>
+    <bean id="firstBeanPostProcessor" class="org.practice.springfx.book01.ioc.postprocessor.FirstBeanPostProcessor"></bean>
 </beans>

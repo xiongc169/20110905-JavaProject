@@ -10,7 +10,7 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
        default-lazy-init="false" default-autowire="byType" default-init-method="" default-destroy-method="">
 
-    <bean id="car_01" class="org.practice.spring.domain.Car">
+    <bean id="car_01" class="org.practice.springfx.domain.Car">
         <property name="carId" value="carId_001"></property>
         <property name="carBrandName" value="carBrandName_001"></property>
         <property name="carModelName" value="carModelName_001"></property>
