@@ -41,7 +41,7 @@ public class Spring30App {
      */
     public static void springP030103() {
         try {
-            ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring3/spring-p.xml");
+            ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:book02/spring-p.xml");
             Customer customer = (Customer) context.getBean("customer_01");
             System.out.println(customer.getCustomerId());
         } catch (Exception ex) {
@@ -67,7 +67,7 @@ public class Spring30App {
     }
 
     public static void xmlRefJavaConfig() {
-        ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("spring3/spring-ref.xml");
+        ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("book02/spring-ref.xml");
         classPathXmlApplicationContext.start();
         Student student = (Student) classPathXmlApplicationContext.getBean("student");
         System.out.println(student.getStudentId());

@@ -75,7 +75,7 @@ public class IocContainer {
     public static void injectDemo0202() {
         Resource resource = new ClassPathResource("ioc/spring-context.xml");
         BeanFactory xmlFactory = new XmlBeanFactory(resource);
-        //2.2.1、构造方法注入
+        //2.2.1、构造方法、setter注入
         Customer customer = (Customer) xmlFactory.getBean("customer_01");
         Customer customer2 = xmlFactory.getBean("customer_02", Customer.class);
         System.out.println(customer.getCustomerId());
@@ -86,7 +86,9 @@ public class IocContainer {
         if (customer2.getCar() != null) {
             System.out.println("customer2.car = " + JSON.toJSONString(customer2.getCar()));
         }
-        //2.2.2、setter方法注入
+        //2.2.2、setter方法注入，作用域测试
+        //若user_01的scope=prototype，则user、user2不等；
+        //若user_01的scope=singletone 或缺陷，则user、user2相等；
         User user = (User) xmlFactory.getBean("user_01");
         User user2 = xmlFactory.getBean("user_01", User.class);
         System.out.println(user.getIid());
@@ -109,7 +111,7 @@ public class IocContainer {
         User user2 = xmlFactory.getBean("user_02", User.class);
         System.out.println(user.getIid());
         System.out.println(user2.getIid());
-        //若bean的scope=ch03singleton，则相等，若scope=prototype，则不等
+        //若bean的scope=singleton，则相等，若scope=prototype，则不等；前提是取同一对象，否则始终不等；
         String compareResult = user == user2 ? "Equals" : "Not Equals";
         System.out.println(compareResult);
 
@@ -170,8 +172,6 @@ public class IocContainer {
             ((ClassPathXmlApplicationContext) classpathXml).close();
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-
         }
     }
 
@@ -194,7 +194,7 @@ public class IocContainer {
         BeanFactory xmlFactory = new XmlBeanFactory(resource);
         //获取BeanDefinition，并注册
         ClassPathScanningCandidateComponentProvider provider = new ClassPathScanningCandidateComponentProvider(true);
-        Set<BeanDefinition> definitionSet = provider.findCandidateComponents("org.practice.spring.domain2");
+        Set<BeanDefinition> definitionSet = provider.findCandidateComponents("org.practice.springfx.domain2");
         System.out.println(definitionSet.size());
         Iterator iterator = definitionSet.iterator();
         while (iterator.hasNext()) {
@@ -236,7 +236,7 @@ public class IocContainer {
         System.out.println(user3.getIid());
         System.out.println(user4.getIid());
 
-        //PropertyPlaceholderConfigurer不仅从配置文件(*.properties)中加载配置项，还回检查System.Properties
+        //PropertyPlaceholderConfigurer不仅从配置文件(*.properties)中加载配置项，还会检查System.Properties
     }
 
     /**

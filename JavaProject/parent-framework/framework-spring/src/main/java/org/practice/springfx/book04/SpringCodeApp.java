@@ -34,7 +34,7 @@ public class SpringCodeApp {
      */
     public static void main(String[] args) {
         try {
-            ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath*:/springcode/spring-code.xml");
+            ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath*:book04/spring-code.xml");
             Car car = (Car) applicationContext.getBean("car_01");
             System.out.println(car.getCarId());
 

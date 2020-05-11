@@ -48,7 +48,7 @@ public class Spring40App {
      */
     public static void groovyConfig() {
         try {
-            GenericGroovyApplicationContext context = new GenericGroovyApplicationContext("classpath:spring4/car-config.groovy");
+            GenericGroovyApplicationContext context = new GenericGroovyApplicationContext("classpath:book03/car-config.groovy");
             Car car = (Car) context.getBean("car");
             System.out.println(car.getCarId());
             Customer customer = (Customer) context.getBean("customer");
