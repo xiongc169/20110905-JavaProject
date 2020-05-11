@@ -9,15 +9,16 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * @Desc Spring3App
+ * @Desc 《Spring 3.x企业应用开发实战》陈雄华 林开雄 著
+ * https://www.jb51.net/books/161440.html
  * <p>
  * @Author yoong
  * <p>
- * @Date 2019年8月20日
+ * @Date 2017-5-12
  * <p>
  * @Version 1.0
  */
-public class Spring3App {
+public class Spring30App {
 
     /**
      * 入口函数
@@ -40,7 +41,7 @@ public class Spring3App {
      */
     public static void springP030103() {
         try {
-            ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring3/spring-p.xml");
+            ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:book02/spring-p.xml");
             Customer customer = (Customer) context.getBean("customer_01");
             System.out.println(customer.getCustomerId());
         } catch (Exception ex) {
@@ -66,7 +67,7 @@ public class Spring3App {
     }
 
     public static void xmlRefJavaConfig() {
-        ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("spring3/spring-ref.xml");
+        ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("book02/spring-ref.xml");
         classPathXmlApplicationContext.start();
         Student student = (Student) classPathXmlApplicationContext.getBean("student");
         System.out.println(student.getStudentId());
