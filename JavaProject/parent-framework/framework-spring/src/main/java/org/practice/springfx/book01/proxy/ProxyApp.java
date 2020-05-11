@@ -13,8 +13,6 @@ public class ProxyApp {
 
     /**
      * 入口函数
-     *
-     * @description
      */
     public static void main(String[] args) {
         try {

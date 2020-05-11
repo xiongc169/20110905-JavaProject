@@ -9,12 +9,16 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * @Desc Spring3App
- * @Author
- * @Date
+ * @Desc 《Spring 3.x企业应用开发实战》陈雄华 林开雄 著
+ * https://www.jb51.net/books/161440.html
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2017-5-12
+ * <p>
  * @Version 1.0
  */
-public class Spring3App {
+public class Spring30App {
 
     /**
      * 入口函数

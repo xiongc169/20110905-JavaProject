@@ -7,12 +7,16 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.GenericGroovyApplicationContext;
 
 /**
- * @Desc Spring4App
- * @Author
- * @Date
+ * @Desc 《精通Spring 4.x企业应用开发实战》陈雄华 林开雄 文建国 著
+ * https://www.jb51.net/books/573360.html
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2017-6-12
+ * <p>
  * @Version 1.0
  */
-public class Spring4App {
+public class Spring40App {
 
     /**
      * 入口函数

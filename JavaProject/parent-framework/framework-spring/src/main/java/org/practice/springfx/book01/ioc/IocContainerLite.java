@@ -12,8 +12,6 @@ public class IocContainerLite {
 
     /**
      * IOC容器测试类
-     *
-     * @param args
      */
     public static void main(String[] args) {
         try {

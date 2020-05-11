@@ -23,8 +23,6 @@ public class Client {
 
     /**
      * 入口函数
-     *
-     * @param args
      */
     public static void main(String[] args) {
         //jdk动态代理
