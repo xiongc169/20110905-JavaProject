@@ -7,6 +7,7 @@ import org.practice.springfx.book01.part03_aop.ch03aop.p01advice.AfterReturningA
 import org.practice.springfx.book01.part03_aop.ch03aop.p01advice.AfterThrowAdvice;
 import org.practice.springfx.book01.part03_aop.ch03aop.p01advice.BeforeAdvice;
 import org.practice.springfx.book01.part03_aop.ch03aop.p01advice.SurroundAdvice;
+import org.springframework.aop.framework.AopProxyFactory;
 import org.springframework.aop.framework.ProxyFactory;
 import org.springframework.aop.framework.ProxyFactoryBean;
 import org.springframework.context.ApplicationContext;
@@ -35,8 +36,8 @@ public class AOPClient {
     public static void main(String[] args) {
         //测试
         try {
-            aop_proxyFactory();
-            aop_proxyFactoryBean();
+            aop_proxyFactory090501();
+            aop_proxyFactoryBean090502();
             aop_xml();
             aop_annotation();
         } catch (Exception ex) {
@@ -49,7 +50,7 @@ public class AOPClient {
      * PS：执行顺序1 Before -> Surround -> Impl -> Surround -> After
      * 执行顺序2 Before -> Surround -> Impl -> AfterThrow
      */
-    public static void aop_proxyFactory() {
+    public static void aop_proxyFactory090501() {
         //实例化Spring代理工厂
         ProxyFactory factory = new ProxyFactory();
         //设置被代理的对象
@@ -74,7 +75,7 @@ public class AOPClient {
     /**
      * 使用IOC配置的方式实现AOP
      */
-    public static void aop_proxyFactoryBean() {
+    public static void aop_proxyFactoryBean090502() {
         //XML配置方式实现AOP
         ApplicationContext cpxAppContext = new ClassPathXmlApplicationContext("classpath:book01/aop/spring-aop.xml");
         ICalculator math = (ICalculator) cpxAppContext.getBean("target");
