@@ -5,6 +5,7 @@ import com.sun.xml.internal.fastinfoset.CommonResourceBundle;
 import org.practice.springfx.book01.part02_ioc.aware.XApplicationContextAware;
 import org.practice.springfx.book01.part02_ioc.aware.XBeanName;
 import org.practice.springfx.book01.part02_ioc.aware.XBeanNameAware;
+import org.practice.springfx.book01.part02_ioc.initializing.Company;
 import org.practice.springfx.domain.Car;
 import org.practice.springfx.domain.Customer;
 import org.practice.springfx.domain.User;
@@ -53,6 +54,7 @@ public class IocContainer {
             wrapperDemo040403();
             awareDemo040403();
             beanPostProcessor040403();
+            initMethod040403();
             resourceDemo0501();
             i18nDemo0502();
             annotationDemo0601();
@@ -73,9 +75,9 @@ public class IocContainer {
      * http://www.cnblogs.com/best/p/5727935.html
      */
     public static void injectDemo0202() {
-        Resource resource = new ClassPathResource("book01/ioc/spring-context.xml");
+        Resource resource = new ClassPathResource("book01/ioc/spring-inject.xml");
         BeanFactory xmlFactory = new XmlBeanFactory(resource);
-        //2.2.1、构造方法、setter注入
+        //2.2.1、构造方法注入、setter注入
         Customer customer = (Customer) xmlFactory.getBean("customer_01");
         Customer customer2 = xmlFactory.getBean("customer_02", Customer.class);
         System.out.println(customer.getCustomerId());
@@ -88,7 +90,7 @@ public class IocContainer {
         }
         //2.2.2、setter方法注入，作用域测试
         //若user_01的scope=prototype，则user、user2不等；
-        //若user_01的scope=singletone 或缺陷，则user、user2相等；
+        //若user_01的scope=singleton 或缺省，则user、user2相等；
         User user = (User) xmlFactory.getBean("user_01");
         User user2 = xmlFactory.getBean("user_01", User.class);
         System.out.println(user.getIid());
@@ -105,7 +107,7 @@ public class IocContainer {
      */
     public static void beanFactoryDemo0401() {
         //XmlBeanFactory
-        Resource resource = new ClassPathResource("book01/ioc/spring-context.xml");
+        Resource resource = new ClassPathResource("book01/ioc/spring-factory.xml");
         BeanFactory xmlFactory = new XmlBeanFactory(resource);
         User user = (User) xmlFactory.getBean("user_01");
         User user2 = xmlFactory.getBean("user_02", User.class);
@@ -147,7 +149,7 @@ public class IocContainer {
             System.out.println(directory);
 
             //FileSystemXmlApplicationContext
-            ApplicationContext fileSystemXml = new FileSystemXmlApplicationContext("JavaProject\\parent-framework\\framework-spring\\src\\main\\resources\\ioc\\spring-context.xml");
+            ApplicationContext fileSystemXml = new FileSystemXmlApplicationContext("JavaProject\\parent-framework\\framework-spring\\src\\main\\resources\\book01\\ioc\\spring-context.xml");
             User user = (User) fileSystemXml.getBean("user_01");
             System.out.println(user.getIid());
             ((FileSystemXmlApplicationContext) fileSystemXml).close();
@@ -294,6 +296,26 @@ public class IocContainer {
         ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("classpath:book01/ioc/spring-postprocessor.xml");
         Customer customer = (Customer) classPathXmlApplicationContext.getBean("customer_01");
         System.out.println(customer);
+    }
+
+    /**
+     * TODO: 4.4.3、了解bean的一生 (P76)
+     * PS：Chap4.4.3：InitializingBean和init-method、DisposableBean与destroy-method
+     * Chap6.1.2：@PostConstruct、@PreDestroy
+     * <p>
+     * Spring InitializingBean init-method @PostConstruct 执行顺序
+     * PS：Constructor > @PostConstruct > InitializingBean > init-method
+     * https://www.cnblogs.com/april-chen/p/8182631.html
+     * https://blog.csdn.net/chendaoqiu/article/details/50700246
+     * 【bean的生命周期】--- DisposableBean、destroyMethod、@PreDestroy
+     * https://blog.csdn.net/nrsc272420199/article/details/103226662
+     */
+    public static void initMethod040403() throws Exception {
+        //InitializingBean、init-method、Construct、PostConstruct
+        ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("classpath:book01/ioc/spring-init.xml");
+        Company company = (Company) classPathXmlApplicationContext.getBean("company_01");
+        System.out.println(company);
+        classPathXmlApplicationContext.close();
     }
 
     /**

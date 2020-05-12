@@ -10,7 +10,7 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
        default-lazy-init="false" default-autowire="byType" default-init-method="" default-destroy-method="">
 
-    <description>spring-context</description>
+    <description>spring-factory</description>
     <!--<import resource="classpath*:ioc/spring-anno.xml"/>-->
 
     <bean id="user_01" class="org.practice.springfx.domain.User" lazy-init="false" init-method="init" destroy-method="destroy" scope="singleton">

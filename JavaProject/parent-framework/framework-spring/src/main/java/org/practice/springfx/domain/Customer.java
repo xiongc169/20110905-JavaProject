@@ -22,7 +22,7 @@ public class Customer {
 
     private String sex;
 
-    //    @Autowired
+//    @Autowired
 //    @Autowired(required = false)
 //    @Qualifier("car_02")
 //    @Resource(name = "car_01")

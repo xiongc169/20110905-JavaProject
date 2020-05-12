@@ -10,8 +10,32 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
        default-lazy-init="false" default-autowire="byType" default-init-method="" default-destroy-method="">
 
-    <description>spring-context</description>
-    <!--<import resource="classpath*:ioc/spring-anno.xml"/>-->
+    <description>spring-inject</description>
+
+    <bean id="customer_01" name="customer_01_name" class="org.practice.springfx.domain.Customer" autowire="byName" scope="singleton">
+        <constructor-arg index="0" value="customerId_001"></constructor-arg>
+        <constructor-arg index="1" value="customerName_001"></constructor-arg>
+    </bean>
+
+    <bean id="customer_02" class="org.practice.springfx.domain.Customer" autowire="byType" scope="prototype">
+        <property name="customerId" value="customerId_002"></property>
+        <property name="customerName" value="customerName_002"></property>
+        <!--<property name="car" ref="car_02"></property>-->
+    </bean>
+
+    <alias name="customer_01" alias="cst_01"/>
+
+    <bean id="car_01" class="org.practice.springfx.domain.Car">
+        <property name="carId" value="carId_001"></property>
+        <property name="carBrandName" value="carBrandName_001"></property>
+        <property name="carModelName" value="carModelName_001"></property>
+    </bean>
+
+    <!--    <bean id="car_02" class="org.practice.spring.domain.Car">-->
+    <!--        <property name="carId" value="carId_002"></property>-->
+    <!--        <property name="carBrandName" value="carBrandName_002"></property>-->
+    <!--        <property name="carModelName" value="carModelName_002"></property>-->
+    <!--    </bean>-->
 
     <bean id="user_01" class="org.practice.springfx.domain.User" lazy-init="false" init-method="init" destroy-method="destroy" scope="singleton">
         <property name="iid" value="iid_001"></property>
@@ -28,30 +52,5 @@
         <property name="orgNo" value="${orgNo}"></property>
         <property name="orgName" value="${orgName}"></property>
     </bean>
-
-    <!--ApplicationContext容器中会自动替换，BeanFactory容器中需手动配置-->
-    <!--BeanFactoryPostProcessor，注意与下面的BeanPostProcessor区别-->
-    <bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="location">
-            <value>classpath:book01/ioc/config.properties</value>
-        </property>
-    </bean>
-
-    <!--<bean id="propertyOverrideConfigurer" class="org.springframework.beans.factory.config.PropertyOverrideConfigurer">-->
-    <!--    <property name="location">-->
-    <!--        <value>classpath:ioc/config-override.properties</value>-->
-    <!--    </property>-->
-    <!--</bean>-->
-
-    <!--启动注解，@Autowired、@Qualifier | @Resource、@PostConstruct、@PreDestroy等注解变为可用-->
-    <!--<context:annotation-config> 不但把 AutowiredAnnotationBeanPostProcessor、CommonAnnotationBeanPostProcessor 注册到容器，同时还把 PersistenceAnnotationBeanPostProcessor、RequiredAnnotationBeanPostProcessor 一并注册-->
-    <!--优化了Bean之间依赖关系的配置：从XML配置改进为注解配置-->
-    <!--<context:annotation-config></context:annotation-config>-->
-
-    <!--启动注解，@Component、@Repository、@Service、@Controller等注解变为可用-->
-    <!--<context:component-scan>将 AutowiredAnnotationBeanPostProcessor、CommonAnnotationBeanPostProcessor 一并注册到了容器中-->
-    <!--优化了Bean的定义：从XML中定义改进为注解定义-->
-    <!--<context:component-scan base-package="org.practice.spring.domain"></context:component-scan>-->
-    <!--<context:component-scan base-package="org.practice.spring.domain2"></context:component-scan>-->
 
 </beans>

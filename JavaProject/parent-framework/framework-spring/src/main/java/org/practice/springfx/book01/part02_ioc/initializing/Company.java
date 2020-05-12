@@ -4,6 +4,9 @@ import lombok.Data;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 /**
  * @Desc Company
  * <p>
@@ -20,21 +23,35 @@ public class Company implements InitializingBean, DisposableBean {
     private String companyName;
     private String companyAddress;
 
-    public void initMethod() {
-        System.out.println("Company.initMethod()");
+    public Company() {
+        System.out.println("Construct - Company.Company()");
     }
 
-    public void destroyMethod() {
-        System.out.println("Company.destroyMethod()");
+    @PostConstruct
+    public void postConstruct() {
+        System.out.println("@PostConstruct - Company.postConstruct()");
+    }
+
+    @PreDestroy
+    public void preDestroy() {
+        System.out.println("@PreDestroy - Company.preDestroy()");
     }
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        System.out.println("Company.afterPropertiesSet()");
+        System.out.println("InitializingBean - Company.afterPropertiesSet()");
     }
 
     @Override
     public void destroy() throws Exception {
-        System.out.println("Company.destroy()");
+        System.out.println("DisposableBean - Company.destroy()");
+    }
+
+    public void initMethod() {
+        System.out.println("init-method - Company.initMethod()");
+    }
+
+    public void destroyMethod() {
+        System.out.println("destroy-method - Company.destroyMethod()");
     }
 }
