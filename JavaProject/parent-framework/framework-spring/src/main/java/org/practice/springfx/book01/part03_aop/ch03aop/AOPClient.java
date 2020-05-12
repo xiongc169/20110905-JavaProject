@@ -18,6 +18,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * 通知类型：前置通知、后置通知、环绕通知、异常通知、引介通知 <br>
  * spring aop的pointcut的表达式类型：execution、with等9种；
  * http://www.cnblogs.com/best/p/5679656.html
+ * Spring AOP开发 XML配置、注解配置
+ * https://blog.csdn.net/qq_35232663/article/details/79617270
  * <p>
  * @Author yoong
  * <p>
@@ -34,9 +36,8 @@ public class AOPClient {
         //测试
         try {
             aop_proxyFactory();
-            reflectTest();
-            aop_ioc();
-            aop_aspect();
+            aop_proxyFactoryBean();
+            aop_xml();
             aop_annotation();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -71,25 +72,9 @@ public class AOPClient {
     }
 
     /**
-     * 反射
-     */
-    public static void reflectTest() {
-        try {
-            //通过反射创建对象
-            ICalculator calculator = CalculatorImpl.class.newInstance();
-            int result = calculator.add(100, 5);
-            System.out.println("result: " + result);
-            //Class<ICalculator> entityClass = (Class<ICalculator>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
-            //T entity = entityClass.newInstance();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    /**
      * 使用IOC配置的方式实现AOP
      */
-    public static void aop_ioc() {
+    public static void aop_proxyFactoryBean() {
         //XML配置方式实现AOP
         ApplicationContext cpxAppContext = new ClassPathXmlApplicationContext("classpath:book01/aop/spring-aop.xml");
         ICalculator math = (ICalculator) cpxAppContext.getBean("target");
@@ -114,7 +99,6 @@ public class AOPClient {
         ICalculator calculator02 = (ICalculator) cpxAppContext.getBean("proxy");
         int result02 = calculator02.add(100, 50);
         System.out.println("result02: " + result02);
-
     }
 
     /**
@@ -123,9 +107,9 @@ public class AOPClient {
      * SpringAop时Null return value from advice does not match primitive return type for: public int...异常
      * https://blog.csdn.net/thewindkee/article/details/99437068
      */
-    public static void aop_aspect() {
+    public static void aop_xml() {
         //XML配置方式实现AOP
-        ApplicationContext cpxAppContext = new ClassPathXmlApplicationContext("classpath:book01/aop/spring-aspect.xml");
+        ApplicationContext cpxAppContext = new ClassPathXmlApplicationContext("classpath:book01/aop/spring-aop-xml.xml");
         ISubject subject = (ISubject) cpxAppContext.getBean("target");
         String result = subject.say("aop_aspect", 100);
         System.out.println("result: " + result);
@@ -136,7 +120,7 @@ public class AOPClient {
      */
     public static void aop_annotation() {
         //注解方式实现AOP
-        ApplicationContext cpxAppContext = new ClassPathXmlApplicationContext("classpath:book01/aop/spring-annotation.xml");
+        ApplicationContext cpxAppContext = new ClassPathXmlApplicationContext("classpath:book01/aop/spring-aop-anno.xml");
         ICalculator math = (ICalculator) cpxAppContext.getBean("target");
         int addResult = math.add(100, 5);
         int subResult = math.sub(100, 5);

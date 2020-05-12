@@ -5,6 +5,8 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
+import org.practice.springfx.api.ICalculator;
+import org.practice.springfx.book01.part03_aop.ch01static.proxy.CalculatorImpl;
 import org.practice.springfx.domain.Car;
 import org.practice.springfx.domain.User;
 
@@ -84,6 +86,22 @@ public class ReflectDemo {
             field.setAccessible(true);
             field.set(user, "newIId");
             System.out.println(user.getIid());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * 反射
+     */
+    public static void reflectTest() {
+        try {
+            //通过反射创建对象
+            ICalculator calculator = CalculatorImpl.class.newInstance();
+            int result = calculator.add(100, 5);
+            System.out.println("result: " + result);
+            //Class<ICalculator> entityClass = (Class<ICalculator>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+            //T entity = entityClass.newInstance();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
