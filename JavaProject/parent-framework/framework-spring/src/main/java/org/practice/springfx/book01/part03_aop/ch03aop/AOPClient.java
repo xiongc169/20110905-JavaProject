@@ -1,8 +1,10 @@
 package org.practice.springfx.book01.part03_aop.ch03aop;
 
+import org.practice.springfx.api.ISubject;
 import org.practice.springfx.book01.part03_aop.ch01static.proxy.CalculatorImpl;
 import org.practice.springfx.api.ICalculator;
-import org.practice.springfx.book01.part03_aop.ch03aop.p01advice.AfterAdvice;
+import org.practice.springfx.book01.part03_aop.ch03aop.p01advice.AfterReturningAdvices;
+import org.practice.springfx.book01.part03_aop.ch03aop.p01advice.AfterThrowAdvice;
 import org.practice.springfx.book01.part03_aop.ch03aop.p01advice.BeforeAdvice;
 import org.practice.springfx.book01.part03_aop.ch03aop.p01advice.SurroundAdvice;
 import org.springframework.aop.framework.ProxyFactory;
@@ -43,6 +45,8 @@ public class AOPClient {
 
     /**
      * 创建代理工厂、设置被代理对象、添加通知
+     * PS：执行顺序1 Before -> Surround -> Impl -> Surround -> After
+     * 执行顺序2 Before -> Surround -> Impl -> AfterThrow
      */
     public static void aop_proxyFactory() {
         //实例化Spring代理工厂
@@ -51,18 +55,19 @@ public class AOPClient {
         factory.setTarget(new CalculatorImpl());
         //添加通知，横切逻辑
         factory.addAdvice(new BeforeAdvice());
-        factory.addAdvice(new AfterAdvice());
         factory.addAdvice(new SurroundAdvice());
+        factory.addAdvice(new AfterReturningAdvices());
+        factory.addAdvice(new AfterThrowAdvice());
         //从代理工厂中获得代理对象
         ICalculator math = (ICalculator) factory.getProxy();
         int addResult = math.add(100, 5);
-        int subResult = math.sub(100, 5);
-        int mulResult = math.mul(100, 5);
-        double divResult = math.div(100, 5);
+        //int subResult = math.sub(100, 5);
+        //int mulResult = math.mul(100, 5);
+        //double divResult = math.div(100, 5);
         System.out.println("addResult: " + addResult);
-        System.out.println("subResult: " + subResult);
-        System.out.println("mulResult: " + mulResult);
-        System.out.println("divResult: " + divResult);
+        //System.out.println("subResult: " + subResult);
+        //System.out.println("mulResult: " + mulResult);
+        //System.out.println("divResult: " + divResult);
     }
 
     /**
@@ -87,7 +92,7 @@ public class AOPClient {
     public static void aop_ioc() {
         //XML配置方式实现AOP
         ApplicationContext cpxAppContext = new ClassPathXmlApplicationContext("classpath:book01/aop/spring-aop.xml");
-        ICalculator math = (ICalculator) cpxAppContext.getBean("ch08proxy");
+        ICalculator math = (ICalculator) cpxAppContext.getBean("target");
         int addResult = math.add(100, 5);
         int subResult = math.sub(100, 5);
         int mulResult = math.mul(100, 5);
@@ -104,23 +109,26 @@ public class AOPClient {
         ICalculator calculator = (ICalculator) proxyFactoryBean.getObject();
         int result = calculator.add(100, 50);
         System.out.println("result: " + result);
+
+        //ProxyFactoryBean ProxyFactoryBean02 = (ProxyFactoryBean) cpxAppContext.getBean("proxy");
+        ICalculator calculator02 = (ICalculator) cpxAppContext.getBean("proxy");
+        int result02 = calculator02.add(100, 50);
+        System.out.println("result02: " + result02);
+
     }
 
     /**
      * 使用XML配置的方式实现Spring AOP的切面、切点、通知
+     * <p/>
+     * SpringAop时Null return value from advice does not match primitive return type for: public int...异常
+     * https://blog.csdn.net/thewindkee/article/details/99437068
      */
     public static void aop_aspect() {
         //XML配置方式实现AOP
         ApplicationContext cpxAppContext = new ClassPathXmlApplicationContext("classpath:book01/aop/spring-aspect.xml");
-        ICalculator math = (ICalculator) cpxAppContext.getBean("target");
-        int addResult = math.add(100, 5);
-        int subResult = math.sub(100, 5);
-        int mulResult = math.mul(100, 5);
-        double divResult = math.div(100, 5);
-        System.out.println("addResult: " + addResult);
-        System.out.println("subResult: " + subResult);
-        System.out.println("mulResult: " + mulResult);
-        System.out.println("divResult: " + divResult);
+        ISubject subject = (ISubject) cpxAppContext.getBean("target");
+        String result = subject.say("aop_aspect", 100);
+        System.out.println("result: " + result);
     }
 
     /**

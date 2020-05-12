@@ -16,6 +16,7 @@ public class CalculatorImpl implements ICalculator {
     public int add(int i, int j) {
         int result = i + j;
         System.out.println("CalculatorImpl.add result is " + result);
+        //double a = 1 / 0;
         return result;
     }
 

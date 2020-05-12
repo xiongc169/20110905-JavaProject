@@ -4,6 +4,11 @@ import org.springframework.aop.ThrowsAdvice;
 
 /**
  * @Desc 后置通知
+ * [Spring]纯Java方式实现AOP拦截-详解ThrowsAdvice异常通知
+ * https://blog.csdn.net/qq_26525215/article/details/52420658
+ * 异常日志处理-ThrowsAdvice
+ * https://www.cnblogs.com/sjcq/p/7450192.html
+ * https://blog.csdn.net/qq1723205668/article/details/55667063
  * <p>
  * @Author yoong
  * <p>
@@ -13,4 +18,7 @@ import org.springframework.aop.ThrowsAdvice;
  */
 public class AfterThrowAdvice implements ThrowsAdvice {
 
+    public void afterThrowing(Exception ex) {
+        System.out.println("AfterThrowAdvice.afterThrowing()");
+    }
 }

@@ -20,10 +20,6 @@ public class SurroundAdvice implements MethodInterceptor {
 
     /**
      * TODO: spring aop中MethodInterceptor接口的方法
-     *
-     * @param invocation
-     * @return
-     * @throws Throwable
      */
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
@@ -40,12 +36,6 @@ public class SurroundAdvice implements MethodInterceptor {
 
     /**
      * TODO: cglib中MethodInterceptor接口的方法
-     * @param arg0
-     * @param arg1
-     * @param arg2
-     * @param arg3
-     * @return
-     * @throws Throwable
      */
 //	@Override
 //	public Object intercept(Object arg0, Method arg1, Object[] arg2, MethodProxy arg3) throws Throwable {

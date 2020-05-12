@@ -1,6 +1,7 @@
 package org.practice.springfx.book01.part03_aop.ch03aop.p02aspect;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 
 /**
  * @Desc 通知
@@ -15,19 +16,42 @@ public class MyAdvice {
 
     /**
      * 前置通知
-     *
-     * @param jp
      */
     public void before(JoinPoint jp) {
-        System.out.println("MyAdvice.before" + jp);
+        System.out.println("MyAdvice.before " + jp);
     }
 
     /**
      * 后置通知
-     *
-     * @param jp
      */
-    public void after(JoinPoint jp) {
-        System.out.println("MyAdvice.after" + jp);
+    public void afterFinally(JoinPoint jp) {
+        System.out.println("MyAdvice.afterFinally " + jp);
+    }
+
+    /**
+     * 返回通知
+     */
+    public void afterReturning(JoinPoint jp) {
+        System.out.println("MyAdvice.afterReturning " + jp);
+    }
+
+    /**
+     * 异常通知
+     */
+    public void afterThrowing(JoinPoint jp) {
+        System.out.println("MyAdvice.afterThrowing " + jp);
+    }
+
+    /**
+     * 环绕通知
+     */
+    public void surround(ProceedingJoinPoint jp) {
+        try {
+            System.out.println("MyAdvice.surround Before... " + jp);
+            jp.proceed();
+            System.out.println("MyAdvice.surround After " + jp);
+        } catch (Throwable ex) {
+            ex.printStackTrace();
+        }
     }
 }

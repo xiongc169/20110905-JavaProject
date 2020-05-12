@@ -14,13 +14,12 @@
 
     <!--通知、横切逻辑-->
     <bean id="beforeAdvice" class="org.practice.springfx.book01.part03_aop.ch03aop.p01advice.BeforeAdvice"></bean>
-    <bean id="afterAdvice" class="org.practice.springfx.book01.part03_aop.ch03aop.p01advice.AfterAdvice"></bean>
+    <bean id="afterAdvice" class="org.practice.springfx.book01.part03_aop.ch03aop.p01advice.AfterReturningAdvices"></bean>
 
     <!--代理对象 -->
     <!--interceptorNames 通知数组 -->
     <!--p:target-ref 被代理的对象-->
     <!--p:proxyTargetClass 被代理对象是否为一个类，如果是则使用cglib,否则使用jdk动态代理  -->
-    <bean id="proxy" class="org.springframework.aop.framework.ProxyFactoryBean" p:interceptorNames="beforeAdvice"
-          p:target-ref="target" p:proxyTargetClass="true"/>
+    <bean id="proxy" class="org.springframework.aop.framework.ProxyFactoryBean" p:interceptorNames="beforeAdvice" p:target-ref="target" p:proxyTargetClass="true"/>
 
 </beans>

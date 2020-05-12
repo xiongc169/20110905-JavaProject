@@ -2,7 +2,7 @@ package org.practice.springfx.book01.part03_aop.ch03aop;
 
 import org.practice.springfx.book01.part03_aop.ch01static.proxy.CalculatorImpl;
 import org.practice.springfx.api.ICalculator;
-import org.practice.springfx.book01.part03_aop.ch03aop.p01advice.AfterAdvice;
+import org.practice.springfx.book01.part03_aop.ch03aop.p01advice.AfterReturningAdvices;
 import org.springframework.aop.MethodBeforeAdvice;
 import org.springframework.aop.framework.ProxyFactory;
 
@@ -34,7 +34,6 @@ public class AOPContainer {
         }
     }
 
-
     /**
      * SpringAPI手动创建代理对象——ProxyFactory <br>
      * PS：配置多个通知时，前置通知正序执行，后置通知逆序执行，环绕通知前正、后逆。MethodInterceptor：方法拦截器可以实现MethodBeforeAdvice接口、AfterReturningAdvice接口、ThrowsAdvice三个接口所能够实现的效果
@@ -55,7 +54,7 @@ public class AOPContainer {
                 }
             });
             // 织入通知，后置通知
-            weaver.addAdvice(new AfterAdvice());
+            weaver.addAdvice(new AfterReturningAdvices());
             // 代理对象
             ICalculator calcProxy = (ICalculator) weaver.getProxy();
             int result = calcProxy.add(12, 23);
@@ -64,5 +63,4 @@ public class AOPContainer {
             ex.printStackTrace();
         }
     }
-
 }
