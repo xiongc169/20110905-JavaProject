@@ -2,13 +2,13 @@ package org.practice.springfx.book01.part03_aop.ch03aop.p01advice;
 
 import java.lang.reflect.Method;
 
-//import org.springframework.cglib.ch08proxy.MethodInterceptor;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 
 /**
  * @Desc 环绕通知
- * TODO: 注意：SpringAop、cglib两个类库中都有MethodInterceptor接口
+ * PS：CGlib的 MethodInterceptor 接口：org.springframework.cglib.proxy.MethodInterceptor
+ * SpringAOP的 MethodInterceptor 接口：org.aopalliance.intercept.MethodInterceptor
  * <p>
  * @Author yoong
  * <p>

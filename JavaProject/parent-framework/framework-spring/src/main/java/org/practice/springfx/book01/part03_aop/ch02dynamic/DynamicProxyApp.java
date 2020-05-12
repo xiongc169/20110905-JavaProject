@@ -6,7 +6,7 @@ import org.practice.springfx.book01.part03_aop.ch01static.proxy.CalculatorImpl;
 import org.practice.springfx.book01.part03_aop.ch01static.proxy.SubjectImpl;
 import org.practice.springfx.book01.part03_aop.ch02dynamic.accidence.MyCglibProxy;
 import org.practice.springfx.book01.part03_aop.ch02dynamic.accidence.MyJdkProxy;
-import org.practice.springfx.book01.part03_aop.ch02dynamic.cglib01.CglibProxy;
+import org.practice.springfx.book01.part03_aop.ch02dynamic.summary.CglibProxy;
 import org.practice.springfx.book01.part03_aop.ch02dynamic.summary.JdkProxy;
 
 /**
@@ -26,6 +26,9 @@ import org.practice.springfx.book01.part03_aop.ch02dynamic.summary.JdkProxy;
  * JDK动态代理：InvocationHandler + Proxy
  * CGLIB动态代理：MethodInterceptor + Enhancer
  * <p>
+ * PS：CGlib的 MethodInterceptor 接口：org.springframework.cglib.proxy.MethodInterceptor
+ * SpringAOP的 MethodInterceptor 接口：org.aopalliance.intercept.MethodInterceptor
+ * <p>
  * @Author yoong
  * <p>
  * @Date 2016年8月9日
@@ -39,28 +42,30 @@ public class DynamicProxyApp {
      */
     public static void main(String[] args) {
         try {
-            cglibProxyTest();
+            accidenceTest();
             jdkProxyTest2();
             cglibProxyTest2();
-            accidenceTest();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
     /**
-     * cglib01 动态代理
+     * accidence - 2018年12月29日14:08:11 - by myself
      */
-    public static void cglibProxyTest() {
-        try {
-            CglibProxy cglibProxy = new CglibProxy();
-            SubjectImpl subject = (SubjectImpl) cglibProxy.getProxy(SubjectImpl.class);
-            subject.say("Cglib Proxy", 100);
-        } catch (Exception ex) {
-            String msg = ex.getMessage();
-            System.out.println(msg);
-        }
+    public static void accidenceTest() {
+        ISubject subject = new SubjectImpl();
+
+        MyJdkProxy myJdkProxy = new MyJdkProxy();
+        MyCglibProxy myCglibProxy = new MyCglibProxy();
+
+        ISubject subjectJdkProxy = (ISubject) myJdkProxy.getJdkProxy(subject);
+        ISubject subjectCglibProxy = (ISubject) myCglibProxy.getCglibProxy(subject);
+
+        subjectJdkProxy.say("myJdkProxy", 123);
+        subjectCglibProxy.say("myCglibProxy", 321);
     }
+
 
     /**
      * summary-jdk 动态代理
@@ -84,7 +89,7 @@ public class DynamicProxyApp {
     public static void cglibProxyTest2() {
         try {
             ICalculator calcImpl = new CalculatorImpl();
-            org.practice.springfx.book01.part03_aop.ch02dynamic.summary.CglibProxy dynamicProxy = new org.practice.springfx.book01.part03_aop.ch02dynamic.summary.CglibProxy();
+            CglibProxy dynamicProxy = new CglibProxy();
             ICalculator calcProxy = (ICalculator) dynamicProxy.getProxy(calcImpl);
             Object result = calcProxy.div(200, 10);
             System.out.println(result);
@@ -92,21 +97,5 @@ public class DynamicProxyApp {
             String msg = ex.getMessage();
             System.out.println(msg);
         }
-    }
-
-    /**
-     * by myself - 2018年12月29日14:08:11
-     */
-    public static void accidenceTest() {
-        ISubject subject = new SubjectImpl();
-
-        MyJdkProxy myJdkProxy = new MyJdkProxy();
-        MyCglibProxy myCglibProxy = new MyCglibProxy();
-
-        ISubject subjectJdkProxy = (ISubject) myJdkProxy.getJdkProxy(subject);
-        ISubject subjectCglibProxy = (ISubject) myCglibProxy.getCglibProxy(subject);
-
-        subjectJdkProxy.say("myJdkProxy", 123);
-        subjectCglibProxy.say("myCglibProxy", 321);
     }
 }

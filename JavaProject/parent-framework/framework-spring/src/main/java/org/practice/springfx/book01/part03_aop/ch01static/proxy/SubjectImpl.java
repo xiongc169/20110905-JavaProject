@@ -14,8 +14,8 @@ import org.practice.springfx.api.ISubject;
 public class SubjectImpl implements ISubject {
 
     public String say(String name, int age) {
-        String msg = name + "  " + age;
-        System.out.println("SubjectImpl.say " + msg);
+        String msg = name + "-" + age;
+        System.out.println("SubjectImpl.say: " + msg);
         return msg;
     }
 

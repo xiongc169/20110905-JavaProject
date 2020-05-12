@@ -1,5 +1,6 @@
 package org.practice.springfx.book01.part03_aop.ch01static;
 
+import org.practice.springfx.api.ICalculator;
 import org.practice.springfx.book01.part03_aop.ch01static.proxy.CalculatorProxy;
 
 /**
@@ -29,7 +30,10 @@ public class StaticProxyApp {
      * 静态代理 测试
      */
     public static void staticProxy() {
-        CalculatorProxy calcProxy = new CalculatorProxy();
+        ICalculator calcProxy = new CalculatorProxy();
         calcProxy.add(20, 10);
+        calcProxy.sub(20, 10);
+        calcProxy.mul(20, 10);
+        calcProxy.div(20, 10);
     }
 }

@@ -1,13 +1,9 @@
 package org.practice.springfx.book01.part03_aop.ch02dynamic.cglib01;
 
-import java.lang.reflect.Method;
-
-import org.springframework.cglib.proxy.Enhancer;
-import org.springframework.cglib.proxy.MethodInterceptor;
-import org.springframework.cglib.proxy.MethodProxy;
+import org.practice.springfx.book01.part03_aop.ch01static.proxy.SubjectImpl;
 
 /**
- * @Desc CGlib动态代理原理及实现
+ * @Desc CGlib动态代理原理及实现 (MethodInterceptor + Enhancer)
  * PS：JDK实现动态代理需要实现类通过接口定义业务方法，对于没有接口的类，需要CGLib实现动态代理；
  * CGLib采用字节码技术，通过字节码技术为一个类创建一个子类，在子类中采用方法拦截技术拦截父类方法的调用，同时织入横切逻辑；
  * JDK动态代理与CGLib动态代理均是实现Spring AOP的基础；
@@ -17,47 +13,35 @@ import org.springframework.cglib.proxy.MethodProxy;
  * <p>
  * @Author yoong
  * <p>
- * @Date 2018年12月29日14:08:11
+ * @Date 2016年8月20日
  * <p>
  * @Version 1.0
  */
-public class CglibProxy implements MethodInterceptor {
-
-    private Enhancer enhancer = new Enhancer();
+public class CglibProxy {
 
     /**
-     * 通过字节码技术，动态创建子类实例
-     *
-     * @param clazz
-     * @return
+     * 入口函数
      */
-    public Object getProxy(Class clazz) {
-        //设置需要创建子类的类
-        enhancer.setSuperclass(clazz);
-        enhancer.setCallback(this);
-        //通过字节码技术动态创建子类实例
-        Object obj = enhancer.create();
-        return obj;
+    public static void main(String[] args) {
+        try {
+            //cglib动态代理
+            cglibProxyTest();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
-     * 拦截目标类方法的调用
-     *
-     * @param obj         表示目标类的实例
-     * @param arg1        为目标类方法的反射对象
-     * @param arg2        为方法的动态入参
-     * @param methodProxy 为代理类实例
-     * @return
+     * cglib动态代理
      */
-    public Object intercept(Object obj, Method arg1, Object[] arg2, MethodProxy methodProxy) throws Throwable {
-
-        System.out.println("CglibProxy.intercept Start...");
-
-        // 通过代理类调用父类中的方法
-        Object result = methodProxy.invokeSuper(obj, arg2);
-
-        System.out.println("CglibProxy.intercept End");
-        return result;
+    public static void cglibProxyTest() {
+        try {
+            MyMethodInterceptor myMethodInterceptor = new MyMethodInterceptor();
+            SubjectImpl subject = (SubjectImpl) myMethodInterceptor.getProxy(SubjectImpl.class);
+            subject.say("CglibProxy", 100);
+        } catch (Exception ex) {
+            String msg = ex.getMessage();
+            System.out.println(msg);
+        }
     }
-
 }

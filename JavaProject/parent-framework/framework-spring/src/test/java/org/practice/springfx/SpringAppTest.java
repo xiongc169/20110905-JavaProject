@@ -1,4 +1,4 @@
-package org.practice.spring;
+package org.practice.springfx;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -7,32 +7,27 @@ import junit.framework.TestSuite;
 /**
  * Unit test for simple AOPClient.
  */
-public class AOPClientTest
-    extends TestCase
-{
+public class SpringAppTest extends TestCase {
     /**
      * Create the test case
      *
      * @param testName name of the test case
      */
-    public AOPClientTest(String testName )
-    {
-        super( testName );
+    public SpringAppTest(String testName) {
+        super(testName);
     }
 
     /**
      * @return the suite of tests being tested
      */
-    public static Test suite()
-    {
-        return new TestSuite( AOPClientTest.class );
+    public static Test suite() {
+        return new TestSuite(SpringAppTest.class);
     }
 
     /**
      * Rigourous Test :-)
      */
-    public void testApp()
-    {
-        assertTrue( true );
+    public void testApp() {
+        assertTrue(true);
     }
 }
