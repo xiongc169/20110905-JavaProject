@@ -1,4 +1,4 @@
-package com.yoong.practice.mybatis.accidence;
+package com.yoong.jdbc;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

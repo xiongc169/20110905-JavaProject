@@ -1,4 +1,4 @@
-package com.yoong.practice;
+package com.yoong.mybatis.springfx;
 
 import static org.junit.Assert.assertTrue;
 

@@ -27,7 +27,7 @@
             <version>4.11</version>
             <scope>test</scope>
         </dependency>
-        
+
         <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -56,12 +56,10 @@
             <artifactId>hibernate-entitymanager</artifactId>
             <version>5.4.5.Final</version>
         </dependency>
-
-
     </dependencies>
 
     <build>
-        <finalName>practice-jpa</finalName>
+        <finalName>persist-jpa-accidence</finalName>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>
                 <plugin>
