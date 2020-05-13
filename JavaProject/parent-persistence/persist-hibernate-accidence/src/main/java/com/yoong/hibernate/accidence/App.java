@@ -10,12 +10,16 @@ import com.yoong.hibernate.accidence.domain.Account;
 import java.util.Date;
 
 /**
- * Hibernate API
- *
- * @author chaoxiong
- * @version 2015-10-28 19:55:26
- * @desc Hibernate框架简述
+ * @Desc Hibernate框架简述
+ * PS：核心组件：Configuration、SessionFactory、Session、Query、Transaction接口；
+ * JavaBean的三种状态：临时状态(transient)、持久化状态(persistent)、脱管状态(detached)；
  * http://www.cnblogs.com/eflylab/archive/2007/01/09/615338.html
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-10-28 19:55:26
+ * <p>
+ * @Version 1.0
  */
 public class App {
 
@@ -50,6 +54,7 @@ public class App {
         account.setCreateTime(new Date());
         account.setModifyTime(new Date());
         account.setIsDelete(0);
+        //注意：Session有多种方法，可以进行增删改查！！！
         session.save(account);
 
         tx.commit();

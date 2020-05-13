@@ -24,10 +24,12 @@ public class EntranceController {
 
     private EntityManager entityManager;
 
+    public EntranceController() {
+        System.out.println("EntranceController.EntranceController()");
+    }
+
     /**
      * http://127.0.0.1:8095/entrance/enter
-     *
-     * @return
      */
     @ResponseBody
     @RequestMapping("/enter")
