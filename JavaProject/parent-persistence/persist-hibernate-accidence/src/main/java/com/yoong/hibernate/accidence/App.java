@@ -7,6 +7,7 @@ import org.hibernate.cfg.Configuration;
 
 import com.yoong.hibernate.accidence.domain.Account;
 
+import javax.persistence.EntityManager;
 import java.util.Date;
 
 /**
@@ -58,6 +59,23 @@ public class App {
         session.save(account);
 
         tx.commit();
+    }
+
+    /**
+     * jpa查询笔记之CriteriaBuilder类和Predicate类
+     * PS：EntityManager em=session.getEntityManagerFactory().createEntityManager();
+     * https://blog.csdn.net/qq_41063141/article/details/94408073
+     */
+    public static void entityManagerDemo() {
+        //hibernate.cfg.xml，不给参数就默认加载hibernate.cfg.xml文件
+        Configuration cfg = new Configuration().configure();
+        //SessionFactory
+        SessionFactory sf = cfg.buildSessionFactory();
+        //session
+        Session session = sf.openSession();
+        //Transaction接口
+        Transaction tx = (Transaction) session.beginTransaction();
+        EntityManager entityManager = session.getEntityManagerFactory().createEntityManager();
     }
 
     /**
