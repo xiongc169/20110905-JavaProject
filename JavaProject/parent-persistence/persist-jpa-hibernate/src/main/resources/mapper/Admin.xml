@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" version="2.0">
-    <entity class="com.yoong.jpa.accidence.domain.Admin">
+    <entity class="com.yoong.jpa.hibernate.domain.Admin">
         <table name="admin" schema="wong_user" catalog=""/>
         <attributes>
             <id name="id">

@@ -1,4 +1,4 @@
-package com.yoong.jpa.hibernate;
+package com.yoong.jpa.spring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

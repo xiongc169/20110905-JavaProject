@@ -1,4 +1,4 @@
-package com.yoong.jpa.accidence.domain;
+package com.yoong.jpa.hibernate.domain;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
-             version="2.0">
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd" version="2.0">
     <persistence-unit name="Jpa-helloword" transaction-type="RESOURCE_LOCAL">
         <!-- 配置使用什么 ORM 产品来作为 JPA 的实现 -->
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <!-- 添加持久化类 -->
-        <class>com.yoong.jpa.accidence.domain.Account</class>
+        <class>com.yoong.jpa.hibernate.domain.Account</class>
         <properties>
             <!-- 数据库的相关配置 -->
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>

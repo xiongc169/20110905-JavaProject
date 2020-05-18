@@ -1,11 +1,10 @@
-package com.yoong.jpa.accidence.dao;
+package com.yoong.jpa.hibernate.dao;
 
-import com.yoong.jpa.accidence.domain.Account;
+import com.yoong.jpa.hibernate.domain.Account;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
 
 /**
  * @Desc AccountDao

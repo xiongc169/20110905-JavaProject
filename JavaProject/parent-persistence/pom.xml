@@ -13,8 +13,8 @@
         <module>persist-hibernate-accidence</module>
         <module>persist-hibernate-spring</module>
         <module>persist-jdbc-accidence</module>
-        <module>persist-jpa-accidence</module>
         <module>persist-jpa-hibernate</module>
+        <module>persist-jpa-spring</module>
         <module>persist-mybatis-accidence</module>
         <module>persist-mybatis-springx</module>
     </modules>
