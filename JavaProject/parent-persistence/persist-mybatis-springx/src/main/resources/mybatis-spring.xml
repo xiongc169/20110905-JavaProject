@@ -5,32 +5,36 @@
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
+    <!--配置数据源 MyBatis的数据源-->
+    <bean id="pooledDataSource" class="org.apache.ibatis.datasource.pooled.PooledDataSource"></bean>
+    <bean id="unpooledDataSource" class="org.apache.ibatis.datasource.unpooled.UnpooledDataSource"></bean>
+
     <!--配置数据源一 《深入浅出MyBatis技术原理与实战》-->
-    <!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
-    <!--    <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>-->
-    <!--    <property name="url" value="jdbc:mysql://127.0.0.1:3306/wong_user?serverTimezone=UTC&amp;useSSL=false"/>-->
-    <!--    <property name="username" value="root"/>-->
-    <!--    <property name="password" value="123456"/>-->
-    <!--</bean>-->
+    <bean id="driverManagerDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/wong_user?serverTimezone=UTC&amp;useSSL=false"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
+    </bean>
 
     <!--配置数据源二 DBCP-->
-    <!--<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">-->
-    <!--    <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>-->
-    <!--    <property name="url" value="jdbc:mysql://127.0.0.1:3306/wong_user?serverTimezone=UTC&amp;useSSL=false"/>-->
-    <!--    <property name="username" value="root"/>-->
-    <!--    <property name="password" value="123456"/>-->
-    <!--</bean>-->
+    <bean id="basicDataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/wong_user?serverTimezone=UTC&amp;useSSL=false"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
+    </bean>
 
     <!--配置数据源三 C3P0-->
-    <!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">-->
-    <!--    <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>-->
-    <!--    <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/wong_user?serverTimezone=UTC&amp;useSSL=false"/>-->
-    <!--    <property name="user" value="root"/>-->
-    <!--    <property name="password" value="123456"/>-->
-    <!--</bean>-->
+    <bean id="comboPooledDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/wong_user?serverTimezone=UTC&amp;useSSL=false"/>
+        <property name="user" value="root"/>
+        <property name="password" value="123456"/>
+    </bean>
 
     <!--配置数据源四 Druid-->
-    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+    <bean id="druidDataSource" class="com.alibaba.druid.pool.DruidDataSource">
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://127.0.0.1:3306/wong_user?serverTimezone=UTC&amp;useSSL=false"/>
         <property name="username" value="root"/>
@@ -39,7 +43,7 @@
 
     <!--配置sqlSessionFactory-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"></property>
+        <property name="dataSource" ref="druidDataSource"></property>
         <!--<property name="configLocation" value="classpath:sqlMapConfig.xml"/>-->
         <property name="mapperLocations" value="classpath:wong_user/*.xml"/>
     </bean>
@@ -68,7 +72,7 @@
 
     <!--配置事务-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource"></property>
+        <property name="dataSource" ref="druidDataSource"></property>
     </bean>
 
     <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>

@@ -19,11 +19,16 @@ import java.io.InputStream;
 import java.util.List;
 
 /**
- * @author yoong
+ * @Desc MyBatis官方文档(中文)
+ * http://www.mybatis.org/mybatis-3/zh/getting-started.htmlMyBatis
+ * 学习总结(一)——MyBatis快速入门
+ * http://www.cnblogs.com/xdp-gacl/p/4261895.html
  * <br>
- * @desc WongUserManager
+ * @Author Administrator
  * <br>
- * @date 2018/1/16 16:41
+ * @Date 2018/1/16 16:41
+ * <br>
+ * @Version 1.0
  */
 public class WongUserManager {
 
