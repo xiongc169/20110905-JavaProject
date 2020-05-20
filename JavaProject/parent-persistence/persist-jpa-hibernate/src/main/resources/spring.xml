@@ -6,6 +6,10 @@
 
     <context:component-scan base-package="com.yoong.jpa.hibernate"></context:component-scan>
 
-    <bean id="a" class="org.hibernate."
+    <!--Spring 的@PersistenceUnit和@PersistenceContext-->
+    <!--PS：Spring注入PersistenceAnnotationBeanPostProcessor，或者继承PersistenceAnnotationBeanPostProcessor的子类，然后注入到spring中，但只能存在一个；-->
+    <!--当field上使用了@PersistenceUnit和@PersistenceContext，使用PersistenceAnnotationBeanPostProcessor进行解析。-->
+    <!--https://www.cnblogs.com/beiyeren/archive/2013/01/23/2873039.html-->
+    <bean id="persistenceAnnotationBeanPostProcessor" class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
 
 </beans>

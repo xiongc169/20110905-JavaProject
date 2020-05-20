@@ -4,6 +4,7 @@ import com.yoong.jpa.hibernate.dao.AccountDao;
 import com.yoong.jpa.hibernate.domain.Account;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -57,7 +58,7 @@ public class App {
     }
 
     public static void jpaSpring() {
-        //PersistenceAnnotationBeanPostProcessor a=new PersistenceAnnotationBeanPostProcessor();
+        //PersistenceAnnotationBeanPostProcessor persistenceAnnotationBeanPostProcessor = new PersistenceAnnotationBeanPostProcessor();
         ApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"classpath*:spring.xml"});
         AccountDao accountDao = (AccountDao) context.getBean("accountDao");
         Account account = new Account();
