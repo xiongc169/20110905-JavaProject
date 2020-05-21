@@ -11,7 +11,13 @@ import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang.StringUtils;
 
 /**
- * @author yoong
+ * @Desc DateUtils
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018年1月15日
+ * <p>
+ * @Version 1.0
  */
 public class DateUtils {
 
@@ -22,8 +28,10 @@ public class DateUtils {
         try {
             format();
             getYearMonthDay();
-            List<String> payDate = getMonthBetween("2017-01", "2018-02");
-            List<String> payDate2 = getMonthList("2017-01", "2018-02");
+            List<String> payDate = getMonthList("2017-01", "2018-02");
+            List<String> payDate2 = getMonthBetween("2017-01", "2018-02");
+            System.out.println(payDate.size());
+            System.out.println(payDate2.size());
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -75,11 +83,6 @@ public class DateUtils {
     /**
      * java获得两个日期之间的所有月份
      * https://www.cnblogs.com/zq-boke/p/5868254.html
-     *
-     * @param minDate
-     * @param maxDate
-     * @return
-     * @throws ParseException
      */
     public static List<String> getMonthBetween(String minDate, String maxDate) throws ParseException {
         ArrayList<String> result = new ArrayList<String>();

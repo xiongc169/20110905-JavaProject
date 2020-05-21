@@ -1,14 +1,11 @@
-package org.practice.python;
-
-import java.io.FileInputStream;
-import java.io.InputStream;
+package org.practice.hundsun;
 
 
 /**
  * Hello world!
  *
  */
-public class App {
+public class PythonApp {
 	public static void main(String[] args) {
 
 		System.out.println("Hello World!");

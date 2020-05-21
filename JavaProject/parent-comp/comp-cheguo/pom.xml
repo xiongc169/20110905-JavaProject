@@ -60,6 +60,21 @@
             <artifactId>aliyun-sdk-oss</artifactId>
             <version>3.7.0</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.10</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <!--<version>6.1.0.Final</version>-->
+            <version>5.4.3.Final</version>
+        </dependency>
     </dependencies>
 
     <build>

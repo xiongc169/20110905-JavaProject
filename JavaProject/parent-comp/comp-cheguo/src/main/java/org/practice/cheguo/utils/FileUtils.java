@@ -9,10 +9,14 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * https://www.cnblogs.com/DylanZ/p/6269042.html<br>
- * java 中 byte[]、File、InputStream 互相转换
- *
- * @author yoong
+ * @Desc java 中 byte[]、File、InputStream 互相转换
+ * https://www.cnblogs.com/DylanZ/p/6269042.html
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date yoong
+ * <p>
+ * @Version yoong
  */
 public class FileUtils {
 
@@ -33,16 +37,13 @@ public class FileUtils {
     /**
      * 文件、字节数组转换
      * https://www.cnblogs.com/pcheng/p/6913535.html
-     *
-     * @param fileName
-     * @return
      */
     public static byte[] fileToBytes(String fileName) {
         File file = new File(fileName);
         try {
             FileInputStream fis = new FileInputStream(file);
             ByteArrayOutputStream bos = new ByteArrayOutputStream(fis.available());
-            byte[] buffer = new byte[100000];
+            byte[] buffer = new byte[1024 * 1024];      //new byte[1024 * 1024] = 1M
             int n;
             while ((n = fis.read(buffer)) != -1) {
                 bos.write(buffer, 0, n);
@@ -93,23 +94,17 @@ public class FileUtils {
     /**
      * 文件转换为数组
      * https://www.cnblogs.com/cnblogszs/p/6405403.html
-     *
-     * @param filePath
-     * @return
-     * @throws IOException
      */
-    public static byte[] InputStream2ByteArray(String filePath) throws IOException {
-
+    public static byte[] inputStream2ByteArray(String filePath) throws IOException {
         InputStream in = new FileInputStream(filePath);
         byte[] data = toByteArray(in);
         in.close();
-
         return data;
     }
 
     public static byte[] toByteArray(InputStream in) throws IOException {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        byte[] buffer = new byte[1024 * 4];
+        byte[] buffer = new byte[1024 * 4];     //new byte[1024 * 4] = 4KB
         int n = 0;
         while ((n = in.read(buffer)) != -1) {
             out.write(buffer, 0, n);

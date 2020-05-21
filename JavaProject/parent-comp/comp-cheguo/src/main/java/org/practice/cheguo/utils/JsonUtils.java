@@ -11,12 +11,18 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * https://www.cnblogs.com/cdf-opensource-007/p/7106018.html <br>
- * PS：FastJSON简介 <br>
- * http://blog.csdn.net/moshenglv/article/details/52021263 <br>
- * PS：四款处理json的java类库：Json-lib、Gson、Jackson、Fastjson <br>
- *
- * @author yoong
+ * @Desc FastJson对于JSON格式字符串、JSON对象及JavaBean之间的相互转换
+ * PS：FastJSON简介
+ * https://www.cnblogs.com/cdf-opensource-007/p/7106018.html
+ * Java的4种Json类库介绍
+ * PS：四款处理json的java类库：Json-lib、Gson、Jackson、Fastjson
+ * http://blog.csdn.net/moshenglv/article/details/52021263
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018年1月15日
+ * <p>
+ * @Version 1.0
  */
 public class JsonUtils {
 
@@ -48,19 +54,21 @@ public class JsonUtils {
     }
 
     public static void serializeObject() {
-        JSONObject isRegisteredObj = new JSONObject();
-        isRegisteredObj.put("bcode", "registerMobile11");
-        isRegisteredObj.put("bname", "reservedMobile22");
-        String jsonStr = isRegisteredObj.toJSONString();
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("bcode", "registerMobile11");
+        jsonObject.put("bname", "reservedMobile22");
+        String jsonStr = jsonObject.toJSONString();
         System.out.println(jsonStr);
     }
 
     public static void deserializeObject() {
         String isRegisteredJson = "{\"customerId\":250335,\"registerNo\":\"104056\",\"linkUrl\":\"http://180.169.200.170:8239/open/account/index/KH96115244044128256\",\"registerStatus\":0,\"registerMobile\":\"15157692880\",\"globalId\":\"140103199007190043\",\"name\":\"贾壕析\"}";
         RegisterData isRegisteredResponse = JSON.parseObject(isRegisteredJson, RegisterData.class);
+        System.out.println(isRegisteredResponse.getCustomerId());
 
         String registerResponseData = "{\"coCompanyId\":12121414,\"customerId\":121495934,\"registerNo\":\"104115\",\"registerStatus\":0,\"registerMobile\":\"13957600199\",\"globalId\":\"210782196210290069\",\"name\":\"何蕾玲\",\"reservedMobile\":\"13957600199\",\"bankAccountName\":\"何蕾玲\",\"bankAccountNo\":\"6221410006090865\",\"bankName\":\"邮政银行\",\"bankNo\":\"0100\"}";
         RegisterData registerData = JSON.parseObject(registerResponseData, RegisterData.class);
+        System.out.println(registerData.getCustomerId());
     }
 
     public static void jsonToMap() {

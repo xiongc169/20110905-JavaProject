@@ -8,6 +8,15 @@ import java.util.zip.GZIPInputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+/**
+ * @Desc ZipUtils2
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018年3月30日
+ * <p>
+ * @Version 1.0
+ */
 public class ZipUtils2 {
 
     /**
@@ -26,9 +35,6 @@ public class ZipUtils2 {
 
     /**
      * 使用GZIPInputStream进行GZIP解压缩
-     *
-     * @param bytes
-     * @return
      */
     public static byte[] uncompress(byte[] bytes) {
         if (bytes == null || bytes.length == 0) {
@@ -59,8 +65,6 @@ public class ZipUtils2 {
 
     /**
      * 关闭流
-     *
-     * @param closeableList
      */
     private static void close(Closeable... closeableList) {
         if (closeableList != null) {

@@ -1,15 +1,23 @@
 package org.practice.cheguo;
 
 import com.yoong.facade.cls.model.Human;
-import org.practice.cheguo.utils.CommonUtils;
+import org.practice.cheguo.api.request.CreateTemplateReq;
 
+import javax.validation.Validation;
+import javax.validation.Validator;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @author yoong
+ * @Desc App
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018年1月15日
+ * <p>
+ * @Version 1.0
  */
 public class App {
 
@@ -19,30 +27,15 @@ public class App {
     public static void main(String[] args) {
         try {
             streamSort();
+            validate();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    /**
-     * 脱敏
-     */
-    public static void tuomin() {
-        String phone = "18668161992";
-        String idCard = "342501199111122014";
-        String bankCardNo1 = "6226621702371731";
-        String bankCardNo = "6228481990677155518";
-
-        String resultPhone = CommonUtils.encode(phone, 1);
-        String resultId = CommonUtils.encode(idCard, 2);
-        String resultBankCard = CommonUtils.encode(bankCardNo1, 3);
-
-        System.out.println(resultPhone);
-        System.out.println(resultId);
-        System.out.println(resultBankCard);
-    }
 
     /**
+     * JAVA8-用lamda表达式和增强版Comparator进行排序
      * https://blog.csdn.net/gao1440156051/article/details/71126194
      */
     public static void streamSort() {
@@ -68,4 +61,15 @@ public class App {
         System.out.println(size2);
     }
 
+    public static void validate() {
+        try {
+            //Validator validator=new SpringValidatorAdapter;
+            Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
+            CreateTemplateReq req = new CreateTemplateReq();
+            req.setContractName("contractName");
+            validator.validate(req, CreateTemplateReq.class);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 }

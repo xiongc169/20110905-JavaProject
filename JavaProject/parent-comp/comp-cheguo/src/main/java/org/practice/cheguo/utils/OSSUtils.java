@@ -9,10 +9,13 @@ import com.aliyun.oss.model.ObjectListing;
 import java.util.List;
 
 /**
- * @author yoong
- * @version 1.0
- * @description 云存储客户端
- * @date 2018年3月30日
+ * @Desc 云存储客户端
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018年3月30日
+ * <p>
+ * @Version 1.0
  */
 public class OSSUtils {
 

@@ -3,20 +3,46 @@ package org.practice.cheguo.utils;
 import org.apache.commons.lang.StringUtils;
 
 /**
- * @author yoong
+ * @Desc 数据脱敏
+ * https://www.jianshu.com/p/d54a970c251a
+ * https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E8%84%B1%E6%95%8F/7914656
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018年1月15日
+ * <p>
+ * @Version 1.0
  */
-public class CommonUtils {
+public class DataConcealUtils {
+
+    /**
+     * 入口函数
+     */
+    public static void main(String[] args) {
+        try {
+            String phone = "18668161992";
+            String idCard = "342501199111122014";
+            String bankCardNo1 = "6226621702371731";
+            String bankCardNo = "6228481990677155518";
+
+            String resultPhone = dataConceal(phone, 1);
+            String resultId = dataConceal(idCard, 2);
+            String resultBankCard = dataConceal(bankCardNo1, 3);
+
+            System.out.println(resultPhone);
+            System.out.println(resultId);
+            System.out.println(resultBankCard);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
     /**
      * Java隐藏手机号中间四位
      * PS：个人信息加密(脱敏)
      * https://blog.csdn.net/hekewangzi/article/details/50905098
-     *
-     * @param clearText  明文
-     * @param encodeType 明文类型，1 手机号、2 身份证号码、3 银行卡号
-     * @return
      */
-    public static String encode(String clearText, int encodeType) {
+    public static String dataConceal(String clearText, int encodeType) {
         String ciphterText = StringUtils.EMPTY;
         if (StringUtils.isEmpty(clearText)) {
             return ciphterText;
