@@ -11,7 +11,7 @@
     <artifactId>persist-jpa-hibernate</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>persist-jpa-accidence</name>
+    <name>persist-jpa-hibernate</name>
     <url>http://www.example.com</url>
 
     <properties>

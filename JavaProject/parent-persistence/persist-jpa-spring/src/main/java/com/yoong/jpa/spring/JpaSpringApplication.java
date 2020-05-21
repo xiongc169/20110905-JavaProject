@@ -17,7 +17,7 @@ import java.util.Date;
  * @Version 1.0
  */
 @SpringBootApplication
-public class JpaHibernateApplication {
+public class JpaSpringApplication {
 
     private static SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
 
@@ -25,8 +25,8 @@ public class JpaHibernateApplication {
      * 入口函数
      */
     public static void main(String[] args) {
-        System.out.println(sdFormat.format(new Date()) + " JpaHibernateApplication Start...");
-        ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(JpaHibernateApplication.class, args);
-        System.out.println(sdFormat.format(new Date()) + " JpaHibernateApplication Finished");
+        System.out.println(sdFormat.format(new Date()) + " JpaSpringApplication Start...");
+        ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(JpaSpringApplication.class, args);
+        System.out.println(sdFormat.format(new Date()) + " JpaSpringApplication Finished");
     }
 }
