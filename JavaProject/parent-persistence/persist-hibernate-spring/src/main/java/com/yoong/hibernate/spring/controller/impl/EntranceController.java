@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  * @Desc EntranceController
@@ -21,7 +22,7 @@ public class EntranceController {
     @Autowired
     private AccountDao accountDao;
 
-
+    @PersistenceContext
     private EntityManager entityManager;
 
     public EntranceController() {

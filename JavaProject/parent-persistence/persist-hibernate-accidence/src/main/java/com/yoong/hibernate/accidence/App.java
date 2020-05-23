@@ -8,6 +8,7 @@ import org.hibernate.cfg.Configuration;
 import com.yoong.hibernate.accidence.domain.Account;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import java.util.Date;
 
 /**
@@ -30,6 +31,7 @@ public class App {
     public static void main(String[] args) {
         try {
             hibernateDemo();
+            entityManagerDemo();
             hbm2ddl();
             hbm2ddlByAnnotation();
         } catch (Exception ex) {
@@ -63,7 +65,7 @@ public class App {
 
     /**
      * jpa查询笔记之CriteriaBuilder类和Predicate类
-     * PS：EntityManager em=session.getEntityManagerFactory().createEntityManager();
+     * PS：EntityManager em = session.getEntityManagerFactory().createEntityManager();
      * https://blog.csdn.net/qq_41063141/article/details/94408073
      */
     public static void entityManagerDemo() {
@@ -76,6 +78,20 @@ public class App {
         //Transaction接口
         Transaction tx = (Transaction) session.beginTransaction();
         EntityManager entityManager = session.getEntityManagerFactory().createEntityManager();
+
+        EntityTransaction transaction = entityManager.getTransaction();
+        Account account = new Account();
+        account.setAccountId("111111111");
+        account.setContactName("name");
+        account.setPassword("password");
+        account.setMobile("mobile");
+        account.setCreateTime(new Date());
+        account.setModifyTime(new Date());
+        account.setIsDelete(0);
+        entityManager.persist(account);
+        entityManager.flush();
+        transaction.commit();
+        System.out.println(account.getId());
     }
 
     /**

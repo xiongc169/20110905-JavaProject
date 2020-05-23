@@ -17,6 +17,7 @@ import java.util.List;
  * Hello world!
  */
 public class WongUserManager {
+
     /**
      * 入口函数
      */
@@ -74,7 +75,7 @@ public class WongUserManager {
     }
 
     /**
-     * 容器中配置多个Mapper接口
+     * 事务
      */
     public static void transactionDemo() {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath*:mybatis-spring.xml");

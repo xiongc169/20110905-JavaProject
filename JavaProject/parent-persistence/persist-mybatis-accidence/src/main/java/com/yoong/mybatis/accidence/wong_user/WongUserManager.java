@@ -38,7 +38,9 @@ public class WongUserManager {
      */
     public static void main(String[] args) {
         try {
-            //wongUserTestByXml();
+            //MyBatis缓存、事务
+            //MyBatis-Spring缓存、事务
+            wongUserTestByXml();
             wongUserTestByConfig();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -71,6 +73,9 @@ public class WongUserManager {
             //缓存，生效
             List<Account> result6 = accountMapper.selectByExample(example);
             System.out.println("result6.size: " + result6.size());
+
+            //事务
+            session.commit();
         } catch (IOException e) {
             e.printStackTrace();
         }
