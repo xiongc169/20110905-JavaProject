@@ -1,6 +1,7 @@
 package com.yoong.mybatis.accidence.wong_user;
 
 import org.apache.ibatis.datasource.jndi.JndiDataSourceFactory;
+import org.apache.ibatis.datasource.pooled.PooledDataSource;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.mapping.Environment;
 import org.apache.ibatis.session.Configuration;
@@ -37,7 +38,7 @@ public class WongUserManager {
      */
     public static void main(String[] args) {
         try {
-            wongUserTestByXml();
+            //wongUserTestByXml();
             wongUserTestByConfig();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -56,14 +57,20 @@ public class WongUserManager {
             AccountExample example = new AccountExample();
             // 1、iBatis用法：命名空间+SQL Id
             List<Account> result = session.selectList("com.yoong.mybatis.accidence.wong_user.dao.AccountMapper.selectByExample", example);
-            System.out.println(result.size());
+            System.out.println("result.size: " + result.size());
+            //缓存，生效
+            List<Account> result2 = session.selectList("com.yoong.mybatis.accidence.wong_user.dao.AccountMapper.selectByExample", example);
+            System.out.println("result2.size: " + result2.size());
 
             // 2、MyBatis用法：获取映射器
             String accountId = "ac-123456789";
             example.createCriteria().andAccountIdEqualTo(accountId);
             AccountMapper accountMapper = session.getMapper(AccountMapper.class);
-            List<Account> result2 = accountMapper.selectByExample(example);
-            System.out.println(result2.size());
+            List<Account> result5 = accountMapper.selectByExample(example);
+            System.out.println("result5.size: " + result5.size());
+            //缓存，生效
+            List<Account> result6 = accountMapper.selectByExample(example);
+            System.out.println("result6.size: " + result6.size());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -74,13 +81,21 @@ public class WongUserManager {
         //2、SqlSessionFactory构建SqlSession；
         //3、探究已映射的SQL语句
         try {
-            SqlSessionFactory factory = null;
-            DataSource dataSource = new JndiDataSourceFactory().getDataSource();
+            PooledDataSource dataSource = new PooledDataSource();
+            dataSource.setDriver("com.mysql.cj.jdbc.Driver");
+            dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/mysql?serverTimezone=UTC");
+            dataSource.setUsername("root");
+            dataSource.setPassword("123456");
             TransactionFactory transFactory = new JdbcTransactionFactory();
             Environment environment = new Environment("id", transFactory, dataSource);
             Configuration config = new Configuration(environment);
-            config.addMappers("");
-            factory = new SqlSessionFactoryBuilder().build(config);
+            config.addMapper(AccountMapper.class);  //config.addMappers("com.yoong.mybatis.accidence.wong_user.dao");
+            SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(config);
+
+            SqlSession sqlSession = factory.openSession();
+            AccountExample example = new AccountExample();
+            List<Account> result = sqlSession.selectList("com.yoong.mybatis.accidence.wong_user.dao.AccountMapper.selectByExample", example);
+            System.out.println("result.size: " + result.size());
         } catch (Exception e) {
             e.printStackTrace();
         }

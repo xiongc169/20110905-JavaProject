@@ -51,14 +51,6 @@
             <version>8.0.18</version>
         </dependency>
 
-        <!--数据源：DriverManagerDataSource-->
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>5.1.5.RELEASE</version>
-        </dependency>
-
         <!--数据源：DBCP-->
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->
         <dependency>
@@ -81,6 +73,14 @@
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
             <version>1.1.20</version>
+        </dependency>
+
+        <!--数据源：DriverManagerDataSource-->
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>5.1.5.RELEASE</version>
         </dependency>
 
         <!--spring容器-->
