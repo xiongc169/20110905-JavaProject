@@ -6,13 +6,16 @@ import javax.jms.*;
 import java.text.SimpleDateFormat;
 
 /**
- * @author yoong
- * <br/>
- * @desc http://boy00fly.iteye.com/blog/1103586
- * <br/>
- * @date 2018年7月25日
+ * @Desc JMS简介与ActiveMQ实战
+ * PS：https://www.iteye.com/blog/boy00fly-1103586
+ * <p>
+ * @Author 20180112002
+ * <p>
+ * @Date 2018年7月25日
+ * <p>
+ * @Version 1.0
  */
-public class P2PProducer {
+public class P2pProducer {
 
     private static String userName = "admin";
     private static String password = "admin";
@@ -22,8 +25,6 @@ public class P2PProducer {
 
     /**
      * 入口函数
-     *
-     * @param args
      */
     public static void main(String[] args) {
         try {
@@ -31,7 +32,7 @@ public class P2PProducer {
             boolean isPersistent = false;
 
             //Queue/Topic 生产者
-            producer4P2P(isTopic, isPersistent);
+            producerP2P(isTopic, isPersistent);
             System.out.println("producer4P2P ending");
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -40,11 +41,8 @@ public class P2PProducer {
 
     /**
      * Queue/Topic 生产者
-     *
-     * @param isTopic      消息的传输模型：PTP、Pub/Sub
-     * @param isPersistent 是否持久化
      */
-    public static void producer4P2P(boolean isTopic, boolean isPersistent) throws Exception {
+    public static void producerP2P(boolean isTopic, boolean isPersistent) throws Exception {
         //String timeString = format.format(new Date());
         ActiveMQConnectionFactory connFactory = null;
         Connection conn = null;
@@ -57,6 +55,7 @@ public class P2PProducer {
             connFactory = new ActiveMQConnectionFactory(brokerUrl);//免认证
             conn = connFactory.createConnection();
             conn.start();// ！！！！！
+
             /**在connection的基础上创建一个session，同时设置是否支持事务、ACKNOWLEDGE标识。
              • AUTO_ACKNOWLEDGE：自动确认模式。一旦接收方应用程序的方法调用从处理消息处返回，会话对象就会确认消息的接收。
              • CLIENT_ACKNOWLEDGE：客户端确认模式。会话对象依赖于应用程序对被接收的消息调用一个acknowledge()方法。一旦这个方法被调用，会话会确认最后一次确认之后所有接收到的消息。这种模式允许应用程序以一个调用来接收，处理并确认一批消息。注意：在管理控制台中，如果连接工厂的Acknowledge Policy（确认方针）属性被设置为"Previous"（提前），但是你希望为一个给定的会话确认所有接收到的消息，那么就用最后一条消息来调用acknowledge()方法。
@@ -88,5 +87,4 @@ public class P2PProducer {
             }
         }
     }
-
 }

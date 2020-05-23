@@ -5,11 +5,13 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 
 /**
- * @author yoong
- * <br>
- * @desc MyMessageProducer
- * <br>
- * @date 2019/1/31 14:13
+ * @Desc MyMessageProducer
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019/1/31 14:19
+ * <p>
+ * @Version 1.0
  */
 public class MyMessageProducer {
 

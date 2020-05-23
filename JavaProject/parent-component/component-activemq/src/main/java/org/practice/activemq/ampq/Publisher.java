@@ -14,22 +14,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yoong.amqp;
+package org.practice.activemq.ampq;
 
 import org.apache.qpid.jms.*;
 
 import javax.jms.*;
 
-class Listener {
+/**
+ * @Desc Publisher
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019/1/31 11:13
+ * <p>
+ * @Version 1.0
+ */
+class Publisher {
 
     /**
      * 入口函数
-     *
-     * @param args
-     *
-     * @throws JMSException
      */
-    public static void main(String[] args) throws JMSException {
+    public static void main(String[] args) throws Exception {
 
         final String TOPIC_PREFIX = "topic://";
 
@@ -41,10 +46,20 @@ class Listener {
         String connectionURI = "amqp://" + host + ":" + port;
         String destinationName = arg(args, 0, "topic://event");
 
+        int messages = 10000;
+        int size = 256;
+
+        String DATA = "abcdefghijklmnopqrstuvwxyz";
+        String body = "";
+        for (int i = 0; i < size; i++) {
+            body += DATA.charAt(i % DATA.length());
+        }
+
         JmsConnectionFactory factory = new JmsConnectionFactory(connectionURI);
 
         Connection connection = factory.createConnection(user, password);
         connection.start();
+
         Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 
         Destination destination = null;
@@ -54,43 +69,22 @@ class Listener {
             destination = session.createQueue(destinationName);
         }
 
-        MessageConsumer consumer = session.createConsumer(destination);
-        long start = System.currentTimeMillis();
-        long count = 1;
-        System.out.println("Waiting for messages...");
-        while (true) {
-            Message msg = consumer.receive();
-            if (msg instanceof TextMessage) {
-                String body = ((TextMessage) msg).getText();
-                if ("SHUTDOWN".equals(body)) {
-                    long diff = System.currentTimeMillis() - start;
-                    System.out.println(String.format("Received %d in %.2f seconds", count, (1.0 * diff / 1000.0)));
-                    connection.close();
-                    try {
-                        Thread.sleep(10);
-                    } catch (Exception e) {
-                    }
-                    System.exit(1);
-                } else {
-                    try {
-                        if (count != msg.getIntProperty("id")) {
-                            System.out.println("mismatch: " + count + "!=" + msg.getIntProperty("id"));
-                        }
-                    } catch (NumberFormatException ignore) {
-                    }
+        MessageProducer producer = session.createProducer(destination);
+        producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
 
-                    if (count == 1) {
-                        start = System.currentTimeMillis();
-                    } else if (count % 1000 == 0) {
-                        System.out.println(String.format("Received %d messages.", count));
-                    }
-                    count++;
-                }
-
-            } else {
-                System.out.println("Unexpected message type: " + msg.getClass());
+        for (int i = 1; i <= messages; i++) {
+            TextMessage msg = session.createTextMessage("#:" + i);
+            msg.setIntProperty("id", i);
+            producer.send(msg);
+            if ((i % 1000) == 0) {
+                System.out.println(String.format("Sent %d messages", i));
             }
         }
+
+        producer.send(session.createTextMessage("SHUTDOWN"));
+        Thread.sleep(1000 * 3);
+        connection.close();
+        System.exit(0);
     }
 
     private static String env(String key, String defaultValue) {
@@ -106,4 +100,5 @@ class Listener {
         else
             return defaultValue;
     }
+
 }

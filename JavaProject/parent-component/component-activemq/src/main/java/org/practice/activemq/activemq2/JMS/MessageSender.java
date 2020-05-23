@@ -12,13 +12,15 @@ import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 /**
- * @author yoong
- * <br/>
- * @desc 深入浅出消息队列 ActiveMQ
- *       PS：使用JMS方式发送接收消息
- *       http://blog.csdn.net/jwdstef/article/details/17380471
- * <br/>
- * @date 2015-08-28 09:55:26
+ * @Desc 深入浅出消息队列 ActiveMQ
+ * PS：使用JMS方式发送接收消息
+ * http://blog.csdn.net/jwdstef/article/details/17380471
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-08-28 09:55:26
+ * <p>
+ * @Version 1.0
  */
 public class MessageSender {
 

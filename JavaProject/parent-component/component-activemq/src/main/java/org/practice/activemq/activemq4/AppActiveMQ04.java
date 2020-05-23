@@ -9,12 +9,14 @@ import org.springframework.jms.core.JmsTemplate;
 import javax.jms.Message;
 
 /**
- * @author chaoxiong
- * <br/>
- * ActiveMQ的简单使用
- * https://www.iteye.com/blog/elim-1893038
- * <br/>
- * @date 2016年7月21日 下午7:24:57
+ * @Desc ActiveMQ的简单使用
+ * PS：https://www.iteye.com/blog/elim-1893038
+ * <p>
+ * @Author chaoxiong
+ * <p>
+ * @Date 2016年7月21日 下午7:24:57
+ * <p>
+ * @Version 1.0
  */
 public class AppActiveMQ04 {
 
@@ -25,8 +27,6 @@ public class AppActiveMQ04 {
 
     /**
      * 入口函数
-     *
-     * @param args
      */
     public static void main(String[] args) {
         try {

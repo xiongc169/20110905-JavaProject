@@ -6,10 +6,14 @@ import org.springframework.jms.core.JmsTemplate;
 import javax.jms.Message;
 
 /**
- * @author 20180112002
- * @desc JMS简介与ActiveMQ实战
- * PS：http://boy00fly.iteye.com/blog/1103586
- * @date 2018年7月25日
+ * @Desc JMS简介与ActiveMQ实战
+ * PS：https://www.iteye.com/blog/boy00fly-1103586
+ * <p>
+ * @Author 20180112002
+ * <p>
+ * @Date 2018年7月25日
+ * <p>
+ * @Version 1.0
  */
 public class JMS4Spring {
 
@@ -19,7 +23,6 @@ public class JMS4Spring {
     public static void main(String[] args) {
         try {
             ClassPathXmlApplicationContext clsContext = new ClassPathXmlApplicationContext(new String[]{"classpath:jms4spring1.xml"});
-            clsContext.start();
 
             //生产者
             JmsTemplate template = (JmsTemplate) clsContext.getBean("myJmsTemplate");

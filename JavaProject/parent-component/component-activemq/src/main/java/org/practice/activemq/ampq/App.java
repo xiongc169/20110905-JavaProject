@@ -1,11 +1,13 @@
-package com.yoong.amqp;
+package org.practice.activemq.ampq;
 
 /**
- * @author yoong
- * <br>
- * @desc Apache-activeMQ自带的Demo (D:\Apache\apache-activemq-5.15.2\examples\amqp)
- * <br>
- * @date 2019/1/31 11:13
+ * @Desc Apache-activeMQ自带的Demo (D:\Apache\apache-activemq-5.15.2\examples\amqp)
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019/1/31 11:13
+ * <p>
+ * @Version 1.0
  */
 public class App {
 

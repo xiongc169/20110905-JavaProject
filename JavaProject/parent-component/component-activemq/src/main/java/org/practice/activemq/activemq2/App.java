@@ -4,20 +4,20 @@ import org.practice.activemq.activemq2.JMS.MessageReceiver;
 import org.practice.activemq.activemq2.JMS.MessageSender;
 
 /**
- * @author yoong
- * <br/>
- * @desc 深入浅出消息队列 ActiveMQ
- *       PS：JMS Provider\JMS for Spring
- *       http://blog.csdn.net/jwdstef/article/details/17380471
- * <br/>
- * @date 2015-08-28 09:55:26
+ * @Desc 深入浅出消息队列 ActiveMQ
+ * PS：使用发布/订阅域方式发送接收消息
+ * http://blog.csdn.net/jwdstef/article/details/17380471
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-08-28 09:55:26
+ * <p>
+ * @Version 1.0
  */
 public class App {
 
     /**
      * 入口函数
-     *
-     * @param args
      */
     public static void main(String[] args) {
         try {

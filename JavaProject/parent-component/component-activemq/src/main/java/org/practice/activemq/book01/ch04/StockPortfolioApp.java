@@ -1,11 +1,13 @@
 package org.practice.activemq.book01.ch04;
 
 /**
- * @author yoong
- * <br>
- * @desc StockPortfolioApp
- * <br>
- * @date 2019/1/30 15:22
+ * @Desc StockPortfolioApp
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019/1/31 14:19
+ * <p>
+ * @Version 1.0
  */
 public class StockPortfolioApp {
 

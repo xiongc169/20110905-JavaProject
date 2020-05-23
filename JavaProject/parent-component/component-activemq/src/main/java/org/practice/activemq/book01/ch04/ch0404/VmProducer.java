@@ -7,8 +7,11 @@ import javax.jms.*;
 
 /**
  * @Desc VmProducer
- * @Author
- * @Date
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019/1/31 14:19
+ * <p>
  * @Version 1.0
  */
 public class VmProducer {

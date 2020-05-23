@@ -30,10 +30,10 @@
     </bean>
 
     <!-- 读取信息 -->
-    <bean id="consumer" class="org.practice.activemq.activemq1.P2PConsumer"></bean>
+    <bean id="consumer" class="org.practice.activemq.activemq1.P2pConsumer"></bean>
 
     <!-- 发送信息 -->
-    <bean id="producerTopic" class="org.practice.activemq.activemq1.P2PProducer"></bean>
+    <bean id="producerTopic" class="org.practice.activemq.activemq1.P2pProducer"></bean>
 
     <!-- 消息监听 -->
     <!--    <bean id="listenerContainerTopic" class="org.springframework.jms.listener.DefaultMessageListenerContainer">-->

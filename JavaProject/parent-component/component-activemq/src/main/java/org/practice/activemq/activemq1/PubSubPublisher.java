@@ -9,11 +9,16 @@ import java.util.Date;
 import java.util.UUID;
 
 /**
- * @author 20180112002
- * @description http://boy00fly.iteye.com/blog/1103586
- * @date 2018年7月25日
+ * @Desc JMS简介与ActiveMQ实战
+ * PS：https://www.iteye.com/blog/boy00fly-1103586
+ * <p>
+ * @Author 20180112002
+ * <p>
+ * @Date 2018年7月25日
+ * <p>
+ * @Version 1.0
  */
-public class PSPublisher {
+public class PubSubPublisher {
 
     private static String userName = "admin";
     private static String password = "admin";
@@ -26,7 +31,7 @@ public class PSPublisher {
      */
     public static void main(String[] args) {
         try {
-            producer4PubSub(true);
+            producerPubSub(true);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -35,8 +40,7 @@ public class PSPublisher {
     /**
      * 发布者
      */
-    public static void producer4PubSub(boolean isTopic) throws Exception {
-        //String timeString = format.format(new Date());
+    public static void producerPubSub(boolean isTopic) throws Exception {
         ActiveMQConnectionFactory connFactory = null;
         Connection conn = null;
         Session session = null;
@@ -47,11 +51,14 @@ public class PSPublisher {
             conn = connFactory.createConnection();
             conn.setClientID(UUID.randomUUID().toString());
             conn.start();// ！！！！！
+
             session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
             topic = session.createTopic("topic-" + timeString);
             MessageProducer producer = session.createProducer(topic);//TODO: 控制台创建 目标地址(Destination)
+
             ActiveMQTextMessage message = new ActiveMQTextMessage();
             message.setText(format.format(new Date()));
+
             producer.send(message);
         } catch (JMSException e) {
             e.printStackTrace();

@@ -6,10 +6,14 @@ import org.apache.activemq.command.ActiveMQTextMessage;
 import javax.jms.*;
 
 /**
- * @author 20180112002
- * @desc JMS简介与ActiveMQ实战
- * PS：http://boy00fly.iteye.com/blog/1103586
- * @date 2018年7月25日
+ * @Desc JMS简介与ActiveMQ实战
+ * PS：https://www.iteye.com/blog/boy00fly-1103586
+ * <p>
+ * @Author 20180112002
+ * <p>
+ * @Date 2018年7月25日
+ * <p>
+ * @Version 1.0
  */
 public class App01 {
 
@@ -22,7 +26,9 @@ public class App01 {
      */
     public static void main(String[] args) {
         try {
+            //生产者
             producer();
+            //消费者
             consumer();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -37,10 +43,10 @@ public class App01 {
 
             Session session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
             Destination destination = session.createQueue("yoong");
-            MessageProducer producer = session.createProducer(destination);//TODO: 控制台创建 目标地址(Destination)
+            MessageProducer producer = session.createProducer(destination); //TODO: 控制台创建 目标地址(Destination)
             ActiveMQTextMessage msg = new ActiveMQTextMessage();
             msg.setText("2019年9月12日14:58:43");
-            producer.send(msg);
+            producer.send(msg); //Number Of Pending Messages、Messages Enqueued 数量+1
 
             session.close();
             conn.close();
@@ -57,8 +63,8 @@ public class App01 {
 
             Session session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
             Destination destination = session.createQueue("yoong");
-            MessageConsumer consumer = session.createConsumer(destination);//TODO: 控制台 消费者数量+1
-            Message msg = consumer.receive(1000);
+            MessageConsumer consumer = session.createConsumer(destination); //TODO: 控制台 消费者数量+1
+            Message msg = consumer.receive(1000);   //Number Of Pending Messages 数量-1，Messages Dequeued 数量+1
             if (msg instanceof ActiveMQTextMessage) {
                 String text = ((ActiveMQTextMessage) msg).getText();
                 System.out.println(text);

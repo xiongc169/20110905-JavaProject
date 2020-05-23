@@ -14,13 +14,15 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 
 /**
- * @author yoong
- * <br/>
- * @desc 深入浅出消息队列 ActiveMQ
+ * @Desc 深入浅出消息队列 ActiveMQ
  * PS：整合Spring实现消息发送和接收
  * http://blog.csdn.net/jwdstef/article/details/17380471
- * <br/>
- * @date 2015-08-28 09:55:26
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-08-28 09:55:26
+ * <p>
+ * @Version 1.0
  */
 public class Sender {
 
@@ -28,8 +30,6 @@ public class Sender {
 
     /**
      * 入口函数
-     *
-     * @param args
      */
     public static void main(String[] args) {
         try {

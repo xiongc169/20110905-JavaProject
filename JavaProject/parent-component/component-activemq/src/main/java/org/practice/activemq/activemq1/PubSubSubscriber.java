@@ -7,11 +7,16 @@ import java.text.SimpleDateFormat;
 import java.util.UUID;
 
 /**
- * @author 20180112002
- * @description http://boy00fly.iteye.com/blog/1103586
- * @date 2018年7月25日
+ * @Desc JMS简介与ActiveMQ实战
+ * PS：https://www.iteye.com/blog/boy00fly-1103586
+ * <p>
+ * @Author 20180112002
+ * <p>
+ * @Date 2018年7月25日
+ * <p>
+ * @Version 1.0
  */
-public class PSSubscriber {
+public class PubSubSubscriber {
 
     private static String userName = "admin";
     private static String password = "admin";
@@ -25,8 +30,8 @@ public class PSSubscriber {
     public static void main(String[] args) {
         try {
             boolean isTopic = true;
-            consumer4PubSub(isTopic);
-            consumer4PubSubWithListener();
+            consumerPubSub(isTopic);
+            consumerPubSubWithListener();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -35,21 +40,22 @@ public class PSSubscriber {
     /**
      * 订阅者
      */
-    public static void consumer4PubSub(boolean isTopic) throws Exception {
-        //String timeString = format.format(new Date());
+    public static void consumerPubSub(boolean isTopic) throws Exception {
         ActiveMQConnectionFactory connFactory = null;
         Connection conn = null;
         Session session = null;
         Topic dest = null;
         TopicSubscriber consumer = null;
         try {
-            connFactory = new ActiveMQConnectionFactory(userName, password, brokerUrl);
+            //connFactory = new ActiveMQConnectionFactory(brokerUrl); //免认证
+            connFactory = new ActiveMQConnectionFactory(userName, password, brokerUrl); //需认证
             conn = connFactory.createConnection();
             conn.setClientID(UUID.randomUUID().toString());
             conn.start();// ！！！！！
+
             session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
-            dest = session.createTopic("topic-" + timeString);
-            consumer = session.createDurableSubscriber(dest, "topicConsumer1");
+            dest = session.createTopic("topic-" + timeString);  //TODO: 需要先订阅，再发布
+            consumer = session.createDurableSubscriber(dest, "topicConsumer1"); //TODO: 控制台 消费者数量加1
             Message message = consumer.receive(60 * 1000);
             TextMessage text = (TextMessage) message;
             if (text != null) {
@@ -59,6 +65,7 @@ public class PSSubscriber {
             e.printStackTrace();
         } finally {
             //不释放资源，应用程序不会停止
+            //TODO：创建Topic连接后，释放资源，消费者数据也不会减1
             if (session != null) {
                 session.close();
             }
@@ -68,7 +75,10 @@ public class PSSubscriber {
         }
     }
 
-    public static void consumer4PubSubWithListener() throws Exception {
+    /**
+     * 订阅者 - MessageListener
+     */
+    public static void consumerPubSubWithListener() throws Exception {
         //String timeString = format.format(new Date());
         ActiveMQConnectionFactory connFactory = null;
         Connection conn = null;
@@ -80,10 +90,11 @@ public class PSSubscriber {
             conn = connFactory.createConnection();
             conn.setClientID(UUID.randomUUID().toString());
             conn.start();// ！！！！！
+
             session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
             dest = session.createTopic("topic-" + timeString);
             consumer = session.createDurableSubscriber(dest, "topicConsumer1");//TODO: 控制台创建 目标地址(Destination)
-            consumer.setMessageListener(new P2PMessageListener());
+            consumer.setMessageListener(new MyMessageListener());
             Integer input = System.in.read();
             System.out.println(input);
         } catch (JMSException e) {

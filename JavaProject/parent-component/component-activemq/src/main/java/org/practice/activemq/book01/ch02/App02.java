@@ -2,8 +2,11 @@ package org.practice.activemq.book01.ch02;
 
 /**
  * @Desc App02
- * @Author
- * @Date
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019/1/31 14:19
+ * <p>
  * @Version 1.0
  */
 public class App02 {

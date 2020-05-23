@@ -1,11 +1,13 @@
 package org.practice.activemq.book01;
 
 /**
- * @author yoong
- * <br>
- * @desc 《Activemq实战》
- * <br>
- * @date 2019/1/30 15:21
+ * @Desc 《Activemq实战》
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019/1/31 14:19
+ * <p>
+ * @Version 1.0
  */
 public class ActivemqApp {
 

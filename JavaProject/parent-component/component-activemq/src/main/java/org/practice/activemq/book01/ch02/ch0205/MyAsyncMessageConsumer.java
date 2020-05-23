@@ -5,11 +5,13 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 
 /**
- * @author yoong
- * <br>
- * @desc MyAsyncMessageConsumer
- * <br>
- * @date 2019/1/31 14:19
+ * @Desc MyAsyncMessageConsumer
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019/1/31 14:19
+ * <p>
+ * @Version 1.0
  */
 public class MyAsyncMessageConsumer implements MessageListener {
     /**
