@@ -6,6 +6,9 @@ import org.practice.activemq.activemq2.JMS.MessageSender;
 /**
  * @Desc 深入浅出消息队列 ActiveMQ
  * PS：使用发布/订阅域方式发送接收消息
+ * ConnectionFactory\Connection\Session\Destination\MessageProducer\MessageConsumer
+ * QueueConnectionFactory\QueueConnection\QueueSession\Queue\QueueSender\QueueReceiver
+ * TopicConnectionFactory\TopicConnection\TopicSession\Topic\TopicPublisher\TopicSubscriber
  * http://blog.csdn.net/jwdstef/article/details/17380471
  * <p>
  * @Author yoong

@@ -6,6 +6,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import com.yoong.hibernate.accidence.domain.Account;
+import org.hibernate.query.Query;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -48,6 +49,7 @@ public class App {
         Session session = sf.openSession();
         //Transaction接口
         Transaction tx = (Transaction) session.beginTransaction();
+        //Query query = session.createQuery("");
 
         Account account = new Account();
         account.setAccountId("111111111");
@@ -61,6 +63,7 @@ public class App {
         session.save(account);
 
         tx.commit();
+        tx.rollback();
     }
 
     /**

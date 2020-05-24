@@ -30,13 +30,30 @@ public class AppActiveMQ04 {
      */
     public static void main(String[] args) {
         try {
+            producer();
+            consumer();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public static void producer() {
+        try {
             ApplicationContext appContext = new ClassPathXmlApplicationContext("classpath:jms4spring4.xml");
             JmsTemplate jmsTemplate = (JmsTemplate) appContext.getBean("jmsTemplate");
             ActiveMQQueue queue = (ActiveMQQueue) appContext.getBean("queue");
             ActiveMQTopic topic = (ActiveMQTopic) appContext.getBean("topic");
             jmsTemplate.convertAndSend(queue, "2019年10月11日15:28:21");
             jmsTemplate.convertAndSend(topic, "2019年10月11日15:28:21");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
+    public static void consumer() {
+        try {
+            ApplicationContext appContext = new ClassPathXmlApplicationContext("classpath:jms4spring4.xml");
+            JmsTemplate jmsTemplate = (JmsTemplate) appContext.getBean("jmsTemplate");
             Message msg = jmsTemplate.receive("20130402");
             System.out.println(msg);
         } catch (Exception ex) {

@@ -19,15 +19,14 @@
         <property name="connectionFactory" ref="activemqConnectionFactory"></property>
     </bean>
 
-    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
-        <property name="connectionFactory" ref="cachingConnectionFactory"></property>
-    </bean>
-
-
     <!--Spring提供多个ConnectionFactory，如SingleConnectionFactory、CachingConnectionFactory-->
     <bean id="cachingConnectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
         <!--Spring提供的ConnectionFactory只是用于管理ConnectionFactory的，真正产生到JMS服务器链接的ConnectionFactory是由JMS服务厂商提供-->
-        <property name="targetConnectionFactory" ref="activemqConnectionFactory"></property>
+        <property name="targetConnectionFactory" ref="pooledConnectionFactory"></property>
+    </bean>
+
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="cachingConnectionFactory"></property>
     </bean>
 
     <bean id="queue" class="org.apache.activemq.command.ActiveMQQueue">
@@ -36,5 +35,13 @@
 
     <bean id="topic" class="org.apache.activemq.command.ActiveMQTopic">
         <property name="physicalName" value="20130403-topic"></property>
+    </bean>
+
+    <bean id="messageListener" class="org.practice.activemq.activemq4.ConsumerMessageListener"/>
+
+    <bean id="consumer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="cachingConnectionFactory"/>
+        <property name="destination" ref="queue"/>
+        <property name="messageListener" ref="messageListener"/>
     </bean>
 </beans>
