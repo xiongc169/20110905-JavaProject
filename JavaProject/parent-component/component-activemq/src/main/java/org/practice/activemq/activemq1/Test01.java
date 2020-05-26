@@ -67,6 +67,7 @@ public class Test01 {
             Destination destination = session.createQueue("yoong");
             MessageConsumer consumer = session.createConsumer(destination); //TODO: 控制台 消费者数量+1
             Message msg = consumer.receive(1000);   //Number Of Pending Messages 数量-1，Messages Dequeued 数量+1
+            //msg.acknowledge();
             if (msg instanceof TextMessage) {
                 String text = ((TextMessage) msg).getText();
                 System.out.println(text);

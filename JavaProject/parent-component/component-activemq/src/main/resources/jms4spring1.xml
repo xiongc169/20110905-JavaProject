@@ -36,12 +36,12 @@
     <bean id="p2pProducer" class="org.practice.activemq.activemq1.P2pProducer"></bean>
 
     <!-- 消息监听 -->
-    <!--    <bean id="listenerContainerTopic" class="org.springframework.jms.listener.DefaultMessageListenerContainer">-->
-    <!--        <property name="connectionFactory" ref="jmsFactory"/>-->
-    <!--        <property name="destination" ref="destinationTopic"/>-->
-    <!--        <property name="messageListener" ref="consumer"/>-->
-    <!--        <property name="clientId" value="clientId_001"/>-->
-    <!--        <property name="subscriptionDurable" value="true"/>-->
-    <!--        <property name="durableSubscriptionName" value="My_001"/>-->
-    <!--    </bean>-->
+    <bean id="listenerContainerTopic" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="pooledConnectionFactory"/>
+        <property name="destination" ref="destinationTopic"/>
+        <property name="messageListener" ref="p2pConsumer"/>
+        <property name="clientId" value="clientId_001"/>
+        <property name="subscriptionDurable" value="true"/>
+        <property name="durableSubscriptionName" value="My_001"/>
+    </bean>
 </beans>

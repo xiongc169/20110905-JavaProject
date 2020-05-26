@@ -22,17 +22,21 @@ public class JMS4Spring {
      */
     public static void main(String[] args) {
         try {
-            ClassPathXmlApplicationContext clsContext = new ClassPathXmlApplicationContext(new String[]{"classpath:jms4spring1.xml"});
-
-            //生产者，spring-jms封装类JmsTemplate
-            JmsTemplate template = (JmsTemplate) clsContext.getBean("myJmsTemplate");
-            template.convertAndSend("Hello");
-
-            //消费者，spring-jms封装类JmsTemplate
-            Message msg = template.receive();
-            System.out.println(msg);
+            jmsTemplateDemo();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    private static void jmsTemplateDemo() {
+        ClassPathXmlApplicationContext clsContext = new ClassPathXmlApplicationContext(new String[]{"classpath:jms4spring1.xml"});
+
+        //生产者，spring-jms封装类JmsTemplate
+        JmsTemplate template = (JmsTemplate) clsContext.getBean("myJmsTemplate");
+        template.convertAndSend("Hello");
+
+        //消费者，spring-jms封装类JmsTemplate
+        Message msg = template.receive();
+        System.out.println(msg);
     }
 }
