@@ -48,21 +48,24 @@ public class MessageSender {
     }
 
     public static void run() throws Exception {
-        Connection conn = null;
+        ConnectionFactory connectionFactory = null;
+        Connection connection = null;
         Session session = null;
+        Destination destination = null;
+        MessageProducer producer = null;
         try {
             // 创建链接工厂
-            ConnectionFactory connFactory = new ActiveMQConnectionFactory(ActiveMQConnection.DEFAULT_USER, ActiveMQConnection.DEFAULT_PASSWORD, BROKER_URL);
+            connectionFactory = new ActiveMQConnectionFactory(ActiveMQConnection.DEFAULT_USER, ActiveMQConnection.DEFAULT_PASSWORD, BROKER_URL);
             // 通过工厂创建一个连接
-            conn = connFactory.createConnection();
+            connection = connectionFactory.createConnection();
             // 启动连接
-            conn.start();
+            connection.start();
             // 创建一个session会话
-            session = conn.createSession(Boolean.TRUE, Session.AUTO_ACKNOWLEDGE);
+            session = connection.createSession(Boolean.TRUE, Session.AUTO_ACKNOWLEDGE);
             // 创建一个消息队列
-            Destination destination = session.createQueue(DESTINATION);
+            destination = session.createQueue(DESTINATION);
             // 创建消息制作者
-            MessageProducer producer = session.createProducer(destination);
+            producer = session.createProducer(destination);
             // 设置持久化模式
             producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
             sendMessage(session, producer);
@@ -75,8 +78,8 @@ public class MessageSender {
             if (session != null) {
                 session.close();
             }
-            if (conn != null) {
-                conn.close();
+            if (connection != null) {
+                connection.close();
             }
         }
     }

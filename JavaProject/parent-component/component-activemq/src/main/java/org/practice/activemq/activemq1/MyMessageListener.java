@@ -21,7 +21,7 @@ public class MyMessageListener implements MessageListener {
     public void onMessage(Message message) {
         try {
             TextMessage txtMsg = (TextMessage) message;
-            System.out.println("接收：" + txtMsg.getText());
+            System.out.println("MyMessageListener接收：" + txtMsg.getText());
         } catch (Exception ex) {
             ex.printStackTrace();
         }

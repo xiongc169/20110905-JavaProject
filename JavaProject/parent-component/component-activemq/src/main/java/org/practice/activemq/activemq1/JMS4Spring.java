@@ -24,16 +24,15 @@ public class JMS4Spring {
         try {
             ClassPathXmlApplicationContext clsContext = new ClassPathXmlApplicationContext(new String[]{"classpath:jms4spring1.xml"});
 
-            //生产者
+            //生产者，spring-jms封装类JmsTemplate
             JmsTemplate template = (JmsTemplate) clsContext.getBean("myJmsTemplate");
             template.convertAndSend("Hello");
 
-            //消费者
+            //消费者，spring-jms封装类JmsTemplate
             Message msg = template.receive();
             System.out.println(msg);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
-
 }

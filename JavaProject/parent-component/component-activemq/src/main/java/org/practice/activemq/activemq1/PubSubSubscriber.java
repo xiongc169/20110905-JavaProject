@@ -41,22 +41,24 @@ public class PubSubSubscriber {
      * 订阅者
      */
     public static void consumerPubSub(boolean isTopic) throws Exception {
-        ActiveMQConnectionFactory connFactory = null;
-        Connection conn = null;
+        //JMS接口 - 连接
+        ConnectionFactory connectionFactory = null;
+        Connection connection = null;
         Session session = null;
-        Topic dest = null;
-        TopicSubscriber consumer = null;
+        Topic topic = null;
+        MessageConsumer messageConsumer = null;
+        TopicSubscriber topicSubscriber = null;
         try {
-            //connFactory = new ActiveMQConnectionFactory(brokerUrl); //免认证
-            connFactory = new ActiveMQConnectionFactory(userName, password, brokerUrl); //需认证
-            conn = connFactory.createConnection();
-            conn.setClientID(UUID.randomUUID().toString());
-            conn.start();// ！！！！！
+            //connectionFactory = new ActiveMQConnectionFactory(brokerUrl); //免认证
+            connectionFactory = new ActiveMQConnectionFactory(userName, password, brokerUrl); //需认证
+            connection = connectionFactory.createConnection();
+            connection.setClientID(UUID.randomUUID().toString());
+            connection.start();// ！！！！！
 
-            session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
-            dest = session.createTopic("topic-" + timeString);  //TODO: 需要先订阅，再发布
-            consumer = session.createDurableSubscriber(dest, "topicConsumer1"); //TODO: 控制台 消费者数量加1
-            Message message = consumer.receive(60 * 1000);
+            session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+            topic = session.createTopic("topic-" + timeString);  //TODO: 需要先订阅，再发布
+            messageConsumer = session.createDurableSubscriber(topic, "topicConsumer1"); //TODO: 控制台 消费者数量加1
+            Message message = messageConsumer.receive(60 * 1000);
             TextMessage text = (TextMessage) message;
             if (text != null) {
                 System.out.println("接收：" + text.getText());
@@ -69,8 +71,8 @@ public class PubSubSubscriber {
             if (session != null) {
                 session.close();
             }
-            if (conn != null) {
-                conn.close();
+            if (connection != null) {
+                connection.close();
             }
         }
     }
@@ -79,22 +81,22 @@ public class PubSubSubscriber {
      * 订阅者 - MessageListener
      */
     public static void consumerPubSubWithListener() throws Exception {
-        //String timeString = format.format(new Date());
-        ActiveMQConnectionFactory connFactory = null;
-        Connection conn = null;
+        //JMS接口 - 连接
+        ConnectionFactory connectionFactory = null;
+        Connection connection = null;
         Session session = null;
-        Topic dest = null;
-        TopicSubscriber consumer = null;
+        Topic topic = null;
+        TopicSubscriber topicSubscriber = null;
         try {
-            connFactory = new ActiveMQConnectionFactory(userName, password, brokerUrl);
-            conn = connFactory.createConnection();
-            conn.setClientID(UUID.randomUUID().toString());
-            conn.start();// ！！！！！
+            connectionFactory = new ActiveMQConnectionFactory(userName, password, brokerUrl);
+            connection = connectionFactory.createConnection();
+            connection.setClientID(UUID.randomUUID().toString());
+            connection.start();// ！！！！！
 
-            session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
-            dest = session.createTopic("topic-" + timeString);
-            consumer = session.createDurableSubscriber(dest, "topicConsumer1");//TODO: 控制台创建 目标地址(Destination)
-            consumer.setMessageListener(new MyMessageListener());
+            session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+            topic = session.createTopic("topic-" + timeString);
+            topicSubscriber = session.createDurableSubscriber(topic, "topicConsumer1");//TODO: 控制台创建 目标地址(Destination)
+            topicSubscriber.setMessageListener(new MyMessageListener());
             Integer input = System.in.read();
             System.out.println(input);
         } catch (JMSException e) {
@@ -104,8 +106,8 @@ public class PubSubSubscriber {
             if (session != null) {
                 session.close();
             }
-            if (conn != null) {
-                conn.close();
+            if (connection != null) {
+                connection.close();
             }
         }
     }

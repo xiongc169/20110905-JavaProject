@@ -40,25 +40,28 @@ public class MessageReceiver {
     }
 
     public static void run() throws Exception {
+        ConnectionFactory connectionFactory = null;
         Connection connection = null;
         Session session = null;
+        Destination destination = null;
+        MessageConsumer messageConsumer = null;
         try {
             // 创建链接工厂
-            ConnectionFactory factory = new ActiveMQConnectionFactory(ActiveMQConnection.DEFAULT_USER, ActiveMQConnection.DEFAULT_PASSWORD, BROKER_URL);
+            connectionFactory = new ActiveMQConnectionFactory(ActiveMQConnection.DEFAULT_USER, ActiveMQConnection.DEFAULT_PASSWORD, BROKER_URL);
             // 通过工厂创建一个连接
-            connection = factory.createConnection();
+            connection = connectionFactory.createConnection();
             // 启动连接
             connection.start();
             // 创建一个session会话
             session = connection.createSession(Boolean.TRUE, Session.AUTO_ACKNOWLEDGE);
             // 创建一个消息队列
-            Destination destination = session.createQueue(DESTINATION);
+            destination = session.createQueue(DESTINATION);
             // 创建消息制作者
-            MessageConsumer consumer = session.createConsumer(destination);
+            messageConsumer = session.createConsumer(destination);
 
             while (true) {
                 // 接收数据的时间（等待） 100 ms
-                Message message = consumer.receive(1000);
+                Message message = messageConsumer.receive(1000);
                 TextMessage text = (TextMessage) message;
                 if (text != null) {
                     System.out.println("接收：" + text.getText());

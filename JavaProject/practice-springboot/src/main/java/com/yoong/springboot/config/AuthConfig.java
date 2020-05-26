@@ -1,51 +1,26 @@
 package com.yoong.springboot.config;
 
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
- * @author yoong
- *
- * @desc AuthConfig.java
- *
- * @date 2018年9月20日
- *
+ * @Desc AuthConfig.java
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018年9月20日
+ * <p>
+ * @Version 1.0
  */
+@Data
 @Component
 public class AuthConfig {
 
-	@Value("${com.yoong.username}")
-	private String userName;
+    @Value("${com.yoong.username}")
+    private String userName;
 
-	@Value("${com.yoong.username}")
-	private String password;
-
-	/**
-	 * @return the userName
-	 */
-	public String getUserName() {
-		return userName;
-	}
-
-	/**
-	 * @param userName the userName to set
-	 */
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	/**
-	 * @return the password
-	 */
-	public String getPassword() {
-		return password;
-	}
-
-	/**
-	 * @param password the password to set
-	 */
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    @Value("${com.yoong.username}")
+    private String password;
 
 }

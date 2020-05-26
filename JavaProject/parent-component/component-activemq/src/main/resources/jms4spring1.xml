@@ -10,7 +10,7 @@
     <context:property-placeholder location="classpath:activemq.properties"></context:property-placeholder>
 
     <!--https://www.iteye.com/blog/boy00fly-1103586-->
-    <bean id="jmsFactory" destroy-method="stop" class="org.apache.activemq.pool.PooledConnectionFactory">
+    <bean id="pooledConnectionFactory" destroy-method="stop" class="org.apache.activemq.pool.PooledConnectionFactory">
         <property name="connectionFactory">
             <bean class="org.apache.activemq.ActiveMQConnectionFactory">
                 <property name="brokerURL" value="tcp://localhost:61616"/>
@@ -21,7 +21,7 @@
     </bean>
 
     <bean id="myJmsTemplate" class="org.springframework.jms.core.JmsTemplate">
-        <property name="connectionFactory" ref="jmsFactory"/>
+        <property name="connectionFactory" ref="pooledConnectionFactory"/>
         <property name="defaultDestinationName" value="MySubject"/>
     </bean>
 
@@ -30,10 +30,10 @@
     </bean>
 
     <!-- 读取信息 -->
-    <bean id="consumer" class="org.practice.activemq.activemq1.P2pConsumer"></bean>
+    <bean id="p2pConsumer" class="org.practice.activemq.activemq1.P2pConsumer"></bean>
 
     <!-- 发送信息 -->
-    <bean id="producerTopic" class="org.practice.activemq.activemq1.P2pProducer"></bean>
+    <bean id="p2pProducer" class="org.practice.activemq.activemq1.P2pProducer"></bean>
 
     <!-- 消息监听 -->
     <!--    <bean id="listenerContainerTopic" class="org.springframework.jms.listener.DefaultMessageListenerContainer">-->

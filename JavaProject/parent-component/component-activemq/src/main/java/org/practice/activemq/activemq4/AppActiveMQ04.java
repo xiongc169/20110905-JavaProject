@@ -5,8 +5,12 @@ import org.apache.activemq.command.ActiveMQTopic;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.support.converter.MessageConversionException;
+import org.springframework.jms.support.converter.MessageConverter;
 
+import javax.jms.JMSException;
 import javax.jms.Message;
+import javax.jms.Session;
 
 /**
  * @Desc ActiveMQ的简单使用
@@ -32,6 +36,7 @@ public class AppActiveMQ04 {
         try {
             producer();
             consumer();
+            convert();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -59,5 +64,20 @@ public class AppActiveMQ04 {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    public static void convert() {
+        ConsumerMessageListenerAdapter adapter = new ConsumerMessageListenerAdapter();
+        adapter.setMessageConverter(new MessageConverter() {
+            @Override
+            public Message toMessage(Object object, Session session) throws JMSException, MessageConversionException {
+                return null;
+            }
+
+            @Override
+            public Object fromMessage(Message message) throws JMSException, MessageConversionException {
+                return null;
+            }
+        });
     }
 }

@@ -27,6 +27,15 @@
             <scope>test</scope>
         </dependency>
 
+        <!--JMS的接口：ConnectionFactory\Connection\Session\Destination\Queue\Topic\MessageProducer\MessageConsumer\TextMessage\MessageListener-->
+        <!-- https://mvnrepository.com/artifact/javax.jms/javax.jms-api -->
+        <dependency>
+            <groupId>javax.jms</groupId>
+            <artifactId>javax.jms-api</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+
+        <!--ActiveMQ的接口：ActiveMQConnectionFactory\ActiveMQConnection\ActiveMQSession\ActiveMQDestination\ActiveMQQueue\ActiveMQTopic-->
         <!-- https://mvnrepository.com/artifact/org.apache.activemq/activemq-core -->
         <dependency>
             <groupId>org.apache.activemq</groupId>
@@ -34,6 +43,7 @@
             <version>5.7.0</version>
         </dependency>
 
+        <!--核心类：PooledConnectionFactory-->
         <!-- https://mvnrepository.com/artifact/org.apache.activemq/activemq-pool -->
         <dependency>
             <groupId>org.apache.activemq</groupId>
@@ -41,13 +51,7 @@
             <version>5.7.0</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-jms -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jms</artifactId>
-            <version>5.0.0.RELEASE</version>
-        </dependency>
-
+        <!--spring-context的类：ClassPathXmlApplicationContext-->
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -55,11 +59,12 @@
             <version>5.0.0.RELEASE</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/javax.jms/javax.jms-api -->
+        <!--spring-jms的接口：JmsTemplate-->
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-jms -->
         <dependency>
-            <groupId>javax.jms</groupId>
-            <artifactId>javax.jms-api</artifactId>
-            <version>2.0.1</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jms</artifactId>
+            <version>5.0.0.RELEASE</version>
         </dependency>
 
         <!--ampq-->

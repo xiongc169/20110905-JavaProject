@@ -41,11 +41,12 @@ public class PubSubPublisher {
      * 发布者
      */
     public static void producerPubSub(boolean isTopic) throws Exception {
-        ActiveMQConnectionFactory connFactory = null;
+        //JMS接口 - 连接
+        ConnectionFactory connFactory = null;
         Connection conn = null;
         Session session = null;
         Topic topic = null;
-        TopicSubscriber consumer = null;
+        MessageProducer producer = null;
         try {
             connFactory = new ActiveMQConnectionFactory(userName, password, brokerUrl);
             conn = connFactory.createConnection();
@@ -54,7 +55,7 @@ public class PubSubPublisher {
 
             session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
             topic = session.createTopic("topic-" + timeString);
-            MessageProducer producer = session.createProducer(topic);//TODO: 控制台创建 目标地址(Destination)
+            producer = session.createProducer(topic);//TODO: 控制台创建 目标地址(Destination)
 
             ActiveMQTextMessage message = new ActiveMQTextMessage();
             message.setText(format.format(new Date()));

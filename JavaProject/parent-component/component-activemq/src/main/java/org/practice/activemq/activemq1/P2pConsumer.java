@@ -33,11 +33,11 @@ public class P2pConsumer {
 
             //Queue 消费者
             consumerP2P(isTopic);
-            System.out.println("consumer4P2P ending");
+            System.out.println("consumerP2P ending");
 
             //Queue 消费者——MessageListener
             consumerP2PWithListener(isTopic);
-            System.out.println("consumer4P2PWithListener ending");
+            System.out.println("consumerP2PWithListener ending");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -47,29 +47,34 @@ public class P2pConsumer {
      * 消费者
      */
     public static void consumerP2P(boolean isTopic) throws Exception {
-        //String timeString = format.format(new Date());
-        ActiveMQConnectionFactory connFactory = null;
-        Connection conn = null;
+        //JMS接口 - 连接
+        ConnectionFactory connectionFactory = null;
+        Connection connection = null;
         Session session = null;
+        //JMS接口 - 目的地、生产者、消费者
         Destination dest = null;
-        MessageConsumer consumer = null;
+        MessageConsumer messageConsumer = null;
+        //JMS接口 - 消息类型
+        TextMessage textMessage = null;
+
         try {
-            //connFactory = new ActiveMQConnectionFactory(userName, password, brokerUrl);//需认证
-            connFactory = new ActiveMQConnectionFactory(brokerUrl);//免认证
-            conn = connFactory.createConnection();
-            conn.start();// ！！！！！
-            session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
+            //connectionFactory = new ActiveMQConnectionFactory(userName, password, brokerUrl);//需认证
+            connectionFactory = new ActiveMQConnectionFactory(brokerUrl);//免认证
+            connection = connectionFactory.createConnection();
+            connection.start();// ！！！！！
+
+            session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             if (isTopic) {
                 //TODO: 需要先订阅，再发布
                 dest = session.createTopic("topic-" + timeString);
             } else {
                 dest = session.createQueue("queue-" + timeString);
             }
-            consumer = session.createConsumer(dest);//TODO: 控制台 消费者数量加1
-            Message message = consumer.receive(1000);
-            TextMessage text = (TextMessage) message;
-            if (text != null) {
-                System.out.println("接收：" + text.getText());
+            messageConsumer = session.createConsumer(dest);//TODO: 控制台 消费者数量加1
+            Message message = messageConsumer.receive(1000);
+            textMessage = (TextMessage) message;
+            if (textMessage != null) {
+                System.out.println("接收：" + textMessage.getText());
             }
         } catch (JMSException e) {
             e.printStackTrace();
@@ -78,8 +83,8 @@ public class P2pConsumer {
             if (session != null) {
                 session.close();
             }
-            if (conn != null) {
-                conn.close();
+            if (connection != null) {
+                connection.close();
             }
         }
     }
@@ -88,26 +93,31 @@ public class P2pConsumer {
      * Queue 消费者——MessageListener
      */
     public static void consumerP2PWithListener(boolean isTopic) throws Exception {
-        //String timeString = format.format(new Date());
-        ActiveMQConnectionFactory connFactory = null;
-        Connection conn = null;
+        //JMS接口 - 连接
+        ConnectionFactory connectionFactory = null;
+        Connection connection = null;
         Session session = null;
+        //JMS接口 - 目的地、生产者、消费者
         Destination dest = null;
-        MessageConsumer consumer = null;
+        MessageConsumer messageConsumer = null;
+        //JMS接口 - 消息类型
+        TextMessage textMessage = null;
+
         try {
-            //connFactory = new ActiveMQConnectionFactory(userName, password, brokerUrl);//需认证
-            connFactory = new ActiveMQConnectionFactory(brokerUrl);//免认证
-            conn = connFactory.createConnection();
-            conn.start();// ！！！！！
-            session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
+            //connectionFactory = new ActiveMQConnectionFactory(userName, password, brokerUrl);//需认证
+            connectionFactory = new ActiveMQConnectionFactory(brokerUrl);//免认证
+            connection = connectionFactory.createConnection();
+            connection.start();// ！！！！！
+
+            session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             if (isTopic) {
                 //TODO: 需要先订阅，再发布
                 dest = session.createTopic("topic-" + timeString);
             } else {
                 dest = session.createQueue("queue-" + timeString);
             }
-            consumer = session.createConsumer(dest);//TODO: 控制台 消费者数量加1
-            consumer.setMessageListener(new MyMessageListener());
+            messageConsumer = session.createConsumer(dest);//TODO: 控制台 消费者数量加1
+            messageConsumer.setMessageListener(new MyMessageListener());
             System.in.read();
         } catch (JMSException e) {
             e.printStackTrace();
@@ -116,8 +126,8 @@ public class P2pConsumer {
             if (session != null) {
                 session.close();
             }
-            if (conn != null) {
-                conn.close();
+            if (connection != null) {
+                connection.close();
             }
         }
     }

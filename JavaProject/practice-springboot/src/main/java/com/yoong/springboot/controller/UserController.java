@@ -12,9 +12,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * @author yoong
- * @desc http://127.0.0.1:8080/user/login
- * @date 2018年9月20日
+ * @Desc UserController.java
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018年9月20日
+ * <p>
+ * @Version 1.0
  */
 @EnableAutoConfiguration
 @Controller
@@ -34,9 +38,6 @@ public class UserController {
      * 成功：@Controller + @SpringBootApplication
      * <p>
      * 失败：@Controller + @EnableAutoConfiguration
-     *
-     * @param name
-     * @return
      */
     @ResponseBody
     @RequestMapping("/login")
