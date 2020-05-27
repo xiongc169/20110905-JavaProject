@@ -9,6 +9,6 @@ import javax.jms.MessageListener;
 public class MyMessageListener implements MessageListener {
 
     public void onMessage(Message message) {
-        System.out.println("MyMessageListener: " +message.getClass());
+        System.out.println("MyMessageListener: " + message.getClass());
     }
 }
