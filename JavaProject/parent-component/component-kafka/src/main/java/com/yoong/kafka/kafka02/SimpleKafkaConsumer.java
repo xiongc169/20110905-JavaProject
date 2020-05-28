@@ -9,13 +9,28 @@ import java.util.Properties;
 
 /**
  * @Desc SimpleKafkaConsumer
- * @Author
+ * <p>
+ * @Author yoong
+ * <p>
  * @Date 2019年7月23日19:28:43
+ * <p>
  * @Version 1.0
  */
 public class SimpleKafkaConsumer {
     private static KafkaConsumer<String, String> consumer;
     private final static String TOPIC = "test";
+
+    /**
+     * 入口函数
+     */
+    public static void main(String[] args) {
+        try {
+            //消费消息
+            new SimpleKafkaConsumer().consume();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
     public SimpleKafkaConsumer() {
         Properties props = new Properties();
@@ -44,9 +59,5 @@ public class SimpleKafkaConsumer {
                 System.out.println();
             }
         }
-    }
-
-    public static void main(String[] args) {
-        new SimpleKafkaConsumer().consume();
     }
 }

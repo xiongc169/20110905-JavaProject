@@ -8,11 +8,14 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * java对redis的基本操作
+ * @Desc java对redis的基本操作
  * https://blog.csdn.net/gdfgdfk/article/details/49429671
- *
- * @author chaoxiong
- * @since 2015-10-29 14:50:41
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-10-29 14:50:41
+ * <p>
+ * @Version 1.0
  */
 public class RedisPoolClient {
     /**

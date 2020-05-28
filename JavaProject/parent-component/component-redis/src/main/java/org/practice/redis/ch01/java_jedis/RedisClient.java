@@ -6,9 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author chaoxiong
- * @desc 自定义Redis客户端
- * @since 2015-10-29 14:50:41
+ * @Desc 自定义Redis客户端
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-10-29 14:50:41
+ * <p>
+ * @Version 1.0
  */
 public class RedisClient {
 

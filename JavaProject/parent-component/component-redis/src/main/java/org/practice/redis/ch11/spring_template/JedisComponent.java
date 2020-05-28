@@ -10,8 +10,11 @@ import org.springframework.stereotype.Component;
 
 /**
  * @Desc JedisComponent
- * @Author
- * @Date
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 20130401
+ * <p>
  * @Version 1.0
  */
 @Component("jedisComponent")

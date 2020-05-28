@@ -8,11 +8,14 @@ import java.util.Map;
 import redis.clients.jedis.Jedis;
 
 /**
- * @author Administrator
- * <br>
  * @Desc Java中使用Jedis操作Redis
  * http://www.cnblogs.com/liuling/p/2014-4-19-04.html
- * <br>
+ * <p>
+ * @Author Administrator
+ * <p>
+ * @Date 2015-10-29 14:50:41
+ * <p>
+ * @Version 1.0
  */
 public class RedisClient {
 

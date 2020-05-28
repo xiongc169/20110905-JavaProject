@@ -7,14 +7,20 @@ import java.util.Properties;
 
 /**
  * @Desc SimpleKafkaProducer
- * @Author
+ * <p>
+ * @Author yoong
+ * <p>
  * @Date 2019年7月23日19:26:30
+ * <p>
  * @Version 1.0
  */
 public class SimpleKafkaProducer {
     private static KafkaProducer<String, String> producer;
     private final static String TOPIC = "test";
 
+    /**
+     * 入口函数
+     */
     public static void main(String[] args) {
         try {
             new SimpleKafkaProducer().produce();

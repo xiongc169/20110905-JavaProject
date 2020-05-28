@@ -1,9 +1,16 @@
 package com.yoong.practice;
 
 /**
- * Hello world!
+ * @Desc RocketMQ
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2020-5-28
+ * <p>
+ * @Version 1.0
  */
 public class App {
+
     /**
      * 入口函数
      */

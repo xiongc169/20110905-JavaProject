@@ -1,9 +1,13 @@
 package org.practice.redis.ch01.java_jedis;
 
 /**
- * @author chaoxiong
- * @desc App
- * @since 2015-10-29 14:50:41
+ * @Desc AppJedis
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-10-29 14:50:41
+ * <p>
+ * @Version 1.0
  */
 public class AppJedis {
 

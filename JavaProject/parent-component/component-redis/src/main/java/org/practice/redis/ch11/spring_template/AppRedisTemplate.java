@@ -9,8 +9,11 @@ import java.util.Date;
  * @Desc Spring + redis
  * https://blog.csdn.net/qq_37598011/article/details/80903791
  * https://www.cnblogs.com/tankaixiong/p/3660075.html
- * @Author
- * @Date
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 20130401
+ * <p>
  * @Version 1.0
  */
 public class AppRedisTemplate {

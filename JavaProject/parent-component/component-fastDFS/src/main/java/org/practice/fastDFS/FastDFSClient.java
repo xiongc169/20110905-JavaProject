@@ -13,13 +13,15 @@ import com.github.tobato.fastdfs.domain.StorePath;
 import com.github.tobato.fastdfs.service.FastFileStorageClient;
 
 /**
- * @author 20180112002
- * @version 1.0
- * @description FastDFSClient.java <br>
- * Spring集成FastDFS
+ * @Desc Spring集成FastDFS
  * https://www.cnblogs.com/zixiaoguan/p/7456116.html
  * http://www.cnblogs.com/jiafuwei/p/5777622.html
- * @date 2018年8月3日
+ * <p>
+ * @Author 20180112002
+ * <p>
+ * @Date 2018年8月3日
+ * <p>
+ * @Version 1.0
  */
 @ContextConfiguration(locations = {"classpath:fastdfs.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)

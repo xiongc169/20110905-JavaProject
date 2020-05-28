@@ -11,8 +11,11 @@ import java.util.Properties;
 
 /**
  * @Desc KafkaConsumer
- * @Author
+ * <p>
+ * @Author yoong
+ * <p>
  * @Date 2019年7月23日14:29:42
+ * <p>
  * @Version 1.0
  */
 public class KafkaConsume {

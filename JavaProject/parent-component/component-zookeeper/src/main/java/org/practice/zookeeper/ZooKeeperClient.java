@@ -7,11 +7,14 @@ import org.apache.zookeeper.ZooDefs.Ids;
 import org.apache.zookeeper.ZooKeeper;
 
 /**
- * @author yoong
- * @version 1.0
- * @desc ZooKeeperClient
+ * @Desc ZooKeeperClient
  * https://www.ibm.com/developerworks/cn/opensource/os-cn-zookeeper/
- * @date 2017年8月2日
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2017年8月2日
+ * <p>
+ * @Version 1.0
  */
 public class ZooKeeperClient {
 
