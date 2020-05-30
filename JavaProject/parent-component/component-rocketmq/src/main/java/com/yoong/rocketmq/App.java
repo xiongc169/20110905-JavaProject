@@ -1,4 +1,4 @@
-package com.yoong.practice;
+package com.yoong.rocketmq;
 
 /**
  * @Desc RocketMQ
