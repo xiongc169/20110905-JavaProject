@@ -2,8 +2,11 @@ package org.practice.primary.community.utility;
 
 /**
  * @Desc StringUtility
- * @Author
- * @Date
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-08-30 09:06:00
+ * <p>
  * @Version 1.0
  */
 public class StringUtility {

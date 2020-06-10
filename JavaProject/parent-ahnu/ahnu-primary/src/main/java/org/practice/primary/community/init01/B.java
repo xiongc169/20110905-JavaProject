@@ -3,11 +3,15 @@ package org.practice.primary.community.init01;
 /**
  * @Desc Java中继承的定义与使用
  * https://blog.csdn.net/zhao_miao/article/details/83240404
- * @Author
- * @Date
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2016-6-10 11:20:19
+ * <p>
  * @Version 1.0
  */
 public class B extends A {
+
     public B() {
         System.out.println("4.B类的构造方法");
     }

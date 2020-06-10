@@ -5,6 +5,15 @@ import java.util.List;
 import lombok.Data;
 import org.practice.primary.community.enums.DictionaryType;
 
+/**
+ * @Desc Dictionary
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015/5/25 16:49
+ * <p>
+ * @Version 1.0
+ */
 @Data
 public class Dictionary implements Cloneable {
     protected String id;

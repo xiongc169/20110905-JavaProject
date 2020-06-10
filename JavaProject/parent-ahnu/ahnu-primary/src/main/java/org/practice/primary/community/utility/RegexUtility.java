@@ -4,12 +4,19 @@ import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * @Desc 正则表达式
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-08-30 09:06:00
+ * <p>
+ * @Version 1.0
+ */
 public class RegexUtility {
 
     /**
      * 入口函数
-     *
-     * @param args
      */
     public static void main(String[] args) {
         try {

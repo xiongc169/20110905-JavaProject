@@ -14,17 +14,18 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 /**
- * json序列化
- *
- * @author Administrator
- * @since 2015-09-30 08:58:04
+ * @Desc json序列化
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-08-30 09:06:00
+ * <p>
+ * @Version 1.0
  */
 public class JsonUtility {
 
     /**
      * 入口函数
-     *
-     * @param args
      */
     public static void main(String[] args) {
         try {

@@ -7,12 +7,17 @@ import java.util.Map.Entry;
 
 public final class PropertiesUtils {
 
+    //有赋值操作(=)，断点会执行，执行构造器前执行
+    private final Properties nullProperties = null;
+
+    //有赋值操作(=)，断点会执行，执行构造器前执行
+    private final Properties myProperties = new Properties();
+
+    //无赋值操作(=)，断点不执行
     private final Properties properties;
 
     /**
      * 以";"分隔
-     *
-     * @param resourcesPaths
      */
     public PropertiesUtils(String resourcesPaths) {
         properties = loadProperties(resourcesPaths.split(";"));

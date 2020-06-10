@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.concurrent.*;
 
 /**
- * 集合操作类 集合的类型，各个类型的特点，遍历的几种方式；
+ * @Desc 集合操作类 集合的类型，各个类型的特点，遍历的几种方式；
  * Java中集合包简要分析
  * PS：集合包主要有 Collection、Map 两种接口：
  * Collection 存储单对象，分为两种接口：List、Set，
@@ -14,9 +14,12 @@ import java.util.concurrent.*;
  * Set 不支持放入重复对象，实现类主要包括：HashSet、TreeSet。
  * Map 存储Key-Value形式的键值对，实现类主要包括：HashMap、TreeMap。
  * http://www.cnblogs.com/huangfox/archive/2012/08/15/2640106.html
- *
- * @author chaoxiong
- * @since 2015-08-30 09:06:00
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-08-30 09:06:00
+ * <p>
+ * @Version 1.0
  */
 public class CollectionUtility {
 

@@ -6,17 +6,18 @@ import java.util.List;
 import org.practice.primary.community.domain.Dictionary;
 
 /**
- * Java中的深拷贝(深复制)和浅拷贝(浅复制)
- *
- * @author Administrator
- * @since 2015-09-30 08:57:31
+ * @Desc Java中的深拷贝(深复制)和浅拷贝(浅复制)
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-08-30 09:06:00
+ * <p>
+ * @Version 1.0
  */
 public class DeepClone {
 
     /**
      * 入口函数
-     *
-     * @param args
      */
     public static void main(String[] args) {
         try {

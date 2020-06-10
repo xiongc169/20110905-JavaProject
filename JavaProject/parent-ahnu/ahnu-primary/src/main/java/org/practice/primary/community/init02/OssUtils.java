@@ -2,8 +2,11 @@ package org.practice.primary.community.init02;
 
 /**
  * @Desc OssUtils
- * @Author
- * @Date
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019-5-10 11:27:55
+ * <p>
  * @Version 1.0
  */
 public class OssUtils {
@@ -15,7 +18,9 @@ public class OssUtils {
     public static String name = "name";
 
     public static PropertiesUtils propertiesUtils = new PropertiesUtils("ossBucke.properties");
+
     private static String NODE_HANGZHOU = propertiesUtils.getProperty("NODE_HANGZHOU");
+
     private static String NODE_HANGZHOU_INTERNAL = propertiesUtils.getProperty("NODE_HANGZHOU_INTERNAL");
 
     static {

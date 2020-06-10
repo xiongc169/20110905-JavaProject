@@ -1,7 +1,13 @@
 package org.practice.primary.community.enums;
 
 /**
- * 字典类型
+ * @Desc 字典类型
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015年5月1日
+ * <p>
+ * @Version 1.0
  */
 public enum DictionaryType {
     /**
@@ -77,30 +83,16 @@ public enum DictionaryType {
      */
     MethodType("DictionaryType.MethodType.text");
 
-    /**
-     * 文本
-     */
     private String text;
 
-    /**
-     * 构造函数
-     *
-     * @param text 文本
-     */
     private DictionaryType(String text) {
         this.text = text;
     }
 
-    /**
-     * @return the text
-     */
     public String getText() {
         return text;
     }
 
-    /**
-     * @param text the text to set
-     */
     public void setText(String text) {
         this.text = text;
     }

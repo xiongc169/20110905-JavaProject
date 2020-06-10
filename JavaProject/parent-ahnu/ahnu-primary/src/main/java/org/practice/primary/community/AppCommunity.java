@@ -6,10 +6,13 @@ import java.util.Set;
 import org.practice.primary.community.domain.Student;
 
 /**
- * @author yoong
- * @version 1.0
- * @description App.java
- * @date 2012年4月2日
+ * @Desc App.java
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2012年4月2日
+ * <p>
+ * @Version 1.0
  */
 public class AppCommunity {
 

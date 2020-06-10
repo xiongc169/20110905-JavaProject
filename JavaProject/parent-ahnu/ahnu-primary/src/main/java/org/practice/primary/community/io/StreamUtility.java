@@ -5,7 +5,13 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 /**
- * @author Administrator
+ * @Desc StreamUtility
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2013年1月6日20:26:23
+ * <p>
+ * @Version 1.0
  */
 public class StreamUtility {
 

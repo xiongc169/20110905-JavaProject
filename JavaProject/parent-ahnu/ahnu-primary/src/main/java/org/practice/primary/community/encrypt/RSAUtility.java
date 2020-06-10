@@ -10,11 +10,13 @@ import javax.crypto.Cipher;
 import sun.misc.BASE64Decoder;
 
 /**
- * @author chaoxiong
+ * @Desc EncryptUtility.java
  * <p>
- * @description EncryptUtility.java
+ * @Author yoong
  * <p>
- * @date 2016年5月27日 下午4:42:51
+ * @Date 2016年5月27日 下午4:42:51
+ * <p>
+ * @Version 1.0
  */
 public class RSAUtility {
 
@@ -30,8 +32,6 @@ public class RSAUtility {
 
     /**
      * 入口函数
-     *
-     * @date 2016年5月27日 下午4:42:51
      */
     public static void main(String[] args) {
         try {

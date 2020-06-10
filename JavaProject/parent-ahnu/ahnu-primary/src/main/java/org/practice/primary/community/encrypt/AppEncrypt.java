@@ -1,11 +1,13 @@
 package org.practice.primary.community.encrypt;
 
 /**
- * @author chaoxiong
+ * @Desc AppEncrypt
  * <p>
- * @desc Base64Utility.java
+ * @Author yoong
  * <p>
- * @date 2016年7月5日 下午3:59:23
+ * @Date 2016年7月5日 下午3:59:23
+ * <p>
+ * @Version 1.0
  */
 public class AppEncrypt {
 

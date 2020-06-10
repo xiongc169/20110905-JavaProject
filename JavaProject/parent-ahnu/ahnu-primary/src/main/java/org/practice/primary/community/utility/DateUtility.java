@@ -6,16 +6,17 @@ import java.util.Date;
 
 /**
  * @Desc DateUtility
- * @Author
- * @Date
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-08-30 09:06:00
+ * <p>
  * @Version 1.0
  */
 public class DateUtility {
 
     /**
      * 入口函数
-     *
-     * @param args
      */
     public static void main(String[] args) {
         try {
@@ -26,9 +27,11 @@ public class DateUtility {
     }
 
     /**
-     * Java获取时间戳：http://tangmingjie2009.iteye.com/blog/1543166 <br>
-     * Java时间戳、时间转换：http://www.cnblogs.com/mstk/p/5511057.html <br>
-     * java生成时间戳，13位<br>
+     * Java获取时间戳
+     * http://tangmingjie2009.iteye.com/blog/1543166
+     * Java时间戳、时间转换
+     * http://www.cnblogs.com/mstk/p/5511057.html
+     * java生成时间戳，13位
      * .net生成时间戳，10位
      */
     public static void getTimestamp() {

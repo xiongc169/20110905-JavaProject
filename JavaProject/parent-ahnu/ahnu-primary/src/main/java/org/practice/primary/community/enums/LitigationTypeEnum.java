@@ -5,11 +5,13 @@ import java.util.List;
 import java.util.stream.Stream;
 
 /**
- * @author yoong
+ * @Desc 诉讼类型的枚举类 —— liancheng: 20180830-riskmanagersystem
  * <p>
- * @desc 诉讼类型的枚举类 —— liancheng: 20180830-riskmanagersystem
+ * @Author yoong
  * <p>
- * @date 2018年9月6日
+ * @Date 2018年9月6日
+ * <p>
+ * @Version 1.0
  */
 public enum LitigationTypeEnum {
 
@@ -48,8 +50,6 @@ public enum LitigationTypeEnum {
 
     /**
      * 入口函数
-     *
-     * @param args
      */
     public static void main(String[] args) {
         try {

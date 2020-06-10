@@ -1,8 +1,14 @@
 package org.practice.primary.community.utility;
 
 /**
- * 方法静态分派演示<br/>
- * http://blog.csdn.net/u013678930/article/details/51980460
+ * @Desc 方法静态分派演示
+ * * http://blog.csdn.net/u013678930/article/details/51980460
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-08-30 09:06:00
+ * <p>
+ * @Version 1.0
  */
 public class StaticDispatch {
 

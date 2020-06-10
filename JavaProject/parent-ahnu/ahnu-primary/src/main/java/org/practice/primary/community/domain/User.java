@@ -3,7 +3,13 @@ package org.practice.primary.community.domain;
 import lombok.Data;
 
 /**
- * User
+ * @Desc User
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015/5/25 16:49
+ * <p>
+ * @Version 1.0
  */
 @Data
 public class User {

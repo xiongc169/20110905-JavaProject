@@ -4,8 +4,11 @@ package org.practice.primary.community.inherit02;
  * @Desc 聊聊java中的继承
  * https://blog.csdn.net/JavaCoder_juejue/article/details/81112692
  * https://blog.csdn.net/u014253011/article/details/84564308
- * @Author
- * @Date
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-6-10
+ * <p>
  * @Version 1.0
  */
 public class App {

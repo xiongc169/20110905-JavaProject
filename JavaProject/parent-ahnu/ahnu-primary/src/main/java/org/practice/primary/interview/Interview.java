@@ -3,11 +3,13 @@ package org.practice.primary.interview;
 import org.practice.primary.community.domain.User;
 
 /**
- * @author yoong
- * <br>
- * @desc Interview
- * <br>
- * @date 2019/1/29 19:05
+ * @Desc Interview
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019/1/29 19:05
+ * <p>
+ * @Version 1.0
  */
 public class Interview {
 

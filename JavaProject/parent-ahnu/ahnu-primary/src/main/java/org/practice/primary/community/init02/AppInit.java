@@ -2,8 +2,11 @@ package org.practice.primary.community.init02;
 
 /**
  * @Desc AppInit
- * @Author
- * @Date
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019-5-10 11:27:55
+ * <p>
  * @Version 1.0
  */
 public class AppInit {
@@ -20,8 +23,9 @@ public class AppInit {
     }
 
     public static void initOrder() {
-        //静态变量静态块(按声明顺序执行)、构造函数
+        //静态变量、静态块(按声明顺序执行) -> 实例变量、代码块 -> 构造函数
         OssUtils ossUtils = new OssUtils();
-        //OssUtils.upload();
+        ossUtils.upload();
+        OssUtils.upload();
     }
 }
