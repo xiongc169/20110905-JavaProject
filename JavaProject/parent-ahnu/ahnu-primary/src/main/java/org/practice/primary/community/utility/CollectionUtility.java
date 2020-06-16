@@ -184,7 +184,9 @@ public class CollectionUtility {
     public static void mapDemo() {
         //region TODO：Hashtable，较早提供的，线程安全的、put\get操作是同步的
         Map hashtable = new Hashtable();
-        hashtable.put(01, "first");
+        hashtable.put("OK", "first");
+        hashtable.put(2524, "second");
+
         Object value = hashtable.get(01);
         //endregion
 

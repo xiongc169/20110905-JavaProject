@@ -13,6 +13,8 @@ package org.practice.primary.community.init01;
 public class B extends A {
 
     public B() {
+        //Call to super() must be first statement in constructor body
+        super("aa");
         System.out.println("4.B类的构造方法");
     }
 
@@ -35,6 +37,10 @@ public class B extends A {
 class A {
     public A() {
         System.out.println("1.A类的构造方法");
+    }
+
+    public A(String aa) {
+        System.out.println("1.A类的构造方法-2");
     }
 
     {

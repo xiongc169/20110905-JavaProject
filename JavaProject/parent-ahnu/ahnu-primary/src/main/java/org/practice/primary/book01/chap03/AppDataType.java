@@ -172,8 +172,12 @@ public class AppDataType {
 
     /**
      * 八种基本类型与引用类型及它们的内存原理
-     * PS：基本数据类型
+     * PS：基本数据类型、包装类、引用类型；
+     * Integer.valueOf(i)函数，当i值在-128~127之间时，不会创建新的对象，但当i值超出这个范围就会新建一个对像，可以用==这个来判断。
+     * 基本数据类型就是在栈中保存，而引用类型变量在栈中，指向的对象在堆中，所以当用==比较两个变量时，一定要看清楚它是什么数据类型。
      * https://blog.csdn.net/qq_31071255/article/details/82192075
+     * PS：基本数据类型在被创建时，在栈上给其划分一块内存，将数值直接存储在栈上。
+     * 引用数据类型在被创建时，首先要在栈上给其引用（句柄）分配一块内存，而对象的具体信息都存储在堆内存上，然后由栈上面的引用指向堆中对象的地址。
      * https://blog.csdn.net/weixin_44509889/article/details/93347191
      */
     public static void primaryDataType() {
@@ -188,12 +192,6 @@ public class AppDataType {
         System.out.println(b);
     }
 
-    /**
-     * 八种基本类型与引用类型及它们的内存原理
-     * PS：包装类
-     * https://blog.csdn.net/qq_31071255/article/details/82192075
-     * https://blog.csdn.net/weixin_44509889/article/details/93347191
-     */
     public static void wrapperClass() {
         Byte b = 0;//new Byte("0");
         Short s = 1;
@@ -209,9 +207,6 @@ public class AppDataType {
     /**
      * 比较两个Integer 对象是否相等
      * https://blog.csdn.net/Peter_S/article/details/85091168
-     * 八种基本类型与引用类型及它们的内存原理
-     * PS：Integer.valueOf(i)函数，当i值在-128~127之间时，不会创建新的对象，但当i值超出这个范围就会新建一个对像，可以用==这个来判断，
-     * https://blog.csdn.net/qq_31071255/article/details/82192075
      */
     public static void integerTest() {
         Integer aaa = 100; //自动装箱，Integer.valueOf(100)
@@ -231,10 +226,27 @@ public class AppDataType {
         int ggg = 300;
         System.out.println(fff == ggg);//true
         System.out.println(fff.equals(ggg));//true
+
+
+        Integer i1 = 100, i2 = 100, i3 = 150, i4 = 150;
+        Integer i5 = new Integer(100);
+        Integer i6 = new Integer(100);
+        Integer i7 = new Integer("100");
+        Integer i8 = Integer.parseInt("100");
+        System.out.println(i1 == i2);//true
+        System.out.println(i3 == i4);//false
+        System.out.println(i1 == i5);//false
+        System.out.println(i6 == i5);//false
+        System.out.println(i1 == i7);//false
+        System.out.println(i8 == i7);//false
+        System.out.println(i1 == i8);//true ！！！！！
+        System.out.println(i5.equals(i6));//true
+        System.out.println(i3.equals(i4));//true
     }
 
     /**
      * java中的运算 ^, << , >>,&
+     * PS：& | ~ ^ << >> >>>
      * https://blog.csdn.net/sx729034738/article/details/69569055
      */
     public static void operatorTest() {
@@ -243,6 +255,16 @@ public class AppDataType {
         int b = 48 >> 2;
         System.out.println(a);
         System.out.println(b);
+        int c = 5 & 2;
+        int d = 5 | 2;
+        int e = ~5;
+        int f = 5 ^ 2;
+        int g = 64 >>> 2;
+        System.out.println(c);
+        System.out.println(d);
+        System.out.println(e);
+        System.out.println(f);
+        System.out.println(g);
     }
 
     /**
