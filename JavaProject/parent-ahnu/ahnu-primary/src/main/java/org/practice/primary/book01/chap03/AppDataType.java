@@ -26,10 +26,12 @@ public class AppDataType {
             operator0305();
             stringType0306();
             inputOutput0307();
+            array0310();
             //练习
             primaryDataType();
             wrapperClass();
             integerTest();
+            integerTest2();
             operatorTest();
             stringTest();
             bigDecimalTest();
@@ -171,8 +173,20 @@ public class AppDataType {
     }
 
     /**
+     * 3.10、数组
+     */
+    public static void array0310() throws Exception {
+        int[] intArray = new int[10];
+        int[] intArray2 = {1, 2, 3, 4, 5, 6};
+        int[] intArray3 = new int[]{1, 2, 3, 4, 5, 6};
+        String[] stringArray = new String[]{"111", "222"};
+        String[] stringArray2 = {"111", "222"};
+    }
+
+    /**
      * 八种基本类型与引用类型及它们的内存原理
      * PS：基本数据类型、包装类、引用类型；
+     * 自动拆箱：把包装类型自动拆为基本类型，自动装箱：把基本类型自动包装为包装类型；
      * Integer.valueOf(i)函数，当i值在-128~127之间时，不会创建新的对象，但当i值超出这个范围就会新建一个对像，可以用==这个来判断。
      * 基本数据类型就是在栈中保存，而引用类型变量在栈中，指向的对象在堆中，所以当用==比较两个变量时，一定要看清楚它是什么数据类型。
      * https://blog.csdn.net/qq_31071255/article/details/82192075
@@ -196,6 +210,9 @@ public class AppDataType {
         Byte b = 0;//new Byte("0");
         Short s = 1;
         Integer i = 2;
+        Integer wrapperInt = 2; //Integer.valueOf(2)
+        int primaryInt = wrapperInt; //wrapperInt.intValue()
+
         Long l = 3l;
         Float f = 4f;
         Double d = 5d;
@@ -224,7 +241,7 @@ public class AppDataType {
 
         Integer fff = 300;
         int ggg = 300;
-        System.out.println(fff == ggg);//true
+        System.out.println(fff == ggg);//true, 会自动拆箱
         System.out.println(fff.equals(ggg));//true
 
 
@@ -233,6 +250,7 @@ public class AppDataType {
         Integer i6 = new Integer(100);
         Integer i7 = new Integer("100");
         Integer i8 = Integer.parseInt("100");
+        Integer i9 = Integer.parseInt("150");
         System.out.println(i1 == i2);//true
         System.out.println(i3 == i4);//false
         System.out.println(i1 == i5);//false
@@ -240,8 +258,34 @@ public class AppDataType {
         System.out.println(i1 == i7);//false
         System.out.println(i8 == i7);//false
         System.out.println(i1 == i8);//true ！！！！！
+        System.out.println(i3 == i9);//false ！！！！！
         System.out.println(i5.equals(i6));//true
         System.out.println(i3.equals(i4));//true
+    }
+
+    /**
+     * Integer.parseInt()与Integer.valueOf()的区别
+     * PS：Integer.parseInt、Integer.valueOf都可以将String转成int，不同的是parseInt返回的是int，valueOf返回的是Integer；
+     * https://blog.csdn.net/zhang_zhenwei/article/details/90691948
+     */
+    public static void integerTest2() {
+        Integer i = Integer.parseInt("100");
+        Integer j = Integer.parseInt("100");
+        System.out.println(i == j); // true
+
+        Integer m = Integer.valueOf("100");
+        Integer n = Integer.valueOf("100");
+        System.out.println(m == n); // true
+
+        Integer p = Integer.valueOf("200");
+        Integer q = Integer.valueOf("200");
+        System.out.println(p == q); // false
+        System.out.println(p.equals(q)); // true
+
+        Integer a = Integer.parseInt("200");
+        Integer b = Integer.parseInt("200");
+        System.out.println(a == b); // false
+        System.out.println(a.equals(b)); // true
     }
 
     /**
