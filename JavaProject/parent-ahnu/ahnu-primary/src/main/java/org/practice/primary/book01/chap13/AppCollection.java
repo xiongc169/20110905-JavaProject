@@ -106,7 +106,7 @@ public class AppCollection {
             }
         };
 
-        TreeSet<String> treeSet02 = new TreeSet();
+        TreeSet<String> treeSet02 = new TreeSet(comparator);
         treeSet02.add("Bob");
         treeSet02.add("Amy");
         treeSet02.add("David");
@@ -162,9 +162,15 @@ public class AppCollection {
     }
 
     /**
-     * 13.2.8、专用集与映射表类 (P591)
+     * 13.2.9、专用集与映射表类 (P591)
      */
     public static void specialCollection130209() {
+        WeakHashMap weakHashMap = new WeakHashMap();
+        LinkedHashSet linkedHashSet = new LinkedHashSet();
+        LinkedHashMap linkedHashMap = new LinkedHashMap();
+        //EnumSet enumSet = EnumSet.allOf();
+        //EnumMap enumMap = new EnumMap();
+        IdentityHashMap identityHashMap = new IdentityHashMap();
     }
 
     public static void removeTest() {
