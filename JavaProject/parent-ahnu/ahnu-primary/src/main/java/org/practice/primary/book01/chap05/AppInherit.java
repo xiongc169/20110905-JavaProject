@@ -23,9 +23,8 @@ public class AppInherit {
      */
     public static void main(String[] args) {
         try {
+            initOrder();
             inherit();
-            Executive executive = new Executive();
-
             equals0502();
             hashCode0502();
             toString0502();
@@ -38,9 +37,14 @@ public class AppInherit {
         }
     }
 
+    public static void initOrder() {
+        //父执行类 greetMsg=greet() 时，会调用 Executive.greet()方法
+        Executive executive = new Executive();
+    }
+
     public static void inherit() {
         Employee employee = new Employee();
-        System.out.println();
+        System.out.println(employee);
 
         Manager manager = new Manager();
         System.out.println();
@@ -51,15 +55,21 @@ public class AppInherit {
         manager.setBonus(50d);
 
         String greet = manager.greet();
+        System.out.println(greet);
+
         Double allSalary = manager.getSalary();
+        System.out.println(allSalary);
 
         Employee manager01 = new Manager();
         //manager01.setBonus(100d);//编译不通过
+
+        Executive executive = new Executive();
+        System.out.println(executive);
     }
 
     public static void equals0502() {
         boolean equals = Objects.equals(new Executive(), new Executive());
-        System.out.println(equals);
+        System.out.println(equals);//true
     }
 
     public static void hashCode0502() {

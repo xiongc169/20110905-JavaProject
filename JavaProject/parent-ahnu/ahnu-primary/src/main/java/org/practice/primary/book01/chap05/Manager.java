@@ -1,6 +1,5 @@
 package org.practice.primary.book01.chap05;
 
-import lombok.Data;
 import org.practice.primary.book01.chap04.bok.Employee;
 
 import java.util.Date;
@@ -11,10 +10,10 @@ import java.util.Date;
  * @Date
  * @Version 1.0
  */
-@Data
 public class Manager extends Employee {
 
     private Double bonus;
+
     private String managerTitle = getTitle();
 
     {
@@ -34,6 +33,40 @@ public class Manager extends Employee {
         System.out.println("Manager.Manager(3)");
     }
 
+    {
+        System.out.println("Manager 代码块2");
+    }
+
+    static {
+        System.out.println("Manager 静态代码块2");
+    }
+
+    //region Getter and Setter
+    public Double getBonus() {
+        return bonus;
+    }
+
+    public void setBonus(Double bonus) {
+        this.bonus = bonus;
+    }
+
+    public String getManagerTitle() {
+        return managerTitle;
+    }
+
+    public void setManagerTitle(String managerTitle) {
+        this.managerTitle = managerTitle;
+    }
+    //endregion
+
+    public String getTitle() {
+        System.out.println("Manager.getTitle()");
+        return "Manager.getTitle()";
+    }
+
+    /**
+     * 覆盖(重写) Employee.getSalary()
+     */
     @Override
     public double getSalary() {
         System.out.println("Manager.getSalary()");
@@ -43,14 +76,12 @@ public class Manager extends Employee {
         return super.getSalary() + bonus;   //正解，可以通过super.salary 访问父类非私有域(public|protected)
     }
 
+    /**
+     * 覆盖(重写) Employee.greet()
+     */
+    @Override
     public String greet() {
         System.out.println("Manager.greet()");
         return "Manager.greet()";
     }
-
-    public String getTitle() {
-        System.out.println("Manager.getTitle()");
-        return "Manager.getTitle()";
-    }
-
 }
