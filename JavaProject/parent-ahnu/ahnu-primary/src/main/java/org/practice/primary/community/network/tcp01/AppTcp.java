@@ -23,8 +23,8 @@ public class AppTcp {
      */
     public static void main(String[] args) {
         try {
-            Byte decodes = Byte.decode("chaoxiong");
-            Byte parse = Byte.parseByte("chaoxiong");
+            Byte decodes = Byte.decode("yoong");
+            Byte parse = Byte.parseByte("yoong");
 
             inetAddressDemo();
         } catch (Exception ex) {

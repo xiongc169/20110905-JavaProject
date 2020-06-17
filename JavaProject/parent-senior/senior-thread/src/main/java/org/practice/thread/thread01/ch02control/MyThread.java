@@ -9,7 +9,7 @@ import org.practice.thread.thread01.model.Person;
 /**
  * 线程中断
  *
- * @author chaoxiong
+ * @author yoong
  * @since 2015-10-19 15:45:45
  */
 public class MyThread extends Thread {

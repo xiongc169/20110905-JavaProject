@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * @author chaoxiong
+ * @author yoong
  * @since 2015-10-19 15:45:45
  */
 public class MyRunnable implements Runnable {

@@ -14,7 +14,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 /**
- * @author chaoxiong
+ * @author yoong
  * @description MailUtility.java
  * @date 2016年4月27日 上午10:15:58
  */
@@ -24,7 +24,7 @@ public class MailUtility {
      * @param args
      * @return void
      * @description 入口函数
-     * @author chaoxiong
+     * @author yoong
      * @date 2016年4月27日 上午10:15:58
      */
     public static void main(String[] args) throws Exception {
@@ -39,7 +39,7 @@ public class MailUtility {
      * @return void
      * @throws Exception
      * @description itsm系统发送邮件demo
-     * @author chaoxiong
+     * @author yoong
      * @date 2016年4月27日 下午5:24:22
      */
     public static void sendEmailByItsm() throws Exception {

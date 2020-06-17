@@ -27,6 +27,7 @@ public class AppInherit {
             inherit();
             equals0502();
             hashCode0502();
+            new AppInherit().hashCode();
             toString0502();
             genericArray0503();
             reflect0507();
@@ -69,20 +70,44 @@ public class AppInherit {
 
     public static void equals0502() {
         boolean equals = Objects.equals(new Executive(), new Executive());
-        System.out.println(equals);//true
+        System.out.println(equals);//false, 之前调试时是true？？？
+
+        boolean equals02 = Objects.equals(new Executive(), new Executive());
+        System.out.println("equals02: " + equals02);//false
+
+        Executive executive01 = new Executive();
+        Executive executive02 = new Executive();
+        boolean equals01 = Objects.equals(executive01, executive02);
+        System.out.println("equals01: " + equals01);//false
     }
 
+    /**
+     * String的比较，“==”比较，equals()比较
+     * PS：“==”判断的是地址值，equals()方法判断的是内容
+     * 注意：需要用括号括起来
+     * https://blog.csdn.net/jakezhang1990/article/details/80827015
+     * https://www.cnblogs.com/gc65/p/java.html
+     * https://blog.csdn.net/qq_37476266/article/details/89344302
+     */
     public static void hashCode0502() {
         String s01 = "OK";
-        StringBuilder sb01 = new StringBuilder(s01);
         String s02 = new String("OK");
+        String s03 = "OK";
+        String s04 = s01;
+        System.out.println("s01==s02 " + (s01 == s02));//false
+        System.out.println("s01==s03 " + (s01 == s03));//true
+        System.out.println("s01==s04 " + (s01 == s04));//true
+
+        StringBuilder sb01 = new StringBuilder(s01);
         StringBuilder sb02 = new StringBuilder(s02);
         System.out.println(s01.hashCode() + ", " + sb01.hashCode());//2524, 1151020327
         System.out.println(s02.hashCode() + ", " + sb02.hashCode());//2524, 88579647
     }
 
     public int hashCode() {
-        return Objects.hashCode(getClass());
+        int hashCode = Objects.hashCode(getClass());
+        System.out.println(hashCode);
+        return hashCode;
     }
 
     public static void toString0502() {

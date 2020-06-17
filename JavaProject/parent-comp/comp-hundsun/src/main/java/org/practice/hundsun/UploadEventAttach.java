@@ -27,7 +27,7 @@ public class UploadEventAttach {
      * @param args
      * @return void
      * @description 入口函数
-     * @author chaoxiong
+     * @author yoong
      * @date 2016年4月27日 上午10:15:58
      */
     public static void main(String[] args) {

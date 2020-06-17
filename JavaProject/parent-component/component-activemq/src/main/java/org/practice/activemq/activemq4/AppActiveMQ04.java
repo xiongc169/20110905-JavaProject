@@ -16,7 +16,7 @@ import javax.jms.Session;
  * @Desc ActiveMQ的简单使用
  * PS：https://www.iteye.com/blog/elim-1893038
  * <p>
- * @Author chaoxiong
+ * @Author yoong
  * <p>
  * @Date 2016年7月21日 下午7:24:57
  * <p>

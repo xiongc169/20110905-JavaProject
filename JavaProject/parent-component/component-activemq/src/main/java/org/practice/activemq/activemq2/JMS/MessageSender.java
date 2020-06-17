@@ -34,7 +34,7 @@ public class MessageSender {
     /**
      * 目标，在ActiveMQ管理员控制台创建 http://localhost:8161/admin/queues.jsp
      */
-    public static final String DESTINATION = "com.chaoxiong.activemq";
+    public static final String DESTINATION = "com.yoong.activemq";
 
     /**
      * 入口函数

@@ -26,7 +26,7 @@ public class MessageReceiver {
 
     public static final String BROKER_URL = "tcp://localhost:61616";
 
-    public static final String DESTINATION = "com.chaoxiong.activemq";
+    public static final String DESTINATION = "com.yoong.activemq";
 
     /**
      * 入口函数

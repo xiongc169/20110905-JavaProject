@@ -12,7 +12,7 @@ import org.quartz.impl.StdSchedulerFactory;
 
 /**
  * @description SychronizeScheduling.java
- * @author chaoxiong
+ * @author yoong
  * @date 2016年8月2日 下午5:36:09
  */
 public class SychronizeScheduling {
@@ -22,7 +22,7 @@ public class SychronizeScheduling {
 	 * @param args
 	 * @throws SchedulerException
 	 * @return void
-	 * @author chaoxiong
+	 * @author yoong
 	 * @date 2016年8月2日 下午7:24:13
 	 *       http://blog.csdn.net/a4307515/article/details/46985533
 	 */

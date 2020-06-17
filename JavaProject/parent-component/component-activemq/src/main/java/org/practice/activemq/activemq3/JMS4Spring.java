@@ -10,7 +10,7 @@ import javax.jms.*;
  * @Desc ActiveMQ的简单使用
  * PS：https://blog.csdn.net/s296850101/article/details/52401405
  * <p>
- * @Author chaoxiong
+ * @Author yoong
  * <p>
  * @Date 2016年7月21日 下午7:24:57
  * <p>

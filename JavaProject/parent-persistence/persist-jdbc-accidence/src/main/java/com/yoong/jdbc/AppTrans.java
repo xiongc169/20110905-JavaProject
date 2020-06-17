@@ -3,7 +3,7 @@ package com.yoong.jdbc;
 import java.sql.*;
 
 /**
- * @author chaoxiong
+ * @author yoong
  * <br>
  * @version 2012-08-28 09:55:26
  * <br>

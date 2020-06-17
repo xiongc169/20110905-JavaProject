@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * @author chaoxiong
+ * @author yoong
  * <br>
  * @version 2012-08-28 09:55:26
  * <br>

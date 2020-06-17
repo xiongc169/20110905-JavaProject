@@ -8,7 +8,7 @@ import org.quartz.JobExecutionException;
 
 /**
  * @description SychronizeJob.java
- * @author chaoxiong
+ * @author yoong
  * @date 2016年8月2日 下午5:32:13
  */
 public class SychronizeJob implements Job {

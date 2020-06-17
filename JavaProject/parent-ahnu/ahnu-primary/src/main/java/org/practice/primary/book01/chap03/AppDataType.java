@@ -313,8 +313,22 @@ public class AppDataType {
 
     /**
      * 字符串类型
+     * String的比较，“==”比较，equals()比较
+     * PS：“==”判断的是地址值，equals()方法判断的是内容
+     * 注意：需要用括号括起来
+     * https://blog.csdn.net/jakezhang1990/article/details/80827015
+     * https://www.cnblogs.com/gc65/p/java.html
+     * https://blog.csdn.net/qq_37476266/article/details/89344302
      */
     public static void stringTest() {
+        String s01 = "OK";
+        String s02 = new String("OK");
+        String s03 = "OK";
+        String s04 = s01;
+        System.out.println("s01==s02 " + (s01 == s02));//false
+        System.out.println("s01==s03 " + (s01 == s03));//true
+        System.out.println("s01==s04 " + (s01 == s04));//true
+
         StringBuffer stringBuffer = new StringBuffer();
         StringBuilder stringBuilder = new StringBuilder();
 
