@@ -2,6 +2,8 @@ package org.practice.primary.community.domain;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * @Desc User
  * <p>
@@ -12,8 +14,11 @@ import lombok.Data;
  * @Version 1.0
  */
 @Data
-public class User {
-    protected String iid;
+public class User implements Serializable {
+    //static属性，JSON序列化时不会序列化
+    protected static String className = "User";
+    //transient属性，JSON序列化时不会序列化
+    protected transient String iid;
     protected String userNo;
     protected String name;
     protected String orgNo;

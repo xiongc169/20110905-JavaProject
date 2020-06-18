@@ -1,5 +1,6 @@
 package org.practice.primary.book01.chap13;
 
+import com.alibaba.fastjson.JSON;
 import com.sun.jmx.remote.internal.ArrayQueue;
 
 import java.util.*;
@@ -18,7 +19,12 @@ public class AppCollection {
      */
     public static void main(String[] args) {
         try {
-            collectionInterface1301();
+            Integer DEFAULT_INITIAL_CAPACITY = 1 << 4; //2^4 = 16
+            Integer MAXIMUM_CAPACITY = 1 << 30; //2^30 = 1073741824
+            System.out.println(DEFAULT_INITIAL_CAPACITY);
+            System.out.println(MAXIMUM_CAPACITY);
+            //Demo
+            collectionApi1301();
             collection1302();
             set130203();
             queue130206();
@@ -34,7 +40,7 @@ public class AppCollection {
     /**
      * 13.1、集合接口 (P560)
      */
-    public static void collectionInterface1301() {
+    public static void collectionApi1301() {
         Vector vector = new Vector();
         Stack stack = new Stack();
         Hashtable hashtable = new Hashtable();
@@ -64,14 +70,14 @@ public class AppCollection {
     }
 
     /**
-     * 13.2、具体的接口：链表、数组列表 (P567)
+     * 13.2、具体的接口：链表(LinkedList)、数组列表(ArrayList) (P567)
      */
     public static void collection1302() {
         LinkedList<String> linkedList = new LinkedList();
+
         linkedList.add("Amy");
         linkedList.add("Bob");
         linkedList.add("Carl");
-
         Iterator iterator = linkedList.iterator();
         while (iterator.hasNext()) {
             System.out.println(iterator.next());
@@ -83,7 +89,37 @@ public class AppCollection {
         }
         listIterator.add("head");
 
+        //JSON序列化，transient属性不会序列化，static属性不会序列化
+        String linkedListJson = JSON.toJSONString(linkedList);
+        System.out.println(linkedListJson);//["head","Amy","Bob","Carl"]
+
         ArrayList arrayList = new ArrayList<>();
+        arrayList.add("First");
+        arrayList.add("Second");
+        arrayList.add("Third");
+        arrayList.add("Fourth");
+        arrayList.add("Fifth");
+        arrayList.add("Sixth");
+        arrayList.add("Seventh");
+        arrayList.add("Eighth");
+        arrayList.add("Ninth");
+        arrayList.add("Tenth");
+        arrayList.add("Eleventh");//无参构造函数，默认容量是10，这里会扩容1.5倍，Arrays.copyOf(elementData, newCapacity)
+        arrayList.add("Twelfth");
+        arrayList.add("Thirteenth");
+        arrayList.add("Fourteenth");
+        arrayList.add("Fifteenth");
+        arrayList.add("Sixteenth");//无参构造函数，扩容1.5倍后，这里会继续扩容1.5倍
+        arrayList.add("Seventeenth");
+        arrayList.add("Eighteenth");
+        arrayList.add("Nineteenth");
+        arrayList.add("Thirteenth");
+        arrayList.add("Twentieth");
+        arrayList.add("Twenty-First");
+        arrayList.add("Twenty-Second");
+        for (Object object : arrayList) {
+            System.out.println(object);
+        }
     }
 
     /**
@@ -106,7 +142,7 @@ public class AppCollection {
             }
         };
 
-        TreeSet<String> treeSet02 = new TreeSet(comparator);
+        TreeSet<String> treeSet02 = new TreeSet();
         treeSet02.add("Bob");
         treeSet02.add("Amy");
         treeSet02.add("David");
@@ -122,12 +158,10 @@ public class AppCollection {
     public static void queue130206() {
         Deque deque = new ArrayDeque();
         Deque deque02 = new LinkedList();
-
         Queue queue = new LinkedList();
-
         ArrayQueue arrayQueue = new ArrayQueue(10);
-
         PriorityQueue<String> priorityQueue = new PriorityQueue();
+
         priorityQueue.add("yoong");
         priorityQueue.add("zara");
         priorityQueue.add("singapore");
@@ -140,11 +174,10 @@ public class AppCollection {
      * 13.2.8、映射表 (P587)
      */
     public static void map130208() {
-        HashMap<Integer, String> hashMap = new HashMap<>();
-        TreeMap<Integer, String> treeMap = new TreeMap<>();
-
         Map hashTable = new Hashtable();
         Dictionary dictionary = new Hashtable();
+        HashMap<Integer, String> hashMap = new HashMap<>();
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
 
         for (int i = 0; i < 100; i++) {
             hashMap.put(i, "HashMap " + i);
@@ -158,7 +191,12 @@ public class AppCollection {
         String value02 = map.put("1", "value-02");
         System.out.println(value01);
         System.out.println(value02);
+
         Properties properties = new Properties();
+        Enumeration enumeration = properties.elements();
+        while (enumeration.hasMoreElements()) {
+            System.out.println(enumeration.nextElement());
+        }
     }
 
     /**
