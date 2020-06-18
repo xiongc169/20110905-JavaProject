@@ -1,6 +1,5 @@
 package org.practice.thread.book01.chap14;
 
-import java.io.FileNotFoundException;
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -20,7 +19,7 @@ public class AppThread {
             interrupt1402();
             status1403();
             property1404();
-            blockingCollection1406();
+            blockingQueue1406();
             concurrentCollection1407();
         } catch (RuntimeException ex) {
             ex.printStackTrace();
@@ -68,7 +67,10 @@ public class AppThread {
     public static void property1404() {
     }
 
-    public static void blockingCollection1406() {
+    /**
+     * 14.6、阻塞队列
+     */
+    public static void blockingQueue1406() {
         LinkedBlockingQueue linkedBlockingQueue = new LinkedBlockingQueue();
         LinkedBlockingDeque linkedBlockingDeque = new LinkedBlockingDeque();
 
@@ -76,6 +78,9 @@ public class AppThread {
         PriorityBlockingQueue priorityBlockingQueue = new PriorityBlockingQueue();
     }
 
+    /**
+     * 14.7、线程安全的集合
+     */
     public static void concurrentCollection1407() {
         // 14.7.1、高效的映射表、集合、队列
         ConcurrentHashMap conHashMap = new ConcurrentHashMap();

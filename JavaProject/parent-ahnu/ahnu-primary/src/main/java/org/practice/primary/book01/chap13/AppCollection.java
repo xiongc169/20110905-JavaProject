@@ -30,6 +30,9 @@ public class AppCollection {
             queue130206();
             map130208();
             specialCollection130209();
+            viewAndWrapper130301();
+            algorithm1304();
+            oldCollection1305();
             //练习
             removeTest();
         } catch (Exception ex) {
@@ -209,6 +212,80 @@ public class AppCollection {
         //EnumSet enumSet = EnumSet.allOf();
         //EnumMap enumMap = new EnumMap();
         IdentityHashMap identityHashMap = new IdentityHashMap();
+    }
+
+    /**
+     * 13.3.1、视图与包装器 (P598)
+     */
+    public static void viewAndWrapper130301() {
+        //轻量级包装器
+        Integer[] intArray = {1, 2, 3, 4, 5};
+        List<Integer> intList = Arrays.asList(intArray);
+        System.out.println(intList.size());
+
+        List<String> copyList = Collections.nCopies(0, "Default");
+        System.out.println(copyList.size());
+
+        Set<Integer> singleton = Collections.singleton(2);
+        List<Integer> singletonList = Collections.singletonList(2);
+        Map<String, String> singletonMap = Collections.singletonMap("id", "id-001");
+
+        //子范围
+        List<Integer> subList = intList.subList(1, 4);// [)
+        subList.clear();
+
+        //不可修改的视图
+        Collections.unmodifiableCollection(null);
+        Collections.unmodifiableList(null);
+        Collections.unmodifiableSet(null);
+        Collections.unmodifiableSortedSet(null);
+        Collections.unmodifiableMap(null);
+        Collections.unmodifiableSortedMap(null);
+
+        //同步视图
+        Collections.synchronizedCollection(null);
+        Collections.synchronizedList(null);
+        Collections.synchronizedSet(null);
+        Collections.synchronizedSortedSet(null);
+        Collections.synchronizedMap(null);
+        Collections.synchronizedSortedMap(null);
+
+        //检查视图
+        Collections.checkedList(subList, Integer.class);
+    }
+
+    /**
+     * 13.4、算法 (P606)
+     */
+    public static void algorithm1304() {
+        Collections.max(null);
+        Collections.sort(null);
+        Collections.sort(null, Collections.reverseOrder());
+        Collections.shuffle(null);
+
+        //13.4.2、二分查找
+        Collections.binarySearch(null, null);
+
+        //13.4.3、简单算法
+        Collections.min(null);
+        Collections.copy(null, null);
+        Collections.fill(null, null);
+    }
+
+    /**
+     * 13.5、遗留的集合 (P613)
+     */
+    public static void oldCollection1305() {
+        Hashtable hashtable = new Hashtable();
+        Properties properties = new Properties();
+        Vector vector = new Vector();
+        Stack stack = new Stack();
+        BitSet bitSet = new BitSet();
+
+        Enumeration enumeration = hashtable.elements();
+        while (enumeration.hasMoreElements()) {
+            System.out.println(enumeration.nextElement());
+        }
     }
 
     public static void removeTest() {
