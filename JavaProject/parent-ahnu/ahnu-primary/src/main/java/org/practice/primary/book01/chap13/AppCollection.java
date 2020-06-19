@@ -28,7 +28,8 @@ public class AppCollection {
             collection1302();
             set130203();
             queue130206();
-            map130208();
+            hashMap130208();
+            hashtable130208();
             specialCollection130209();
             viewAndWrapper130301();
             algorithm1304();
@@ -176,30 +177,69 @@ public class AppCollection {
     /**
      * 13.2.8、映射表 (P587)
      */
-    public static void map130208() {
-        Map hashTable = new Hashtable();
-        Dictionary dictionary = new Hashtable();
-        HashMap<Integer, String> hashMap = new HashMap<>();
-        TreeMap<Integer, String> treeMap = new TreeMap<>();
+    public static void hashMap130208() {
+        HashMap<String, String> hashMap = new HashMap<>();
+        TreeMap<String, String> treeMap = new TreeMap<>();
+
+        //tableSizeFor is not public in HashMap, Cannot be accessed from outside package
+        //HashMap.tableSizeFor(10);
+        Integer threshold = tableSizeFor(2);
+        System.out.println(threshold);
 
         for (int i = 0; i < 100; i++) {
-            hashMap.put(i, "HashMap " + i);
+            //key 0、key 11会冲突，hashmap.table[12]处存储
+            hashMap.put("key " + i, "value " + i);
         }
-        for (Map.Entry<Integer, String> item : hashMap.entrySet()) {
+        for (Map.Entry<String, String> item : hashMap.entrySet()) {
             System.out.println(item.getKey() + "：" + item.getValue());
         }
+        //HashMap.Entry has private access in Hashtable
+        //for (HashMap.EntrySet item : hashMap.entrySet()) {
+        //    System.out.println(item.getKey() + "：" + item.getValue());
+        //}
 
         Map<String, String> map = new HashMap();
         String value01 = map.put("1", "value-01");
         String value02 = map.put("1", "value-02");
         System.out.println(value01);
         System.out.println(value02);
+    }
+
+    /**
+     * 13.2.8、映射表 (P587)
+     */
+    public static void hashtable130208() {
+        Dictionary dictionary = new Hashtable();
+        Hashtable<String, String> hashTable = new Hashtable();
+
+        for (int i = 0; i < 100; i++) {
+            hashTable.put("key " + i, "value " + i);
+        }
+        for (Map.Entry<String, String> item : hashTable.entrySet()) {
+            System.out.println(item.getKey() + "：" + item.getValue());
+        }
+        //Hashtable.Entry has private access in Hashtable
+        //for (Hashtable.Entry<String,String> item : hashTable.entrySet()) {
+        //    System.out.println(item.getKey() + "：" + item.getValue());
+        //}
+
 
         Properties properties = new Properties();
         Enumeration enumeration = properties.elements();
         while (enumeration.hasMoreElements()) {
             System.out.println(enumeration.nextElement());
         }
+    }
+
+    static final int tableSizeFor(int cap) {
+        Integer MAXIMUM_CAPACITY = 1 << 30;
+        int n = cap - 1;
+        n |= n >>> 1;
+        n |= n >>> 2;
+        n |= n >>> 4;
+        n |= n >>> 8;
+        n |= n >>> 16;
+        return (n < 0) ? 1 : (n >= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;
     }
 
     /**
