@@ -30,6 +30,7 @@ public class AppGeneric3 {
 
     /**
      * 腾讯课堂——泛型
+     * javap -v *.class 反编译class文件
      */
     public static void queryTecent(String[] args) {
         try {

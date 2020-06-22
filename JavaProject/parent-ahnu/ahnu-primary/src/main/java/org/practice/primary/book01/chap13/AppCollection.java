@@ -49,28 +49,42 @@ public class AppCollection {
         Stack stack = new Stack();
         Hashtable hashtable = new Hashtable();
         BitSet bitSet = new BitSet();
-
-        Iterable iterable = new ArrayList();
-        Collection collection = new ArrayList();
-        List list = new ArrayList();
-        AbstractCollection abstractCollection = new ArrayList();
-        AbstractList abstractList = new ArrayList();
-
-        Iterator iterator = iterable.iterator();
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next());
+        int num = 10;
+        for (int i = 0; i < num; i++) {
+            vector.add("vector-" + i);
         }
-
+        //输出一
+        for (Object obj : vector) {
+            System.out.println(obj);
+        }
+        //输出二
+        vector.forEach(item -> System.out.println(item));
+        //输出三
         Enumeration vectorEnumeration = vector.elements();
         Enumeration stackEnumeration = stack.elements();
         while (vectorEnumeration.hasMoreElements()) {
             System.out.println(vectorEnumeration.nextElement());
         }
 
+        Iterable iterable = new ArrayList();
+        Collection collection = new ArrayList();
+        List list = new ArrayList();
+        AbstractCollection abstractCollection = new ArrayList();
+        AbstractList abstractList = new ArrayList();
+        for (int i = 0; i < num; i++) {
+            ((ArrayList) iterable).add("iterable-" + i);
+        }
+        //输出一
         for (Object item : iterable) {
             System.out.println(item);
         }
+        //输出二
         iterable.forEach(item -> System.out.println(item));
+        //输出三
+        Iterator iterator = iterable.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
     }
 
     /**
@@ -135,9 +149,19 @@ public class AppCollection {
         SortedSet sortedSet = new TreeSet();
         NavigableSet navigableSet = new TreeSet();
 
-        hashSet.add("Lee");
-        hashSet.add("lee");
-        hashSet.add("eel");
+        int num = 100;
+        for (int i = 0; i < num; i++) {
+            hashSet.add("hashSet-" + i);
+        }
+        //输出方式一 (乱序)
+        for (Object object : hashSet) {
+            System.out.println(object);
+        }
+        //输出方式二 (乱序)
+        Iterator iterator = hashSet.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
 
         Comparator comparator = new Comparator() {
             @Override
@@ -151,6 +175,7 @@ public class AppCollection {
         treeSet02.add("Amy");
         treeSet02.add("David");
         treeSet02.add("Cinema");
+        //输出方式一 (按字典顺序输出)
         for (String item : treeSet02) {
             System.out.println(item);
         }
@@ -186,7 +211,8 @@ public class AppCollection {
         Integer threshold = tableSizeFor(2);
         System.out.println(threshold);
 
-        for (int i = 0; i < 100; i++) {
+        int num = 100;
+        for (int i = 0; i < num; i++) {
             //key 0、key 11会冲突，hashmap.table[12]处存储
             hashMap.put("key " + i, "value " + i);
         }
@@ -210,19 +236,26 @@ public class AppCollection {
      */
     public static void hashtable130208() {
         Dictionary dictionary = new Hashtable();
-        Hashtable<String, String> hashTable = new Hashtable();
+        Hashtable<String, String> hashtable = new Hashtable();
+        //hashtable.put(null, "value ");//key为空，计算key.hashCode()时，会报空指针异常
+        //hashtable.put("key", "value pre");
+        //String value01 = hashtable.get("key");
+        //hashtable.put("key", "value ");//若key重复，会覆盖
+        //String value02 = hashtable.get("key");
+        //hashtable.putIfAbsent("key", "value post");//若key重复，不会保存
+        //String value03 = hashtable.get("key");
 
-        for (int i = 0; i < 100; i++) {
-            hashTable.put("key " + i, "value " + i);
+        int num = 100;
+        for (int i = 0; i < num; i++) {
+            hashtable.put("key " + i, "value " + i);
         }
-        for (Map.Entry<String, String> item : hashTable.entrySet()) {
+        for (Map.Entry<String, String> item : hashtable.entrySet()) {
             System.out.println(item.getKey() + "：" + item.getValue());
         }
         //Hashtable.Entry has private access in Hashtable
         //for (Hashtable.Entry<String,String> item : hashTable.entrySet()) {
         //    System.out.println(item.getKey() + "：" + item.getValue());
         //}
-
 
         Properties properties = new Properties();
         Enumeration enumeration = properties.elements();
