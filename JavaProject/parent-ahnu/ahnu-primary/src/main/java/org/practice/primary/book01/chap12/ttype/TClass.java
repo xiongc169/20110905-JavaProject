@@ -38,9 +38,6 @@ public class TClass<T> {
 
     /**
      * 静态方法无法访问类上定义的泛型
-     *
-     * @param <T>
-     * @return
      */
     public static <T> T staticMethod() {
         T t = null;

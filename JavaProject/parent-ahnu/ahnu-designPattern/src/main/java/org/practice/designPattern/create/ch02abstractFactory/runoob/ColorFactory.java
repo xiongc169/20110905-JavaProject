@@ -6,13 +6,6 @@ import org.practice.designPattern.api.color.Green;
 import org.practice.designPattern.api.color.Red;
 import org.practice.designPattern.api.shape.Shape;
 
-/**
- * @author yoong
- * <br>
- * @desc ColorFactory
- * <br>
- * @date 2019/1/14 15:07
- */
 public class ColorFactory implements AbstractFactory {
 
     @Override

@@ -1,12 +1,5 @@
 package org.practice.designPattern.create.ch04builder.runoob.item;
 
-/**
- * @author yoong
- * <br>
- * @desc BurgerVeg
- * <br>
- * @date 2019/1/14 17:19
- */
 public class BurgerVeg extends Burger {
 
     @Override

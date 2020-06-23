@@ -1,13 +1,15 @@
-package org.practice.designPattern.create.ch03singleton.accidence;
+package org.practice.designPattern.create.ch03singleton.community;
 
 /**
- * @author yoong
- * <br>
- * @desc 23种设计模式详解(java)
+ * @Desc 23种设计模式详解(java)
  * PS：单例模式：内部类
  * http://www.cnblogs.com/maowang1991/archive/2013/04/15/3023236.html
- * <br>
- * @date 2019/1/14 15:40
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2012年7月4日
+ * <p>
+ * @Version 1.0
  */
 public class SingleInner {
 

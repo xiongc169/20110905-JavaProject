@@ -6,11 +6,8 @@ import org.practice.designPattern.api.shape.Shape;
 import org.practice.designPattern.api.shape.Square;
 
 /**
- * @author yoong
- * <br>
- * @desc ShapeFactory
- * <br>
- * @date 2019/1/15 17:10
+ * 工厂模式
+ * http://www.runoob.com/design-pattern/factory-pattern.html
  */
 public class ShapeFactory {
 

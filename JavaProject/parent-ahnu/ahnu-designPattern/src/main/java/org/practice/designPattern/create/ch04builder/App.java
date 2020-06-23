@@ -4,12 +4,14 @@ import org.practice.designPattern.create.ch04builder.runoob.Meal;
 import org.practice.designPattern.create.ch04builder.runoob.MealBuilder;
 
 /**
- * @author yoong
- * <br>
- * @desc 建造者模式
+ * @Desc 建造者模式
  * http://www.runoob.com/design-pattern/builder-pattern.html
- * <br>
- * @date 2019/1/14 17:13
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2012年7月4日
+ * <p>
+ * @Version 1.0
  */
 public class App {
 

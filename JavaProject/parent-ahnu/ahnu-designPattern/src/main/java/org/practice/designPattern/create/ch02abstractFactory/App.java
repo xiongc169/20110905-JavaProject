@@ -6,12 +6,14 @@ import org.practice.designPattern.create.ch02abstractFactory.runoob.AbstractFact
 import org.practice.designPattern.create.ch02abstractFactory.runoob.FactoryProducer;
 
 /**
- * @author yoong
- * <br>
- * @desc 抽象工厂模式<br>
+ * @Desc 抽象工厂模式
  * http://www.runoob.com/design-pattern/abstract-factory-pattern.html
- * <br>
- * @date 2019/1/14 15:15
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2012年7月4日
+ * <p>
+ * @Version 1.0
  */
 public class App {
 

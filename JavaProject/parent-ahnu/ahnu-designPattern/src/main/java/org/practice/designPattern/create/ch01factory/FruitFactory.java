@@ -5,6 +5,11 @@ import org.practice.designPattern.api.fruit.Orange;
 import org.practice.designPattern.api.fruit.Pear;
 import org.practice.designPattern.api.fruit.Strawberry;
 
+/**
+ * 工厂模式
+ * PS：普通工厂模式、多个工厂方法模式、静态工厂方法模式；
+ * https://www.cnblogs.com/maowang1991/archive/2013/04/15/3023236.html
+ */
 public class FruitFactory {
 
     /**
@@ -27,19 +32,19 @@ public class FruitFactory {
     }
 
     /**
-     * @desc 多个工厂方法的工厂模式
+     * @desc 多个工厂方法的工厂模式、静态工厂方法模式
      */
     public Fruit produceOrange() {
         Fruit fruit = new Orange();
         return fruit;
     }
 
-    public Fruit producePear() {
+    public static Fruit producePear() {
         Fruit fruit = new Pear();
         return fruit;
     }
 
-    public Fruit produceStrawberry() {
+    public static Fruit produceStrawberry() {
         Fruit fruit = new Strawberry();
         return fruit;
     }
@@ -47,21 +52,14 @@ public class FruitFactory {
     /**
      * Class.forName()、Class.forName().newInstance()、New 三者区别
      * https://www.cnblogs.com/shosky/archive/2011/07/22/2114290.html
-     *
-     * @param clazz
-     *
-     * @return
      */
     public Object produceFruitByClass(Class<? extends Fruit> clazz) {
         Object obj = null;
-
         try {
             obj = Class.forName(clazz.getName()).newInstance();
         } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-
         return obj;
-
     }
 }

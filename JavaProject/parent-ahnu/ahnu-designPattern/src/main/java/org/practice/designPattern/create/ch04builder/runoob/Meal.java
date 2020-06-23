@@ -5,13 +5,6 @@ import org.practice.designPattern.create.ch04builder.runoob.api.Item;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author yoong
- * <br>
- * @desc Meal
- * <br>
- * @date 2019/1/14 17:22
- */
 public class Meal {
 
     private List<Item> items = new ArrayList<Item>();

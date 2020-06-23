@@ -7,8 +7,15 @@ import org.practice.designPattern.api.fruit.Pear;
 import org.practice.designPattern.api.fruit.Strawberry;
 
 /**
- * 工厂模式<br>
+ * @Desc 工厂模式
  * http://www.runoob.com/design-pattern/factory-pattern.html
+ * https://www.cnblogs.com/maowang1991/archive/2013/04/15/3023236.html
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2012年7月4日
+ * <p>
+ * @Version 1.0
  */
 public class App {
 
@@ -24,6 +31,9 @@ public class App {
         }
     }
 
+    /**
+     * 普通工厂模式、多个工厂方法模式、静态工厂方法模式；
+     */
     public static void factory_fruit() {
         FruitFactory fFactory = new FruitFactory();
         Fruit orange = fFactory.produceFruit("Orange");
@@ -33,7 +43,17 @@ public class App {
         Fruit strawberry = fFactory.produceFruit("strawberry");
         strawberry.say();
         Fruit apple = fFactory.produceFruit("apple");
-        apple.say();
+        if (apple != null) {
+            apple.say();
+        }
+
+        Fruit orange02 = fFactory.produceOrange();
+        orange02.say();
+
+        Fruit pear02 = FruitFactory.producePear();
+        pear02.say();
+        Fruit strawberry02 = FruitFactory.produceStrawberry();
+        strawberry02.say();
 
         Fruit orange2 = (Fruit) fFactory.produceFruitByClass(Orange.class);
         orange2.say();
