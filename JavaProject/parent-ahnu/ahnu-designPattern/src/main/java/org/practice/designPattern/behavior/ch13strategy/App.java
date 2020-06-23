@@ -3,8 +3,14 @@ package org.practice.designPattern.behavior.ch13strategy;
 import org.practice.designPattern.behavior.ch13strategy.runoob.*;
 
 /**
- * 策略模式
+ * @Desc 策略模式
  * http://www.runoob.com/design-pattern/strategy-pattern.html
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2012年7月4日
+ * <p>
+ * @Version 1.0
  */
 public class App {
 

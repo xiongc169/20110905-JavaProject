@@ -1,12 +1,5 @@
 package org.practice.designPattern.behavior.ch23interpreter.runoob;
 
-/**
- * @author yoong
- * <br>
- * @desc TerminalExpression
- * <br>
- * @date 2019/1/16 11:54
- */
 public class TerminalExpression implements Expression {
 
     private String data;

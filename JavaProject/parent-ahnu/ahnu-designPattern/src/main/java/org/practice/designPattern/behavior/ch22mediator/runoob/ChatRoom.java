@@ -3,13 +3,6 @@ package org.practice.designPattern.behavior.ch22mediator.runoob;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * @author yoong
- * <br>
- * @desc ChatRoom
- * <br>
- * @date 2019/1/16 11:44
- */
 public class ChatRoom {
 
     private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");

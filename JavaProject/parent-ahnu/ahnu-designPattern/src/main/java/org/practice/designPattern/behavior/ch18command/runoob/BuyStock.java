@@ -1,12 +1,5 @@
 package org.practice.designPattern.behavior.ch18command.runoob;
 
-/**
- * @author yoong
- * <br>
- * @desc BuyStock
- * <br>
- * @date 2019/1/15 15:34
- */
 public class BuyStock implements Order {
 
     private Stock stock;

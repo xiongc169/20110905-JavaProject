@@ -5,14 +5,17 @@ import org.practice.designPattern.behavior.ch14template.runoob.Football;
 import org.practice.designPattern.behavior.ch14template.runoob.Game;
 
 /**
- * @author yoong
- * <br>
- * @desc 模板模式
+ * @Desc 模板模式
  * http://www.runoob.com/design-pattern/template-pattern.html
- * <br>
- * @date 2019/1/15 13:52
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2012年7月4日
+ * <p>
+ * @Version 1.0
  */
 public class App {
+
     /**
      * 入口函数
      */

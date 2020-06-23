@@ -6,12 +6,14 @@ import org.practice.designPattern.behavior.ch20state.runoob.State;
 import org.practice.designPattern.behavior.ch20state.runoob.StopState;
 
 /**
- * @author yoong
- * <br>
- * @desc 状态模式
+ * @Desc 状态模式
  * http://www.runoob.com/design-pattern/state-pattern.html
- * <br>
- * @date 2019/1/15 16:10
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2012年7月4日
+ * <p>
+ * @Version 1.0
  */
 public class App {
 

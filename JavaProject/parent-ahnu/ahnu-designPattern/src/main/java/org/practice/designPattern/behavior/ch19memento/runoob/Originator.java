@@ -1,12 +1,5 @@
 package org.practice.designPattern.behavior.ch19memento.runoob;
 
-/**
- * @author yoong
- * <br>
- * @desc Originator
- * <br>
- * @date 2019/1/15 15:55
- */
 public class Originator {
 
     private String state;

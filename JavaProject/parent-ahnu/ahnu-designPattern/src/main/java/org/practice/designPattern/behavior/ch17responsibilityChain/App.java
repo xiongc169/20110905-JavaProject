@@ -5,8 +5,14 @@ import org.practice.designPattern.behavior.ch17responsibilityChain.runoob.ErrorL
 import org.practice.designPattern.behavior.ch17responsibilityChain.runoob.FileLogger;
 
 /**
- * 责任链模式
+ * @Desc 责任链模式
  * http://www.runoob.com/design-pattern/chain-of-responsibility-pattern.html
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2012年7月4日
+ * <p>
+ * @Version 1.0
  */
 public class App {
 

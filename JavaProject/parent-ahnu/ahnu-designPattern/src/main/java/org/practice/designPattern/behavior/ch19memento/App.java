@@ -4,8 +4,14 @@ import org.practice.designPattern.behavior.ch19memento.runoob.CareTaker;
 import org.practice.designPattern.behavior.ch19memento.runoob.Originator;
 
 /**
- * 备忘录模式
+ * @Desc 备忘录模式
  * http://www.runoob.com/design-pattern/memento-pattern.html
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2012年7月4日
+ * <p>
+ * @Version 1.0
  */
 public class App {
 

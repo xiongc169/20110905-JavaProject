@@ -3,13 +3,6 @@ package org.practice.designPattern.behavior.ch18command.runoob;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * @author yoong
- * <br>
- * @desc Stock
- * <br>
- * @date 2019/1/15 15:29
- */
 public class Stock {
 
     private String name;

@@ -6,12 +6,14 @@ import org.practice.designPattern.behavior.ch21visitor.runoob.ComputerPartVisito
 import org.practice.designPattern.behavior.ch21visitor.runoob.ComputerPartVisitorImpl;
 
 /**
- * @author yoong
- * <br>
- * @desc 访问者模式 (Visitor Pattern)
+ * @Desc 访问者模式 (Visitor Pattern)
  * http://www.runoob.com/design-pattern/visitor-pattern.html
- * <br>
- * @date 2019/1/15 16:36
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2012年7月4日
+ * <p>
+ * @Version 1.0
  */
 public class App {
 

@@ -4,12 +4,14 @@ import org.practice.designPattern.behavior.ch16iterator.runoob.Iterator;
 import org.practice.designPattern.behavior.ch16iterator.runoob.NameRepository;
 
 /**
- * @author yoong
- * <br>
- * @desc 迭代器模式
+ * @Desc 迭代器模式
  * http://www.runoob.com/design-pattern/iterator-pattern.html
- * <br>
- * @date 2019/1/15 14:14
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2012年7月4日
+ * <p>
+ * @Version 1.0
  */
 public class App {
 

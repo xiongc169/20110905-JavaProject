@@ -1,12 +1,5 @@
 package org.practice.designPattern.behavior.ch14template.runoob;
 
-/**
- * @author yoong
- * <br>
- * @desc Cricket
- * <br>
- * @date 2019/1/15 13:55
- */
 public class Cricket extends Game {
 
     @Override

@@ -6,8 +6,14 @@ import org.practice.designPattern.behavior.ch15observer.runoob.ObserverBB;
 import org.practice.designPattern.behavior.ch15observer.runoob.Subject;
 
 /**
- * 观察者模式<br>
+ * @Desc 观察者模式
  * http://www.runoob.com/design-pattern/observer-pattern.html
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2012年7月4日
+ * <p>
+ * @Version 1.0
  */
 public class App {
 

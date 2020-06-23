@@ -1,12 +1,5 @@
 package org.practice.designPattern.behavior.ch23interpreter.runoob;
 
-/**
- * @author yoong
- * <br>
- * @desc OrExpression
- * <br>
- * @date 2019/1/16 11:55
- */
 public class OrExpression implements Expression {
 
     private Expression expr1 = null;

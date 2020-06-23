@@ -3,8 +3,14 @@ package org.practice.designPattern.behavior.ch18command;
 import org.practice.designPattern.behavior.ch18command.runoob.*;
 
 /**
- * 命令模式
+ * @Desc 命令模式
  * http://www.runoob.com/design-pattern/command-pattern.html
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2012年7月4日
+ * <p>
+ * @Version 1.0
  */
 public class App {
 

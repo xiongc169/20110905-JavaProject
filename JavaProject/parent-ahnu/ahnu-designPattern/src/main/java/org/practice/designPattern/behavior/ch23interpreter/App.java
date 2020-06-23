@@ -6,14 +6,17 @@ import org.practice.designPattern.behavior.ch23interpreter.runoob.OrExpression;
 import org.practice.designPattern.behavior.ch23interpreter.runoob.TerminalExpression;
 
 /**
- * @author yoong
- * <br>
- * @desc 解释器模式 (Interpreter Pattern)
+ * @Desc 解释器模式 (Interpreter Pattern)
  * http://www.runoob.com/design-pattern/interpreter-pattern.html
- * <br>
- * @date 2019/1/16 10:37
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2012年7月4日
+ * <p>
+ * @Version 1.0
  */
 public class App {
+
     /**
      * 入口函数
      */

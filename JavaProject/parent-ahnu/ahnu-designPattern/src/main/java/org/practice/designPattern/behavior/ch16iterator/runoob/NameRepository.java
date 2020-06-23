@@ -1,12 +1,5 @@
 package org.practice.designPattern.behavior.ch16iterator.runoob;
 
-/**
- * @author yoong
- * <br>
- * @desc NameRepository
- * <br>
- * @date 2019/1/15 14:15
- */
 public class NameRepository implements Container {
 
     public String names[] = {"Robert", "John", "Julie", "Lora"};
