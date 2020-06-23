@@ -1,4 +1,4 @@
-package org.practice.designPattern.struct.ch08proxy;
+package org.practice.designPattern.struct.ch08proxy.runoob;
 
 public class ProxyImage implements Image {
 

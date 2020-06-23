@@ -6,10 +6,14 @@ import org.practice.designPattern.api.shape.Shape;
 import org.practice.designPattern.struct.ch07decorator.runoob.RedShapeDecorator;
 
 /**
- * 装饰者模式<br>
+ * @Desc 装饰者模式
  * http://www.runoob.com/design-pattern/decorator-pattern.html
- *
- * @author Administrator
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2012年7月4日
+ * <p>
+ * @Version 1.0
  */
 public class App {
 

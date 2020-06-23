@@ -1,4 +1,4 @@
-package org.practice.designPattern.struct.ch09facade;
+package org.practice.designPattern.struct.ch09facade.runoob;
 
 import org.practice.designPattern.api.shape.Circle;
 import org.practice.designPattern.api.shape.Rectangle;
