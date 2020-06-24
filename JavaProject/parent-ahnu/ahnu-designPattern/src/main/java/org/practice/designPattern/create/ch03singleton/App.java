@@ -2,14 +2,15 @@ package org.practice.designPattern.create.ch03singleton;
 
 import org.practice.designPattern.create.ch03singleton.community.Single;
 import org.practice.designPattern.create.ch03singleton.runoob.SingletonInner;
+import org.practice.designPattern.create.ch03singleton.runoob.SingletonInnerTest;
 
 /**
  * @Desc 单例模式
- * PS：1、懒汉式 + 静态方法 = 线程不安全
- * 2、懒汉式 + 静态同步方法\同步代码块(synchronized) = 线程安全
- * 3、饿汉式(初始化就创建) = 线程安全
- * 4、双检锁/双重校验锁(DCL, Double-Checked Locking), volatile + static + 同步代码块(synchronized) = 线程安全
- * 5、登记式/静态内部类 = 线程安全
+ * PS：1、懒汉式 + 静态方法 = 线程不安全。
+ * 2、懒汉式 + 静态同步方法\同步代码块(synchronized) = 线程安全。同步方法 效率低，只有第一次需要同步；同步代码块 还是会有问题。
+ * 3、饿汉式(初始化就创建) = 线程安全。占用内存。
+ * 4、双检锁/双重校验锁(DCL, Double-Checked Locking), static + volatile + 同步代码块(synchronized) = 线程安全。
+ * 5、登记式/静态内部类 = 线程安全。
  * 6、枚举
  * http://www.runoob.com/design-pattern/singleton-pattern.html
  * 23种设计模式详解(java)
@@ -31,6 +32,7 @@ public class App {
         try {
             single_accidence();
             singleton_runoob();
+            singletonInnerTest();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -43,6 +45,7 @@ public class App {
     }
 
     public static void singleton_runoob() {
+        //调用SingletonInner.getInstance()，才会初始化内部静态类
         SingletonInner singleton = SingletonInner.getInstance();
         SingletonInner singleton2 = SingletonInner.getInstance();
         System.out.println("ch03singleton == singleton2：" + (singleton == singleton2));
@@ -52,4 +55,10 @@ public class App {
         System.out.println("singleton3 == singleton4：" + (singleton3 == singleton4));//true
     }
 
+    public static void singletonInnerTest() {
+        //new singletonInnerTest()时，不会初始化内部静态类 HandlerTest，只会初始化 singletonInnerTest
+        SingletonInnerTest singletonInnerTest = new SingletonInnerTest();
+        //调用 singletonInnerTest.getInstance()时，才会初始化内部静态类 HandlerTest
+        SingletonInnerTest singletonInnerTest01 = SingletonInnerTest.getInstance();
+    }
 }

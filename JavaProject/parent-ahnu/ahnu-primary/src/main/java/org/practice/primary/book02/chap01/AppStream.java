@@ -13,8 +13,11 @@ import java.util.zip.ZipOutputStream;
 
 /**
  * @Desc 《Java核心技术·卷2·高级特性·第9版》第一章、流与文件
- * @Author
- * @Date
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015年6月25日
+ * <p>
  * @Version 1.0
  */
 public class AppStream {

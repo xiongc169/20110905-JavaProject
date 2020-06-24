@@ -9,8 +9,11 @@ import java.util.Scanner;
 
 /**
  * @Desc 《Java核心技术·卷2·高级特性·第9版》第三章、网络
- * @Author
- * @Date
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015年6月25日
+ * <p>
  * @Version 1.0
  */
 public class AppNetwork {

@@ -9,7 +9,13 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
 /**
- * 电子合同-查询合同模板
+ * @Desc 电子合同-查询合同模板
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2020年5月26日
+ * <p>
+ * @Version 1.0
  */
 public class EContractUtils {
 

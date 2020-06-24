@@ -6,11 +6,14 @@ import com.sun.jmx.remote.internal.ArrayQueue;
 import java.util.*;
 
 /**
- * 《Java核心技术·卷1》第十三章、集合
+ * @Desc 《Java核心技术·卷1》第十三章、集合
  * PS：集合操作类 集合的类型，各个类型的特点，遍历的几种方式；
- *
- * @author yoong
- * @since 2015-08-30 09:06:00
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-08-30 09:06:00
+ * <p>
+ * @Version 1.0
  */
 public class AppCollection {
 

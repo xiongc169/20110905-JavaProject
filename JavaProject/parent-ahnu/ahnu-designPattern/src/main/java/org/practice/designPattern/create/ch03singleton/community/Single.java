@@ -13,6 +13,7 @@ package org.practice.designPattern.create.ch03singleton.community;
  */
 public class Single {
 
+    //持有私有静态实例，防止被引用，此处赋值为null，目的是实现延迟加载
     private static Single instance = null;
 
     private Single() {
