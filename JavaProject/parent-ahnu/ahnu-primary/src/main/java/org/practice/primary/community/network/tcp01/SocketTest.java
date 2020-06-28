@@ -5,7 +5,7 @@ import java.net.Socket;
 import java.util.Scanner;
 
 /**
- * @Desc ClientPoint
+ * @Desc SocketTest
  * <p>
  * @Author yoong
  * <p>
@@ -13,7 +13,7 @@ import java.util.Scanner;
  * <p>
  * @Version 1.0
  */
-public class ClientPoint {
+public class SocketTest {
 
     private static String serverIP = "127.0.0.1";
 

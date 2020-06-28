@@ -1,9 +1,6 @@
 package org.practice.netty.community.nio01;
 
 import java.io.RandomAccessFile;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.SocketAddress;
 import java.nio.*;
 import java.nio.channels.DatagramChannel;
 import java.nio.channels.FileChannel;
@@ -43,13 +40,20 @@ public class AppNio {
     public static void main(String[] args) {
         try {
             channelTest(txtFileName);
+            transferTest();
+            fileChannelTest();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
     /**
-     * Channel、Buffer列表
+     * Java NIO 教程(二) Channel
+     * PS：FileChannel，从文件中读写数据。
+     * DatagramChannel，能通过UDP读写网络中的数据。
+     * SocketChannel，能通过TCP读写网络中的数据。
+     * ServerSocketChannel，监听新进来的TCP连接，像Web服务器，对每个新进来的连接会创建SocketChannel。
+     * https://www.jianshu.com/p/1ecacad9beb5
      */
     public static void channelTest(String fileName) throws Exception {
         RandomAccessFile randomAccessFile = new RandomAccessFile(fileName, "rw");
@@ -65,6 +69,7 @@ public class AppNio {
         FloatBuffer floatBuffer = FloatBuffer.allocate(10);
         DoubleBuffer doubleBuffer = DoubleBuffer.allocate(10);
         CharBuffer charBuffer = CharBuffer.allocate(10);
+        ByteBuffer mappedByteBuffer = MappedByteBuffer.allocate(10);
 
         ByteBuffer byteBuffer1 = ByteBuffer.allocate((int) fileChannel.size());
         Integer length = fileChannel.read(byteBuffer1);
@@ -75,4 +80,41 @@ public class AppNio {
         System.out.println(result);
     }
 
+    /**
+     * Java NIO 教程(五) 通道之间的数据传输
+     * PS：toChannel.transferFrom(fromChannel);    //transferFrom()方法将数据从源通道传输到FileChannel中
+     * fromChannel.transferTo(toChannel);    //transferTo()方法将数据从FileChannel传输到其他的channel中
+     * https://www.jianshu.com/p/fdf72be99d76
+     */
+    public static void transferTest() throws Exception {
+        String mp4FileName = "D:\\Temp\\IO\\video.mp4";
+        String mp4FileName02 = "D:\\Temp\\IO\\video-02.mp4";
+        RandomAccessFile fromFile = new RandomAccessFile(mp4FileName, "rw");
+        FileChannel fromChannel = fromFile.getChannel();
+
+        RandomAccessFile toFile = new RandomAccessFile(mp4FileName02, "rw");
+        FileChannel toChannel = toFile.getChannel();
+
+        //toChannel.transferFrom(fromChannel, 0, fromChannel.size());
+        fromChannel.transferTo(0, fromChannel.size(), toChannel);
+    }
+
+    /**
+     * Java NIO 教程(七) FileChannel
+     * PS：通过使用一个InputStream、OutputStream、RandomAccessFile来获取一个FileChannel实例。
+     * https://www.jianshu.com/p/ab7044548e08
+     */
+    public static void fileChannelTest() throws Exception {
+        RandomAccessFile randomAccessFile = new RandomAccessFile(txtFileName01, "rw");
+        FileChannel fileChannel = randomAccessFile.getChannel();
+        for (int i = 0; i < 100; i++) {
+            String line = "This is line " + i + "\r\n";
+            byte[] bytes = line.getBytes();
+            ByteBuffer buffer = ByteBuffer.allocate(bytes.length);
+            buffer.put(bytes);
+            buffer.flip();//需要通过flip()方法将Buffer从写模式切换到读模式
+            fileChannel.write(buffer);
+        }
+        fileChannel.close();
+    }
 }

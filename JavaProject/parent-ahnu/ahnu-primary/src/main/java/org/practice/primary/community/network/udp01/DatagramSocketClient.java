@@ -17,7 +17,7 @@ import java.net.InetAddress;
  * <p>
  * @Version 1.0
  */
-public class UdpClient {
+public class DatagramSocketClient {
 
     private static String serverIP = "127.0.0.1";
 
@@ -28,13 +28,13 @@ public class UdpClient {
      */
     public static void main(String[] args) {
         try {
-            starUpUdpClient();
+            startDatagramSocketClient();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    public static void starUpUdpClient() throws Exception {
+    public static void startDatagramSocketClient() throws Exception {
         InetAddress address = InetAddress.getByName(serverIP);
 
         DatagramSocket client = new DatagramSocket();

@@ -5,7 +5,7 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 
 /**
- * @Desc UdpServer
+ * @Desc DatagramSocketServer
  * <p>
  * @Author yoong
  * <p>
@@ -13,7 +13,7 @@ import java.net.InetAddress;
  * <p>
  * @Version 1.0
  */
-public class UdpServer {
+public class DatagramSocketServer {
 
     private static int serverPort = 10007;
 
@@ -22,13 +22,13 @@ public class UdpServer {
      */
     public static void main(String[] args) {
         try {
-            starUpUdpServer();
+            startDatagramSocketServer();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    public static void starUpUdpServer() throws Exception {
+    public static void startDatagramSocketServer() throws Exception {
         byte[] data = new byte[1024];
         DatagramPacket receivePacket = new DatagramPacket(data, data.length);
         DatagramSocket server = new DatagramSocket(serverPort);

@@ -5,12 +5,15 @@ import java.net.Socket;
 import java.util.Scanner;
 
 /**
- * @Desc SocketClient
- * @Author
- * @Date
+ * @Desc SocketDemo
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015年6月25日
+ * <p>
  * @Version 1.0
  */
-public class SocketClient {
+public class SocketDemo {
 
     private static String serverIP = "127.0.0.1";
 

@@ -6,7 +6,7 @@ import java.io.OutputStream;
 import java.net.Socket;
 
 /**
- * @Desc LogicServerThread
+ * @Desc ServerThread
  * <p>
  * @Author yoong
  * <p>

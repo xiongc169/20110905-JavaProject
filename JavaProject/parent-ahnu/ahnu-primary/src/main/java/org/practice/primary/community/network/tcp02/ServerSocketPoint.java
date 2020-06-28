@@ -6,7 +6,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- * @Desc TcpServer-DIY
+ * @Desc ServerSocketPoint-DIY
  * <p>
  * @Author yoong
  * <p>
@@ -14,7 +14,7 @@ import java.net.Socket;
  * <p>
  * @Version 1.0
  */
-public class TcpServer {
+public class ServerSocketPoint {
 
     private static int serverPort = 9090;
 

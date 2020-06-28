@@ -6,7 +6,7 @@ import java.net.Socket;
 import java.util.Scanner;
 
 /**
- * @Desc MultiClientPoint
+ * @Desc MultiSocket
  * <p>
  * @Author yoong
  * <p>
@@ -14,7 +14,7 @@ import java.util.Scanner;
  * <p>
  * @Version 1.0
  */
-public class MultiClientPoint {
+public class MultiSocket {
 
     private static String serverIP = "127.0.0.1";
 

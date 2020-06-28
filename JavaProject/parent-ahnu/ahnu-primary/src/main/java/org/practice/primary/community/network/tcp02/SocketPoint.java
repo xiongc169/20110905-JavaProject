@@ -5,7 +5,7 @@ import java.io.OutputStream;
 import java.net.Socket;
 
 /**
- * @Desc TcpClient-DIY
+ * @Desc SocketPoint-DIY
  * <p>
  * @Author yoong
  * <p>
@@ -13,7 +13,7 @@ import java.net.Socket;
  * <p>
  * @Version 1.0
  */
-public class TcpClient {
+public class SocketPoint {
 
     private static String serverIP = "127.0.0.1";
 

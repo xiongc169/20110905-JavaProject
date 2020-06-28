@@ -6,6 +6,7 @@ import java.util.zip.ZipInputStream;
 
 /**
  * @Desc StreamUtility
+ * PS：标准的IO(BIO)基于字节流、字符流(Stream)进行操作的，而NIO是基于通道(Channel)、缓冲区(Buffer)进行操作
  * <p>
  * @Author yoong
  * <p>

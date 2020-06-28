@@ -5,7 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- * @Desc ServerPoint
+ * @Desc ServerSocketTest
  * <p>
  * @Author yoong
  * <p>
@@ -13,7 +13,7 @@ import java.net.Socket;
  * <p>
  * @Version 1.0
  */
-public class ServerPoint {
+public class ServerSocketTest {
 
     private static int serverPort = 10007;
 

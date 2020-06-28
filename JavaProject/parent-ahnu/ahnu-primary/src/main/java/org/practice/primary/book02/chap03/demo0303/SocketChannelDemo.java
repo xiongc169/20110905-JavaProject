@@ -4,12 +4,15 @@ import java.net.InetSocketAddress;
 import java.nio.channels.SocketChannel;
 
 /**
- * @Desc SocketChannelClient
- * @Author
- * @Date
+ * @Desc SocketChannelDemo
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015年6月25日
+ * <p>
  * @Version 1.0
  */
-public class SocketChannelClient {
+public class SocketChannelDemo {
 
     private static String serverIP = "127.0.0.1";
 

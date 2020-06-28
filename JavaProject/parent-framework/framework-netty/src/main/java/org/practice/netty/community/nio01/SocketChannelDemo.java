@@ -3,9 +3,14 @@ package org.practice.netty.community.nio01;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
+import java.nio.charset.Charset;
 
 /**
- * @Desc SocketChannelDemo
+ * @Desc Java NIO 教程(八) SocketChannel
+ * PS：Java NIO中的SocketChannel是一个连接到TCP网络套接字的通道，通过以下2种方式创建SocketChannel：
+ * 1、打开一个SocketChannel并连接到互联网上的某台服务器。
+ * 2、一个新连接到达ServerSocketChannel时，会创建一个SocketChannel。
+ * https://www.jianshu.com/p/eeed1c7aec2d
  * <p>
  * @Author Yoong
  * <p>
@@ -30,11 +35,12 @@ public class SocketChannelDemo {
         SocketChannel socketChannel = SocketChannel.open();
         socketChannel.connect(new InetSocketAddress("127.0.0.1", 9999));
         ByteBuffer byteBuffer = ByteBuffer.allocate(1024 * 1024);
-        int length = 0;
-        do {
-            length = socketChannel.read(byteBuffer);
-        } while (length > -1);
-
+        socketChannel.read(byteBuffer);  //阻塞
+        byteBuffer.flip();
+        //转换为String
+        Charset charset = Charset.forName("utf-8");
+        String result = charset.decode(byteBuffer).toString();
+        System.out.println(result);
         socketChannel.close();
     }
 }

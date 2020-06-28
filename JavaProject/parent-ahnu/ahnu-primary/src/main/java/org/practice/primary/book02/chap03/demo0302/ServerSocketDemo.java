@@ -9,11 +9,14 @@ import java.util.Scanner;
 
 /**
  * @Desc 3.2、实现服务器
- * @Author
- * @Date
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015年6月25日
+ * <p>
  * @Version 1.0
  */
-public class SocketServer {
+public class ServerSocketDemo {
 
     private static int serverPort = 9999;
 
