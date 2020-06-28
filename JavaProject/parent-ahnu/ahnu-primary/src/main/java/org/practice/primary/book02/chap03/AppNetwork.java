@@ -21,7 +21,7 @@ public class AppNetwork {
     private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
 
     /**
-     * IP地址132.163.4.103
+     * IP地址: 132.163.4.103
      */
     public static String cesiumClockIP = "time-A.timefreq.bldrdoc.gov";
     public static Integer cesiumClockPort = 13;
@@ -37,10 +37,6 @@ public class AppNetwork {
             //连接到铯原子钟
             connectServer0301();
             inetAddress0301();
-
-            String json = "{\"appId\":\"ftcs-test\",\"body\":\"BYprHoNf7CPKJ32xhe6BUoC+QUJkGnKwU46Wp8z4VsaWg/2Sixam5fVMZ41Q/wKPB5AH8ZbPXwtIbHJUNNhGYiG3GG76z4MCOlvR8FmzrRgzFRstOEK2C5LQ8/uZNKwUGx2pIwaSOv3xuKjnzgwZ5WmFD7MUqhRN4I+jRc2IsDQ=\",\"sequenceId\":\"2020-05-26 16:41:46\",\"sign\":\"4478c43f955a752a8836ae4282b06752\"}";
-            String result = EContractUtils.sendPostRequestJSON("http://192.168.27.21:9853/api/v1/getTemplateList", json);
-            System.out.println(result);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -57,6 +53,13 @@ public class AppNetwork {
         //防止连接超时
         //socket.connect(new InetSocketAddress(horstmannIP, horstmannPort), 1000);
         InputStream inputStream = socket.getInputStream();
+
+        //输出一
+        byte[] buffer = new byte[inputStream.available()];
+        inputStream.read(buffer, 0, inputStream.available());
+        String result = new String(buffer);
+        System.out.println(result);
+        //输出二
         Scanner scanner = new Scanner(inputStream);
         int lineNum = 1;
         while (scanner.hasNextLine()) {

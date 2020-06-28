@@ -25,6 +25,19 @@ public class EContractUtils {
     private static final int CONNECTION_REQUEST_TIMEOUT = 5000;
     private static final int SOCKET_TIMEOUT = 60000;
 
+    /**
+     * 入口函数
+     */
+    public static void main(String[] args) {
+        try {
+            String json = "{\"appId\":\"ftcs-test\",\"body\":\"BYprHoNf7CPKJ32xhe6BUoC+QUJkGnKwU46Wp8z4VsaWg/2Sixam5fVMZ41Q/wKPB5AH8ZbPXwtIbHJUNNhGYiG3GG76z4MCOlvR8FmzrRgzFRstOEK2C5LQ8/uZNKwUGx2pIwaSOv3xuKjnzgwZ5WmFD7MUqhRN4I+jRc2IsDQ=\",\"sequenceId\":\"2020-05-26 16:41:46\",\"sign\":\"4478c43f955a752a8836ae4282b06752\"}";
+            String result = EContractUtils.sendPostRequestJSON("http://192.168.27.21:9853/api/v1/getTemplateList", json);
+            System.out.println(result);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
     public static String sendPostRequestJSON(String requestUrl, String json) throws Exception {
         CloseableHttpClient client = HttpClients.createDefault();
         CloseableHttpResponse res = null;

@@ -4,7 +4,7 @@ import java.net.InetSocketAddress;
 import java.nio.channels.SocketChannel;
 
 /**
- * @Desc SocketChannelDemo
+ * @Desc ServerSocketChannelDemo
  * <p>
  * @Author yoong
  * <p>
@@ -12,7 +12,7 @@ import java.nio.channels.SocketChannel;
  * <p>
  * @Version 1.0
  */
-public class SocketChannelDemo {
+public class ServerSocketChannelDemo {
 
     private static String serverIP = "127.0.0.1";
 
@@ -23,13 +23,13 @@ public class SocketChannelDemo {
      */
     public static void main(String[] args) {
         try {
-            startSocketChannel();
+            startServerSocketChannel();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    public static void startSocketChannel() throws Exception {
+    public static void startServerSocketChannel() throws Exception {
         SocketChannel channel = SocketChannel.open(new InetSocketAddress(serverIP, serverPort));
     }
 }

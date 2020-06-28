@@ -31,6 +31,7 @@ public class DatagramChannelServer {
         DatagramChannel channel = DatagramChannel.open();
         channel.socket().bind(new InetSocketAddress(9999));
         ByteBuffer byteBuffer = ByteBuffer.allocate(48);
+        byteBuffer.clear();
         channel.receive(byteBuffer);//阻塞
         //转换为String
         Charset charset = Charset.forName("utf-8");

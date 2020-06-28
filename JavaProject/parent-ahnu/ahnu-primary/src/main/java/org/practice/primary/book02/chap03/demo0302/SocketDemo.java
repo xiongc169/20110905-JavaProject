@@ -24,15 +24,14 @@ public class SocketDemo {
      */
     public static void main(String[] args) {
         try {
-            socket4Local();
+            socket0302();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-
-    public static void socket4Local() throws Exception {
-        System.out.println("ClientSocket start...");
+    public static void socket0302() throws Exception {
+        System.out.println("Socket start...");
         Socket socket = new Socket(serverIP, serverPort);
 
         OutputStream outputStream = socket.getOutputStream();
@@ -55,7 +54,7 @@ public class SocketDemo {
         int length = inputStream.read(buffers);//阻塞一，直到服务端 输入
         System.out.println("【客户端】收到：" + new String(buffers, 0, length));
 
-        System.out.println("ClientSocket end");
+        System.out.println("Socket end");
         System.in.read();
     }
 }
