@@ -1,6 +1,7 @@
 package com.yoong.web.controller;
 
 import com.yoong.web.domain.Menu;
+import com.yoong.web.dto.CommonEContractReq;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +32,7 @@ public class ParamController {
      * http://127.0.0.1:7095/param/requestMenu
      * {"menuId":"1111","menuName":"menuName-01","menuUrl":"menuUrl-01"}
      * ?menuId=1111&menuName=menuName
+     * ?menuId=1111
      */
     @ResponseBody
     @RequestMapping("/requestMenu")
@@ -81,6 +83,17 @@ public class ParamController {
     @RequestMapping("/requestBodyMenu")
     public String requestBodyMenu(@RequestBody Menu menu) {
         System.out.println(menu);
+        return "Success";
+    }
+
+    /**
+     * PS：{"menuId":"1111","menuName":"menuName-01","menuUrl":"menuUrl-01"}
+     * http://127.0.0.1:7095/param/requestBodyReq
+     */
+    @ResponseBody
+    @RequestMapping("/requestBodyReq")
+    public String requestBodyReq(@RequestBody CommonEContractReq req) {
+        System.out.println(req);
         return "Success";
     }
 }

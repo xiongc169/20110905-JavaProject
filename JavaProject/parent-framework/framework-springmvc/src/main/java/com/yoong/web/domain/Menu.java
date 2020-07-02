@@ -4,6 +4,7 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
@@ -14,7 +15,7 @@ import java.util.Objects;
  * @Version 1.0
  */
 @Entity
-public class Menu {
+public class Menu implements Serializable {
     private long id;
     private long menuId;
     private long menuName;

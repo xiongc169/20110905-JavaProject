@@ -1,10 +1,14 @@
 package org.practice.cheguo;
 
+import com.alibaba.fastjson.JSON;
 import com.yoong.facade.cls.model.Human;
+import org.practice.cheguo.api.dto.StageOrderDto;
 import org.practice.cheguo.api.request.CreateTemplateReq;
 
 import javax.validation.Validation;
 import javax.validation.Validator;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,6 +32,8 @@ public class App {
         try {
             streamSort();
             validate();
+            parseObject();
+            urlEncodeDemo();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -71,5 +77,23 @@ public class App {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    public static void parseObject() {
+        try {
+            String stageOrderDtoStr = "{\"username\":\"关飞章\",\"sex\":\"1\",\"nationality\":\"汉\",\"address\":\"杭州市江干区凤起东路189号\",\"cardid\":\"441302198901032025\",\"certAuthority\":\"南宁市公安局青秀分局\",\"cardStartValidtime\":\"2005-5-5\",\"cardEndValidtime\":\"2025-5-5\",\"cardValid\":\"1\",\"phone\":\"19999999999\",\"bankCardid\":\"6226223400443399\",\"dealerId\":\"1\",\"dealerName\":\"刘增测试车商有限公司\",\"orderType\":\"1\",\"carType\":\"1\",\"carEstimatePrice\":96789.32,\"orderStatus\":\"0\",\"creditResult\":\"0\",\"recommit\":\"0\",\"cardImageHead\":\"http://hjhjkh.oss-cn-hangzhou.aliyuncs.comign-test/1583733549219-1159313293.jpg\",\"cardImageEmblem\":\"http://hjhjkh.oss-cn-hangzhou.aliyuncs.comign-test/1583733565461-1517244937.jpg\",\"holdingImage\":\"http://hjhjkh.oss-cn-hangzhou.aliyuncs.comign-test/1583733565461-1517244937.jpg\",\"portraitImage\":\"http://hjhjkh.oss-cn-hangzhou.aliyuncs.comign-test/1583733565461-1517244937.jpg\",\"remark\":\"remark-2020年6月8日14:14:47\",\"relaterDtoList\":[{\"username\":\"郜慕凝\",\"sex\":\"0\",\"phone\":\"18888888888\",\"cardid\":\"14102919940113994X\",\"bankCardid\":\"6226223400443398\",\"relationship\":\"2\",\"cardImageHead\":\"http://hjhjkh.oss-cn-hangzhou.aliyuncs.comign-test/1583733549219-1159313293.jpg\",\"cardImageEmblem\":\"http://hjhjkh.oss-cn-hangzhou.aliyuncs.comign-test/1583733565461-1517244937.jpg\",\"holdingImage\":\"http://hjhjkh.oss-cn-hangzhou.aliyuncs.comign-test/1583733565461-1517244937.jpg\",\"creditAuthImage\":\"http://hjhjkh.oss-cn-hangzhou.aliyuncs.comign-test/1583733565461-1517244937.jpg\"},{\"username\":\"蓬增侠\",\"sex\":\"1\",\"phone\":\"17777777777\",\"cardid\":\"530702201509076397\",\"bankCardid\":\"6226223400443397\",\"relationship\":\"3\",\"cardImageHead\":\"http://hjhjkh.oss-cn-hangzhou.aliyuncs.comign-test/1583733549219-1159313293.jpg\",\"cardImageEmblem\":\"http://hjhjkh.oss-cn-hangzhou.aliyuncs.comign-test/1583733565461-1517244937.jpg\",\"holdingImage\":\"http://hjhjkh.oss-cn-hangzhou.aliyuncs.comign-test/1583733565461-1517244937.jpg\",\"creditAuthImage\":\"http://hjhjkh.oss-cn-hangzhou.aliyuncs.comign-test/1583733565461-1517244937.jpg\"},{\"username\":\"强凝丹\",\"sex\":\"1\",\"phone\":\"16666666666\",\"cardid\":\"433101200304229113\",\"bankCardid\":\"6226223400443396\",\"relationship\":\"4\",\"cardImageHead\":\"http://hjhjkh.oss-cn-hangzhou.aliyuncs.comign-test/1583733549219-1159313293.jpg\",\"cardImageEmblem\":\"http://hjhjkh.oss-cn-hangzhou.aliyuncs.comign-test/1583733565461-1517244937.jpg\",\"holdingImage\":\"http://hjhjkh.oss-cn-hangzhou.aliyuncs.comign-test/1583733565461-1517244937.jpg\",\"creditAuthImage\":\"http://hjhjkh.oss-cn-hangzhou.aliyuncs.comign-test/1583733565461-1517244937.jpg\"}]}";
+            StageOrderDto stageOrderDto = JSON.parseObject(stageOrderDtoStr, StageOrderDto.class);
+            System.out.println(stageOrderDto.getSex());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public static void urlEncodeDemo() {
+        String dubboParams = "{\"username\":\"蒲致远\",\"orderStatus\":\"1\",\"creditResult\":\"1\"}";
+        String urlEncodeResult = URLEncoder.encode(dubboParams);
+        System.out.println(urlEncodeResult);
+        String urlDecodeResult = URLDecoder.decode(urlEncodeResult);
+        System.out.println(urlDecodeResult);
     }
 }

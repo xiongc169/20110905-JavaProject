@@ -15,6 +15,10 @@
 
     <context:property-placeholder location="classpath:hibernate.properties"></context:property-placeholder>
 
+    <bean id="jsonConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <property name="supportedMediaTypes" value="application/json"/>
+    </bean>
+
     <!-- 数据库映射 -->
     <!--  class="org.apache.tomcat.dbcp.dbcp.BasicDataSource" -->
     <!--  class="org.springframework.jdbc.datasource.DriverManagerDataSource" -->

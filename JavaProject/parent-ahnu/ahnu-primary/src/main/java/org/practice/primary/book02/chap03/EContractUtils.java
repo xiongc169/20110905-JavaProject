@@ -31,18 +31,64 @@ public class EContractUtils {
     public static void main(String[] args) {
         try {
             String json = "{\"appId\":\"ftcs-test\",\"body\":\"BYprHoNf7CPKJ32xhe6BUoC+QUJkGnKwU46Wp8z4VsaWg/2Sixam5fVMZ41Q/wKPB5AH8ZbPXwtIbHJUNNhGYiG3GG76z4MCOlvR8FmzrRgzFRstOEK2C5LQ8/uZNKwUGx2pIwaSOv3xuKjnzgwZ5WmFD7MUqhRN4I+jRc2IsDQ=\",\"sequenceId\":\"2020-05-26 16:41:46\",\"sign\":\"4478c43f955a752a8836ae4282b06752\"}";
-            String result = EContractUtils.sendPostRequestJSON("http://192.168.27.21:9853/api/v1/getTemplateList", json);
+            String result = sendPostRequestJSON("http://127.0.0.1:9855/api/v1/getTemplateList", json);
             System.out.println(result);
+
+            requestParamTest();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    public static void requestParamTest() throws Exception {
+        String json0101 = "{\"name\":\"1111\"}";
+        String result0101 = sendPostRequestJSON("http://127.0.0.1:7095/param/requestName", json0101);//能调到服务端，收不到参数
+        System.out.println(result0101);
+        String result0102 = sendPostRequestJSON("http://127.0.0.1:7095/param/requestName?name=123456", json0101);//能调到服务端，收到name参数
+        System.out.println(result0102);
+
+        String json0201 = "{\"menuId\":\"1111\",\"menuName\":\"menuName-01\",\"menuUrl\":\"menuUrl-01\"}";
+        String result0201 = sendPostRequestJSON("http://127.0.0.1:7095/param/requestMenu?menuId=1111&menuName=menuName", json0201);//调不到服务端
+        System.out.println(result0201);
+        String result0202 = sendPostRequestJSON("http://127.0.0.1:7095/param/requestMenu?menuId=1111", json0201);//能调到服务端，收到menuId参数
+        System.out.println(result0202);
+        String result0203 = sendPostRequestJSON("http://127.0.0.1:7095/param/requestMenu", json0201);//能调到服务端，收不到参数
+        System.out.println(result0203);
+
+        String json0301 = "{\"name\":\"1111\"}";
+        String result0301 = sendPostRequestJSON("http://127.0.0.1:7095/param/requestParamName", json0301);//调不到服务端
+        System.out.println(result0301);
+        String result0302 = sendPostRequestJSON("http://127.0.0.1:7095/param/requestParamName?name=123456", json0301);//能调到服务端，收到name参数
+        System.out.println(result0302);
+
+        String json0401 = "{\"menuId\":\"1111\",\"menuName\":\"menuName-01\",\"menuUrl\":\"menuUrl-01\"}";
+        String result0401 = sendPostRequestJSON("http://127.0.0.1:7095/param/requestParamMenu?menuId=1111&menuName=menuName", json0401);//调不到服务端
+        System.out.println(result0401);
+        String result0402 = sendPostRequestJSON("http://127.0.0.1:7095/param/requestParamMenu?menuId=1111", json0401);//调不到服务端
+        System.out.println(result0402);
+        String result0403 = sendPostRequestJSON("http://127.0.0.1:7095/param/requestParamMenu", json0401);//调不到服务端
+        System.out.println(result0403);
+
+        String json0501 = "{\"name\":\"1111\"}";
+        String result0501 = sendPostRequestJSON("http://127.0.0.1:7095/param/requestBodyName", json0501);//能调到服务端，name参数收到 {"name":"1111"}
+        System.out.println(result0501);
+        String result0502 = sendPostRequestJSON("http://127.0.0.1:7095/param/requestBodyName?name=123456", json0501);//能调到服务端，name参数收到 {"name":"1111"}
+        System.out.println(result0502);
+
+        String json0601 = "{\"menuId\":1111,\"menuName\":\"menuName-01\",\"menuUrl\":\"menuUrl-01\"}";
+        String result0601 = sendPostRequestJSON("http://127.0.0.1:7095/param/requestBodyMenu?menuId=1111&menuName=menuName", json0601);//调不到服务端
+        System.out.println(result0601);
+        String result0602 = sendPostRequestJSON("http://127.0.0.1:7095/param/requestBodyMenu?menuId=1111", json0601);//调不到服务端
+        System.out.println(result0602);
+        String result0603 = sendPostRequestJSON("http://127.0.0.1:7095/param/requestBodyMenu", json0601);//调不到服务端
+        System.out.println(result0603);
     }
 
     public static String sendPostRequestJSON(String requestUrl, String json) throws Exception {
         CloseableHttpClient client = HttpClients.createDefault();
         CloseableHttpResponse res = null;
         try {
-            //        logger.info(" ==> 传入的json: {}", json.toJSONString());
+            //logger.info(" ==> 传入的json: {}", json.toJSONString());
             HttpPost post = new HttpPost(requestUrl);
             RequestConfig requestConfig = RequestConfig.custom()
                     .setConnectTimeout(CONNECT_TIMEOUT).setConnectionRequestTimeout(CONNECTION_REQUEST_TIMEOUT)
@@ -55,7 +101,7 @@ public class EContractUtils {
             string.setContentType(CONTENT_TYPE);
             post.setEntity(string);
             res = client.execute(post);
-            //logger.info("res.getStatusLine():{}", res.getStatusLine().getStatusCode());
+            System.out.println("res.getStatusLine():" + res.getStatusLine().getStatusCode());
             if (res.getStatusLine().getStatusCode() == 200) {
                 String result = EntityUtils.toString(res.getEntity());
                 //logger.info("response json:{}", result);
