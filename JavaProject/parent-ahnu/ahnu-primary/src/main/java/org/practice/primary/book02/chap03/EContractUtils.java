@@ -7,6 +7,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * @Desc 电子合同-查询合同模板
@@ -82,6 +83,12 @@ public class EContractUtils {
         System.out.println(result0602);
         String result0603 = sendPostRequestJSON("http://127.0.0.1:7095/param/requestBodyMenu", json0601);//调不到服务端
         System.out.println(result0603);
+    }
+
+    public static void restTemplateDemo() {
+        String json0601 = "{\"menuId\":1111,\"menuName\":\"menuName-01\",\"menuUrl\":\"menuUrl-01\"}";
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.postForLocation("http://127.0.0.1:7095/param/requestBodyMenu", json0601);
     }
 
     public static String sendPostRequestJSON(String requestUrl, String json) throws Exception {

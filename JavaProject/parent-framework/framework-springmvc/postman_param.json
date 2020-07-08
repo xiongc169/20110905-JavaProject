@@ -1,15 +1,27 @@
 {
 	"info": {
 		"_postman_id": "56578ae3-cc1f-4c39-9193-f746246e5c88",
-		"name": "param",
+		"name": "20200219-RequestParam",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "http://127.0.0.1:7095/param/requestName?name=123&qq=111",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"json\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "http://127.0.0.1:7095/param/requestName?name=123&qq=111",
 					"protocol": "http",
@@ -74,7 +86,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:7095/param/requestMenu?",
+					"raw": "http://127.0.0.1:7095/param/requestMenu?menuId=1111222&menuUrl=menuUrl1111",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -90,18 +102,11 @@
 					"query": [
 						{
 							"key": "menuId",
-							"value": "1111",
-							"disabled": true
-						},
-						{
-							"key": "menuName",
-							"value": "menuName",
-							"disabled": true
+							"value": "1111222"
 						},
 						{
 							"key": "menuUrl",
-							"value": "menuUrl",
-							"disabled": true
+							"value": "menuUrl1111"
 						}
 					]
 				}
@@ -160,14 +165,8 @@
 					}
 				],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "menu",
-							"value": "{\"menuId\":\"menuId-01\",\"menuName\":\"menuName-01\",\"menuUrl\":\"menuUrl-01\"}",
-							"type": "text"
-						}
-					],
+					"mode": "raw",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -175,7 +174,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:7095/param/requestParamMenu?",
+					"raw": "http://127.0.0.1:7095/param/requestParamMenu?menuId=1111222&menuUrl=menuUrl1111",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -203,6 +202,14 @@
 							"key": "menuUrl",
 							"value": "menuUrl",
 							"disabled": true
+						},
+						{
+							"key": "menuId",
+							"value": "1111222"
+						},
+						{
+							"key": "menuUrl",
+							"value": "menuUrl1111"
 						}
 					]
 				}
@@ -210,27 +217,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:7095/param/requestBodyName",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:7095/param/requestBodyName",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "7095",
-					"path": [
-						"param",
-						"requestBodyName"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:7095/param/requestBodyMenu",
+			"name": "http://127.0.0.1:7095/param/requestBodyName",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -245,14 +232,8 @@
 					}
 				],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "menuId",
-							"value": "2222",
-							"type": "text"
-						}
-					],
+					"mode": "raw",
+					"raw": "{\"id\":\"111\",\"menuId\":222,\"menuName\":333,\"menuUrl\":\"menuUrl-01\"}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -260,21 +241,94 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:7095/param/requestBodyMenu?menuId=1111",
+					"raw": "http://127.0.0.1:7095/param/requestBodyName",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "7095",
+					"path": [
+						"param",
+						"requestBodyName"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:7095/param/requestBodyMenu",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":\"111\",\"menuId\":222,\"menuName\":333,\"menuUrl\":\"menuUrl-01\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:7095/param/requestBodyMenu",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
 					],
 					"port": "7095",
 					"path": [
 						"param",
 						"requestBodyMenu"
-					],
-					"query": [
-						{
-							"key": "menuId",
-							"value": "1111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:7095/param/requestBodyReq",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"appId\":\"ftcs-test\",\"body\":\"BYprHoNf7CPKJ32xhe6BUoC+QUJkGnKwU46Wp8z4VsaWg/2Sixam5fVMZ41Q/wKPB5AH8ZbPXwtIbHJUNNhGYiG3GG76z4MCOlvR8FmzrRgzFRstOEK2C5LQ8/uZNKwUGx2pIwaSOv3xuKjnzgwZ5WmFD7MUqhRN4I+jRc2IsDQ=\",\"sequenceId\":\"2020-05-26 16:41:46\",\"sign\":\"4478c43f955a752a8836ae4282b06752\"}",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:7095/param/requestBodyReq",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "7095",
+					"path": [
+						"param",
+						"requestBodyReq"
 					]
 				}
 			},

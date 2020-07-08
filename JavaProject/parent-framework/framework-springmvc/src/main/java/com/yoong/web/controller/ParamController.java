@@ -3,10 +3,7 @@ package com.yoong.web.controller;
 import com.yoong.web.domain.Menu;
 import com.yoong.web.dto.CommonEContractReq;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author yoong
@@ -65,7 +62,7 @@ public class ParamController {
 
 
     /**
-     * PS：{"menuId":"1111","menuName":"menuName-01","menuUrl":"menuUrl-01"}
+     * PS：{"id":"111","menuId":222,"menuName":333,"menuUrl":"menuUrl-01"}
      * http://127.0.0.1:7095/param/requestBodyName
      */
     @ResponseBody
@@ -76,18 +73,18 @@ public class ParamController {
     }
 
     /**
-     * PS：{"menuId":"1111","menuName":"menuName-01","menuUrl":"menuUrl-01"}
+     * PS：{"id":"111","menuId":222,"menuName":333,"menuUrl":"menuUrl-01"}
      * http://127.0.0.1:7095/param/requestBodyMenu
      */
     @ResponseBody
-    @RequestMapping("/requestBodyMenu")
+    @RequestMapping(value = "/requestBodyMenu")
     public String requestBodyMenu(@RequestBody Menu menu) {
         System.out.println(menu);
         return "Success";
     }
 
     /**
-     * PS：{"menuId":"1111","menuName":"menuName-01","menuUrl":"menuUrl-01"}
+     * PS：{"appId":"ftcs-test","body":"BYprHoNf7CPKJ32xhe6BUoC+QUJkGnKwU46Wp8z4VsaWg/2Sixam5fVMZ41Q/wKPB5AH8ZbPXwtIbHJUNNhGYiG3GG76z4MCOlvR8FmzrRgzFRstOEK2C5LQ8/uZNKwUGx2pIwaSOv3xuKjnzgwZ5WmFD7MUqhRN4I+jRc2IsDQ=","sequenceId":"2020-05-26 16:41:46","sign":"4478c43f955a752a8836ae4282b06752"}
      * http://127.0.0.1:7095/param/requestBodyReq
      */
     @ResponseBody
