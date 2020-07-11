@@ -12,7 +12,6 @@
     <modules>
         <module>framework-netty</module>
         <module>framework-quartz</module>
-        <module>framework-servlet</module>
         <module>framework-spring</module>
         <module>framework-springmvc</module>
         <module>framework-structs</module>
