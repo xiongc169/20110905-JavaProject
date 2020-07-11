@@ -1,4 +1,4 @@
-package org.practice.structs;
+package com.yoong.structs;
 
 /**
  * Hello world!
