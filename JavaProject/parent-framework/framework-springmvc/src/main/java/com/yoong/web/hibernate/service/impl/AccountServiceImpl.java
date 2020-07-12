@@ -8,9 +8,12 @@ import org.springframework.transaction.annotation.Transactional;
 import com.yoong.web.hibernate.entity.Account;
 
 /**
- * @Desc AccountServiceImpl
- * @Author
- * @Date
+ * @Desc AccountServiceImpl.java
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018年8月20日
+ * <p>
  * @Version 1.0
  */
 @Service

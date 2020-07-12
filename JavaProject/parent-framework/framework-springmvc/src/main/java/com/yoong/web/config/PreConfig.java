@@ -6,8 +6,11 @@ import com.yoong.web.hibernate.entity.Account;
 
 /**
  * @Desc PreConfig
- * @Author
- * @Date
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018年8月20日
+ * <p>
  * @Version 1.0
  */
 @Configuration

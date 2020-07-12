@@ -6,9 +6,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @author yoong
- * @desc ParamController.java
- * @date 2020年2月20日
+ * @Desc ParamController.java
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2020年2月20日
+ * <p>
+ * @Version 1.0
  */
 @Controller
 @RequestMapping("/param")

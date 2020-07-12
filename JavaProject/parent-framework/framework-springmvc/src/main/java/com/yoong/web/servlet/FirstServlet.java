@@ -11,9 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @Desc FirstServlet
- * @Author
- * @Date
+ * @Desc FirstServlet.java
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018年8月20日
+ * <p>
  * @Version 1.0
  */
 public class FirstServlet extends HttpServlet {
