@@ -1,6 +1,6 @@
 package com.yoong.web.controller;
 
-import com.yoong.web.domain.Menu;
+import com.yoong.web.hibernate.entity.Menu;
 import com.yoong.web.dto.CommonEContractReq;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

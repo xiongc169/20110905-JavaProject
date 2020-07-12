@@ -1,4 +1,4 @@
-package com.yoong.web.domain;
+package com.yoong.web.hibernate.entity;
 
 import javax.persistence.*;
 import java.util.Date;

@@ -1,26 +1,27 @@
-package com.yoong.web.domain;
+package com.yoong.web.hibernate.entity;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
 /**
- * @Desc Admin
+ * @Desc Menu
  * @Author
  * @Date
  * @Version 1.0
  */
 @Entity
-public class Admin {
+public class Menu implements Serializable {
     private long id;
-    private String adminName;
-    private String mobile;
-    private String email;
-    private String password;
-    private String salt;
+    private long menuId;
+    private long menuName;
+    private String menuUrl;
+    private String parentId;
+    private Integer order;
     private Date createTime;
     private Date modifyTime;
     private String note1;
@@ -38,53 +39,53 @@ public class Admin {
     }
 
     @Basic
-    @Column(name = "admin_name", nullable = false, length = 50)
-    public String getAdminName() {
-        return adminName;
+    @Column(name = "menu_id", nullable = false)
+    public long getMenuId() {
+        return menuId;
     }
 
-    public void setAdminName(String adminName) {
-        this.adminName = adminName;
-    }
-
-    @Basic
-    @Column(name = "mobile", nullable = false, length = 20)
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
+    public void setMenuId(long menuId) {
+        this.menuId = menuId;
     }
 
     @Basic
-    @Column(name = "email", nullable = false, length = 50)
-    public String getEmail() {
-        return email;
+    @Column(name = "menu_name", nullable = false)
+    public long getMenuName() {
+        return menuName;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @Basic
-    @Column(name = "password", nullable = false, length = 50)
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setMenuName(long menuName) {
+        this.menuName = menuName;
     }
 
     @Basic
-    @Column(name = "salt", nullable = false, length = 50)
-    public String getSalt() {
-        return salt;
+    @Column(name = "menu_url", nullable = true, length = 20)
+    public String getMenuUrl() {
+        return menuUrl;
     }
 
-    public void setSalt(String salt) {
-        this.salt = salt;
+    public void setMenuUrl(String menuUrl) {
+        this.menuUrl = menuUrl;
+    }
+
+    @Basic
+    @Column(name = "parent_id", nullable = true, length = 20)
+    public String getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
+    }
+
+    @Basic
+    @Column(name = "order", nullable = true)
+    public Integer getOrder() {
+        return order;
+    }
+
+    public void setOrder(Integer order) {
+        this.order = order;
     }
 
     @Basic
@@ -141,22 +142,22 @@ public class Admin {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Admin admin = (Admin) o;
-        return id == admin.id &&
-                isDelete == admin.isDelete &&
-                Objects.equals(adminName, admin.adminName) &&
-                Objects.equals(mobile, admin.mobile) &&
-                Objects.equals(email, admin.email) &&
-                Objects.equals(password, admin.password) &&
-                Objects.equals(salt, admin.salt) &&
-                Objects.equals(createTime, admin.createTime) &&
-                Objects.equals(modifyTime, admin.modifyTime) &&
-                Objects.equals(note1, admin.note1) &&
-                Objects.equals(note2, admin.note2);
+        Menu menu = (Menu) o;
+        return id == menu.id &&
+                menuId == menu.menuId &&
+                menuName == menu.menuName &&
+                isDelete == menu.isDelete &&
+                Objects.equals(menuUrl, menu.menuUrl) &&
+                Objects.equals(parentId, menu.parentId) &&
+                Objects.equals(order, menu.order) &&
+                Objects.equals(createTime, menu.createTime) &&
+                Objects.equals(modifyTime, menu.modifyTime) &&
+                Objects.equals(note1, menu.note1) &&
+                Objects.equals(note2, menu.note2);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, adminName, mobile, email, password, salt, createTime, modifyTime, note1, note2, isDelete);
+        return Objects.hash(id, menuId, menuName, menuUrl, parentId, order, createTime, modifyTime, note1, note2, isDelete);
     }
 }

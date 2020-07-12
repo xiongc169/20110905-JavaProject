@@ -1,11 +1,11 @@
-package com.yoong.web.dao.impl;
+package com.yoong.web.hibernate.dao.impl;
 
-import com.yoong.web.dao.AccountDao;
+import com.yoong.web.hibernate.dao.AccountDao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.yoong.web.domain.Account;
+import com.yoong.web.hibernate.entity.Account;
 
 /**
  * @Desc AccountDaoImpl

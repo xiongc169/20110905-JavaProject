@@ -9,15 +9,15 @@
         <property name="connection.username">root</property>
         <property name="connection.password">123456</property>
 
-        <mapping class="com.yoong.web.domain.Account"/>
-        <mapping class="com.yoong.web.domain.Admin"/>
-        <mapping class="com.yoong.web.domain.Customer"/>
-        <mapping class="com.yoong.web.domain.Menu"/>
-        <mapping class="com.yoong.web.domain.Resource"/>
-        <mapping class="com.yoong.web.domain.Role"/>
-        <mapping class="com.yoong.web.domain.RoleMenu"/>
-        <mapping class="com.yoong.web.domain.RoleResource"/>
-        <mapping class="com.yoong.web.domain.UserRole"/>
+        <mapping class="com.yoong.web.hibernate.entity.Account"/>
+        <mapping class="com.yoong.web.hibernate.entity.Admin"/>
+        <mapping class="com.yoong.web.hibernate.entity.Customer"/>
+        <mapping class="com.yoong.web.hibernate.entity.Menu"/>
+        <mapping class="com.yoong.web.hibernate.entity.Resource"/>
+        <mapping class="com.yoong.web.hibernate.entity.Role"/>
+        <mapping class="com.yoong.web.hibernate.entity.RoleMenu"/>
+        <mapping class="com.yoong.web.hibernate.entity.RoleResource"/>
+        <mapping class="com.yoong.web.hibernate.entity.UserRole"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->

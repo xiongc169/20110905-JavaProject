@@ -15,7 +15,7 @@
 
     <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 
-    <context:property-placeholder location="classpath:hibernate.properties"></context:property-placeholder>
+    <context:property-placeholder location="classpath:hibernate/hibernate.properties"></context:property-placeholder>
 
     <!-- 数据库映射 -->
     <!--  class="org.apache.tomcat.dbcp.dbcp.BasicDataSource" -->
@@ -32,7 +32,7 @@
         <property name="packagesToScan">
             <list>
                 <!-- 可以加多个包 -->
-                <value>com.yoong.web.domain</value>
+                <value>com.yoong.web.hibernate.entity</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -50,6 +50,10 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+    <bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager" ref="transactionManager"></property>
+    </bean>
+
+<!--    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>-->
 
 </beans> 

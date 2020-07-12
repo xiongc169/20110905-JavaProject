@@ -2,7 +2,7 @@ package com.yoong.web.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import com.yoong.web.domain.Account;
+import com.yoong.web.hibernate.entity.Account;
 
 /**
  * @Desc PreConfig
