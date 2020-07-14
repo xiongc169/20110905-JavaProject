@@ -75,7 +75,7 @@ public class IocContainer {
      * http://www.cnblogs.com/best/p/5727935.html
      */
     public static void injectDemo0202() {
-        Resource resource = new ClassPathResource("book01/ioc/spring-inject.xml");
+        Resource resource = new ClassPathResource("book01/ioc/spring0202-inject.xml");
         BeanFactory xmlFactory = new XmlBeanFactory(resource);
         //2.2.1、构造方法注入、setter注入
         Customer customer = (Customer) xmlFactory.getBean("customer_01");
@@ -107,7 +107,7 @@ public class IocContainer {
      */
     public static void beanFactoryDemo0401() {
         //XmlBeanFactory
-        Resource resource = new ClassPathResource("book01/ioc/spring-factory.xml");
+        Resource resource = new ClassPathResource("book01/ioc/spring0401-factory.xml");
         BeanFactory xmlFactory = new XmlBeanFactory(resource);
         User user = (User) xmlFactory.getBean("user_01");
         User user2 = xmlFactory.getBean("user_02", User.class);
@@ -149,13 +149,13 @@ public class IocContainer {
             System.out.println(directory);
 
             //FileSystemXmlApplicationContext
-            ApplicationContext fileSystemXml = new FileSystemXmlApplicationContext("JavaProject\\parent-framework\\framework-spring\\src\\main\\resources\\book01\\ioc\\spring-context.xml");
+            ApplicationContext fileSystemXml = new FileSystemXmlApplicationContext("JavaProject\\parent-framework\\framework-spring\\src\\main\\resources\\book01\\ioc\\spring0401-context.xml");
             User user = (User) fileSystemXml.getBean("user_01");
             System.out.println(user.getIid());
             ((FileSystemXmlApplicationContext) fileSystemXml).close();
 
             //ClassPathXmlApplicationContext
-            ApplicationContext classpathXml = new ClassPathXmlApplicationContext("book01/ioc/spring-context.xml");
+            ApplicationContext classpathXml = new ClassPathXmlApplicationContext("book01/ioc/spring0401-context.xml");
             User user2 = (User) classpathXml.getBean("user_02");
             System.out.println(user2.getIid());
 
@@ -192,7 +192,7 @@ public class IocContainer {
      * https://blog.csdn.net/chs007chs/article/details/78614332
      */
     public static void getBeanDefinitionAndRegister0402() {
-        Resource resource = new ClassPathResource("book01/ioc/spring-context.xml");
+        Resource resource = new ClassPathResource("book01/ioc/spring0401-context.xml");
         BeanFactory xmlFactory = new XmlBeanFactory(resource);
         //获取BeanDefinition，并注册
         ClassPathScanningCandidateComponentProvider provider = new ClassPathScanningCandidateComponentProvider(true);
@@ -218,7 +218,7 @@ public class IocContainer {
      */
     public static void beanFactoryPostProcessor040402() {
         //初始化BeanFactory
-        Resource resource = new ClassPathResource("book01/ioc/spring-context.xml");
+        Resource resource = new ClassPathResource("book01/ioc/spring0401-context.xml");
         ConfigurableListableBeanFactory clBeanFactory = new XmlBeanFactory(resource);
         User user = (User) clBeanFactory.getBean("user_02");
         System.out.println(user.getIid());
@@ -232,7 +232,7 @@ public class IocContainer {
         System.out.println(user2.getIid());
 
         //ApplicationContext
-        ApplicationContext classpathXml = new ClassPathXmlApplicationContext("book01/ioc/spring-context.xml");
+        ApplicationContext classpathXml = new ClassPathXmlApplicationContext("book01/ioc/spring0401-context.xml");
         User user3 = (User) classpathXml.getBean("user_02");
         User user4 = classpathXml.getBean("user_02", User.class);
         System.out.println(user3.getIid());
@@ -344,7 +344,7 @@ public class IocContainer {
         ResourceLoader fileLoader = new FileSystemResourceLoader();
         //XML文件不存在时，不会抛异常
         Resource res = defaultLoader.getResource("file:D:\\Apache\\zkui\\config.cfg");
-        Resource res2 = defaultLoader.getResource("classpath:ioc/spring-context.xml");
+        Resource res2 = defaultLoader.getResource("classpath:ioc/spring0401-context.xml");
         Resource res3 = defaultLoader.getResource("http://www.baidu.com");
         System.out.println(String.format("%s  %s", res.exists(), res.getClass()));
         System.out.println(String.format("%s  %s", res2.exists(), res2.getClass()));
