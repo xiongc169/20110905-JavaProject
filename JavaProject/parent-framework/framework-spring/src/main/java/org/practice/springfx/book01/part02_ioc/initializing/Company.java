@@ -27,6 +27,9 @@ public class Company implements InitializingBean, DisposableBean {
         System.out.println("Construct - Company.Company()");
     }
 
+    /**
+     * JSR250的@Resource、@PostConstruct、@PreDestory对相应类进行标注
+     */
     @PostConstruct
     public void postConstruct() {
         System.out.println("@PostConstruct - Company.postConstruct()");

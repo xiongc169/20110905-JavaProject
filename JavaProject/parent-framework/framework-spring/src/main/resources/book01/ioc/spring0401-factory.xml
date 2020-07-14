@@ -11,7 +11,7 @@
        default-lazy-init="false" default-autowire="byType" default-init-method="" default-destroy-method="">
 
     <description>spring-factory</description>
-    <!--<import resource="classpath*:ioc/spring-anno.xml"/>-->
+    <!--<import resource="classpath*:ioc/spring0601-anno.xml"/>-->
 
     <bean id="user_01" class="org.practice.springfx.domain.User" lazy-init="false" init-method="init" destroy-method="destroy" scope="singleton">
         <property name="iid" value="iid_001"></property>
@@ -28,30 +28,5 @@
         <property name="orgNo" value="${orgNo}"></property>
         <property name="orgName" value="${orgName}"></property>
     </bean>
-
-    <!--ApplicationContext容器中会自动替换，BeanFactory容器中需手动配置-->
-    <!--BeanFactoryPostProcessor，注意与下面的BeanPostProcessor区别-->
-    <bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="location">
-            <value>classpath:book01/ioc/config.properties</value>
-        </property>
-    </bean>
-
-    <!--<bean id="propertyOverrideConfigurer" class="org.springframework.beans.factory.config.PropertyOverrideConfigurer">-->
-    <!--    <property name="location">-->
-    <!--        <value>classpath:ioc/config-override.properties</value>-->
-    <!--    </property>-->
-    <!--</bean>-->
-
-    <!--启动注解，@Autowired、@Qualifier | @Resource、@PostConstruct、@PreDestroy等注解变为可用-->
-    <!--<context:annotation-config> 不但把 AutowiredAnnotationBeanPostProcessor、CommonAnnotationBeanPostProcessor 注册到容器，同时还把 PersistenceAnnotationBeanPostProcessor、RequiredAnnotationBeanPostProcessor 一并注册-->
-    <!--优化了Bean之间依赖关系的配置：从XML配置改进为注解配置-->
-    <!--<context:annotation-config></context:annotation-config>-->
-
-    <!--启动注解，@Component、@Repository、@Service、@Controller等注解变为可用-->
-    <!--<context:component-scan>将 AutowiredAnnotationBeanPostProcessor、CommonAnnotationBeanPostProcessor 一并注册到了容器中-->
-    <!--优化了Bean的定义：从XML中定义改进为注解定义-->
-    <!--<context:component-scan base-package="org.practice.spring.domain"></context:component-scan>-->
-    <!--<context:component-scan base-package="org.practice.spring.domain2"></context:component-scan>-->
 
 </beans>

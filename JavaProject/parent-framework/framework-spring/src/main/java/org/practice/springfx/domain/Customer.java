@@ -1,7 +1,11 @@
 package org.practice.springfx.domain;
 
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 
 /**
  * @Desc Customer
@@ -22,10 +26,10 @@ public class Customer {
 
     private String sex;
 
-//    @Autowired
-//    @Autowired(required = false)
-//    @Qualifier("car_02")
-//    @Resource(name = "car_01")
+    //@Autowired
+    //@Autowired(required = false)
+    //@Qualifier(value = "car_01")
+    @Resource(name = "car_02")
     private Car car;
 
     public Customer() {

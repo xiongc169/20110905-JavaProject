@@ -11,7 +11,7 @@
        default-lazy-init="false" default-autowire="byType" default-init-method="" default-destroy-method="">
 
     <description>spring-context</description>
-    <!--<import resource="classpath*:ioc/spring-anno.xml"/>-->
+    <!--<import resource="classpath*:ioc/spring0601-anno.xml"/>-->
 
     <bean id="user_01" class="org.practice.springfx.domain.User" lazy-init="false" init-method="init" destroy-method="destroy" scope="singleton">
         <property name="iid" value="iid_001"></property>

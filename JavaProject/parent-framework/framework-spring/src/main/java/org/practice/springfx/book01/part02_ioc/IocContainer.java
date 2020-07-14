@@ -9,7 +9,7 @@ import org.practice.springfx.book01.part02_ioc.initializing.Company;
 import org.practice.springfx.domain.Car;
 import org.practice.springfx.domain.Customer;
 import org.practice.springfx.domain.User;
-import org.practice.springfx.domain.Student;
+import org.practice.springfx.domain2.ContractBaseConfig;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.PropertyAccessorFactory;
 import org.springframework.beans.PropertyValue;
@@ -47,6 +47,7 @@ public class IocContainer {
     public static void main(String[] args) {
         try {
             injectDemo0202();
+
             beanFactoryDemo0401();
             applicationContextDemo0401();
             getBeanDefinitionAndRegister0402();
@@ -55,8 +56,10 @@ public class IocContainer {
             awareDemo040403();
             beanPostProcessor040403();
             initMethod040403();
+
             resourceDemo0501();
             i18nDemo0502();
+
             annotationDemo0601();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -201,11 +204,11 @@ public class IocContainer {
         Iterator iterator = definitionSet.iterator();
         while (iterator.hasNext()) {
             BeanDefinition beanDefinition = (BeanDefinition) iterator.next();
-            ((XmlBeanFactory) xmlFactory).registerBeanDefinition("student", beanDefinition);
+            ((XmlBeanFactory) xmlFactory).registerBeanDefinition("contractBaseConfig", beanDefinition);
         }
-        if (((XmlBeanFactory) xmlFactory).containsBeanDefinition("student")) {
-            Student student = (Student) xmlFactory.getBean("student");
-            System.out.println(student.getStudentId());
+        if (((XmlBeanFactory) xmlFactory).containsBeanDefinition("contractBaseConfig")) {
+            ContractBaseConfig baseConfig = (ContractBaseConfig) xmlFactory.getBean("contractBaseConfig");
+            System.out.println(baseConfig.getAppId());
         }
         //查看BeanDefinitionRegistry中注册的BeanDefinition
         String[] beanDefinitionNames = ((XmlBeanFactory) xmlFactory).getBeanDefinitionNames();
@@ -276,7 +279,7 @@ public class IocContainer {
      * https://www.cnblogs.com/FraserYu/p/11211235.html
      */
     public static void awareDemo040403() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:book01/ioc/spring-aware.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:book01/ioc/spring0404-aware.xml");
         XBeanName xBeanName = (XBeanName) context.getBean("xBeanName");
         XBeanNameAware xBeanNameAware = (XBeanNameAware) context.getBean("xBeanNameAware");
         XApplicationContextAware xApplicationContextAware = (XApplicationContextAware) context.getBean("xApplicationContextAware");
@@ -293,7 +296,7 @@ public class IocContainer {
      * <p>
      */
     public static void beanPostProcessor040403() {
-        ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("classpath:book01/ioc/spring-postprocessor.xml");
+        ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("classpath*:book01/ioc/spring0404-postprocessor.xml");
         Customer customer = (Customer) classPathXmlApplicationContext.getBean("customer_01");
         System.out.println(customer);
     }
@@ -304,7 +307,7 @@ public class IocContainer {
      * Chap6.1.2：@PostConstruct、@PreDestroy
      * <p>
      * Spring InitializingBean init-method @PostConstruct 执行顺序
-     * PS：Constructor > @PostConstruct > InitializingBean > init-method
+     * PS：Constructor > @PostConstruct > InitializingBean > init-method > @PreDestroy > DisposableBean > destroy-method
      * https://www.cnblogs.com/april-chen/p/8182631.html
      * https://blog.csdn.net/chendaoqiu/article/details/50700246
      * 【bean的生命周期】--- DisposableBean、destroyMethod、@PreDestroy
@@ -312,10 +315,11 @@ public class IocContainer {
      */
     public static void initMethod040403() throws Exception {
         //InitializingBean、init-method、Construct、PostConstruct
-        ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("classpath:book01/ioc/spring-init.xml");
+        ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("classpath:book01/ioc/spring0404-init.xml");
         Company company = (Company) classPathXmlApplicationContext.getBean("company_01");
         System.out.println(company);
         classPathXmlApplicationContext.close();
+        System.out.println("Ending");
     }
 
     /**
@@ -344,7 +348,7 @@ public class IocContainer {
         ResourceLoader fileLoader = new FileSystemResourceLoader();
         //XML文件不存在时，不会抛异常
         Resource res = defaultLoader.getResource("file:D:\\Apache\\zkui\\config.cfg");
-        Resource res2 = defaultLoader.getResource("classpath:ioc/spring0401-context.xml");
+        Resource res2 = defaultLoader.getResource("classpath:book01/ioc/spring0501-resource.xml");
         Resource res3 = defaultLoader.getResource("http://www.baidu.com");
         System.out.println(String.format("%s  %s", res.exists(), res.getClass()));
         System.out.println(String.format("%s  %s", res2.exists(), res2.getClass()));
@@ -370,14 +374,17 @@ public class IocContainer {
         Locale locale3 = new Locale("zh", "CN");
         System.out.println();
 
-        ResourceBundle bundle = CommonResourceBundle.getBundle("");
+        //ResourceBundle bundle = CommonResourceBundle.getBundle("zh_CN#Hans");
     }
 
     /**
      * TODO: 6.1、基于注解的依赖注入 (P110)
+     * 注解 @Qualifier、@Autowired 不起作用
+     * PS：须添加<context:annotation-config/>
+     * http://cn.voidcc.com/question/p-nwukptgs-gq.html
      */
     public static void annotationDemo0601() {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:book01/ioc/spring-anno.xml");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:book01/ioc/spring0601-anno.xml");
         List<String> names = Arrays.asList(context.getBeanDefinitionNames());
         System.out.println(names.size());
         System.out.println(JSON.toJSONString(names));

@@ -18,11 +18,6 @@ public class FirstBeanPostProcessor implements InstantiationAwareBeanPostProcess
 
     /**
      * BeanPostProcessor前置处理
-     *
-     * @param bean     原对象实例
-     * @param beanName
-     * @return
-     * @throws BeansException
      */
     @Nullable
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
@@ -32,11 +27,6 @@ public class FirstBeanPostProcessor implements InstantiationAwareBeanPostProcess
 
     /**
      * BeanPostProcessor后置处理
-     *
-     * @param bean     原对象实例
-     * @param beanName
-     * @return
-     * @throws BeansException
      */
     @Nullable
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {

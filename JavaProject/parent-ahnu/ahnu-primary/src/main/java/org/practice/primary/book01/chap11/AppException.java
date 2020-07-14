@@ -1,5 +1,6 @@
 package org.practice.primary.book01.chap11;
 
+import java.io.FileNotFoundException;
 import java.util.logging.Logger;
 
 /**
@@ -44,5 +45,35 @@ public class AppException {
     private static void log1105() {
         Logger logger = Logger.getLogger("");
         logger.info("This is info");
+    }
+
+    /**
+     * 《Spring揭秘》chap 11.1.1、Java异常处理
+     * unchecked exception：包括java.lang.Error、java.lang.RuntimeException及其子类；因为编译器不会对这些类型的异常进行编译期检查。
+     */
+    private void uncheckException() {
+        myRuntimeException();
+        myError();
+    }
+
+    /**
+     * 《Spring揭秘》chap 11.1.1、Java异常处理
+     * checked exception：包括java.lang.Exception及其子类(除去RuntimeException及其子类)；方法定义中声明了将会抛出checked exception，调用程序就必需进行处理。
+     */
+    private void checkException() throws Throwable {
+        myFileNotFoundException();
+        myThrowable();
+    }
+
+    private void myRuntimeException() throws RuntimeException {
+    }
+
+    private void myError() throws Error {
+    }
+
+    private void myFileNotFoundException() throws FileNotFoundException {
+    }
+
+    private void myThrowable() throws Throwable {
     }
 }
