@@ -1,11 +1,11 @@
 package org.practice.springfx.book01.part02_ioc;
 
 import com.alibaba.fastjson.JSON;
-import com.sun.xml.internal.fastinfoset.CommonResourceBundle;
 import org.practice.springfx.book01.part02_ioc.aware.XApplicationContextAware;
 import org.practice.springfx.book01.part02_ioc.aware.XBeanName;
 import org.practice.springfx.book01.part02_ioc.aware.XBeanNameAware;
 import org.practice.springfx.book01.part02_ioc.initializing.Company;
+import org.practice.springfx.book01.part02_ioc.methodreplacer.Boss;
 import org.practice.springfx.domain.Car;
 import org.practice.springfx.domain.Customer;
 import org.practice.springfx.domain.User;
@@ -47,6 +47,9 @@ public class IocContainer {
     public static void main(String[] args) {
         try {
             injectDemo0202();
+
+            factoryBean040306();
+            methodReplace040307();
 
             beanFactoryDemo0401();
             applicationContextDemo0401();
@@ -213,6 +216,69 @@ public class IocContainer {
         //查看BeanDefinitionRegistry中注册的BeanDefinition
         String[] beanDefinitionNames = ((XmlBeanFactory) xmlFactory).getBeanDefinitionNames();
         System.out.println(beanDefinitionNames.length);
+    }
+
+    /**
+     * TODO: 4.3.6、工厂方法与FactoryBean
+     */
+    public static void factoryBean040306() {
+        try {
+            String userDir = System.getProperty("user.dir");
+            System.out.println(userDir);
+            ApplicationContext fileSystemXmlApp = new FileSystemXmlApplicationContext("JavaProject\\parent-framework\\framework-spring\\src\\main\\resources\\book01\\ioc\\spring0403-factorybean.xml");
+            //ApplicationContext classPathXmlApp = new ClassPathXmlApplicationContext("classpath*:book01/ioc/spring0403-factorybean.xml");
+
+            Object myCustomer01 = fileSystemXmlApp.getBean("myStaticCustomer01");
+            System.out.println(myCustomer01);
+
+            Object myCustomer02 = fileSystemXmlApp.getBean("myStaticCustomer02");
+            System.out.println(myCustomer02);
+
+            Object myCustomer03 = fileSystemXmlApp.getBean("myCustomer03");
+            System.out.println(myCustomer03);
+
+            Object customer04 = fileSystemXmlApp.getBean("myFactoryBean");
+            System.out.println(customer04.getClass());
+
+            Object myFactoryBean = fileSystemXmlApp.getBean("&myFactoryBean");
+            System.out.println(myFactoryBean.getClass());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * TODO: 4.3.7、偷梁换柱之术
+     */
+    public static void methodReplace040307() {
+        try {
+            ApplicationContext classPathXmlApp = new ClassPathXmlApplicationContext("classpath*:book01/ioc/spring0403-replacer.xml");
+            Car car01 = (Car) classPathXmlApp.getBean("car");
+            System.out.println(car01);
+            Car car02 = (Car) classPathXmlApp.getBean("car");
+            System.out.println(car02);
+
+            Boss boss01 = (Boss) classPathXmlApp.getBean("boss01");
+            Car car0103 = boss01.getCar();
+            Car car0104 = boss01.getCar();
+            Car car0105 = boss01.getCar();
+            System.out.println(car0103);
+            System.out.println(car0104);
+            System.out.println(car0105);
+
+            Boss boss02 = (Boss) classPathXmlApp.getBean("boss02");
+            Car car0203 = boss02.getCar();
+            Car car0204 = boss02.getCar();
+            Car car0205 = boss02.getCar();
+            System.out.println(car0203);
+            System.out.println(car0204);
+            System.out.println(car0205);
+
+            String result = boss01.say("Hello OpenAPI");
+            System.out.println(result);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**

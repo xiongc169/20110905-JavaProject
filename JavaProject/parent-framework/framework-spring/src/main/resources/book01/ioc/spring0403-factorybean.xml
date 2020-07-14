@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+    <!--静态工厂方法(无参)-->
+    <bean id="myStaticCustomer01" class="org.practice.springfx.book01.part02_ioc.factorybean.MyStaticFactory" factory-method="getCustomer"></bean>
+
+    <!--静态工厂方法(有参)-->
+    <bean id="myStaticCustomer02" class="org.practice.springfx.book01.part02_ioc.factorybean.MyStaticFactory" factory-method="getCustomer">
+        <property name="customerId" value="MyStaticFactory_Id_001"></property>
+    </bean>
+
+    <!--非静态工厂方法-->
+    <bean id="myFactory" class="org.practice.springfx.book01.part02_ioc.factorybean.MyFactory"></bean>
+    <bean id="myCustomer03" factory-bean="myFactory" factory-method="getCustomer"></bean>
+
+    <!--FactoryBean-->
+    <bean id="myFactoryBean" class="org.practice.springfx.book01.part02_ioc.factorybean.MyFactoryBean"></bean>
+
+</beans>
