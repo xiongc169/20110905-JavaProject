@@ -7,7 +7,6 @@ import org.practice.springfx.book01.part03_aop.ch03aop.p01advice.AfterReturningA
 import org.practice.springfx.book01.part03_aop.ch03aop.p01advice.AfterThrowAdvice;
 import org.practice.springfx.book01.part03_aop.ch03aop.p01advice.BeforeAdvice;
 import org.practice.springfx.book01.part03_aop.ch03aop.p01advice.SurroundAdvice;
-import org.springframework.aop.framework.AopProxyFactory;
 import org.springframework.aop.framework.ProxyFactory;
 import org.springframework.aop.framework.ProxyFactoryBean;
 import org.springframework.context.ApplicationContext;
@@ -34,21 +33,26 @@ public class AOPClient {
      * 入口函数
      */
     public static void main(String[] args) {
-        //测试
         try {
+            //测试
             aop_proxyFactory090501();
-            aop_proxyFactoryBean090502();
-            aop_xml();
-            aop_annotation();
+            aop_proxyFactoryBean090503();
+            aop_annotation1001();
+            aop_xml1002();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
     /**
-     * 创建代理工厂、设置被代理对象、添加通知
-     * PS：执行顺序1 Before -> Surround -> Impl -> Surround -> After
-     * 执行顺序2 Before -> Surround -> Impl -> AfterThrow
+     * TODO: 9.5.1、如何与ProxyFactory打交道
+     * Spring之AOP流程解析(ProxyFactory)
+     * https://www.cnblogs.com/letsfly/p/10660488.html
+     * <p>
+     * PS：创建代理工厂、设置被代理对象、添加通知
+     * 执行顺序1: Before -> Surround -> Impl -> AfterReturning -> Surround
+     * 执行顺序2: Before -> Surround -> Impl -> AfterThrow
+     * 第一代Spring AOP，没有 AfterFinally 通知
      */
     public static void aop_proxyFactory090501() {
         //实例化Spring代理工厂
@@ -73,11 +77,14 @@ public class AOPClient {
     }
 
     /**
+     * TODO: 9.5.3、容器中的织入器——ProxyFactoryBean
+     * 使用ProxyFactoryBean进行AOP
+     * https://www.cnblogs.com/yjc1605961523/p/11759028.html
      * 使用IOC配置的方式实现AOP
      */
-    public static void aop_proxyFactoryBean090502() {
+    public static void aop_proxyFactoryBean090503() {
         //XML配置方式实现AOP
-        ApplicationContext cpxAppContext = new ClassPathXmlApplicationContext("classpath:book01/aop/spring-aop.xml");
+        ApplicationContext cpxAppContext = new ClassPathXmlApplicationContext("classpath:book01/aop/spring0905-aop.xml");
         ICalculator math = (ICalculator) cpxAppContext.getBean("target");
         int addResult = math.add(100, 5);
         int subResult = math.sub(100, 5);
@@ -88,7 +95,7 @@ public class AOPClient {
         System.out.println("mulResult: " + mulResult);
         System.out.println("divResult: " + divResult);
 
-        //ProxyFactoryBean
+        //硬编码方式使用 ProxyFactoryBean
         ProxyFactoryBean proxyFactoryBean = new ProxyFactoryBean();
         proxyFactoryBean.setTarget(new CalculatorImpl());
         proxyFactoryBean.addAdvice(new SurroundAdvice());
@@ -96,32 +103,21 @@ public class AOPClient {
         int result = calculator.add(100, 50);
         System.out.println("result: " + result);
 
-        //ProxyFactoryBean ProxyFactoryBean02 = (ProxyFactoryBean) cpxAppContext.getBean("proxy");
+        //XML配置方式使用 ProxyFactoryBean
         ICalculator calculator02 = (ICalculator) cpxAppContext.getBean("proxy");
         int result02 = calculator02.add(100, 50);
         System.out.println("result02: " + result02);
+        ProxyFactoryBean proxyFactoryBean02 = (ProxyFactoryBean) cpxAppContext.getBean("&proxy");
+        System.out.println(proxyFactoryBean02);
     }
 
     /**
-     * 使用XML配置的方式实现Spring AOP的切面、切点、通知
-     * <p/>
-     * SpringAop时Null return value from advice does not match primitive return type for: public int...异常
-     * https://blog.csdn.net/thewindkee/article/details/99437068
-     */
-    public static void aop_xml() {
-        //XML配置方式实现AOP
-        ApplicationContext cpxAppContext = new ClassPathXmlApplicationContext("classpath:book01/aop/spring-aop-xml.xml");
-        ISubject subject = (ISubject) cpxAppContext.getBean("target");
-        String result = subject.say("aop_aspect", 100);
-        System.out.println("result: " + result);
-    }
-
-    /**
+     * TODO: 10.1、@AspectJ形式的Spring AOP
      * 注解方式实现AOP
      */
-    public static void aop_annotation() {
+    public static void aop_annotation1001() {
         //注解方式实现AOP
-        ApplicationContext cpxAppContext = new ClassPathXmlApplicationContext("classpath:book01/aop/spring-aop-anno.xml");
+        ApplicationContext cpxAppContext = new ClassPathXmlApplicationContext("classpath:book01/aop/spring1001-anno.xml");
         ICalculator math = (ICalculator) cpxAppContext.getBean("target");
         int addResult = math.add(100, 5);
         int subResult = math.sub(100, 5);
@@ -131,5 +127,20 @@ public class AOPClient {
         System.out.println("subResult: " + subResult);
         System.out.println("mulResult: " + mulResult);
         System.out.println("divResult: " + divResult);
+    }
+
+    /**
+     * TODO: 10.2、基于Schema的AOP
+     * 使用XML配置的方式实现Spring AOP的切面、切点、通知
+     * <p/>
+     * SpringAop时Null return value from advice does not match primitive return type for: public int...异常
+     * https://blog.csdn.net/thewindkee/article/details/99437068
+     */
+    public static void aop_xml1002() {
+        //XML配置方式实现AOP
+        ApplicationContext cpxAppContext = new ClassPathXmlApplicationContext("classpath:book01/aop/spring1002-xml.xml");
+        ISubject subject = (ISubject) cpxAppContext.getBean("target");
+        String result = subject.say("aop_aspect", 100);
+        System.out.println("result: " + result);
     }
 }

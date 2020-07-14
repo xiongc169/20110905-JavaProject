@@ -30,7 +30,7 @@ public class SurroundAdvice implements MethodInterceptor {
         //方法调用
         Object result = invocation.proceed();
         //后置横切逻辑
-        //System.out.println(result);
+        System.out.println(result);
         return result;
     }
 

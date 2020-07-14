@@ -67,7 +67,6 @@ public class MyAspect implements Ordered {
 
     /**
      * chap10.1.4、Advice执行顺序
-     * @return
      */
     @Override
     public int getOrder() {

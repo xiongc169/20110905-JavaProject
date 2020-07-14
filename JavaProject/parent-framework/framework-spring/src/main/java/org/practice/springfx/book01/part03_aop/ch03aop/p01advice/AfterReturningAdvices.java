@@ -24,6 +24,6 @@ public class AfterReturningAdvices implements AfterReturningAdvice {
      */
     @Override
     public void afterReturning(Object returnValue, Method method, Object[] args, Object target) throws Throwable {
-        System.out.println("AfterAdvice.afterReturning");
+        System.out.println("AfterReturningAdvices.afterReturning");
     }
 }
