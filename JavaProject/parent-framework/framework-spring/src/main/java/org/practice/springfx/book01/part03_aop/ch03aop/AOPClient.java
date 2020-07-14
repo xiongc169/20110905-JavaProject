@@ -46,6 +46,8 @@ public class AOPClient {
 
     /**
      * TODO: 9.5.1、如何与ProxyFactory打交道
+     * 使用ProxyFactory通过编程创建AOP代理
+     * https://www.php.cn/manual/view/21807.html
      * Spring之AOP流程解析(ProxyFactory)
      * https://www.cnblogs.com/letsfly/p/10660488.html
      * <p>
@@ -78,13 +80,15 @@ public class AOPClient {
 
     /**
      * TODO: 9.5.3、容器中的织入器——ProxyFactoryBean
+     * 使用ProxyFactoryBean创建AOP代理
+     * https://www.php.cn/manual/view/21799.html
      * 使用ProxyFactoryBean进行AOP
      * https://www.cnblogs.com/yjc1605961523/p/11759028.html
      * 使用IOC配置的方式实现AOP
      */
     public static void aop_proxyFactoryBean090503() {
         //XML配置方式实现AOP
-        ApplicationContext cpxAppContext = new ClassPathXmlApplicationContext("classpath:book01/aop/spring0905-aop.xml");
+        ApplicationContext cpxAppContext = new ClassPathXmlApplicationContext("classpath:book01/aop/spring0905-proxyfactorybean.xml");
         ICalculator math = (ICalculator) cpxAppContext.getBean("target");
         int addResult = math.add(100, 5);
         int subResult = math.sub(100, 5);

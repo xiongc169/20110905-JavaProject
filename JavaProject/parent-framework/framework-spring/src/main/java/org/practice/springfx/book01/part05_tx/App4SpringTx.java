@@ -25,12 +25,15 @@ public class App4SpringTx {
      * 入口函数
      */
     public static void main(String[] args) {
+        try {
+            jdbcTransaction1401();
+            springTransaction1901();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
-        PlatformTransactionManager tManager = new DataSourceTransactionManager();
-        TransactionDefinition tDefinition = new DefaultTransactionDefinition();
-        TransactionStatus tStatus = tManager.getTransaction(tDefinition);
-        tManager.commit(tStatus);
-
+    private static void jdbcTransaction1401() {
         String mysqlDriver = "com.mysql.cj.jdbc.Driver";
         String mysqlUrl = "jdbc:mysql://127.0.0.1:3306/mysql?user=root&password=123456&serverTimezone=UTC";
         String mysqlInsert = "INSERT INTO `test`(`name`) VALUES ('8888');";
@@ -44,7 +47,7 @@ public class App4SpringTx {
             Statement stmt = conn.createStatement();
             boolean result = stmt.execute(mysqlInsert);
             System.out.println(result);
-//            System.out.println(10 / 0);
+            //double aa = 10 / 0;
             boolean result2 = stmt.execute(mysqlUpdate);
             System.out.println(result2);
             conn.commit();
@@ -56,6 +59,12 @@ public class App4SpringTx {
                 ex2.printStackTrace();
             }
         }
+    }
 
+    public static void springTransaction1901() {
+        PlatformTransactionManager tManager = new DataSourceTransactionManager();
+        TransactionDefinition tDefinition = new DefaultTransactionDefinition();
+        TransactionStatus tStatus = tManager.getTransaction(tDefinition);
+        tManager.commit(tStatus);
     }
 }
