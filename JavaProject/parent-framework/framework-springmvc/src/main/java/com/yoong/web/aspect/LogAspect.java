@@ -12,9 +12,13 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 /**
- * @author yoong
- * @desc LogAspect.java
- * @date 2018年8月20日
+ * @Desc LogAspect.java
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018年8月20日
+ * <p>
+ * @Version 1.0
  */
 @Aspect
 @Component

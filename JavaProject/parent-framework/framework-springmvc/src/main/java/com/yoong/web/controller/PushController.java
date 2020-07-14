@@ -14,9 +14,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author yoong
- * @desc PushController.java
- * @date 2018年8月16日
+ * @Desc PushController.java
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018年8月16日
+ * <p>
+ * @Version 1.0
  */
 @Controller
 @RequestMapping("/push")

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- 数据库映射 -->
+    <!--  class="org.apache.tomcat.dbcp.dbcp.BasicDataSource" -->
+    <!--  class="org.springframework.jdbc.datasource.DriverManagerDataSource" -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${jdbc.driverClass}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.user}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mapperLocations" value="classpath*:mybatis/mapper/*.xml"/>
+    </bean>
+
+    <!-- 批量配置Mapper接口 -->
+    <bean id="scannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.yoong.web.mybatis.mapper"/>
+    </bean>
+
+    <bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <!-- chap 11.5.2、使用原始的TransactionProxyFactoryBean -->
+    <bean id="customerServiceTarget" class="com.yoong.web.mybatis.service.impl.CustomerServiceImpl"></bean>
+
+    <bean id="transactionProxyFactoryBean" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="dataSourceTransactionManager"></property>
+        <property name="target" ref="customerServiceTarget"></property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- chap 11.5.3、基于aop/tx命名空间的配置 -->
+    <tx:advice id="txAdvice" transaction-manager="dataSourceTransactionManager">
+        <tx:attributes>
+            <tx:method name="*" rollback-for="Exception"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:pointcut id="serviceMethod" expression="execution(* com.yoong.web.mybatis.service.impl.MenuServiceImpl.*(..))"/>
+        <aop:advisor pointcut-ref="serviceMethod" advice-ref="txAdvice"></aop:advisor>
+    </aop:config>
+</beans>

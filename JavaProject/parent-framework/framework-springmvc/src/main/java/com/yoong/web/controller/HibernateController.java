@@ -1,12 +1,11 @@
 package com.yoong.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.yoong.web.domain.Account;
-import com.yoong.web.service.AccountService;
+import com.yoong.web.hibernate.entity.Account;
+import com.yoong.web.hibernate.service.AccountService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,9 +14,12 @@ import java.util.Date;
 import java.util.UUID;
 
 /**
- * @Desc HibernateController
- * @Author
- * @Date
+ * @Desc HibernateController.java
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018年8月20日
+ * <p>
  * @Version 1.0
  */
 @Controller

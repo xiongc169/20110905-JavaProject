@@ -5,9 +5,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * @Desc ServletController
- * @Author
- * @Date
+ * @Desc ServletController.java
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018年8月20日
+ * <p>
  * @Version 1.0
  */
 @Controller
