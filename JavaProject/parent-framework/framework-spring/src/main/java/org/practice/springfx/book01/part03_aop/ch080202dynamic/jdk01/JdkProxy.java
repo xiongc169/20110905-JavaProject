@@ -3,7 +3,7 @@ package org.practice.springfx.book01.part03_aop.ch080202dynamic.jdk01;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
 
-import org.practice.springfx.book01.part03_aop.ch080201static.proxy.SubjectImpl;
+import org.practice.springfx.api.impl.SubjectImpl;
 import org.practice.springfx.api.ISubject;
 
 /**

@@ -1,7 +1,7 @@
 package org.practice.springfx.book01.part03_aop;
 
 import org.practice.springfx.api.ISubject;
-import org.practice.springfx.book01.part03_aop.ch080201static.proxy.CalculatorImpl;
+import org.practice.springfx.api.impl.CalculatorImpl;
 import org.practice.springfx.api.ICalculator;
 import org.practice.springfx.book01.part03_aop.ch090301advice.AfterReturningAdvices;
 import org.practice.springfx.book01.part03_aop.ch090301advice.AfterThrowAdvice;

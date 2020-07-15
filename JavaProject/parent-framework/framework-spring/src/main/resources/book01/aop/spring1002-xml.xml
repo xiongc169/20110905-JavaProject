@@ -10,7 +10,7 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
     <!-- 被代理的目标对象 -->
-    <bean id="target" class="org.practice.springfx.book01.part03_aop.ch080201static.proxy.SubjectImpl"></bean>
+    <bean id="target" class="org.practice.springfx.api.impl.SubjectImpl"></bean>
 
     <!--通知、横切逻辑-->
     <bean id="advice" class="org.practice.springfx.book01.part03_aop.ch100201schema.MyAdvice"></bean>
@@ -18,11 +18,11 @@
     <!-- AOP配置 -->
     <!-- ch08proxy-target-class属性表示被代理的类是否为一个没有实现接口的类，Spring会依据实现了接口则使用JDK内置的动态代理，如果未实现接口则使用cblib -->
     <aop:config proxy-target-class="true">
-        <aop:pointcut id="pointcut1" expression="execution(* org.practice.springfx.book01.part03_aop.ch080201static.proxy.SubjectImpl.say(..))"/>
+        <aop:pointcut id="pointcut1" expression="execution(* org.practice.springfx.api.impl.SubjectImpl.say(..))"/>
         <!--ref表示通知对象的引用 -->
         <aop:aspect ref="advice">
             <!-- 配置切入点(横切逻辑将注入的精确位置) -->
-            <aop:pointcut id="pointcut2" expression="execution(* org.practice.springfx.book01.part03_aop.ch080201static.proxy.CalculatorImpl.add(..))"></aop:pointcut>
+            <aop:pointcut id="pointcut2" expression="execution(* org.practice.springfx.api.impl.CalculatorImpl.add(..))"></aop:pointcut>
             <!--声明通知，method指定通知类型，pointcut指定切点，就是该通知应该注入那些方法中 -->
             <aop:before method="before" pointcut-ref="pointcut1"/>
             <aop:after method="afterFinally" pointcut-ref="pointcut1"/>

@@ -10,7 +10,7 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
     <!-- 被代理的目标对象 -->
-    <bean id="calculatorImpl" class="org.practice.springfx.book01.part03_aop.ch080201static.proxy.CalculatorImpl"></bean>
+    <bean id="calculatorImpl" class="org.practice.springfx.api.impl.CalculatorImpl"></bean>
 
     <!--通知、横切逻辑-->
     <bean id="beforeAdvice" class="org.practice.springfx.book01.part03_aop.ch090301advice.BeforeAdvice"></bean>

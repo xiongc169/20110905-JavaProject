@@ -374,6 +374,7 @@ public class IocContainer {
      * <p>
      * Spring InitializingBean init-method @PostConstruct 执行顺序(注-接-配)
      * PS：Constructor > @PostConstruct(即BeanPostProcessor前置处理) > InitializingBean.afterPropertiesSet() > init-method > @PreDestroy > DisposableBean.destroy() > destroy-method
+     * 实例化(反射\CGLib)、设置对象属性(BeanWrapper)、检查Aware接口、BeanPostProcessor前置处理、InitializingBean、init-method、BeanPostProcessor后置处理、析构相关接口、使用、DisposableBean
      * https://www.cnblogs.com/april-chen/p/8182631.html
      * https://blog.csdn.net/chendaoqiu/article/details/50700246
      * 【bean的生命周期】--- DisposableBean、destroyMethod、@PreDestroy

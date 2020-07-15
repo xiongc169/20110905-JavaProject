@@ -29,7 +29,7 @@ public class MyAspect implements Ordered {
         System.out.println("MyAspect.MyAspect");
     }
 
-    @Pointcut("execution(* org.practice.springfx.book01.part03_aop.ch080201static.proxy.CalculatorImpl.add(..))")
+    @Pointcut("execution(* org.practice.springfx.api.impl.CalculatorImpl.add(..))")
     public void pointcutAdd() {
     }
 

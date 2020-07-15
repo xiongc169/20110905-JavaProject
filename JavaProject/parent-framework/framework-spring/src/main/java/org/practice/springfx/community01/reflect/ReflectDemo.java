@@ -6,7 +6,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 import org.practice.springfx.api.ICalculator;
-import org.practice.springfx.book01.part03_aop.ch080201static.proxy.CalculatorImpl;
+import org.practice.springfx.api.impl.CalculatorImpl;
 import org.practice.springfx.domain.Car;
 import org.practice.springfx.domain.User;
 

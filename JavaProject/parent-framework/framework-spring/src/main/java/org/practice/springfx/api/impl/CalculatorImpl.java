@@ -1,4 +1,4 @@
-package org.practice.springfx.book01.part03_aop.ch080201static.proxy;
+package org.practice.springfx.api.impl;
 
 import org.practice.springfx.api.ICalculator;
 

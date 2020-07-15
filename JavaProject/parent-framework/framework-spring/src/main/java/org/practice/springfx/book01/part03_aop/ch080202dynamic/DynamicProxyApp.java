@@ -2,8 +2,8 @@ package org.practice.springfx.book01.part03_aop.ch080202dynamic;
 
 import org.practice.springfx.api.ICalculator;
 import org.practice.springfx.api.ISubject;
-import org.practice.springfx.book01.part03_aop.ch080201static.proxy.CalculatorImpl;
-import org.practice.springfx.book01.part03_aop.ch080201static.proxy.SubjectImpl;
+import org.practice.springfx.api.impl.CalculatorImpl;
+import org.practice.springfx.api.impl.SubjectImpl;
 import org.practice.springfx.book01.part03_aop.ch080202dynamic.accidence.MyCglibProxy;
 import org.practice.springfx.book01.part03_aop.ch080202dynamic.accidence.MyJdkProxy;
 import org.practice.springfx.book01.part03_aop.ch080202dynamic.summary.CglibProxy;
