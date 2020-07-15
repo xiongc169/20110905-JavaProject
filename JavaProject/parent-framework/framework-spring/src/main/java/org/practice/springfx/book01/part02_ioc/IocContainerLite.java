@@ -8,15 +8,22 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * @Desc 《Spring揭秘》第二部分、Spring的IoC容器
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2017-5-10 22:10:00
+ * <p>
+ * @Version 1.0
+ */
 public class IocContainerLite {
 
     /**
-     * IOC容器测试类
+     * 入口函数
      */
     public static void main(String[] args) {
         try {
-            //BeanFactoryPostProcessor
-            //BeanPostProcessor
             startContainer();
         } catch (Exception ex) {
             ex.printStackTrace();

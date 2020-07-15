@@ -372,8 +372,8 @@ public class IocContainer {
      * PS：Chap4.4.3：InitializingBean和init-method、DisposableBean与destroy-method
      * Chap6.1.2：@PostConstruct、@PreDestroy
      * <p>
-     * Spring InitializingBean init-method @PostConstruct 执行顺序
-     * PS：Constructor > @PostConstruct > InitializingBean > init-method > @PreDestroy > DisposableBean > destroy-method
+     * Spring InitializingBean init-method @PostConstruct 执行顺序(注-接-配)
+     * PS：Constructor > @PostConstruct(即BeanPostProcessor前置处理) > InitializingBean.afterPropertiesSet() > init-method > @PreDestroy > DisposableBean.destroy() > destroy-method
      * https://www.cnblogs.com/april-chen/p/8182631.html
      * https://blog.csdn.net/chendaoqiu/article/details/50700246
      * 【bean的生命周期】--- DisposableBean、destroyMethod、@PreDestroy

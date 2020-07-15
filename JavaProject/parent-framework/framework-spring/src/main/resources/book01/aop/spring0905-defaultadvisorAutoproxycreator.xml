@@ -10,7 +10,7 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
     <!-- 被代理的目标对象 -->
-    <bean id="target" class="org.practice.springfx.book01.part03_aop.ch080201static.proxy.CalculatorImpl"></bean>
+    <bean id="calculatorImpl" class="org.practice.springfx.book01.part03_aop.ch080201static.proxy.CalculatorImpl"></bean>
 
     <!--通知、横切逻辑-->
     <bean id="beforeAdvice" class="org.practice.springfx.book01.part03_aop.ch090301advice.BeforeAdvice"></bean>
@@ -18,14 +18,13 @@
     <bean id="afterReturningAdvice" class="org.practice.springfx.book01.part03_aop.ch090301advice.AfterReturningAdvices"></bean>
     <bean id="afterThrowsAdvice" class="org.practice.springfx.book01.part03_aop.ch090301advice.AfterThrowAdvice"></bean>
 
-    <!--代理对象 -->
-    <!--interceptorNames 通知数组 -->
-    <!--p:target-ref 被代理的对象-->
-    <!--p:proxyTargetClass 被代理对象是否为一个类，如果是则使用cglib,否则使用jdk动态代理  -->
-    <bean id="proxy" class="org.springframework.aop.framework.ProxyFactoryBean">
-        <property name="target" ref="target"></property>
-        <property name="interceptorNames" value="beforeAdvice,surroundAdvice,afterReturningAdvice,afterThrowsAdvice"></property>
-        <property name="proxyTargetClass" value="true"></property>
+    <!--定义切面-->
+    <bean id="beforeAdvice" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+        <property name="pointcut" value="TRUE"></property>
+        <property name="advice" ref="surroundAdvice"></property>
     </bean>
+
+    <!--注册DefaultAdvisorAutoProxyCreator，启动自动代理-->
+    <bean id="proxy" class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"></bean>
 
 </beans>
