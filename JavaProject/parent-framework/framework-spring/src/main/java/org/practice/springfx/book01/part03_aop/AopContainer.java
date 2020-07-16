@@ -37,11 +37,11 @@ public class AopContainer {
     public static void main(String[] args) {
         try {
             //测试
-//            proxyFactory090501();
-//            proxyFactoryBean090503();
-//            autoCreatorProxy090504();
+            proxyFactory090501();
+            proxyFactoryBean090503();
+            autoCreatorProxy090504();
 
-//            aspectj1001();
+            aspectj1001();
             schema1002();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -91,7 +91,7 @@ public class AopContainer {
      * 使用IOC配置的方式实现AOP
      */
     public static void proxyFactoryBean090503() {
-        //XML配置方式实现AOP
+        //未使用代理
         ApplicationContext cpxAppContext = new ClassPathXmlApplicationContext("classpath:book01/aop/spring0905-proxyfactorybean.xml");
         ICalculator math = (ICalculator) cpxAppContext.getBean("target");
         int addResult = math.add(100, 5);

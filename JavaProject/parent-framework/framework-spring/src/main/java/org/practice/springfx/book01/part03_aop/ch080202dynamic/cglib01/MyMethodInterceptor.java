@@ -21,9 +21,6 @@ public class MyMethodInterceptor implements MethodInterceptor {
 
     /**
      * 通过字节码技术，动态创建子类实例
-     *
-     * @param clazz
-     * @return
      */
     public Object getProxy(Class clazz) {
         //设置需要创建子类的类

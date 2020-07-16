@@ -19,9 +19,9 @@
     <bean id="afterThrowsAdvice" class="org.practice.springfx.book01.part03_aop.ch090301advice.AfterThrowAdvice"></bean>
 
     <!--代理对象 -->
-    <!--interceptorNames 通知数组 -->
-    <!--p:target-ref 被代理的对象-->
-    <!--p:proxyTargetClass 被代理对象是否为一个类，如果是则使用cglib,否则使用jdk动态代理  -->
+    <!--target 被代理的对象-->
+    <!--interceptorNames 通知 -->
+    <!--proxyTargetClass 被代理对象是否为一个类，如果是则使用cglib，否则使用jdk动态代理  -->
     <bean id="proxy" class="org.springframework.aop.framework.ProxyFactoryBean">
         <property name="target" ref="target"></property>
         <property name="interceptorNames" value="beforeAdvice,surroundAdvice,afterReturningAdvice,afterThrowsAdvice"></property>
