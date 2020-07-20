@@ -19,7 +19,7 @@ public class QuoteServiceImpl implements IQuoteService {
     @Transactional
     @Override
     public Object updateAccount() {
-        jdbcTemplate.execute("UPDATE account SET account_id = '11111' WHERE id = '1'");
+        jdbcTemplate.execute("UPDATE `wong_user`.`account` SET account_id = '11111' WHERE id = '1'");
         jdbcTemplate.execute("INSERT INTO `wong_user`.`account` (`account_id`, `password`, `contact_name`, `mobile`, `create_time`, `modify_time`) VALUES ('22222', 'password', 'name', 'mobile', NOW(), NOW())");
         return null;
     }

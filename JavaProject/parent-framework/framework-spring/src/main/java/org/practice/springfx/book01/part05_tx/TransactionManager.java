@@ -15,8 +15,6 @@ import org.springframework.transaction.support.DefaultTransactionDefinition;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.Statement;
 
 /**
@@ -73,10 +71,12 @@ public class TransactionManager {
         String mysqlInsert = "INSERT INTO `test`(`name`) VALUES ('8888');";
         String mysqlUpdate = "UPDATE `test` SET `name`='Modified' WHERE id=1;";
 
-        Connection conn = null;
+        java.sql.Connection conn = null;
         try {
             Class.forName(mysqlDriver);
-            conn = DriverManager.getConnection(mysqlFullUrl);
+            conn = java.sql.DriverManager.getConnection(mysqlFullUrl);
+            System.out.println(com.mysql.cj.jdbc.ConnectionImpl.class);
+
             conn.setAutoCommit(false);
             Statement stmt = conn.createStatement();
             boolean result = stmt.execute(mysqlInsert);
@@ -204,7 +204,7 @@ public class TransactionManager {
         TransactionInterceptor transactionInterceptor = new TransactionInterceptor();
 
         //有事务
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("book01/tx/spring2002-proxyfactory.xml");
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("book01/tx/spring200202a-proxyfactory.xml");
         IQuoteService quoteServiceImpl = (IQuoteService) applicationContext.getBean("quoteService");
         quoteServiceImpl.updateAccount();
         System.out.println("Finished CommonBean");
@@ -221,7 +221,7 @@ public class TransactionManager {
      */
     public static void transactionProxyFactoryBean200202() {
         //有事务
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("book01/tx/spring2002-txproxyfactory.xml");
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("book01/tx/spring200202b-txproxyfactory.xml");
         IQuoteService quoteServiceImpl = (IQuoteService) applicationContext.getBean("quoteService");
         quoteServiceImpl.updateAccount();
         System.out.println("Finished CommonBean");
@@ -238,7 +238,7 @@ public class TransactionManager {
      */
     public static void beanNameAutoProxyCreator200202() {
         //有事务
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("book01/tx/spring2002-autoproxycreator.xml");
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("book01/tx/spring200202c-autoproxycreator.xml");
         IQuoteService quoteServiceImpl = (IQuoteService) applicationContext.getBean("quoteService");
         quoteServiceImpl.updateAccount();
         System.out.println("Finished BeanNameAutoProxyCreator");
@@ -249,7 +249,7 @@ public class TransactionManager {
      * PS：XML Schema
      */
     public static void xmlSchema200202() {
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("book01/tx/spring2002-xml.xml");
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("book01/tx/spring200202d-xml.xml");
         IQuoteService quoteServiceImpl = (IQuoteService) applicationContext.getBean("quoteService");
         quoteServiceImpl.updateAccount();
         System.out.println("Finished Xml Schema");
@@ -260,7 +260,7 @@ public class TransactionManager {
      * PS：注解
      */
     public static void annotation200203() {
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("book01/tx/spring2002-annotation.xml");
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("book01/tx/spring200203-annotation.xml");
         IQuoteService quoteServiceImpl = (IQuoteService) applicationContext.getBean("quoteService");
         quoteServiceImpl.updateAccount();
         System.out.println("Finished Annotation");
