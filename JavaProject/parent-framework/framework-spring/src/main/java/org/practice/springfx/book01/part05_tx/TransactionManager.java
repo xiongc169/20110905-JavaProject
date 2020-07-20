@@ -106,7 +106,7 @@ public class TransactionManager {
     }
 
     /**
-     * TODO: Chap 20.1.1、使用 PlatformTransactionManager 进行编程式事务管理
+     * TODO: 20.1.1、使用 PlatformTransactionManager 进行编程式事务管理
      */
     public static void platformTransactionManager200101() {
         DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource(mysqlUrl, userName, password);
@@ -131,7 +131,7 @@ public class TransactionManager {
     }
 
     /**
-     * TODO: Chap 20.1.2、使用 TransactionTemplate 进行编程式事务管理
+     * TODO: 20.1.2、使用 TransactionTemplate 进行编程式事务管理
      */
     public static void transactionTemplate200102() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource(mysqlUrl, userName, password);
@@ -153,7 +153,7 @@ public class TransactionManager {
     }
 
     /**
-     * TODO: Chap 20.1.3、编程创建基于 Savepoint 的嵌套事务
+     * TODO: 20.1.3、编程创建基于 Savepoint 的嵌套事务
      */
     public static void savepoint200103() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource(mysqlUrl, userName, password);
@@ -187,7 +187,7 @@ public class TransactionManager {
     }
 
     /**
-     * TODO: chap 20.2、声明式事务管理
+     * TODO: 20.2、声明式事务管理
      * PS：ProxyFactoryBean + TransactionInterceptor
      */
     public static void proxyFactoryBean200202() {
@@ -216,7 +216,7 @@ public class TransactionManager {
     }
 
     /**
-     * TODO: chap 20.2、声明式事务管理
+     * TODO: 20.2、声明式事务管理
      * PS：TransactionProxyFactoryBean
      */
     public static void transactionProxyFactoryBean200202() {
@@ -233,7 +233,7 @@ public class TransactionManager {
     }
 
     /**
-     * TODO: chap 20.2、声明式事务管理
+     * TODO: 20.2、声明式事务管理
      * PS：BeanNameAutoProxyCreator + TransactionInterceptor
      */
     public static void beanNameAutoProxyCreator200202() {
@@ -245,7 +245,7 @@ public class TransactionManager {
     }
 
     /**
-     * TODO: chap 20.2、声明式事务管理
+     * TODO: 20.2、声明式事务管理
      * PS：XML Schema
      */
     public static void xmlSchema200202() {
@@ -256,7 +256,7 @@ public class TransactionManager {
     }
 
     /**
-     * TODO: chap 20.2、声明式事务管理
+     * TODO: 20.2、声明式事务管理
      * PS：注解
      */
     public static void annotation200203() {

@@ -15,9 +15,11 @@ import java.sql.Statement;
  */
 public class JdbcManager {
 
+    private static String mysqlDriver = "com.mysql.cj.jdbc.Driver";
+
+    private static String mysqlUrl = "jdbc:mysql://127.0.0.1:3306/mysql?user=root&password=123456&serverTimezone=UTC";
+
     public static void jdbc140101() {
-        String mysqlDriver = "com.mysql.cj.jdbc.Driver";
-        String mysqlUrl = "jdbc:mysql://127.0.0.1:3306/mysql?user=root&password=123456&serverTimezone=UTC";
         String mysqlInsert = "INSERT INTO `test`(`name`) VALUES ('8888');";
         String mysqlUpdate = "UPDATE `test` SET `name`='Modified' WHERE id=1;";
 

@@ -29,6 +29,12 @@ import java.util.List;
  */
 public class DaoContainer {
 
+    private static String mysqlUrl = "jdbc:mysql://127.0.0.1:3306/mysql?serverTimezone=UTC";
+
+    private static String username = "root";
+
+    private static String password = "123456";
+
     /**
      * 入口函数
      */
@@ -47,9 +53,6 @@ public class DaoContainer {
      * TODO: 14.1.3、JdbcTemplate和它的兄弟们
      */
     public static void jdbcTemplate140102() throws Exception {
-        String mysqlUrl = "jdbc:mysql://127.0.0.1:3306/mysql?serverTimezone=UTC";
-        String username = "root";
-        String password = "123456";
         String querySql = "SELECT * FROM `test`";
         String querySql01 = "SELECT * FROM `test` LIMIT 1";
         DataSource dataSource = new DriverManagerDataSource(mysqlUrl, username, password);
