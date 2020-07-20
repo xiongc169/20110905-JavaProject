@@ -1,4 +1,4 @@
-package com.yoong.structs;
+package com.yoong.struts;
 
 /**
  * Hello world!

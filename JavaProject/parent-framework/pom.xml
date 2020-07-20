@@ -14,7 +14,7 @@
         <module>framework-quartz</module>
         <module>framework-spring</module>
         <module>framework-springmvc</module>
-        <module>framework-structs</module>
+        <module>framework-struts</module>
     </modules>
 
     <properties>
