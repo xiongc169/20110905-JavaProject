@@ -20,6 +20,12 @@ public class AppDataType {
      */
     public static void main(String[] args) {
         try {
+            //《深入浅出MySQL 数据库开发 优化与管理维护》(第2版) P153
+            System.out.println(7.22f - 7.0f);//0.21999979
+            BigDecimal aa = new BigDecimal(7.22);
+            BigDecimal bb = new BigDecimal(7.0);
+            System.out.println(aa.subtract(bb));//0.21999999999999975131004248396493494510650634765625
+
             //数据类型
             intType0303();
             floatType0303();
