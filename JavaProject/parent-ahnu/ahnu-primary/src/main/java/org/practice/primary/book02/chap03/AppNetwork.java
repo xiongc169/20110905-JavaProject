@@ -2,6 +2,7 @@ package org.practice.primary.book02.chap03;
 
 import java.io.InputStream;
 import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -78,5 +79,8 @@ public class AppNetwork {
         System.out.println(inetAddresses.length);
         InetAddress localHost = InetAddress.getLocalHost();
         System.out.println(localHost);
+
+        InetSocketAddress inetSocketAddress = new InetSocketAddress("127.0.0.1", 1);
+        System.out.println(inetSocketAddress);
     }
 }

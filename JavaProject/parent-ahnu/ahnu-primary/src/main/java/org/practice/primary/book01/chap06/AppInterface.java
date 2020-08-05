@@ -1,7 +1,7 @@
 package org.practice.primary.book01.chap06;
 
 import org.practice.primary.book01.chap04.bok.Employee;
-import org.practice.primary.book01.chap06.cp641.TalkingClock;
+import org.practice.primary.book01.chap06.ch060401.TalkingClock;
 import org.practice.primary.community.domain.Student;
 
 import javax.swing.*;

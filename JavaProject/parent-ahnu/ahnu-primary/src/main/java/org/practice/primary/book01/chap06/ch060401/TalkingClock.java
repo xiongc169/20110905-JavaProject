@@ -1,4 +1,4 @@
-package org.practice.primary.book01.chap06.cp641;
+package org.practice.primary.book01.chap06.ch060401;
 
 import javax.swing.*;
 import java.awt.*;

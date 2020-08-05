@@ -1,6 +1,8 @@
-package org.practice.primary.book02.chap03.demo0303;
+package org.practice.primary.book02.chap03.ch0303;
 
 import java.net.InetSocketAddress;
+import java.nio.ByteBuffer;
+import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 
 /**
@@ -30,6 +32,14 @@ public class ServerSocketChannelDemo {
     }
 
     public static void startServerSocketChannel() throws Exception {
-        SocketChannel channel = SocketChannel.open(new InetSocketAddress(serverIP, serverPort));
+        ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
+        serverSocketChannel.socket().bind(new InetSocketAddress(serverPort));
+
+        SocketChannel socketChannel = serverSocketChannel.accept();
+        ByteBuffer byteBuffer = ByteBuffer.allocate(8 * 1024 * 1024);
+        socketChannel.read(byteBuffer);
+        byteBuffer.flip();
+        String result = byteBuffer.toString();
+        System.out.println(result);
     }
 }

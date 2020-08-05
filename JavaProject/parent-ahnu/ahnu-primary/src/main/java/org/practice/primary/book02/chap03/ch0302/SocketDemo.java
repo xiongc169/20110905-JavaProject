@@ -1,4 +1,4 @@
-package org.practice.primary.book02.chap03.demo0302;
+package org.practice.primary.book02.chap03.ch0302;
 
 import java.io.*;
 import java.net.Socket;

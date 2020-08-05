@@ -1,8 +1,7 @@
-package org.practice.primary.book02.chap03.demo0302;
+package org.practice.primary.book02.chap03.ch0302;
 
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
