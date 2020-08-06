@@ -1,11 +1,13 @@
 package org.practice.netty.community.nio01;
 
+import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.DatagramChannel;
 
 /**
- * @Desc Java NIO
+ * @Desc Java NIO 教程(十一) Java NIO DatagramChannel
+ * https://www.jianshu.com/p/1b1e1849344c
  * <p>
  * @Author Yoong
  * <p>
@@ -34,7 +36,7 @@ public class DatagramChannelClient {
         ByteBuffer byteBuffer = ByteBuffer.allocate(bytes.length);
         byteBuffer.put(bytes);
         byteBuffer.flip();
-        channel.send(byteBuffer, new InetSocketAddress("127.0.0.1", 9999));
+        channel.send(byteBuffer, new InetSocketAddress(InetAddress.getLocalHost(), 9999));
         channel.close();
     }
 

@@ -14,7 +14,6 @@ public class ReadCompletionHandler implements CompletionHandler<Integer, ByteBuf
     }
 
     public void completed(Integer result, ByteBuffer attachment) {
-
         attachment.flip();
         byte[] body = new byte[attachment.remaining()];
         attachment.get(body);

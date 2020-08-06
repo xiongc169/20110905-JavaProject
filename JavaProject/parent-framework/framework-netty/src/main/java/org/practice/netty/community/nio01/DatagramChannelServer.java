@@ -6,7 +6,8 @@ import java.nio.channels.DatagramChannel;
 import java.nio.charset.Charset;
 
 /**
- * @Desc Java NIO
+ * @Desc Java NIO 教程(十一) Java NIO DatagramChannel
+ * https://www.jianshu.com/p/1b1e1849344c
  * <p>
  * @Author Yoong
  * <p>

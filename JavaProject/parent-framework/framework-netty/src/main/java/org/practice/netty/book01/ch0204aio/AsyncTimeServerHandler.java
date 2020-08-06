@@ -7,37 +7,35 @@ import java.util.concurrent.CountDownLatch;
 
 public class AsyncTimeServerHandler implements Runnable {
 
-	private int port;
+    private int port;
 
-	CountDownLatch latch;
+    CountDownLatch latch;
 
-	AsynchronousServerSocketChannel asyncChannel;
+    AsynchronousServerSocketChannel asyncChannel;
 
-	public AsyncTimeServerHandler(int port) {
+    public AsyncTimeServerHandler(int port) {
+        try {
+            this.port = port;
+            asyncChannel = AsynchronousServerSocketChannel.open();
+            asyncChannel.bind(new InetSocketAddress(port));
+            System.out.println("The time server is start in port: " + port);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-		try {
-			this.port = port;
-			asyncChannel = AsynchronousServerSocketChannel.open();
-			asyncChannel.bind(new InetSocketAddress(port));
-			System.out.println("The time server is start in port: " + port);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+    public void run() {
+        latch = new CountDownLatch(1);
+        doAccept();
+        try {
+            latch.wait();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
-	public void run() {
-		latch = new CountDownLatch(1);
-		doAccept();
-
-		try {
-			latch.wait();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void doAccept() {
-		asyncChannel.accept(this, new AcceptCompletionHandler());
-	}
+    public void doAccept() {
+        asyncChannel.accept(this, new AcceptCompletionHandler());
+    }
 
 }

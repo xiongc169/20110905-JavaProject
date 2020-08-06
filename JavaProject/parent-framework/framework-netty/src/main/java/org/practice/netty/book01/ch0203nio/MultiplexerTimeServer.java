@@ -31,7 +31,7 @@ public class MultiplexerTimeServer implements Runnable {
             // 2、创建reactor线程的多路复用器
             selector = Selector.open();
             // 3、将Channel注册到reactor线程的多路复用器Selector上，监听accept事件
-            serverChannel.register(selector, SelectionKey.OP_ACCEPT);
+            SelectionKey selectionKey = serverChannel.register(selector, SelectionKey.OP_ACCEPT | SelectionKey.OP_CONNECT);
             System.out.println("The time server is start in port:" + port);
 
         } catch (IOException e) {
@@ -54,7 +54,7 @@ public class MultiplexerTimeServer implements Runnable {
         while (!stop) {
             try {
                 // 4、多路复用器轮询准备就绪的Key
-                selector.select(1000);
+                int readyChannelCount = selector.select(1000);
                 Set<SelectionKey> selectedKeys = selector.selectedKeys();
                 Iterator<SelectionKey> iterator = selectedKeys.iterator();
                 SelectionKey key = null;
