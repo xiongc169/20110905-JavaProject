@@ -1,4 +1,4 @@
-package org.practice.primary.book02.chap03;
+package org.practice.primary.community.network.http;
 
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -7,7 +7,13 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.client.ClientHttpRequest;
+import org.springframework.http.client.ClientHttpResponse;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
+
+import java.net.URI;
 
 /**
  * @Desc 电子合同-查询合同模板
@@ -18,26 +24,69 @@ import org.springframework.web.client.RestTemplate;
  * <p>
  * @Version 1.0
  */
-public class EContractUtils {
+public class HttpUtilsCs {
 
-    private static final String CHAR_SET = "UTF-8";
+    private static final String GetTemplateList = "http://127.0.0.1:9855/api/v1/getTemplateList";
+    private static final String RequestBodyMenu = "http://127.0.0.1:7095/param/requestBodyMenu";
     private static final String CONTENT_TYPE = "application/json";
     private static final int CONNECT_TIMEOUT = 30000;
     private static final int CONNECTION_REQUEST_TIMEOUT = 5000;
     private static final int SOCKET_TIMEOUT = 60000;
+    private static final String CHAR_SET = "UTF-8";
 
     /**
      * 入口函数
      */
     public static void main(String[] args) {
         try {
+            restTemplateDemo();
+
             String json = "{\"appId\":\"ftcs-test\",\"body\":\"BYprHoNf7CPKJ32xhe6BUoC+QUJkGnKwU46Wp8z4VsaWg/2Sixam5fVMZ41Q/wKPB5AH8ZbPXwtIbHJUNNhGYiG3GG76z4MCOlvR8FmzrRgzFRstOEK2C5LQ8/uZNKwUGx2pIwaSOv3xuKjnzgwZ5WmFD7MUqhRN4I+jRc2IsDQ=\",\"sequenceId\":\"2020-05-26 16:41:46\",\"sign\":\"4478c43f955a752a8836ae4282b06752\"}";
-            String result = sendPostRequestJSON("http://127.0.0.1:9855/api/v1/getTemplateList", json);
+            String result = sendPostRequestJSON(GetTemplateList, json);
             System.out.println(result);
 
             requestParamTest();
         } catch (Exception ex) {
             ex.printStackTrace();
+        }
+    }
+
+    public static void restTemplateDemo() throws Exception {
+        String json0601 = "{\"menuId\":1111,\"menuName\":\"menuName-01\",\"menuUrl\":\"menuUrl-01\"}";
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.postForLocation(RequestBodyMenu, json0601);
+
+        SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
+        ClientHttpRequest request = requestFactory.createRequest(new URI("111"), HttpMethod.GET);
+        ClientHttpResponse response = request.execute();
+        System.out.println(response.getStatusCode());
+    }
+
+    public static String sendPostRequestJSON(String requestUrl, String json) throws Exception {
+        CloseableHttpClient client = HttpClients.createDefault();
+        CloseableHttpResponse res = null;
+        try {
+            HttpPost post = new HttpPost(requestUrl);
+            RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(CONNECT_TIMEOUT).setConnectionRequestTimeout(CONNECTION_REQUEST_TIMEOUT).setSocketTimeout(SOCKET_TIMEOUT).build();
+            post.setConfig(requestConfig);
+            // 将JSON进行UTF-8编码,以便传输中文
+            StringEntity string = new StringEntity(json, CHAR_SET);
+            string.setContentEncoding(CHAR_SET);
+            string.setContentType(CONTENT_TYPE);
+            post.setEntity(string);
+            res = client.execute(post);
+            System.out.println("res.getStatusLine():" + res.getStatusLine().getStatusCode());
+            if (res.getStatusLine().getStatusCode() == 200) {
+                String result = EntityUtils.toString(res.getEntity());
+                return result;
+            } else {
+                return null;
+            }
+        } finally {
+            if (res != null) {
+                res.close();
+            }
+            client.close();
         }
     }
 
@@ -83,44 +132,5 @@ public class EContractUtils {
         System.out.println(result0602);
         String result0603 = sendPostRequestJSON("http://127.0.0.1:7095/param/requestBodyMenu", json0601);//调不到服务端
         System.out.println(result0603);
-    }
-
-    public static void restTemplateDemo() {
-        String json0601 = "{\"menuId\":1111,\"menuName\":\"menuName-01\",\"menuUrl\":\"menuUrl-01\"}";
-        RestTemplate restTemplate = new RestTemplate();
-        restTemplate.postForLocation("http://127.0.0.1:7095/param/requestBodyMenu", json0601);
-    }
-
-    public static String sendPostRequestJSON(String requestUrl, String json) throws Exception {
-        CloseableHttpClient client = HttpClients.createDefault();
-        CloseableHttpResponse res = null;
-        try {
-            //logger.info(" ==> 传入的json: {}", json.toJSONString());
-            HttpPost post = new HttpPost(requestUrl);
-            RequestConfig requestConfig = RequestConfig.custom()
-                    .setConnectTimeout(CONNECT_TIMEOUT).setConnectionRequestTimeout(CONNECTION_REQUEST_TIMEOUT)
-                    .setSocketTimeout(SOCKET_TIMEOUT).build();
-            post.setConfig(requestConfig);
-            // 将JSON进行UTF-8编码,以便传输中文
-            //logger.info("request time:{}, url:{}, json:{}", System.currentTimeMillis(), requestUrl, json);
-            StringEntity string = new StringEntity(json, CHAR_SET);
-            string.setContentEncoding(CHAR_SET);
-            string.setContentType(CONTENT_TYPE);
-            post.setEntity(string);
-            res = client.execute(post);
-            System.out.println("res.getStatusLine():" + res.getStatusLine().getStatusCode());
-            if (res.getStatusLine().getStatusCode() == 200) {
-                String result = EntityUtils.toString(res.getEntity());
-                //logger.info("response json:{}", result);
-                return result;
-            } else {
-                return null;
-            }
-        } finally {
-            if (res != null) {
-                res.close();
-            }
-            client.close();
-        }
     }
 }
