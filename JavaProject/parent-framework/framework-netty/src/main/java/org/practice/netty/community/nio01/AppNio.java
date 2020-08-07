@@ -2,11 +2,12 @@ package org.practice.netty.community.nio01;
 
 import java.io.RandomAccessFile;
 import java.nio.*;
-import java.nio.channels.DatagramChannel;
-import java.nio.channels.FileChannel;
-import java.nio.channels.ServerSocketChannel;
-import java.nio.channels.SocketChannel;
+import java.nio.channels.*;
 import java.nio.charset.Charset;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.concurrent.Future;
 
 /**
  * Java NIO教程
@@ -33,6 +34,7 @@ public class AppNio {
     private static String videoUrl01 = "http://img.fincs.net/zahy/cls/loan/2019/12/20/4a8a3491-26bc-4a0a-bc58-99a49cc95d45.mp4";
     private static String videoUrl02 = "http://img.fincs.net/zahy/cls/loan/2019/12/6/cca9b111-feba-4129-b4f2-0fcdca8d4635.mp4";
     private static String videoUrl03 = "http://img.fincs.net/zahy/cls/loan/2019/12/6/5ac5a802-9085-484c-9e53-9f32f1816f31.mp4";
+    private static String panVideo = "D:\\Temp\\IO\\pan.mp4";
 
     /**
      * 入口函数
@@ -42,6 +44,7 @@ public class AppNio {
             channelTest(txtFileName);
             transferTest();
             fileChannelTest();
+            asynchronousFileChannelTest();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -116,5 +119,46 @@ public class AppNio {
             fileChannel.write(buffer);
         }
         fileChannel.close();
+    }
+
+    /**
+     * Java NIO 教程(十六) Java NIO AsynchronousFileChannel
+     * PS：在Java 7中，AsynchronousFileChannel 被添加到Java NIO。AsynchronousFileChannel使读取数据，并异步地将数据写入文件成为可能。
+     * https://www.jianshu.com/p/b38f8c596193
+     */
+    public static void asynchronousFileChannelTest() {
+        try {
+            //读取数据 - Future
+            Path path = Paths.get(panVideo);
+            AsynchronousFileChannel aFileChannel = AsynchronousFileChannel.open(path, StandardOpenOption.READ, StandardOpenOption.WRITE);
+            ByteBuffer buffer = ByteBuffer.allocate(1024 * 1024 * 1024);
+            Future future = aFileChannel.read(buffer, 0);
+            while (!future.isDone()) {
+                System.out.println(future.isDone());
+                Thread.sleep(1000);
+            }
+            System.out.println(future.isDone());
+
+            //读取数据 - CompletionHandler
+            AsynchronousFileChannel aFileChannel02 = AsynchronousFileChannel.open(path, StandardOpenOption.READ, StandardOpenOption.WRITE);
+            ByteBuffer buffer02 = ByteBuffer.allocate(1024 * 1024 * 1024);
+            aFileChannel02.read(buffer02, 0, buffer02, new CompletionHandler<Integer, ByteBuffer>() {
+                @Override
+                public void completed(Integer result, ByteBuffer attachment) {
+                    attachment.flip();
+                    System.out.println(attachment.position());
+                    System.out.println(attachment.limit());
+                }
+
+                @Override
+                public void failed(Throwable exc, ByteBuffer attachment) {
+
+                }
+            });
+            System.out.println(buffer02.position());
+            System.in.read();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }
