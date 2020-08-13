@@ -5,7 +5,7 @@ import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
 /**
- * @Desc Java中使用Jedis操作Redis<br>
+ * @Desc Java中使用Jedis操作Redis
  * http://www.cnblogs.com/liuling/p/2014-4-19-04.html
  * <p>
  * @Author Administrator

@@ -1,7 +1,7 @@
 package org.practice.redis.ch02.java_jedis;
 
 /**
- * @Desc Java中使用Jedis操作Redis<br>
+ * @Desc Java中使用Jedis操作Redis
  * http://www.cnblogs.com/liuling/p/2014-4-19-04.html
  * <p>
  * @Author yoong
