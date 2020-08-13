@@ -1,7 +1,7 @@
 package org.practice.zookeeper;
 
 /**
- * @Desc ZooKeeper客户端 - ZkClient
+ * @Desc ZooKeeper客户端 - Curator
  * <p>
  * @Author yoong
  * <p>
@@ -9,7 +9,7 @@ package org.practice.zookeeper;
  * <p>
  * @Version 1.0
  */
-public class ZooKeeperClient {
+public class CuratorClient {
 
     /**
      * 入口函数
