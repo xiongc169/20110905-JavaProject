@@ -8,9 +8,10 @@ import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.data.Stat;
 
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 /**
- * @Desc ZooKeeper客户端 - 原生API
+ * @Desc ZooKeeper客户端 - ZooKeeper原生API
  * <p>
  * @Author yoong
  * <p>
@@ -25,18 +26,21 @@ public class ZooKeeperAPI {
      */
     public static void main(String[] args) {
         try {
-            operateZooKeeper();
+            zooKeeperDemo();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("Hello World!");
     }
 
     /**
+     * ZooKeeper的Java客户端使用
+     * https://www.cnblogs.com/LiZhiW/p/4923693.html
      * ZooKeeper API
      * https://www.ibm.com/developerworks/cn/opensource/os-cn-zookeeper/
      */
-    public static void operateZooKeeper() throws Exception {
+    public static void zooKeeperDemo() throws Exception {
+        //到计数器,默认倒数1下
+        CountDownLatch countDownLatch = new CountDownLatch(1);
 
         // 创建一个与服务器的连接
         ZooKeeper zooKeeper = new ZooKeeper("127.0.0.1:2181", 60000, new Watcher() {
@@ -44,8 +48,21 @@ public class ZooKeeperAPI {
             public void process(WatchedEvent event) {
                 // 监控所有被触发的事件
                 System.out.println("已经触发了" + event.getType() + "事件！");
+                //获取事件的状态
+                Event.KeeperState state = event.getState();
+                //获取事件类型
+                Event.EventType type = event.getType();
+                //校验连接状态和类型,连接上的状态为SyncConnected,类型为None
+                if (Event.KeeperState.SyncConnected == state) {
+                    if (Event.EventType.None == type) {
+                        System.out.println("连接成功");
+                        countDownLatch.countDown();
+                    }
+                }
             }
         });
+        // 倒数计数器没有倒数完成,不能执行下面的代码.确保zookeeper对象创建成功
+        countDownLatch.await();
 
         // 创建一个目录节点path、data、acl、createMode
         String createResult = zooKeeper.create("/testRootPath", "testRootData".getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
