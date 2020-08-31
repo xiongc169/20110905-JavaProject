@@ -1,8 +1,10 @@
-package org.practice.zookeeper;
+package org.practice.zookeeper.community01;
 
 import org.I0Itec.zkclient.ZkClient;
 import org.apache.zookeeper.CreateMode;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -16,6 +18,8 @@ import java.util.List;
  */
 public class ZkClientAPI {
 
+    private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
+
     /**
      * 入口函数
      */
@@ -25,6 +29,8 @@ public class ZkClientAPI {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println(format.format(new Date()));
+        System.out.println(format.format(new Date()));
     }
 
     /**
@@ -37,7 +43,9 @@ public class ZkClientAPI {
      * https://www.jianshu.com/p/1db003ea69f5
      */
     public static void zkClientDemo() {
-        ZkClient zkClient = new ZkClient("127.0.0.1:2181", 50000);
+        System.out.println(format.format(new Date()));
+        ZkClient zkClient = new ZkClient("127.0.0.1:2181", 20000, 15000);
+
         Boolean exist = zkClient.exists("/zkClient");
         System.out.println(exist);
 

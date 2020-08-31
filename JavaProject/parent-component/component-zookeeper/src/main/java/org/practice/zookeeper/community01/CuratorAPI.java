@@ -1,4 +1,4 @@
-package org.practice.zookeeper;
+package org.practice.zookeeper.community01;
 
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;

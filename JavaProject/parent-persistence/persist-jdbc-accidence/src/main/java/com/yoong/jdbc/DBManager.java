@@ -30,29 +30,23 @@ public class DBManager {
     public static void main(String[] args) {
         Connection dbConn = null;
         try {
-            // Sql Server
+            //Sql Server脚本
             String northWindSql = "select * from Categories";
             String northWindInsert = "INSERT INTO Categories(CategoryName,Description,Picture) VALUES('CategoryName', 'Description', 'Picture')";
-            // MySQL
+            //MySQL脚本
             String mySql = "select * from `user`";
+            String mysqlInsert = "INSERT INTO `test`(`name`) VALUES ('8888');";
             String myCatSql = "select * from travelrecord";
-            // 插入到
-            String insertSql = "INSERT INTO `travelrecord` (`id`, `user_id`, `traveldate`, `fee`, `days`) VALUES ('15000002', '2', '2017-10-22', '2', '2')";
-            String insertNewSql = "INSERT INTO `hotnews` (`id`, `news_title`, `content`, `producer`, `createdate`) VALUES ('1', 'NewTitle', 'NewContent', 'Producer', '2017-11-2');";
-            String insertCompanySql = "INSERT INTO `company` (`id`, `companyname`, `leader`, `createtime`) VALUES ('5', 'CompanyName', 'Leader', '2017-11-2');";
-            String insertEmployeeSql = "INSERT INTO `employee` (`sharding_id`, `employeename`, `sex`, `createtime`) VALUES ('10010', 'EmployeeName', 'male', '2017-11-2');";
 
-            String insertCustomerSql = "INSERT INTO `customer` (`id`, `customername`, `createtime`) VALUES ('4', 'customerName4', '2017-11-2');";
-            String insertCustomerAddrSql = "INSERT INTO `customer_addr` (`id`, `addressname`, `customer_id`, `createtime`) VALUES ('3', 'anhui2', '3', '2017-11-2');";
-
+            //操作MySQL数据库
             dbConn = getConnection(mySqlDriver, mySqlURL);
             executeQuery(dbConn, mySql);
-            //exeInsert(dbConn, northwindInsert);
+            exeInsert(dbConn, mysqlInsert);
 
-            // SQL Server
-            // String sql = "select * from [Employees]";
-            // dbConn = getConnection(sqlServerDriver, sqlServerURL);
-            // exeCmd(dbConn, sql);
+            //操作SQL Server数据库
+            String sql = "select * from [Employees]";
+            dbConn = getConnection(sqlServerDriver, sqlServerURL);
+            exeInsert(dbConn, sql);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -78,13 +72,10 @@ public class DBManager {
             // 3、执行数据库存储过程。通常通过CallableStatement实例实现。
             if (conn != null) {
                 Statement stmt = conn.createStatement();
-                PreparedStatement prepStmt = conn.prepareStatement(sql);
-                // PreparedStatement pstmt=dbConn.prepareStatement("");
-                // CallableStatement cstmt=dbConn.prepareCall("{CALL demoSp(? ,
-                // ?)}");
-                // ResultSet rs = stmt.executeQuery("select * from [Employees]
-                // where userName = ?");
-                ResultSet rs = prepStmt.executeQuery();
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                CallableStatement cstmt = conn.prepareCall("{CALL demoSp(?, ?)}");
+                ResultSet rs = stmt.executeQuery("select * from [Employees] where userName = ? ");
+                ResultSet rs02 = pstmt.executeQuery();
                 while (rs.next()) {
                     // 列是从左到右编号的，并且从列1开始
                     String host = rs.getString(1);
@@ -119,9 +110,8 @@ public class DBManager {
             // 3、执行数据库存储过程。通常通过CallableStatement实例实现。
             if (conn != null) {
                 Statement stmt = conn.createStatement();
-                PreparedStatement prepStmt = conn.prepareStatement(sql);
-                boolean rs = prepStmt.execute();
-
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                boolean rs = pstmt.execute();
                 if (stmt != null) { // 关闭声明
                     try {
                         stmt.close();

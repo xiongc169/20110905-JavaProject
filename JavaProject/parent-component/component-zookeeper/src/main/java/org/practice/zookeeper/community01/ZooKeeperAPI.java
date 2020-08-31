@@ -1,4 +1,4 @@
-package org.practice.zookeeper;
+package org.practice.zookeeper.community01;
 
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.WatchedEvent;
@@ -43,7 +43,7 @@ public class ZooKeeperAPI {
         CountDownLatch countDownLatch = new CountDownLatch(1);
 
         // 创建一个与服务器的连接
-        ZooKeeper zooKeeper = new ZooKeeper("127.0.0.1:2181", 60000, new Watcher() {
+        ZooKeeper zooKeeper = new ZooKeeper("127.0.0.1:2181", 100000, new Watcher() {
             @Override
             public void process(WatchedEvent event) {
                 // 监控所有被触发的事件
@@ -61,18 +61,29 @@ public class ZooKeeperAPI {
                 }
             }
         });
+        Long sessionId = zooKeeper.getSessionId();
+        byte[] sessionPwd = zooKeeper.getSessionPasswd();
         // 倒数计数器没有倒数完成,不能执行下面的代码.确保zookeeper对象创建成功
+        System.out.println("连接中...");
         countDownLatch.await();
+        System.out.println("连接成功2");
 
         // 创建一个目录节点path、data、acl、createMode
         String createResult = zooKeeper.create("/testRootPath", "testRootData".getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
         // 创建一个子目录节点
         String createResult02 = zooKeeper.create("/testRootPath/testChildPathOne", "testChildDataOne".getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
-        byte[] dataBytes = zooKeeper.getData("/testRootPath", false, null);
+        // 查询目录节点的数据
+        byte[] dataBytes = zooKeeper.getData("/testRootPath", true, null);
         String dataString = new String(dataBytes);
         System.out.println(dataString);
+
         // 取出子目录节点列表
-        List<String> children = zooKeeper.getChildren("/testRootPath", true);
+        List<String> children = zooKeeper.getChildren("/testRootPath/testChildPathOne", new Watcher() {
+            @Override
+            public void process(WatchedEvent event) {
+                System.out.println(event);
+            }
+        });
         System.out.println(children.size());
 
         // 修改子目录节点数据
@@ -83,7 +94,7 @@ public class ZooKeeperAPI {
 
         // 创建另外一个子目录节点
         String createResult03 = zooKeeper.create("/testRootPath/testChildPathTwo", "testChildDataTwo".getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
-        byte[] dataBytes02 = zooKeeper.getData("/testRootPath/testChildPathTwo", false, null);
+        byte[] dataBytes02 = zooKeeper.getData("/testRootPath/testChildPathTwo", true, null);
         String dataString02 = new String(dataBytes02);
         System.out.println(dataString02);
         System.out.println(dataString02);
