@@ -1,10 +1,10 @@
 package org.practice.designPattern.create.ch01factory;
 
-import org.practice.designPattern.api.shape.Shape;
 import org.practice.designPattern.api.fruit.Fruit;
 import org.practice.designPattern.api.fruit.Orange;
 import org.practice.designPattern.api.fruit.Pear;
 import org.practice.designPattern.api.fruit.Strawberry;
+import org.practice.designPattern.api.shape.Shape;
 
 /**
  * @Desc 工厂模式

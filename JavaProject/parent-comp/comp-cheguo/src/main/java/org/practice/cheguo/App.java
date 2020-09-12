@@ -4,6 +4,9 @@ import com.alibaba.fastjson.JSON;
 import com.yoong.facade.cls.model.Human;
 import org.practice.cheguo.api.dto.StageOrderDto;
 import org.practice.cheguo.api.request.CreateTemplateReq;
+import org.practice.cheguo.domain.ApproveFeeModParam;
+import org.practice.cheguo.domain.EbizFeeInfo;
+import org.springframework.beans.BeanUtils;
 
 import javax.validation.Validation;
 import javax.validation.Validator;
@@ -34,6 +37,7 @@ public class App {
             validate();
             parseObject();
             urlEncodeDemo();
+            copy();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -95,5 +99,13 @@ public class App {
         System.out.println(urlEncodeResult);
         String urlDecodeResult = URLDecoder.decode(urlEncodeResult);
         System.out.println(urlDecodeResult);
+    }
+
+    public static void copy() {
+        String approveGuaParamStr = "{\"accidentInsurance\":\"0\",\"approveNodeId\":\"22\",\"basicRate\":8.9,\"billingPrice\":\"100000\",\"bizType\":\"1\",\"carLoanAmount\":\"50000\",\"companyId\":9,\"companyName\":\"测试车商\",\"dealerRateLower\":\"12\",\"dealerServiceFeeAmount\":\"0\",\"dealerServiceFeeRate\":\"0\",\"decorateAmount\":\"0\",\"downpaymentAmount\":50000,\"downpaymentRate\":50,\"extraFeeAmount\":3259.87,\"extraFeeRate\":3.26,\"extraHandingFee\":290.13,\"feeCalcType\":1,\"guaranteeServiceFee\":3259.87,\"handingFeeRate\":\"16.00\",\"hasPurchaseTax\":0,\"installmentAmount\":53259.87,\"installmentHandingFee\":4740.13,\"insuranceAmount\":\"0\",\"loanAmount\":\"50000.00\",\"loanRatio\":50,\"loanTerm\":\"12\",\"monthlySupply\":1611.11,\"orderNo\":\"BIZ6571262424284600418\",\"productCode\":\"LOAN001\",\"productName\":\"信用卡分期（普通模式）\",\"purchaseTax\":\"0\",\"serviceFeeUpRate\":\"4\",\"totalRepayAmount\":58000}";
+        ApproveFeeModParam approveFeeModParam = JSON.parseObject(approveGuaParamStr, ApproveFeeModParam.class);
+        EbizFeeInfo feeInfo = new EbizFeeInfo();
+        BeanUtils.copyProperties(approveFeeModParam, feeInfo);
+        System.out.println(feeInfo);
     }
 }

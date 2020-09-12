@@ -21,7 +21,7 @@ import java.util.List;
 
 /**
  * @Desc MyBatis官方文档(中文)
- * http://www.mybatis.org/mybatis-3/zh/getting-started.htmlMyBatis
+ * http://www.mybatis.org/mybatis-3/zh/getting-started.html
  * 学习总结(一)——MyBatis快速入门
  * http://www.cnblogs.com/xdp-gacl/p/4261895.html
  * <br>
@@ -48,8 +48,8 @@ public class WongUserManager {
     }
 
     private static void wongUserTestByXml() {
-        //1、SqlSessionFactoryBuilder根据配置(xml配置文件、Configuration类)构建SqlSessionFactory；
-        //2、SqlSessionFactory构建SqlSession；
+        //1、SqlSessionFactoryBuilder根据配置(xml配置文件、Configuration类)构建SqlSessionFactory
+        //2、SqlSessionFactory构建SqlSession
         //3、探究已映射的SQL语句
         try {
             String resource = "mybatis-wong_user.xml";
@@ -57,6 +57,7 @@ public class WongUserManager {
             SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(iStream);
             SqlSession session = factory.openSession();
             AccountExample example = new AccountExample();
+            example.createCriteria().andAccountIdEqualTo("8");
             // 1、iBatis用法：命名空间+SQL Id
             List<Account> result = session.selectList("com.yoong.mybatis.accidence.wong_user.dao.AccountMapper.selectByExample", example);
             System.out.println("result.size: " + result.size());
@@ -88,13 +89,14 @@ public class WongUserManager {
         try {
             PooledDataSource dataSource = new PooledDataSource();
             dataSource.setDriver("com.mysql.cj.jdbc.Driver");
-            dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/mysql?serverTimezone=UTC");
+            dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/wong_user?serverTimezone=UTC");
             dataSource.setUsername("root");
             dataSource.setPassword("123456");
             TransactionFactory transFactory = new JdbcTransactionFactory();
             Environment environment = new Environment("id", transFactory, dataSource);
             Configuration config = new Configuration(environment);
-            config.addMapper(AccountMapper.class);  //config.addMappers("com.yoong.mybatis.accidence.wong_user.dao");
+            //config.addMapper(AccountMapper.class);
+            config.addMappers("com.yoong.mybatis.accidence.wong_user.dao");
             SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(config);
 
             SqlSession sqlSession = factory.openSession();

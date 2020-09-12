@@ -1,10 +1,8 @@
 package com.yoong.jdbc;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.security.CodeSource;
+import java.sql.*;
+import java.util.Enumeration;
 
 /**
  * @author yoong
@@ -20,17 +18,18 @@ public class App {
      */
     public static void main(String[] args) {
         try {
+            classForName();
             jdbcTest();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    /**
-     * @description JDBC 连接 MySQL
-     * @date 2018年6月1日
-     * @version 1.0
-     */
+    private static void classForName() throws Exception {
+        Class clazz = Class.forName("com.yoong.jdbc.AppTrans");
+        System.out.println(clazz);
+    }
+
     private static void jdbcTest() {
         String driverName = "com.mysql.cj.jdbc.Driver";
         String mysqlUrl = "jdbc:mysql://127.0.0.1:3306/mysql?serverTimezone=UTC";
@@ -38,12 +37,16 @@ public class App {
         String pwd = "111111";
         String sql = "select * from `test`";
 
+        //TODO：Connection\Statement\ResultSet都是java定义的接口，具体的实现类由具体的数据库厂商提供。
+        //TODO：如MySQL，实现类ConnectionImpl\StatementImpl\ResultSetImpl，在mysql-connector-java.jar包中。
         Connection conn = null;
         Statement stmt = null;
         ResultSet results = null;
         try {
-            // 1、加载驱动
-            Class.forName(driverName);
+            // 1、加载驱动：com.mysql.cj.jdbc.Driver
+            Enumeration<Driver> beforeDriverList = DriverManager.getDrivers();
+            Class clazz = Class.forName(driverName);
+            Enumeration<Driver> afterDriverList = DriverManager.getDrivers();
             // 2、创建连接 Connection
             conn = DriverManager.getConnection(mysqlUrl, userName, pwd);
             /*
@@ -59,6 +62,7 @@ public class App {
                 String column1 = results.getString(2);
                 System.out.println(column1);
             }
+
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {
