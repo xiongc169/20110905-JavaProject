@@ -1,7 +1,9 @@
 package com.yoong.mybatis.springx.wong_user;
 
+import com.alibaba.druid.pool.xa.DruidXADataSource;
 import com.yoong.mybatis.springx.wong_user.dao.AccountMapper;
 import com.yoong.mybatis.springx.wong_user.dao.AdminMapper;
+import com.yoong.mybatis.springx.wong_user.distributedTx.MyXid;
 import com.yoong.mybatis.springx.wong_user.domain.Account;
 import com.yoong.mybatis.springx.wong_user.domain.AccountExample;
 import com.yoong.mybatis.springx.wong_user.domain.Admin;
@@ -11,6 +13,13 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import javax.sql.XAConnection;
+import javax.sql.XADataSource;
+import javax.transaction.xa.XAException;
+import javax.transaction.xa.XAResource;
+import javax.transaction.xa.Xid;
+import java.sql.Connection;
+import java.sql.Statement;
 import java.util.List;
 
 /**
@@ -23,9 +32,9 @@ public class WongUserManager {
      */
     public static void main(String[] args) {
         try {
-            sqlSessionTemplateDemo();
-            mapperFactoryDemo();
-            mapperScannerDemo();
+//            sqlSessionTemplateDemo();
+//            mapperFactoryDemo();
+//            mapperScannerDemo();
             transactionDemo();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -83,4 +92,53 @@ public class WongUserManager {
         accountService.insertAccounts();
         System.out.println("Finished");
     }
+
+    /**
+     * 分布式事务
+     * http://www.gaodaima.com/40332.html
+     * https://blog.csdn.net/weixin_34175509/article/details/92063248
+     */
+    public static void xaTransactionDemo() {
+        XADataSource xaDS = null;
+        XAConnection xaCon = null;
+        XAResource xaRes = null;
+        Xid xid = null;
+        Connection con = null;
+        Statement stmt = null;
+        int ret;
+        try {
+            xaDS = new DruidXADataSource();
+            xaCon = xaDS.getXAConnection();
+            xaRes = xaCon.getXAResource();
+            con = xaCon.getConnection();
+            stmt = con.createStatement();
+            xid = new MyXid(100, new byte[]{0x01}, new byte[]{0x02});
+            xaRes.start(xid, XAResource.TMNOFLAGS);
+            stmt.executeUpdate("insert into test_table values (100)");
+            xaRes.end(xid, XAResource.TMSUCCESS);
+            ret = xaRes.prepare(xid);
+            if (ret == XAResource.XA_OK) {
+                xaRes.commit(xid, false);
+            }
+        } catch (XAException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+                if (xaCon != null) {
+                    xaCon.close();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
 }
