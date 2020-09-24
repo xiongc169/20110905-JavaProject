@@ -3,6 +3,7 @@ package com.yoong.springboot.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -43,6 +44,28 @@ public class UserController {
     @RequestMapping("/login")
     public String login(String name) {
         String msg = String.format("%s: Hello %s %s", format.format(new Date()), name, config.getUserName());
+        System.out.println(msg);
+        return msg;
+    }
+
+    /**
+     * http://localhost:8085/user/register?userName=name01&password=password01
+     */
+    @ResponseBody
+    @RequestMapping("/register")
+    public String register(@RequestBody AuthConfig authConfig) {
+        String msg = String.format("%s: Hello %s %s", format.format(new Date()), authConfig.getUserName(), authConfig.getPassword());
+        System.out.println(msg);
+        return msg;
+    }
+
+    /**
+     * http://localhost:8085/user/logout?userName=name01&password=password01
+     */
+    @ResponseBody
+    @RequestMapping("/logout")
+    public String logout(AuthConfig authConfig) {
+        String msg = String.format("%s: Hello %s %s", format.format(new Date()), authConfig.getUserName(), authConfig.getPassword());
         System.out.println(msg);
         return msg;
     }
