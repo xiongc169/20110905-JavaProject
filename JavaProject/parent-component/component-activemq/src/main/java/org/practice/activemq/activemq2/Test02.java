@@ -1,8 +1,5 @@
 package org.practice.activemq.activemq2;
 
-import org.practice.activemq.activemq2.JMS.MessageReceiver;
-import org.practice.activemq.activemq2.JMS.MessageSender;
-
 /**
  * @Desc 深入浅出消息队列 ActiveMQ
  * PS：使用发布/订阅域方式发送接收消息
@@ -17,18 +14,16 @@ import org.practice.activemq.activemq2.JMS.MessageSender;
  * <p>
  * @Version 1.0
  */
-public class App {
+public class Test02 {
 
     /**
      * 入口函数
      */
     public static void main(String[] args) {
         try {
-            MessageSender.run();
-            MessageReceiver.run();
+            System.out.println("Hello World!");
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("Hello World!");
     }
 }
