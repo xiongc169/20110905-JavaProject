@@ -1,16 +1,25 @@
 package org.practice.primary.book01.chap12;
 
-import org.practice.primary.book01.chap12.impl.ArrayUtility;
-import org.practice.primary.book01.chap12.ttype.TClass;
-import org.practice.primary.book01.chap12.ttype.TMethod;
+import org.practice.primary.book01.chap12.ch1202.ArrayAlg;
+import org.practice.primary.book01.chap12.ch1202.Pair;
+import org.practice.primary.book01.chap12.ch1202.TClass;
+import org.practice.primary.book01.chap12.ch1202.TMethod;
+import org.practice.primary.book01.chap12.ch1205.DateInterval;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 /**
- * 《Java核心技术·卷1》第十二章、泛型程序设计
+ * @Desc 《Java核心技术·卷1》第十二章、泛型程序设计
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018年8月20日
+ * <p>
+ * @Version 1.0
  */
 public class AppGeneric {
 
@@ -19,56 +28,65 @@ public class AppGeneric {
      */
     public static void main(String[] args) {
         try {
-            ArrayList<String> strings = new ArrayList<>();
-            ArrayList<Integer> integers = new ArrayList<>();
-            System.out.println(strings.getClass() == integers.getClass() ? "Equal Class" : "NonEqual Class");
-
-            arrayUtils();
-            tClass();
-            tMethod();
+            generic1201();
+            genericClass1202();
+            extends1204();
+            polymorphic1205();
+            wildcard1208();
+            reflect1209();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    public static void arrayUtils() {
+    public static void generic1201() {
+        List arrayList = new ArrayList();
+        arrayList.add(1111);
+        arrayList.add("1111");
+        arrayList.add(new File(""));
+    }
+
+    public static void genericClass1202() {
+        //12.2、泛型类
+        Pair<String> pair = new Pair<>();
+        //12.3、泛型方法
         List<String> stringList = Arrays.asList("1111", "2222", "3333", "4444");
-        String middle = ArrayUtility.getMiddle(stringList);
+        String middle = ArrayAlg.getMiddle(stringList);
         System.out.println(middle);
     }
 
     /**
-     * java 泛型详解-绝对是对泛型方法讲解最详细的
-     * https://www.cnblogs.com/coprince/p/8603492.html
+     * 12.4、类型变量的限定 —— extends
      */
-    public static void tClass() {
-        List list = new ArrayList();
-        list.add(100);
-        list.add("100");//输出时会有问题
+    public static void extends1204() {
+        TMethod tMethod = new TMethod();
+        tMethod.getName2(null);
 
-        List<String> strings = new ArrayList<>();
-        List<Integer> integers = new ArrayList<>();
-        if (strings.getClass() == integers.getClass()) {
-            //泛型只在编译阶段有效。编译后，程序会采取去泛型化的措施。
-            //在编译过程中，检验泛型结果后，会将泛型信息擦除，在对象进入、离开方法的边界处，添加类型检查、类型转换的方法。
-            System.out.println("class equals");
-        }
-
-        TClass intClass = new TClass();
-        intClass.setData(100);
-        Integer result = (int) intClass.getData();
-        System.out.println("result: " + result);
-
-        TClass<String> stringClass = new TClass();
-        stringClass.setData("100");
-        String result2 = stringClass.getData();
+        List<String> stringList = Arrays.asList("1111", "2222", "3333", "4444");
+        String middle = ArrayAlg.getMiddle(stringList);
+        System.out.println(middle);
     }
 
-    public static void tMethod() {
-        TMethod gMethod = new TMethod();
-        Date date = gMethod.<Date>getGenericResult(Date.class);
-        String hello = gMethod.<String>getGenericResult(String.class);
-        System.out.println(date);
-        System.out.println(hello);
+    /**
+     * 12.5、泛型代码和虚拟机
+     */
+    public static void polymorphic1205() {
+        DateInterval interval = new DateInterval();
+        interval.setSecond(new Date());
+    }
+
+    /**
+     * 12.8、通配符 —— extends\super
+     */
+    public static void wildcard1208() {
+        Pair<?> pair = new Pair<>();
+        Pair<? extends Date> pair01 = new Pair<>();
+        Pair<? super Date> pair02 = new Pair<>();
+    }
+
+    /**
+     * 12.9、反射和泛型
+     */
+    public static void reflect1209() {
     }
 }

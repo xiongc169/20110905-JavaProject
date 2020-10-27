@@ -11,5 +11,36 @@
         <property name="userName" value="admin"></property>
         <property name="password" value="admin"></property>
         <property name="brokerURL" value="tcp://192.168.119.131:61616"></property>
+        <property name="redeliveryPolicyMap" value="redeliveryPolicyMap"></property>
+    </bean>
+
+    <!--这里设置各个消息队列的重发机制-->
+    <bean id="redeliveryPolicyMap" class="org.apache.activemq.broker.region.policy.RedeliveryPolicyMap">
+        <property name="redeliveryPolicyEntries">
+            <list>
+                <ref bean="bizRedeliveryPolicy"/>
+                <ref bean="mailRedeliveryPolicy"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="bizRedeliveryPolicy" class="org.apache.activemq.RedeliveryPolicy">
+        <!--重发次数 延时、延时系数、延时指数开关、目标（重发等待时间1s, 2s, 4s, 8s）-->
+        <property name="maximumRedeliveries" value="3"/>
+        <property name="redeliveryDelay" value="1000"/>
+        <property name="backOffMultiplier" value="2"/>
+        <property name="useExponentialBackOff" value="true"/>
+        <property name="destination" ref="bizQueue"/>
+    </bean>
+
+    <bean id="mailRedeliveryPolicy" class="org.apache.activemq.RedeliveryPolicy">
+        <!--重发次数 延时、延时系数、延时指数开关-->
+        <property name="maximumRedeliveries" value="2"/>
+        <property name="redeliveryDelay" value="5000"/>
+        <property name="destination" ref="mailQueue"/>
+    </bean>
+
+    <!-- 队列目的地-->
+    <bean id="bizQueue" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg index="0" value="${biz.queueName}"/>
     </bean>
 </beans>

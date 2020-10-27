@@ -1,6 +1,6 @@
 package org.practice.primary.book01.chap12.impl;
 
-import org.practice.primary.book01.chap12.ttype.TInterface;
+import org.practice.primary.book01.chap12.ch1202.TInterface;
 
 import java.util.Map;
 

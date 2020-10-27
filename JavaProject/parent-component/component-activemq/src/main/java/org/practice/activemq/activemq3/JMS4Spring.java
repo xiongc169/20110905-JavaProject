@@ -8,7 +8,8 @@ import javax.jms.*;
 
 /**
  * @Desc ActiveMQ的简单使用
- * PS：https://blog.csdn.net/s296850101/article/details/52401405
+ * PS：定义重试策略,注意：只有持久化的才会重试。
+ * https://blog.csdn.net/s296850101/article/details/52401405
  * <p>
  * @Author yoong
  * <p>

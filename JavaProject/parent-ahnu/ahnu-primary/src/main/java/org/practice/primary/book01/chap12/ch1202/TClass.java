@@ -1,4 +1,4 @@
-package org.practice.primary.book01.chap12.ttype;
+package org.practice.primary.book01.chap12.ch1202;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +9,7 @@ import java.util.Map;
  * @Date
  * @Version 1.0
  */
-public class TClass<T> {
+public class TClass<T, U, S> {
 
     private T data;
 
@@ -39,7 +39,11 @@ public class TClass<T> {
     /**
      * 静态方法无法访问类上定义的泛型
      */
-    public static <T> T staticMethod() {
+    //public static T staticMethod() {
+    //    T t = null;
+    //    return t;
+    //}
+    public static <T> T staticMethod02() {
         T t = null;
         return t;
     }

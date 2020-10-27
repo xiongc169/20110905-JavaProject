@@ -1,10 +1,10 @@
-package org.practice.primary.book01.chap12.ttype;
+package org.practice.primary.book01.chap12.ch1202;
 
 import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @Desc TMethod
+ * @Desc 泛型方法
  * @Author
  * @Date
  * @Version 1.0
@@ -22,6 +22,9 @@ public class TMethod {
         this.data = data;
     }
 
+    /**
+     * 12.4、类型变量的限定 —— extends
+     */
     public <T extends Comparable & Serializable> void getName2(T data) {
         this.data = data;
     }
