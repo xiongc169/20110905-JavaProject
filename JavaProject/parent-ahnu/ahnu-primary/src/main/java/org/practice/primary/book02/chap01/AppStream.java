@@ -2,10 +2,11 @@ package org.practice.primary.book02.chap01;
 
 import java.io.*;
 import java.net.URL;
+import java.nio.ByteBuffer;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
 import java.nio.file.FileSystem;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 import java.util.Properties;
 import java.util.Scanner;
 import java.util.zip.ZipInputStream;
@@ -40,6 +41,8 @@ public class AppStream {
     private static String videoUrl02 = "http://img.fincs.net/zahy/cls/loan/2019/12/6/cca9b111-feba-4129-b4f2-0fcdca8d4635.mp4";
     private static String videoUrl03 = "http://img.fincs.net/zahy/cls/loan/2019/12/6/5ac5a802-9085-484c-9e53-9f32f1816f31.mp4";
 
+    private static String rtJar = "D:\\Program Files\\Java\\jdk1.8.0_112\\jre\\lib\\rt.jar";//60.3M
+
     /**
      * 入口函数
      */
@@ -62,6 +65,8 @@ public class AppStream {
 
             //1.6、文件操作
             fileTest0106(txtFileName);
+            //1.7、内存映射文件
+            memoryMappedFile0107();
 
             systemIn();
             download(videoUrl, mp4FileName01, mp4FileName02);
@@ -227,6 +232,8 @@ public class AppStream {
     /**
      * 1.6、操作文件
      * PS：File、Path、Paths、Files
+     * JDK 1.0的java.io，引入File类。
+     * JDK 7.0的java.nio，引入Path、Paths、Files类。
      */
     public static void fileTest0106(String txtFileName) throws Exception {
         File file = new File(txtFileName);
@@ -246,6 +253,33 @@ public class AppStream {
         System.out.println("isDelete  " + isDelete);
         FileSystem fileSystem = path.getFileSystem();
         System.out.println(fileSystem.getSeparator());
+    }
+
+    /**
+     * 1.7、内存映射文件
+     */
+    public static void memoryMappedFile0107() throws Exception {
+        Path path = Paths.get(rtJar);
+        FileChannel fileChannel = FileChannel.open(path, StandardOpenOption.READ);
+        MappedByteBuffer mappedByteBuffer = fileChannel.map(FileChannel.MapMode.READ_ONLY, 0, fileChannel.size());
+        //java.nio.DirectByteBuffer directByteBuffer = fileChannel.map(FileChannel.MapMode.READ_WRITE, 0, fileChannel.size());
+
+        //顺序访问缓冲区
+        while (mappedByteBuffer.hasRemaining()) {
+            byte bytee = mappedByteBuffer.get();
+        }
+        //随机访问缓冲区
+        for (int i = 0; i < mappedByteBuffer.limit(); i++) {
+            byte bytee = mappedByteBuffer.get(i);
+        }
+
+        //java.nio
+        ByteBuffer byteBuffer = ByteBuffer.allocate(1024 * 1024);
+        int length = 0;
+        while ((length = fileChannel.read(byteBuffer)) != -1) {
+            byteBuffer.flip();
+            byte[] byteArray = byteBuffer.array();
+        }
     }
 
     /**
