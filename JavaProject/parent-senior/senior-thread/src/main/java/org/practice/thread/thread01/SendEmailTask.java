@@ -1,19 +1,19 @@
 package org.practice.thread.thread01;
 
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.util.List;
 import java.util.Properties;
 
-import javax.mail.Address;
-import javax.mail.Authenticator;
-import javax.mail.Message;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-
 /**
- * 发邮件
+ * @Desc 发邮件
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2016-4-27 09:06:00
+ * <p>
+ * @Version 1.0
  */
 public class SendEmailTask implements Runnable {
 

@@ -52,7 +52,7 @@ public class App {
     }
 
     /**
-     * Callable,Runnable比较及用法 <br>
+     * Callable,Runnable比较及用法
      * http://blog.csdn.net/heyutao007/article/details/19072675
      */
     public static void concurrentTest() {

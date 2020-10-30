@@ -1,11 +1,13 @@
 package org.practice.thread;
 
 /**
- * @author yoong
- * <br/>
- * @desc 线程如何返回值； 线程结束如何回调； 线程间如何通信； 线程间共享变量； 线程安全；
- * <br/>
- * @date 2018年8月28日
+ * @Desc 线程如何返回值； 线程结束如何回调； 线程间如何通信； 线程间共享变量； 线程安全；
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-08-30 09:06:00
+ * <p>
+ * @Version 1.0
  */
 public class AppThread {
 

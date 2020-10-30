@@ -6,13 +6,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-/**
- * @author yoong
- * <br>
- * @desc MyRunnable
- * <br>
- * @date 2019/1/11 10:20
- */
 public class MyRunnable implements Runnable {
 
     private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");

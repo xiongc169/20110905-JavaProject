@@ -7,15 +7,17 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author yoong
- * <br>
- * @desc Java总结篇系列：Java多线程（二）
- * PS：Java多线程的阻塞状态与线程控制：暂停、恢复、中断；
+ * @Desc Java总结篇系列：Java多线程（二）
+ * PS：Java多线程的阻塞状态与线程控制：阻塞、暂停、恢复、中断
  * http://www.cnblogs.com/lwbqqyumidi/p/3817517.html
- * <br>
- * @date 2019/1/11 10:19
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-08-30 09:06:00
+ * <p>
+ * @Version 1.0
  */
-public class App {
+public class AppControl {
 
     private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
 
@@ -66,7 +68,7 @@ public class App {
     }
 
     /**
-     * 多线程-interrupt()，isInterrupted()，interrupted()
+     * 多线程 interrupt()，isInterrupted()，interrupted()
      * PS：线程中断
      * https://www.cnblogs.com/lujiango/p/7641983.html
      */

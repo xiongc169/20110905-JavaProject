@@ -11,7 +11,7 @@ package org.practice.thread.thread01.ch02callback;
  * <p>
  * @Version 1.0
  */
-public class App {
+public class AppCallback {
 
     /**
      * 入口函数

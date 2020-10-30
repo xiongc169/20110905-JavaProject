@@ -6,8 +6,14 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * java笔记--关于线程同步(7种同步方式)
+ * @Desc java笔记--关于线程同步(7种同步方式)
  * http://www.cnblogs.com/XHJT/p/3897440.html
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-08-30 09:06:00
+ * <p>
+ * @Version 1.0
  */
 public class AtmRunnable implements Runnable {
 

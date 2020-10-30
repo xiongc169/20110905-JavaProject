@@ -16,7 +16,7 @@ import java.util.concurrent.Executors;
  * <p>
  * @Version 1.0
  */
-public class App {
+public class AppThread01 {
 
     //HH表示24小时制 如果换成hh表示12小时制
     private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

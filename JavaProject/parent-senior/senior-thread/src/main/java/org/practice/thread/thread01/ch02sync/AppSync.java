@@ -4,13 +4,19 @@ import org.practice.thread.thread01.model.Account;
 import org.practice.thread.thread01.model.Person;
 
 /**
- * Java总结篇系列：Java多线程（三）
+ * @Desc Java总结篇系列：Java多线程（三）
  * PS：线程同步：synchronized方法、synchronized代码块、Lock
  * https://www.cnblogs.com/lwbqqyumidi/p/3821389.html
  * Java中的多线程你只要看这一篇就够了
  * http://www.cnblogs.com/wxd0108/p/5479442.html
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-08-30 09:06:00
+ * <p>
+ * @Version 1.0
  */
-public class App {
+public class AppSync {
 
     /**
      * 入口函数
@@ -26,7 +32,7 @@ public class App {
     }
 
     /**
-     * Java总结篇系列：Java多线程（三） <br>
+     * Java总结篇系列：Java多线程（三）
      * http://www.cnblogs.com/lwbqqyumidi/p/3821389.html
      */
     public static void synchronizedTest() throws Exception {

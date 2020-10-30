@@ -4,11 +4,6 @@ import java.util.Scanner;
 
 import org.practice.thread.thread01.model.Person;
 
-/**
- * @author Administrator
- * @desc InputThread.java
- * @date 2016年4月17日 下午8:34:11
- */
 public class InputThread extends Thread {
 
     public Person person = null;

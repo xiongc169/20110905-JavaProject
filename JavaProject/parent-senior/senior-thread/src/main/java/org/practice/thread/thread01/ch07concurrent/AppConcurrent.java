@@ -5,10 +5,16 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.*;
 
 /**
- * @desc Java并发包
+ * @Desc Java并发包
  * http://blog.csdn.net/heyutao007/article/details/5672804
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-08-30 09:06:00
+ * <p>
+ * @Version 1.0
  */
-public class ConcurrentDemo {
+public class AppConcurrent {
 
     /**
      * 入口函数
@@ -55,7 +61,7 @@ public class ConcurrentDemo {
     }
 
     /**
-     * 并发集合类<br>
+     * 并发集合类
      * http://www.cnblogs.com/huangfox/archive/2012/08/16/2642666.html
      */
     public static void collectionsMethod() {

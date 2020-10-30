@@ -23,12 +23,14 @@ import java.util.concurrent.locks.ReentrantLock;
  * https://www.cnblogs.com/xiaowenboke/p/10469125.html
  * https://segmentfault.com/a/1190000020473883
  * https://www.jianshu.com/p/e29632593057
- * <br/>
+ * <p>
  * @Author yoong
- * <br/>
- * @Date 2020-4-1 19:00:00
+ * <p>
+ * @Date 2015-08-30 09:06:00
+ * <p>
+ * @Version 1.0
  */
-public class AppCommunication {
+public class AppComm {
 
     /**
      * 入口函数
