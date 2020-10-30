@@ -8,10 +8,13 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * @author yoong
- * <br>
- * @since 2015-10-19 15:45:45
- * <br>
+ * @Desc 多线程
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-08-30 09:06:00
+ * <p>
+ * @Version 1.0
  */
 public class App {
 

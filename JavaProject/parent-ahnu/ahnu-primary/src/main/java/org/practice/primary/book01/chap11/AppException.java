@@ -1,5 +1,8 @@
 package org.practice.primary.book01.chap11;
 
+import org.apache.http.MethodNotSupportedException;
+
+import javax.xml.ws.http.HTTPException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;
@@ -49,11 +52,17 @@ public class AppException {
         ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException = null;
         NullPointerException nullPointerException = null;
 
+        HTTPException httpException = null;
+
         //其他异常(非运行时异常)：程序本身没有问题，由于像IO错误导致的异常
         Exception exception = new Exception();
         IOException ioException = null;
+        FileNotFoundException fileNotFoundException = null;
         FileSystemException fileSystemException = null;
         AccessDeniedException accessDeniedException = null;
+        ClassNotFoundException classNotFoundException = null;
+        MethodNotSupportedException methodNotSupportedException = null;
+
 
         //派生于Error、RuntimeException类的所有异常，称为未检查异常(unchecked exception)
         //其他的异常，称为已检查异常(checked exception)

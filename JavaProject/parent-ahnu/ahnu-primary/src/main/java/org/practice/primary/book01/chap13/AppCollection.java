@@ -87,6 +87,7 @@ public class AppCollection {
         Iterator iterator = iterable.iterator();
         while (iterator.hasNext()) {
             System.out.println(iterator.next());
+            //iterator.add();
         }
     }
 
@@ -107,6 +108,8 @@ public class AppCollection {
         ListIterator listIterator = linkedList.listIterator();
         while (listIterator.hasPrevious()) {
             System.out.println(listIterator.previous());
+            listIterator.add("Dell");
+            listIterator.set("Modified");
         }
         listIterator.add("head");
 
@@ -144,7 +147,9 @@ public class AppCollection {
     }
 
     /**
-     * 13.2.3、散列集 (P576)
+     * 13.2.3、散列集HashSet (P576)
+     * 13.2.4、树集TreeSet (P579)
+     * 13.2.5、对象的比较 (P580)
      */
     public static void set130203() {
         HashSet hashSet = new HashSet();
@@ -166,6 +171,7 @@ public class AppCollection {
             System.out.println(iterator.next());
         }
 
+        Comparable comparable = null;
         Comparator comparator = new Comparator() {
             @Override
             public int compare(Object o1, Object o2) {
@@ -185,7 +191,8 @@ public class AppCollection {
     }
 
     /**
-     * 13.2.3、队列与双端队列 (P585)
+     * 13.2.6、队列与双端队列 Queue\Deque (P585)
+     * 13.2.7、优先级队列 Queue\Deque (P585)
      */
     public static void queue130206() {
         Deque deque = new ArrayDeque();
@@ -285,6 +292,10 @@ public class AppCollection {
         WeakHashMap weakHashMap = new WeakHashMap();
         LinkedHashSet linkedHashSet = new LinkedHashSet();
         LinkedHashMap linkedHashMap = new LinkedHashMap();
+        for (int i = 0; i < 5; i++) {
+            linkedHashMap.put(i, i);
+        }
+        System.out.println(linkedHashMap.get(2));
         //EnumSet enumSet = EnumSet.allOf();
         //EnumMap enumMap = new EnumMap();
         IdentityHashMap identityHashMap = new IdentityHashMap();

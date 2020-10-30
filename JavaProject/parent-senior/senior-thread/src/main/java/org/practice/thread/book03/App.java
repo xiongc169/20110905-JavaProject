@@ -1,7 +1,7 @@
 package org.practice.thread.book03;
 
 /**
- * 《Java并发编程：核心方法与框架 (高洪岩)》
+ * 《Java并发编程：核心方法与框架-高洪岩》
  * https://www.jb51.net/books/524956.html
  *
  * @author Administrator

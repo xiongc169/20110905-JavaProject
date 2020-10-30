@@ -5,10 +5,14 @@ import java.util.Date;
 import java.util.concurrent.FutureTask;
 
 /**
- * Java总结篇系列：Java多线程（一）<br>
+ * @Desc Java总结篇系列：Java多线程（一）
  * http://www.cnblogs.com/lwbqqyumidi/p/3804883.html
- *
- * @author Administrator
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-08-30 09:06:00
+ * <p>
+ * @Version 1.0
  */
 public class App {
 
@@ -24,11 +28,13 @@ public class App {
             String threadName = Thread.currentThread().getName();
             Thread.State state = Thread.currentThread().getState();
             boolean interrupted = Thread.currentThread().isInterrupted();
-            String output = String.format("MainThread: %s %s %s %s %s", format.format(new Date()), threadId, threadName, state, interrupted);
+            boolean staticInterrupted = Thread.interrupted();
+            String output = String.format("MainThread: %s %s %s %s %s %s", format.format(new Date()), threadId, threadName, state, interrupted, staticInterrupted);
             System.out.println(output);
 
             myThreadTest();
             summaryTest();
+            lambdaRunnable();
             threadFactoryTest();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -71,7 +77,7 @@ public class App {
         Thread runnableThread = new Thread(myRunnable, "myRunnable-1");
         runnableThread.start();
 
-        // 3.Thread + Runnable 测试
+        // 3.Thread + Runnable 测试，执行MyThread线程体
         MyRunnable myRunnable2 = new MyRunnable();
         MyThread myThread2 = new MyThread(myRunnable2, "myThread-2");
         myThread2.start();
@@ -89,6 +95,22 @@ public class App {
             ex.printStackTrace();
         }
         System.out.println("summaryTest End!");
+    }
+
+    /**
+     * 利用Lambda创建线程
+     * PS：Runnable runnable = ()->{};
+     * https://blog.csdn.net/chengqiuming/article/details/95667184
+     */
+    public static void lambdaRunnable() {
+        Runnable runnable = () -> {
+            long threadId = Thread.currentThread().getId();
+            String threadName = Thread.currentThread().getName();
+            Thread.State state = Thread.currentThread().getState();
+            boolean isInterrupted = Thread.currentThread().isInterrupted();
+            String output = String.format("MyThread: %s %s %s %s %s", format.format(new Date()), threadId, threadName, state, isInterrupted);
+            System.out.println(output);
+        };
     }
 
     /**

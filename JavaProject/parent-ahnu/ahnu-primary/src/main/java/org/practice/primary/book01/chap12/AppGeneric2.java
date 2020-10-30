@@ -22,7 +22,6 @@ public class AppGeneric2 {
     public static void main(String[] args) {
         try {
             queryTecent();
-
             genericEquals();
             tClass();
             tMethod();
@@ -59,9 +58,8 @@ public class AppGeneric2 {
     public static void getString(List<String> param) {
     }
 
-    public static void getString2(List<Integer> param) {
-    }
-
+    //public static void getString(List<Integer> param) {
+    //}
 
     /**
      * java 泛型详解-绝对是对泛型方法讲解最详细的

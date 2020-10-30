@@ -90,7 +90,8 @@ public class CollectionUtility {
         // TODO：Stack
         for (int i = 0; i < 5; i++) {
             String item = "Stack add " + i;
-            stack.add(item);
+            stack.add(item);//返回Boolean类型
+            stack.push(item);//返回新增项
         }
         Iterator stackIterator = stack.iterator();
         while (stackIterator.hasNext()) {

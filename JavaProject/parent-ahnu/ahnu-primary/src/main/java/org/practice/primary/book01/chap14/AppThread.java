@@ -1,13 +1,17 @@
-package org.practice.thread.book01.chap14;
+package org.practice.primary.book01.chap14;
 
 import java.util.*;
 import java.util.concurrent.*;
 
 /**
- * 《Java核心技术卷1 基础知识》第十四章、多线程
+ * @Desc 《Java核心技术·卷1》第十四章、多线程
  * https://www.jb51.net/books/227644.html
- *
- * @author Administrator
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-08-30 09:06:00
+ * <p>
+ * @Version 1.0
  */
 public class AppThread {
 

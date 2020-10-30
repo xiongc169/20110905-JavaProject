@@ -1,13 +1,15 @@
 package org.practice.thread.thread01.ch02callback;
 
 /**
- * @author yoong
- * <br>
- * @desc 线程的创建
+ * @Desc 线程的创建
  * PS：取得线程执行的结果，回调方式
  * http://www.blogjava.net/junglesong/archive/2008/02/22/181356.html
- * <br>
- * @date 2019/1/11 10:19
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019/1/11 10:19
+ * <p>
+ * @Version 1.0
  */
 public class App {
 
@@ -37,7 +39,7 @@ public class App {
 
     /**
      * Lambda方式创建线程
-     * http://www.threadworld.cn/archives/68.html
+     * https://blog.csdn.net/chengqiuming/article/details/95667184
      */
     public static void lambdaThread() {
         System.out.println("lambdaThread: " + Thread.currentThread().getName());

@@ -1,12 +1,5 @@
 package org.practice.thread.thread01.ch02callback;
 
-/**
- * @author yoong
- * <br>
- * @desc Boss
- * <br>
- * @date 2019/1/11 10:20
- */
 public class Boss {
 
     private String name;
