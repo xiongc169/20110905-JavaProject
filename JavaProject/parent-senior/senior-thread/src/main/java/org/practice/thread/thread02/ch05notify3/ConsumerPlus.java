@@ -5,13 +5,6 @@ import java.util.List;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 
-/**
- * @author yoong
- *
- * @desc ConsumerPlus
- *
- * @date 2019/1/8 17:04
- */
 public class ConsumerPlus implements Runnable {
 
     private Lock lock;

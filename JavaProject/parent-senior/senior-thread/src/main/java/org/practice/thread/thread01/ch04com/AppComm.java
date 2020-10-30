@@ -1,11 +1,11 @@
-package org.practice.thread.thread01.ch04com02;
+package org.practice.thread.thread01.ch04com;
 
-import org.practice.thread.thread01.ch04com02.block03.ConsumerBlock;
-import org.practice.thread.thread01.ch04com02.block03.ProducerBlock;
-import org.practice.thread.thread01.ch04com02.lock02.ConsumerLock;
-import org.practice.thread.thread01.ch04com02.lock02.ProducerLock;
-import org.practice.thread.thread01.ch04com02.sync01.ConsumerSyn;
-import org.practice.thread.thread01.ch04com02.sync01.ProducerSyn;
+import org.practice.thread.thread01.ch04com.block03.ConsumerBlock;
+import org.practice.thread.thread01.ch04com.block03.ProducerBlock;
+import org.practice.thread.thread01.ch04com.lock02.ConsumerLock;
+import org.practice.thread.thread01.ch04com.lock02.ProducerLock;
+import org.practice.thread.thread01.ch04com.sync01.ConsumerSyn;
+import org.practice.thread.thread01.ch04com.sync01.ProducerSyn;
 
 import java.util.ArrayList;
 import java.util.List;

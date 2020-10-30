@@ -9,12 +9,18 @@ import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
 
 /**
- * Java并发编程：如何创建线程？
+ * @Desc Java并发编程：如何创建线程？
  * PS：创建线程：Thread\Runnable
  * 创建进程：Runtime.exec()、ProcessBuilder.start()
  * https://www.cnblogs.com/dolphin0520/p/3913517.html
  * Java并发编程——系列教程
- * https://www.cnblogs.com/dolphin0520/category/602384.html
+ * https://www.cnblogs.com/dolphin0520/category/1426288.html
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018年8月29日
+ * <p>
+ * @Version 1.0
  */
 public class App {
 

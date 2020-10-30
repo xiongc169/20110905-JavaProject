@@ -4,13 +4,6 @@ import java.util.ArrayList;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-/**
- * @author yoong
- * <br/>
- * @desc InsertData.java
- * <br/>
- * @date 2018年8月29日
- */
 public class InsertData {
 
     private ArrayList<Integer> arrayList = new ArrayList<Integer>();

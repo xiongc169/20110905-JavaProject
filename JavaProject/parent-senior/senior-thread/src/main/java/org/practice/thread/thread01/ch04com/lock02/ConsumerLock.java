@@ -1,4 +1,4 @@
-package org.practice.thread.thread01.ch04com02.lock02;
+package org.practice.thread.thread01.ch04com.lock02;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

@@ -5,17 +5,18 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * @author yoong
- * <br/>
- * @desc Java并发编程：synchronized <br>
- *       http://www.cnblogs.com/dolphin0520/p/3923737.html <br>
- *       Java并发编程：Lock <br>
- *       http://www.cnblogs.com/dolphin0520/p/3923167.html
- *       Java并发编程：volatile关键字解析
- *       https://www.cnblogs.com/dolphin0520/p/3920373.html
- * <br/>
- * @date 2018年8月29日
- *
+ * @Desc Java并发编程：synchronized
+ * http://www.cnblogs.com/dolphin0520/p/3923737.html
+ * Java并发编程：Lock
+ * http://www.cnblogs.com/dolphin0520/p/3923167.html
+ * Java并发编程：volatile关键字解析
+ * https://www.cnblogs.com/dolphin0520/p/3920373.html
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018年8月29日
+ * <p>
+ * @Version 1.0
  */
 public class App {
 

@@ -6,8 +6,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 /**
- * Java并发编程：深入剖析ThreadLocal
+ * @Desc Java并发编程：深入剖析ThreadLocal
  * https://www.cnblogs.com/dolphin0520/p/3920407.html
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018年8月29日
+ * <p>
+ * @Version 1.0
  */
 public class AppThreadLocal {
 

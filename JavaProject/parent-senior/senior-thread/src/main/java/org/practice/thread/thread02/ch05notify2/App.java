@@ -3,13 +3,14 @@ package org.practice.thread.thread02.ch05notify2;
 import java.util.ArrayList;
 
 /**
- * @author Java并发编程：线程间协作的两种方式：wait、notify、notifyAll和Condition <br>
- *         http://www.cnblogs.com/dolphin0520/p/3920385.html
- *
- * @desc App.java
- *
- * @date 2018年8月30日
- *
+ * @Desc Java并发编程：线程间协作的两种方式：wait、notify、notifyAll和Condition
+ * http://www.cnblogs.com/dolphin0520/p/3920385.html
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018年8月29日
+ * <p>
+ * @Version 1.0
  */
 public class App {
 
