@@ -8,7 +8,8 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @Desc Java总结篇系列：Java多线程（二）
- * PS：Java多线程的阻塞状态与线程控制：阻塞、暂停、恢复、中断
+ * PS：Java多线程的阻塞状态与线程控制：阻塞、暂停、恢复、中断。
+ * 三种阻塞状态：等待阻塞、同步阻塞、其他阻塞。
  * http://www.cnblogs.com/lwbqqyumidi/p/3817517.html
  * <p>
  * @Author yoong

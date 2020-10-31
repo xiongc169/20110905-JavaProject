@@ -1,4 +1,4 @@
-package org.practice.thread.thread01;
+package org.practice.thread.thread01.practice;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;

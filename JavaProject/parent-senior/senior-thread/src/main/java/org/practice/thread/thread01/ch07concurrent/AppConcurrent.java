@@ -22,10 +22,10 @@ public class AppConcurrent {
     public static void main(String[] args) {
         //测试
         try {
-            executorMethod();
-            lockMethod();
-            collectionsMethod();
-            atomicIntegerMethod();
+            executorServiceDemo();
+            lockDemo();
+            concurrentCollectionDemo();
+            atomicIntegerDemo();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -34,8 +34,7 @@ public class AppConcurrent {
     /**
      * Executors类，能够获得多种线程池的实例
      */
-    public static void executorMethod() {
-
+    public static void executorServiceDemo() {
         ExecutorService cachedPool = Executors.newCachedThreadPool(); // 创建一个缓冲池，缓冲池容量大小为Integer.MAX_VALUE
         ExecutorService singlePool = Executors.newSingleThreadExecutor(); // 创建容量为1的缓冲池
         ExecutorService fixedPool = Executors.newFixedThreadPool(10); // 创建固定容量大小的缓冲池
@@ -46,7 +45,7 @@ public class AppConcurrent {
      * Condition类
      * Lock代替了synchronized，后者代替了wait\notify\notifyAll
      */
-    public static void lockMethod() {
+    public static void lockDemo() {
         Lock lk = new ReentrantLock();
         lk.lock();
         try {
@@ -64,7 +63,7 @@ public class AppConcurrent {
      * 并发集合类
      * http://www.cnblogs.com/huangfox/archive/2012/08/16/2642666.html
      */
-    public static void collectionsMethod() {
+    public static void concurrentCollectionDemo() {
         ConcurrentHashMap<String, String> hashMap = new ConcurrentHashMap<String, String>();
         hashMap.put("key", "map");
         String obj = hashMap.get("key");
@@ -81,7 +80,7 @@ public class AppConcurrent {
      * java.util.concurrent.atomic提供了很多工具类，可以以原子方式更新变量
      * AtomicInteger，一个提供原子操作的Integer的类
      */
-    public static void atomicIntegerMethod() {
+    public static void atomicIntegerDemo() {
         AtomicInteger ai = new AtomicInteger(0);
 
         int i1 = ai.get();

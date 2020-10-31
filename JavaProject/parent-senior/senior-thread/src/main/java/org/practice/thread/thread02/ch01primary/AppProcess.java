@@ -22,7 +22,7 @@ import java.util.concurrent.FutureTask;
  * <p>
  * @Version 1.0
  */
-public class App {
+public class AppProcess {
 
     private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
 

@@ -19,7 +19,6 @@ public class AppCallback {
     public static void main(String[] args) {
         try {
             callBackTest();
-            lambdaThread();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -35,18 +34,5 @@ public class AppCallback {
         Thread thread = new Thread(secretary);
         thread.start();
         System.out.println("callBackTest End!");
-    }
-
-    /**
-     * Lambda方式创建线程
-     * https://blog.csdn.net/chengqiuming/article/details/95667184
-     */
-    public static void lambdaThread() {
-        System.out.println("lambdaThread: " + Thread.currentThread().getName());
-        Runnable runnable = () -> {
-            System.out.println("lambdaThread.runnable: " + Thread.currentThread().getName());
-        };
-        Thread thread = new Thread(runnable);
-        thread.start();
     }
 }

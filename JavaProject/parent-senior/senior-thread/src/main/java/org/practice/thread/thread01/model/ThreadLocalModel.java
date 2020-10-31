@@ -1,12 +1,5 @@
 package org.practice.thread.thread01.model;
 
-/**
- * @author yoong
- * <br>
- * @desc ThreadLocalModel
- * <br>
- * @date 2019/1/14 10:12
- */
 public class ThreadLocalModel {
 
     private ThreadLocal<Long> threadId = new ThreadLocal<Long>() {

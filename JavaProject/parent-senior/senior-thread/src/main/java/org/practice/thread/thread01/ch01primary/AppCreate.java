@@ -111,6 +111,8 @@ public class AppCreate {
             String output = String.format("MyThread: %s %s %s %s %s", format.format(new Date()), threadId, threadName, state, isInterrupted);
             System.out.println(output);
         };
+        Thread thread = new Thread(runnable);
+        thread.start();
     }
 
     /**

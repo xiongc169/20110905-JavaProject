@@ -17,8 +17,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @Desc 生产者-消费者模式的三种实现方式
- * PS：方式一：synchronized、wait和notify；
- * 方式二：lock和condition的await、signalAll；
+ * PS：方式一：synchronized、wait和notify
+ * 方式二：lock和condition的await、signalAll
  * 方式三：BlockingQueue
  * https://www.cnblogs.com/xiaowenboke/p/10469125.html
  * https://segmentfault.com/a/1190000020473883
