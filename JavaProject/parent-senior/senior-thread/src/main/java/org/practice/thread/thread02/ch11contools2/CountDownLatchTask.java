@@ -1,4 +1,4 @@
-package org.practice.thread.thread02.ch11countdownlatch2;
+package org.practice.thread.thread02.ch11contools2;
 
 import java.util.concurrent.CountDownLatch;
 

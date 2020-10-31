@@ -1,4 +1,4 @@
-package org.practice.thread.thread02.ch11countdownlatch;
+package org.practice.thread.thread02.ch11contools;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -6,6 +6,7 @@ import java.util.concurrent.CountDownLatch;
 
 /**
  * @Desc Java并发编程：CountDownLatch、CyclicBarrier和Semaphore
+ * PS：并发工具
  * http://www.cnblogs.com/dolphin0520/p/3920397.html
  * <p>
  * @Author yoong

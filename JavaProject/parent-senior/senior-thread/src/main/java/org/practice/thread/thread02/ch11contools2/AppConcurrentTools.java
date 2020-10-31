@@ -1,4 +1,4 @@
-package org.practice.thread.thread02.ch11countdownlatch2;
+package org.practice.thread.thread02.ch11contools2;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.CyclicBarrier;
@@ -14,7 +14,7 @@ import java.util.concurrent.Semaphore;
  * <p>
  * @Version 1.0
  */
-public class App {
+public class AppConcurrentTools {
 
     /**
      * 入口函数

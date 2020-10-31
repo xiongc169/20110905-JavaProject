@@ -1,4 +1,4 @@
-package org.practice.thread.thread02.ch11countdownlatch;
+package org.practice.thread.thread02.ch11contools;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
