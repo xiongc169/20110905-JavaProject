@@ -7,10 +7,16 @@ import org.practice.thread.thread01.ch01primary.MyThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor.AbortPolicy;
 
 /**
- * Java并发编程：线程池的使用<br>
+ * @Desc Java并发编程：线程池的使用
  * http://www.cnblogs.com/dolphin0520/p/3932921.html
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018年8月29日
+ * <p>
+ * @Version 1.0
  */
-public class MyThreadPool {
+public class AppThreadPool {
 
     /**
      * 入口函数

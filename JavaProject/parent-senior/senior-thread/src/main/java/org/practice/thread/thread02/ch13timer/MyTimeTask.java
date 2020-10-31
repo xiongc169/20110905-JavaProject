@@ -5,13 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimerTask;
 
-/**
- * @author yoong
- *
- * @desc MyTimeTask
- *
- * @date 2019/1/10 10:39
- */
 public class MyTimeTask extends TimerTask {
 
     private DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

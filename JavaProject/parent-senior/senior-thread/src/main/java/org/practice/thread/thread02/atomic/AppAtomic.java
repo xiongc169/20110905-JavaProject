@@ -3,8 +3,14 @@ package org.practice.thread.thread02.atomic;
 import java.util.concurrent.atomic.*;
 
 /**
- * Java中的13个原子操作类总结
+ * @Desc Java中的13个原子操作类总结
  * https://blog.csdn.net/qq_36236890/article/details/81914871
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018年8月29日
+ * <p>
+ * @Version 1.0
  */
 public class AppAtomic {
 

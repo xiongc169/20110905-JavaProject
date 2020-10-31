@@ -4,34 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.Semaphore;
 
-/**
- * Java并发编程：CountDownLatch、CyclicBarrier和Semaphore
- * http://www.cnblogs.com/dolphin0520/p/3920397.html
- *
- * @author Administrator
- */
-public class MySemaphore {
-
-    private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
-
-    /**
-     * 入口函数
-     */
-    public static void main(String[] args) {
-        try {
-            Semaphore semaphore = new Semaphore(3);
-            for (int i = 0; i < 9; i++) {
-                MyThread myThread = new MyThread(i, semaphore);
-                myThread.start();
-            }
-            //System.out.println(format.format(new Date()) + " " + " " + Thread.currentThread().getName());
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-}
-
-class MyThread extends Thread {
+public class MyThread extends Thread {
 
     private int num;
 

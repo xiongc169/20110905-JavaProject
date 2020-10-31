@@ -1,4 +1,4 @@
-package org.practice.thread.thread02.ch03synch;
+package org.practice.thread.thread02.ch03sync;
 
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Lock;
@@ -18,7 +18,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * <p>
  * @Version 1.0
  */
-public class App {
+public class AppSync {
 
     /**
      * 入口函数
@@ -31,7 +31,7 @@ public class App {
             lockInsert();
 
             //volatile测试
-            App app = new App();
+            AppSync app = new AppSync();
             volatileTest(app);
             while (Thread.activeCount() > 1) {
                 //保证前面的线程都执行完
@@ -115,7 +115,7 @@ public class App {
 
     private AtomicInteger atomicCount = new AtomicInteger();
 
-    private static void volatileTest(App app) {
+    private static void volatileTest(AppSync app) {
         for (int i = 0; i < 100; i++) {
             Thread thread = new Thread(new Runnable() {
                 @Override

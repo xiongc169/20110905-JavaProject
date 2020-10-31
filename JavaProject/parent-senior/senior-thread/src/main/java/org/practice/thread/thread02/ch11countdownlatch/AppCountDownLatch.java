@@ -5,12 +5,16 @@ import java.util.Date;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * Java并发编程：CountDownLatch、CyclicBarrier和Semaphore
+ * @Desc Java并发编程：CountDownLatch、CyclicBarrier和Semaphore
  * http://www.cnblogs.com/dolphin0520/p/3920397.html
- *
- * @author Administrator
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018年8月29日
+ * <p>
+ * @Version 1.0
  */
-public class MyCountDownLatch {
+public class AppCountDownLatch {
 
     private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
 

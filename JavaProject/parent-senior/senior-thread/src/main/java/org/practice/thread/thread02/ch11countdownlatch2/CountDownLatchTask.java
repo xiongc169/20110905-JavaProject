@@ -2,11 +2,11 @@ package org.practice.thread.thread02.ch11countdownlatch2;
 
 import java.util.concurrent.CountDownLatch;
 
-public class CountDownTask implements Runnable {
+public class CountDownLatchTask implements Runnable {
 
     private CountDownLatch latch;
 
-    public CountDownTask(CountDownLatch latch) {
+    public CountDownLatchTask(CountDownLatch latch) {
         this.latch = latch;
     }
 

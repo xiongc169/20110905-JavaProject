@@ -4,17 +4,19 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.Future;
 
 /**
- * @author yoong
- *
- * @desc Fork/Join框架详解
+ * @Desc Fork/Join框架详解
  * https://www.cnblogs.com/senlinyang/p/7885964.html
  * https://www.cnblogs.com/dongguacai/p/6021859.html
  * https://www.cnblogs.com/jiyuqi/p/4547082.html
  * https://www.jianshu.com/p/f777abb7b251
- *
- * @date 2019/1/10 11:21
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018年8月29日
+ * <p>
+ * @Version 1.0
  */
-public class ForkJoinApp {
+public class AppForkJoin {
 
     /**
      * 入口函数

@@ -5,10 +5,14 @@ import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.Semaphore;
 
 /**
- * Java并发编程：CountDownLatch、CyclicBarrier和Semaphore <br>
+ * @Desc Java并发编程：CountDownLatch、CyclicBarrier和Semaphore
  * http://www.cnblogs.com/dolphin0520/p/3920397.html
- *
- * @author Administrator
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018年8月29日
+ * <p>
+ * @Version 1.0
  */
 public class App {
 
@@ -17,9 +21,9 @@ public class App {
      */
     public static void main(String[] args) {
         try {
-            countDown();
-            barrier();
-            semaphore();
+            countDownLatchDemo();
+            cyclicBarrierDemo();
+            semaphoreDemo();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -28,12 +32,12 @@ public class App {
     /**
      * CountDownLatch 测试
      */
-    public static void countDown() {
+    public static void countDownLatchDemo() {
         CountDownLatch latch = new CountDownLatch(3);
 
-        CountDownTask task = new CountDownTask(latch);
-        CountDownTask task2 = new CountDownTask(latch);
-        CountDownTask task3 = new CountDownTask(latch);
+        CountDownLatchTask task = new CountDownLatchTask(latch);
+        CountDownLatchTask task2 = new CountDownLatchTask(latch);
+        CountDownLatchTask task3 = new CountDownLatchTask(latch);
 
         Thread thread = new Thread(task);
         Thread thread2 = new Thread(task2);
@@ -55,7 +59,7 @@ public class App {
     /**
      * CyclicBarrier 测试
      */
-    public static void barrier() {
+    public static void cyclicBarrierDemo() {
         CyclicBarrier barrier = new CyclicBarrier(3);
 
         CyclicBarrierTask task = new CyclicBarrierTask(barrier);
@@ -74,7 +78,7 @@ public class App {
     /**
      * Semaphore 测试
      */
-    public static void semaphore() {
+    public static void semaphoreDemo() {
         Semaphore semaphore = new Semaphore(2);
 
         SemaphoreTask task = new SemaphoreTask(semaphore);

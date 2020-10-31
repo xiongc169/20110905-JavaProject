@@ -1,4 +1,4 @@
-package org.practice.thread.thread02.ch03synch;
+package org.practice.thread.thread02.ch03sync;
 
 import org.practice.thread.thread01.model.ThreadLocalModel;
 

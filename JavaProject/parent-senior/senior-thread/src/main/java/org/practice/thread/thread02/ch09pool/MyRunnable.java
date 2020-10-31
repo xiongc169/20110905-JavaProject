@@ -3,10 +3,6 @@ package org.practice.thread.thread02.ch09pool;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * @author yoong
- * @since 2015-10-19 15:45:45
- */
 public class MyRunnable implements Runnable {
 
     private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");

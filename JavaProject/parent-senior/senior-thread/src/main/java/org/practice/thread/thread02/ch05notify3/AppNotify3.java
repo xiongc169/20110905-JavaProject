@@ -14,7 +14,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * <p>
  * @Version 1.0
  */
-public class App {
+public class AppNotify3 {
 
     /**
      * 入口函数

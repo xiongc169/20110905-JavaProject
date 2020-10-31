@@ -2,13 +2,6 @@ package org.practice.thread.thread02.ch14forkJoin;
 
 import java.util.concurrent.RecursiveTask;
 
-/**
- * @author yoong
- *
- * @desc ComputeTask
- *
- * @date 2019/1/10 11:20
- */
 public class ComputeTask extends RecursiveTask<Integer> {
 
     private Integer THREAD_HOLD = 2;

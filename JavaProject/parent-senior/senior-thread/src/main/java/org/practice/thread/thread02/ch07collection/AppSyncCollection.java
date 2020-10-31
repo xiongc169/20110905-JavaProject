@@ -1,24 +1,25 @@
-package org.practice.thread.thread02.ch07container;
+package org.practice.thread.thread02.ch07collection;
 
 import java.util.*;
 import java.util.concurrent.*;
 
 /**
- * Java并发编程：同步容器 <br>
+ * @Desc Java并发编程：同步容器
  * http://www.cnblogs.com/dolphin0520/p/3933404.html
- * <p>
- * Java并发编程：并发容器之ConcurrentHashMap <br>
- * http://www.cnblogs.com/dolphin0520/p/3932905.html<br>
- * <p>
- * Java并发编程：并发容器之CopyOnWriteArrayList <br>
- * http://www.cnblogs.com/dolphin0520/p/3938914.html<br>
- * <p>
+ * Java并发编程：并发容器之ConcurrentHashMap
+ * http://www.cnblogs.com/dolphin0520/p/3932905.html
+ * Java并发编程：并发容器之CopyOnWriteArrayList
+ * http://www.cnblogs.com/dolphin0520/p/3938914.html
  * Java并发编程：阻塞队列
  * https://www.cnblogs.com/dolphin0520/p/3932906.html
- *
- * @author Administrator
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018年8月29日
+ * <p>
+ * @Version 1.0
  */
-public class SynCollection {
+public class AppSyncCollection {
 
     /**
      * 入口函数
@@ -31,10 +32,10 @@ public class SynCollection {
                 System.out.println(size);
             }
 
-            container();
-            syncContainer();
-            syncContainer02();
-            parallelContainer();
+            collection();
+            syncCollection_performance();
+            syncCollection_safe();
+            concurrentCollection();
             blockingQueue();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -46,7 +47,7 @@ public class SynCollection {
      * PS：普通容器，非线程安全
      * http://www.cnblogs.com/dolphin0520/p/3933404.html
      */
-    public static void container() {
+    public static void collection() {
         List arrayList = new ArrayList<String>();
         List linkedList = new LinkedList();
         Set hashSet = new HashSet<String>();
@@ -58,10 +59,10 @@ public class SynCollection {
      * PS：同步容器，线程安全
      * http://www.cnblogs.com/dolphin0520/p/3933404.html
      */
-    public static void syncContainer() {
+    public static void syncCollection_performance() {
         List arrayList = new ArrayList<String>();
-        Stack stack = new Stack();
         Vector vector = new Vector();
+        Stack stack = new Stack();
         Hashtable hTable = new Hashtable();
 
         List<String> synArrayList = Collections.synchronizedList(new ArrayList<>());
@@ -73,17 +74,17 @@ public class SynCollection {
             arrayList.add(i);
         }
         long end = System.currentTimeMillis();
-        System.out.println("ArrayList进行100000次插入操作耗时：" + (end - start) + "ms");
+        System.out.println("ArrayList进行100000次插入操作耗时：" + (end - start) + "ms");//291ms
 
         start = System.currentTimeMillis();
         for (int i = 0; i < 5000000; i++) {
             vector.add(i);
         }
         end = System.currentTimeMillis();
-        System.out.println("Vector进行100000次插入操作耗时：" + (end - start) + "ms");
+        System.out.println("Vector进行100000次插入操作耗时：" + (end - start) + "ms");//1960ms
     }
 
-    public static void syncContainer02() {
+    public static void syncCollection_safe() {
         //Vector是否真的线程安全
         Vector vector2 = new Vector();
         for (int i = 0; i < 100; i++) {
@@ -111,7 +112,7 @@ public class SynCollection {
      * PS：CopyOnWrite容器，写时复制容器。运用了读写分离的思想；
      * http://www.cnblogs.com/dolphin0520/p/3938914.html
      */
-    public static void parallelContainer() {
+    public static void concurrentCollection() {
         ConcurrentHashMap conHashMap = new ConcurrentHashMap();
         CopyOnWriteArrayList list = new CopyOnWriteArrayList();
         CopyOnWriteArraySet set = new CopyOnWriteArraySet();

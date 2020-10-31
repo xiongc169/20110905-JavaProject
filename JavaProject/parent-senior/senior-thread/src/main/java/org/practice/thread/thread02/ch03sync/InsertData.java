@@ -1,4 +1,4 @@
-package org.practice.thread.thread02.ch03synch;
+package org.practice.thread.thread02.ch03sync;
 
 import java.util.ArrayList;
 import java.util.concurrent.locks.Lock;

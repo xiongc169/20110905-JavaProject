@@ -9,12 +9,16 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
 /**
- * Java并发编程：Timer和TimerTask（转载）
+ * @Desc Java并发编程：Timer和TimerTask（转载）
  * http://www.cnblogs.com/dolphin0520/p/3938991.html
- *
- * @author Administrator
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018年8月29日
+ * <p>
+ * @Version 1.0
  */
-public class TimerApp {
+public class AppTimer {
 
     private static DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -33,8 +37,8 @@ public class TimerApp {
     /**
      * Timer的调度方法比较
      * PS：timer.schedule(timeTask, 3000, 4000); schedule在计算下一次执行的时间的时候，是通过当前时间（在任务执行前得到） + 时间片；
-     *     timer.scheduleAtFixedRate(timeTask, 3000, 1000); scheduleAtFixedRate方法是通过当前需要执行的时间（也就是计算出现在应该执行的时间）+ 时间片；
-     *     前者是运行的实际时间，而后者是理论时间点。前者可能由于CPU被征用，出现少调度一次或多次的情况，后者可以减少遗漏调度；
+     * timer.scheduleAtFixedRate(timeTask, 3000, 1000); scheduleAtFixedRate方法是通过当前需要执行的时间（也就是计算出现在应该执行的时间）+ 时间片；
+     * 前者是运行的实际时间，而后者是理论时间点。前者可能由于CPU被征用，出现少调度一次或多次的情况，后者可以减少遗漏调度；
      */
     private static void timerTest() {
         System.out.println(format.format(new Date()) + " TimerApp.timerTest Start....");

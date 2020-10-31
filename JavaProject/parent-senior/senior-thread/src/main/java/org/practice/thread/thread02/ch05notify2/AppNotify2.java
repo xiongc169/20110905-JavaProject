@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * <p>
  * @Version 1.0
  */
-public class App {
+public class AppNotify2 {
 
 	/**
 	 * 入口函数

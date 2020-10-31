@@ -10,7 +10,7 @@ package org.practice.thread.thread02.ch05notify;
  * <p>
  * @Version 1.0
  */
-public class App {
+public class AppNotify {
 
     /**
      * 入口函数
