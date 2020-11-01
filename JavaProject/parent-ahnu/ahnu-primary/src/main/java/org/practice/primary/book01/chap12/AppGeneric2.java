@@ -3,13 +3,15 @@ package org.practice.primary.book01.chap12;
 import org.practice.primary.book01.chap12.ch1202.TClass;
 import org.practice.primary.book01.chap12.ch1202.TMethod;
 
-import java.io.Serializable;
 import java.util.*;
 
 /**
- * @Desc App3
- * @Author
- * @Date
+ * @Desc AppGeneric2
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018年8月20日
+ * <p>
  * @Version 1.0
  */
 public class AppGeneric2 {

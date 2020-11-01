@@ -1,12 +1,13 @@
 package org.practice.primary.book01.chap11;
 
+import org.apache.http.HttpException;
 import org.apache.http.MethodNotSupportedException;
 
-import javax.xml.ws.http.HTTPException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;
 import java.nio.file.FileSystemException;
+import java.util.ConcurrentModificationException;
 import java.util.logging.Logger;
 
 /**
@@ -36,7 +37,7 @@ public class AppException {
 
     private static void category1101() {
         //Throwable
-        Throwable throwable = new Throwable();
+        Throwable throwable = null;
         throwable.printStackTrace();
 
         //Error：描述了Java运行时系统的内部错误和资源耗尽错误
@@ -47,20 +48,31 @@ public class AppException {
         NoSuchFieldError noSuchFieldError = null;
         NoSuchMethodError noSuchMethodError = null;
 
+
         //RuntimeException：由于程序错误导致的异常，属于RuntimeException。
-        RuntimeException runtimeException = new RuntimeException();
+        RuntimeException runtimeException = null;
         ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException = null;
         NullPointerException nullPointerException = null;
 
-        HTTPException httpException = null;
+        ArithmeticException arithmeticException = null;
+        NumberFormatException numberFormatException = null;
+        //快速失败机制
+        ConcurrentModificationException concurrentModificationException = null;
+
 
         //其他异常(非运行时异常)：程序本身没有问题，由于像IO错误导致的异常
-        Exception exception = new Exception();
+        Exception exception = null;
         IOException ioException = null;
         FileNotFoundException fileNotFoundException = null;
         FileSystemException fileSystemException = null;
         AccessDeniedException accessDeniedException = null;
+
+        ReflectiveOperationException reflectiveOperationException = null;
+        NoSuchMethodException noSuchMethodException = null;
+        NoSuchFieldException noSuchFieldException = null;
         ClassNotFoundException classNotFoundException = null;
+
+        HttpException httpException = null;
         MethodNotSupportedException methodNotSupportedException = null;
 
 
