@@ -12,20 +12,14 @@ public class FactorialCalculator implements Callable<Integer> {
     }
 
     public Integer call() throws Exception {
-
         int result = 1;
-
         if (num == 0 || num == 1)
             return 1;
-
         for (int i = 1; i <= num; i++) {
             result = result * i;
         }
-
         TimeUnit.SECONDS.sleep(3);
         System.out.printf("Thread: %s, Result: %d \n", Thread.currentThread().getName(), result);
-
         return result;
     }
-
 }

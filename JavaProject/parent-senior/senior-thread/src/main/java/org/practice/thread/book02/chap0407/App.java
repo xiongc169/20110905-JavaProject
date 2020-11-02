@@ -2,6 +2,17 @@ package org.practice.thread.book02.chap0407;
 
 import java.util.concurrent.*;
 
+/**
+ * @Desc 《Java 7并发编程实战手册》
+ * PS：4.7、在执行器中延时执行任务
+ * https://www.jb51.net/books/404868.html
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-08-30 09:00:00
+ * <p>
+ * @Version 1.0
+ */
 public class App {
 
     /**

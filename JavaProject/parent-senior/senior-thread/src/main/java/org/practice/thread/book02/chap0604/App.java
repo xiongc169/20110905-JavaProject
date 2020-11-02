@@ -3,11 +3,15 @@ package org.practice.thread.book02.chap0604;
 import java.util.concurrent.PriorityBlockingQueue;
 
 /**
- * @author yoong
- *
- * @desc App
- *
- * @date 2019/1/8 20:08
+ * @Desc 《Java 7并发编程实战手册》
+ * PS：6.4、使用按优先级排序的阻塞式线程安全列表
+ * https://www.jb51.net/books/404868.html
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-08-30 09:00:00
+ * <p>
+ * @Version 1.0
  */
 public class App {
 
@@ -24,8 +28,6 @@ public class App {
 
     /**
      * 6.4、使用按优先级排序的阻塞式线程安全列表
-     *
-     * @throws Exception
      */
     private static void priorityBlocking() throws Exception {
 
@@ -50,5 +52,4 @@ public class App {
             System.out.println(event.getThread() + "-" + event.getPriority());
         }
     }
-
 }

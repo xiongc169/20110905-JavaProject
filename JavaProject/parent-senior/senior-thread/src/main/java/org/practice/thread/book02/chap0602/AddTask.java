@@ -11,11 +11,9 @@ public class AddTask implements Runnable {
 	}
 
 	public void run() {
-
 		for (int i = 0; i < 10000; i++) {
 			String name = Thread.currentThread().getName();
 			list.add(name + ", Element: " + i);
 		}
 	}
-
 }

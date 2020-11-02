@@ -10,5 +10,4 @@ public class MyThread extends Thread {
         System.out.println("Thread.currentThread().getState :" + Thread.currentThread().getState());
         System.out.println("Thread.currentThread().getThreadGroup :" + Thread.currentThread().getThreadGroup());
     }
-
 }

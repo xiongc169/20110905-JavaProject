@@ -27,8 +27,6 @@ public class Event implements Comparable<Event> {
 
     /**
      * 这里的实现与大多数compareTo()方法相反
-     * @param o
-     * @return
      */
     public int compareTo(Event o) {
 
@@ -40,5 +38,4 @@ public class Event implements Comparable<Event> {
             return 0;
         }
     }
-
 }

@@ -61,6 +61,4 @@ public class Cinema {
             return true;
         }
     }
-
-
 }

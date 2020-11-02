@@ -2,11 +2,6 @@ package org.practice.thread.book02.chap0304;
 
 import java.util.concurrent.CountDownLatch;
 
-/**
- * @author yoong
- * @desc Participant
- * @date 2019/1/7 19:43
- */
 public class Participant implements Runnable {
 
     private CountDownLatch latch;

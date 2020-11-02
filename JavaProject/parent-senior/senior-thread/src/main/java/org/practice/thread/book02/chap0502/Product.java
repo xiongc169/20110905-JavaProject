@@ -1,12 +1,5 @@
 package org.practice.thread.book02.chap0502;
 
-/**
- * @author yoong
- *
- * @desc Product
- *
- * @date 2019/1/9 20:18
- */
 public class Product {
 
     private String name;

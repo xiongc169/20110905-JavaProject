@@ -6,23 +6,22 @@ import java.util.concurrent.ThreadFactory;
 
 public class MyThreadFactory implements ThreadFactory {
 
-	private int count;
+    private int count;
 
-	private String name;
+    private String name;
 
-	private List<String> states;
+    private List<String> states;
 
-	public MyThreadFactory(String name) {
-		this.count = 0;
-		this.name = name;
-		this.states = new ArrayList<String>();
-	}
+    public MyThreadFactory(String name) {
+        this.count = 0;
+        this.name = name;
+        this.states = new ArrayList<String>();
+    }
 
-	public Thread newThread(Runnable r) {
-		Thread thread = new Thread(r);
-		count++;
-		states.add(String.format("%d \n", thread.getId()));
-		return thread;
-	}
-
+    public Thread newThread(Runnable r) {
+        Thread thread = new Thread(r);
+        count++;
+        states.add(String.format("%d \n", thread.getId()));
+        return thread;
+    }
 }

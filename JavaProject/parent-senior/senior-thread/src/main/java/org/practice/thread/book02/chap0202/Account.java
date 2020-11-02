@@ -19,13 +19,11 @@ public class Account {
 
     /**
      * synchronized
-     *
-     * @param amount
      */
     public void addAmount(double amount) {
-        // System.out.println("before addAmount");
+        //System.out.println("before addAmount");
 
-//        lock.lock();
+        //lock.lock();
         try {
             double tmp = balance;
             Thread.sleep(10);
@@ -34,18 +32,16 @@ public class Account {
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-//            lock.unlock();
+            //lock.unlock();
         }
     }
 
     /**
      * synchronized
-     *
-     * @param amount
      */
     public void subtractAmount(double amount) {
         // System.out.println("before subtractAmount");
-//        lock.lock();
+        // lock.lock();
         try {
             double tmp = balance;
             Thread.sleep(10);
@@ -54,8 +50,7 @@ public class Account {
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-//            lock.unlock();
+            //lock.unlock();
         }
     }
-
 }

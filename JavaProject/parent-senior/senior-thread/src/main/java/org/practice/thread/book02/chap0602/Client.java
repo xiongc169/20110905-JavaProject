@@ -4,13 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.LinkedBlockingDeque;
 
-/**
- * @author yoong
- *
- * @desc Client
- *
- * @date 2019/1/8 19:38
- */
 public class Client implements Runnable {
 
     private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");

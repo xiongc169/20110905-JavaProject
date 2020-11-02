@@ -9,6 +9,17 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
 
+/**
+ * @Desc 《Java 7并发编程实战手册》
+ * PS：4.4、在执行器中执行任务并返回结果
+ * https://www.jb51.net/books/404868.html
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-08-30 09:00:00
+ * <p>
+ * @Version 1.0
+ */
 public class App {
 
     /**
@@ -63,8 +74,6 @@ public class App {
                 e.printStackTrace();
             }
         }
-
         executor.shutdown();
     }
-
 }

@@ -58,7 +58,10 @@ public class AppException {
         NumberFormatException numberFormatException = null;
         //快速失败机制
         ConcurrentModificationException concurrentModificationException = null;
-
+        //休眠中的线程被中断，该方法会立即抛出 InterruptedException 异常
+        InterruptedException interruptedException = null;
+        //在同步代码块外调用wait()方法，JVM将抛出 IllegalMonitorStateException 异常
+        IllegalMonitorStateException illegalMonitorStateException = null;
 
         //其他异常(非运行时异常)：程序本身没有问题，由于像IO错误导致的异常
         Exception exception = null;

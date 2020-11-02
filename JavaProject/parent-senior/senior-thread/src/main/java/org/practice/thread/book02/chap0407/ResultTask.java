@@ -3,13 +3,6 @@ package org.practice.thread.book02.chap0407;
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 
-/**
- * @author yoong
- *
- * @desc ResultTask
- *
- * @date 2019/1/9 19:48
- */
 public class ResultTask extends FutureTask<String> {
 
     private String name;

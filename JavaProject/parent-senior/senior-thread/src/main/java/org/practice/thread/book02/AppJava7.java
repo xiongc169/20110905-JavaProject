@@ -1,10 +1,14 @@
 package org.practice.thread.book02;
 
 /**
- * 《Java 7并发编程实战手册》
+ * @Desc 《Java 7并发编程实战手册》
  * https://www.jb51.net/books/404868.html
- *
- * @author Administrator
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-08-30 09:00:00
+ * <p>
+ * @Version 1.0
  */
 public class AppJava7 {
 

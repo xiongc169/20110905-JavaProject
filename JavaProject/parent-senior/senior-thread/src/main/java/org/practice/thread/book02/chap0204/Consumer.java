@@ -2,17 +2,15 @@ package org.practice.thread.book02.chap0204;
 
 public class Consumer implements Runnable {
 
-	private EventStorage storage;
+    private EventStorage storage;
 
-	public Consumer(EventStorage storage) {
-		this.storage = storage;
-	}
+    public Consumer(EventStorage storage) {
+        this.storage = storage;
+    }
 
-	public void run() {
-		//
-		for (int i = 0; i < 100; i++) {
-			storage.get();
-		}
-	}
-
+    public void run() {
+        for (int i = 0; i < 100; i++) {
+            storage.get();
+        }
+    }
 }

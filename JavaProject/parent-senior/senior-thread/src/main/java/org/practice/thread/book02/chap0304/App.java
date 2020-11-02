@@ -3,9 +3,15 @@ package org.practice.thread.book02.chap0304;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * @author yoong
- * @desc App
- * @date 2019/1/7 19:44
+ * @Desc 《Java 7并发编程实战手册》
+ * PS：3.4、等待多个并发事件的完成 - CountDownLatch
+ * https://www.jb51.net/books/404868.html
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-08-30 09:00:00
+ * <p>
+ * @Version 1.0
  */
 public class App {
 
@@ -18,7 +24,6 @@ public class App {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
     }
 
     public static void startMeeting() throws Exception {

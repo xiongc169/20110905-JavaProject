@@ -38,8 +38,6 @@ public class PrimeTask implements Runnable {
             if (number % i == 0)
                 return false;
         }
-
         return true;
     }
-
 }

@@ -4,7 +4,17 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.LinkedBlockingDeque;
-
+/**
+ * @Desc 《Java 7并发编程实战手册》
+ * PS：6.2、使用非阻塞式线程安全列表
+ * https://www.jb51.net/books/404868.html
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-08-30 09:00:00
+ * <p>
+ * @Version 1.0
+ */
 public class App {
 
     private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
@@ -19,7 +29,6 @@ public class App {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
     }
 
     /**

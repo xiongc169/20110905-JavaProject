@@ -18,18 +18,14 @@ public class Server {
     }
 
     public void executeTask(Task task) {
-
         threadPool.execute(task);
-
         System.out.printf("Server: Pool Size %d\n", threadPool.getPoolSize());
         System.out.printf("Server: Active Size %d\n", threadPool.getActiveCount());
         System.out.printf("Server: Completed Size %d\n", threadPool.getCompletedTaskCount());
-
     }
 
     public void endServer() {
         //ThreadPoolExecutor需要显示的结束它
         threadPool.shutdown();
     }
-
 }

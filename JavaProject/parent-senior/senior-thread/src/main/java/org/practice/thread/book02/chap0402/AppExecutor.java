@@ -1,6 +1,17 @@
 package org.practice.thread.book02.chap0402;
 
-public class App {
+/**
+ * @Desc 《Java 7并发编程实战手册》
+ * PS：4.2、创建线程执行器
+ * https://www.jb51.net/books/404868.html
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-08-30 09:00:00
+ * <p>
+ * @Version 1.0
+ */
+public class AppExecutor {
 
     /**
      * 入口函数
@@ -22,7 +33,6 @@ public class App {
             Task task = new Task("Task-" + i);
             server.executeTask(task);
         }
-
         server.endServer();
     }
 }

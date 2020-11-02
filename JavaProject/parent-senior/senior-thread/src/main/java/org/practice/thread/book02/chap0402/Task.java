@@ -15,10 +15,8 @@ public class Task implements Runnable {
     }
 
     public void run() {
-
         System.out.printf("%s, TaskName: %s, Created On: %s \n", Thread.currentThread().getName(), name, initDate);
         System.out.printf("%s, TaskName: %s, Started On: %s \n", Thread.currentThread().getName(), name, new Date());
-
         try {
             long duration = (long) (Math.random() * 10);
             System.out.printf("%s, TaskName: %s, Doing task time: %s \n", Thread.currentThread().getName(), name, duration);
@@ -26,9 +24,6 @@ public class Task implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
         System.out.printf("%s, TaskName: %s, Finished On: %s \n", Thread.currentThread().getName(), name, new Date());
-
     }
-
 }
