@@ -1,12 +1,16 @@
 package org.practice.thread.book03;
 
 /**
- * 《Java并发编程：核心方法与框架-高洪岩》
+ * @Desc 《Java并发编程：核心方法与框架-高洪岩》
  * https://www.jb51.net/books/524956.html
- *
- * @author Administrator
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019/1/14 14:30:00
+ * <p>
+ * @Version 1.0
  */
-public class App {
+public class AppCore {
 
     /**
      * 入口函数

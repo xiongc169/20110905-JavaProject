@@ -4,6 +4,15 @@ import java.util.concurrent.*;
 
 import org.practice.thread.thread01.model.Person;
 
+/**
+ * @Desc 多线程练习
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-08-30 09:06:00
+ * <p>
+ * @Version 1.0
+ */
 public class App {
 
     /**

@@ -53,7 +53,7 @@ public class AppException {
         RuntimeException runtimeException = null;
         ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException = null;
         NullPointerException nullPointerException = null;
-
+        //java.lang.ArithmeticException: Rounding necessary，BigDecimal.setScale()时需指定取舍模式
         ArithmeticException arithmeticException = null;
         NumberFormatException numberFormatException = null;
         //快速失败机制

@@ -13,7 +13,7 @@ import java.util.concurrent.CountDownLatch;
  * <p>
  * @Version 1.0
  */
-public class App {
+public class AppCountDownLatch {
 
     /**
      * 入口函数

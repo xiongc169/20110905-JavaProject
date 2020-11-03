@@ -4,20 +4,24 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * @author yoong
- * <br>
- * @desc CollectionUtility
- * <br>
- * @date 2019/1/14 14:33
+ * @Desc 《Java并发编程：核心方法与框架-高洪岩》
+ * PS：第十章、并发集合框架
+ * https://www.jb51.net/books/524956.html
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019/1/14 14:30:00
+ * <p>
+ * @Version 1.0
  */
-public class CollectionUtility {
+public class AppConCollection {
 
     /**
      * 入口函数
      */
     public static void main(String[] args) {
         try {
-            collection();
+            collection1001();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -26,7 +30,7 @@ public class CollectionUtility {
     /**
      * Set接口常用的实现类是HashSet，默认以无序的方式组织元素；LinkedHashSet类可以有序的组织元素；
      */
-    private static void collection() {
+    private static void collection1001() {
         Set<String> linkedHashSet = new HashSet<>();
         //Set<String> linkedHashSet = new LinkedHashSet<>();
         linkedHashSet.add("1");
@@ -41,8 +45,6 @@ public class CollectionUtility {
         //System.out.println(set.size());
         for (String item : linkedHashSet) {
             System.out.println(item);
-
         }
-
     }
 }

@@ -38,6 +38,25 @@ public class AppConcurrent {
         ExecutorService cachedPool = Executors.newCachedThreadPool(); // 创建一个缓冲池，缓冲池容量大小为Integer.MAX_VALUE
         ExecutorService singlePool = Executors.newSingleThreadExecutor(); // 创建容量为1的缓冲池
         ExecutorService fixedPool = Executors.newFixedThreadPool(10); // 创建固定容量大小的缓冲池
+        //execute()方法，入参Runnable，无返回值
+        //submit()方法，入参Runnable\Callable，有返回值
+        cachedPool.execute(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
+        cachedPool.submit(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
+        cachedPool.submit(new Callable<Object>() {
+            public Object call() throws Exception {
+                return null;
+            }
+        });
     }
 
     /**

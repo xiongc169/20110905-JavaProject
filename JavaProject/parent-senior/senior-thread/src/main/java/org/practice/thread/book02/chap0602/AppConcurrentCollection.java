@@ -4,9 +4,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.LinkedBlockingDeque;
+
 /**
  * @Desc 《Java 7并发编程实战手册》
- * PS：6.2、使用非阻塞式线程安全列表
+ * 6.2、使用非阻塞式线程安全列表
+ * 6.3、使用阻塞式线程安全列表
  * https://www.jb51.net/books/404868.html
  * <p>
  * @Author yoong
@@ -15,7 +17,7 @@ import java.util.concurrent.LinkedBlockingDeque;
  * <p>
  * @Version 1.0
  */
-public class App {
+public class AppConcurrentCollection {
 
     private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
 
@@ -24,8 +26,8 @@ public class App {
      */
     public static void main(String[] args) {
         try {
-            nonblockingList();
-            blockingList();
+            nonblockingList0602();
+            blockingList0603();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -34,7 +36,7 @@ public class App {
     /**
      * 6.2、使用非阻塞式线程安全列表 ConcurrentLinkedDeque
      */
-    private static void nonblockingList() {
+    private static void nonblockingList0602() {
         ConcurrentLinkedDeque<String> list = new ConcurrentLinkedDeque<String>();
 
         Thread[] threads = new Thread[100];
@@ -70,7 +72,7 @@ public class App {
     /**
      * 6.3、使用阻塞式线程安全列表 LinkedBlockingDeque
      */
-    private static void blockingList() throws Exception {
+    private static void blockingList0603() throws Exception {
         LinkedBlockingDeque<String> requestList = new LinkedBlockingDeque<>();
         Client client = new Client(requestList);
         Thread thread = new Thread(client);

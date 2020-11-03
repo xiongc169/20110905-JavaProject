@@ -11,7 +11,6 @@ public class SemaphoreTask implements Runnable {
     }
 
     public void run() {
-
         try {
             semaphore.acquire();
 

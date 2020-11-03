@@ -12,16 +12,12 @@ public class CountDownLatchTask implements Runnable {
 
     public void run() {
         System.out.printf("%s Start... \n", Thread.currentThread().getName());
-
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
         latch.countDown();
         System.out.printf("%s End! \n", Thread.currentThread().getName());
-
     }
-
 }

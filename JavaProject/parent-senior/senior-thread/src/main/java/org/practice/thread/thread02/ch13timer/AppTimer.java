@@ -77,5 +77,4 @@ public class AppTimer {
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(10);
         ExecutorService executor2 = Executors.unconfigurableScheduledExecutorService(executor);
     }
-
 }

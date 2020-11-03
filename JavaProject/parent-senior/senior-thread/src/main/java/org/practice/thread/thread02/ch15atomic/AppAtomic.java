@@ -1,4 +1,4 @@
-package org.practice.thread.thread02.atomic;
+package org.practice.thread.thread02.ch15atomic;
 
 import java.util.concurrent.atomic.*;
 

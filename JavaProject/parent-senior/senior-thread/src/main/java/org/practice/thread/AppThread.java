@@ -5,7 +5,7 @@ package org.practice.thread;
  * <p>
  * @Author yoong
  * <p>
- * @Date 2015-08-30 09:06:00
+ * @Date 2015-08-30 09:00:00
  * <p>
  * @Version 1.0
  */

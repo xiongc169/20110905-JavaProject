@@ -11,7 +11,7 @@ package org.practice.thread.book02.chap0203;
  * <p>
  * @Version 1.0
  */
-public class App {
+public class AppMultiSync {
 
     /**
      * 入口函数
