@@ -1,10 +1,13 @@
 package org.practice.jvm.book01;
 
 /**
- * @Desc 《深入理解Java虚拟机·JVM高级特性与实践》
- * 第三章、垃圾收集器与内存分配策略
- * @Author
- * @Date
+ * @Desc 《《深入理解Java虚拟机·JVM高级特性与实践》
+ * PS：第三章、垃圾收集器与内存分配策略
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2016-04-01 09:00:00
+ * <p>
  * @Version 1.0
  */
 public class Chap03 {

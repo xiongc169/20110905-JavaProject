@@ -2,9 +2,12 @@ package org.practice.jvm.book01;
 
 /**
  * @Desc 《深入理解Java虚拟机·JVM高级特性与实践》
- * 第十章、早期(编译期)优化
- * @Author
- * @Date
+ * PS：第六章、类文件结构
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2016-04-01 09:00:00
+ * <p>
  * @Version 1.0
  */
 public class Chap06 {

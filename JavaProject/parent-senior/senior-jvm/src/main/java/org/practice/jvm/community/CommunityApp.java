@@ -10,8 +10,11 @@ import java.util.List;
 
 /**
  * @Desc CommunityApp
- * @Author
- * @Date
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2016-04-01 09:00:00
+ * <p>
  * @Version 1.0
  */
 public class CommunityApp {
