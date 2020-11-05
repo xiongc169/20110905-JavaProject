@@ -6,16 +6,25 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @author 20180112002
- * @version 1.0
- * @description StreamOperation.java
- * @date 2018年5月3日
+ * @Desc 《Java 8实战.pdf》
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018-03-02 09:00:00
+ * <p>
+ * @Version 1.0
  */
 public class StreamOperation {
 
+    /**
+     * 入口函数
+     */
     public static void main(String[] args) {
-
-        flatMapTest();
+        try {
+            flatMapTest();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     public static void flatMapTest() {

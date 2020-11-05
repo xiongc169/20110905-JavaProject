@@ -1,10 +1,13 @@
-package org.practice.java8.para.para01Lambda;
+package org.practice.java8.community.ch01Lambda;
 
 /**
- * @author yoong
- * @version 1.0
- * @description 函数式接口
- * @date 2018年3月30日
+ * @Desc IFuncInterface
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018-03-02 09:00:00
+ * <p>
+ * @Version 1.0
  */
 @FunctionalInterface
 public interface IFuncInterface {

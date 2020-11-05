@@ -1,8 +1,5 @@
-package org.practice.java8.para.para07Stream;
+package org.practice.java8.community.ch07Stream;
 
-/**
- * @author Administrator
- */
 public class Student {
 
     private String id;

@@ -1,4 +1,4 @@
-package org.practice.java8.para;
+package org.practice.java8.community;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,17 +6,21 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
-import org.practice.java8.para.para02Interface.GreetImpl;
-import org.practice.java8.para.para02Interface.IGreet;
-import org.practice.java8.para.para07Stream.Student;
+import org.practice.java8.community.ch02Interface.GreetImpl;
+import org.practice.java8.community.ch02Interface.IGreet;
+import org.practice.java8.community.ch07Stream.Student;
 
 /**
- * Java 8的十大新特性
+ * @Desc Java 8的十大新特性
  * http://www.cnblogs.com/pkufork/p/java_8.html
  * 利用Java Set 去除重复object
  * http://blog.csdn.net/miqi770/article/details/8998517
- *
- * @author Administrator
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018-03-02 09:00:00
+ * <p>
+ * @Version 1.0
  */
 public class App {
 
@@ -24,7 +28,6 @@ public class App {
      * 入口函数
      */
     public static void main(String[] args) {
-
         lambdaTest();
         interfaceTest();
         streamTest();
@@ -60,7 +63,6 @@ public class App {
         IGreet.staticMethod();
     }
 
-
     /**
      * TODO：Stream
      */
@@ -89,7 +91,6 @@ public class App {
         int sum = stuList.stream().mapToInt(item -> item.getAge()).sum();
         System.out.println(sum);
     }
-
 
     /**
      * TODO：Array-Stream

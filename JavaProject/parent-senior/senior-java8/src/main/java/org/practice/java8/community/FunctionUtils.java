@@ -1,5 +1,4 @@
-package org.practice.java8.para;
-
+package org.practice.java8.community;
 
 import com.yoong.facade.cls.model.Human;
 import com.yoong.facade.cls.model.QueryData;
@@ -12,17 +11,16 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
-
 /**
- * @author yoong
- * <br/>
- * @version 1.0
- * <br/>
- * @description Java 8中,Function,Consumer,Predicate,Supplier举例
+ * @Desc Java 8中,Function,Consumer,Predicate,Supplier举例
  * PS：函数式接口(FunctionInterface)，只允许定义一个抽象方法，所以支持lambda表达式。
  * https://my.oschina.net/0sbVMw/blog/535010
- * <br/>
- * @date 2018年5月4日
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018-03-02 09:00:00
+ * <p>
+ * @Version 1.0
  */
 public class FunctionUtils {
 
@@ -82,5 +80,4 @@ public class FunctionUtils {
             return item.getAge() > 20;
         };
     }
-
 }

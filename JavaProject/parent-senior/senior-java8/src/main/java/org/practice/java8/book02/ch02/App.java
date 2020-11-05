@@ -7,16 +7,28 @@ import org.practice.java8.book02.ch02.domain.Apple;
 import org.practice.java8.book02.ch02.predicate.AppleGreenColorPredicate;
 import org.practice.java8.book02.ch02.predicate.IApplePredicate;
 
+/**
+ * @Desc 《Java 8实战.pdf》
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018-03-02 09:00:00
+ * <p>
+ * @Version 1.0
+ */
 public class App {
 
     /**
      * 入口函数
      */
     public static void main(String[] args) {
-
-        ch01();
-        ch0202();
-        ch0203();
+        try {
+            ch01();
+            ch0202();
+            ch0203();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
@@ -77,9 +89,6 @@ public class App {
 
     /**
      * 行为参数化
-     *
-     * @param appleList
-     * @param predicate
      */
     public static List<Apple> behaviorParameter(List<Apple> appleList, IApplePredicate predicate) {
         List<Apple> result = new ArrayList<>();

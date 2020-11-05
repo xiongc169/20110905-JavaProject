@@ -1,10 +1,13 @@
-package org.practice.java8.para.para02Interface;
+package org.practice.java8.community.ch02Interface;
 
 /**
- * @author yoong
- * @version 1.0
- * @description 函数式接口
- * @date 2018年3月30日
+ * @Desc 函数式接口
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018-03-02 09:00:00
+ * <p>
+ * @Version 1.0
  */
 public interface IGreet {
 

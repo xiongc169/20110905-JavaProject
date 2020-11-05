@@ -8,6 +8,15 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/**
+ * @Desc 《Java 8实战.pdf》
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018-03-02 09:00:00
+ * <p>
+ * @Version 1.0
+ */
 public class App {
 
     /**
@@ -22,8 +31,6 @@ public class App {
 
     /**
      * 顺序流、并行流输出
-     *
-     * @return
      */
     private static void ch0701() {
         //初始化菜单
@@ -46,8 +53,6 @@ public class App {
 
     /**
      * 求和
-     *
-     * @param n
      */
     private static void sum(Integer n) {
         int sum = 0;
