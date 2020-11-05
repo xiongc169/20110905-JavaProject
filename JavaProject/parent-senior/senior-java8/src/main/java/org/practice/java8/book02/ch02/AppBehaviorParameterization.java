@@ -1,14 +1,16 @@
 package org.practice.java8.book02.ch02;
 
-import java.util.*;
-import java.util.stream.Collectors;
-
 import org.practice.java8.book02.ch02.domain.Apple;
 import org.practice.java8.book02.ch02.predicate.AppleGreenColorPredicate;
 import org.practice.java8.book02.ch02.predicate.IApplePredicate;
 
+import java.util.*;
+import java.util.stream.Collectors;
+
 /**
  * @Desc 《Java 8实战.pdf》
+ * 第一章、为什么要关心Java 8
+ * 第二章、通过 行为参数化 传递代码
  * <p>
  * @Author yoong
  * <p>
@@ -16,7 +18,7 @@ import org.practice.java8.book02.ch02.predicate.IApplePredicate;
  * <p>
  * @Version 1.0
  */
-public class App {
+public class AppBehaviorParameterization {
 
     /**
      * 入口函数
@@ -48,6 +50,7 @@ public class App {
                 return o1.getWeight().compareTo(o2.getWeight());
             }
         });
+
         //ch0204、用Comparator排序
         appleList.sort(new Comparator<Apple>() {
             @Override
@@ -55,8 +58,10 @@ public class App {
                 return a1.getWeight().compareTo(a2.getWeight());
             }
         });
+
         //ch0101：排序2
         appleList.sort(Comparator.comparing(Apple::getWeight));
+
         //排序
         appleList = appleList.stream().sorted(new Comparator<Apple>() {
             @Override
@@ -70,7 +75,7 @@ public class App {
     }
 
     /**
-     * 行为参数化
+     * 1、行为参数化 —— Predicate
      */
     public static void ch0202() {
         List<Apple> appleList = new LinkedList<Apple>();
@@ -87,9 +92,6 @@ public class App {
         System.out.println(appleList2.size());
     }
 
-    /**
-     * 行为参数化
-     */
     public static List<Apple> behaviorParameter(List<Apple> appleList, IApplePredicate predicate) {
         List<Apple> result = new ArrayList<>();
         for (Apple item : appleList) {
@@ -101,7 +103,8 @@ public class App {
     }
 
     /**
-     * 行为参数化
+     * 2、行为参数化 —— 匿名类
+     * 3、行为参数化 —— Lambda表达式
      */
     public static void ch0203() {
         List<Apple> appleList = new LinkedList<Apple>();
@@ -119,6 +122,7 @@ public class App {
                 return apple.getWeight() > 150;
             }
         });
+
         // 行为参数化：Lambda表达式
         List<Apple> appleList3 = behaviorParameter(appleList, (Apple item) -> item.getColor().equalsIgnoreCase("green"));
         System.out.println(appleList2.size());

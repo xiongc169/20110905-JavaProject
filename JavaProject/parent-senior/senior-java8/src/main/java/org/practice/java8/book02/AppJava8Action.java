@@ -9,7 +9,7 @@ package org.practice.java8.book02;
  * <p>
  * @Version 1.0
  */
-public class App {
+public class AppJava8Action {
 
     /**
      * 入口函数

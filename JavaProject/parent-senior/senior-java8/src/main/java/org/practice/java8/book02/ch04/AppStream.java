@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 /**
  * @Desc 《Java 8实战.pdf》
+ * 第四章、引入流
  * <p>
  * @Author yoong
  * <p>
@@ -13,12 +14,20 @@ import java.util.stream.Collectors;
  * <p>
  * @Version 1.0
  */
-public class App {
+public class AppStream {
 
     /**
      * 入口函数
      */
     public static void main(String[] args) {
+        try {
+            stream0401();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public static void stream0401() {
         //初始化菜单
         List<Dish> menu = Arrays.asList(
                 new Dish("pork", false, 800, DishType.MEAT),
