@@ -22,16 +22,20 @@ import org.practice.java8.community.ch07Stream.Student;
  * <p>
  * @Version 1.0
  */
-public class App {
+public class AppJava8 {
 
     /**
      * 入口函数
      */
     public static void main(String[] args) {
-        lambdaTest();
-        interfaceTest();
-        streamTest();
-        array2Stream();
+        try {
+            lambdaTest();
+            interfaceTest();
+            streamTest();
+            array2Stream();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
@@ -44,7 +48,7 @@ public class App {
             System.out.println(item);
         });
         //输出2
-        list.forEach(App::print);
+        list.forEach(AppJava8::print);
     }
 
     public static void print(String str) {

@@ -1,5 +1,7 @@
 package org.practice.java8.book02.ch03;
 
+import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
@@ -20,14 +22,30 @@ public class AppLambda {
      */
     public static void main(String[] args) {
         try {
-            functionalApi();
+            functionalApi0304();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    public static void functionalApi() {
-        Predicate predicate = (t) -> true;
+    public static void functionalApi0304() {
+        Predicate predicate = (item) -> true;
+        Predicate predicate02 = (item) -> {
+            return true;
+        };
+
+        Consumer consumer = (item) -> {
+            //System.out.println(item);
+        };
+        Consumer consumer02 = (item) -> {
+            return;
+        };
+
+        Function function = (item) -> {
+            return "function";
+        };
+        Function function02 = (item) -> "function02";
+
         Supplier supplier = () -> "aaa";
     }
 }

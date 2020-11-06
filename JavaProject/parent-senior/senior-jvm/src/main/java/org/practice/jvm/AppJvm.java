@@ -9,7 +9,7 @@ package org.practice.jvm;
  * <p>
  * @Version 1.0
  */
-public class JvmApp {
+public class AppJvm {
 
     /**
      * 入口函数

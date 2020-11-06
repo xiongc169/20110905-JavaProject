@@ -20,15 +20,19 @@ public class Chap03 {
      */
     public static void main(String[] args) {
         try {
-            //byte数组：1Byte * 1024 * 1024  = 1048576
-            byte[] content = new byte[1024 * 1024];
-            //Integer数组：4Byte * 1024 * 1024 = 4M
-            //Integer[] content = new Integer[1000 * 1024 * 5];
-            System.out.println(content.length);
-            int sum = 500;
-            System.out.println(sum);
+            printGC();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    public static void printGC() {
+        //byte数组：1Byte * 1024 * 1024  = 1048576
+        byte[] content = new byte[1024 * 1024];
+        //Integer数组：4Byte * 1024 * 1024 = 4M
+        //Integer[] content = new Integer[1000 * 1024 * 5];
+        System.out.println(content.length);
+        int sum = 500;
+        System.out.println(sum);
     }
 }

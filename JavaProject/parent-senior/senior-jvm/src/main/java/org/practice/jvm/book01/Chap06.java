@@ -17,13 +17,7 @@ public class Chap06 {
      */
     public static void main(String[] args) {
         try {
-            //byte数组：1Byte * 1024 * 1024  = 1048576
-            byte[] content = new byte[1024 * 1024];
-            //Integer数组：4Byte * 1024 * 1024 = 4M
-            //Integer[] content = new Integer[1000 * 1024 * 5];
-            System.out.println(content.length);
-            int sum = 500;
-            System.out.println(sum);
+            add();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -40,5 +34,13 @@ public class Chap06 {
         System.out.println(c);
         Integer d = 300;
         System.out.println(d);
+
+        //byte数组：1Byte * 1024 * 1024  = 1048576
+        byte[] content2 = new byte[1024 * 1024];
+        //Integer数组：4Byte * 1024 * 1024 = 4M
+        //Integer[] content = new Integer[1000 * 1024 * 5];
+        System.out.println(content2.length);
+        int sum = 500;
+        System.out.println(sum);
     }
 }

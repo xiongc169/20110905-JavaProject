@@ -6,7 +6,6 @@ public class AppleHeavyWeightPredicate implements IApplePredicate {
 
     @Override
     public boolean test(Apple apple) {
-
         return apple.getWeight() > 150;
     }
 

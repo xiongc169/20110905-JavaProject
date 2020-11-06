@@ -10,6 +10,7 @@ import java.util.stream.IntStream;
 
 /**
  * @Desc 《Java 8实战.pdf》
+ * 第六章、用流收集数据
  * <p>
  * @Author yoong
  * <p>
@@ -23,11 +24,14 @@ public class App {
      * 入口函数
      */
     public static void main(String[] args) {
-
-        //测试函数
-        ch0602();
-        ch0603();
-        ch0604();
+        try {
+            //测试函数
+            ch0602();
+            ch0603();
+            ch0604();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**

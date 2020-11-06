@@ -10,6 +10,7 @@ import java.util.stream.IntStream;
 
 /**
  * @Desc 《Java 8实战.pdf》
+ * 第七章、并行数据处理与性能
  * <p>
  * @Author yoong
  * <p>
@@ -23,10 +24,13 @@ public class App {
      * 入口函数
      */
     public static void main(String[] args) {
-
-        //测试函数
-        sum(100);
-        ch0701();
+        try {
+            //测试函数
+            sum(100);
+            ch0701();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**

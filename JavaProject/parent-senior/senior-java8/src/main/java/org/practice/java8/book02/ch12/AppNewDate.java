@@ -10,6 +10,7 @@ import static java.time.temporal.TemporalAdjusters.nextOrSame;
 
 /**
  * @Desc 《Java 8实战.pdf》
+ * 第十二章、新的日期和时间API
  * <p>
  * @Author yoong
  * <p>
@@ -17,7 +18,7 @@ import static java.time.temporal.TemporalAdjusters.nextOrSame;
  * <p>
  * @Version 1.0
  */
-public class DateUtility {
+public class AppNewDate {
 
     /**
      * 入口函数

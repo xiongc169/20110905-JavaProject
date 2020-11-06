@@ -25,12 +25,12 @@ public class Chap02 {
      */
     public static void main(String[] args) {
         try {
-            heapOutOfMemory();
-            stackLeak();
-            nativeStackLeak();
-            methodArea();
-            directoryMemoryOOM();
-            testAllocation();
+            heapOutOfMemory020401();
+            stackLeak020402();
+            nativeStackLeak020402();
+            methodArea020403();
+            directoryMemoryOOM020404();
+            testAllocation030601();
             System.gc();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -42,7 +42,7 @@ public class Chap02 {
      * -Xms20M -Xmx20M -Xmn10M -XX:+PrintGCDetails -XX:SurvivorRatio=8 -XX:+HeapDumpOnOutOfMemoryError
      * Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
      */
-    public static void heapOutOfMemory() {
+    public static void heapOutOfMemory020401() {
         List<Object> list = new ArrayList<>();
         while (true) {
             list.add(new Object());
@@ -53,15 +53,15 @@ public class Chap02 {
      * 2.4.2、虚拟机栈溢出
      * Exception in thread "main" java.lang.StackOverflowError
      */
-    public static void stackLeak() {
+    public static void stackLeak020402() {
         stackLength++;
-        stackLeak();
+        stackLeak020402();
     }
 
     /**
      * 2.4.2、本地方法栈溢出
      */
-    public static void nativeStackLeak() {
+    public static void nativeStackLeak020402() {
         List<String> list = new ArrayList<>();
         String name = "yoong";
         int i = 0;
@@ -77,7 +77,7 @@ public class Chap02 {
      * -XX:PermSize=10M -XX:MaxPermSize=10M
      * Exception in thread "main" java.lang.StackOverflowError
      */
-    public static void methodArea() {
+    public static void methodArea020403() {
         List<String> result = new ArrayList<>();
         int i = 0;
         while (true) {
@@ -90,7 +90,7 @@ public class Chap02 {
      * 2.4.4、本机直接内存溢出
      * -XX:MaxDirectMemorySize
      */
-    public static void directoryMemoryOOM() throws Exception {
+    public static void directoryMemoryOOM020404() throws Exception {
         Field unsafeField = Unsafe.class.getDeclaredFields()[0];
         unsafeField.setAccessible(true);
         Unsafe unsafe = (Unsafe) unsafeField.get(null);
@@ -104,8 +104,7 @@ public class Chap02 {
      * -XX:+PrintGCDetails
      * -Xms20M -Xmx20M -Xmn10M -XX:SurvivorRatio=8
      */
-    public static void testAllocation() {
-
+    public static void testAllocation030601() {
         byte[] allocation1 = new byte[2 * 1024 * 1024];
         byte[] allocation2 = new byte[2 * 1024 * 1024];
         byte[] allocation3 = new byte[2 * 1024 * 1024];

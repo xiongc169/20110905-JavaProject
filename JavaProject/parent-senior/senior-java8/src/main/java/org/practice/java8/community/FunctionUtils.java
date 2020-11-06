@@ -12,7 +12,7 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 /**
- * @Desc Java 8中,Function,Consumer,Predicate,Supplier举例
+ * @Desc Function、Consumer、Predicate、Supplier举例
  * PS：函数式接口(FunctionInterface)，只允许定义一个抽象方法，所以支持lambda表达式。
  * https://my.oschina.net/0sbVMw/blog/535010
  * <p>
@@ -28,6 +28,14 @@ public class FunctionUtils {
      * 入口函数
      */
     public static void main(String[] args) {
+        try {
+            functionalApiDemo();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public static void functionalApiDemo() {
         // Function.apply()
         List<Human> humans = new ArrayList<Human>();
         List<QueryData> queryData = humans2QueryDatas(human2QueryDate()).apply(humans);
@@ -56,6 +64,7 @@ public class FunctionUtils {
         };
         predicate.test(new Human());
         boolean isAdult = predicate().test(new Human());
+
     }
 
     public static Function<List<Human>, List<QueryData>> humans2QueryDatas(Function<Human, QueryData> human2QueryDate) {

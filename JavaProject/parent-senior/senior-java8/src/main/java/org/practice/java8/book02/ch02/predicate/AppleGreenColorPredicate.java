@@ -6,7 +6,6 @@ public class AppleGreenColorPredicate implements IApplePredicate {
 
     @Override
     public boolean test(Apple apple) {
-
         return apple.getColor().equalsIgnoreCase("green");
     }
 

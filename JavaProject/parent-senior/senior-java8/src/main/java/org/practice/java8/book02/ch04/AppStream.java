@@ -1,6 +1,7 @@
 package org.practice.java8.book02.ch04;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,7 +42,7 @@ public class AppStream {
                 new Dish("salmon", false, 450, DishType.FISH));
 
         menu.stream().forEach(item -> System.out.println(item.getName()));
-        List<String> names = menu.stream().map(Dish::getName).collect(Collectors.toList());
+        List<String> names = menu.stream().filter(item -> item.getCalories() < 500).sorted(Comparator.comparing(Dish::getCalories)).map(Dish::getName).collect(Collectors.toList());
         System.out.println(names.size());
 
         DishType type = DishType.getType(1);
