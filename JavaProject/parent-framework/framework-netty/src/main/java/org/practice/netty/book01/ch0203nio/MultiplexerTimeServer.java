@@ -33,22 +33,15 @@ public class MultiplexerTimeServer implements Runnable {
             // 3、将Channel注册到reactor线程的多路复用器Selector上，监听accept事件
             SelectionKey selectionKey = serverChannel.register(selector, SelectionKey.OP_ACCEPT | SelectionKey.OP_CONNECT);
             System.out.println("The time server is start in port:" + port);
-
-        } catch (IOException e) {
-            String msg = e.getMessage();
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
     }
 
-    /**
-     *
-     */
     public void stop() {
         this.stop = true;
     }
 
-    /**
-     * 线程体
-     */
     public void run() {
 
         while (!stop) {
@@ -77,6 +70,7 @@ public class MultiplexerTimeServer implements Runnable {
             }
         }
 
+        //多路复用器关闭后，所有注册在上面的 Channel\Pipe 等资源都会被自动注销并关闭，所以不需要重复释放资源
         if (selector != null) {
             try {
                 selector.close();
@@ -86,12 +80,7 @@ public class MultiplexerTimeServer implements Runnable {
         }
     }
 
-    /**
-     * @param key
-     * @throws Exception
-     */
     private void handleInput(SelectionKey key) throws Exception {
-
         if (key.isValid()) {
             if (key.isAcceptable()) {
                 ServerSocketChannel ssc = (ServerSocketChannel) key.channel();
@@ -110,10 +99,8 @@ public class MultiplexerTimeServer implements Runnable {
                     readBuffer.get(bytes);
                     String body = new String(bytes, "UTF-8");
                     System.out.println("The time server receive order:" + body);
-                    String currentTime = "QUERY TIME ORDER".equalsIgnoreCase(body)
-                            ? new Date(System.currentTimeMillis()).toString() : "BAD ORDER";
+                    String currentTime = "QUERY TIME ORDER".equalsIgnoreCase(body) ? new Date(System.currentTimeMillis()).toString() : "BAD ORDER";
                     doWrite(sc, currentTime);
-
                 } else if (readBytes < 0) {
                     key.cancel();
                     sc.close();
@@ -123,11 +110,6 @@ public class MultiplexerTimeServer implements Runnable {
         }
     }
 
-    /**
-     * @param channel
-     * @param response
-     * @throws IOException
-     */
     private void doWrite(SocketChannel channel, String response) throws IOException {
         if (response != null && response.trim().length() > 0) {
             byte[] bytes = response.getBytes();
@@ -137,5 +119,4 @@ public class MultiplexerTimeServer implements Runnable {
             channel.write(writeBuffer);
         }
     }
-
 }

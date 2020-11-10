@@ -7,7 +7,15 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 /**
- * 同步阻塞式IO
+ * @Desc 《Netty权威指南·Java高性能NIO通信首选框架》2.1、传统的BIO编程
+ * PS：同步阻塞式IO
+ * https://www.jb51.net/books/414868.html
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2016年4月1日
+ * <p>
+ * @Version 1.0
  */
 public class TimeClient {
 
