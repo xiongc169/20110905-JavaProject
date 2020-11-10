@@ -6,7 +6,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * App4Sort
+ * @Desc App4Sort
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2012-07-04 09:00:00
+ * <p>
+ * @Version 1.0
  */
 public class App4Sort {
 

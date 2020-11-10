@@ -1,9 +1,16 @@
 package com.yoong.facade;
 
 /**
- * Hello world!
+ * @Desc facade
+ * <p>
+ * @Author 20180112002
+ * <p>
+ * @Date 2018-01-15 09:00:00
+ * <p>
+ * @Version 1.0
  */
 public class App {
+
     /**
      * 入口函数
      */

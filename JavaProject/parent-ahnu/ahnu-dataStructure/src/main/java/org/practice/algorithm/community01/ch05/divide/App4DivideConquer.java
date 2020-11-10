@@ -3,11 +3,11 @@ package org.practice.algorithm.community01.ch05.divide;
 /**
  * @Desc 分治算法
  * https://www.cnblogs.com/huangxincheng/archive/2012/02/07/2340797.html
- * <p/>
+ * <p>
  * @Author yoong
- * <p/>
+ * <p>
  * @Date 2019年2月14日10:15:00
- * <p/>
+ * <p>
  * @Version 1.0
  */
 public class App4DivideConquer {

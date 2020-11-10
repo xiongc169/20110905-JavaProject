@@ -6,8 +6,11 @@ import java.util.Scanner;
 
 /**
  * @Desc App4Tree3
- * @Author
- * @Date 2019年11月30日10:28:31
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2012-07-04 09:00:00
+ * <p>
  * @Version 1.0
  */
 public class App4Tree3 {

@@ -2,8 +2,11 @@ package org.practice.dataStructure.community01.ch05.matrix;
 
 /**
  * @Desc 邻接矩阵存储
- * @Author
- * @Date 2019年7月8日15:30:29
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2012-07-04 09:00:00
+ * <p>
  * @Version 1.0
  */
 public class MatrixGraphLite {

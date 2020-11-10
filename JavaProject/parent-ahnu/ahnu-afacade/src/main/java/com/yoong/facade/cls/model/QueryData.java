@@ -3,7 +3,13 @@ package com.yoong.facade.cls.model;
 import lombok.Data;
 
 /**
- * @author yoong
+ * @Desc QueryData
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-07-25 09:00:00
+ * <p>
+ * @Version 1.0
  */
 @Data
 public class QueryData {

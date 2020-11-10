@@ -4,11 +4,11 @@ package org.practice.algorithm.community01.ch04.enums;
  * @Desc 枚举法(穷举法)
  * PS：
  * https://www.cnblogs.com/huangxincheng/archive/2012/01/07/2315945.html
- * <p/>
+ * <p>
  * @Author yoong
- * <p/>
+ * <p>
  * @Date 2019年2月14日10:15:00
- * <p/>
+ * <p>
  * @Version 1.0
  */
 public class App4Enums {

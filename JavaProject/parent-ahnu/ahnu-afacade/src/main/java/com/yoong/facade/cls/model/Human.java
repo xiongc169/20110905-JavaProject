@@ -6,10 +6,13 @@ import java.util.Date;
 import lombok.Data;
 
 /**
- * @author yoong
- * @version 1.0
- * @description Human
- * @date 2018年4月27日
+ * @Desc Human
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2015-07-25 09:00:00
+ * <p>
+ * @Version 1.0
  */
 @Data
 public class Human implements Serializable {

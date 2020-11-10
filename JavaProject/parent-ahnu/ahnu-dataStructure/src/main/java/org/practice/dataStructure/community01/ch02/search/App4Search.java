@@ -2,8 +2,11 @@ package org.practice.dataStructure.community01.ch02.search;
 
 /**
  * @Desc App4Search
- * @Author
- * @Date 2019年7月8日09:36:20
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2012-07-04 09:00:00
+ * <p>
  * @Version 1.0
  */
 public class App4Search {

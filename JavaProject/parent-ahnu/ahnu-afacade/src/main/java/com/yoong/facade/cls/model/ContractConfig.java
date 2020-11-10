@@ -6,9 +6,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 合同的配置类
- *
- * @author yoong
+ * @Desc ContractConfig
+ * <p>
+ * @Author 20180112002
+ * <p>
+ * @Date 2018-01-15 09:00:00
+ * <p>
+ * @Version 1.0
  */
 @Data
 public class ContractConfig {

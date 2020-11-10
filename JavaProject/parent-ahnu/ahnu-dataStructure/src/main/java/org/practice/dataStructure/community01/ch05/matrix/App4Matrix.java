@@ -4,8 +4,11 @@ import java.util.PriorityQueue;
 
 /**
  * @Desc App4Matrix
- * @Author
- * @Date
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2012-07-04 09:00:00
+ * <p>
  * @Version 1.0
  */
 public class App4Matrix {

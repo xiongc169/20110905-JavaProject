@@ -6,9 +6,9 @@ package org.practice.algorithm.community01.ch01.inference;
  * https://www.cnblogs.com/huangxincheng/archive/2011/12/29/2305525.html
  * <p>
  * @Author yoong
- * <p/>
+ * <p>
  * @Date 2019年2月14日10:15:00
- * <p/>
+ * <p>
  * @Version 1.0
  */
 public class App4Inference {

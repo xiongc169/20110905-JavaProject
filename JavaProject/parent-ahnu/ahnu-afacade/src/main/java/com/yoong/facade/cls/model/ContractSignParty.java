@@ -3,9 +3,13 @@ package com.yoong.facade.cls.model;
 import lombok.Data;
 
 /**
- * 合同签署方信息
- *
- * @author yoong
+ * @Desc ContractSignParty
+ * <p>
+ * @Author 20180112002
+ * <p>
+ * @Date 2018-01-15 09:00:00
+ * <p>
+ * @Version 1.0
  */
 @Data
 public class ContractSignParty {

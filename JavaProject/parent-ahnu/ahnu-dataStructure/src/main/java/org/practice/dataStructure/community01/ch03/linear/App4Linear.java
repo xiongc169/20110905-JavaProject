@@ -2,8 +2,11 @@ package org.practice.dataStructure.community01.ch03.linear;
 
 /**
  * @Desc App4Linear
- * @Author
- * @Date 2019年11月29日17:58:42
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2012-07-04 09:00:00
+ * <p>
  * @Version 1.0
  */
 public class App4Linear {
