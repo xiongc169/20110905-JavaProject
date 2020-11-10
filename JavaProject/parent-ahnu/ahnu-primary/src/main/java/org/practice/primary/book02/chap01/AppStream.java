@@ -9,12 +9,14 @@ import java.nio.file.FileSystem;
 import java.nio.file.*;
 import java.util.Properties;
 import java.util.Scanner;
+import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 /**
  * @Desc 《Java核心技术·卷2·高级特性·第9版》第一章、流与文件
  * PS：标准的IO(BIO)基于字节流、字符流(Stream)进行操作的，而NIO是基于通道(Channel)、缓冲区(Buffer)进行操作；
+ * https://www.jb51.net/books/328275.html
  * <p>
  * @Author yoong
  * <p>
@@ -68,6 +70,9 @@ public class AppStream {
             //1.7、内存映射文件
             memoryMappedFile0107();
 
+            RandomAccessFile randomAccessFile = new RandomAccessFile(txtFileName, "rw");
+            FileChannel fileChannel = randomAccessFile.getChannel();
+
             systemIn();
             download(videoUrl, mp4FileName01, mp4FileName02);
             download02(videoUrl, mp4FileName01);
@@ -109,6 +114,8 @@ public class AppStream {
             }
             byte[] result = byteArrayOutputStream.toByteArray();
             System.out.println("result.length  " + result.length);
+
+            ZipEntry entry = zipInputStream.getNextEntry();
 
             //关闭输入流
             byteArrayOutputStream.close();

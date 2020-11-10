@@ -12,6 +12,7 @@ import java.util.zip.CRC32;
 
 /**
  * @Desc 《Java核心技术·卷2·高级特性·第9版》1.7、内存映射文件
+ * https://www.jb51.net/books/328275.html
  * <p>
  * @Author yoong
  * <p>

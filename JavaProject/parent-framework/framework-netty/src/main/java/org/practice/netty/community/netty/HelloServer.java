@@ -36,9 +36,6 @@ public class HelloServer {
 
         /**
          * 当有客户端绑定到服务端的时候触发，打印"Hello world, I'm server."
-         *
-         * @alia OneCoder
-         * @author lihzh
          */
         @Override
         public void channelConnected(ChannelHandlerContext ctx, ChannelStateEvent e) {

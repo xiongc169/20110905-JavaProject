@@ -10,7 +10,7 @@ package org.practice.algorithm.community01;
  * <p>
  * @Version 1.0
  */
-public class AppAlgorithm01 {
+public class AppAlgorithm {
 
     /**
      * 入口函数

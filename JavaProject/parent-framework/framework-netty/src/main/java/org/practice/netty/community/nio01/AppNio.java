@@ -10,12 +10,18 @@ import java.nio.file.StandardOpenOption;
 import java.util.concurrent.Future;
 
 /**
- * Java NIO教程
+ * @Desc Java NIO教程
  * https://www.jianshu.com/p/465ecd909f8c
  * Java NIO 教程(一) 概述
  * https://www.jianshu.com/p/f22fa0199f91
  * Java NIO 教程(二) Channel
  * https://www.jianshu.com/p/1ecacad9beb5
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2016年4月1日
+ * <p>
+ * @Version 1.0
  */
 public class AppNio {
     private static String filePath = "D:\\Temp\\IO";

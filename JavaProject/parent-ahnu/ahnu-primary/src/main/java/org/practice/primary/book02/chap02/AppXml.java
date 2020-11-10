@@ -5,6 +5,7 @@ import java.util.Properties;
 
 /**
  * @Desc 《Java核心技术·卷2·高级特性·第9版》第二章、XML
+ * https://www.jb51.net/books/328275.html
  * <p>
  * @Author yoong
  * <p>
