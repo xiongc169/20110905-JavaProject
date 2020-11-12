@@ -12,10 +12,14 @@ import java.util.Objects;
 
 /**
  * @Desc 《Java核心技术·卷1》第五章、继承
- * @Author
- * @Date
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019/2/1 11:50
+ * <p>
  * @Version 1.0
  */
+
 public class AppInherit {
 
     /**

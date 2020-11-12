@@ -1,11 +1,5 @@
 package org.practice.primary.book01.chap06;
 
-/**
- * @Desc MyInterface
- * @Author
- * @Date
- * @Version 1.0
- */
 public interface MyInterface {
 
     /**

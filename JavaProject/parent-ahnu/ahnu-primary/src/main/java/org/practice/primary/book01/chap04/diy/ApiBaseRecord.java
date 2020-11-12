@@ -2,12 +2,6 @@ package org.practice.primary.book01.chap04.diy;
 
 import lombok.Data;
 
-/**
- * @Desc ApiBaseRecord
- * @Author
- * @Date
- * @Version 1.0
- */
 @Data
 public class ApiBaseRecord {
     private String Id;

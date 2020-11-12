@@ -3,12 +3,6 @@ package org.practice.primary.book01.chap12.ch1202;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @Desc 泛型类
- * @Author
- * @Date
- * @Version 1.0
- */
 public class TClass<T, U, S> {
 
     private T data;

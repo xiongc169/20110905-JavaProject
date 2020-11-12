@@ -4,12 +4,6 @@ import org.practice.primary.book01.chap04.bok.Employee;
 
 import java.util.Date;
 
-/**
- * @Desc Manager
- * @Author
- * @Date
- * @Version 1.0
- */
 public class Manager extends Employee {
 
     private Double bonus;

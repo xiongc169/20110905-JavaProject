@@ -7,12 +7,15 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import static java.lang.Math.*;
+import static java.lang.Math.pow;
 
 /**
- * @Desc 《Java核心技术·卷1》第四章、类与对象
- * @Author
- * @Date
+ * @Desc 《《Java核心技术·卷1》第四章、类与对象
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019/2/1 11:50
+ * <p>
  * @Version 1.0
  */
 public class AppObject {

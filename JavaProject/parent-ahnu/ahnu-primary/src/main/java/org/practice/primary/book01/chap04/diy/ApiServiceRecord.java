@@ -4,12 +4,6 @@ import lombok.Data;
 
 import java.util.Date;
 
-/**
- * @Desc ApiServiceRecord
- * @Author
- * @Date
- * @Version 1.0
- */
 @Data
 public class ApiServiceRecord extends ApiBaseRecord {
     private String Id;

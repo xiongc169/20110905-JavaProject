@@ -2,12 +2,6 @@ package org.practice.primary.book01.chap04.bok;
 
 import java.util.Date;
 
-/**
- * @Desc final Employee
- * @Author
- * @Date
- * @Version 1.0
- */
 public class Employee implements Comparable<Employee>, Cloneable {
 
     {

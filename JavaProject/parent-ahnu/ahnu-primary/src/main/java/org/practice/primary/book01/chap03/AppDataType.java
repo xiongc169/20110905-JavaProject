@@ -7,11 +7,13 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 
 /**
- * @author yoong
+ * @Desc 《Java核心技术·卷1》第三章、Java的基本程序设计结构
  * <p>
- * @desc 《Java核心技术·卷1》第三章、Java的基本程序设计结构
+ * @Author yoong
  * <p>
- * @date 2019/2/1 11:50
+ * @Date 2019/2/1 11:50
+ * <p>
+ * @Version 1.0
  */
 public class AppDataType {
 

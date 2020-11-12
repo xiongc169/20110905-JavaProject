@@ -14,7 +14,6 @@
         <module>ahnu-dataStructure</module>
         <module>ahnu-designPattern</module>
         <module>ahnu-primary</module>
-        <module>ahnu-utility</module>
     </modules>
 
     <properties>

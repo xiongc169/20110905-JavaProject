@@ -6,12 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
 
-/**
- * @Desc TalkingClock
- * @Author
- * @Date
- * @Version 1.0
- */
 public class TalkingClock {
     private int interval;
     private boolean beep;

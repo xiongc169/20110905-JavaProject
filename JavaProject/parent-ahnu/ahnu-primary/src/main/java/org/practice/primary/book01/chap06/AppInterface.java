@@ -11,8 +11,11 @@ import java.util.Date;
 
 /**
  * @Desc 《Java核心技术·卷1》第六章、接口与内部类
- * @Author
- * @Date
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019/2/1 11:50
+ * <p>
  * @Version 1.0
  */
 public class AppInterface {

@@ -1,13 +1,19 @@
-package org.practice.utility;
+package org.practice.primary.oj;
 
-import org.practice.utility.model.ListNode;
+import org.practice.primary.oj.model.ListNode;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
 
 /**
- * @Desc https://leetcode-cn.com/
- * @Author
+ * @Desc https://leetcode-cn.com
+ * <p>
+ * @Author yoong
+ * <p>
  * @Date 2019年7月8日14:41:19
+ * <p>
  * @Version 1.0
  */
 public class LeetCodeApp {
@@ -365,7 +371,7 @@ public class LeetCodeApp {
         Queue headIndex = new ArrayDeque();
 
         for (int i = 0; i < regex.length; i++) {
-            
+
         }
 
         return false;

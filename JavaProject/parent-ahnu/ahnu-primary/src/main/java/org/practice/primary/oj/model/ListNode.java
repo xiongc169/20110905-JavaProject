@@ -1,4 +1,4 @@
-package org.practice.utility.model;
+package org.practice.primary.oj.model;
 
 /**
  * Definition for singly-linked list.

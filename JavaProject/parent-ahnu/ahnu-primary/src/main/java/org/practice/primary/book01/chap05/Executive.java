@@ -1,11 +1,5 @@
 package org.practice.primary.book01.chap05;
 
-/**
- * @Desc Executive
- * @Author
- * @Date
- * @Version 1.0
- */
 public class Executive extends Manager {
 
     {

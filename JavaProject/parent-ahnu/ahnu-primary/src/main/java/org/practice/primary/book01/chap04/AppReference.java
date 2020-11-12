@@ -3,10 +3,10 @@ package org.practice.primary.book01.chap04;
 import org.practice.primary.book01.chap04.bok.Employee;
 
 /**
+ * @Desc 《Java核心技术·卷1》第四章、类与对象 P123
  * 一个方法不能修改一个基本数据类型的参数(即数值型和布尔型)；
  * 一个方法可以改变一个对象参数的状态；
  * 一个方法不能让对象参数引用一个新的对象；
- * ——《Java核心技术·卷1》第四章、类与对象 P123
  * <p>
  * 流言终结者：Java是引用传递还是值传递？
  * PS：基本类型：变量存储的是值；引用类型：变量存储的是实例对象的地址；
@@ -23,6 +23,12 @@ import org.practice.primary.book01.chap04.bok.Employee;
  * 传值引用和调用引用的区别
  * PS：C语言；传值引用一般就是生成一个临时对象，而引用调用是调用参数本身。
  * https://www.cnblogs.com/lovemargin/p/10562386.html
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019/2/1 11:50
+ * <p>
+ * @Version 1.0
  */
 public class AppReference {
 

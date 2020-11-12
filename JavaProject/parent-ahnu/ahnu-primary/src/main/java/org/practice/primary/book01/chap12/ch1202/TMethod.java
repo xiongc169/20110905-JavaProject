@@ -3,12 +3,6 @@ package org.practice.primary.book01.chap12.ch1202;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * @Desc 泛型方法
- * @Author
- * @Date
- * @Version 1.0
- */
 public class TMethod {
 
     private Object data;
