@@ -1,4 +1,4 @@
-package org.practice.cheguo.utils;
+package org.practice.utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

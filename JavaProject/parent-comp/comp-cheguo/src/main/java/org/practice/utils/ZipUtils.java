@@ -1,4 +1,4 @@
-package org.practice.cheguo.utils;
+package org.practice.utils;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

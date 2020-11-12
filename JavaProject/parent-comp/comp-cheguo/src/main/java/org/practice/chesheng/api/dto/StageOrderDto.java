@@ -1,8 +1,7 @@
-package org.practice.cheguo.api.dto;
+package org.practice.chesheng.api.dto;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -11,8 +10,12 @@ import java.util.List;
 
 /**
  * @Desc 分期管理-提单入参类
- * @Auth xc
+ * <p>
+ * @Author xc
+ * <p>
  * @Date 2020-6-30
+ * <p>
+ * @Version 1.0
  */
 @Data
 public class StageOrderDto implements Serializable {

@@ -1,12 +1,6 @@
-package org.practice.cheguo.utils;
+package org.practice.utils;
 
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 /**
  * @Desc java 中 byte[]、File、InputStream 互相转换
@@ -14,9 +8,9 @@ import java.io.InputStream;
  * <p>
  * @Author yoong
  * <p>
- * @Date yoong
+ * @Date 2018年1月15日
  * <p>
- * @Version yoong
+ * @Version 1.0
  */
 public class FileUtils {
 

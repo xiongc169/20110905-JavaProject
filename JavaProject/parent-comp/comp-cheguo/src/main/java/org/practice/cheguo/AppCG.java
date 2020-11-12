@@ -2,10 +2,10 @@ package org.practice.cheguo;
 
 import com.alibaba.fastjson.JSON;
 import com.yoong.facade.cls.model.Human;
-import org.practice.cheguo.api.dto.StageOrderDto;
-import org.practice.cheguo.api.request.CreateTemplateReq;
-import org.practice.cheguo.domain.ApproveFeeModParam;
-import org.practice.cheguo.domain.EbizFeeInfo;
+import org.practice.chesheng.api.dto.StageOrderDto;
+import org.practice.chesheng.api.request.CreateTemplateReq;
+import org.practice.chesheng.domain.ApproveFeeModParam;
+import org.practice.chesheng.domain.EbizFeeInfo;
 import org.springframework.beans.BeanUtils;
 
 import javax.validation.Validation;
@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @Desc App
+ * @Desc AppCG
  * <p>
  * @Author yoong
  * <p>
@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
  * <p>
  * @Version 1.0
  */
-public class App {
+public class AppCG {
 
     /**
      * 入口函数

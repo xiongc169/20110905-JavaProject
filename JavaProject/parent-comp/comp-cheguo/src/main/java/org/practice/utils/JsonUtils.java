@@ -1,4 +1,4 @@
-package org.practice.cheguo.utils;
+package org.practice.utils;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;

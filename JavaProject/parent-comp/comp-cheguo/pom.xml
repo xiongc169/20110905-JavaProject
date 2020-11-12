@@ -27,6 +27,13 @@
             <scope>test</scope>
         </dependency>
 
+        <!--Hundsun-->
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.1</version>
+        </dependency>
+
         <dependency>
             <groupId>com.yoong.practice</groupId>
             <artifactId>ahnu-afacade</artifactId>
@@ -101,7 +108,7 @@
                             <transformers>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>org.practice.cheguo.App</mainClass>
+                                    <mainClass>org.practice.cheguo.AppCG</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

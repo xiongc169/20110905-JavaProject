@@ -1,25 +1,21 @@
 package org.practice.hundsun;
 
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import javax.activation.MimetypesFileTypeMap;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import javax.activation.MimetypesFileTypeMap;
-
 /**
- * @author 20180112002
- * @version 1.0
- * @description 上传客户事件的附件
- * @date 2017年8月7日 Hundsun
+ * @Desc 上传客户事件的附件
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2017年8月7日
+ * <p>
+ * @Version 1.0
  */
 public class UploadEventAttach {
 

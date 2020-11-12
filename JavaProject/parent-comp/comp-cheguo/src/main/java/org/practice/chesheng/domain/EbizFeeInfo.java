@@ -1,4 +1,4 @@
-package org.practice.cheguo.domain;
+package org.practice.chesheng.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

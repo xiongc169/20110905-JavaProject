@@ -1,4 +1,4 @@
-package org.practice.cheguo.api.request;
+package org.practice.chesheng.api.request;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * @Desc 创建合同模板入参类
  * <p>
- * @Author yoong
+ * @Author xc
  * <p>
  * @Date 2020年5月12日
  * <p>

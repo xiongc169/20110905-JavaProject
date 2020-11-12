@@ -1,4 +1,4 @@
-package org.practice.cheguo.domain;
+package org.practice.chesheng.domain;
 
 import lombok.Data;
 
@@ -7,8 +7,11 @@ import java.math.BigDecimal;
 
 /**
  * @Desc 业务审批-费用信息 修改入参类
+ * <p>
  * @Auth xc
+ * <p>
  * @Date 2020-8-14
+ * <p>
  * @Version 1.0
  */
 @Data

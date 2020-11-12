@@ -1,22 +1,20 @@
 package org.practice.hundsun;
 
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import javax.mail.Address;
-import javax.mail.Authenticator;
-import javax.mail.Message;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-
 /**
- * @author yoong
- * @description MailUtility.java
- * @date 2016年4月27日 上午10:15:58
+ * @Desc MailUtility.java
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2016年4月27日 上午10:15:58
+ * <p>
+ * @Version 1.0
  */
 public class MailUtility {
 
