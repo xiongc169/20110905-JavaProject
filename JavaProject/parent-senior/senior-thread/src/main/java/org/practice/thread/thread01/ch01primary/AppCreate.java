@@ -120,7 +120,7 @@ public class AppCreate {
      */
     public static void threadFactoryTest() {
         MyRunnable runnable = new MyRunnable();
-        MyThreadFactory threadFactory = new MyThreadFactory("Yoong");
+        MyThreadFactory threadFactory = new MyThreadFactory("yoong");
         for (int i = 0; i < 10; i++) {
             Thread thread = threadFactory.newThread(runnable);
             thread.start();

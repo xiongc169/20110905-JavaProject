@@ -14,7 +14,7 @@ public class UserServiceImpl implements UserService {
 
     public String getUserName() {
         //2017-10-25 15:00:54
-        String userName = "Yoong —— " + format.format(new Date());
+        String userName = "yoong —— " + format.format(new Date());
         return userName;
     }
 

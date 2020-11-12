@@ -1,17 +1,22 @@
-package org.practice.netty.community.netty;
+package org.practice.netty.community.netty.ch01.netty30;
+
+import org.jboss.netty.bootstrap.ClientBootstrap;
+import org.jboss.netty.channel.*;
+import org.jboss.netty.channel.socket.nio.NioClientSocketChannelFactory;
 
 import java.net.InetSocketAddress;
 import java.util.concurrent.Executors;
 
-import org.jboss.netty.bootstrap.ClientBootstrap;
-import org.jboss.netty.channel.ChannelHandlerContext;
-import org.jboss.netty.channel.ChannelPipeline;
-import org.jboss.netty.channel.ChannelPipelineFactory;
-import org.jboss.netty.channel.ChannelStateEvent;
-import org.jboss.netty.channel.Channels;
-import org.jboss.netty.channel.SimpleChannelHandler;
-import org.jboss.netty.channel.socket.nio.NioClientSocketChannelFactory;
-
+/**
+ * @Desc Java NIO框架Netty教程（一） – Hello Netty
+ * http://blog.csdn.net/kobejayandy/article/details/11493717
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2016年4月6日20:26:23
+ * <p>
+ * @Version 1.0
+ */
 public class HelloClient extends SimpleChannelHandler {
 
     /**
@@ -19,16 +24,17 @@ public class HelloClient extends SimpleChannelHandler {
      */
     public static void main(String args[]) {
         // Client服务启动器
-        ClientBootstrap bootstrap = new ClientBootstrap(
+        ClientBootstrap clientBootstrap = new ClientBootstrap(
                 new NioClientSocketChannelFactory(Executors.newCachedThreadPool(), Executors.newCachedThreadPool()));
+
         // 设置一个处理服务端消息和各种消息事件的类(Handler)
-        bootstrap.setPipelineFactory(new ChannelPipelineFactory() {
+        clientBootstrap.setPipelineFactory(new ChannelPipelineFactory() {
             public ChannelPipeline getPipeline() throws Exception {
                 return Channels.pipeline(new HelloClientHandler());
             }
         });
         // 连接到本地的8000端口的服务端
-        bootstrap.connect(new InetSocketAddress("127.0.0.1", 8000));
+        clientBootstrap.connect(new InetSocketAddress("127.0.0.1", 8000));
     }
 
     private static class HelloClientHandler extends SimpleChannelHandler {

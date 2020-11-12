@@ -12,7 +12,7 @@ import java.nio.charset.Charset;
  * 2、一个新连接到达ServerSocketChannel时，会创建一个SocketChannel。
  * https://www.jianshu.com/p/eeed1c7aec2d
  * <p>
- * @Author Yoong
+ * @Author yoong
  * <p>
  * @Date 2016年4月6日20:26:23
  * <p>

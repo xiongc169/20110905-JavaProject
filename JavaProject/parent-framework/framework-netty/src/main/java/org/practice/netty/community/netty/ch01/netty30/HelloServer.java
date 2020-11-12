@@ -1,17 +1,22 @@
-package org.practice.netty.community.netty;
+package org.practice.netty.community.netty.ch01.netty30;
+
+import org.jboss.netty.bootstrap.ServerBootstrap;
+import org.jboss.netty.channel.*;
+import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
 
 import java.net.InetSocketAddress;
 import java.util.concurrent.Executors;
 
-import org.jboss.netty.bootstrap.ServerBootstrap;
-import org.jboss.netty.channel.ChannelHandlerContext;
-import org.jboss.netty.channel.ChannelPipeline;
-import org.jboss.netty.channel.ChannelPipelineFactory;
-import org.jboss.netty.channel.ChannelStateEvent;
-import org.jboss.netty.channel.Channels;
-import org.jboss.netty.channel.SimpleChannelHandler;
-import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
-
+/**
+ * @Desc Java NIO框架Netty教程（一） – Hello Netty
+ * http://blog.csdn.net/kobejayandy/article/details/11493717
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2016年4月6日20:26:23
+ * <p>
+ * @Version 1.0
+ */
 public class HelloServer {
 
     /**
@@ -19,17 +24,17 @@ public class HelloServer {
      */
     public static void main(String args[]) {
         // Server服务启动器
-        ServerBootstrap bootstrap = new ServerBootstrap(
+        ServerBootstrap serverBootstrap = new ServerBootstrap(
                 new NioServerSocketChannelFactory(Executors.newCachedThreadPool(), Executors.newCachedThreadPool()));
 
         // 设置一个处理客户端消息和各种消息事件的类(Handler)
-        bootstrap.setPipelineFactory(new ChannelPipelineFactory() {
+        serverBootstrap.setPipelineFactory(new ChannelPipelineFactory() {
             public ChannelPipeline getPipeline() throws Exception {
                 return Channels.pipeline(new HelloServerHandler());
             }
         });
         // 开放8000端口供客户端访问。
-        bootstrap.bind(new InetSocketAddress(8000));
+        serverBootstrap.bind(new InetSocketAddress(8000));
     }
 
     private static class HelloServerHandler extends SimpleChannelHandler {

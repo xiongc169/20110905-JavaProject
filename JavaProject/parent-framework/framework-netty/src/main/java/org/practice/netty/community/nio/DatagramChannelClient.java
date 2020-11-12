@@ -9,7 +9,7 @@ import java.nio.channels.DatagramChannel;
  * @Desc Java NIO 教程(十一) Java NIO DatagramChannel
  * https://www.jianshu.com/p/1b1e1849344c
  * <p>
- * @Author Yoong
+ * @Author yoong
  * <p>
  * @Date 2016年4月6日20:26:23
  * <p>

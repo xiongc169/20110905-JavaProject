@@ -10,7 +10,7 @@ import java.nio.channels.SocketChannel;
  * PS：Java NIO中的 ServerSocketChannel 可以监听新进来的TCP连接的通道，就像标准IO中的ServerSocket一样。
  * https://www.jianshu.com/p/2b658824ed76
  * <p>
- * @Author Yoong
+ * @Author yoong
  * <p>
  * @Date 2016年4月6日20:26:23
  * <p>

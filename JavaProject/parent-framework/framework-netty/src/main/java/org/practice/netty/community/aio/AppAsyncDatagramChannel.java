@@ -9,7 +9,7 @@ package org.practice.netty.community.aio;
  * AsynchronousDatagramChannel: UDP异步Socket(jdk 7 b118已删除)。
  * https://www.jianshu.com/p/ba619a8ed32a
  * <p>
- * @Author Yoong
+ * @Author yoong
  * <p>
  * @Date 2016年4月6日20:26:23
  * <p>

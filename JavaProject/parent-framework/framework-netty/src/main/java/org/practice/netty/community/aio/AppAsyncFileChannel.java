@@ -23,7 +23,7 @@ import java.util.concurrent.Future;
  * PS：在Java 7中，AsynchronousFileChannel被添加到Java NIO。AsynchronousFileChannel使读取数据，并异步地将数据写入文件成为可能。
  * https://www.jianshu.com/p/b38f8c596193
  * <p>
- * @Author Yoong
+ * @Author yoong
  * <p>
  * @Date 2016年4月6日20:26:23
  * <p>
