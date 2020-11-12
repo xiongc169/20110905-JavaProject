@@ -14,7 +14,7 @@ import org.apache.ibatis.reflection.ReflectorFactory;
  * <p>
  * @Version 1.0
  */
-public class SourceApp {
+public class AppMybatisSource {
 
     /**
      * 入口函数

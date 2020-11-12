@@ -23,7 +23,13 @@ import java.sql.Statement;
 import java.util.List;
 
 /**
- * Hello world!
+ * @Desc WongUserManager
+ * <br>
+ * @Author Administrator
+ * <br>
+ * @Date 2018/1/16 16:41
+ * <br>
+ * @Version 1.0
  */
 public class WongUserManager {
 

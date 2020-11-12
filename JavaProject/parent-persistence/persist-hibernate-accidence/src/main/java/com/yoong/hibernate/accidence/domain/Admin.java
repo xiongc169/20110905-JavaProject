@@ -7,12 +7,6 @@ import javax.persistence.Id;
 import java.util.Date;
 import java.util.Objects;
 
-/**
- * @Desc Admin
- * @Author
- * @Date
- * @Version 1.0
- */
 @Entity
 public class Admin {
     private long id;

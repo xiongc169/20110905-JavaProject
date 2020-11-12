@@ -4,12 +4,6 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
 
-/**
- * @Desc RoleResource
- * @Author
- * @Date
- * @Version 1.0
- */
 @Entity
 @Table(name = "role_resource", schema = "wong_user", catalog = "")
 public class RoleResource {

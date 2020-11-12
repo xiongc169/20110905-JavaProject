@@ -7,12 +7,6 @@ import javax.persistence.Id;
 import java.util.Date;
 import java.util.Objects;
 
-/**
- * @Desc Customer
- * @Author
- * @Date
- * @Version 1.0
- */
 @Entity
 public class Customer {
     private long id;

@@ -4,12 +4,6 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Objects;
 
-/**
- * @Desc UserRole
- * @Author
- * @Date
- * @Version 1.0
- */
 @Entity
 @Table(name = "user_role", schema = "wong_user", catalog = "")
 public class UserRole {

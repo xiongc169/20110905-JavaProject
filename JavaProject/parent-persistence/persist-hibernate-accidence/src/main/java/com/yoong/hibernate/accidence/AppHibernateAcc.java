@@ -24,7 +24,7 @@ import java.util.Date;
  * <p>
  * @Version 1.0
  */
-public class App {
+public class AppHibernateAcc {
 
     /**
      * 入口函数

@@ -7,12 +7,6 @@ import javax.persistence.Id;
 import java.sql.Timestamp;
 import java.util.Objects;
 
-/**
- * @Desc Menu
- * @Author
- * @Date
- * @Version 1.0
- */
 @Entity
 public class Menu {
     private long id;

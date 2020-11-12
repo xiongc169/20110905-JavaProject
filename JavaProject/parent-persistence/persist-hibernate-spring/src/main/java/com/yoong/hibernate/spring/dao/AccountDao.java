@@ -10,12 +10,6 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 import java.util.UUID;
 
-/**
- * @Desc AccountDao
- * @Author
- * @Date
- * @Version 1.0
- */
 @Component
 public class AccountDao {
 

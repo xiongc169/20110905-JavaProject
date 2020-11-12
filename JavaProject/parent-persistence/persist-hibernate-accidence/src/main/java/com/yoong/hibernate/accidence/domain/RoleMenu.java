@@ -4,12 +4,6 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
 
-/**
- * @Desc RoleMenu
- * @Author
- * @Date
- * @Version 1.0
- */
 @Entity
 @Table(name = "role_menu", schema = "wong_user", catalog = "")
 public class RoleMenu {

@@ -1,15 +1,16 @@
 package com.yoong.jdbc;
 
 import java.sql.*;
-import java.sql.DriverManager;
 
 /**
- * @author yoong
- * <br>
- * @version 2015-08-28 09:55:26
- * <br>
  * @Desc MySQL JDBC URL中几个重要参数说明
  * http://www.cnblogs.com/yokoboy/archive/2013/03/01/2939315.html
+ * <p>
+ * @Author zhiTongChe
+ * <p>
+ * @Date 2012-08-28 09:55:26
+ * <p>
+ * @Version 1.0
  */
 public class DBManager {
 

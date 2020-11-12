@@ -4,12 +4,6 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
 
-/**
- * @Desc Account
- * @Author
- * @Date
- * @Version 1.0
- */
 @Entity
 public class Account {
     private long id;

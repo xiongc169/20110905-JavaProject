@@ -1,13 +1,17 @@
 package com.yoong.jdbc;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 
 /**
- * @author yoong
- * <br>
- * @version 2012-08-28 09:55:26
- * <br>
- * @Desc zhiTongChe
+ * @Desc AppTrans
+ * <p>
+ * @Author zhiTongChe
+ * <p>
+ * @Date 2012-08-28 09:55:26
+ * <p>
+ * @Version 1.0
  */
 public class AppTrans {
 

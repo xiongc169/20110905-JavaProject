@@ -4,7 +4,6 @@ import com.yoong.jpa.hibernate.dao.AccountDao;
 import com.yoong.jpa.hibernate.domain.Account;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,12 +13,15 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 /**
- * @Desc App
- * @Author
- * @Date
+ * @Desc AppHibernateJpa
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019-10-29
+ * <p>
  * @Version 1.0
  */
-public class App {
+public class AppHibernateJpa {
 
     /**
      * 入口函数

@@ -5,13 +5,15 @@ import java.util.Enumeration;
 import java.util.Scanner;
 
 /**
- * @author yoong
- * <br>
- * @version 2012-08-28 09:55:26
- * <br>
- * @Desc zhiTongChe
+ * @Desc AppJdbc
+ * <p>
+ * @Author zhiTongChe
+ * <p>
+ * @Date 2012-08-28 09:55:26
+ * <p>
+ * @Version 1.0
  */
-public class App {
+public class AppJdbc {
 
     private static String driverName = "com.mysql.cj.jdbc.Driver";
     private static String mysqlUrl = "jdbc:mysql://127.0.0.1:3306/wong_user?serverTimezone=UTC";

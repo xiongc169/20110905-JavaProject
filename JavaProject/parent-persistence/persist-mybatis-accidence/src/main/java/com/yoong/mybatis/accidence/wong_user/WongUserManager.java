@@ -1,6 +1,8 @@
 package com.yoong.mybatis.accidence.wong_user;
 
-import org.apache.ibatis.datasource.jndi.JndiDataSourceFactory;
+import com.yoong.mybatis.accidence.wong_user.dao.AccountMapper;
+import com.yoong.mybatis.accidence.wong_user.domain.Account;
+import com.yoong.mybatis.accidence.wong_user.domain.AccountExample;
 import org.apache.ibatis.datasource.pooled.PooledDataSource;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.mapping.Environment;
@@ -10,11 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
-import com.yoong.mybatis.accidence.wong_user.dao.AccountMapper;
-import com.yoong.mybatis.accidence.wong_user.domain.Account;
-import com.yoong.mybatis.accidence.wong_user.domain.AccountExample;
 
-import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;

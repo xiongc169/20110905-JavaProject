@@ -1,9 +1,15 @@
 package com.yoong.mybatis.springx;
 
 /**
- * App
+ * @Desc AppMybatisSpring
+ * <br>
+ * @Author Administrator
+ * <br>
+ * @Date 2018/1/16 16:41
+ * <br>
+ * @Version 1.0
  */
-public class App {
+public class AppMybatisSpring {
     /**
      * 入口函数
      */
