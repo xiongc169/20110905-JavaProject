@@ -7,12 +7,15 @@ import org.dubbo.source.api.Robot;
 import java.util.ServiceLoader;
 
 /**
- * @Desc App
- * @Author
- * @Date
+ * @Desc AppDubboSource
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2017-7-4
+ * <p>
  * @Version 1.0
  */
-public class App {
+public class AppDubboSource {
 
     /**
      * 入口函数

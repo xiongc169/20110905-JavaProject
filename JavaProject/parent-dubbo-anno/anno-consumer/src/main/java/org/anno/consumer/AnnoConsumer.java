@@ -10,7 +10,13 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 /**
- * AnnoConsumer
+ * @Desc AnnoConsumer
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019年6月28日14:09:29
+ * <p>
+ * @Version 1.0
  */
 public class AnnoConsumer {
 

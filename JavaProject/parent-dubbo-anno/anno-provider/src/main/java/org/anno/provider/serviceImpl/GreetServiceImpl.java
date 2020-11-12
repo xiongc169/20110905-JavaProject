@@ -2,12 +2,6 @@ package org.anno.provider.serviceImpl;
 
 import org.anno.common.facade.GreetService;
 
-/**
- * @Desc GreetImpl
- * @Author
- * @Date
- * @Version 1.0
- */
 public class GreetServiceImpl implements GreetService {
 
     @Override

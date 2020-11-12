@@ -9,7 +9,7 @@ package com.yoong.rocketmq;
  * <p>
  * @Version 1.0
  */
-public class App {
+public class AppRocketMQ {
 
     /**
      * 入口函数

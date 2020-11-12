@@ -1,9 +1,18 @@
 package org.dubbo.provider;
 
-import java.util.Scanner;
-
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
+import java.util.Scanner;
+
+/**
+ * @Desc Provider
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2017-4-1
+ * <p>
+ * @Version 1.0
+ */
 public class Provider {
 
     /**

@@ -7,7 +7,13 @@ import org.dubbo.common.facade.CalculatorService;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 /**
- * Hello world!
+ * @Desc Consumer
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2017-4-1
+ * <p>
+ * @Version 1.0
  */
 public class Consumer {
 
