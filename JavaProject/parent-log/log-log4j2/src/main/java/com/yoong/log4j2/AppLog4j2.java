@@ -4,7 +4,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * AppLog4j2
+ * @Desc AppLog4j2
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019年11月22日
+ * <p>
+ * @Version 1.0
  */
 public class AppLog4j2 {
 

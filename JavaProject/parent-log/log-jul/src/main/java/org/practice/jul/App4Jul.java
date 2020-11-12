@@ -1,9 +1,16 @@
 package org.practice.jul;
 
-import java.util.logging.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
- * App4Jul
+ * @Desc App4Jul
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019年11月22日
+ * <p>
+ * @Version 1.0
  */
 public class App4Jul {
 

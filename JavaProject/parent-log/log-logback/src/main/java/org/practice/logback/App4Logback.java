@@ -4,7 +4,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * App4Logback
+ * @Desc App4Logback
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019年11月22日
+ * <p>
+ * @Version 1.0
  */
 public class App4Logback {
 

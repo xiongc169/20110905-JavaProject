@@ -4,7 +4,13 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
- * App4Jcl
+ * @Desc App4Jcl
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019年11月22日
+ * <p>
+ * @Version 1.0
  */
 public class App4Jcl {
 

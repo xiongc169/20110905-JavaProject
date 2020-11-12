@@ -1,11 +1,20 @@
 package org.practice.log4j;
 
-import org.apache.log4j.*;
+import org.apache.log4j.ConsoleAppender;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PatternLayout;
 
 /**
- * Log4j使用详解
+ * @Desc Log4j使用详解
  * PS：由Log4j(默认)、Servlet解析配置文件，代码中调用BasicConfigurator.configure()，PropertyConfigurator.configure解析配置文件；
  * https://blog.csdn.net/u011781521/article/details/55002553
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019年11月22日
+ * <p>
+ * @Version 1.0
  */
 public class AppLog4j {
 
