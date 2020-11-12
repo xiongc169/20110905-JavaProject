@@ -37,5 +37,4 @@ public class AsyncTimeServerHandler implements Runnable {
     public void doAccept() {
         asyncChannel.accept(this, new AcceptCompletionHandler());
     }
-
 }

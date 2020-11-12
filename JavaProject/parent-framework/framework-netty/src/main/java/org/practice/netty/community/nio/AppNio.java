@@ -1,4 +1,6 @@
-package org.practice.netty.community.nio01;
+package org.practice.netty.community.nio;
+
+import sun.nio.ch.DirectBuffer;
 
 import java.io.RandomAccessFile;
 import java.nio.*;
@@ -71,6 +73,7 @@ public class AppNio {
         SocketChannel socketChannel = SocketChannel.open();
         ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
 
+        //堆内内存：分配JVM堆内存，属于GC管辖范围，由于需要拷贝所以速度相对较慢
         ByteBuffer byteBuffer = ByteBuffer.allocate(10);
         ShortBuffer shortBuffer = ShortBuffer.allocate(10);
         IntBuffer intBuffer = IntBuffer.allocate(10);
@@ -78,7 +81,15 @@ public class AppNio {
         FloatBuffer floatBuffer = FloatBuffer.allocate(10);
         DoubleBuffer doubleBuffer = DoubleBuffer.allocate(10);
         CharBuffer charBuffer = CharBuffer.allocate(10);
+        //内存映射文件
         ByteBuffer mappedByteBuffer = MappedByteBuffer.allocate(10);
+
+        //DirectByteBuffer 不是 public 的
+        //DirectByteBuffer directByteBuffer = new DirectByteBuffer();
+        //堆外内存：分配OS本地内存，不属于GC管辖范围，由于不需要内存拷贝所以速度相对较快
+        ByteBuffer directByteBuffer = ByteBuffer.allocateDirect(1024);
+        //clean()方法能有效及时回收直接缓存
+        ((DirectBuffer) directByteBuffer).cleaner().clean();
 
         ByteBuffer byteBuffer1 = ByteBuffer.allocate((int) fileChannel.size());
         Integer length = fileChannel.read(byteBuffer1);

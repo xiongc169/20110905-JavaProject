@@ -16,5 +16,4 @@ public class AcceptCompletionHandler implements CompletionHandler<AsynchronousSo
         exc.printStackTrace();
         attachment.latch.countDown();
     }
-
 }

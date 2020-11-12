@@ -125,5 +125,4 @@ public class TimeClientHandle implements Runnable {
             System.out.println("Send Order to server Succeed");
         }
     }
-
 }

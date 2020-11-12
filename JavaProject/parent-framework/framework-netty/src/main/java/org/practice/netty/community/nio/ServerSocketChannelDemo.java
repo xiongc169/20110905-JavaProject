@@ -1,10 +1,9 @@
-package org.practice.netty.community.nio01;
+package org.practice.netty.community.nio;
 
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
-import java.nio.charset.Charset;
 
 /**
  * @Desc Java NIO 教程(九) ServerSocketChannel

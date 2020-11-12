@@ -56,7 +56,5 @@ public class TimeServer {
                 server = null;
             }
         }
-
     }
-
 }

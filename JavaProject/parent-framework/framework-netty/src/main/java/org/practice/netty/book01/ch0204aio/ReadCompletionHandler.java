@@ -22,5 +22,4 @@ public class ReadCompletionHandler implements CompletionHandler<Integer, ByteBuf
     public void failed(Throwable exc, ByteBuffer attachment) {
 
     }
-
 }

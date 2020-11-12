@@ -4,7 +4,7 @@ import java.nio.channels.SocketChannel;
 
 /**
  * @Desc 《Netty权威指南·Java高性能NIO通信首选框架》2.3、NIO编程
- * PS：非阻塞IO
+ * PS：同步非阻塞IO
  * https://www.jb51.net/books/414868.html
  * <p>
  * @Author yoong

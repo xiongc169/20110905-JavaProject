@@ -9,6 +9,16 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 
+/**
+ * @Desc 《Netty权威指南·Java高性能NIO通信首选框架》3.3、Netty客户端开发
+ * https://www.jb51.net/books/414868.html
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2016年4月1日
+ * <p>
+ * @Version 1.0
+ */
 public class TimeClient {
 
 	public void connect(int port, String host) throws Exception {
@@ -38,5 +48,4 @@ public class TimeClient {
 
 		new TimeClient().connect(8087, "127.0.0.1");
 	}
-
 }

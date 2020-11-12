@@ -1,4 +1,4 @@
-package org.practice.netty.community.nio01;
+package org.practice.netty.community.nio;
 
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;

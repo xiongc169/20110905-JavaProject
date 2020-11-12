@@ -71,7 +71,5 @@ public class TimeClient {
                 socket = null;
             }
         }
-
     }
-
 }
