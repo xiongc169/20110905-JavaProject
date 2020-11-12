@@ -57,4 +57,13 @@ public class Company implements InitializingBean, DisposableBean {
     public void destroyMethod() {
         System.out.println("destroy-method - Company.destroyMethod()");
     }
+
+    /**
+     * 注意：重写Object的finalize()方法，不是其他类的方法
+     * import org.codehaus.groovy.util.Finalizable;
+     */
+    @Override
+    public void finalize() {
+        System.out.println("finalize - Company.finalize()");
+    }
 }

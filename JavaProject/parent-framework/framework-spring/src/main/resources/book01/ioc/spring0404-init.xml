@@ -12,6 +12,8 @@
 
     <bean id="commonAnnotationBeanPostProcessor" class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>
 
+    <bean id="firstBeanPostProcessor" class="org.practice.springfx.book01.part02_ioc.postprocessor.FirstBeanPostProcessor"/>
+
     <bean id="company_01" class="org.practice.springfx.book01.part02_ioc.initializing.Company" init-method="initMethod" destroy-method="destroyMethod">
         <property name="companyId" value="companyId-01"/>
         <property name="companyName" value="companyName-01"/>

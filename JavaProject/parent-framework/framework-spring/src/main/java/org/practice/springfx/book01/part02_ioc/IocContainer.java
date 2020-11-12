@@ -373,7 +373,10 @@ public class IocContainer {
      * Chap6.1.2：@PostConstruct、@PreDestroy
      * <p>
      * Spring InitializingBean init-method @PostConstruct 执行顺序(注-接-配)
-     * PS：Constructor > @PostConstruct(即BeanPostProcessor前置处理) > InitializingBean.afterPropertiesSet() > init-method > @PreDestroy > DisposableBean.destroy() > destroy-method
+     * PS：1、执行顺序：Constructor > BeanPostProcessor.postProcessBeforeInitialization(即前置处理) > @PostConstruct > InitializingBean.afterPropertiesSet() > init-method > BeanPostProcessor.postProcessAfterInitialization(即后置处理)
+     * > 使用 > 销毁close() > @PreDestroy > DisposableBean.destroy() > destroy-method
+     * 2、实现了Object.finalize()方法，close()方法调用时未执行。company.finalize()显示调用时，会执行。
+     * <p>
      * 实例化(反射\CGLib)、设置对象属性(BeanWrapper)、检查Aware接口、BeanPostProcessor前置处理、InitializingBean、init-method、BeanPostProcessor后置处理、析构相关接口、使用、DisposableBean
      * https://www.cnblogs.com/april-chen/p/8182631.html
      * https://blog.csdn.net/chendaoqiu/article/details/50700246
@@ -381,11 +384,13 @@ public class IocContainer {
      * https://blog.csdn.net/nrsc272420199/article/details/103226662
      */
     public static void initMethod040403() throws Exception {
-        //InitializingBean、init-method、Construct、PostConstruct
+        //Construct、BeanPostProcessor前置、@PostConstruct、InitializingBean、init-method、BeanPostProcessor后置、使用、销毁close()、@PreDestroy、DisposableBean、destroy-method
         ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("classpath:book01/ioc/spring0404-init.xml");
         Company company = (Company) classPathXmlApplicationContext.getBean("company_01");
         System.out.println(company);
+        //company.finalize();//放在close()之前，finalize()会执行
         classPathXmlApplicationContext.close();
+        company.finalize();//放在close()之前，finalize()也会执行
         System.out.println("Ending");
     }
 
