@@ -1,5 +1,6 @@
 package com.yoong.springboot.controller;
 
+import com.yoong.springboot.config.AuthConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
@@ -7,13 +8,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.yoong.springboot.config.AuthConfig;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * @Desc UserController.java
+ * @Desc UserController
  * <p>
  * @Author yoong
  * <p>

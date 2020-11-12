@@ -16,6 +16,15 @@ import javax.jms.TextMessage;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * @Desc JmsController
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2018年9月20日
+ * <p>
+ * @Version 1.0
+ */
 @Controller
 @RequestMapping("/jms")
 public class JmsController {
