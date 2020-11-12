@@ -18,7 +18,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * <p>
  * @Version 1.0
  */
-public class Spring30App {
+public class AppSpring30 {
 
     /**
      * 入口函数

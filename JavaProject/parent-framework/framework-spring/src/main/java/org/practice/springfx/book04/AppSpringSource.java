@@ -27,7 +27,7 @@ import static java.lang.System.getProperty;
  * <p>
  * @Version 1.0
  */
-public class SpringCodeApp {
+public class AppSpringSource {
 
     /**
      * 入口函数

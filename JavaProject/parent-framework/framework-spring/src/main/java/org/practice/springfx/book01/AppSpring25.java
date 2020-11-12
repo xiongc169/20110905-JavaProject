@@ -13,7 +13,7 @@ package org.practice.springfx.book01;
  * <p>
  * @Date 2016年12月13日
  */
-public class Spring25App {
+public class AppSpring25 {
 
     /**
      * 入口函数

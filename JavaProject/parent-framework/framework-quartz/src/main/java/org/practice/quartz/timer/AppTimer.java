@@ -6,19 +6,20 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * @Desc App
- * @Author
- * @Date
+ * @Desc AppTimer
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2016年8月10日
+ * <p>
  * @Version 1.0
  */
-public class TimeApp {
+public class AppTimer {
 
     private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSSS");
 
     /**
      * 入口函数
-     *
-     * @param args
      */
     public static void main(String[] args) {
         Timer timer = new Timer();

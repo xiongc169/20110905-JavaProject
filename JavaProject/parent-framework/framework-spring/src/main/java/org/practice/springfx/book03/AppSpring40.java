@@ -16,7 +16,7 @@ import org.springframework.context.support.GenericGroovyApplicationContext;
  * <p>
  * @Version 1.0
  */
-public class Spring40App {
+public class AppSpring40 {
 
     /**
      * 入口函数
