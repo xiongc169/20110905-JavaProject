@@ -1,4 +1,4 @@
-package org.practice.netty.community.netty.ch01.netty30;
+package org.practice.netty.community.netty.ch01.netty33;
 
 import org.jboss.netty.bootstrap.ClientBootstrap;
 import org.jboss.netty.channel.*;
@@ -13,7 +13,7 @@ import java.util.concurrent.Executors;
  * <p>
  * @Author yoong
  * <p>
- * @Date 2016年4月6日20:26:23
+ * @Date 2013年9月9日
  * <p>
  * @Version 1.0
  */
