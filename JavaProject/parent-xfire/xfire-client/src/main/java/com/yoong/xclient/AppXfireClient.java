@@ -6,16 +6,19 @@ import org.codehaus.xfire.client.XFireProxyFactory;
 import org.codehaus.xfire.service.Service;
 import org.codehaus.xfire.service.binding.ObjectServiceFactory;
 
-
 /**
- * Hello world!
+ * @Desc AppXfireClient
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019年3月1日15:28:03
+ * <p>
+ * @Version 1.0
  */
-public class App {
+public class AppXfireClient {
 
     /**
      * 入口函数
-     *
-     * @param args
      */
     public static void main(String[] args) {
         try {

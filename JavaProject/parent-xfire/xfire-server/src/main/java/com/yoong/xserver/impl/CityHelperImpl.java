@@ -9,8 +9,11 @@ import java.util.Date;
  * @Desc CityHelperImpl
  * PS：XFire框架实现WebService，201902-riskctrlgw与junyu的对接框架；
  * http://localhost:8080/xfire_server/services
- * @Author
- * @Date 2019年3月1日15:28:34
+ * <p>
+ * @Author yoong
+ * <p>
+ * @Date 2019年3月1日15:28:03
+ * <p>
  * @Version 1.0
  */
 public class CityHelperImpl implements ICityHelper {
