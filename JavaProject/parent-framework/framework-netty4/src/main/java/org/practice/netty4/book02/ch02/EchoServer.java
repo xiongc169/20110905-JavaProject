@@ -7,11 +7,14 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.util.concurrent.Future;
+import io.netty.util.concurrent.GenericFutureListener;
 
 import java.net.InetSocketAddress;
 
 /**
  * @Desc 《Netty实战》2.3、编写Echo服务器
+ * https://www.cnblogs.com/leesf456/p/6824345.html
  * <p>
  * @Author yoong
  * <p>
@@ -54,11 +57,21 @@ public class EchoServer {
                         }
                     });
             ChannelFuture channelFuture = serverBootstrap.bind().sync();
+            //channelFuture.addListener(new GenericFutureListener<Future<? super Void>>() {
+            //    @Override
+            //    public void operationComplete(Future<? super Void> future) throws Exception {
+            //        String msg = "GenericFutureListener.operationComplete";
+            //        System.out.println(msg);
+            //    }
+            //});
+            System.out.println("After bind");
             channelFuture.channel().closeFuture().sync();
+            System.out.println("After closeFuture");
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {
             group.shutdownGracefully().sync();
+            System.out.println("After shutdownGracefully");
         }
     }
 }

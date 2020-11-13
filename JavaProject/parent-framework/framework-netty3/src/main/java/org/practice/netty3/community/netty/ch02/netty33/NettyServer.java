@@ -55,12 +55,4 @@ public class NettyServer {
             super.channelConnected(ctx, e);
         }
     }
-
-    public static void instanceofTest() {
-        Integer integer = 10;
-        boolean instanceOf = integer instanceof Integer;
-        boolean isInstance = Integer.class.isInstance("");
-        System.out.println(instanceOf);
-        System.out.println(isInstance);
-    }
 }

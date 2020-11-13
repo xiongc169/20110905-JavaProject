@@ -12,6 +12,7 @@ import java.net.InetSocketAddress;
 
 /**
  * @Desc 《Netty实战》2.4、编写Echo客户端
+ * https://www.cnblogs.com/leesf456/p/6824345.html
  * <p>
  * @Author yoong
  * <p>
@@ -54,11 +55,14 @@ public class EchoClient {
                         }
                     });
             ChannelFuture channelFuture = bootstrap.connect().sync();
+            System.out.println("After connect");
             channelFuture.channel().closeFuture().sync();
+            System.out.println("After closeFuture");
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {
             group.shutdownGracefully().sync();
+            System.out.println("After shutdownGracefully");
         }
     }
 }

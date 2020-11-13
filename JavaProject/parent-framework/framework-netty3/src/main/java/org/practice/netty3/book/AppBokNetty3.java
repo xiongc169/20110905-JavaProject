@@ -17,8 +17,17 @@ public class AppBokNetty3 {
      */
     public static void main(String[] args) {
         try {
+            instanceofTest();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    public static void instanceofTest() {
+        Integer integer = 10;
+        boolean instanceOf = integer instanceof Integer;
+        boolean isInstance = Integer.class.isInstance("");
+        System.out.println(instanceOf);
+        System.out.println(isInstance);
     }
 }
