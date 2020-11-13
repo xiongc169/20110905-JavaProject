@@ -10,7 +10,8 @@
     <url>http://www.example.com</url>
 
     <modules>
-        <module>framework-netty</module>
+        <module>framework-netty3</module>
+        <module>framework-netty4</module>
         <module>framework-quartz</module>
         <module>framework-spring</module>
         <module>framework-springmvc</module>
