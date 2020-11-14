@@ -1,4 +1,4 @@
-package org.practice.netty3.community.aio;
+package org.practice.primary.book02.chap01.community.aio;
 
 import java.nio.ByteBuffer;
 import java.nio.channels.AsynchronousFileChannel;

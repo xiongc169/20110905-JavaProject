@@ -1,4 +1,4 @@
-package org.practice.netty3.community.nio;
+package org.practice.primary.book02.chap01.community.nio;
 
 import java.net.InetAddress;
 import java.net.InetSocketAddress;

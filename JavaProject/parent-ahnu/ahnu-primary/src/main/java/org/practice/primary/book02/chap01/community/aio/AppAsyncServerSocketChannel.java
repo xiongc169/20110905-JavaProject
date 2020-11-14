@@ -1,4 +1,4 @@
-package org.practice.netty3.community.aio;
+package org.practice.primary.book02.chap01.community.aio;
 
 /**
  * @Desc Java AIO基础
@@ -15,7 +15,7 @@ package org.practice.netty3.community.aio;
  * <p>
  * @Version 1.0
  */
-public class AppAsyncSocketChannel {
+public class AppAsyncServerSocketChannel {
 
     /**
      * 入口函数

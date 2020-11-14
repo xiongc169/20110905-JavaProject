@@ -1,4 +1,4 @@
-package org.practice.netty3.community.netty.ch02.netty33;
+package org.practice.netty3.community.ch02.netty33;
 
 import org.jboss.netty.bootstrap.ServerBootstrap;
 import org.jboss.netty.channel.*;
