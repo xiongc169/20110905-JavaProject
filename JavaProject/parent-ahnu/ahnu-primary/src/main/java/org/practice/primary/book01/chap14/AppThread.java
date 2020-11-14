@@ -5,11 +5,12 @@ import java.util.concurrent.*;
 
 /**
  * @Desc 《Java核心技术·卷1》第十四章、多线程
+ * PS：线程如何返回值； 线程结束如何回调； 线程间如何通信； 线程间共享变量； 线程安全；
  * https://www.jb51.net/books/227644.html
  * <p>
  * @Author yoong
  * <p>
- * @Date 2015-08-30 09:06:00
+ * @Date 2015-08-30 09:00:00
  * <p>
  * @Version 1.0
  */
