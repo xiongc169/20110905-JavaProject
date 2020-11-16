@@ -12,7 +12,6 @@
     <modules>
         <module>senior-java8</module>
         <module>senior-jvm</module>
-        <module>senior-thread</module>
     </modules>
 
     <properties>

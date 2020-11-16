@@ -1,4 +1,4 @@
-package org.practice.netty3.community.netty;
+package org.practice.netty3.community;
 
 /**
  * @Desc What is the difference between netty(io.netty.*) and jboss netty(org.jboss.netty.*)

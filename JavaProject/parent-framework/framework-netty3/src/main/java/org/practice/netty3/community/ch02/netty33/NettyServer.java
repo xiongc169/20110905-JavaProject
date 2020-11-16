@@ -3,6 +3,7 @@ package org.practice.netty3.community.ch02.netty33;
 import org.jboss.netty.bootstrap.ServerBootstrap;
 import org.jboss.netty.channel.*;
 import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
+import org.jboss.netty.channel.socket.oio.OioServerSocketChannelFactory;
 
 import java.net.InetSocketAddress;
 import java.util.concurrent.Executors;

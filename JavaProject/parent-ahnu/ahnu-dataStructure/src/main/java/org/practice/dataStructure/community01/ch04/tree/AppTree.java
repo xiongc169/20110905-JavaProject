@@ -14,7 +14,7 @@ import java.util.Scanner;
  * <p>
  * @Version 1.0
  */
-public class App4Tree {
+public class AppTree {
 
     private static Scanner scanner = new Scanner(System.in);
 

@@ -1,7 +1,7 @@
 package org.practice.jvm;
 
 /**
- * @Desc JvmApp
+ * @Desc AppJvm
  * <p>
  * @Author yoong
  * <p>

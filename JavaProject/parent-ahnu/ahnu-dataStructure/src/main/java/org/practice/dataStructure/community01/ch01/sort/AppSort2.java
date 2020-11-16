@@ -11,7 +11,7 @@ import java.util.Arrays;
  * <p>
  * @Version 1.0
  */
-public class App4Sort2 {
+public class AppSort2 {
 
     /**
      * 入口函数(排序算法)

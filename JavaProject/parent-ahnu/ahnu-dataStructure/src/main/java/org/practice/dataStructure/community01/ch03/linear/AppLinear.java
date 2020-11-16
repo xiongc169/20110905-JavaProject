@@ -9,7 +9,7 @@ package org.practice.dataStructure.community01.ch03.linear;
  * <p>
  * @Version 1.0
  */
-public class App4Linear {
+public class AppLinear {
 
     /**
      * 入口函数

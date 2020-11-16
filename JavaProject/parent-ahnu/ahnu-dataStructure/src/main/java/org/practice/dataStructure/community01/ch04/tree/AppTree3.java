@@ -13,7 +13,7 @@ import java.util.Scanner;
  * <p>
  * @Version 1.0
  */
-public class App4Tree3 {
+public class AppTree3 {
 
     /**
      * 二叉树的顺序存储

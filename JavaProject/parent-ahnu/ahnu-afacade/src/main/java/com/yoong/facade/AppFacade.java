@@ -1,22 +1,22 @@
-package org.practice.dataStructure.community01;
+package com.yoong.facade;
 
 /**
- * @Desc 数据结构
+ * @Desc facade
  * <p>
- * @Author yoong
+ * @Author 20180112002
  * <p>
- * @Date 2012-07-04 09:00:00
+ * @Date 2018-01-15 09:00:00
  * <p>
  * @Version 1.0
  */
-public class App {
+public class AppFacade {
 
     /**
      * 入口函数
      */
     public static void main(String[] args) {
         try {
-            System.out.println(args);
+            System.out.println("Hello World!");
         } catch (Exception ex) {
             ex.printStackTrace();
         }

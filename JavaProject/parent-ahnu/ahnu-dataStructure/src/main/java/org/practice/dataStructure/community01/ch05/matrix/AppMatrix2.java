@@ -12,7 +12,7 @@ import java.util.Deque;
  * <p>
  * @Version 1.0
  */
-public class App4Matrix2 {
+public class AppMatrix2 {
 
     /**
      * 入口函数

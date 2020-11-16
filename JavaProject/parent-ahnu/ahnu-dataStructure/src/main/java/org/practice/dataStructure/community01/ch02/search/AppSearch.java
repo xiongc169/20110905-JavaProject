@@ -9,7 +9,7 @@ package org.practice.dataStructure.community01.ch02.search;
  * <p>
  * @Version 1.0
  */
-public class App4Search {
+public class AppSearch {
 
     /**
      * 入口函数

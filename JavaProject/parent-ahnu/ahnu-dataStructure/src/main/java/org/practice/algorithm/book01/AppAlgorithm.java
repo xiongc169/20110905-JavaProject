@@ -10,7 +10,7 @@ package org.practice.algorithm.book01;
  * <p>
  * @Version 1.0
  */
-public class App {
+public class AppAlgorithm {
 
     /**
      * 入口函数

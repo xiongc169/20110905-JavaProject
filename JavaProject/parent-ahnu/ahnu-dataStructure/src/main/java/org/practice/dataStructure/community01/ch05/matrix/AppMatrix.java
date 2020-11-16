@@ -11,7 +11,7 @@ import java.util.PriorityQueue;
  * <p>
  * @Version 1.0
  */
-public class App4Matrix {
+public class AppMatrix {
 
     /**
      * 入口函数

@@ -1,17 +1,15 @@
-package org.practice.dataStructure.book01;
+package org.practice.dataStructure.community01;
 
 /**
- * @Desc 《数据结构·C语言版》严蔚敏 著
- * PS：2009年9月出版，大二上。
- * https://www.jb51.net/books/83175.html
+ * @Desc 数据结构
  * <p>
  * @Author yoong
  * <p>
- * @Date 2019年2月14日10:15:00
+ * @Date 2012-07-04 09:00:00
  * <p>
  * @Version 1.0
  */
-public class App {
+public class AppDataStructure {
 
     /**
      * 入口函数

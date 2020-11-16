@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
  * <p>
  * @Version 1.0
  */
-public class App4Sort {
+public class AppSort {
 
     /**
      * 入口函数(排序算法)
