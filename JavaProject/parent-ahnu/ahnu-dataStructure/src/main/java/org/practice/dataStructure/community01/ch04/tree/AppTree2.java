@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * @Desc App4Tree2
+ * @Desc AppTree2
  * <p>
  * @Author yoong
  * <p>

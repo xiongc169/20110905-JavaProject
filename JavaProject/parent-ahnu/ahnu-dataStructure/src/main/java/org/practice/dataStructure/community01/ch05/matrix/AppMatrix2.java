@@ -4,7 +4,7 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 /**
- * @Desc App4Matrix2
+ * @Desc AppMatrix2
  * <p>
  * @Author yoong
  * <p>

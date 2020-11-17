@@ -11,7 +11,7 @@ package org.practice.algorithm.community01.ch04.enums;
  * <p>
  * @Version 1.0
  */
-public class App4Enums {
+public class AppEnums {
 
     /**
      * 入口函数

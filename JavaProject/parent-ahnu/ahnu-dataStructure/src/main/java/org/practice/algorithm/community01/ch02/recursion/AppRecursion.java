@@ -11,7 +11,7 @@ package org.practice.algorithm.community01.ch02.recursion;
  * <p>
  * @Version 1.0
  */
-public class App4Recursion {
+public class AppRecursion {
 
     private static Integer count = 0;
 

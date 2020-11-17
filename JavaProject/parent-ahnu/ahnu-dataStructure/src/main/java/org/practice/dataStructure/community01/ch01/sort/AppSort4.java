@@ -7,7 +7,7 @@ import java.util.Arrays;
  * <p>
  * @Author yoong
  * <p>
- * @Date 2012-07-04 09:00:00
+ * @Date 2020-11-16 17:00:00
  * <p>
  * @Version 1.0
  */
@@ -17,13 +17,27 @@ public class AppSort4 {
      * 入口函数(排序算法)
      */
     public static void main(String[] args) {
-        Integer[] source = {11, 33, 44, 5, 6, 2, 99, 13, 35, 21, 87};
-        Integer[] source2 = Arrays.copyOf(source, source.length);
-        Integer[] source3 = Arrays.copyOf(source, source.length);
+        try {
+            Integer[] source = {11, 33, 44, 5, 6, 2, 99, 13, 35, 21, 87};
+            Integer[] source2 = Arrays.copyOf(source, source.length);
+            Integer[] source3 = Arrays.copyOf(source, source.length);
 
-        bubbleSort(source);
-        bubbleSort2(source);
-        selectSort(source);
+            //交换排序-冒泡排序
+            bubbleSort(source);
+            bubbleSort2(source);
+
+            //交换排序-快速排序
+            quickSort(source2, 0, source.length - 1);
+            for (int i = 0; i < source2.length; i++) {
+                System.out.print(source2[i] + "  ");
+            }
+            System.out.println();
+
+            //选择排序-直接选择排序
+            selectSort(source3);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     public static void bubbleSort(Integer[] source) {
@@ -58,6 +72,29 @@ public class AppSort4 {
         System.out.println();
     }
 
+    public static void quickSort(Integer[] source, Integer start, Integer end) {
+        if (start >= end) {
+            return;
+        }
+
+        int leftIndex = start;
+        int rightIndex = end;
+        int flag = source[leftIndex];
+        while (leftIndex < rightIndex) {
+            while (rightIndex > leftIndex && source[rightIndex] > flag) {
+                rightIndex--;
+            }
+            source[leftIndex] = source[rightIndex];
+            while (leftIndex < rightIndex && source[leftIndex] < flag) {
+                leftIndex++;
+            }
+            source[rightIndex] = source[leftIndex];
+        }
+        int mid = (leftIndex + rightIndex) / 2;
+        source[mid] = flag;
+        quickSort(source, start, mid - 1);
+        quickSort(source, mid + 1, end);
+    }
 
     public static void selectSort(Integer[] source) {
         for (int i = 0; i < source.length; i++) {

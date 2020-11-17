@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @Desc App4Sort
+ * @Desc AppSort
  * <p>
  * @Author yoong
  * <p>
@@ -20,33 +20,50 @@ public class AppSort {
      * 入口函数(排序算法)
      */
     public static void main(String[] args) {
-        Integer[] source = {11, 33, 44, 5, 6, 2, 99, 13, 35, 21, 87};
-        Integer[] source2 = Arrays.copyOf(source, source.length);
-        Integer[] source3 = Arrays.copyOf(source, source.length);
+        try {
+            Integer[] source = {11, 33, 44, 5, 6, 2, 99, 13, 35, 21, 87};
+            Integer[] source2 = Arrays.copyOf(source, source.length);
+            Integer[] source3 = Arrays.copyOf(source, source.length);
+            Integer[] source4 = Arrays.copyOf(source, source.length);
 
-        //Java原生排序
-        nativeSort();
+            //Java原生排序
+            nativeSort();
+            //移动集合
+            move(source2);
+            System.out.println("移动集合后：" + Arrays.toString(source2));
 
-        //交换排序-冒泡排序
-        System.out.println("冒泡排序前：" + Arrays.toString(source));
-        bubbleSort(source);
-        System.out.println("冒泡排序后：" + Arrays.toString(source));
+            //交换排序-冒泡排序
+            System.out.println("冒泡排序前：" + Arrays.toString(source));
+            bubbleSort(source);
+            System.out.println("冒泡排序后：" + Arrays.toString(source));
 
-        //交换排序-快速排序
-        System.out.println("快速排序前：" + Arrays.toString(source2));
-        quickSort(0, source2.length - 1, source2);
-        System.out.println("快速排序后：" + Arrays.toString(source2));
+            //交换排序-快速排序
+            System.out.println("快速排序前：" + Arrays.toString(source2));
+            quickSort(0, source2.length - 1, source2);
+            System.out.println("快速排序后：" + Arrays.toString(source2));
 
-        //选择排序-直接选择排序
-        System.out.println("选择排序前：" + Arrays.toString(source3));
-        straightSelectSort(source3);
-        System.out.println("选择排序后：" + Arrays.toString(source3));
+            //选择排序-直接选择排序
+            System.out.println("选择排序前：" + Arrays.toString(source3));
+            straightSelectSort(source3);
+            System.out.println("选择排序后：" + Arrays.toString(source3));
 
-        //TODO：选择排序-堆排序、插入排序-直接插入排序、插入排序-希尔排序、合并排序
-        //heapSort(source4);
-        //straightInsertSort(source4);
-        //shellSort(source4);
-        //mergeSort(source4);
+            //TODO：选择排序-堆排序
+            //heapSort(source4);
+
+            //TODO：插入排序-直接插入排序
+            //straightInsertSort(source4);
+
+            //TODO：插入排序-希尔排序
+            //shellSort(source4);
+
+            //TODO：归并排序
+            //mergeSort(source4);
+
+            //TODO：基数排序
+            //radixSort(source4);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
@@ -64,6 +81,15 @@ public class AppSort {
         //默认升序，Comparator.reverseOrder()则降序
         List source33 = Arrays.asList(source3).stream().sorted().collect(Collectors.toList());
         System.out.println(source33.size());
+    }
+
+    /**
+     * 移动集合元素
+     */
+    public static void move(Integer[] source) {
+        for (int i = 1; i < source.length; i++) {
+            source[i - 1] = source[i];
+        }
     }
 
     /**
@@ -164,6 +190,13 @@ public class AppSort {
      */
     @Deprecated
     public static void mergeSort(Integer[] source) {
+    }
+
+    /**
+     * 基数排序
+     */
+    @Deprecated
+    public static void radixSort(Integer[] source) {
     }
 }
 

@@ -17,7 +17,7 @@ public class AppAlgorithm {
      */
     public static void main(String[] args) {
         try {
-            System.out.println(args.length);
+            System.out.println(args);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

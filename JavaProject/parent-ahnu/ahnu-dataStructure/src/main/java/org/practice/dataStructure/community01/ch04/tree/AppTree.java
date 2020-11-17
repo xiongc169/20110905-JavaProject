@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * @Desc App4Tree
+ * @Desc AppTree
  * <p>
  * @Author yoong
  * <p>
@@ -44,12 +44,15 @@ public class AppTree {
             //先序遍历
             preOrderTraversal(root2);
             System.out.println("Finished PreOrder");
+
             //中序遍历
             inOrderTraversal(root2);
             System.out.println("Finished InOrder");
+
             //后序遍历
             postOrderTraversal(root2);
             System.out.println("Finished PostOrder");
+
             //按层遍历
             List<TreeNode> list = levelTraversal(root2);
             System.out.println("root.Level: " + list.size());

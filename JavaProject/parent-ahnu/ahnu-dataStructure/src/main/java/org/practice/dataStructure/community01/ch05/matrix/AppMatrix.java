@@ -3,7 +3,7 @@ package org.practice.dataStructure.community01.ch05.matrix;
 import java.util.PriorityQueue;
 
 /**
- * @Desc App4Matrix
+ * @Desc AppMatrix
  * <p>
  * @Author yoong
  * <p>

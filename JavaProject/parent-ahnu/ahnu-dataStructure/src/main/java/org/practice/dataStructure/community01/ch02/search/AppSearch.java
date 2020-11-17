@@ -1,7 +1,7 @@
 package org.practice.dataStructure.community01.ch02.search;
 
 /**
- * @Desc App4Search
+ * @Desc AppSearch
  * <p>
  * @Author yoong
  * <p>
@@ -15,21 +15,25 @@ public class AppSearch {
      * 入口函数
      */
     public static void main(String[] args) {
-
-        Integer[] source = new Integer[]{7, 30, 50, 21, 12, 14, 19};
-        Integer[] source2 = {11, 33, 44, 5, 6, 2, 99, 13, 35, 21, 87};
-        Integer[] source3 = {11, 33, 44, 55, 60, 98, 99, 103, 135, 210, 870};
-
         try {
+            Integer[] source = new Integer[]{7, 30, 50, 21, 12, 14, 19};
+            Integer[] source2 = {11, 33, 44, 5, 6, 2, 99, 13, 35, 21, 87};
+            Integer[] source3 = {11, 33, 44, 55, 60, 98, 99, 103, 135, 210, 870};
+
             //顺序查找
             int index = sequenceSearch(source, 50);
             System.out.println("sequenceSearch index: " + index);
+
             //折半查找(递归)
             int index2 = binarySearchRecursion(source3, 0, source3.length - 1, 60);
             System.out.println("binarySearchRecursion index: " + index2);
+
             //折半查找(非递归)
             int index3 = binarySearchNonRecursion(source3, 60);
             System.out.println("binarySearchNonRecursion index: " + index3);
+
+            //哈希查找
+            hashSearch();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -96,6 +100,9 @@ public class AppSearch {
         return -1;
     }
 
-    public static void getHash() {
+    /**
+     * 哈希查找
+     */
+    public static void hashSearch() {
     }
 }

@@ -11,7 +11,7 @@ package org.practice.algorithm.community01.ch01.inference;
  * <p>
  * @Version 1.0
  */
-public class App4Inference {
+public class AppInference {
 
     /**
      * 入口函数

@@ -11,7 +11,7 @@ package org.practice.algorithm.community01.ch03.greedy;
  * <p>
  * @Version 1.0
  */
-public class App4Greedy {
+public class AppGreedy {
 
     /**
      * 入口函数

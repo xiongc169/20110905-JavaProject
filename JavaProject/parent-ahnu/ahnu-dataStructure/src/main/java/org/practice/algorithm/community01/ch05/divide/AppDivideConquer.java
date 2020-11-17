@@ -10,7 +10,7 @@ package org.practice.algorithm.community01.ch05.divide;
  * <p>
  * @Version 1.0
  */
-public class App4DivideConquer {
+public class AppDivideConquer {
 
     private static int newIndex = 0;
 
