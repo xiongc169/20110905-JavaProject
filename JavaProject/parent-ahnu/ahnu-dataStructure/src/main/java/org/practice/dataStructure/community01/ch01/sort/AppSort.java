@@ -26,11 +26,13 @@ public class AppSort {
             Integer[] source3 = Arrays.copyOf(source, source.length);
             Integer[] source4 = Arrays.copyOf(source, source.length);
 
-            //Java原生排序
+            //Java原生排序——Arrays.sort()、Collections.sort()
             nativeSort();
             //移动集合
             move(source2);
             System.out.println("移动集合后：" + Arrays.toString(source2));
+            //for循环执行顺序流程
+            forTest();
 
             //交换排序-冒泡排序
             System.out.println("冒泡排序前：" + Arrays.toString(source));
@@ -89,6 +91,18 @@ public class AppSort {
     public static void move(Integer[] source) {
         for (int i = 1; i < source.length; i++) {
             source[i - 1] = source[i];
+        }
+    }
+
+    /**
+     * for循环执行顺序流程
+     * https://blog.csdn.net/bjbz_cxy/article/details/80225912
+     * https://blog.csdn.net/qq_37480297/article/details/90548018
+     */
+    public static void forTest() {
+        int k = 5;
+        for (; k > 0; k--) {
+            System.out.println(k);
         }
     }
 

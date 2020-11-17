@@ -48,7 +48,8 @@ public class AppException {
         NoSuchFieldError noSuchFieldError = null;
         NoSuchMethodError noSuchMethodError = null;
 
-
+        //Exception：
+        Exception exception = null;
         //RuntimeException：由于程序错误导致的异常，属于RuntimeException。
         RuntimeException runtimeException = null;
         ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException = null;
@@ -64,7 +65,6 @@ public class AppException {
         IllegalMonitorStateException illegalMonitorStateException = null;
 
         //其他异常(非运行时异常)：程序本身没有问题，由于像IO错误导致的异常
-        Exception exception = null;
         IOException ioException = null;
         FileNotFoundException fileNotFoundException = null;
         FileSystemException fileSystemException = null;

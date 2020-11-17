@@ -35,6 +35,9 @@ public class AppSort4 {
 
             //选择排序-直接选择排序
             selectSort(source3);
+
+            //选择排序-直接插入排序
+            insertSort(source3);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -109,6 +112,23 @@ public class AppSort4 {
                 source[i] = source[minIndex];
                 source[minIndex] = tmp;
             }
+        }
+        for (int i = 0; i < source.length; i++) {
+            System.out.print(source[i] + "  ");
+        }
+        System.out.println();
+    }
+
+    public static void insertSort(Integer[] source) {
+        //11, 33, 44, 5, 6, 2, 99, 13, 35, 21, 87
+        //2  5  6  11  13  21  33  35  44  87  99
+        for (int i = 1; i < source.length; i++) {
+            int tmp = source[i];
+            int j = i;
+            for (; j - 1 >= 0 && source[j - 1] > tmp; j--) {
+                source[j] = source[j - 1];
+            }
+            source[j] = tmp;
         }
         for (int i = 0; i < source.length; i++) {
             System.out.print(source[i] + "  ");

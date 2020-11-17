@@ -52,17 +52,21 @@ public class AppCollection {
         Stack stack = new Stack();
         Hashtable hashtable = new Hashtable();
         BitSet bitSet = new BitSet();
+        stack.push("AAAA");
+        stack.add("AAAA");
+        hashtable.put("Key", "Value");
+
         int num = 10;
         for (int i = 0; i < num; i++) {
             vector.add("vector-" + i);
         }
-        //输出一
+        //遍历一
         for (Object obj : vector) {
             System.out.println(obj);
         }
-        //输出二
+        //遍历二
         vector.forEach(item -> System.out.println(item));
-        //输出三
+        //遍历三
         Enumeration vectorEnumeration = vector.elements();
         Enumeration stackEnumeration = stack.elements();
         while (vectorEnumeration.hasMoreElements()) {
@@ -77,13 +81,13 @@ public class AppCollection {
         for (int i = 0; i < num; i++) {
             ((ArrayList) iterable).add("iterable-" + i);
         }
-        //输出一
+        //遍历一
         for (Object item : iterable) {
             System.out.println(item);
         }
-        //输出二
+        //遍历二
         iterable.forEach(item -> System.out.println(item));
-        //输出三
+        //遍历三
         Iterator iterator = iterable.iterator();
         while (iterator.hasNext()) {
             System.out.println(iterator.next());
@@ -96,7 +100,6 @@ public class AppCollection {
      */
     public static void collection1302() {
         LinkedList<String> linkedList = new LinkedList();
-
         linkedList.add("Amy");
         linkedList.add("Bob");
         linkedList.add("Carl");

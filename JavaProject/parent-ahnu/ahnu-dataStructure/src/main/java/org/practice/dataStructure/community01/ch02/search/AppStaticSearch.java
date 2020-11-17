@@ -1,7 +1,7 @@
 package org.practice.dataStructure.community01.ch02.search;
 
 /**
- * @Desc AppSearch
+ * @Desc 静态查找
  * <p>
  * @Author yoong
  * <p>
@@ -9,7 +9,7 @@ package org.practice.dataStructure.community01.ch02.search;
  * <p>
  * @Version 1.0
  */
-public class AppSearch {
+public class AppStaticSearch {
 
     /**
      * 入口函数
@@ -31,9 +31,6 @@ public class AppSearch {
             //折半查找(非递归)
             int index3 = binarySearchNonRecursion(source3, 60);
             System.out.println("binarySearchNonRecursion index: " + index3);
-
-            //哈希查找
-            hashSearch();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -98,11 +95,5 @@ public class AppSearch {
             }
         }
         return -1;
-    }
-
-    /**
-     * 哈希查找
-     */
-    public static void hashSearch() {
     }
 }
