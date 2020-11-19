@@ -160,6 +160,7 @@ public class AppCollection {
         TreeSet treeSet = new TreeSet();
         SortedSet sortedSet = new TreeSet();
         NavigableSet navigableSet = new TreeSet();
+        LinkedHashSet linkedHashSet = new LinkedHashSet();
 
         int num = 100;
         for (int i = 0; i < num; i++) {
@@ -220,6 +221,7 @@ public class AppCollection {
     public static void hashMap130208() {
         HashMap<String, String> hashMap = new HashMap<>();
         TreeMap<String, String> treeMap = new TreeMap<>();
+        LinkedHashMap linkedHashMap = new LinkedHashMap();
 
         //tableSizeFor is not public in HashMap, Cannot be accessed from outside package
         //HashMap.tableSizeFor(10);
