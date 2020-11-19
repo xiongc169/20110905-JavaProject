@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.sun.jmx.remote.internal.ArrayQueue;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * @Desc 《Java核心技术·卷1》第十三章、集合
@@ -203,6 +204,7 @@ public class AppCollection {
         Queue queue = new LinkedList();
         ArrayQueue arrayQueue = new ArrayQueue(10);
         PriorityQueue<String> priorityQueue = new PriorityQueue();
+        ConcurrentLinkedQueue concurrentLinkedQueue = new ConcurrentLinkedQueue();
 
         priorityQueue.add("yoong");
         priorityQueue.add("zara");
