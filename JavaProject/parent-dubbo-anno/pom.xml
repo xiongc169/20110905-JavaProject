@@ -10,9 +10,9 @@
     <url>http://maven.apache.org</url>
 
     <modules>
-        <module>anno-common</module>
-        <module>anno-consumer</module>
-        <module>anno-provider</module>
+        <module>dubbo-common-anno</module>
+        <module>dubbo-consumer-anno</module>
+        <module>dubbo-provider-anno</module>
     </modules>
 
     <properties>
