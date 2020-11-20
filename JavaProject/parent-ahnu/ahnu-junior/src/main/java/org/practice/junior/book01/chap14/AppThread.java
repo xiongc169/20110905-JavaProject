@@ -73,7 +73,7 @@ public class AppThread {
     }
 
     /**
-     * 14.6、阻塞队列
+     * 14.6、阻塞队列 (P665)
      */
     public static void blockingQueue1406() {
         LinkedBlockingQueue linkedBlockingQueue = new LinkedBlockingQueue();
@@ -81,24 +81,28 @@ public class AppThread {
 
         ArrayBlockingQueue arrayBlockingQueue = new ArrayBlockingQueue(10);
         PriorityBlockingQueue priorityBlockingQueue = new PriorityBlockingQueue();
+        DelayQueue delayQueue = new DelayQueue();
+        TransferQueue transferQueue = new LinkedTransferQueue();
     }
 
     /**
-     * 14.7、线程安全的集合
+     * 14.7、线程安全的集合 (P672)
      */
     public static void concurrentCollection1407() {
         // 14.7.1、高效的映射表、集合、队列
-        ConcurrentHashMap conHashMap = new ConcurrentHashMap();
-        ConcurrentSkipListMap conSkipListMap = new ConcurrentSkipListMap();
-        ConcurrentSkipListSet conSkipListSet = new ConcurrentSkipListSet();
-        ConcurrentLinkedQueue conLinkedQueue = new ConcurrentLinkedQueue();
-        conHashMap.put(1, "eva huang");
+        ConcurrentHashMap concurrentHashMap = new ConcurrentHashMap();
+        ConcurrentSkipListMap concurrentSkipListMap = new ConcurrentSkipListMap();
+        ConcurrentSkipListSet concurrentSkipListSet = new ConcurrentSkipListSet();
+        ConcurrentLinkedQueue concurrentLinkedQueue = new ConcurrentLinkedQueue();
+        concurrentHashMap.put(1, "eva huang");
 
         // 14.7.2、写数组的拷贝
         CopyOnWriteArrayList copyOnWriteArrayList = new CopyOnWriteArrayList();
         CopyOnWriteArraySet copyOnWriteArraySet = new CopyOnWriteArraySet();
 
         // 14.7.3、较早的线程安全集合
+        Vector vector = new Vector();
+        Hashtable hashtable = new Hashtable();
         List<Integer> syncArrayList = Collections.synchronizedList(new ArrayList<>());
         Map<Integer, String> syncHashMap = Collections.synchronizedMap(new HashMap<>());
     }
