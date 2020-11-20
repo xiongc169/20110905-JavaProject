@@ -13,7 +13,11 @@
         <module>ahnu-afacade</module>
         <module>ahnu-dataStructure</module>
         <module>ahnu-designPattern</module>
-        <module>ahnu-primary</module>
+        <module>ahnu-junior</module>
+        <module>ahnu-senior-java8</module>
+        <module>ahnu-senior-jvm</module>
+        <module>ahnu-senior-netty3</module>
+        <module>ahnu-senior-netty4</module>
     </modules>
 
     <properties>
