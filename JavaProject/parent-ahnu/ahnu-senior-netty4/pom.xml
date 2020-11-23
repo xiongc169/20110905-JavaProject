@@ -8,9 +8,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>com.yoong.practice</groupId>
-    <artifactId>ahnu-sennior-netty4</artifactId>
+    <artifactId>ahnu-senior-netty4</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>ahnu-sennior-netty4</name>
+    <name>ahnu-senior-netty4</name>
     <url>http://maven.apache.org</url>
 
     <properties>
