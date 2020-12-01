@@ -3,9 +3,9 @@ package org.dubbo.consumer.anno;
 import com.alibaba.dubbo.config.ApplicationConfig;
 import com.alibaba.dubbo.config.ReferenceConfig;
 import com.alibaba.dubbo.config.RegistryConfig;
+import org.dubbo.common.anno.facade.GreetService;
 import org.dubbo.consumer.anno.config.ConsumerConfig;
 import org.dubbo.consumer.anno.controller.UserController;
-import org.anno.common.facade.GreetService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 

@@ -1,4 +1,4 @@
-package org.anno.common;
+package org.dubbo.common.anno;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

@@ -3,6 +3,7 @@ package org.practice.junior.book01.chap03;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.nio.ByteBuffer;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
@@ -27,6 +28,11 @@ public class AppDataType {
             BigDecimal aa = new BigDecimal(7.22);
             BigDecimal bb = new BigDecimal(7.0);
             System.out.println(aa.subtract(bb));//0.21999999999999975131004248396493494510650634765625
+
+            Integer intValue = Integer.MAX_VALUE;
+            byte[] intBytes = new byte[4];
+            intBytes = ByteBuffer.allocate(4).putInt(intValue).array();
+            System.out.println(intBytes);
 
             //数据类型
             intType0303();

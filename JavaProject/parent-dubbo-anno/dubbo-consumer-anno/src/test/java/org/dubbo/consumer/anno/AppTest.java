@@ -1,4 +1,4 @@
-package org.anno.provider;
+package org.dubbo.consumer.anno;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

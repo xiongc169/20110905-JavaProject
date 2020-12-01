@@ -1,6 +1,6 @@
 package org.practice.junior.book01.chap14.thread02.ch03sync;
 
-import org.practice.thread.thread01.model.ThreadLocalModel;
+import org.practice.junior.book01.chap14.thread01.model.ThreadLocalModel;
 
 public class MyThreadLocal extends Thread {
 

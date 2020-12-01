@@ -1,8 +1,7 @@
 package org.dubbo.provider.anno.serviceImpl;
 
-import org.anno.common.facade.UserService;
-
 import com.alibaba.dubbo.config.annotation.Service;
+import org.dubbo.common.anno.facade.UserService;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

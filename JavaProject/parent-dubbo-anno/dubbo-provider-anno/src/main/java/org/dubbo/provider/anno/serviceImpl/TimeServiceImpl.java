@@ -1,6 +1,6 @@
 package org.dubbo.provider.anno.serviceImpl;
 
-import org.anno.common.facade.TimeService;
+import org.dubbo.common.anno.facade.TimeService;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

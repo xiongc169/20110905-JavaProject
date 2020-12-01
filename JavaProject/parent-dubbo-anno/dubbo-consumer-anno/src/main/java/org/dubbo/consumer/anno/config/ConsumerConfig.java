@@ -6,8 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
-@ComponentScan(value = {"org.anno.consumer.controller"})
+@ComponentScan(value = {"org.dubbo.consumer.anno.controller"})
 @PropertySource("classpath:anno-consumer.properties")
-@EnableDubbo(scanBasePackages = "org.anno.consumer.controller")
+@EnableDubbo(scanBasePackages = "org.dubbo.consumer.anno.controller")
 public class ConsumerConfig {
 }

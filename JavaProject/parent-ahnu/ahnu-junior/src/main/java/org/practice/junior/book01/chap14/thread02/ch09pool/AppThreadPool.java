@@ -1,9 +1,8 @@
 package org.practice.junior.book01.chap14.thread02.ch09pool;
 
+import org.practice.junior.book01.chap14.thread01.ch01primary.MyThreadFactory;
+
 import java.util.concurrent.*;
-
-import org.practice.thread.thread01.ch01primary.MyThreadFactory;
-
 import java.util.concurrent.ThreadPoolExecutor.AbortPolicy;
 
 /**

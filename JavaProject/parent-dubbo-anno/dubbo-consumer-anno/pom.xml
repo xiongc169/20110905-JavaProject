@@ -29,7 +29,7 @@
 
         <dependency>
             <groupId>com.yoong.practice</groupId>
-            <artifactId>dubbo-consumer-anno</artifactId>
+            <artifactId>dubbo-common-anno</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>

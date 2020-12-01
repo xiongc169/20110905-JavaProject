@@ -1,6 +1,6 @@
 package org.dubbo.provider.anno.serviceImpl;
 
-import org.anno.common.facade.GreetService;
+import org.dubbo.common.anno.facade.GreetService;
 
 public class GreetServiceImpl implements GreetService {
 
