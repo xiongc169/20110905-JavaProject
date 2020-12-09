@@ -18,7 +18,7 @@ public class AppJdbc {
     private static String driverName = "com.mysql.cj.jdbc.Driver";
     private static String mysqlUrl = "jdbc:mysql://127.0.0.1:3306/wong_user?serverTimezone=UTC";
     private static String userName = "root";
-    private static String pwd = "111111";
+    private static String pwd = "123456";
 
     /**
      * 入口函数
@@ -63,7 +63,7 @@ public class AppJdbc {
     public static void statementDemo() {
         String sql = "select * from `account`";
         Scanner scanner = new Scanner(System.in);
-        String id = scanner.nextLine();//输入：23 or 1=1
+        String id = scanner.nextLine();//输入：13 or 1=1
         if (id != null) {
             sql = sql + "where id =" + id;
         }
@@ -84,6 +84,15 @@ public class AppJdbc {
                 String column1 = results.getString(2);
                 System.out.println(column1);
             }
+
+            boolean executeResult = stmt.execute(sql);
+            if (executeResult) {
+                ResultSet result02 = stmt.getResultSet();
+                while (result02.next()) {
+                    String column1 = result02.getString(2);
+                    System.out.println(column1);
+                }
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {
@@ -97,7 +106,9 @@ public class AppJdbc {
     public static void preparedStatementDemo() {
         String sql = "select * from `account` where id = ?";
         Scanner scanner = new Scanner(System.in);
-        String id = scanner.nextLine();//输入：23 or 1=1
+        //输入：13 or 1=1
+        //输入：13' or '1'='1
+        String id = scanner.nextLine();
 
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -111,6 +122,8 @@ public class AppJdbc {
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, id);
             // 4、执行SQL
+            String preparedSql = stmt.toString();
+            System.out.println(preparedSql);
             results = stmt.executeQuery();
             while (results.next()) {
                 String column1 = results.getString(2);

@@ -1,4 +1,4 @@
-package com.yoong.mybatis.accidence.wong_user;
+package com.yoong.mybatis.accidence;
 
 import org.apache.ibatis.jdbc.SQL;
 import org.apache.ibatis.reflection.DefaultReflectorFactory;

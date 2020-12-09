@@ -38,9 +38,9 @@ public class WongUserManager {
      */
     public static void main(String[] args) {
         try {
-//            sqlSessionTemplateDemo();
-//            mapperFactoryDemo();
-//            mapperScannerDemo();
+            sqlSessionTemplateDemo();
+            mapperFactoryDemo();
+            mapperScannerDemo();
             transactionDemo();
         } catch (Exception ex) {
             ex.printStackTrace();

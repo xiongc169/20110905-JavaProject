@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.util.Date;
 import java.util.Objects;
 
-@Entity
+//@Entity
 public class Account {
     private long id;
     private String accountId;
@@ -25,8 +25,8 @@ public class Account {
     private String note2;
     private int isDelete;
 
-    @Id
-    @Column(name = "id", nullable = false)
+    //@Id
+    //@Column(name = "id", nullable = false)
     public long getId() {
         return id;
     }
@@ -35,8 +35,8 @@ public class Account {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "account_id", nullable = false, length = 50)
+    //@Basic
+    //@Column(name = "account_id", nullable = false, length = 50)
     public String getAccountId() {
         return accountId;
     }
@@ -45,8 +45,8 @@ public class Account {
         this.accountId = accountId;
     }
 
-    @Basic
-    @Column(name = "password", nullable = true, length = 100)
+    //@Basic
+    //@Column(name = "password", nullable = true, length = 100)
     public String getPassword() {
         return password;
     }
@@ -55,8 +55,8 @@ public class Account {
         this.password = password;
     }
 
-    @Basic
-    @Column(name = "contact_name", nullable = true, length = 40)
+    //@Basic
+    //@Column(name = "contact_name", nullable = true, length = 40)
     public String getContactName() {
         return contactName;
     }
@@ -65,8 +65,8 @@ public class Account {
         this.contactName = contactName;
     }
 
-    @Basic
-    @Column(name = "mobile", nullable = true, length = 20)
+    //@Basic
+    //@Column(name = "mobile", nullable = true, length = 20)
     public String getMobile() {
         return mobile;
     }
@@ -75,8 +75,8 @@ public class Account {
         this.mobile = mobile;
     }
 
-    @Basic
-    @Column(name = "phone", nullable = true, length = 20)
+    //@Basic
+    //@Column(name = "phone", nullable = true, length = 20)
     public String getPhone() {
         return phone;
     }
@@ -85,8 +85,8 @@ public class Account {
         this.phone = phone;
     }
 
-    @Basic
-    @Column(name = "email", nullable = true, length = 40)
+    //@Basic
+    //@Column(name = "email", nullable = true, length = 40)
     public String getEmail() {
         return email;
     }
@@ -95,8 +95,8 @@ public class Account {
         this.email = email;
     }
 
-    @Basic
-    @Column(name = "customer_id", nullable = true, length = 50)
+    //@Basic
+    //@Column(name = "customer_id", nullable = true, length = 50)
     public String getCustomerId() {
         return customerId;
     }
@@ -105,8 +105,8 @@ public class Account {
         this.customerId = customerId;
     }
 
-    @Basic
-    @Column(name = "customer_no", nullable = true, length = 50)
+    //@Basic
+    //@Column(name = "customer_no", nullable = true, length = 50)
     public String getCustomerNo() {
         return customerNo;
     }
@@ -115,8 +115,8 @@ public class Account {
         this.customerNo = customerNo;
     }
 
-    @Basic
-    @Column(name = "customer_name", nullable = true, length = 100)
+    //@Basic
+    //@Column(name = "customer_name", nullable = true, length = 100)
     public String getCustomerName() {
         return customerName;
     }
@@ -125,8 +125,8 @@ public class Account {
         this.customerName = customerName;
     }
 
-    @Basic
-    @Column(name = "create_time", nullable = false)
+    //@Basic
+    //@Column(name = "create_time", nullable = false)
     public Date getCreateTime() {
         return createTime;
     }
@@ -135,8 +135,8 @@ public class Account {
         this.createTime = createTime;
     }
 
-    @Basic
-    @Column(name = "modify_time", nullable = false)
+    //@Basic
+    //@Column(name = "modify_time", nullable = false)
     public Date getModifyTime() {
         return modifyTime;
     }
@@ -145,8 +145,8 @@ public class Account {
         this.modifyTime = modifyTime;
     }
 
-    @Basic
-    @Column(name = "note1", nullable = true, length = 200)
+    //@Basic
+    //@Column(name = "note1", nullable = true, length = 200)
     public String getNote1() {
         return note1;
     }
@@ -155,8 +155,8 @@ public class Account {
         this.note1 = note1;
     }
 
-    @Basic
-    @Column(name = "note2", nullable = true, length = 200)
+    //@Basic
+    //@Column(name = "note2", nullable = true, length = 200)
     public String getNote2() {
         return note2;
     }
@@ -165,8 +165,8 @@ public class Account {
         this.note2 = note2;
     }
 
-    @Basic
-    @Column(name = "is_delete", nullable = false)
+    //@Basic
+    //@Column(name = "is_delete", nullable = false)
     public int getIsDelete() {
         return isDelete;
     }
