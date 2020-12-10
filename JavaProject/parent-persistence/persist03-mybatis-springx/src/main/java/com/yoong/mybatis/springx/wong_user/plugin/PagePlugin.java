@@ -9,6 +9,7 @@ public class PagePlugin implements Interceptor {
 
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
+        System.out.println("PagePlugin.intercept");
         return null;
     }
 

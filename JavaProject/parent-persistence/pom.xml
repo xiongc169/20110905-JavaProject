@@ -16,7 +16,7 @@
         <module>persist04-hibernate-accidence</module>
         <module>persist05-hibernate-spring</module>
         <module>persist06-jpa-hibernate</module>
-        <module>persist07-jpa-spring</module>
+        <module>persist07-jpa-springboot</module>
     </modules>
 
     <properties>

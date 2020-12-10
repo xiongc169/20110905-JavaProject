@@ -74,6 +74,7 @@ public class AppJdbc {
         try {
             // 1、加载驱动：com.mysql.cj.jdbc.Driver
             Class clazz = Class.forName(driverName);
+            //DriverManager.registerDriver(com.mysql.cj.jdbc.Driver);
             // 2、创建连接 Connection
             conn = DriverManager.getConnection(mysqlUrl, userName, pwd);
             // 3、创建 Statement

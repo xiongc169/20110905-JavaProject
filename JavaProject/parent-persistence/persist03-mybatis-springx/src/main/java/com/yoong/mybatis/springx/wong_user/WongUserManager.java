@@ -39,9 +39,10 @@ public class WongUserManager {
     public static void main(String[] args) {
         try {
             sqlSessionTemplateDemo();
-            mapperFactoryDemo();
-            mapperScannerDemo();
+            mapperFactoryBeanDemo();
+            mapperScannerConfigurerDemo();
             transactionDemo();
+            //xaTransactionDemo();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -69,7 +70,7 @@ public class WongUserManager {
     /**
      * 容器中配置单个Mapper接口
      */
-    public static void mapperFactoryDemo() {
+    public static void mapperFactoryBeanDemo() {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath*:mybatis-spring.xml");
         AccountExample example = new AccountExample();
         example.createCriteria().andAccountIdEqualTo("ac-123456789");
@@ -82,7 +83,7 @@ public class WongUserManager {
     /**
      * 容器中配置多个Mapper接口
      */
-    public static void mapperScannerDemo() {
+    public static void mapperScannerConfigurerDemo() {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath*:mybatis-spring.xml");
         AccountService accountService = (AccountService) context.getBean("accountService");
         accountService.getAccounts();

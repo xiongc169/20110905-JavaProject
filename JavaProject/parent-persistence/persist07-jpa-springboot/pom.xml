@@ -8,9 +8,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>com.yoong.practice</groupId>
-    <artifactId>persist07-jpa-spring</artifactId>
+    <artifactId>persist07-jpa-springboot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>persist07-jpa-spring</name>
+    <name>persist07-jpa-springboot</name>
 
     <properties>
         <java.version>1.8</java.version>

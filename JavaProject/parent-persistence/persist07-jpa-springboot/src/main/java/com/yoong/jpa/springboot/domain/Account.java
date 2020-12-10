@@ -1,4 +1,4 @@
-package com.yoong.jpa.spring.domain;
+package com.yoong.jpa.springboot.domain;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;

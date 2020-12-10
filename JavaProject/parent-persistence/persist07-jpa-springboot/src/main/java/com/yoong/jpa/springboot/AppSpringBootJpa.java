@@ -1,4 +1,4 @@
-package com.yoong.jpa.spring;
+package com.yoong.jpa.springboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,7 +17,7 @@ import java.util.Date;
  * @Version 1.0
  */
 @SpringBootApplication
-public class AppSpringJpa {
+public class AppSpringBootJpa {
 
     private static SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
 
@@ -26,7 +26,7 @@ public class AppSpringJpa {
      */
     public static void main(String[] args) {
         System.out.println(sdFormat.format(new Date()) + " JpaSpringApplication Start...");
-        ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(AppSpringJpa.class, args);
+        ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(AppSpringBootJpa.class, args);
         System.out.println(sdFormat.format(new Date()) + " JpaSpringApplication Finished");
     }
 }

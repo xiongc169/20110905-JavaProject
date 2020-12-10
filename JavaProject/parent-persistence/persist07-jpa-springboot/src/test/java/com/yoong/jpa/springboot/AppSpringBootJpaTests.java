@@ -1,10 +1,10 @@
-package com.yoong.jpa.hibernate;
+package com.yoong.jpa.springboot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AppSpringJpaTests {
+class AppSpringBootJpaTests {
 
 	@Test
 	void contextLoads() {

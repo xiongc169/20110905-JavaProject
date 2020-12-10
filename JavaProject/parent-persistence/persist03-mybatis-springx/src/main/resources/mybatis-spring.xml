@@ -41,11 +41,15 @@
         <property name="password" value="123456"/>
     </bean>
 
+    <!--MyBatis插件-->
+    <bean id="interceptor" class="com.yoong.mybatis.springx.wong_user.plugin.PagePlugin"/>
+
     <!--配置sqlSessionFactory-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="druidDataSource"></property>
         <!--<property name="configLocation" value="classpath:sqlMapConfig.xml"/>-->
         <property name="mapperLocations" value="classpath:wong_user/*.xml"/>
+        <property name="plugins" ref="interceptor"/>
     </bean>
 
     <!--配置sqlSessionTemplate-->

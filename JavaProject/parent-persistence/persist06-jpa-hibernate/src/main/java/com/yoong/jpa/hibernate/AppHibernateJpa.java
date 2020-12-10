@@ -28,8 +28,8 @@ public class AppHibernateJpa {
      */
     public static void main(String[] args) {
         try {
-            //jpaDemo();
-            jpaSpring();
+            hibernateJpa();
+            hibernateJpaSpring();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -39,9 +39,10 @@ public class AppHibernateJpa {
      * JPA（二）：HellWord工程
      * https://www.cnblogs.com/yy3b2007com/p/9078123.html
      */
-    public static void jpaDemo() {
-        // 创建EntityManagerFactory
-        String persistenceUnitName = "Jpa-helloword";
+    public static void hibernateJpa() {
+        //创建EntityManagerFactory
+        //persistenceUnitName 需要与 META-INF/persistence.xml 文件中的持久化单元名称一致，否则报错：javax.persistence.PersistenceException: No Persistence provider for EntityManager named Jpa_helloworld1
+        String persistenceUnitName = "Jpa_helloworld";
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory(persistenceUnitName);
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -60,7 +61,7 @@ public class AppHibernateJpa {
         entityManagerFactory.close();
     }
 
-    public static void jpaSpring() {
+    public static void hibernateJpaSpring() {
         //PersistenceAnnotationBeanPostProcessor persistenceAnnotationBeanPostProcessor = new PersistenceAnnotationBeanPostProcessor();
         ApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"classpath*:spring.xml"});
         AccountDao accountDao = (AccountDao) context.getBean("accountDao");
