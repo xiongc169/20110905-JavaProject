@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -36,6 +37,9 @@ public class HibernateController extends BaseController {
 
     @PersistenceContext
     private EntityManager entityManager;
+
+    @Autowired
+    private HibernateTemplate hibernateTemplate;
 
     public HibernateController() {
         System.out.println("HibernateController.HibernateController()");
