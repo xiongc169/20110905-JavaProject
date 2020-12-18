@@ -4,6 +4,7 @@ import org.practice.springfx.domain.Car;
 import org.practice.springfx.domain.Customer;
 import org.practice.springfx.book02.config.BeanConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Description;
 import org.springframework.context.support.GenericGroovyApplicationContext;
 
 /**
@@ -16,6 +17,7 @@ import org.springframework.context.support.GenericGroovyApplicationContext;
  * <p>
  * @Version 1.0
  */
+@Description("AppSpring40")
 public class AppSpring40 {
 
     /**
