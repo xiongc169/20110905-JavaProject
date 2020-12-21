@@ -2,14 +2,11 @@ package com.yoong.web.aspect;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.AfterThrowing;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * @Desc LogAspect.java
@@ -23,6 +20,8 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class LogAspect {
+
+    private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public LogAspect() {
         System.out.println("LogAspect.LogAspect");
@@ -38,31 +37,33 @@ public class LogAspect {
 
     @Before(value = "method()")
     public void beforeAdvice(JoinPoint point) {
-        System.out.println("LogAspect.beforeAdvice");
+        System.out.println(format.format(new Date()) + ": LogAspect.beforeAdvice");
     }
 
     @After(value = "method()")
     public void afterAdvice(JoinPoint point) {
-        System.out.println("LogAspect.afterAdvice");
+        System.out.println(format.format(new Date()) + ": LogAspect.afterAdvice");
     }
 
     @AfterReturning(value = "method()")
     public void afterReturningAdvice(JoinPoint point) {
-        System.out.println("LogAspect.afterReturningAdvice");
+        System.out.println(format.format(new Date()) + ": LogAspect.afterReturningAdvice");
     }
 
     @AfterThrowing(value = "method()")
     public void afterThrowingAdvice(JoinPoint point) {
-        System.out.println("LogAspect.afterThrowingAdvice");
+        System.out.println(format.format(new Date()) + ": LogAspect.afterThrowingAdvice");
     }
 
     @Around(value = "method()")
-    public void aroundAdvice(ProceedingJoinPoint pjp) {
-        System.out.println("LogAspect.aroundAdvice");
+    public void aroundAdvice(ProceedingJoinPoint pjp) throws Throwable {
+        System.out.println(format.format(new Date()) + ": 进入LogAspect.aroundAdvice");
         try {
             pjp.proceed();
+            System.out.println(format.format(new Date()) + ": 退出LogAspect.aroundAdvice");
         } catch (Throwable ex) {
-            ex.printStackTrace();
+            //ex.printStackTrace();// 若不抛出异常，则不会进入 afterThrowingAdvice 通知
+            throw ex;//异常需要抛出，否则不会进入 afterThrowingAdvice 通知
         }
     }
 }

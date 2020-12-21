@@ -40,6 +40,7 @@ public class PushController {
     public String login(HttpServletRequest request, HttpServletResponse response) {
         String msg = "PushController.login() " + format.format(new Date());
         System.out.println(msg);
+        //int div = 100 / 0;
         return msg;
     }
 
