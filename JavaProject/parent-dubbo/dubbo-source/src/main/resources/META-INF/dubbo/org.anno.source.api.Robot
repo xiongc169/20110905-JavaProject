@@ -1,2 +1,0 @@
-optimusPrime = OptimusPrime
-bumblebee = Bumblebee

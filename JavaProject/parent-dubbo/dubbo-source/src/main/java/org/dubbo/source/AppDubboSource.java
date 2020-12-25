@@ -3,11 +3,15 @@ package org.dubbo.source;
 import com.alibaba.dubbo.common.extension.ExtensionLoader;
 import com.alibaba.dubbo.common.extension.SPI;
 import org.dubbo.source.api.Robot;
+import sun.misc.Service;
 
+import java.util.Iterator;
 import java.util.ServiceLoader;
 
 /**
- * @Desc AppDubboSource
+ * @Desc Dubbo SPI
+ * https://dubbo.apache.org/zh/docs/v2.7/dev/source/dubbo-spi
+ * https://www.jianshu.com/p/3a3edbcd8f24
  * <p>
  * @Author yoong
  * <p>
@@ -23,6 +27,7 @@ public class AppDubboSource {
     public static void main(String[] args) {
         try {
             javaSPI();
+            sunSPI();
             dubboSPI();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -34,6 +39,16 @@ public class AppDubboSource {
         ServiceLoader<Robot> loader = ServiceLoader.load(Robot.class);
         loader.forEach(Robot::sayHello);
         System.out.println("javaSPI End");
+    }
+
+    public static void sunSPI() {
+        System.out.println("sunSPI Start");
+        Iterator<Robot> providers = Service.providers(Robot.class);
+        while (providers.hasNext()) {
+            Robot ser = providers.next();
+            ser.sayHello();
+        }
+        System.out.println("sunSPI End");
     }
 
     public static void dubboSPI() {
