@@ -5,6 +5,20 @@
         <setting name="logImpl" value="STDOUT_LOGGING"/>
     </settings>
 
+    <!--<typeAliases>-->
+    <!--    <typeAlias type="com.yoong.mybatis.api.wong_user.domain.Account" alias="account"/>-->
+    <!--    <package name="com.yoong.mybatis.api.wong_user.domain"/>-->
+    <!--</typeAliases>-->
+
+    <!--<typeHandlers>-->
+    <!--    <typeHandler javaType="" jdbcType="" handler=""/>-->
+    <!--    <package name="com.yoong.mybatis.api.wong_user"/>-->
+    <!--</typeHandlers>-->
+
+    <plugins>
+        <plugin interceptor="com.yoong.mybatis.api.interceptor.MyInterceptor"></plugin>
+    </plugins>
+
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
@@ -12,7 +26,7 @@
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
                 <property name="url" value="jdbc:mysql://127.0.0.1:3306/wong_user?serverTimezone=UTC"/>
                 <property name="username" value="root"/>
-                <property name="password" value="111111"/>
+                <property name="password" value="123456"/>
             </dataSource>
         </environment>
     </environments>

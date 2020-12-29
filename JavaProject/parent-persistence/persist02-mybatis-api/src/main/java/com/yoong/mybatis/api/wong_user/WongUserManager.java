@@ -57,10 +57,10 @@ public class WongUserManager {
             AccountExample example = new AccountExample();
             example.createCriteria().andAccountIdEqualTo("8");
             // 1、iBatis用法：命名空间+SQL Id
-            List<Account> result = session.selectList("com.yoong.mybatis.accidence.wong_user.dao.AccountMapper.selectByExample", example);
+            List<Account> result = session.selectList("com.yoong.mybatis.api.wong_user.dao.AccountMapper.selectByExample", example);
             System.out.println("result.size: " + result.size());
             //缓存，生效
-            List<Account> result2 = session.selectList("com.yoong.mybatis.accidence.wong_user.dao.AccountMapper.selectByExample", example);
+            List<Account> result2 = session.selectList("com.yoong.mybatis.api.wong_user.dao.AccountMapper.selectByExample", example);
             System.out.println("result2.size: " + result2.size());
 
             // 2、MyBatis用法：获取映射器
