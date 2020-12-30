@@ -1,25 +1,5 @@
 package com.yoong.mybatis.api.source;
 
-import com.yoong.mybatis.api.wong_user.dao.AccountMapper;
-import com.yoong.mybatis.api.wong_user.domain.Account;
-import com.yoong.mybatis.api.wong_user.domain.AccountExample;
-import org.apache.ibatis.binding.MapperProxyFactory;
-import org.apache.ibatis.builder.xml.XMLMapperEntityResolver;
-import org.apache.ibatis.io.ClassLoaderWrapper;
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.parsing.XPathParser;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.apache.ibatis.type.TypeAliasRegistry;
-import org.apache.ibatis.type.TypeHandler;
-import org.apache.ibatis.type.TypeHandlerRegistry;
-import org.xml.sax.EntityResolver;
-
-import javax.xml.xpath.XPath;
-import java.io.InputStream;
-import java.util.List;
-
 /**
  * @Desc 《MyBatis技术内幕》
  * <p>
@@ -36,33 +16,18 @@ public class AppMybatisSource {
      */
     public static void main(String[] args) {
         try {
-            //2.1、解析器模块
-            xpath0201();
-            //2.2、反射工具箱
-            reflect0202();
-            //2.3、类型转换
-            typeHandler0203();
-            //2.4、日志模块
-            log0204();
-            //2.5、资源加载
-            classLoader0205();
-            //2.8、Binding模块
-            binding0208();
-            Chap03.ognl030202();
-            Chap04.ognl040302();
+            chap02();
+            chap03();
+            chap04();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    public static void xpath0201() throws Exception {
-        XPath xPath = null; //new XPathImpl(null, null);
-        XPathParser xPathParser = new XPathParser("");
-        EntityResolver entityResolver = new XMLMapperEntityResolver();
-    }
-
-    public static void reflect0202() throws Exception {
-        //2.2.1、Reflector & ReflectorFactory
+    public static void chap02() throws Exception {
+        //2.1、解析器模块
+        Chap02.xpath0201();
+        //2.2、反射工具箱
         Chap02.reflect020201();
         Chap02.typeParameterResolver020202();
         Chap02.objectFactory020203();
@@ -70,39 +35,28 @@ public class AppMybatisSource {
         Chap02.metaClass020205();
         Chap02.objectWrapper020206();
         Chap02.metaObject020207();
+        //2.3、类型转换
+        Chap02.typeHandler0203();
+        //2.4、日志模块
+        Chap02.log0204();
+        //2.5、资源加载
+        Chap02.classLoader0205();
+        //2.8、Binding模块
+        Chap02.binding0208();
     }
 
-    public static void typeHandler0203() throws Exception {
-        TypeHandler typeHandler = null;
-        TypeHandlerRegistry typeHandlerRegistry = null;
-        TypeAliasRegistry typeAliasRegistry = null;
+    public static void chap03() throws Exception {
+        Chap03.mybatisInit0301();
+        Chap03.sqlSource_sqlNode0302();
+        Chap03.ognl030202();
+        Chap03.resultSetHandler0303();
+        Chap03.keyGenerator0304();
+        Chap03.statementHandler0305();
+        Chap03.executor0306();
+        Chap03.sqlSession0307();
     }
 
-    public static void log0204() throws Exception {
-    }
-
-    public static void classLoader0205() throws Exception {
-        ClassLoaderWrapper classLoaderWrapper = null;
-    }
-
-    public static void binding0208() throws Exception {
-        String resource = "mybatis-wong_user.xml";
-        InputStream iStream = Resources.getResourceAsStream(resource);
-        SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(iStream);
-        SqlSession session = factory.openSession();
-
-        MapperProxyFactory mapperProxyFactory = new MapperProxyFactory(AccountMapper.class);
-        AccountMapper accountMapper = (AccountMapper) mapperProxyFactory.newInstance(session);
-
-        AccountExample example = new AccountExample();
-        example.createCriteria().andAccountIdEqualTo("12345");
-        List<Account> accountList = accountMapper.selectByExample(example);
-
-        //Map<Method, MapperMethod> mapperMethodMap = mapperProxyFactory.getMethodCache();
-        //MapperMethod mapperMethod = mapperMethodMap.get(1);
-        //MapperProxy mapperProxy = new MapperProxy(session, AccountMapper.class, mapperMethodMap);
-        //mapperProxy.invoke();
-
-        System.out.println(accountList);
+    public static void chap04() throws Exception {
+        Chap04.ognl040302();
     }
 }
