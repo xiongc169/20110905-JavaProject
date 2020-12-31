@@ -8,11 +8,22 @@ import org.apache.ibatis.binding.MapperProxy;
 import org.apache.ibatis.binding.MapperProxyFactory;
 import org.apache.ibatis.binding.MapperRegistry;
 import org.apache.ibatis.builder.xml.XMLMapperEntityResolver;
+import org.apache.ibatis.cache.Cache;
+import org.apache.ibatis.cache.CacheKey;
+import org.apache.ibatis.cache.decorators.WeakCache;
+import org.apache.ibatis.cache.decorators.*;
+import org.apache.ibatis.cache.impl.PerpetualCache;
+import org.apache.ibatis.datasource.pooled.PooledDataSource;
+import org.apache.ibatis.datasource.pooled.PooledDataSourceFactory;
+import org.apache.ibatis.datasource.unpooled.UnpooledDataSource;
+import org.apache.ibatis.datasource.unpooled.UnpooledDataSourceFactory;
 import org.apache.ibatis.io.ClassLoaderWrapper;
+import org.apache.ibatis.io.ResolverUtil;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.parsing.XPathParser;
 import org.apache.ibatis.reflection.*;
 import org.apache.ibatis.reflection.factory.DefaultObjectFactory;
+import org.apache.ibatis.reflection.factory.ObjectFactory;
 import org.apache.ibatis.reflection.property.PropertyCopier;
 import org.apache.ibatis.reflection.property.PropertyNamer;
 import org.apache.ibatis.reflection.property.PropertyTokenizer;
@@ -21,11 +32,19 @@ import org.apache.ibatis.reflection.wrapper.ObjectWrapperFactory;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.apache.ibatis.session.TransactionIsolationLevel;
+import org.apache.ibatis.transaction.Transaction;
+import org.apache.ibatis.transaction.jdbc.JdbcTransaction;
+import org.apache.ibatis.transaction.managed.ManagedTransaction;
 import org.apache.ibatis.type.TypeAliasRegistry;
 import org.apache.ibatis.type.TypeHandler;
 import org.apache.ibatis.type.TypeHandlerRegistry;
+import org.mybatis.spring.transaction.SpringManagedTransaction;
+import org.w3c.dom.Document;
 import org.xml.sax.EntityResolver;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.xpath.XPath;
 import java.io.InputStream;
 import java.lang.reflect.*;
@@ -35,10 +54,15 @@ import java.util.Map;
 
 public class Chap02 {
 
-    public static void xpath0201() throws Exception {
+    public static void parser0201() throws Exception {
         XPath xPath = null; //new XPathImpl(null, null);
-        XPathParser xPathParser = new XPathParser("");
+        Document document = null;
         EntityResolver entityResolver = new XMLMapperEntityResolver();
+        XPathParser xPathParser = new XPathParser("");
+
+        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+        document = documentBuilder.parse("");
     }
 
     public static void reflect020201() throws Exception {
@@ -60,7 +84,9 @@ public class Chap02 {
     }
 
     public static void objectFactory020203() throws Exception {
-        DefaultObjectFactory defaultObjectFactory = null;
+        Class accountClazz = Class.forName("com.yoong.mybatis.api.wong_user.domain.Account");
+        ObjectFactory objectFactory = new DefaultObjectFactory();
+        Account account = (Account) objectFactory.create(accountClazz);
     }
 
     public static void property020204() throws Exception {
@@ -82,7 +108,6 @@ public class Chap02 {
         MetaObject metaObject = null;
     }
 
-
     public static void typeHandler0203() throws Exception {
         TypeHandler typeHandler = null;
         TypeHandlerRegistry typeHandlerRegistry = null;
@@ -94,6 +119,23 @@ public class Chap02 {
 
     public static void classLoader0205() throws Exception {
         ClassLoaderWrapper classLoaderWrapper = null;
+        ResolverUtil resolverUtil = new ResolverUtil();
+        resolverUtil = resolverUtil.findImplementations(Account.class, "");
+    }
+
+    public static void dataSource0206() throws Exception {
+        UnpooledDataSource unpooledDataSource = new UnpooledDataSource();
+        PooledDataSource pooledDataSource = new PooledDataSource();
+
+        UnpooledDataSourceFactory unpooledDataSourceFactory = new UnpooledDataSourceFactory();
+        PooledDataSourceFactory pooledDataSourceFactory = new PooledDataSourceFactory();
+    }
+
+    public static void transaction0207() throws Exception {
+        UnpooledDataSource unpooledDataSource = new UnpooledDataSource();
+        Transaction jdbcTransaction = new JdbcTransaction(unpooledDataSource.getConnection());
+        Transaction managedTransaction = new ManagedTransaction(unpooledDataSource, TransactionIsolationLevel.READ_COMMITTED, true);
+        SpringManagedTransaction springManagedTransaction = new SpringManagedTransaction(unpooledDataSource);
     }
 
     public static void binding0208() throws Exception {
@@ -128,5 +170,21 @@ public class Chap02 {
 
         Object result02 = mapperMethodList.get(index).execute(session, new Object[]{"12345"});
         System.out.println(accountList);
+    }
+
+    public static void cache0209() throws Exception {
+        Cache perpetualCache = new PerpetualCache("id");
+        Cache blockingCache = new BlockingCache(null);
+        Cache fifoCache = new FifoCache(null);
+        Cache lruCache = new LruCache(null);
+        Cache softCache = new SoftCache(null);
+        Cache weakCache = new WeakCache(null);
+        Cache scheduledCache = new ScheduledCache(null);
+        Cache loggingCache = new LoggingCache(null);
+        Cache synchronizedCache = new SynchronizedCache(null);
+        Cache serializedCache = new SerializedCache(null);
+        perpetualCache.putObject("key", "value");
+
+        CacheKey cacheKey = new CacheKey();
     }
 }

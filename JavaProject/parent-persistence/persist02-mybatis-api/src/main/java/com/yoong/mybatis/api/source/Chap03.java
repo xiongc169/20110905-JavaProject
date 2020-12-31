@@ -1,6 +1,7 @@
 package com.yoong.mybatis.api.source;
 
 import org.apache.ibatis.builder.BaseBuilder;
+import org.apache.ibatis.builder.SqlSourceBuilder;
 import org.apache.ibatis.builder.StaticSqlSource;
 import org.apache.ibatis.builder.xml.XMLConfigBuilder;
 import org.apache.ibatis.builder.xml.XMLMapperBuilder;
@@ -32,6 +33,8 @@ public class Chap03 {
     }
 
     public static void sqlSource_sqlNode0302() throws Exception {
+        DynamicContext dynamicContext = new DynamicContext(null, null);
+
         SqlNode sqlNode = null;
         MixedSqlNode mixedSqlNode = null;
         StaticTextSqlNode staticTextSqlNode = null;
@@ -41,6 +44,8 @@ public class Chap03 {
         VarDeclSqlNode varDeclSqlNode = null;
         TrimSqlNode trimSqlNode = null;
         ChooseSqlNode chooseSqlNode = null;
+
+        SqlSourceBuilder sqlSourceBuilder = null;
 
         SqlSource sqlSource = null;
         DynamicSqlSource dynamicSqlSource = null;

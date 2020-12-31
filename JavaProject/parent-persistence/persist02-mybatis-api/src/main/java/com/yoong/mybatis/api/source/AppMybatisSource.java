@@ -26,7 +26,7 @@ public class AppMybatisSource {
 
     public static void chap02() throws Exception {
         //2.1、解析器模块
-        Chap02.xpath0201();
+        Chap02.parser0201();
         //2.2、反射工具箱
         Chap02.reflect020201();
         Chap02.typeParameterResolver020202();
@@ -41,8 +41,14 @@ public class AppMybatisSource {
         Chap02.log0204();
         //2.5、资源加载
         Chap02.classLoader0205();
+        //2.6、DataSource
+        Chap02.dataSource0206();
+        //2.7、Transaction
+        Chap02.transaction0207();
         //2.8、Binding模块
         Chap02.binding0208();
+        //2.9、缓存模块
+        Chap02.cache0209();
     }
 
     public static void chap03() throws Exception {
@@ -57,6 +63,7 @@ public class AppMybatisSource {
     }
 
     public static void chap04() throws Exception {
+        Chap04.mybatis_spring040204();
         Chap04.ognl040302();
     }
 }
