@@ -1,12 +1,18 @@
 package org.practice.springfx.book04;
 
 import org.practice.springfx.domain.Car;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.util.PropertyPlaceholderHelper;
 
+import java.io.InputStream;
 import java.net.URL;
 
 import static java.lang.System.getProperty;
@@ -34,15 +40,46 @@ public class AppSpringSource {
      */
     public static void main(String[] args) {
         try {
-            ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath*:book04/spring-code.xml");
-            Car car = (Car) applicationContext.getBean("car_01");
-            System.out.println(car.getCarId());
+            //junior0201();
+            //core020402();
+            xmlBeanFactory0205();
 
-            URL url = new URL("");
-            Resource resource = new ClassPathResource("");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    /**
+     * 2.1、容器的基本用法
+     */
+    public static void junior0201() {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath*:book04/spring-code.xml");
+        Car car = (Car) applicationContext.getBean("car_01");
+        System.out.println(car.getCarId());
+    }
+
+    /**
+     * 2.4.2、核心类介绍
+     */
+    public static void core020402() {
+        DefaultListableBeanFactory defaultListableBeanFactory = new DefaultListableBeanFactory();
+        XmlBeanFactory xmlBeanFactory = new XmlBeanFactory(null);
+        XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(xmlBeanFactory);
+    }
+
+    /**
+     * 2.5、容器的基础XmlBeanFactory
+     */
+    public static void xmlBeanFactory0205() throws Exception {
+        InputStreamResource inputStreamResource = null;
+        Resource resource = null;
+
+        BeanFactory beanFactory = new XmlBeanFactory(new ClassPathResource("book04/spring-code.xml"));
+        Car car = (Car) beanFactory.getBean("car_01");
+        System.out.println(car.getCarId());
+
+        //InputStream inputStream = AppSpringSource.class.getResourceAsStream("book04/spring-code.xml");
+        //System.out.println(inputStream.available());
     }
 
     /**
@@ -59,6 +96,11 @@ public class AppSpringSource {
         };
         String systemDir = placeholderResolver.resolvePlaceholder("user.dir");
         System.out.println(systemDir);
+    }
+
+    public static void other() throws Exception {
+        URL url = new URL("");
+        Resource resource = new ClassPathResource("");
     }
 
 }
