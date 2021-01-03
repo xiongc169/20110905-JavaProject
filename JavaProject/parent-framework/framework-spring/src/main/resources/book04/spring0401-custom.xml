@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:myname="http://blog.csdn.net/xtc169/schema/customTag"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://blog.csdn.net/xtc169/schema/customTag http://blog.csdn.net/xtc169/schema/customTag.xsd"
+       default-lazy-init="false" default-autowire="byType" default-init-method="" default-destroy-method="">
+
+    <myname:customTag id="userId01" userName="userName_01" email="email_01"/>
+
+</beans>

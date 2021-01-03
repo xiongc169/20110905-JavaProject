@@ -1,6 +1,7 @@
 package org.practice.springfx.book04;
 
 import org.practice.springfx.domain.Car;
+import org.practice.springfx.domain.CustomTag;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
@@ -12,7 +13,6 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.util.PropertyPlaceholderHelper;
 
-import java.io.InputStream;
 import java.net.URL;
 
 import static java.lang.System.getProperty;
@@ -40,10 +40,10 @@ public class AppSpringSource {
      */
     public static void main(String[] args) {
         try {
-            //junior0201();
-            //core020402();
+            junior0201();
+            core020402();
             xmlBeanFactory0205();
-
+            customTag0401();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -53,7 +53,7 @@ public class AppSpringSource {
      * 2.1、容器的基本用法
      */
     public static void junior0201() {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath*:book04/spring-code.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath*:book04/spring0201-core.xml");
         Car car = (Car) applicationContext.getBean("car_01");
         System.out.println(car.getCarId());
     }
@@ -74,12 +74,21 @@ public class AppSpringSource {
         InputStreamResource inputStreamResource = null;
         Resource resource = null;
 
-        BeanFactory beanFactory = new XmlBeanFactory(new ClassPathResource("book04/spring-code.xml"));
+        BeanFactory beanFactory = new XmlBeanFactory(new ClassPathResource("book04/spring0201-core.xml"));
         Car car = (Car) beanFactory.getBean("car_01");
         System.out.println(car.getCarId());
 
-        //InputStream inputStream = AppSpringSource.class.getResourceAsStream("book04/spring-code.xml");
+        //InputStream inputStream = AppSpringSource.class.getResourceAsStream("book04/spring0201-core.xml");
         //System.out.println(inputStream.available());
+    }
+
+    /**
+     * 4.1、自定义标签使用
+     */
+    public static void customTag0401() throws Exception {
+        BeanFactory beanFactory = new XmlBeanFactory(new ClassPathResource("book04/spring0401-custom.xml"));
+        CustomTag user = (CustomTag) beanFactory.getBean("userId01");
+        System.out.println(user.getId());
     }
 
     /**
@@ -102,5 +111,4 @@ public class AppSpringSource {
         URL url = new URL("");
         Resource resource = new ClassPathResource("");
     }
-
 }

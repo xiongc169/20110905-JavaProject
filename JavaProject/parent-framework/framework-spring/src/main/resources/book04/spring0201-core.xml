@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+       default-lazy-init="false" default-autowire="byType" default-init-method="" default-destroy-method="">
+
+    <bean id="car_01" name="car_01_name" class="org.practice.springfx.domain.Car">
+        <property name="carId" value="carId_001"></property>
+        <property name="carBrandName" value="carBrandName_001"></property>
+        <property name="carModelName" value="carModelName_001"></property>
+    </bean>
+
+    <alias name="car_01_name" alias="car_01_alias"/>
+
+    <beans profile="dev"></beans>
+
+    <beans profile="test"></beans>
+
+    <beans profile="pre"></beans>
+
+    <beans profile="pro"></beans>
+
+</beans>

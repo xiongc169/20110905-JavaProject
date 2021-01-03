@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://blog.csdn.net/xtc169/schema/customTag"
+        xmlns:tns="http://blog.csdn.net/xtc169/schema/customTag"
+        elementFormDefault="qualified">
+    <element name="customTag">
+        <complexType>
+            <attribute name="id" type="string"/>
+            <attribute name="userName" type="string"/>
+            <attribute name="email" type="string"/>
+        </complexType>
+    </element>
+</schema>
