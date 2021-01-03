@@ -5,6 +5,6 @@
        http://blog.csdn.net/xtc169/schema/customTag http://blog.csdn.net/xtc169/schema/customTag.xsd"
        default-lazy-init="false" default-autowire="byType" default-init-method="" default-destroy-method="">
 
-    <myname:customTag id="userId01" userName="userName_01" email="email_01"/>
+    <myname:customTag id="userId_01" userName="userName_01" email="email_01"/>
 
 </beans>
