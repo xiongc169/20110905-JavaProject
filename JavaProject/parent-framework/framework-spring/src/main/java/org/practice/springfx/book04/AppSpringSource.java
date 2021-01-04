@@ -8,9 +8,7 @@ import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.InputStreamResource;
-import org.springframework.core.io.Resource;
+import org.springframework.core.io.*;
 import org.springframework.util.PropertyPlaceholderHelper;
 
 import java.net.URL;
@@ -40,11 +38,11 @@ public class AppSpringSource {
      */
     public static void main(String[] args) {
         try {
-            //junior0201();
+            //beanFactory0201();
             //core020402();
             //xmlBeanFactory0205();
-            //customTag0401();
-            applicationContext0601();
+            customTag0401();
+            //applicationContext0601();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -53,9 +51,9 @@ public class AppSpringSource {
     /**
      * 2.1、容器的基本用法
      */
-    public static void junior0201() {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath*:book04/spring0201-core.xml");
-        Car car = (Car) applicationContext.getBean("car_01");
+    public static void beanFactory0201() {
+        XmlBeanFactory xmlBeanFactory = new XmlBeanFactory(new ClassPathResource("book04/spring0201-core.xml"));
+        Car car = (Car) xmlBeanFactory.getBean("car_01");
         System.out.println(car.getCarId());
     }
 
@@ -64,16 +62,31 @@ public class AppSpringSource {
      */
     public static void core020402() {
         DefaultListableBeanFactory defaultListableBeanFactory = new DefaultListableBeanFactory();
-        XmlBeanFactory xmlBeanFactory = new XmlBeanFactory(null);
-        XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(xmlBeanFactory);
+        XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(defaultListableBeanFactory);
+        xmlBeanDefinitionReader.loadBeanDefinitions(new ClassPathResource("book04/spring0201-core.xml"));
+        Car car = (Car) defaultListableBeanFactory.getBean("car_01");
+        System.out.println(car.getCarId());
+
+        XmlBeanFactory xmlBeanFactory = new XmlBeanFactory(new ClassPathResource("book04/spring0201-core.xml"));
+        Car car02 = (Car) xmlBeanFactory.getBean("car_01");
+        System.out.println(car02.getCarId());
     }
 
     /**
      * 2.5、容器的基础XmlBeanFactory
      */
     public static void xmlBeanFactory0205() throws Exception {
-        InputStreamResource inputStreamResource = null;
+        //在Java中，将不同来源的资源抽象成 URL，通过注册不同的handler来处理不同的资源。
+        URL url = new URL("");
+
+        //在Spring中，对其内部使用到的资源实现了自己的抽象结构：Resource 接口封装底层资源，Resource 继承了 InputStreamSource
+        InputStreamSource inputStreamSource = null;
         Resource resource = null;
+        FileSystemResource fileSystemResource = null;
+        ClassPathResource classPathResource = null;
+        UrlResource urlResource = null;
+        InputStreamResource inputStreamResource = null;
+        ByteArrayResource byteArrayResource = null;
 
         BeanFactory beanFactory = new XmlBeanFactory(new ClassPathResource("book04/spring0201-core.xml"));
         Car car = (Car) beanFactory.getBean("car_01");
@@ -115,10 +128,5 @@ public class AppSpringSource {
         };
         String systemDir = placeholderResolver.resolvePlaceholder("user.dir");
         System.out.println(systemDir);
-    }
-
-    public static void other() throws Exception {
-        URL url = new URL("");
-        Resource resource = new ClassPathResource("");
     }
 }
