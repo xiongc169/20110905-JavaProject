@@ -38,11 +38,11 @@ public class AppSpringSource {
      */
     public static void main(String[] args) {
         try {
-            //beanFactory0201();
-            //core020402();
-            //xmlBeanFactory0205();
+            beanFactory0201();
+            core020402();
+            xmlBeanFactory0205();
             customTag0401();
-            //applicationContext0601();
+            applicationContext0601();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -109,7 +109,7 @@ public class AppSpringSource {
      * 6.1、设置配置路径
      */
     public static void applicationContext0601() {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath*:book04/spring0201-core.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath*:book04/spring0601-application.xml");
         Car car = (Car) applicationContext.getBean("car_01");
         System.out.println(car.getCarId());
     }

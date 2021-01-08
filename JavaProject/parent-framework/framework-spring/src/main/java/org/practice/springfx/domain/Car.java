@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  * @Version 1.0
  */
 @Data
-@Component
+//@Component
 public class Car {
 
     private String carId;
@@ -21,6 +21,10 @@ public class Car {
     private String carBrandName;
 
     private String carModelName;
+
+    public Car() {
+        System.out.println("Car.car()");
+    }
 
     public String output() {
         String msg = String.format("%s %s %s", this.carId, this.carBrandName, this.carModelName);
