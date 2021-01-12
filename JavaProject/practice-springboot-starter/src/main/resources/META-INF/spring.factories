@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.yoong.starter.book04.HelloServiceAutoConfiguration
