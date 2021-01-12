@@ -1,6 +1,6 @@
 package com.yoong.springboot.config;
 
-import com.yoong.springboot.listener.MyMessageListener;
+import com.yoong.springboot.config.jms.MyMessageListener;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.pool.PooledConnectionFactory;
 import org.springframework.beans.factory.annotation.Value;

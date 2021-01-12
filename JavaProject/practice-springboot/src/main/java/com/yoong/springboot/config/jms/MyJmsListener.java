@@ -1,4 +1,4 @@
-package com.yoong.springboot.listener;
+package com.yoong.springboot.config.jms;
 
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
