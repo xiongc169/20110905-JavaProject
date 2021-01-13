@@ -31,7 +31,8 @@ public class StarterController {
     @ResponseBody
     @RequestMapping("/hello")
     public void hello() {
-        String result = helloService.sayHello();
+        String result = "init";
+        result = helloService.sayHello();
         System.out.println(result);
     }
 }
