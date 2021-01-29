@@ -36,6 +36,7 @@ public class CuratorAPI {
     public static void main(String[] args) {
         try {
             curatorDemo();
+            ephemeralSeq();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -125,6 +126,35 @@ public class CuratorAPI {
                 e.printStackTrace();
             }
         }
+    }
 
+    /**
+     * 临时顺序节点测试
+     */
+    public static void ephemeralSeq() throws Exception {
+        CuratorFramework curatorFramework = CuratorFrameworkFactory.newClient("127.0.0.1:2181", new RetryNTimes(2, 1000));
+        CuratorFramework curatorFramework02 = CuratorFrameworkFactory.builder()
+                .connectString("127.0.0.1:2181")
+                .namespace("yoong")
+                .retryPolicy(new ExponentialBackoffRetry(1000, 2))
+                .build();
+
+        curatorFramework.start();
+        List<String> children = curatorFramework.getChildren().usingWatcher(new CuratorWatcher() {
+            @Override
+            public void process(WatchedEvent event) {
+                System.out.println("Watcher.process " + event);
+            }
+        }).forPath("/");
+        System.out.println(children);
+
+        curatorFramework = addListener(curatorFramework);
+
+        int size = 10;
+        for (int i = 0; i < size; i++) {
+            String path = curatorFramework.create().withMode(CreateMode.EPHEMERAL_SEQUENTIAL).withACL(ZooDefs.Ids.OPEN_ACL_UNSAFE).forPath("/yoong", "yoongData".getBytes());
+            System.out.println(path);
+        }
+        System.out.println(size);
     }
 }
