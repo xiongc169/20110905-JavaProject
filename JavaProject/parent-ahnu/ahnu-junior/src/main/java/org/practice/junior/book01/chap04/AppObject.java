@@ -10,7 +10,7 @@ import java.util.GregorianCalendar;
 import static java.lang.Math.pow;
 
 /**
- * @Desc 《《Java核心技术·卷1》第四章、类与对象
+ * @Desc 《《Java核心技术·卷1》第四章、对象与类
  * <p>
  * @Author yoong
  * <p>
@@ -30,9 +30,8 @@ public class AppObject {
             staticField0404();
             methodParam0405();
             construct0406();
+            //this.finalize();
             package0407();
-
-            initOrder();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -75,6 +74,19 @@ public class AppObject {
      */
     public static void staticField0404() {
         System.out.println(Employee.getNextId());
+
+        //静态代码块、静态方法、代码块、构造函数、实例方法的执行顺序
+        //ApiBaseRecord.output();//父静态代码块 - 静态方法 (需单独执行)
+        //System.out.println();
+
+        //ApiServiceRecord.output();//父静态代码块 - 子静态代码块 - 子静态方法 (需单独执行)
+        //System.out.println();
+
+        //ApiBaseRecord apiBaseRecord = new ApiBaseRecord();//父静态代码块 - 父代码块 - 父构造函数 (需单独执行)
+        //System.out.println();
+
+        ApiServiceRecord apiServiceRecord = new ApiServiceRecord();//父静态代码块 - 子静态代码块 - 父代码块 - 父构造函数 - 子代码块 - 子构造函数 (需单独执行)
+        //System.out.println();
     }
 
     /**
@@ -100,24 +112,18 @@ public class AppObject {
     }
 
     /**
+     * 4.6.8、对象析构与finalize方法
+     */
+    @Override
+    public void finalize() {
+        System.out.println("finalize");
+    }
+
+    /**
      * 4.7、包
      */
     public static void package0407() {
         Double pow01 = pow(2, 7);
         System.out.println(pow01);
-    }
-
-    public static void initOrder() {
-        //ApiBaseRecord.output();//父静态代码块 - 静态方法 (需单独执行)
-        //System.out.println();
-
-        //ApiServiceRecord.output();//父静态代码块 - 子静态代码块 - 子静态方法 (需单独执行)
-        //System.out.println();
-
-        //ApiBaseRecord apiBaseRecord = new ApiBaseRecord();//父静态代码块 - 父代码块 - 父构造函数 (需单独执行)
-        //System.out.println();
-
-        ApiServiceRecord apiServiceRecord = new ApiServiceRecord();//父静态代码块 - 子静态代码块 - 父代码块 - 父构造函数 - 子代码块 - 子构造函数 (需单独执行)
-        //System.out.println();
     }
 }

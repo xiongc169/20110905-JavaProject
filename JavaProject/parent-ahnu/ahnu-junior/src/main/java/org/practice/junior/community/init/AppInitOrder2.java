@@ -32,7 +32,8 @@ public class AppInitOrder2 {
      */
     private static void initOrderTest() {
         DeriveClass deriveClass = new DeriveClass();
-        DeriveClass.staticSay();
         deriveClass.say();
+
+        //DeriveClass.staticSay();
     }
 }
