@@ -156,11 +156,11 @@ public class AppCollection {
      * 13.2.5、对象的比较 (P580)
      */
     public static void set130203() {
-        HashSet hashSet = new HashSet();
-        TreeSet treeSet = new TreeSet();
-        SortedSet sortedSet = new TreeSet();
-        NavigableSet navigableSet = new TreeSet();
-        LinkedHashSet linkedHashSet = new LinkedHashSet();
+        HashSet<String> hashSet = new HashSet();
+        TreeSet<String> treeSet = new TreeSet();
+        SortedSet<String> sortedSet = new TreeSet();
+        NavigableSet<String> navigableSet = new TreeSet();
+        LinkedHashSet<String> linkedHashSet = new LinkedHashSet();
 
         int num = 100;
         for (int i = 0; i < num; i++) {
@@ -184,13 +184,22 @@ public class AppCollection {
             }
         };
 
-        TreeSet<String> treeSet02 = new TreeSet();
-        treeSet02.add("Bob");
-        treeSet02.add("Amy");
-        treeSet02.add("David");
-        treeSet02.add("Cinema");
+        treeSet.add("Bob");
+        treeSet.add("Amy");
+        treeSet.add("David");
+        treeSet.add("Cinema");
         //输出方式一 (按字典顺序输出)
-        for (String item : treeSet02) {
+        for (String item : treeSet) {
+            System.out.println(item);
+        }
+
+        linkedHashSet.add("BBBB");
+        linkedHashSet.add("CCCC");
+        linkedHashSet.add("DDDD");
+        linkedHashSet.add("AAAA");
+        linkedHashSet.add("XXXX");
+        //输出方式一 (按输入顺序输出)
+        for (String item : linkedHashSet) {
             System.out.println(item);
         }
     }
@@ -221,7 +230,7 @@ public class AppCollection {
     public static void hashMap130208() {
         HashMap<String, String> hashMap = new HashMap<>();
         TreeMap<String, String> treeMap = new TreeMap<>();
-        LinkedHashMap linkedHashMap = new LinkedHashMap();
+        LinkedHashMap<String, String> linkedHashMap = new LinkedHashMap();
 
         //tableSizeFor is not public in HashMap, Cannot be accessed from outside package
         //HashMap.tableSizeFor(10);
@@ -246,6 +255,26 @@ public class AppCollection {
         String value02 = map.put("1", "value-02");
         System.out.println(value01);
         System.out.println(value02);
+
+        treeMap.put("Bob", "Bobbb");
+        treeMap.put("Amy", "Amyyy");
+        treeMap.put("David", "Daviddd");
+        treeMap.put("Cinema", "Cinemaaa");
+        //输出方式一 (按字典顺序输出)
+        for (Map.Entry<String, String> item : treeMap.entrySet()) {
+            System.out.println(item.getKey() + "：" + item.getValue());
+        }
+
+        linkedHashMap.put("Bob", "Bobbb");
+        linkedHashMap.put("Amy", "Amyyy");
+        linkedHashMap.put("David", "Daviddd");
+        linkedHashMap.put("Cinema", "Cinemaaa");
+        linkedHashMap.put(null, null);
+        linkedHashMap.put(null, null);
+        //输出方式一 (按输入顺序输出)
+        for (Map.Entry<String, String> item : linkedHashMap.entrySet()) {
+            System.out.println(item.getKey() + "：" + item.getValue());
+        }
     }
 
     /**
@@ -255,12 +284,12 @@ public class AppCollection {
         Dictionary dictionary = new Hashtable();
         Hashtable<String, String> hashtable = new Hashtable();
         //hashtable.put(null, "value ");//key为空，计算key.hashCode()时，会报空指针异常
-        //hashtable.put("key", "value pre");
-        //String value01 = hashtable.get("key");
-        //hashtable.put("key", "value ");//若key重复，会覆盖
-        //String value02 = hashtable.get("key");
-        //hashtable.putIfAbsent("key", "value post");//若key重复，不会保存
-        //String value03 = hashtable.get("key");
+        String putResult01 = hashtable.put("key", "value pre");
+        String value01 = hashtable.get("key");
+        String putResult02 = hashtable.put("key", "value ");//若key重复，会覆盖
+        String value02 = hashtable.get("key");
+        String putResult03 = hashtable.putIfAbsent("key", "value post");//若key重复，不会保存
+        String value03 = hashtable.get("key");
 
         int num = 100;
         for (int i = 0; i < num; i++) {

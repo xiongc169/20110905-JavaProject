@@ -35,24 +35,43 @@ public class AppThread {
         }
     }
 
-    public static void interrupt1402() {
-        //中断方法
+    public static void interrupt1402() throws Exception {
+        //获取中断状态，非静态方法，不会清除线程的中断状态
+        Boolean isInterrupted = Thread.currentThread().isInterrupted();
+        System.out.println(isInterrupted);//初始为：false
+        //中断方法，将中断状态置为true
         Thread.currentThread().interrupt();
+        Boolean isInterrupted02 = Thread.currentThread().isInterrupted();
+        System.out.println(isInterrupted02);//被中断，变为：true
+
         //获取中断状态，静态方法，而且会清除线程的中断状态
         boolean interrupted = Thread.interrupted();
-        //获取中断状态，非静态方法，不会清除线程的中断状态
-        Thread thread = new Thread();
-        boolean isInterrupted = thread.isInterrupted();
+        System.out.println(interrupted);///被中断，变为：true，且重置中断状态
+        Boolean isInterrupted03 = Thread.currentThread().isInterrupted();
+        System.out.println(isInterrupted03);//中断状态被重置为：false
+
         //新建线程
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-
+                while (true) {
+                    if (!Thread.currentThread().isInterrupted()) {
+                        System.out.println("线程未被中断：" + Thread.currentThread().isInterrupted());
+                    } else {
+                        System.out.println("        线程被中断：" + Thread.currentThread().isInterrupted());
+                        return;
+                    }
+                }
             }
         };
+        Thread thread = new Thread(runnable);
+        thread.start();
+        Thread.sleep(1000);
+        thread.interrupt();
     }
 
     public static void status1403() throws Throwable {
+        Thread.State state = Thread.currentThread().getState();
         //New 新建状态
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -90,11 +109,19 @@ public class AppThread {
      */
     public static void concurrentCollection1407() {
         // 14.7.1、高效的映射表、集合、队列
-        ConcurrentHashMap concurrentHashMap = new ConcurrentHashMap();
+        ConcurrentHashMap<String, String> concurrentHashMap = new ConcurrentHashMap();
         ConcurrentSkipListMap concurrentSkipListMap = new ConcurrentSkipListMap();
         ConcurrentSkipListSet concurrentSkipListSet = new ConcurrentSkipListSet();
         ConcurrentLinkedQueue concurrentLinkedQueue = new ConcurrentLinkedQueue();
-        concurrentHashMap.put(1, "eva huang");
+
+        int num = 100;
+        for (int i = 0; i < num; i++) {
+            //key 0、key 11会冲突，hashmap.table[12]处存储
+            concurrentHashMap.put("key " + i, "value " + i);
+        }
+        for (Map.Entry<String, String> item : concurrentHashMap.entrySet()) {
+            System.out.println(item.getKey() + "：" + item.getValue());
+        }
 
         // 14.7.2、写数组的拷贝
         CopyOnWriteArrayList copyOnWriteArrayList = new CopyOnWriteArrayList();
