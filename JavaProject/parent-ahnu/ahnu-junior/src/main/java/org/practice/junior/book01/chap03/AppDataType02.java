@@ -42,7 +42,7 @@ public class AppDataType02 {
             e.printStackTrace();
         }
 
-        char a = (char) Integer.MAX_VALUE;
+        char a = (char) Integer.MAX_VALUE;//65535
         System.out.println((int) a);
     }
 }
