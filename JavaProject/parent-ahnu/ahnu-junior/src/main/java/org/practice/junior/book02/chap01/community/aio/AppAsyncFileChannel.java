@@ -18,8 +18,8 @@ import java.util.concurrent.Future;
  * AsynchronousSocketChannel: 客户端异步socket。
  * AsynchronousServerSocketChannel: 服务器异步socket。
  * AsynchronousDatagramChannel: UDP异步Socket(jdk 7 b118已删除)。
- * https://www.jianshu.com/p/ba619a8ed32aJava
- * NIO 教程(十六) Java NIO AsynchronousFileChannel
+ * https://www.jianshu.com/p/ba619a8ed32a
+ * Java NIO 教程(十六) Java NIO AsynchronousFileChannel
  * PS：在Java 7中，AsynchronousFileChannel被添加到Java NIO。AsynchronousFileChannel使读取数据，并异步地将数据写入文件成为可能。
  * https://www.jianshu.com/p/b38f8c596193
  * <p>

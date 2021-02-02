@@ -3,6 +3,8 @@ package org.dubbo.consumer;
 import com.chesheng.decision.api.IDeipPrefixFacade;
 import com.fcts.open.api.mq.yuntu.decision.OrderQueryReq;
 import com.fcts.open.api.mq.yuntu.result.OrderBaseResp;
+import com.ftcs.share.result.Result;
+import com.ftcs.venus.dubbo.EstageCommonService;
 import org.dubbo.common.facade.CalculatorService;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
@@ -24,6 +26,7 @@ public class Consumer {
         try {
             localTest();
             deipTest();
+            estageTest();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -61,5 +64,12 @@ public class Consumer {
         request.setBizType(2);
         OrderBaseResp response = deipFacade.getNewestByOrderNo(request);
         System.out.println(response.getData());
+    }
+
+    public static void estageTest() {
+        FileSystemXmlApplicationContext fsContext = new FileSystemXmlApplicationContext(new String[]{"classpath:consumer.xml"});
+        EstageCommonService estageCommon = (EstageCommonService) fsContext.getBean("estageCommon");//calculatorService、advancedCalculatorService
+        Result response = estageCommon.applyLoan(986l, 5l);
+        System.out.println(response.isSuccess());
     }
 }

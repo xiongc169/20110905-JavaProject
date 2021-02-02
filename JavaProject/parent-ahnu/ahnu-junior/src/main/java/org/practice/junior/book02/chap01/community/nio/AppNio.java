@@ -6,6 +6,7 @@ import java.io.RandomAccessFile;
 import java.nio.*;
 import java.nio.channels.*;
 import java.nio.charset.Charset;
+import java.nio.file.OpenOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
@@ -69,6 +70,7 @@ public class AppNio {
     public static void channelTest(String fileName) throws Exception {
         RandomAccessFile randomAccessFile = new RandomAccessFile(fileName, "rw");
         FileChannel fileChannel = randomAccessFile.getChannel();
+        FileChannel fileChannel02 = FileChannel.open(Paths.get(mp4FileName), StandardOpenOption.READ);
         DatagramChannel datagramChannel = DatagramChannel.open();
         SocketChannel socketChannel = SocketChannel.open();
         ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();

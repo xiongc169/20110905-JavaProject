@@ -32,4 +32,7 @@
     <!--192.168.27.4-->
     <dubbo:registry id="deipReg" address="zookeeper://192.168.27.4:2181"></dubbo:registry>
     <dubbo:reference id="deipFacade" interface="com.chesheng.decision.api.IDeipPrefixFacade" registry="deipReg" protocol="dubbo" group="dev" version="1.0.0" check="false"/>
+
+    <dubbo:registry id="estage" address="zookeeper://192.168.26.38:2181"/>
+    <dubbo:reference id="estageCommon" interface="com.ftcs.venus.dubbo.EstageCommonService" registry="estage" protocol="dubbo" group="mid" version="1.0.0" check="false" timeout="50000"/>
 </beans> 

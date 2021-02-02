@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
+import java.nio.channels.FileLock;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.zip.CRC32;
@@ -20,7 +21,7 @@ import java.util.zip.CRC32;
  * <p>
  * @Version 1.0
  */
-public class MemoryMapApp {
+public class MemoryMappedFileApp {
 
     private static String filePath = "D:\\Temp\\IO";
 
@@ -111,7 +112,10 @@ public class MemoryMapApp {
 
     public static Long checksumMemoryMappedFile() throws IOException {
         CRC32 crc32 = new CRC32();
-        try (FileChannel fileChannel = FileChannel.open(Paths.get(rtJar), StandardOpenOption.READ)) {
+        try (FileChannel fileChannel = FileChannel.open(Paths.get(rtJar), StandardOpenOption.READ);
+             //FileLock fileLock = fileChannel.lock();
+             //FileLock fileLock02 = fileChannel.tryLock();
+        ) {
             MappedByteBuffer mappedByteBuffer = fileChannel.map(FileChannel.MapMode.READ_ONLY, 0, fileChannel.size());
             while (mappedByteBuffer.hasRemaining()) {
                 crc32.update(mappedByteBuffer.get());

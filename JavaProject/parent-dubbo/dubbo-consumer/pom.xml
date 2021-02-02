@@ -37,6 +37,19 @@
             <artifactId>deip-api</artifactId>
             <version>1.1.0-SNAPSHOT</version>
         </dependency>
+
+        <!--E分期-->
+        <dependency>
+            <groupId>com.ftcs.venus</groupId>
+            <artifactId>estage-api</artifactId>
+            <version>1.0.1-dev-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ftcs</groupId>
+            <artifactId>ftcs-result</artifactId>
+            <version>1.0.2</version>
+        </dependency>
     </dependencies>
 
 </project>

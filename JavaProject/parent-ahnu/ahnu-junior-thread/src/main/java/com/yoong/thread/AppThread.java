@@ -94,14 +94,51 @@ public class AppThread {
     /**
      * 14.6、阻塞队列 (P665)
      */
-    public static void blockingQueue1406() {
+    public static void blockingQueue1406() throws Exception {
         LinkedBlockingQueue linkedBlockingQueue = new LinkedBlockingQueue();
         LinkedBlockingDeque linkedBlockingDeque = new LinkedBlockingDeque();
 
         ArrayBlockingQueue arrayBlockingQueue = new ArrayBlockingQueue(10);
         PriorityBlockingQueue priorityBlockingQueue = new PriorityBlockingQueue();
+
+        //DelayQueue，包含实现Delayed接口的对象。getDelay()方法返回对象的残留延迟。负值表示延迟已经结束。元素只有在延迟用完时，才能从DelayQueue移除。
+        //还必须实现compareTo方法，DelayQueue 使用该方法对元素进行排序。
         DelayQueue delayQueue = new DelayQueue();
+        Delayed delayed = new Delayed() {
+            @Override
+            public long getDelay(TimeUnit unit) {
+                return 1;
+            }
+
+            @Override
+            public int compareTo(Delayed o) {
+                return 0;
+            }
+        };
+        delayQueue.add(delayed);
+        Object delayResult01 = delayQueue.poll();
+        Object delayResult02 = delayQueue.poll(6000, TimeUnit.MILLISECONDS);
+
+        //TransferQueue接口，Java7新增的接口，允许生产者线程等待，直到消费者准备就绪可以接受一个元素。LinkedTransferQueue类实现了这个接口。
+        Object transfer = new Object();
         TransferQueue transferQueue = new LinkedTransferQueue();
+        Thread consumer = new Thread(() -> {
+            try {
+                Thread.sleep(2000);
+                Object transferResult01 = transferQueue.poll(6000, TimeUnit.MILLISECONDS);
+                System.out.println(transferResult01);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        consumer.start();
+        transferQueue.transfer(transfer);
+        Object transferResult02 = transferQueue.poll();
+        System.out.println(transferResult02);
+
+        //SynchronousQueue是一种无界、无缓冲的阻塞队列，可以认为是缓存值为1的阻塞队列。SynchronousQueue的吞吐量高于LinkedBlockingQueue 和 ArrayBlockingQueue
+        //SynchronousQueue阻塞队列的一个使用场景是在线程池里，Executors.newCachedThreadPool()就使用了SynchronousQueue
+        SynchronousQueue synchronousQueue = new SynchronousQueue();
     }
 
     /**

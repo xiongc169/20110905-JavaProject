@@ -27,8 +27,8 @@ public class AppObject {
         try {
             predefinedClass0402();
             customizeClass0403();
-            staticField0404();
-            methodParam0405();
+            staticField0404(); //静态域、静态代码块、实例域、实例代码块的初始化顺序
+            methodParam0405(); //按值调用、按引用调用
             construct0406();
             //this.finalize();
             package0407();
