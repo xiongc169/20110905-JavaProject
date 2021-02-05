@@ -42,9 +42,11 @@ public class Chap02 {
      * -Xms20M -Xmx20M -Xmn10M -XX:+PrintGCDetails -XX:SurvivorRatio=8 -XX:+HeapDumpOnOutOfMemoryError
      * Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
      */
-    public static void heapOutOfMemory020401() {
+    public static void heapOutOfMemory020401() throws Exception {
         List<Object> list = new ArrayList<>();
         while (true) {
+            Thread.sleep(200);
+            System.out.println("heapOutOfMemory020401");
             list.add(new Object());
         }
     }
