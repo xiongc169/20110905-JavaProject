@@ -29,13 +29,14 @@ public class AppBehaviorParameterization {
             behaviorParameterization0202();
             anonymousClass0203();
             lambda0203();
+            demo0204();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
     /**
-     * 排序(P2)
+     * Chap 1、排序    P2
      */
     public static void sort0101() {
         List<Apple> appleList = new LinkedList<Apple>();
@@ -47,8 +48,11 @@ public class AppBehaviorParameterization {
         appleList.add(apple02);
         appleList.add(apple03);
         appleList.add(apple04);
+        Comparable comparable = null;
+        Comparator comparator = null;
 
-        //ch0101：排序1    P2
+        //Chap 1、匿名类-比较器    P2
+        //Chap 3.7.2、使用匿名类
         Collections.sort(appleList, new Comparator<Apple>() {
             @Override
             public int compare(Apple o1, Apple o2) {
@@ -56,11 +60,12 @@ public class AppBehaviorParameterization {
             }
         });
 
-        //ch0101：排序2    P2
+        //Chap 1、方法引用    P2
+        //Chap 3.6、方法引用  P53
+        //Chap 3.7.4、使用方法引用
         appleList.sort(Comparator.comparing(Apple::getWeight));
 
-
-        //ch020401、用Comparator排序    P31
+        //Chap 2.4.1、匿名函数，用Comparator排序    P31
         appleList.sort(new Comparator<Apple>() {
             @Override
             public int compare(Apple a1, Apple a2) {
@@ -68,10 +73,13 @@ public class AppBehaviorParameterization {
             }
         });
 
-        //ch020401、用Comparator排序    P31
+        //Chap 2.4.1、Lambda表达式，用Comparator排序    P31
+        //Chap 3.7.3、使用Lambda表达式
         appleList.sort((Apple a1, Apple a2) -> {
             return a1.getWeight().compareTo(a2.getWeight());
         });
+        //Lambda表达式2
+        appleList.sort((Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight()));
 
         //排序
         List<Apple> sorted01 = appleList.stream().sorted(new Comparator<Apple>() {
@@ -87,7 +95,8 @@ public class AppBehaviorParameterization {
     }
 
     /**
-     * 行为参数化 —— Predicate
+     * Chap 2.1、应对不断变化的需求   P21
+     * Chap 2.2、行为参数化 —— Predicate  P23
      */
     public static void behaviorParameterization0202() {
         List<Apple> appleList = new LinkedList<Apple>();
@@ -115,7 +124,8 @@ public class AppBehaviorParameterization {
     }
 
     /**
-     * 行为参数化 —— 匿名类
+     * Chap 2.3、对付啰嗦
+     * Chap 2.3.1、匿名类
      */
     public static void anonymousClass0203() {
         List<Apple> appleList = new LinkedList<Apple>();
@@ -137,7 +147,8 @@ public class AppBehaviorParameterization {
     }
 
     /**
-     * 行为参数化 —— Lambda表达式
+     * Chap 2.3、对付啰嗦
+     * Chap 2.3.3、使用Lambda表达式
      */
     public static void lambda0203() {
         List<Apple> appleList = new LinkedList<Apple>();
@@ -151,5 +162,31 @@ public class AppBehaviorParameterization {
         //行为参数化：Lambda表达式
         List<Apple> appleList3 = filterApples(appleList, (Apple item) -> item.getColor().equalsIgnoreCase("green"));
         System.out.println(appleList3.size());
+    }
+
+    /**
+     * Chap 2.4、真实的例子
+     * PS：匿名类、Lambda表达式
+     */
+    public static void demo0204() {
+        Comparator comparator01 = new Comparator<Apple>() {
+            @Override
+            public int compare(Apple o1, Apple o2) {
+                return o1.getWeight() > o2.getWeight() ? 1 : 0;
+            }
+        };
+        Comparator comparator02 = (Object a1, Object a2) -> {
+            return ((Apple) a1).getWeight() > ((Apple) a2).getWeight() ? 1 : 0;
+        };
+        Comparator comparator03 = (Object a1, Object a2) -> ((Apple) a1).getWeight() > ((Apple) a2).getWeight() ? 1 : 0;
+
+        Runnable runnable01 = new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        };
+        Runnable runnable02 = () -> {
+        };
     }
 }

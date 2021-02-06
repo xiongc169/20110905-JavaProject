@@ -33,24 +33,25 @@ public class App {
     }
 
     public static void flatMap0502() {
-        List<String> hello = new ArrayList<String>();
-        hello.add("Hello");
-        hello.add("World");
+        List<String> strList = new ArrayList<String>();
+        strList.add("Hello");
+        strList.add("World");
 
-        List<String> parts = Arrays.asList("Hello".split(""));
-        System.out.println(parts.size());
+        List<String> parts01 = Arrays.asList("Hello".split(""));
+        System.out.println(parts01.size());
 
-        List<Integer> lengths = hello.stream().map(item -> item.length()).collect(Collectors.toList());//String::length
+        List<Integer> lengths = strList.stream().map(item -> item.length()).collect(Collectors.toList());//String::length
         System.out.println(lengths.size());
 
-        hello.stream().map(item -> item.split("")).flatMap(Arrays::stream).distinct().forEach(item -> System.out.println(item));
-        System.out.println("Test");
+        List<String[]> parts = strList.stream().map(item -> item.split("")).collect(Collectors.toList());//String::length
+        System.out.println(parts.size());
+        List<String> parts02 = strList.stream().map(item -> item.split("")).flatMap(Arrays::stream).distinct().collect(Collectors.toList());
+        System.out.println(parts02.size());
+        List<String> parts04 = strList.stream().map(item -> item.split("")).flatMap(Arrays::stream).collect(Collectors.toList());
+        System.out.println(parts04.size());
+        List<String> parts03 = strList.stream().flatMap(item -> Arrays.stream(item.split(""))).distinct().collect(Collectors.toList());
+        System.out.println(parts03.size());
 
-        hello.stream().flatMap(item -> Arrays.stream(item.split(""))).distinct().forEach(item -> System.out.println(item));
-        System.out.println("Test");
-
-        List<String> chara = hello.stream().map(item -> item.split("")).flatMap(Arrays::stream).distinct().collect(Collectors.toList());
-        System.out.println(chara.size());
     }
 
     public static void reduce0504() {

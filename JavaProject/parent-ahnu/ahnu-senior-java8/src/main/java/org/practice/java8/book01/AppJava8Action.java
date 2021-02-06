@@ -16,7 +16,7 @@ public class AppJava8Action {
      */
     public static void main(String[] args) {
         try {
-
+            System.out.println(args.length);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

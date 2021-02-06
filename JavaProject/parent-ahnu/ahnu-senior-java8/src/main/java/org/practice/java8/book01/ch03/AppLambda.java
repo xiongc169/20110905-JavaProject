@@ -28,24 +28,27 @@ public class AppLambda {
         }
     }
 
+    /**
+     * Chap 3.4、使用函数式接口
+     */
     public static void functionalApi0304() {
-        Predicate predicate = (item) -> true;
+        Predicate predicate01 = (item) -> true;
         Predicate predicate02 = (item) -> {
             return true;
         };
 
-        Consumer consumer = (item) -> {
+        Consumer consumer01 = (item) -> {
             //System.out.println(item);
         };
         Consumer consumer02 = (item) -> {
             return;
         };
 
-        Function function = (item) -> {
+        Function function01 = (item) -> {
             return "function";
         };
         Function function02 = (item) -> "function02";
 
-        Supplier supplier = () -> "aaa";
+        Supplier supplier01 = () -> "aaa";
     }
 }
