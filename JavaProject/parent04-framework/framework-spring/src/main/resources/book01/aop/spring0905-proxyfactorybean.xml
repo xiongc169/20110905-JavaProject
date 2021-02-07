@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+    <!-- 被代理的目标对象 -->
+    <bean id="target" class="com.yoong.springfx.api.impl.CalculatorImpl"></bean>
+
+    <!--通知、横切逻辑-->
+    <bean id="beforeAdvice" class="com.yoong.springfx.book01.part03_aop.ch090301advice.BeforeAdvice"></bean>
+    <bean id="surroundAdvice" class="com.yoong.springfx.book01.part03_aop.ch090301advice.SurroundAdvice"></bean>
+    <bean id="afterReturningAdvice" class="com.yoong.springfx.book01.part03_aop.ch090301advice.AfterReturningAdvices"></bean>
+    <bean id="afterThrowsAdvice" class="com.yoong.springfx.book01.part03_aop.ch090301advice.AfterThrowAdvice"></bean>
+
+    <!--代理对象 -->
+    <!--target 被代理的对象-->
+    <!--interceptorNames 通知 -->
+    <!--proxyTargetClass 被代理对象是否为一个类，如果是则使用cglib，否则使用jdk动态代理  -->
+    <bean id="proxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="target"></property>
+        <property name="interceptorNames" value="beforeAdvice,surroundAdvice,afterReturningAdvice,afterThrowsAdvice"></property>
+        <property name="proxyTargetClass" value="true"></property>
+    </bean>
+
+</beans>
