@@ -4,7 +4,19 @@ import java.io.*;
 
 public class Prototype implements Cloneable, Serializable {
 
+    private Integer id = 10;
+
     private String name;
+
+    private Ticket ticket;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -14,6 +26,14 @@ public class Prototype implements Cloneable, Serializable {
         this.name = name;
     }
 
+    public Ticket getTicket() {
+        return ticket;
+    }
+
+    public void setTicket(Ticket ticket) {
+        this.ticket = ticket;
+    }
+
     /**
      * 此处clone方法可以改成任意的名称，因为Cloneable接口是个空接口，可以任意定义实现类的方法名，如cloneA或者cloneB；因为此处的重点是super.clone()
      */
@@ -21,7 +41,6 @@ public class Prototype implements Cloneable, Serializable {
         Prototype proto = (Prototype) super.clone();
         return proto;
     }
-
 
     /**
      * 深复制

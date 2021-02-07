@@ -50,8 +50,11 @@ public class FruitFactory {
     }
 
     /**
+     * ClassForName应用于工厂模式
+     * https://blog.csdn.net/yingfeng612/article/details/79315680
      * Class.forName()、Class.forName().newInstance()、New 三者区别
      * https://www.cnblogs.com/shosky/archive/2011/07/22/2114290.html
+     * https://blog.csdn.net/weixin_43135178/article/details/107466509
      */
     public Object produceFruitByClass(Class<? extends Fruit> clazz) {
         Object obj = null;
