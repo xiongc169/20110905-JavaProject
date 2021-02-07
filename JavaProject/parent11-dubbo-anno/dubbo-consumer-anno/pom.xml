@@ -4,13 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.yoong.practice</groupId>
-        <artifactId>parent-dubbo-anno</artifactId>
+        <artifactId>parent11-dubbo-anno</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <groupId>com.yoong.practice</groupId>
-    <artifactId>dubbo-provider-anno</artifactId>
+    <artifactId>dubbo-consumer-anno</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>dubbo-provider-anno</name>
+    <name>dubbo-consumer-anno</name>
     <url>http://maven.apache.org</url>
 
     <properties>
