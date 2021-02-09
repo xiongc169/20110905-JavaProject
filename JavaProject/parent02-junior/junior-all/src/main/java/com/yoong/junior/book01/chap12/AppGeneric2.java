@@ -97,4 +97,18 @@ public class AppGeneric2 {
         System.out.println(date);
         System.out.println(hello);
     }
+
+    /**
+     * Java中泛型 类型擦除
+     * PS：Java 的泛型在编译器有效，在运行期被删除，即 所有泛型参数类型在编译后都会被清除掉。
+     * https://www.cnblogs.com/drizzlewithwind/p/6101081.html
+     * 'overloadTest(List<String>)' clashes with 'overloadTest(List<Integer>)'; both methods have same erasure
+     * List<String> List<Integer> both methods have same erasure
+     * https://www.cnblogs.com/cathygx/p/11365253.html
+     * https://blog.csdn.net/l_bestcoder/article/details/77822698
+     */
+    public static void overloadTest(List<String> stringList) {
+    }
+    //public static void overloadTest(List<Integer> intList) {
+    //}
 }
