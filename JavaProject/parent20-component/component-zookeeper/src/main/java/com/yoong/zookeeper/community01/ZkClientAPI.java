@@ -30,7 +30,6 @@ public class ZkClientAPI {
             e.printStackTrace();
         }
         System.out.println(format.format(new Date()));
-        System.out.println(format.format(new Date()));
     }
 
     /**
