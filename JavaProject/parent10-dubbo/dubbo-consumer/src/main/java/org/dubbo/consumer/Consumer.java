@@ -1,5 +1,7 @@
 package org.dubbo.consumer;
 
+import com.alibaba.dubbo.rpc.RpcContext;
+import com.alibaba.dubbo.rpc.service.GenericService;
 import com.chesheng.decision.api.IDeipPrefixFacade;
 import com.fcts.open.api.mq.yuntu.decision.OrderQueryReq;
 import com.fcts.open.api.mq.yuntu.result.OrderBaseResp;
@@ -25,6 +27,8 @@ public class Consumer {
     public static void main(String[] args) {
         try {
             localTest();
+            genericInvoke();
+
             deipTest();
             estageTest();
         } catch (Exception e) {
@@ -53,6 +57,25 @@ public class Consumer {
         System.out.println(result22);
         System.out.println(result23);
         System.out.println(result24);
+    }
+
+    /**
+     * 泛化调用
+     * https://dubbo.apache.org/zh/docs/v2.7/user/examples/generic-reference/
+     * 上下文信息
+     * https://dubbo.apache.org/zh/docs/v2.7/user/examples/context/
+     * 隐式参数
+     * https://dubbo.apache.org/zh/docs/v2.7/user/examples/attachment/
+     */
+    public static void genericInvoke() {
+        FileSystemXmlApplicationContext fsContext = new FileSystemXmlApplicationContext(new String[]{"classpath:consumer.xml"});
+        GenericService genericService = (GenericService) fsContext.getBean("calculatorService");
+        Object result = genericService.$invoke("sayHello", new String[]{"java.lang.String"}, new Object[]{"World"});
+        System.out.println(result);
+
+        RpcContext rpcContext = RpcContext.getContext();
+        String index = rpcContext.getAttachment("index");
+        System.out.println(index);
     }
 
     public static void deipTest() {
