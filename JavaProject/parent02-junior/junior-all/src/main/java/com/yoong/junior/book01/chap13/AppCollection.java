@@ -40,6 +40,8 @@ public class AppCollection {
             oldCollection1305();
             //练习
             removeTest();
+            lruDemo();
+            lfuDemo();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -228,6 +230,8 @@ public class AppCollection {
      * 13.2.8、映射表 (P587)
      */
     public static void hashMap130208() {
+        int index = 5 % 16;// 5
+        int index2 = 5 & 15;// 5
         HashMap<String, String> hashMap = new HashMap<>();
         TreeMap<String, String> treeMap = new TreeMap<>();
         LinkedHashMap<String, String> linkedHashMap = new LinkedHashMap();
@@ -419,5 +423,65 @@ public class AppCollection {
         list.add("Cinema");
         String result = list.remove(0);
         System.out.println(result);
+    }
+
+    public static void lruDemo() {
+        //HashMap、LinkedHashMap比较
+        HashMap<String, String> hashMap = new HashMap<>();
+        LinkedHashMap<String, String> linkedHashMap = new LinkedHashMap(10);
+        for (Integer i = 0; i < 10; i++) {
+            hashMap.put("key " + i, "value " + i);
+            linkedHashMap.put("key " + i, "value " + i);//linkedHashMap.put("key 4", "value 4");
+        }
+        for (Map.Entry item : hashMap.entrySet()) {
+            System.out.println(item.getKey() + " " + item.getValue());
+        }
+        System.out.println();
+        String result = linkedHashMap.put("key 4", "value 42");
+        for (Map.Entry item : linkedHashMap.entrySet()) {
+            System.out.println(item.getKey() + " " + item.getValue());
+        }
+
+        //LRU实现一
+        String key = "key 4";
+        String value = "value 43";
+        Integer capacity = 5;
+        if (linkedHashMap.containsKey(key)) {
+            linkedHashMap.remove(key);
+        }
+        if (linkedHashMap.size() >= capacity) {
+            Object[] keys = linkedHashMap.entrySet().toArray();
+            Map.Entry<String, String> first = (Map.Entry<String, String>) keys[0];
+            linkedHashMap.remove(first.getKey());
+        }
+        linkedHashMap.put(key, value);
+
+        //LRU实现二
+        LruCache lruCache = new LruCache(5);
+        for (Integer i = 0; i < 10; i++) {
+            lruCache.put("key " + i, "value " + i);
+        }
+        System.out.println(lruCache.size());
+    }
+
+    public static void lfuDemo() {
+        //LFU实现二
+        PriorityQueue priorityQueue = new PriorityQueue(new Comparator<LfuElement>() {
+            @Override
+            public int compare(LfuElement o1, LfuElement o2) {
+                return o1.getCount() > o2.getCount() ? 1 : -1;
+            }
+        });
+        priorityQueue.add(new LfuElement("key1", 1));
+        priorityQueue.add(new LfuElement("key2", 0));
+        priorityQueue.add(new LfuElement("key3", 4));
+        priorityQueue.add(new LfuElement("key4", 3));
+        System.out.println(priorityQueue.size());
+
+        TreeMap<String, Integer> lfuMap = new TreeMap<>();
+        for (Integer i = 0; i < 10; i++) {
+            lfuMap.put("key " + i, 0);
+        }
+        System.out.println(lfuMap.size());
     }
 }
