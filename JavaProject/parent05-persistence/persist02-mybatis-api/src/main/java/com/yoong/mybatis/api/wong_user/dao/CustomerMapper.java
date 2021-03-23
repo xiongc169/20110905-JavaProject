@@ -2,6 +2,7 @@ package com.yoong.mybatis.api.wong_user.dao;
 
 import java.util.List;
 
+import com.yoong.mybatis.api.wong_user.domain.Account;
 import org.apache.ibatis.annotations.Param;
 import com.yoong.mybatis.api.wong_user.domain.Customer;
 import com.yoong.mybatis.api.wong_user.domain.CustomerExample;
@@ -64,4 +65,6 @@ public interface CustomerMapper {
     int updateByExample(@Param("record") Customer record, @Param("example") CustomerExample example);
 
     Customer selectById(Long Id);
+
+    Account selectAccountById(Long Id);
 }

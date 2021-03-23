@@ -1,8 +1,10 @@
 package com.yoong.mybatis.api.wong_user;
 
 import com.yoong.mybatis.api.wong_user.dao.AccountMapper;
+import com.yoong.mybatis.api.wong_user.dao.CustomerMapper;
 import com.yoong.mybatis.api.wong_user.domain.Account;
 import com.yoong.mybatis.api.wong_user.domain.AccountExample;
+import com.yoong.mybatis.api.wong_user.domain.Customer;
 import org.apache.ibatis.datasource.pooled.PooledDataSource;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.mapping.Environment;
@@ -40,6 +42,7 @@ public class WongUserManager {
             //MyBatis-Spring缓存、事务
             wongUserTestByXml();
             wongUserTestByConfig();
+            wongUserTestAssociation();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -102,6 +105,49 @@ public class WongUserManager {
             List<Account> result = sqlSession.selectList("com.yoong.mybatis.accidence.wong_user.dao.AccountMapper.selectByExample", example);
             System.out.println("result.size: " + result.size());
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * association、collection标签
+     * 一级缓存、二级缓存
+     * 插件
+     */
+    private static void wongUserTestAssociation() {
+        try {
+            String resource = "mybatis-wong_user.xml";
+            InputStream iStream = Resources.getResourceAsStream(resource);
+            SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(iStream);
+            SqlSession session = factory.openSession();
+
+            // 2、MyBatis用法：获取映射器
+            //ResultMap、ResultType
+            AccountMapper accountMapper = session.getMapper(AccountMapper.class);
+            Account accountType = accountMapper.selectTypeById(57l);
+            System.out.println("accountType: " + accountType);
+            Account accountMap = accountMapper.selectMapById(57l);
+            System.out.println("accountMap: " + accountMap);
+
+            //一级缓存
+            Account account = accountMapper.selectByCustomerId(9l);
+            System.out.println("account: " + account);
+            Account account01 = accountMapper.selectByCustomerId(9l);
+            System.out.println("account01: " + account01);
+            List<Account> accountList = accountMapper.selectAllByCustomerId(9l);
+            System.out.println("accountList: " + accountList);
+
+            //association、collection标签
+            CustomerMapper customerMapper = session.getMapper(CustomerMapper.class);
+            Customer customer = customerMapper.selectById(9l);
+            System.out.println("customer: " + customer);
+
+            Account account02 = customerMapper.selectAccountById(57l);
+            System.out.println("account02: " + account02);
+
+            //事务
+            session.commit();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

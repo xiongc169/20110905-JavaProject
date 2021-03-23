@@ -15,9 +15,9 @@
     <!--    <package name="com.yoong.mybatis.api.wong_user"/>-->
     <!--</typeHandlers>-->
 
-    <plugins>
-        <plugin interceptor="com.yoong.mybatis.api.interceptor.MyInterceptor"></plugin>
-    </plugins>
+    <!--<plugins>-->
+    <!--    <plugin interceptor="com.yoong.mybatis.api.interceptor.MyInterceptor"></plugin>-->
+    <!--</plugins>-->
 
     <environments default="development">
         <environment id="development">

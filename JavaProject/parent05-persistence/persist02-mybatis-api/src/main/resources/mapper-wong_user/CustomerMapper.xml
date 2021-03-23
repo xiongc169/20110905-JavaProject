@@ -125,6 +125,10 @@
     select * from customer where id = #{Id,jdbcType=BIGINT};
   </select>
 
+  <select id="selectAccountById" parameterType="java.lang.Long" resultMap="com.yoong.mybatis.api.wong_user.dao.AccountMapper.BaseResultMap">
+    select * from account where id = #{Id,jdbcType=BIGINT};
+  </select>
+
   <delete id="deleteByExample" parameterType="com.yoong.mybatis.api.wong_user.domain.CustomerExample" >
     <!--
       WARNING - @mbggenerated
