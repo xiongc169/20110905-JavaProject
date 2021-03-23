@@ -20,8 +20,6 @@
     <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
   </resultMap>
 
-  <cache-ref namespace="com.yoong.mybatis.api.wong_user.dao.AdminMapper"/>
-
   <sql id="Example_Where_Clause" >
     <!--
       WARNING - @mbggenerated

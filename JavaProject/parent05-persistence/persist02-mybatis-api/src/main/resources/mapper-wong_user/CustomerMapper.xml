@@ -19,8 +19,11 @@
     <result column="note2" property="note2" jdbcType="VARCHAR" />
     <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
     <association property="firstAccount" select="com.yoong.mybatis.api.wong_user.dao.AccountMapper.selectByCustomerId" column="customer_id"></association>
-    <association property="allAccount" select="com.yoong.mybatis.api.wong_user.dao.AccountMapper.selectAllByCustomerId" column="customer_id"></association>
+    <collection property="allAccount" select="com.yoong.mybatis.api.wong_user.dao.AccountMapper.selectAllByCustomerId" column="customer_id"></collection>
   </resultMap>
+
+  <cache-ref namespace="com.yoong.mybatis.api.wong_user.dao.AccountMapper"/>
+
   <sql id="Example_Where_Clause" >
     <!--
       WARNING - @mbggenerated
