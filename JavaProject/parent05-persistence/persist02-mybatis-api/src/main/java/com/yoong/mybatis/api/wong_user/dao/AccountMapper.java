@@ -63,6 +63,10 @@ public interface AccountMapper {
      */
     int updateByExample(@Param("record") Account record, @Param("example") AccountExample example);
 
+    Account selectByCustomerId(Long Id);
+
+    List<Account> selectAllByCustomerId(Long Id);
+
     Account selectMapById(Long Id);
 
     Account selectTypeById(Long Id);

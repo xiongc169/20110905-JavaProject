@@ -18,6 +18,8 @@
     <result column="note1" property="note1" jdbcType="VARCHAR" />
     <result column="note2" property="note2" jdbcType="VARCHAR" />
     <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <association property="firstAccount" select="com.yoong.mybatis.api.wong_user.dao.AccountMapper.selectByCustomerId" column="customer_id"></association>
+    <association property="allAccount" select="com.yoong.mybatis.api.wong_user.dao.AccountMapper.selectAllByCustomerId" column="customer_id"></association>
   </resultMap>
   <sql id="Example_Where_Clause" >
     <!--
@@ -115,6 +117,11 @@
       order by ${orderByClause}
     </if>
   </select>
+
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select * from customer where id = #{Id,jdbcType=BIGINT};
+  </select>
+
   <delete id="deleteByExample" parameterType="com.yoong.mybatis.api.wong_user.domain.CustomerExample" >
     <!--
       WARNING - @mbggenerated

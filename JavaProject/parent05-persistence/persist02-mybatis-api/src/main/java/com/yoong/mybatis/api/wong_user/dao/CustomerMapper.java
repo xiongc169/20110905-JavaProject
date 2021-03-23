@@ -1,6 +1,7 @@
 package com.yoong.mybatis.api.wong_user.dao;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import com.yoong.mybatis.api.wong_user.domain.Customer;
 import com.yoong.mybatis.api.wong_user.domain.CustomerExample;
@@ -61,4 +62,6 @@ public interface CustomerMapper {
      * @mbggenerated Wed Jan 16 16:41:00 CST 2019
      */
     int updateByExample(@Param("record") Customer record, @Param("example") CustomerExample example);
+
+    Customer selectById(Long Id);
 }
