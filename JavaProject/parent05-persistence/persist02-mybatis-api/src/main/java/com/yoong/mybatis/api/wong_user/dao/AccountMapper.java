@@ -62,4 +62,8 @@ public interface AccountMapper {
      * @mbggenerated Wed Jan 16 16:41:00 CST 2019
      */
     int updateByExample(@Param("record") Account record, @Param("example") AccountExample example);
+
+    Account selectMapById(Long Id);
+
+    Account selectTypeById(Long Id);
 }

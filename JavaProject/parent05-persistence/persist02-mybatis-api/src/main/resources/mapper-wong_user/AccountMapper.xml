@@ -122,6 +122,12 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectMapById" parameterType="java.lang.Long"  resultMap="BaseResultMap">
+    select * from account where id = #{Id,jdbcType=BIGINT};
+  </select>
+  <select id="selectTypeById" parameterType="java.lang.Long"  resultType="com.yoong.mybatis.api.wong_user.domain.Account">
+    select * from account where id = #{Id,jdbcType=BIGINT};
+  </select>
   <delete id="deleteByExample" parameterType="com.yoong.mybatis.api.wong_user.domain.AccountExample" >
     <!--
       WARNING - @mbggenerated
