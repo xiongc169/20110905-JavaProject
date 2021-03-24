@@ -72,4 +72,8 @@ public interface AccountMapper {
     Account selectByCustomerId(Long Id);
 
     List<Account> selectAllByCustomerId(Long Id);
+
+    int updateById(@Param("account") Account account, @Param("Id") Long Id);
+
+    int batchInsert(@Param("list") List<Account> account);
 }

@@ -155,6 +155,33 @@
     select * from account where customer_id = #{customerId,jdbcType=BIGINT};
   </select>
 
+  <update id="updateById" parameterType="map">
+    update account
+    <set>
+      <if test="account.password != null">
+        password=#{account.password,jdbcType=VARCHAR},
+      </if>
+      <if test="account.contactName != null">
+        contact_name=#{account.contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="account.mobile != null">
+        mobile=#{account.mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="account.phone != null">
+        phone=#{account.phone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id=#{Id,jdbcType=INTEGER}
+  </update>
+
+  <insert id="batchInsert" parameterType="map">
+    INSERT INTO `wong_user`.`account` (`account_id`, `is_delete`)
+    VALUES
+    <foreach collection="list" separator="," item="item">
+      (#{item.accountId,jdbcType=VARCHAR}, #{item.isDelete,jdbcType=INTEGER})
+    </foreach>
+  </insert>
+
   <delete id="deleteByExample" parameterType="com.yoong.mybatis.api.wong_user.domain.AccountExample" >
     <!--
       WARNING - @mbggenerated

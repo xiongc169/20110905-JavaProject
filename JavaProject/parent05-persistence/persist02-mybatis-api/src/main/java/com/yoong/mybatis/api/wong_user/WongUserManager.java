@@ -17,6 +17,7 @@ import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,6 +44,8 @@ public class WongUserManager {
             wongUserTestByXml();
             wongUserTestByAPI();
             wongUserTestAssociation();
+            wongUserUpdate();
+            batchInsert();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -151,6 +154,63 @@ public class WongUserManager {
             System.out.println("customer: " + customer);
             Account account02 = customerMapper.selectAccountById(57l);
             System.out.println("account02: " + account02);
+
+            //事务
+            session.commit();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Update
+     */
+    private static void wongUserUpdate() {
+        try {
+            String resource = "mybatis-wong_user.xml";
+            InputStream iStream = Resources.getResourceAsStream(resource);
+            SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(iStream);
+            SqlSession session = factory.openSession(); //自动提交，默认false。执行操作后，需手动执行提交 session.commit();
+            //SqlSession session = factory.openSession(true); //自动提交，手动置为true，执行操作后，无需手动提交
+
+            // 2、MyBatis用法：获取映射器
+            AccountMapper accountMapper = session.getMapper(AccountMapper.class);
+            Account condition = new Account();
+            condition.setPassword("8888");
+            condition.setContactName("ABCD");
+            Integer updateResult = accountMapper.updateById(condition, 36l);
+            System.out.println("updateResult: " + updateResult);
+
+            //事务
+            session.commit();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * BatchInsert
+     */
+    private static void batchInsert() {
+        try {
+            String resource = "mybatis-wong_user.xml";
+            InputStream iStream = Resources.getResourceAsStream(resource);
+            SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(iStream);
+            SqlSession session = factory.openSession(); //自动提交，默认false。执行操作后，需手动执行提交 session.commit();
+            //SqlSession session = factory.openSession(true); //自动提交，手动置为true，执行操作后，无需手动提交
+
+            // 2、MyBatis用法：获取映射器
+            AccountMapper accountMapper = session.getMapper(AccountMapper.class);
+            List<Account> accountList = new ArrayList<>();
+            for (int i = 0; i < 3; i++) {
+                Account account = new Account();
+                account.setAccountId(String.valueOf(i));
+                account.setIsDelete(0);
+                accountList.add(account);
+            }
+            //org.apache.ibatis.type.JdbcType
+            Integer updateResult = accountMapper.batchInsert(accountList);
+            System.out.println("updateResult: " + updateResult);
 
             //事务
             session.commit();
