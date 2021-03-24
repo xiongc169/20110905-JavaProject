@@ -123,18 +123,36 @@
     </if>
   </select>
 
-  <select id="selectByCustomerId" parameterType="java.lang.Long"  resultMap="BaseResultMap">
-    select * from account where customer_id = #{customerId,jdbcType=BIGINT} limit 1;
-  </select>
-  <select id="selectAllByCustomerId" parameterType="java.lang.Long"  resultMap="BaseResultMap">
-    select * from account where customer_id = #{customerId,jdbcType=BIGINT};
+  <select id="selectByCondition" parameterType="com.yoong.mybatis.api.wong_user.domain.Account" resultType="com.yoong.mybatis.api.wong_user.domain.Account">
+    select * from account
+    <where>
+      <if test="id!=null">
+        id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="accountId!=null">
+        account_id = #{accountId,jdbcType=VARCHAR}
+      </if>
+      <if test="password!=null">
+        password = #{password,jdbcType=VARCHAR}
+      </if>
+      <if test="contactName!=null">
+        contact_name = #{contactName,jdbcType=VARCHAR}
+      </if>
+    </where>
   </select>
 
-  <select id="selectMapById" parameterType="java.lang.Long"  resultMap="BaseResultMap">
+  <select id="selectMapById" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select * from account where id = #{Id,jdbcType=BIGINT};
   </select>
-  <select id="selectTypeById" parameterType="java.lang.Long"  resultType="com.yoong.mybatis.api.wong_user.domain.Account">
+  <select id="selectTypeById" parameterType="java.lang.Long" resultType="com.yoong.mybatis.api.wong_user.domain.Account">
     select * from account where id = #{Id,jdbcType=BIGINT};
+  </select>
+
+  <select id="selectByCustomerId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select * from account where customer_id = #{customerId,jdbcType=BIGINT} limit 1;
+  </select>
+  <select id="selectAllByCustomerId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select * from account where customer_id = #{customerId,jdbcType=BIGINT};
   </select>
 
   <delete id="deleteByExample" parameterType="com.yoong.mybatis.api.wong_user.domain.AccountExample" >

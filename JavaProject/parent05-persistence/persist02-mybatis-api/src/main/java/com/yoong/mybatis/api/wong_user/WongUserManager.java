@@ -41,7 +41,7 @@ public class WongUserManager {
             //MyBatis缓存、事务
             //MyBatis-Spring缓存、事务
             wongUserTestByXml();
-            wongUserTestByConfig();
+            wongUserTestByAPI();
             wongUserTestAssociation();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -83,7 +83,7 @@ public class WongUserManager {
         }
     }
 
-    private static void wongUserTestByConfig() {
+    private static void wongUserTestByAPI() {
         //1、SqlSessionFactoryBuilder根据配置(xml配置文件、Configuration类)构建SqlSessionFactory；
         //2、SqlSessionFactory构建SqlSession；
         //3、探究已映射的SQL语句
@@ -110,8 +110,10 @@ public class WongUserManager {
     }
 
     /**
-     * association、collection标签
+     * parameterType
+     * resultMap、resultType
      * 一级缓存、二级缓存
+     * association、collection标签
      * 插件
      */
     private static void wongUserTestAssociation() {
@@ -122,8 +124,14 @@ public class WongUserManager {
             SqlSession session = factory.openSession();
 
             // 2、MyBatis用法：获取映射器
-            //ResultMap、ResultType
             AccountMapper accountMapper = session.getMapper(AccountMapper.class);
+            //parameterType
+            Account condition = new Account();
+            condition.setAccountId("8");
+            List<Account> conditionResult = accountMapper.selectByCondition(condition);
+            System.out.println("conditionResult: " + conditionResult);
+
+            //resultMap、resultType
             Account accountType = accountMapper.selectTypeById(57l);
             System.out.println("accountType: " + accountType);
             Account accountMap = accountMapper.selectMapById(57l);
@@ -141,7 +149,6 @@ public class WongUserManager {
             CustomerMapper customerMapper = session.getMapper(CustomerMapper.class);
             Customer customer = customerMapper.selectById(9l);
             System.out.println("customer: " + customer);
-
             Account account02 = customerMapper.selectAccountById(57l);
             System.out.println("account02: " + account02);
 

@@ -1,10 +1,10 @@
 package com.yoong.mybatis.api.wong_user.dao;
 
-import java.util.List;
-
 import com.yoong.mybatis.api.wong_user.domain.Account;
-import org.apache.ibatis.annotations.Param;
 import com.yoong.mybatis.api.wong_user.domain.AccountExample;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface AccountMapper {
     /**
@@ -63,11 +63,13 @@ public interface AccountMapper {
      */
     int updateByExample(@Param("record") Account record, @Param("example") AccountExample example);
 
-    Account selectByCustomerId(Long Id);
-
-    List<Account> selectAllByCustomerId(Long Id);
+    List<Account> selectByCondition(Account account);
 
     Account selectMapById(Long Id);
 
     Account selectTypeById(Long Id);
+
+    Account selectByCustomerId(Long Id);
+
+    List<Account> selectAllByCustomerId(Long Id);
 }
