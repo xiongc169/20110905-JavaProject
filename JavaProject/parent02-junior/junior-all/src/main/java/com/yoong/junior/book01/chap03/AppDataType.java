@@ -29,7 +29,7 @@ public class AppDataType {
             BigDecimal bb = new BigDecimal(7.0);
             System.out.println(aa.subtract(bb));//0.21999999999999975131004248396493494510650634765625
 
-            Integer intValue = Integer.MAX_VALUE;
+            Integer intValue = Integer.MAX_VALUE;// -2147483648 ~ 2147483647
             byte[] intBytes = new byte[4];
             intBytes = ByteBuffer.allocate(4).putInt(intValue).array();
             System.out.println(intBytes);
