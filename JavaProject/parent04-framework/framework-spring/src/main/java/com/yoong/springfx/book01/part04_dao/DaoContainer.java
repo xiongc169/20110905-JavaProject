@@ -29,7 +29,7 @@ import java.util.List;
  */
 public class DaoContainer {
 
-    private static String mysqlUrl = "jdbc:mysql://127.0.0.1:3306/mysql?serverTimezone=UTC";
+    private static String mysqlUrl = "jdbc:mysql://127.0.0.1:3306/yoong_rehearsal?serverTimezone=UTC";
 
     private static String username = "root";
 

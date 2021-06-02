@@ -30,9 +30,9 @@ public class TransactionManager {
 
     private static String mysqlDriver = "com.mysql.cj.jdbc.Driver";
 
-    private static String mysqlFullUrl = "jdbc:mysql://127.0.0.1:3306/mysql?user=root&password=123456&serverTimezone=UTC";
+    private static String mysqlFullUrl = "jdbc:mysql://127.0.0.1:3306/yoong_rehearsal?user=root&password=123456&serverTimezone=UTC";
 
-    private static String mysqlUrl = "jdbc:mysql://127.0.0.1:3306/mysql?serverTimezone=UTC";
+    private static String mysqlUrl = "jdbc:mysql://127.0.0.1:3306/yoong_rehearsal?serverTimezone=UTC";
 
     private static String userName = "root";
 

@@ -20,7 +20,7 @@ public class DBManager {
 
     // mysql驱动类
     private static String mySqlDriver = "com.mysql.jdbc.Driver";
-    private static String mySqlURL = "jdbc:mysql://127.0.0.1:3306/mysql?user=root&password=123456&serverTimezone=UTC";
+    private static String mySqlURL = "jdbc:mysql://127.0.0.1:3306/yoong_rehearsal?user=root&password=123456&serverTimezone=UTC";
 
     // mycat连接串
     private static String myCatURL = "jdbc:mysql://127.0.0.1:8066/TESTDB?user=root&password=123456";

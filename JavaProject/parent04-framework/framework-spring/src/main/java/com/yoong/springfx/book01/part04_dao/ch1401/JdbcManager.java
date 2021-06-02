@@ -17,7 +17,7 @@ public class JdbcManager {
 
     private static String mysqlDriver = "com.mysql.cj.jdbc.Driver";
 
-    private static String mysqlUrl = "jdbc:mysql://127.0.0.1:3306/mysql?user=root&password=123456&serverTimezone=UTC";
+    private static String mysqlUrl = "jdbc:mysql://127.0.0.1:3306/yoong_rehearsal?user=root&password=123456&serverTimezone=UTC";
 
     public static void jdbc140101() {
         String mysqlInsert = "INSERT INTO `test`(`name`) VALUES ('8888');";

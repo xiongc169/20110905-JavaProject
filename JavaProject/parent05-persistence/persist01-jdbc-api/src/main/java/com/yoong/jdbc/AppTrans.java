@@ -28,7 +28,7 @@ public class AppTrans {
 
     private static void jdbcTransactionTest() {
         String mysqlDriver = "com.mysql.cj.jdbc.Driver";
-        String mysqlUrl = "jdbc:mysql://127.0.0.1:3306/mysql?user=root&password=111111&serverTimezone=UTC";
+        String mysqlUrl = "jdbc:mysql://127.0.0.1:3306/yoong_rehearsal?user=root&password=111111&serverTimezone=UTC";
         String mysqlInsert = "INSERT INTO `test`(`name`) VALUES ('8888');";
         String mysqlUpdate = "UPDATE `test` SET `name`='Modified' WHERE id=1;";
 
