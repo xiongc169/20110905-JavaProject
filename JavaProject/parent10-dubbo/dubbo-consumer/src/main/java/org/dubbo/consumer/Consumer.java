@@ -29,8 +29,8 @@ public class Consumer {
             localTest();
             genericInvoke();
 
-            deipTest();
-            estageTest();
+            //deipTest();
+            //estageTest();
         } catch (Exception e) {
             e.printStackTrace();
         }

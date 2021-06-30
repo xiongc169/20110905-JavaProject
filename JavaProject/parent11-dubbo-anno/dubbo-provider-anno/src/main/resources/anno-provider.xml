@@ -14,5 +14,5 @@
 
     <dubbo:protocol name="dubbo" port="20885"/>
 
-    <dubbo:annotation package="org.anno.provider.serviceImpl"></dubbo:annotation>
+    <dubbo:annotation package="org.dubbo.provider.anno.serviceImpl"></dubbo:annotation>
 </beans> 
