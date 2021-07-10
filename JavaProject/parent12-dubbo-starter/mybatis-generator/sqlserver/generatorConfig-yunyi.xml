@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+
+<!--TODO: 执行方式一：命令执行，java -jar mybatis-generator-core-1.3.7.jar -configfile ./sqlserver/generatorConfig-yunyi.xml -overwrite-->
+<!--TODO: 执行方式一：命令执行，java -jar mybatis-generator-core-1.3.7.jar -configfile sqlserver/generatorConfig-yunyi.xml -overwrite-->
+<generatorConfiguration>
+    <!-- 数据库驱动包位置 -->
+    <classPathEntry location="sqljdbc4-4.0.jar"/>
+
+    <context id="yunyi">
+        <jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver" connectionURL="jdbc:sqlserver://localhost:1433;DatabaseName=YunYiSite;" userId="sa" password="111111"/>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 生成Model类 -->
+        <javaModelGenerator targetPackage="com.yoong.mybatis.api.yunyi.domain" targetProject="..\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- 生成XML映射文件 -->
+        <sqlMapGenerator targetPackage="mapper-yunyi" targetProject="..\src\main\resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- 生成Mapper接口 -->
+        <javaClientGenerator targetPackage="com.yoong.mybatis.api.yunyi.dao" targetProject="..\src\main\java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="Accounts"></table>
+        <table tableName="ActionToPages"></table>
+        <table tableName="AdminLoginLogs"></table>
+        <table tableName="AdminOperations"></table>
+        <table tableName="Admins"></table>
+        <table tableName="AdminToPages"></table>
+        <table tableName="Answers"></table>
+        <table tableName="AttachFile"></table>
+        <table tableName="Authories"></table>
+        <table tableName="AuthoryToPages"></table>
+        <table tableName="BusinessSystem"></table>
+        <table tableName="Contactors"></table>
+        <table tableName="Customer"></table>
+        <table tableName="CustomerEvent"></table>
+        <table tableName="CustomerEventInsertParams"></table>
+        <table tableName="CustomerLoginLogs"></table>
+        <table tableName="Feedback"></table>
+        <table tableName="Log_ResourceDownload"></table>
+        <table tableName="News"></table>
+        <table tableName="Notice"></table>
+        <table tableName="NoticeLogs"></table>
+        <table tableName="OnlineResource"></table>
+        <table tableName="PageActions"></table>
+        <table tableName="PageMenus"></table>
+        <table tableName="Questionaires"></table>
+        <table tableName="Re_Customer_BusinessSystem"></table>
+        <table tableName="Re_Customer_Contactor_BusinessSystem"></table>
+        <table tableName="Re_Notice_BusinessSystem"></table>
+        <table tableName="Re_Notice_Contactor"></table>
+        <table tableName="Re_Notice_Customer"></table>
+        <table tableName="Re_Resource_BusinessSystem"></table>
+        <table tableName="Requirement"></table>
+        <table tableName="RequirementInsertParams"></table>
+        <table tableName="ReSaleTechProducts"></table>
+        <table tableName="Resource"></table>
+        <table tableName="Sort"></table>
+
+    </context>
+</generatorConfiguration>

@@ -3,6 +3,7 @@ package org.dubbo.provider.starter;
 import org.apache.dubbo.config.spring.context.annotation.DubboComponentScan;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubboConfig;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -22,6 +23,7 @@ import java.util.Date;
 @EnableDubboConfig
 @DubboComponentScan("org.dubbo.provider.starter.service")
 @SpringBootApplication
+@MapperScan("org.dubbo.provider.starter.core.dao")
 public class ProviderApplication {
 
     private static SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
